@@ -11,6 +11,7 @@ class AppRoutes {
   static const attendance = 'attendance';
   static const followUps = 'followUps';
   static const campaigns = 'campaigns';
+  static const account = 'account';
 
   static const splashPath = '/splash';
   static const loginPath = '/login';
@@ -21,4 +22,5 @@ class AppRoutes {
   static const attendancePath = '/attendance';
   static const followUpsPath = '/follow-up-calls';
   static const campaignsPath = '/campaigns';
+  static const accountPath = '/account';
 }

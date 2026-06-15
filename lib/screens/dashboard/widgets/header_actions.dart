@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../router/app_routes.dart';
 import '../../../theme.dart';
 import '../../../widgets/user_avatar.dart';
 
@@ -13,7 +15,7 @@ class HeaderActions extends StatelessWidget {
       children: [
         _buildNotificationBell(),
         const SizedBox(width: 12),
-        _buildAvatar(),
+        _buildAvatar(context),
       ],
     );
   }
@@ -58,7 +60,10 @@ class HeaderActions extends StatelessWidget {
     );
   }
 
-  Widget _buildAvatar() {
-    return const UserAvatar(initials: 'AN', size: 40);
+  Widget _buildAvatar(BuildContext context) {
+    return GestureDetector(
+      onTap: () => context.push(AppRoutes.accountPath),
+      child: const UserAvatar(initials: 'AN', size: 40),
+    );
   }
 }
