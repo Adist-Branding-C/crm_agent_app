@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
+import '../../../../widgets/custom_card.dart';
 import '../../../../theme.dart';
 
 /// Renders a Deal card tailored for the List view.
@@ -11,14 +12,9 @@ class DealListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

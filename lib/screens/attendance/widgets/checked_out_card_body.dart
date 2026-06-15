@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/attendance/attendance_bloc.dart';
 import '../../../theme.dart';
+import '../../../widgets/custom_card.dart';
 import 'checked_out_info.dart';
 import 'fingerprint_icon.dart';
 
@@ -12,13 +13,8 @@ class CheckedOutCardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
       child: Row(
         children: [
           const FingerprintIcon(

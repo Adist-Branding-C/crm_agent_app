@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/leads/leads_bloc.dart';
-import '../../theme.dart';
+import '../../data/repositories/leads_repository.dart';
+import '../../widgets/page_scaffold.dart';
 import 'widgets/leads_filter_tabs.dart';
 import 'widgets/leads_header.dart';
 import 'widgets/leads_list.dart';
@@ -14,11 +15,14 @@ class LeadsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final repo = context.read<LeadsRepository>();
+
     return BlocProvider(
-      create: (context) => LeadsBloc()..add(const FetchLeads()),
-      child: const Scaffold(
-        backgroundColor: AppTheme.backgroundColor,
-        body: Column(
+      create: (context) =>
+          LeadsBloc(leadsRepository: repo)..add(const FetchLeads()),
+      child: PageScaffold(
+        padding: EdgeInsets.zero,
+        child: const Column(
           children: [
             LeadsHeader(),
             LeadsSearchBar(),

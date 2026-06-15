@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
-import '../../../theme.dart';
+import '../../../widgets/app_error_widget.dart';
+import '../../../widgets/dashboard_shimmer.dart';
 import 'dashboard_header.dart';
 import 'stats_grid.dart';
 import 'follow_ups_list.dart';
@@ -17,9 +18,7 @@ class DashboardBody extends StatelessWidget {
     return BlocBuilder<DashboardBloc, DashboardState>(
       builder: (context, state) {
         if (state is DashboardLoading || state is DashboardInitial) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
-          );
+          return const DashboardShimmer();
         }
         if (state is DashboardLoaded) {
           return SingleChildScrollView(
@@ -36,8 +35,10 @@ class DashboardBody extends StatelessWidget {
           );
         }
         final msg = state is DashboardError ? state.errorMessage : 'Error';
-        return Center(
-          child: Text(msg, style: const TextStyle(color: AppColors.errorColor)),
+        return AppErrorWidget(
+          message: msg,
+          onRetry: () =>
+              context.read<DashboardBloc>().add(const FetchDashboardData()),
         );
       },
     );

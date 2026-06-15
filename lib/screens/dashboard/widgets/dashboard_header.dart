@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/attendance/attendance_bloc.dart';
+import '../../../theme.dart';
+import '../../../widgets/screen_header.dart';
 import 'header_actions.dart';
-import 'header_title.dart';
 
 /// Renders the composed top header section of the Dashboard.
 class DashboardHeader extends StatelessWidget {
@@ -9,13 +12,31 @@ class DashboardHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [HeaderTitle(), HeaderActions()],
+    return ScreenHeader(
+      title: 'Dashboard',
+      showBackButton: false,
+      subtitleWidget: BlocBuilder<AttendanceBloc, AttendanceState>(
+        builder: (context, state) {
+          final statusText = state is AttendanceLoaded && state.isCheckedIn
+              ? 'Checked in • ${state.checkInTime ?? '—'}'
+              : 'Checked out';
+          return Row(
+            children: [
+              const Icon(Icons.circle, size: 8, color: Color(0xFF10B981)),
+              const SizedBox(width: 6),
+              Text(
+                statusText,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: AppColors.textMuted,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+            ],
+          );
+        },
       ),
+      actions: const HeaderActions(),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
     );
   }
 }

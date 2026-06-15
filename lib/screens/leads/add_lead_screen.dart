@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../bloc/leads/add_lead/add_lead_bloc.dart';
 import '../../theme.dart';
 import 'widgets/add_lead_form.dart';
@@ -33,7 +34,7 @@ class AddLeadScreen extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => context.pop(),
             child: Container(
               width: 38,
               height: 38,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/campaigns/campaigns_bloc.dart';
-import '../../theme.dart';
+import '../../bloc/campaigns/campaigns_models.dart';
+import '../../data/repositories/campaigns_repository.dart';
+import '../../widgets/async_state_view.dart';
+import '../../widgets/page_scaffold.dart';
 import 'widgets/campaigns_header.dart';
 import 'widgets/campaigns_list.dart';
 
@@ -13,16 +16,16 @@ class CampaignsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CampaignsBloc()..add(const LoadCampaigns()),
-      child: const Scaffold(
-        backgroundColor: AppTheme.backgroundColor,
-        body: SafeArea(
-          child: Column(
-            children: [
-              CampaignsHeader(),
-              Expanded(child: _CampaignsBody()),
-            ],
-          ),
+      create: (context) => CampaignsBloc(
+        campaignsRepository: context.read<CampaignsRepository>(),
+      )..add(const LoadCampaigns()),
+      child: PageScaffold(
+        padding: EdgeInsets.zero,
+        child: Column(
+          children: const [
+            CampaignsHeader(),
+            Expanded(child: _CampaignsBody()),
+          ],
         ),
       ),
     );
@@ -36,17 +39,16 @@ class _CampaignsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CampaignsBloc, CampaignsState>(
       builder: (context, state) {
-        if (state is CampaignsLoading || state is CampaignsInitial) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
-          );
-        }
-        if (state is CampaignsLoaded) {
-          return CampaignsList(campaigns: state.campaigns);
-        }
-        final msg = state is CampaignsError ? state.errorMessage : 'Error';
-        return Center(
-          child: Text(msg, style: const TextStyle(color: AppColors.errorColor)),
+        final campaigns =
+            state is CampaignsLoaded ? state.campaigns : const <Campaign>[];
+
+        return AsyncStateView(
+          isLoading: state is CampaignsLoading || state is CampaignsInitial,
+          hasError: state is CampaignsError,
+          errorMessage: state is CampaignsError ? state.errorMessage : 'Error',
+          onRetry: () =>
+              context.read<CampaignsBloc>().add(const LoadCampaigns()),
+          child: CampaignsList(campaigns: campaigns),
         );
       },
     );

@@ -1,31 +1,67 @@
 import 'package:flutter/material.dart';
-import 'phone_field.dart';
-import 'password_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/login/login_bloc.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../theme.dart';
 
 /// Form input fields for credential entry.
 class LoginForm extends StatelessWidget {
   /// Creates a constant [LoginForm] widget.
   const LoginForm({
     super.key,
-    required this.emailController,
+    required this.phoneController,
     required this.passwordController,
   });
 
-  /// The email/phone text field controller.
-  final TextEditingController emailController;
+  /// The phone text field controller.
+  final TextEditingController phoneController;
 
   /// The password text field controller.
   final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PhoneField(controller: emailController),
-        const SizedBox(height: 20),
-        PasswordField(controller: passwordController),
-      ],
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomTextField(
+              label: 'Phone Number',
+              isRequired: true,
+              hintText: '+91 98470 ... or digits',
+              controller: phoneController,
+              keyboardType: TextInputType.phone,
+              onChanged: (value) =>
+                  context.read<LoginBloc>().add(PhoneChanged(value)),
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
+              label: 'Password',
+              isRequired: true,
+              hintText: 'Enter password',
+              controller: passwordController,
+              obscureText: state.obscurePassword,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  state.obscurePassword
+                      ? Icons.visibility_outlined
+                      : Icons.visibility_off_outlined,
+                  color: AppColors.textMuted,
+                  size: 20,
+                ),
+                onPressed: () {
+                  context.read<LoginBloc>().add(
+                        const TogglePasswordVisibility(),
+                      );
+                },
+              ),
+              onChanged: (value) =>
+                  context.read<LoginBloc>().add(PasswordChanged(value)),
+            ),
+          ],
+        );
+      },
     );
   }
 }

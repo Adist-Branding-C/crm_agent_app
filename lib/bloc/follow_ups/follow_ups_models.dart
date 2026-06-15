@@ -1,4 +1,16 @@
 import 'package:equatable/equatable.dart';
+import '../leads/leads_enums.dart';
+
+/// Urgency group for follow-ups.
+enum FollowUpUrgency {
+  overdue('overdue', 'Overdue'),
+  dueToday('due_today', 'Due Today'),
+  upcoming('upcoming', 'Upcoming');
+
+  final String value;
+  final String label;
+  const FollowUpUrgency(this.value, this.label);
+}
 
 /// Model representing a detailed follow-up call.
 class FollowUp extends Equatable {
@@ -8,14 +20,14 @@ class FollowUp extends Equatable {
   /// Full name of the contact.
   final String name;
 
-  /// Business category of the contact (e.g. Enquiry, New Admission).
-  final String category;
+  /// Business category of the contact.
+  final LeadPurpose category;
 
-  /// Status of the follow-up (e.g. Follow Up, Interested, Qualified).
-  final String status;
+  /// Status of the follow-up.
+  final LeadStatus status;
 
-  /// Urgency group ('overdue', 'due_today', 'upcoming').
-  final String urgency;
+  /// Urgency group.
+  final FollowUpUrgency urgency;
 
   /// Creates a constant [FollowUp] model.
   const FollowUp({

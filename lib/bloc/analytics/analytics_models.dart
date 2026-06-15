@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../leads/leads_enums.dart';
 
 /// Summarized top-level metrics for the analytics.
 class AnalyticsSummary extends Equatable {
@@ -24,17 +25,17 @@ class AnalyticsSummary extends Equatable {
 
   @override
   List<Object?> get props => [
-    totalLeads,
-    conversionRate,
-    wonDeals,
-    pipelineValue,
-  ];
+        totalLeads,
+        conversionRate,
+        wonDeals,
+        pipelineValue,
+      ];
 }
 
 /// Represents a single lead status metric.
 class StatusMetric extends Equatable {
-  /// The status name (e.g., "New", "Interested").
-  final String status;
+  /// The status enum.
+  final LeadStatus status;
 
   /// Count of leads with this status.
   final int count;
@@ -48,8 +49,8 @@ class StatusMetric extends Equatable {
 
 /// Represents a single lead source metric.
 class SourceMetric extends Equatable {
-  /// The source name (e.g., "Facebook", "Website").
-  final String source;
+  /// The source enum.
+  final LeadSource source;
 
   /// Count of leads from this source.
   final int count;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../widgets/user_avatar.dart';
 
 /// Renders the action buttons (notifications and profile avatar) in the header.
 class HeaderActions extends StatelessWidget {
@@ -58,22 +59,6 @@ class HeaderActions extends StatelessWidget {
   }
 
   Widget _buildAvatar() {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: const BoxDecoration(
-        color: AppColors.primaryColorLight,
-        shape: BoxShape.circle,
-      ),
-      alignment: Alignment.center,
-      child: const Text(
-        'AN',
-        style: TextStyle(
-          color: AppColors.primaryColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 14,
-        ),
-      ),
-    );
+    return const UserAvatar(initials: 'AN', size: 40);
   }
 }

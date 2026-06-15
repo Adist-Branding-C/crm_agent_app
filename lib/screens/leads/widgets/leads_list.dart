@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/leads_bloc.dart';
+import '../../../widgets/app_error_widget.dart';
+import '../../../widgets/app_shimmer_widget.dart';
 import '../../../theme.dart';
 import 'lead_card.dart';
 
@@ -14,8 +16,19 @@ class LeadsList extends StatelessWidget {
     return BlocBuilder<LeadsBloc, LeadsState>(
       builder: (context, state) {
         if (state is LeadsLoading || state is LeadsInitial) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          return ListView.builder(
+            padding: const EdgeInsets.only(
+              left: 24,
+              right: 24,
+              top: 4,
+              bottom: 24,
+            ),
+            itemCount: 5,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: AppShimmerWidget.card(height: 72),
+            ),
           );
         }
         if (state is LeadsLoaded) {
@@ -37,17 +50,16 @@ class LeadsList extends StatelessWidget {
             ),
             itemCount: list.length,
             physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: LeadCard(lead: list[index]),
-              );
-            },
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: LeadCard(lead: list[index]),
+            ),
           );
         }
         final msg = state is LeadsError ? state.message : 'Error';
-        return Center(
-          child: Text(msg, style: const TextStyle(color: AppColors.errorColor)),
+        return AppErrorWidget(
+          message: msg,
+          onRetry: () => context.read<LeadsBloc>().add(const FetchLeads()),
         );
       },
     );

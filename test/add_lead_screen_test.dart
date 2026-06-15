@@ -24,7 +24,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.people_outline_rounded));
       await tester.pumpAndSettle();
-      await tester.pump(const Duration(milliseconds: 300));
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.pumpAndSettle();
 
       // Click "Plus" button to navigate to Add Lead screen

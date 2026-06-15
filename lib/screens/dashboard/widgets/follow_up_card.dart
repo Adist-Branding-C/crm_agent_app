@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
 import '../../../theme.dart';
-import 'call_button.dart';
+import '../../../widgets/call_button.dart';
 
 /// Renders a single row in the follow-up calls list.
 class FollowUpCard extends StatelessWidget {
@@ -12,7 +12,7 @@ class FollowUpCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPriority = call.tag.toLowerCase() == 'priority';
+    final isPriority = call.tag == FollowUpTag.priority;
     final tagBg = isPriority
         ? const Color(0xFFFEE2E2)
         : const Color(0xFFFFFBEB);
@@ -39,7 +39,7 @@ class FollowUpCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
-                    call.tag,
+                    call.tag.label,
                     style: TextStyle(
                       color: tagText,
                       fontSize: 11,

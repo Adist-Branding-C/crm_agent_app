@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_models.dart';
+import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme.dart';
+import '../../../widgets/custom_card.dart';
 import 'metric_progress_row.dart';
 
 /// Renders the section title and card containing leads sorted by source.
@@ -30,13 +32,8 @@ class LeadsBySourceCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Container(
+        CustomCard(
           padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: AppTheme.cardShadow,
-          ),
           child: Column(
             children: List.generate(metrics.length, (index) {
               final item = metrics[index];
@@ -45,7 +42,7 @@ class LeadsBySourceCard extends StatelessWidget {
                   bottom: index == metrics.length - 1 ? 0 : 16,
                 ),
                 child: MetricProgressRow(
-                  title: item.source,
+                  title: item.source.label,
                   count: item.count.toString(),
                   progressValue: item.count / maxCount,
                   barColor: _getBarColor(item.source),
@@ -58,15 +55,15 @@ class LeadsBySourceCard extends StatelessWidget {
     );
   }
 
-  Color _getBarColor(String source) {
+  Color _getBarColor(LeadSource source) {
     switch (source) {
-      case 'Facebook':
+      case LeadSource.facebook:
         return const Color(0xFF3B82F6); // blue
-      case 'Website':
+      case LeadSource.website:
         return const Color(0xFF10B981); // green/teal
-      case 'Referral':
+      case LeadSource.referral:
         return const Color(0xFF8B5CF6); // purple
-      case 'Instagram':
+      case LeadSource.instagram:
       default:
         return const Color(0xFFF59E0B); // orange
     }

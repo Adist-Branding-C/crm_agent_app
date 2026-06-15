@@ -6,19 +6,19 @@ import 'error_banner.dart';
 import 'forgot_password_link.dart';
 import 'login_form.dart';
 import 'login_header.dart';
-import 'sign_in_button.dart';
+import '../../../widgets/custom_button.dart';
 
 /// The main content area of the Login Screen.
 class LoginBody extends StatelessWidget {
   /// Creates a constant [LoginBody] widget.
   const LoginBody({
     super.key,
-    required this.emailController,
+    required this.phoneController,
     required this.passwordController,
   });
 
-  /// The email/phone controller.
-  final TextEditingController emailController;
+  /// The phone controller.
+  final TextEditingController phoneController;
 
   /// The password controller.
   final TextEditingController passwordController;
@@ -35,7 +35,7 @@ class LoginBody extends StatelessWidget {
             const LoginHeader(),
             const SizedBox(height: 40),
             LoginForm(
-              emailController: emailController,
+              phoneController: phoneController,
               passwordController: passwordController,
             ),
             const SizedBox(height: 16),
@@ -53,8 +53,10 @@ class LoginBody extends StatelessWidget {
             ),
             const ForgotPasswordLink(),
             const SizedBox(height: 28),
-            SignInButton(
-              onPressed: (context) {
+            CustomButton(
+              text: 'Sign In',
+              icon: Icons.login_rounded,
+              onPressed: () {
                 context.read<LoginBloc>().add(const LoginSubmitted());
               },
             ),

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../models/dashboard_navigation_item.dart';
 
 /// Bottom navigation bar aligned with the dashboard designs.
 class DashboardNavBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
+  final List<DashboardNavigationItem> items;
 
   /// Creates a constant [DashboardNavBar].
   const DashboardNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    required this.items,
   });
 
   @override
@@ -32,27 +35,15 @@ class DashboardNavBar extends StatelessWidget {
         unselectedFontSize: 11,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined, size: 22),
-            activeIcon: Icon(Icons.home_rounded, size: 22),
-            label: 'Dashboard',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_outline_rounded, size: 22),
-            activeIcon: Icon(Icons.people_rounded, size: 22),
-            label: 'Leads',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.check_box_outlined, size: 22),
-            activeIcon: Icon(Icons.check_box_rounded, size: 22),
-            label: 'Tasks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search_rounded, size: 22),
-            label: 'Search',
-          ),
-        ],
+        items: items
+            .map(
+              (item) => BottomNavigationBarItem(
+                icon: item.icon,
+                activeIcon: item.activeIcon,
+                label: item.label,
+              ),
+            )
+            .toList(),
       ),
     );
   }

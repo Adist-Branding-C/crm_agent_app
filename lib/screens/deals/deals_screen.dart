@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/deals/deals_bloc.dart';
-import '../../theme.dart';
-import 'widgets/deals_header.dart';
-import 'widgets/deals_list_view.dart';
-import 'widgets/deals_pipeline_view.dart';
-import 'widgets/deals_stats.dart';
-import 'widgets/deals_toggle.dart';
+import '../../bloc/deals/deals_models.dart';
+import '../../data/repositories/deals_repository.dart';
+import '../../widgets/async_state_view.dart';
+import '../../widgets/page_scaffold.dart';
+import 'widgets/deals_content.dart';
 
 /// The main Deals Screen.
 class DealsScreen extends StatefulWidget {
@@ -23,49 +22,27 @@ class _DealsScreenState extends State<DealsScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DealsBloc()..add(const LoadDeals()),
-      child: Scaffold(
-        backgroundColor: AppTheme.backgroundColor,
-        body: SafeArea(
-          child: BlocBuilder<DealsBloc, DealsState>(
-            builder: (context, state) {
-              if (state is DealsLoading || state is DealsInitial) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryColor,
-                  ),
-                );
-              }
-              if (state is DealsLoaded) {
-                return SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const DealsHeader(),
-                      const DealsStats(),
-                      DealsToggle(
-                        selectedIndex: _viewIndex,
-                        onChanged: (val) => setState(() => _viewIndex = val),
-                      ),
-                      const SizedBox(height: 8),
-                      _viewIndex == 0
-                          ? DealsPipelineView(deals: state.deals)
-                          : DealsListView(deals: state.deals),
-                      const SizedBox(height: 24),
-                    ],
-                  ),
-                );
-              }
-              final msg = state is DealsError ? state.errorMessage : 'Error';
-              return Center(
-                child: Text(
-                  msg,
-                  style: const TextStyle(color: AppColors.errorColor),
-                ),
-              );
-            },
-          ),
+      create: (context) => DealsBloc(
+        dealsRepository: context.read<DealsRepository>(),
+      )..add(const LoadDeals()),
+      child: PageScaffold(
+        padding: EdgeInsets.zero,
+        child: BlocBuilder<DealsBloc, DealsState>(
+          builder: (context, state) {
+            final deals = state is DealsLoaded ? state.deals : const <Deal>[];
+
+            return AsyncStateView(
+              isLoading: state is DealsLoading || state is DealsInitial,
+              hasError: state is DealsError,
+              errorMessage: state is DealsError ? state.errorMessage : 'Error',
+              onRetry: () => context.read<DealsBloc>().add(const LoadDeals()),
+              child: DealsLoadedContent(
+                deals: deals,
+                viewIndex: _viewIndex,
+                onToggle: (value) => setState(() => _viewIndex = value),
+              ),
+            );
+          },
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/leads_bloc.dart';
+import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme.dart';
 
 /// Renders the horizontal scrollable filter tabs (All, Hot, Warm, Cold).
@@ -21,25 +22,10 @@ class LeadsFilterTabs extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
             children: [
-              _buildTab(context, 'All', all.length, selected == 'All'),
-              _buildTab(
-                context,
-                'Hot',
-                all.where((l) => l.category == 'Hot').length,
-                selected == 'Hot',
-              ),
-              _buildTab(
-                context,
-                'Warm',
-                all.where((l) => l.category == 'Warm').length,
-                selected == 'Warm',
-              ),
-              _buildTab(
-                context,
-                'Cold',
-                all.where((l) => l.category == 'Cold').length,
-                selected == 'Cold',
-              ),
+              _buildTab(context, null, all.length, selected == null),
+              _buildTab(context, LeadCategory.hot, all.where((l) => l.category == LeadCategory.hot).length, selected == LeadCategory.hot),
+              _buildTab(context, LeadCategory.warm, all.where((l) => l.category == LeadCategory.warm).length, selected == LeadCategory.warm),
+              _buildTab(context, LeadCategory.cold, all.where((l) => l.category == LeadCategory.cold).length, selected == LeadCategory.cold),
             ],
           ),
         );
@@ -49,10 +35,11 @@ class LeadsFilterTabs extends StatelessWidget {
 
   Widget _buildTab(
     BuildContext context,
-    String label,
+    LeadCategory? category,
     int count,
     bool isSelected,
   ) {
+    final label = category?.label ?? 'All';
     final themeColor = isSelected ? AppColors.primaryColor : Colors.white;
     final textColor = isSelected ? Colors.white : AppColors.textMuted;
     final border = isSelected
@@ -62,7 +49,7 @@ class LeadsFilterTabs extends StatelessWidget {
       padding: const EdgeInsets.only(right: 8),
       child: GestureDetector(
         onTap: () =>
-            context.read<LeadsBloc>().add(FilterCategoryChanged(label)),
+            context.read<LeadsBloc>().add(FilterCategoryChanged(category)),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(

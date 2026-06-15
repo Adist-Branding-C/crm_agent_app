@@ -50,6 +50,13 @@ void main() {
 
     // Verify List view contents
     expect(find.text('Close May 12'), findsOneWidget);
+    // The list is scrollable; ensure the item is scrolled into view before asserting.
+    await tester.scrollUntilVisible(
+      find.text('Close Apr 28'),
+      200.0,
+      scrollable: find.byType(Scrollable),
+    );
+    await tester.pumpAndSettle();
     expect(find.text('Close Apr 28'), findsOneWidget);
 
     // 4. Test back button functionality

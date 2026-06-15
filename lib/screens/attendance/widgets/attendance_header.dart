@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme.dart';
+import '../../../widgets/screen_header.dart';
 
 /// The top header for the Attendance screen, containing back action and date.
 class AttendanceHeader extends StatelessWidget {
@@ -8,47 +8,11 @@ class AttendanceHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: AppTheme.cardShadow,
-            ),
-            child: const Icon(
-              Icons.chevron_left_rounded,
-              color: AppColors.textDark,
-              size: 24,
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Daily Activity',
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 4),
-            const Text(
-              'Tuesday, 12 May',
-              style: TextStyle(
-                color: AppColors.textMuted,
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ],
+    return const ScreenHeader(
+      title: 'Daily Activity',
+      subtitle: 'Tuesday, 12 May',
+      showBackButton: true,
+      padding: EdgeInsets.zero,
     );
   }
 }

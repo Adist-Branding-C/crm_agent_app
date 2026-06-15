@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
+import '../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/selection_group.dart';
 
 /// Selection options (Source, Purpose, Type, Status) fields section.
 class AddLeadSelectionFields extends StatelessWidget {
   /// Selected source value.
-  final String source;
+  final LeadSource source;
 
   /// Callback on source change.
-  final ValueChanged<String> onSourceChanged;
+  final ValueChanged<LeadSource> onSourceChanged;
 
   /// Selected purpose value.
-  final String purpose;
+  final LeadPurpose purpose;
 
   /// Callback on purpose change.
-  final ValueChanged<String> onPurposeChanged;
+  final ValueChanged<LeadPurpose> onPurposeChanged;
 
   /// Selected lead type.
-  final String category;
+  final LeadCategory category;
 
   /// Callback on category change.
-  final ValueChanged<String> onCategoryChanged;
+  final ValueChanged<LeadCategory> onCategoryChanged;
 
   /// Selected status.
-  final String status;
+  final LeadStatus status;
 
   /// Callback on status change.
-  final ValueChanged<String> onStatusChanged;
+  final ValueChanged<LeadStatus> onStatusChanged;
 
   /// Creates a constant [AddLeadSelectionFields].
   const AddLeadSelectionFields({
@@ -53,37 +54,38 @@ class AddLeadSelectionFields extends StatelessWidget {
         children: [
           SelectionGroup(
             label: 'Source',
-            options: const [
-              'Facebook',
-              'Website',
-              'Referral',
-              'Instagram',
-              'Walk-in',
-              'Google Ads',
-            ],
-            selectedOption: source,
-            onSelected: onSourceChanged,
+            options: LeadSource.values.map((e) => e.label).toList(),
+            selectedOption: source.label,
+            onSelected: (val) => onSourceChanged(
+              LeadSource.values.firstWhere((e) => e.label == val),
+            ),
           ),
           const SizedBox(height: 16),
           SelectionGroup(
             label: 'Purpose',
-            options: const ['Enquiry', 'New Admission', 'Demo Request'],
-            selectedOption: purpose,
-            onSelected: onPurposeChanged,
+            options: LeadPurpose.values.map((e) => e.label).toList(),
+            selectedOption: purpose.label,
+            onSelected: (val) => onPurposeChanged(
+              LeadPurpose.values.firstWhere((e) => e.label == val),
+            ),
           ),
           const SizedBox(height: 16),
           SelectionGroup(
             label: 'Lead Type',
-            options: const ['Hot', 'Warm', 'Cold'],
-            selectedOption: category,
-            onSelected: onCategoryChanged,
+            options: LeadCategory.values.map((e) => e.label).toList(),
+            selectedOption: category.label,
+            onSelected: (val) => onCategoryChanged(
+              LeadCategory.values.firstWhere((e) => e.label == val),
+            ),
           ),
           const SizedBox(height: 16),
           SelectionGroup(
             label: 'Status',
             options: const ['New', 'Interested', 'Qualified', 'Follow Up'],
-            selectedOption: status,
-            onSelected: onStatusChanged,
+            selectedOption: status.label,
+            onSelected: (val) => onStatusChanged(
+              LeadStatus.values.firstWhere((e) => e.label == val),
+            ),
           ),
         ],
       ),

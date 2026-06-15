@@ -1,15 +1,19 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/repositories/analytics_repository.dart';
 import 'analytics_models.dart';
-import 'mock_analytics.dart';
 
 part 'analytics_event.dart';
 part 'analytics_state.dart';
 
 /// Business logic component managing state for the CRM Analytics view.
 class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
+  /// The analytics metrics repository.
+  final AnalyticsRepository analyticsRepository;
+
   /// Initializes the BLoC with [AnalyticsInitial].
-  AnalyticsBloc() : super(const AnalyticsInitial()) {
+  AnalyticsBloc({required this.analyticsRepository})
+      : super(const AnalyticsInitial()) {
     on<LoadAnalytics>(_onLoadAnalytics);
   }
 
@@ -19,13 +23,14 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
   ) async {
     emit(const AnalyticsLoading());
     try {
-      // Simulate network request/database read latency
-      await Future.delayed(const Duration(milliseconds: 300));
+      final summary = await analyticsRepository.getAnalyticsSummary();
+      final statusMetrics = await analyticsRepository.getStatusMetrics();
+      final sourceMetrics = await analyticsRepository.getSourceMetrics();
       emit(
-        const AnalyticsLoaded(
-          summary: mockAnalyticsSummary,
-          statusMetrics: mockStatusMetrics,
-          sourceMetrics: mockSourceMetrics,
+        AnalyticsLoaded(
+          summary: summary,
+          statusMetrics: statusMetrics,
+          sourceMetrics: sourceMetrics,
         ),
       );
     } catch (e) {

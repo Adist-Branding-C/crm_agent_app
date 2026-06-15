@@ -20,6 +20,7 @@ class TimelineTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final config = TimelineTileConfig.getConfig(item.type);
+    final textTheme = Theme.of(context).textTheme;
     const lineColor = Color(0xFFE2E8F0);
 
     return IntrinsicHeight(
@@ -72,7 +73,7 @@ class TimelineTile extends StatelessWidget {
                       children: [
                         Text(
                           item.title,
-                          style: const TextStyle(
+                          style: textTheme.titleMedium?.copyWith(
                             color: AppColors.textDark,
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
@@ -81,7 +82,7 @@ class TimelineTile extends StatelessWidget {
                         const SizedBox(height: 3),
                         Text(
                           item.subtitle,
-                          style: const TextStyle(
+                          style: textTheme.bodyMedium?.copyWith(
                             color: AppColors.textMuted,
                             fontSize: 11,
                             fontWeight: FontWeight.w500,
@@ -93,7 +94,7 @@ class TimelineTile extends StatelessWidget {
                   const SizedBox(width: 8),
                   Text(
                     item.time,
-                    style: const TextStyle(
+                    style: textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
                       fontSize: 11,
                       fontWeight: FontWeight.w500,

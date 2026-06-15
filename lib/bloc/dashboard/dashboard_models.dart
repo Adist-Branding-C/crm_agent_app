@@ -1,8 +1,18 @@
 import 'package:equatable/equatable.dart';
 
+/// Tag type for dashboard follow-up calls.
+enum FollowUpTag {
+  priority('priority', 'Priority'),
+  followUp('follow up', 'Follow Up');
+
+  final String value;
+  final String label;
+  const FollowUpTag(this.value, this.label);
+}
+
 /// Models representing a single follow-up call item.
 class FollowUpCall extends Equatable {
-  final String tag; // priority, follow up, etc.
+  final FollowUpTag tag;
   final String name;
   final String time;
 
@@ -16,9 +26,19 @@ class FollowUpCall extends Equatable {
   List<Object?> get props => [tag, name, time];
 }
 
+/// Type of task item.
+enum TaskType {
+  call('Call'),
+  task('Task'),
+  meeting('Meeting');
+
+  final String label;
+  const TaskType(this.label);
+}
+
 /// Models representing a single task item.
 class TaskItem extends Equatable {
-  final String type; // Call, Task, Meeting
+  final TaskType type;
   final String name;
   final String time;
 

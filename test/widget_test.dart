@@ -12,6 +12,7 @@ void main() {
   ) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
+    await tester.pump();
 
     // 1. Verify that we are on the Splash Screen initially.
     expect(find.byType(SplashScreen), findsOneWidget);

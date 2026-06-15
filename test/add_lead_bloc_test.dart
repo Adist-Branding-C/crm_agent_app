@@ -1,4 +1,6 @@
 import 'package:crm_agent_app/bloc/leads/add_lead/add_lead_bloc.dart';
+import 'package:crm_agent_app/bloc/leads/leads_enums.dart';
+import 'package:crm_agent_app/data/constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -15,23 +17,17 @@ void main() {
       expect(bloc.state.phoneError, null);
       expect(bloc.state.emailError, null);
       expect(bloc.state.isValid, false);
+      expect(bloc.state.isSubmitting, false);
+      expect(bloc.state.isSuccess, false);
     });
 
     test('NameChanged validation checks length and alphabets only', () {
       expectLater(
         bloc.stream,
         emitsInOrder([
-          predicate((AddLeadState s) => s.nameError == 'Name is required.'),
-          predicate(
-            (AddLeadState s) =>
-                s.nameError ==
-                'Please enter a valid name (alphabets only, minimum 3 characters).',
-          ),
-          predicate(
-            (AddLeadState s) =>
-                s.nameError ==
-                'Please enter a valid name (alphabets only, minimum 3 characters).',
-          ),
+          predicate((AddLeadState s) => s.nameError == AppStrings.leadNameRequired),
+          predicate((AddLeadState s) => s.nameError == AppStrings.leadNameInvalid),
+          predicate((AddLeadState s) => s.nameError == AppStrings.leadNameInvalid),
           predicate((AddLeadState s) => s.nameError == null),
         ]),
       );
@@ -45,13 +41,8 @@ void main() {
       expectLater(
         bloc.stream,
         emitsInOrder([
-          predicate(
-            (AddLeadState s) => s.phoneError == 'Phone number is required.',
-          ),
-          predicate(
-            (AddLeadState s) =>
-                s.phoneError == 'Please enter a valid 10-digit phone number.',
-          ),
+          predicate((AddLeadState s) => s.phoneError == AppStrings.leadPhoneRequired),
+          predicate((AddLeadState s) => s.phoneError == AppStrings.leadPhoneInvalid),
           predicate((AddLeadState s) => s.phoneError == null),
         ]),
       );
@@ -64,14 +55,8 @@ void main() {
       expectLater(
         bloc.stream,
         emitsInOrder([
-          predicate(
-            (AddLeadState s) => s.emailError == 'Email address is required.',
-          ),
-          predicate(
-            (AddLeadState s) =>
-                s.emailError ==
-                'Please enter a valid email address (e.g., example@domain.com).',
-          ),
+          predicate((AddLeadState s) => s.emailError == AppStrings.leadEmailRequired),
+          predicate((AddLeadState s) => s.emailError == AppStrings.leadEmailInvalid),
           predicate((AddLeadState s) => s.emailError == null),
         ]),
       );
@@ -80,52 +65,49 @@ void main() {
       bloc.add(const EmailChanged('john@example.com'));
     });
 
-    test(
-      'SubmitForm on valid state triggers submitting and success states',
-      () {
-        expectLater(
-          bloc.stream,
-          emitsInOrder([
-            predicate(
-              (AddLeadState s) =>
-                  s.name == 'Rahul Menon' && s.nameError == null,
-            ),
-            predicate(
-              (AddLeadState s) =>
-                  s.phone == '9876543210' && s.phoneError == null,
-            ),
-            predicate(
-              (AddLeadState s) =>
-                  s.email == 'rahul@email.com' &&
-                  s.emailError == null &&
-                  s.isValid,
-            ),
-            predicate((AddLeadState s) => s.isSubmitting && !s.isSuccess),
-            predicate(
-              (AddLeadState s) =>
-                  !s.isSubmitting &&
-                  s.isSuccess &&
-                  s.lead?.name == 'Rahul Menon',
-            ),
-          ]),
-        );
-
-        bloc.add(const NameChanged('Rahul Menon'));
-        bloc.add(const PhoneChanged('9876543210'));
-        bloc.add(const EmailChanged('rahul@email.com'));
-        bloc.add(
-          const SubmitForm(
-            name: 'Rahul Menon',
-            phone: '9876543210',
-            email: 'rahul@email.com',
-            location: 'Kochi',
-            source: 'Facebook',
-            purpose: 'Enquiry',
-            category: 'Hot',
-            status: 'New',
+    test('SubmitForm on valid state triggers submitting and success states', () {
+      expectLater(
+        bloc.stream,
+        emitsInOrder([
+          predicate(
+            (AddLeadState s) =>
+                s.name == 'Rahul Menon' && s.nameError == null,
           ),
-        );
-      },
-    );
+          predicate(
+            (AddLeadState s) =>
+                s.phone == '9876543210' && s.phoneError == null,
+          ),
+          predicate(
+            (AddLeadState s) =>
+                s.email == 'rahul@email.com' &&
+                s.emailError == null &&
+                s.isValid,
+          ),
+          predicate((AddLeadState s) => s.isSubmitting && !s.isSuccess),
+          predicate(
+            (AddLeadState s) =>
+                !s.isSubmitting &&
+                s.isSuccess &&
+                s.lead?.name == 'Rahul Menon',
+          ),
+        ]),
+      );
+
+      bloc.add(const NameChanged('Rahul Menon'));
+      bloc.add(const PhoneChanged('9876543210'));
+      bloc.add(const EmailChanged('rahul@email.com'));
+      bloc.add(
+        const SubmitForm(
+          name: 'Rahul Menon',
+          phone: '9876543210',
+          email: 'rahul@email.com',
+          location: 'Kochi',
+          source: LeadSource.facebook,
+          purpose: LeadPurpose.enquiry,
+          category: LeadCategory.hot,
+          status: LeadStatus.newStatus,
+        ),
+      );
+    });
   });
 }

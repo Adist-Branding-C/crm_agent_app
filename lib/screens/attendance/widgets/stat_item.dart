@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 
 /// Single visual metric item inside the StatsRow.
@@ -26,13 +27,8 @@ class StatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
       child: Column(
         children: [
           Icon(icon, color: iconColor, size: 20),

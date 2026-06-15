@@ -1,11 +1,21 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+/// Represents the channel type of a campaign.
+enum CampaignType {
+  call('Call'),
+  whatsApp('WhatsApp'),
+  email('Email');
+
+  final String label;
+  const CampaignType(this.label);
+}
+
 /// Represents a single Campaign metric and status.
 class Campaign extends Equatable {
   final String id;
   final String title;
-  final String type; // 'Call', 'WhatsApp', 'Email'
+  final CampaignType type;
   final String creator;
   final int doneCount;
   final int totalCount;
@@ -35,14 +45,12 @@ class Campaign extends Equatable {
   Color get themeColor {
     if (isCompleted) return const Color(0xFF10B981); // Green
     switch (type) {
-      case 'Call':
+      case CampaignType.call:
         return const Color(0xFFEF4444); // Red
-      case 'WhatsApp':
+      case CampaignType.whatsApp:
         return const Color(0xFF8B5CF6); // Purple
-      case 'Email':
+      case CampaignType.email:
         return const Color(0xFF3B82F6); // Blue
-      default:
-        return const Color(0xFFE53935);
     }
   }
 

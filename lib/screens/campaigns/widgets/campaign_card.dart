@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
+import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 import 'campaign_icon.dart';
 import 'campaign_status_badge.dart';
@@ -17,13 +18,8 @@ class CampaignCard extends StatelessWidget {
         ? 0
         : campaign.doneCount / campaign.totalCount;
 
-    return Container(
+    return CustomCard(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -84,7 +80,7 @@ class CampaignCard extends StatelessWidget {
         ),
         const SizedBox(height: 2),
         Text(
-          '${campaign.type} · by ${campaign.creator}',
+          '${campaign.type.label} · by ${campaign.creator}',
           style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
         ),
       ],

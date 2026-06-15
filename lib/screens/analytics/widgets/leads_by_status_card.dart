@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_models.dart';
+import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme.dart';
+import '../../../widgets/custom_card.dart';
 import 'metric_progress_row.dart';
 
 /// Renders the section title and card containing leads sorted by status.
@@ -30,13 +32,8 @@ class LeadsByStatusCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Container(
+        CustomCard(
           padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: AppTheme.cardShadow,
-          ),
           child: Column(
             children: List.generate(metrics.length, (index) {
               final item = metrics[index];
@@ -45,7 +42,7 @@ class LeadsByStatusCard extends StatelessWidget {
                   bottom: index == metrics.length - 1 ? 0 : 16,
                 ),
                 child: MetricProgressRow(
-                  title: item.status,
+                  title: item.status.label,
                   count: item.count.toString(),
                   progressValue: item.count / maxCount,
                   barColor: _getBarColor(item.status),
@@ -58,17 +55,17 @@ class LeadsByStatusCard extends StatelessWidget {
     );
   }
 
-  Color _getBarColor(String status) {
+  Color _getBarColor(LeadStatus status) {
     switch (status) {
-      case 'New':
+      case LeadStatus.newStatus:
         return const Color(0xFF3B82F6); // blue
-      case 'Interested':
+      case LeadStatus.interested:
         return const Color(0xFF10B981); // green/teal
-      case 'Qualified':
+      case LeadStatus.qualified:
         return const Color(0xFF8B5CF6); // purple
-      case 'Follow Up':
+      case LeadStatus.followUp:
         return const Color(0xFFF59E0B); // orange
-      case 'Lost':
+      case LeadStatus.lost:
       default:
         return const Color(0xFFEF4444); // red
     }

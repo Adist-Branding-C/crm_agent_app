@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/attendance/attendance_bloc.dart';
+import '../../../widgets/app_error_widget.dart';
+import '../../../widgets/app_loading_widget.dart';
+import 'check_in_card.dart';
+import 'stats_row.dart';
+import 'timeline_list.dart';
+
+/// Content display block for the Attendance Screen.
+class AttendanceContent extends StatelessWidget {
+  /// Creates a constant [AttendanceContent].
+  const AttendanceContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AttendanceBloc, AttendanceState>(
+      builder: (context, state) {
+        if (state is AttendanceLoading || state is AttendanceInitial) {
+          return const Padding(
+            padding: EdgeInsets.only(top: 100),
+            child: AppLoadingWidget(),
+          );
+        }
+        if (state is AttendanceLoaded) {
+          return Column(
+            children: [
+              CheckInCard(
+                isCheckedIn: state.isCheckedIn,
+                checkInTime: state.checkInTime,
+                location: state.location,
+              ),
+              const SizedBox(height: 20),
+              StatsRow(
+                callsCount: state.callsCount,
+                visitsCount: state.visitsCount,
+                notesCount: state.notesCount,
+                hoursCount: state.hoursCount,
+              ),
+              const SizedBox(height: 24),
+              TimelineList(items: state.timeline),
+            ],
+          );
+        }
+        final msg = state is AttendanceError ? state.errorMessage : 'Error';
+        return AppErrorWidget(
+          message: msg,
+          onRetry: () =>
+              context.read<AttendanceBloc>().add(const LoadAttendance()),
+        );
+      },
+    );
+  }
+}

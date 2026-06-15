@@ -14,9 +14,8 @@ class DealsListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         itemCount: deals.length,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return DealListCard(deal: deals[index]);
         },

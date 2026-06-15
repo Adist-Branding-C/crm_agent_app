@@ -11,10 +11,10 @@ class CampaignIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     IconData iconData = Icons.call_rounded;
-    if (campaign.type == 'WhatsApp') {
-      iconData = Icons.chat_bubble_rounded;
-    } else if (campaign.type == 'Email') {
-      iconData = Icons.mail_rounded;
+    if (campaign.type == CampaignType.whatsApp) {
+       iconData = Icons.chat_bubble_rounded;
+    } else if (campaign.type == CampaignType.email) {
+       iconData = Icons.mail_rounded;
     }
 
     return Container(

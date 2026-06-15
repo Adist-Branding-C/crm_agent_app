@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
-import '../../campaigns/campaigns_screen.dart';
-import '../../deals/deals_screen.dart';
-import '../../analytics/analytics_screen.dart';
-import '../../attendance/attendance_screen.dart';
+import '../../../router/app_routes.dart';
 import 'stats_card.dart';
 
 /// Renders a 2x2 grid containing the stats metric cards.
@@ -28,9 +26,7 @@ class StatsGrid extends StatelessWidget {
                   iconBgColor: const Color(0xFFF5F3FF),
                   title: 'Campaign',
                   subtitle: '${stats.activeCampaigns} active',
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const CampaignsScreen()),
-                  ),
+                  onTap: () => context.pushNamed(AppRoutes.campaigns),
                 ),
               ),
               const SizedBox(width: 16),
@@ -41,9 +37,7 @@ class StatsGrid extends StatelessWidget {
                   iconBgColor: const Color(0xFFFFFBEB),
                   title: 'Deals',
                   subtitle: '${stats.openDeals} open',
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const DealsScreen()),
-                  ),
+                  onTap: () => context.pushNamed(AppRoutes.deals),
                 ),
               ),
             ],
@@ -58,9 +52,7 @@ class StatsGrid extends StatelessWidget {
                   iconBgColor: const Color(0xFFEFF6FF),
                   title: 'Analytics',
                   subtitle: '${stats.analyticsConversionRate.toInt()}% conv.',
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const AnalyticsScreen()),
-                  ),
+                  onTap: () => context.pushNamed(AppRoutes.analytics),
                 ),
               ),
               const SizedBox(width: 16),
@@ -71,9 +63,7 @@ class StatsGrid extends StatelessWidget {
                   iconBgColor: const Color(0xFFECFDF5),
                   title: 'Attendance',
                   subtitle: stats.attendanceStatus,
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const AttendanceScreen()),
-                  ),
+                  onTap: () => context.pushNamed(AppRoutes.attendance),
                 ),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 
 /// Renders a single vertical metrics card in the Analytics Screen.
@@ -30,13 +31,8 @@ class AnalyticsStatsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

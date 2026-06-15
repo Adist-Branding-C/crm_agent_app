@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/follow_ups/follow_ups_bloc.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
-import 'follow_up_section_header.dart';
+import '../../../widgets/section_header.dart';
 import 'follow_up_item_card.dart';
 
 /// Renders the categorised sections of follow-ups.
@@ -15,18 +15,22 @@ class FollowUpListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final overdue = calls.where((f) => f.urgency == 'overdue').toList();
-    final dueToday = calls.where((f) => f.urgency == 'due_today').toList();
-    final upcoming = calls.where((f) => f.urgency == 'upcoming').toList();
+    final overdue = calls.where((f) => f.urgency == FollowUpUrgency.overdue).toList();
+    final dueToday = calls.where((f) => f.urgency == FollowUpUrgency.dueToday).toList();
+    final upcoming = calls.where((f) => f.urgency == FollowUpUrgency.upcoming).toList();
 
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
         if (overdue.isNotEmpty) ...[
-          FollowUpSectionHeader(
+          SectionHeader(
             title: 'Overdue',
-            count: overdue.length,
-            urgency: 'overdue',
+            countBadge: overdue.length,
+            leadingIcon: Icons.warning_amber_rounded,
+            leadingIconColor: const Color(0xFFEF4444),
+            badgeBgColor: const Color(0xFFFEE2E2),
+            badgeTextColor: const Color(0xFFEF4444),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
           ...overdue.map((c) => FollowUpItemCard(
                 call: c,
@@ -35,10 +39,14 @@ class FollowUpListBody extends StatelessWidget {
           const SizedBox(height: 8),
         ],
         if (dueToday.isNotEmpty) ...[
-          FollowUpSectionHeader(
+          SectionHeader(
             title: 'Due Today',
-            count: dueToday.length,
-            urgency: 'due_today',
+            countBadge: dueToday.length,
+            leadingIcon: Icons.access_time_rounded,
+            leadingIconColor: const Color(0xFFEF4444),
+            badgeBgColor: const Color(0xFFFEE2E2),
+            badgeTextColor: const Color(0xFFEF4444),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
           ...dueToday.map((c) => FollowUpItemCard(
                 call: c,
@@ -47,10 +55,14 @@ class FollowUpListBody extends StatelessWidget {
           const SizedBox(height: 8),
         ],
         if (upcoming.isNotEmpty) ...[
-          FollowUpSectionHeader(
+          SectionHeader(
             title: 'Upcoming',
-            count: upcoming.length,
-            urgency: 'upcoming',
+            countBadge: upcoming.length,
+            leadingIcon: Icons.calendar_month_rounded,
+            leadingIconColor: const Color(0xFF3B82F6),
+            badgeBgColor: const Color(0xFFE0F2FE),
+            badgeTextColor: const Color(0xFF0284C7),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
           ...upcoming.map((c) => FollowUpItemCard(
                 call: c,

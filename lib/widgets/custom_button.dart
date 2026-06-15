@@ -12,11 +12,20 @@ class CustomButton extends StatelessWidget {
   /// Displays a loading progress indicator when true.
   final bool isLoading;
 
+  /// Optional width to constrain the button size.
+  final double? width;
+
+  /// Optional custom style override for the button.
+  final ButtonStyle? buttonStyle;
+
   /// Optional icon to render inside the button.
   final IconData? icon;
 
   /// Semantics label for accessibility.
   final String? semanticsLabel;
+
+  /// Optional shadow override.
+  final List<BoxShadow>? shadow;
 
   /// Creates a [CustomButton].
   const CustomButton({
@@ -24,24 +33,27 @@ class CustomButton extends StatelessWidget {
     required this.text,
     this.onPressed,
     this.isLoading = false,
+    this.width,
+    this.buttonStyle,
     this.icon,
     this.semanticsLabel,
+    this.shadow,
   });
 
   @override
   Widget build(BuildContext context) {
     final active = onPressed != null && !isLoading;
-    final shadow = active ? AppTheme.buttonShadow : <BoxShadow>[];
+    final resolvedShadow = shadow ?? (active ? AppTheme.buttonShadow : <BoxShadow>[]);
 
     return Semantics(
       button: true,
       enabled: active,
       label: semanticsLabel ?? text,
       child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(boxShadow: shadow),
+        width: width,
+        decoration: BoxDecoration(boxShadow: resolvedShadow),
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
+          style: buttonStyle ?? ElevatedButton.styleFrom(
             backgroundColor: active
                 ? AppColors.primaryColor
                 : const Color(0xFFCBD5E1),

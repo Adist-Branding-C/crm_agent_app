@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../../../bloc/leads/filter_result.dart';
 import '../../../bloc/leads/leads_bloc.dart';
 import '../../../bloc/leads/leads_models.dart';
+import '../../../router/app_routes.dart';
+import '../../../widgets/card_icon_button.dart';
 import '../../../theme.dart';
-import '../add_lead_screen.dart';
+import 'filter_sheet.dart';
 
 /// Renders the action buttons (spotlight, filter, add) in the Leads header.
 class LeadsHeaderActions extends StatelessWidget {
@@ -17,35 +21,24 @@ class LeadsHeaderActions extends StatelessWidget {
         final isSpotlight = state is LeadsLoaded && state.isSpotlightOnly;
         return Row(
           children: [
-            _buildButton(
+            CardIconButton(
               icon: Icons.whatshot_rounded,
               iconColor: isSpotlight ? Colors.white : AppColors.primaryColor,
-              bgColor: isSpotlight ? AppColors.primaryColor : Colors.white,
-              onTap: () =>
-                  context.read<LeadsBloc>().add(const ToggleSpotlight()),
+              backgroundColor: isSpotlight ? AppColors.primaryColor : Colors.white,
+              size: 38, borderRadius: 10, iconSize: 20,
+              onTap: () => context.read<LeadsBloc>().add(const ToggleSpotlight()),
             ),
             const SizedBox(width: 10),
-            _buildButton(
-              icon: Icons.tune_rounded,
-              iconColor: AppColors.textDark,
-              bgColor: Colors.white,
-              onTap: () {},
+            CardIconButton(
+              icon: Icons.tune_rounded, iconColor: AppColors.textDark,
+              backgroundColor: Colors.white, size: 38, borderRadius: 10, iconSize: 20,
+              onTap: () => _openFilterSheet(context, state),
             ),
             const SizedBox(width: 10),
-            _buildButton(
-              icon: Icons.add_rounded,
-              iconColor: AppColors.primaryColor,
-              bgColor: Colors.white,
-              onTap: () async {
-                final bloc = context.read<LeadsBloc>();
-                final lead = await Navigator.push<Lead>(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddLeadScreen(),
-                  ),
-                );
-                if (lead != null) bloc.add(AddLead(lead));
-              },
+            CardIconButton(
+              icon: Icons.add_rounded, iconColor: AppColors.primaryColor,
+              backgroundColor: Colors.white, size: 38, borderRadius: 10, iconSize: 20,
+              onTap: () => _openAddScreen(context),
             ),
           ],
         );
@@ -53,24 +46,21 @@ class LeadsHeaderActions extends StatelessWidget {
     );
   }
 
-  Widget _buildButton({
-    required IconData icon,
-    required Color iconColor,
-    required Color bgColor,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 38,
-        height: 38,
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: AppTheme.cardShadow,
-        ),
-        child: Icon(icon, size: 20, color: iconColor),
+  Future<void> _openFilterSheet(BuildContext ctx, LeadsState s) async {
+    if (s is! LeadsLoaded) return;
+    final res = await showModalBottomSheet<FilterResult>(
+      context: ctx, isScrollControlled: true, backgroundColor: Colors.transparent,
+      builder: (_) => FilterSheet(
+        initialSortBy: s.sortBy, initialStatus: s.selectedStatus, initialSource: s.selectedSource,
       ),
     );
+    if (res != null && ctx.mounted) {
+      ctx.read<LeadsBloc>().add(ApplyFilterOptions(sortBy: res.sortBy, status: res.status, source: res.source));
+    }
+  }
+
+  Future<void> _openAddScreen(BuildContext ctx) async {
+    final lead = await ctx.pushNamed<Lead>(AppRoutes.addLead);
+    if (lead != null && ctx.mounted) ctx.read<LeadsBloc>().add(AddLead(lead));
   }
 }

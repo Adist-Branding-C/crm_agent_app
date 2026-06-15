@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'leads_enums.dart';
 
 /// Representation of a sales lead.
 class Lead extends Equatable {
@@ -8,14 +9,14 @@ class Lead extends Equatable {
   /// Name of the lead.
   final String name;
 
-  /// Status of the lead (e.g. Interested, Follow Up).
-  final String status;
+  /// Status of the lead.
+  final LeadStatus status;
 
   /// Acquisition source (e.g. Enquiry, Demo Request).
-  final String source;
+  final LeadPurpose source;
 
   /// Rating category: Hot, Warm, Cold.
-  final String category;
+  final LeadCategory category;
 
   /// Contact phone number.
   final String phone;
@@ -27,7 +28,7 @@ class Lead extends Equatable {
   final String? email;
 
   /// Optional lead acquisition source channel (e.g. Facebook, Website).
-  final String? leadSource;
+  final LeadSource? leadSource;
 
   /// Optional next follow up reminder text.
   final String? nextFollowUp;
@@ -62,16 +63,16 @@ class Lead extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    status,
-    source,
-    category,
-    phone,
-    location,
-    email,
-    leadSource,
-    nextFollowUp,
-    note,
-  ];
+        id,
+        name,
+        status,
+        source,
+        category,
+        phone,
+        location,
+        email,
+        leadSource,
+        nextFollowUp,
+        note,
+      ];
 }

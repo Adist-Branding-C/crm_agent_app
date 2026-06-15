@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../bloc/splash/splash_bloc.dart';
+import '../../router/app_routes.dart';
 import '../../theme.dart';
-import '../login/login_screen.dart';
 import 'widgets/splash_animator.dart';
 import 'widgets/splash_loader.dart';
 
@@ -18,9 +19,7 @@ class SplashScreen extends StatelessWidget {
       child: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is SplashNavigateToLogin) {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const LoginScreen()),
-            );
+            context.goNamed(AppRoutes.login);
           }
         },
         child: Scaffold(

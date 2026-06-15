@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
 import '../../../theme.dart';
-import 'call_button.dart';
+import '../../../widgets/call_button.dart';
 
 /// Renders a single row representing a task item.
 class TaskRow extends StatelessWidget {
@@ -12,7 +12,7 @@ class TaskRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showCall = task.type.toLowerCase() == 'call';
+    final showCall = task.type == TaskType.call;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -24,7 +24,7 @@ class TaskRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  task.type,
+                  task.type.label,
                   style: const TextStyle(
                     color: AppColors.textMuted,
                     fontSize: 12,

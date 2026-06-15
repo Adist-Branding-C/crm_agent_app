@@ -26,7 +26,7 @@ class SearchLeadsChanged extends LeadsEvent {
 
 /// Event dispatched when a filter category tab (All, Hot, etc.) is clicked.
 class FilterCategoryChanged extends LeadsEvent {
-  final String category;
+  final LeadCategory? category;
 
   /// Creates a constant [FilterCategoryChanged].
   const FilterCategoryChanged(this.category);
@@ -49,4 +49,21 @@ class AddLead extends LeadsEvent {
 
   @override
   List<Object?> get props => [lead];
+}
+
+/// Event dispatched to apply advanced sort and filter options.
+class ApplyFilterOptions extends LeadsEvent {
+  final SortLeadsBy sortBy;
+  final LeadStatus? status;
+  final LeadSource? source;
+
+  /// Creates a constant [ApplyFilterOptions].
+  const ApplyFilterOptions({
+    required this.sortBy,
+    this.status,
+    this.source,
+  });
+
+  @override
+  List<Object?> get props => [sortBy, status, source];
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
-import '../../../theme.dart';
+import '../../../router/app_routes.dart';
+import '../../../widgets/custom_card.dart';
+import '../../../widgets/section_header.dart';
 import 'task_row.dart';
 
 /// Renders the entire Tasks list container with headers.
@@ -17,33 +20,13 @@ class TasksList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Tasks',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
-                ),
-              ),
-              const Text(
-                'View all',
-                style: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
-              ),
-            ],
+          SectionHeader(
+            title: 'Tasks',
+            actionText: 'View all',
+            onActionTap: () => context.go('${AppRoutes.dashboardPath}?tab=tasks'),
           ),
           const SizedBox(height: 12),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: AppTheme.cardShadow,
-            ),
+          CustomCard(
             child: ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),

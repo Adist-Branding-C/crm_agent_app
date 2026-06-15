@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
+import '../../../../widgets/custom_card.dart';
+import '../../../../widgets/user_avatar.dart';
 import '../../../../theme.dart';
 
 /// Renders a Deal card tailored for the Pipeline view.
@@ -11,13 +13,10 @@ class DealPipelineCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       margin: const EdgeInsets.only(bottom: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
+      borderRadius: 16,
+      padding: EdgeInsets.zero,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Container(
@@ -52,29 +51,12 @@ class DealPipelineCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              _buildAvatar(),
+              UserAvatar(
+                initials: deal.ownerInitials,
+                size: 28,
+              ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAvatar() {
-    return Container(
-      width: 28,
-      height: 28,
-      decoration: const BoxDecoration(
-        color: AppColors.primaryColorLight,
-        shape: BoxShape.circle,
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        deal.ownerInitials,
-        style: const TextStyle(
-          color: AppColors.primaryColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 10,
         ),
       ),
     );

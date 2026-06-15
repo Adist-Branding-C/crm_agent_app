@@ -2,31 +2,34 @@ part of 'add_lead_bloc.dart';
 
 /// Represents the state of the Add Lead form and submission status.
 class AddLeadState extends Equatable {
-  /// The current value of the name field.
-  final String name;
+  /// Name input field.
+  final LeadName nameInput;
 
-  /// The current value of the phone field.
-  final String phone;
+  /// Phone input field.
+  final LeadPhone phoneInput;
 
-  /// The current value of the email field.
-  final String email;
+  /// Email input field.
+  final LeadEmail emailInput;
 
-  /// Error message for name, null if valid.
-  final String? nameError;
+  /// Selected lead source.
+  final LeadSource source;
 
-  /// Error message for phone, null if valid.
-  final String? phoneError;
+  /// Selected lead purpose.
+  final LeadPurpose purpose;
 
-  /// Error message for email, null if valid.
-  final String? emailError;
+  /// Selected lead category.
+  final LeadCategory category;
 
-  /// True if currently submitting to fake API.
+  /// Selected lead status.
+  final LeadStatus status;
+
+  /// Submitting status indicator.
   final bool isSubmitting;
 
-  /// True if successfully saved.
+  /// Success status indicator.
   final bool isSuccess;
 
-  /// General API submission error if any.
+  /// Optional submission error.
   final String? error;
 
   /// The created lead object.
@@ -34,65 +37,40 @@ class AddLeadState extends Equatable {
 
   /// Creates a constant [AddLeadState].
   const AddLeadState({
-    this.name = '',
-    this.phone = '',
-    this.email = '',
-    this.nameError,
-    this.phoneError,
-    this.emailError,
+    this.nameInput = const LeadName.pure(),
+    this.phoneInput = const LeadPhone.pure(),
+    this.emailInput = const LeadEmail.pure(),
+    this.source = LeadSource.facebook,
+    this.purpose = LeadPurpose.enquiry,
+    this.category = LeadCategory.warm,
+    this.status = LeadStatus.newStatus,
     this.isSubmitting = false,
     this.isSuccess = false,
     this.error,
     this.lead,
   });
 
-  /// True if all validated fields have no errors and are not empty.
-  bool get isValid =>
-      nameError == null &&
-      phoneError == null &&
-      emailError == null &&
-      name.isNotEmpty &&
-      phone.isNotEmpty &&
-      email.isNotEmpty;
+  /// The name field string value.
+  String get name => nameInput.value;
 
-  /// Creates a copy of [AddLeadState] with overridden properties.
-  AddLeadState copyWith({
-    String? name,
-    String? phone,
-    String? email,
-    String? Function()? nameError,
-    String? Function()? phoneError,
-    String? Function()? emailError,
-    bool? isSubmitting,
-    bool? isSuccess,
-    String? Function()? error,
-    Lead? lead,
-  }) {
-    return AddLeadState(
-      name: name ?? this.name,
-      phone: phone ?? this.phone,
-      email: email ?? this.email,
-      nameError: nameError != null ? nameError() : this.nameError,
-      phoneError: phoneError != null ? phoneError() : this.phoneError,
-      emailError: emailError != null ? emailError() : this.emailError,
-      isSubmitting: isSubmitting ?? this.isSubmitting,
-      isSuccess: isSuccess ?? this.isSuccess,
-      error: error != null ? error() : this.error,
-      lead: lead ?? this.lead,
-    );
-  }
+  /// The phone field string value.
+  String get phone => phoneInput.value;
+
+  /// The email field string value.
+  String get email => emailInput.value;
 
   @override
   List<Object?> get props => [
-    name,
-    phone,
-    email,
-    nameError,
-    phoneError,
-    emailError,
-    isSubmitting,
-    isSuccess,
-    error,
-    lead,
-  ];
+        nameInput,
+        phoneInput,
+        emailInput,
+        source,
+        purpose,
+        category,
+        status,
+        isSubmitting,
+        isSuccess,
+        error,
+        lead,
+      ];
 }

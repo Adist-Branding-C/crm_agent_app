@@ -33,7 +33,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Settle BLoC loading delay
-    await tester.pump(const Duration(milliseconds: 300));
+    await tester.pump(const Duration(milliseconds: 500));
     await tester.pumpAndSettle();
 
     // Verify Leads screen components are rendered
@@ -44,14 +44,14 @@ void main() {
     expect(find.byType(LeadsFilterTabs), findsOneWidget);
 
     // Verify initial lead cards are shown
-    expect(find.text('Rahul Menon'), findsOneWidget);
-    expect(find.text('Sneha Pillai'), findsOneWidget);
+    expect(find.text('Gautham Krishna'), findsOneWidget);
+    expect(find.text('Sandeep Kumar'), findsOneWidget);
 
     // 3. Test Search bar filter
-    await tester.enterText(find.byType(TextField), 'Rahul');
+    await tester.enterText(find.byType(TextField), 'Gautham');
     await tester.pumpAndSettle();
-    expect(find.text('Rahul Menon'), findsOneWidget);
-    expect(find.text('Sneha Pillai'), findsNothing);
+    expect(find.text('Gautham Krishna'), findsOneWidget);
+    expect(find.text('Sandeep Kumar'), findsNothing);
 
     // Clear search
     await tester.enterText(find.byType(TextField), '');
@@ -60,8 +60,8 @@ void main() {
     // 4. Test Category Filter Tab
     await tester.tap(find.text('Hot · 4'));
     await tester.pumpAndSettle();
-    expect(find.text('Rahul Menon'), findsOneWidget);
-    expect(find.text('Sneha Pillai'), findsNothing);
+    expect(find.text('Gautham Krishna'), findsOneWidget);
+    expect(find.text('Sandeep Kumar'), findsNothing);
 
     // Reset tab to All
     await tester.tap(find.text('All · 10'));
@@ -70,8 +70,8 @@ void main() {
     // 5. Test Spotlight filter (fire icon)
     await tester.tap(find.byIcon(Icons.whatshot_rounded));
     await tester.pumpAndSettle();
-    expect(find.text('Rahul Menon'), findsOneWidget);
-    expect(find.text('Sneha Pillai'), findsNothing);
+    expect(find.text('Gautham Krishna'), findsOneWidget);
+    expect(find.text('Sandeep Kumar'), findsNothing);
     expect(find.text('Spotlights'), findsOneWidget);
     expect(find.text('My Leads'), findsNothing);
 

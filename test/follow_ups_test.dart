@@ -1,6 +1,6 @@
 import 'package:crm_agent_app/main.dart';
 import 'package:crm_agent_app/screens/dashboard/dashboard_screen.dart';
-import 'package:crm_agent_app/screens/dashboard/widgets/call_button.dart';
+import 'package:crm_agent_app/widgets/call_button.dart';
 import 'package:crm_agent_app/screens/dashboard/widgets/follow_ups_list.dart';
 import 'package:crm_agent_app/screens/follow_ups/follow_ups_screen.dart';
 import 'package:crm_agent_app/screens/follow_ups/widgets/follow_up_item_card.dart';

@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../bloc/leads/filter_result.dart';
+import '../../../../bloc/leads/leads_enums.dart';
+import '../../../widgets/custom_button.dart';
+import 'filter_section.dart';
+import 'filter_sort_by.dart';
+import 'filter_source.dart';
+import 'filter_status.dart';
+
+class FilterSheetBody extends StatelessWidget {
+  final SortLeadsBy sortBy;
+  final LeadStatus? status;
+  final LeadSource? source;
+  final ValueChanged<SortLeadsBy> onSortChanged;
+  final ValueChanged<LeadStatus?> onStatusChanged;
+  final ValueChanged<LeadSource?> onSourceChanged;
+
+  const FilterSheetBody({
+    super.key, required this.sortBy, required this.status, required this.source,
+    required this.onSortChanged, required this.onStatusChanged, required this.onSourceChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Container(
+              width: 38, height: 4,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE2E8F0),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Filter & Sort',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 16),
+          FilterSection(
+            title: 'SORT BY',
+            child: FilterSortBy(selectedSort: sortBy, onSelected: onSortChanged),
+          ),
+          FilterSection(
+            title: 'STATUS',
+            child: FilterStatus(selectedStatus: status, onSelected: onStatusChanged),
+          ),
+          FilterSection(
+            title: 'SOURCE',
+            child: FilterSource(selectedSource: source, onSelected: onSourceChanged),
+          ),
+          const SizedBox(height: 8),
+          CustomButton(
+            text: 'Apply Filters',
+            onPressed: () => context.pop(
+              FilterResult(sortBy: sortBy, status: status, source: source),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
