@@ -13,6 +13,14 @@ import 'widgets/dashboard_body.dart';
 class DashboardNavigationConfig {
   DashboardNavigationConfig._();
 
+  /// Map registry translating tab names to their corresponding indices.
+  static const Map<String, int> tabRegistry = {
+    'leads': 1,
+    'tasks': 2,
+    'search': 3,
+  };
+
+
   /// Defines the list of tabs displayed in the dashboard navigation.
   static final List<DashboardNavigationItem> items = [
     const DashboardNavigationItem(

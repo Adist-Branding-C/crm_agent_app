@@ -4,6 +4,7 @@ import 'data/repositories/auth_repository.dart';
 import 'router/app_routes.dart';
 import 'screens/splash/splash_screen.dart';
 import 'screens/login/login_screen.dart';
+import 'screens/dashboard/dashboard_navigation_config.dart';
 import 'screens/dashboard/dashboard_screen.dart';
 import 'screens/deals/deals_screen.dart';
 import 'screens/analytics/analytics_screen.dart';
@@ -38,7 +39,7 @@ GoRouter createRouter(
         path: AppRoutes.dashboardPath,
         builder: (context, state) {
           final tab = state.uri.queryParameters['tab'];
-          final idx = tab == 'leads' ? 1 : (tab == 'tasks' ? 2 : (tab == 'search' ? 3 : 0));
+          final idx = DashboardNavigationConfig.tabRegistry[tab] ?? 0;
           return DashboardScreen(initialIndex: idx);
         },
       ),
