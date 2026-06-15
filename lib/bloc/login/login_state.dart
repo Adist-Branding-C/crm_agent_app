@@ -32,41 +32,6 @@ class LoginState extends Equatable {
   /// Specific error message from API submission if any.
   final String? phoneErrorMsg;
 
-  /// Specific validation error for the phone number field.
-  String? get phoneError {
-    if (phoneErrorMsg != null) return phoneErrorMsg;
-    if (phone.isPure) return null;
-    if (phone.error == LoginPhoneValidationError.empty && !isSubmitted) {
-      return null;
-    }
-    switch (phone.error) {
-      case LoginPhoneValidationError.empty:
-        return AppStrings.phoneRequired;
-      case LoginPhoneValidationError.invalidFormat:
-        return AppStrings.phoneDigitsOnly;
-      case LoginPhoneValidationError.tooShort:
-        return AppStrings.phoneMinDigits;
-      case null:
-        return null;
-    }
-  }
-
-  /// Specific validation error for the password field.
-  String? get passwordError {
-    if (password.isPure) return null;
-    if (password.error == LoginPasswordValidationError.empty && !isSubmitted) {
-      return null;
-    }
-    switch (password.error) {
-      case LoginPasswordValidationError.empty:
-        return AppStrings.passwordRequired;
-      case LoginPasswordValidationError.tooShort:
-        return AppStrings.passwordMinLength;
-      case null:
-        return null;
-    }
-  }
-
   /// Returns a copy of the state with modified fields.
   LoginState copyWith({
     LoginPhone? phone,
