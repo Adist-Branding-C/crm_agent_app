@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'stat_item.dart';
 
 /// Row of 4 status metrics for the Daily Activity screen.
@@ -26,7 +27,7 @@ class StatsRow extends StatelessWidget {
             value: '$callsCount',
             label: 'Calls',
             icon: Icons.phone_outlined,
-            iconColor: const Color(0xFF10B981),
+            iconColor: AppColors.success,
           ),
         ),
         const SizedBox(width: 8),
@@ -35,7 +36,7 @@ class StatsRow extends StatelessWidget {
             value: '$visitsCount',
             label: 'Visits',
             icon: Icons.alt_route_rounded,
-            iconColor: const Color(0xFF8B5CF6),
+            iconColor: AppColors.accent,
           ),
         ),
         const SizedBox(width: 8),
@@ -44,7 +45,7 @@ class StatsRow extends StatelessWidget {
             value: '$notesCount',
             label: 'Notes',
             icon: Icons.description_outlined,
-            iconColor: const Color(0xFF3B82F6),
+            iconColor: AppColors.info,
           ),
         ),
         const SizedBox(width: 8),
@@ -53,7 +54,7 @@ class StatsRow extends StatelessWidget {
             value: '$hoursCount',
             label: 'Hours',
             icon: Icons.access_time_rounded,
-            iconColor: const Color(0xFFF59E0B),
+            iconColor: AppColors.warning,
           ),
         ),
       ],

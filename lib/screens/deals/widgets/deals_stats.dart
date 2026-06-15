@@ -35,7 +35,7 @@ class DealsStats extends StatelessWidget {
                 child: DealsStatsCard(
                   title: 'Won this month',
                   value: wonVal.toRupeeFormat(),
-                  backgroundColor: const Color(0xFF10B981),
+                  backgroundColor: AppColors.success,
                 ),
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/attendance/attendance_bloc.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'checked_in_info.dart';
 import 'fingerprint_icon.dart';
@@ -20,13 +21,13 @@ class CheckedInCardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      color: const Color(0xFF242C3D),
+      color: AppColors.checkedInCardBg,
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
       child: Row(
         children: [
           const FingerprintIcon(
-            iconColor: Color(0xFF10B981),
-            bgColor: Color(0xFF104A41),
+            iconColor: AppColors.success,
+            bgColor: AppColors.successIconBg,
           ),
           const SizedBox(width: 12),
           Expanded(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 /// Text information segment for CheckedInCardBody.
 class CheckedInInfo extends StatelessWidget {
@@ -26,14 +27,14 @@ class CheckedInInfo extends StatelessWidget {
           children: [
             const Icon(
               Icons.location_on_outlined,
-              color: Color(0xFF94A3B8),
+              color: AppColors.slate400,
               size: 13,
             ),
             const SizedBox(width: 4),
             Expanded(
               child: Text(
                 '$location · since $checkInTime',
-                style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 11),
+                style: const TextStyle(color: AppColors.slate400, fontSize: 11),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

@@ -19,7 +19,7 @@ class CheckedOutCardBody extends StatelessWidget {
         children: [
           const FingerprintIcon(
             iconColor: AppColors.primaryColor,
-            bgColor: Color(0xFFFEF2F2),
+            bgColor: AppColors.errorBackground,
           ),
           const SizedBox(width: 12),
           const Expanded(child: CheckedOutInfo()),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'timeline_tile_config.dart';
 
 /// Renders the circular activity icon and connecting timeline lines.
@@ -16,7 +17,7 @@ class TimelineTileMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const lineColor = Color(0xFFE2E8F0);
+    const lineColor = AppColors.borderLight;
     return SizedBox(
       width: 48,
       child: Stack(

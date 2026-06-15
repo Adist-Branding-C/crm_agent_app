@@ -1,13 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import '../../theme.dart';
 
 /// The stages a Deal can progress through.
 enum DealStage {
-  newStage('New', Color(0xFF3B82F6), 0.2),
-  qualified('Qualified', Color(0xFF8B5CF6), 0.4),
-  proposal('Proposal', Color(0xFFF59E0B), 0.6),
-  negotiation('Negotiation', Color(0xFFF97316), 0.8),
-  won('Won', Color(0xFF10B981), 1.0);
+  newStage('New', AppColors.info, 0.2),
+  qualified('Qualified', AppColors.accent, 0.4),
+  proposal('Proposal', AppColors.warning, 0.6),
+  negotiation('Negotiation', AppColors.warningText, 0.8),
+  won('Won', AppColors.success, 1.0);
 
   final String label;
   final Color color;

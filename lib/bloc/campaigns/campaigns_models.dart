@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import '../../theme.dart';
 
 /// Represents the channel type of a campaign.
 enum CampaignType {
@@ -43,14 +44,14 @@ class Campaign extends Equatable {
 
   /// Theme color associated with the campaign type/completion.
   Color get themeColor {
-    if (isCompleted) return const Color(0xFF10B981); // Green
+    if (isCompleted) return AppColors.success;
     switch (type) {
       case CampaignType.call:
-        return const Color(0xFFEF4444); // Red
+        return AppColors.errorColor;
       case CampaignType.whatsApp:
-        return const Color(0xFF8B5CF6); // Purple
+        return AppColors.accent;
       case CampaignType.email:
-        return const Color(0xFF3B82F6); // Blue
+        return AppColors.info;
     }
   }
 

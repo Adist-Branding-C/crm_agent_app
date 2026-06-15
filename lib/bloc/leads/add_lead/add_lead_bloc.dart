@@ -11,7 +11,9 @@ part 'add_lead_submit_event.dart';
 part 'add_lead_state.dart';
 part 'add_lead_state_getters.dart';
 part 'add_lead_state_copy.dart';
-part 'add_lead_inputs.dart';
+part 'lead_name_input.dart';
+part 'lead_phone_input.dart';
+part 'lead_email_input.dart';
 
 /// BLoC managing the state transitions and form validation of the Add Lead form.
 class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {

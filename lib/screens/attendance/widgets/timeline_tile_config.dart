@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/attendance/attendance_models.dart';
+import '../../../theme.dart';
 
 /// Configuration details for a timeline event type.
 class TimelineTileConfig {
@@ -19,44 +20,44 @@ class TimelineTileConfig {
       case AttendanceActivityType.checkIn:
         return const TimelineTileConfig(
           icon: Icons.login_rounded,
-          iconColor: Color(0xFF10B981),
-          bgColor: Color(0xFFECFDF5),
+          iconColor: AppColors.success,
+          bgColor: AppColors.successBackground,
         );
       case AttendanceActivityType.call:
         return const TimelineTileConfig(
           icon: Icons.phone_outlined,
-          iconColor: Color(0xFF10B981),
-          bgColor: Color(0xFFECFDF5),
+          iconColor: AppColors.success,
+          bgColor: AppColors.successBackground,
         );
       case AttendanceActivityType.note:
         return const TimelineTileConfig(
           icon: Icons.description_outlined,
-          iconColor: Color(0xFF3B82F6),
-          bgColor: Color(0xFFEFF6FF),
+          iconColor: AppColors.info,
+          bgColor: AppColors.infoBackground,
         );
       case AttendanceActivityType.lead:
         return const TimelineTileConfig(
           icon: Icons.person_add_alt_1_outlined,
-          iconColor: Color(0xFFEF4444),
-          bgColor: Color(0xFFFEF2F2),
+          iconColor: AppColors.errorColor,
+          bgColor: AppColors.errorBackground,
         );
       case AttendanceActivityType.lunchBreak:
         return const TimelineTileConfig(
           icon: Icons.local_cafe_outlined,
-          iconColor: Color(0xFFF59E0B),
-          bgColor: Color(0xFFFFFBEB),
+          iconColor: AppColors.warning,
+          bgColor: AppColors.warningBackground,
         );
       case AttendanceActivityType.statusChange:
         return const TimelineTileConfig(
           icon: Icons.sync_rounded,
-          iconColor: Color(0xFF8B5CF6),
-          bgColor: Color(0xFFF5F3FF),
+          iconColor: AppColors.accent,
+          bgColor: AppColors.accentBackground,
         );
       case AttendanceActivityType.dealWon:
         return const TimelineTileConfig(
           icon: Icons.work_outline_rounded,
-          iconColor: Color(0xFF10B981),
-          bgColor: Color(0xFFECFDF5),
+          iconColor: AppColors.success,
+          bgColor: AppColors.successBackground,
         );
     }
   }
