@@ -1,0 +1,122 @@
+# Flutter and Dart: build outputs, tooling, and generated files
+# Based on common Flutter/Dart templates; tailored for apps.
+
+# ---- Build outputs ------------------------------------------------------
+# Flutter build directory
+build/
+
+# Gradle build cache
+.gradle/
+
+# ---- Dart tooling & caches ----------------------------------------------
+.dart_tool/
+.pub/
+.pub-cache/
+.packages
+
+# Flutter/Dart generated and tooling files
+.flutter-plugins
+.flutter-plugins-dependencies
+flutter_export_environment.sh
+generated_plugin_registrant.dart
+
+# ---- IDEs and editors ---------------------------------------------------
+.idea/
+*.iml
+.vscode/
+
+# macOS Finder
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+
+# ---- Android -----------------------------------------------------------
+android/.gradle/
+android/local.properties
+android/app/*.iml
+
+# Don't commit local Android keystore files
+*.jks
+
+# ---- iOS / Xcode ------------------------------------------------------
+ios/Pods/
+ios/Podfile.lock
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Engine.xcframework
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace/
+*.xcworkspace
+xcuserdata/
+DerivedData/
+*.moved-aside
+*.xcuserstate
+
+# ---- Flutter web -------------------------------------------------------
+/.dart_tool/build/
+
+# ---- Generated files and artifacts -------------------------------------
+**/build/
+**/generated/**
+lib/generated_plugin_registrant.dart
+
+# ---- Sensitive or local config -----------------------------------------
+.env
+*.env
+google-services.json
+GoogleService-Info.plist
+
+# ---- Tests / Misc ------------------------------------------------------
+.test_output/
+
+# End of .gitignore
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
