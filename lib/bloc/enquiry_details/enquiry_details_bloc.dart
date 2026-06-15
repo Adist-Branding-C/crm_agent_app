@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/leads_repository.dart';
-import '../../bloc/leads/leads_models.dart';
 import 'enquiry_details_event.dart';
 import 'enquiry_details_state.dart';
 import 'enquiry_details_models.dart';

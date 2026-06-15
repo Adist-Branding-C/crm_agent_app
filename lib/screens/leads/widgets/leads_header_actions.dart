@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/leads/filter_result.dart';
 import '../../../bloc/leads/leads_bloc.dart';
-import '../../../bloc/leads/leads_models.dart';
 import '../../../router/app_routes.dart';
 import '../../../widgets/card_icon_button.dart';
 import '../../../theme.dart';
@@ -60,7 +59,9 @@ class LeadsHeaderActions extends StatelessWidget {
   }
 
   Future<void> _openAddScreen(BuildContext ctx) async {
-    final lead = await ctx.pushNamed<Lead>(AppRoutes.addLead);
-    if (lead != null && ctx.mounted) ctx.read<LeadsBloc>().add(AddLead(lead));
+    final isSuccess = await ctx.pushNamed<bool>(AppRoutes.addLead);
+    if (isSuccess == true && ctx.mounted) {
+      ctx.read<LeadsBloc>().add(const FetchLeads());
+    }
   }
 }

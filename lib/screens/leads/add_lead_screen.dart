@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/leads/add_lead/add_lead_bloc.dart';
+import '../../data/repositories/leads_repository.dart';
 import '../../theme.dart';
 import 'widgets/add_lead_form.dart';
 
@@ -13,7 +14,9 @@ class AddLeadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddLeadBloc(),
+      create: (context) => AddLeadBloc(
+        leadsRepository: context.read<LeadsRepository>(),
+      ),
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
         body: SafeArea(

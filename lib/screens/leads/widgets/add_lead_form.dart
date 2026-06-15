@@ -7,7 +7,6 @@ import 'add_lead_form_fields.dart';
 
 /// Form widget managing text inputs and selections for adding a lead.
 class AddLeadForm extends StatefulWidget {
-  /// Creates a constant [AddLeadForm].
   const AddLeadForm({super.key});
   @override
   State<AddLeadForm> createState() => _AddLeadFormState();
@@ -27,29 +26,26 @@ class _AddLeadFormState extends State<AddLeadForm> {
   }
 
   void _onState(BuildContext context, AddLeadState state) {
-    if (state.isSuccess && state.lead != null) context.pop(state.lead);
+    if (state.isSuccess) context.pop(true);
     if (state.error != null) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(state.error!)));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!)));
     }
   }
 
   void _onSubmit() {
     final s = context.read<AddLeadBloc>().state;
-    context.read<AddLeadBloc>().add(
-      SubmitForm(
-        name: _name.text, phone: _phone.text, email: _email.text,
-        location: _loc.text.isEmpty ? 'Kochi' : _loc.text,
-        source: s.source, purpose: s.purpose, category: s.category,
-        status: s.status,
-        nextFollowUp: _follow.text.isEmpty ? null : _follow.text,
-        note: _note.text.isEmpty ? null : _note.text,
-      ),
-    );
+    context.read<AddLeadBloc>().add(SubmitForm(
+      name: _name.text, phone: _phone.text, email: _email.text,
+      location: _loc.text.isEmpty ? 'Kochi' : _loc.text,
+      source: s.source, purpose: s.purpose, category: s.category, status: s.status,
+      nextFollowUp: _follow.text.isEmpty ? null : _follow.text,
+      note: _note.text.isEmpty ? null : _note.text,
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<AddLeadBloc>();
     return BlocConsumer<AddLeadBloc, AddLeadState>(
       listener: _onState,
       builder: (context, state) => Column(
@@ -60,16 +56,11 @@ class _AddLeadFormState extends State<AddLeadForm> {
               emailController: _email, locationController: _loc,
               followUpController: _follow, noteController: _note,
               source: state.source, purpose: state.purpose,
-              category: state.category, status: state.status,
-              state: state,
-              onSourceChanged: (v) =>
-                  context.read<AddLeadBloc>().add(SourceChanged(v)),
-              onPurposeChanged: (v) =>
-                  context.read<AddLeadBloc>().add(PurposeChanged(v)),
-              onCategoryChanged: (v) =>
-                  context.read<AddLeadBloc>().add(CategoryChanged(v)),
-              onStatusChanged: (v) =>
-                  context.read<AddLeadBloc>().add(StatusChanged(v)),
+              category: state.category, status: state.status, state: state,
+              onSourceChanged: (v) => bloc.add(SourceChanged(v)),
+              onPurposeChanged: (v) => bloc.add(PurposeChanged(v)),
+              onCategoryChanged: (v) => bloc.add(CategoryChanged(v)),
+              onStatusChanged: (v) => bloc.add(StatusChanged(v)),
             ),
           ),
           Padding(

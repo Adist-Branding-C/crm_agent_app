@@ -1,12 +1,33 @@
 import 'package:crm_agent_app/bloc/leads/add_lead/add_lead_bloc.dart';
 import 'package:crm_agent_app/bloc/leads/leads_enums.dart';
+import 'package:crm_agent_app/bloc/leads/leads_models.dart';
 import 'package:crm_agent_app/data/constants.dart';
+import 'package:crm_agent_app/data/repositories/leads_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+class FakeLeadsRepository implements LeadsRepository {
+  final List<Lead> leads = [];
+  @override
+  Future<List<Lead>> getLeads() async => leads;
+  @override
+  Future<void> addLead(Lead lead) async => leads.add(lead);
+  @override
+  Future<Lead?> getLeadById(String id) async => null;
+  @override
+  Future<void> updateLead(Lead lead) async {}
+  @override
+  Future<void> deleteLead(String id) async {}
+}
 
 void main() {
   group('AddLeadBloc Real-Time Validation Tests', () {
     late AddLeadBloc bloc;
-    setUp(() => bloc = AddLeadBloc());
+    late FakeLeadsRepository repository;
+
+    setUp(() {
+      repository = FakeLeadsRepository();
+      bloc = AddLeadBloc(leadsRepository: repository);
+    });
     tearDown(() => bloc.close());
 
     test('initial state has empty fields, null errors, and is invalid', () {

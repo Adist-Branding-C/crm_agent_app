@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../data/constants.dart';
+import '../../../data/repositories/leads_repository.dart';
 import '../leads_enums.dart';
 import '../leads_models.dart';
 
@@ -14,8 +15,11 @@ part 'add_lead_inputs.dart';
 
 /// BLoC managing the state transitions and form validation of the Add Lead form.
 class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
+  /// The leads repository.
+  final LeadsRepository leadsRepository;
+
   /// Initializes the BLoC with [AddLeadState].
-  AddLeadBloc() : super(const AddLeadState()) {
+  AddLeadBloc({required this.leadsRepository}) : super(const AddLeadState()) {
     on<NameChanged>(_onNameChanged);
     on<PhoneChanged>(_onPhoneChanged);
     on<EmailChanged>(_onEmailChanged);
@@ -51,7 +55,6 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
     if (!state.isValid) return;
     emit(state.copyWith(isSubmitting: true, isSuccess: false, error: () => null));
     try {
-      await Future.delayed(const Duration(milliseconds: 500));
       final lead = Lead(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         name: ev.name.trim(), phone: ev.phone.trim(), email: ev.email.trim(),
@@ -59,6 +62,7 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
         status: ev.status, leadSource: ev.source, nextFollowUp: ev.nextFollowUp,
         note: ev.note,
       );
+      await leadsRepository.addLead(lead);
       emit(state.copyWith(isSubmitting: false, isSuccess: true, lead: lead));
     } catch (e) {
       emit(state.copyWith(isSubmitting: false, error: () => e.toString()));
