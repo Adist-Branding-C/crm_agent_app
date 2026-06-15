@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../bloc/deals/deals_bloc.dart';
 import '../../../../theme.dart';
+import '../../../../utils/currency_formatter.dart';
+import 'deals_stats_card.dart';
 
 /// Renders the statistics cards at the top of the Deals screen.
 class DealsStats extends StatelessWidget {
@@ -22,17 +24,17 @@ class DealsStats extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: _buildCard(
+                child: DealsStatsCard(
                   title: 'Pipeline value',
-                  value: _formatAmount(pipelineVal),
+                  value: pipelineVal.toRupeeFormat(),
                   backgroundColor: AppColors.textDark,
                 ),
               ),
               const SizedBox(width: 16),
               Expanded(
-                child: _buildCard(
+                child: DealsStatsCard(
                   title: 'Won this month',
-                  value: _formatAmount(wonVal),
+                  value: wonVal.toRupeeFormat(),
                   backgroundColor: const Color(0xFF10B981),
                 ),
               ),
@@ -41,49 +43,5 @@ class DealsStats extends StatelessWidget {
         );
       },
     );
-  }
-
-  Widget _buildCard({
-    required String title,
-    required String value,
-    required Color backgroundColor,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.6),
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            value,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  String _formatAmount(double amount) {
-    if (amount >= 100000) {
-      return '₹${(amount / 100000).toStringAsFixed(2)}L';
-    }
-    return '₹${(amount / 1000).toStringAsFixed(0)}K';
   }
 }

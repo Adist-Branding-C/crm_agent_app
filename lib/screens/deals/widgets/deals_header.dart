@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../bloc/deals/deals_bloc.dart';
+import '../../../../utils/currency_formatter.dart';
 import '../../../../widgets/screen_header.dart';
 import '../../../../theme.dart';
 
@@ -17,7 +18,7 @@ class DealsHeader extends StatelessWidget {
         builder: (context, state) {
           if (state is DealsLoaded) {
             final count = state.deals.length;
-            final totalAmountStr = _formatAmount(state.totalPipelineValue);
+            final totalAmountStr = state.totalPipelineValue.toRupeeFormat();
             return Text(
               '$count active · $totalAmountStr pipeline',
               style: const TextStyle(
@@ -39,12 +40,5 @@ class DealsHeader extends StatelessWidget {
       ),
       showBackButton: true,
     );
-  }
-
-  static String _formatAmount(double amount) {
-    if (amount >= 100000) {
-      return '₹${(amount / 100000).toStringAsFixed(2)}L';
-    }
-    return '₹${(amount / 1000).toStringAsFixed(0)}K';
   }
 }
