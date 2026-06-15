@@ -3,6 +3,7 @@ import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
 import '../../../theme.dart';
 import '../../../bloc/account/account_models.dart';
+import 'profile_action_button.dart';
 
 /// Renders the primary profile card widget.
 class ProfileCard extends StatelessWidget {
@@ -37,50 +38,20 @@ class ProfileCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildButton(
+              ProfileActionButton(
                 icon: Icons.call_outlined,
                 label: 'Call',
                 textColor: AppColors.primaryColor,
                 bgColor: AppColors.primaryColorLight,
               ),
               const SizedBox(width: 12),
-              _buildButton(
+              const ProfileActionButton(
                 icon: Icons.email_outlined,
                 label: 'Email',
                 textColor: AppColors.textDark,
-                bgColor: const Color(0xFFF1F5F9),
+                bgColor: Color(0xFFF1F5F9),
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildButton({
-    required IconData icon,
-    required String label,
-    required Color textColor,
-    required Color bgColor,
-  }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: textColor, size: 16),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
           ),
         ],
       ),

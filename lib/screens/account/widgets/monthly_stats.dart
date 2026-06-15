@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 import '../../../bloc/account/account_models.dart';
+import 'monthly_stat_item.dart';
 
 /// Card showing statistics for the current month.
 class MonthlyStats extends StatelessWidget {
@@ -12,6 +13,12 @@ class MonthlyStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const divider = SizedBox(
+      height: 32,
+      width: 1,
+      child: ColoredBox(color: AppColors.borderLight),
+    );
+
     return CustomCard(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: Column(
@@ -30,23 +37,23 @@ class MonthlyStats extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: _buildStatItem(
+                child: MonthlyStatItem(
                   value: '${profile.wonDeals}',
                   label: 'Won deals',
                   valueColor: const Color(0xFF10B981),
                 ),
               ),
-              _buildDivider(),
+              divider,
               Expanded(
-                child: _buildStatItem(
+                child: MonthlyStatItem(
                   value: '${profile.myLeads}',
                   label: 'My leads',
                   valueColor: AppColors.textDark,
                 ),
               ),
-              _buildDivider(),
+              divider,
               Expanded(
-                child: _buildStatItem(
+                child: MonthlyStatItem(
                   value: '${(profile.conversionRate * 100).toInt()}%',
                   label: 'Conversion',
                   valueColor: const Color(0xFF6366F1),
@@ -57,37 +64,5 @@ class MonthlyStats extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget _buildStatItem({
-    required String value,
-    required String label,
-    required Color valueColor,
-  }) {
-    return Column(
-      children: [
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: valueColor,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 12,
-            color: AppColors.textMuted,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDivider() {
-    return Container(height: 32, width: 1, color: AppColors.borderLight);
   }
 }
