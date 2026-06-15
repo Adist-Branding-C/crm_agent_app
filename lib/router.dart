@@ -12,6 +12,7 @@ import 'screens/follow_ups/follow_ups_screen.dart';
 import 'screens/leads/add_lead_screen.dart';
 import 'screens/campaigns/campaigns_screen.dart';
 import 'screens/account/account_screen.dart';
+import 'screens/enquiry_details/enquiry_details_screen.dart';
 
 /// Configures and returns the central [GoRouter] for the application.
 GoRouter createRouter(
@@ -48,6 +49,13 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.followUps, path: AppRoutes.followUpsPath, builder: (c, s) => const FollowUpsScreen()),
       GoRoute(name: AppRoutes.campaigns, path: AppRoutes.campaignsPath, builder: (c, s) => const CampaignsScreen()),
       GoRoute(name: AppRoutes.account, path: AppRoutes.accountPath, builder: (c, s) => const AccountScreen()),
+      GoRoute(
+        name: AppRoutes.enquiryDetails,
+        path: AppRoutes.enquiryDetailsPath,
+        builder: (c, s) => EnquiryDetailsScreen(
+          leadId: s.pathParameters['id'] ?? '',
+        ),
+      ),
     ],
   );
 }

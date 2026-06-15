@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import '../../../theme.dart';
+
+/// Renders a single field item with a muted label and custom value or child.
+class InfoItemTile extends StatelessWidget {
+  /// The label describing the item.
+  final String label;
+
+  /// The text value of the item (optional).
+  final String? value;
+
+  /// Custom child widget to display instead of text (optional).
+  final Widget? child;
+
+  /// Custom color for the text value (optional).
+  final Color? valueColor;
+
+  /// Creates a constant [InfoItemTile].
+  const InfoItemTile({
+    super.key,
+    required this.label,
+    this.value,
+    this.child,
+    this.valueColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 12,
+              color: AppColors.textMuted,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 4),
+          if (child != null)
+            Row(children: [child!])
+          else
+            Text(
+              value ?? '',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: valueColor ?? AppColors.textDark,
+              ),
+            ),
+          const SizedBox(height: 8),
+          const Divider(color: AppColors.borderLight, height: 1, thickness: 0.5),
+        ],
+      ),
+    );
+  }
+}

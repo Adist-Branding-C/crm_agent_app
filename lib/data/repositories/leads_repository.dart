@@ -8,6 +8,15 @@ abstract class LeadsRepository {
 
   /// Adds a new lead.
   Future<void> addLead(Lead lead);
+
+  /// Retrieves a single lead by ID.
+  Future<Lead?> getLeadById(String id);
+
+  /// Updates an existing lead.
+  Future<void> updateLead(Lead lead);
+
+  /// Deletes a lead by ID.
+  Future<void> deleteLead(String id);
 }
 
 /// Concrete implementation of [LeadsRepository] interacting with [LeadsDataSource].
@@ -30,5 +39,23 @@ class LeadsRepositoryImpl implements LeadsRepository {
     // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 100));
     await leadsDataSource.insertLead(lead);
+  }
+
+  @override
+  Future<Lead?> getLeadById(String id) async {
+    await Future.delayed(const Duration(milliseconds: 100));
+    return leadsDataSource.getLeadById(id);
+  }
+
+  @override
+  Future<void> updateLead(Lead lead) async {
+    await Future.delayed(const Duration(milliseconds: 100));
+    await leadsDataSource.updateLead(lead);
+  }
+
+  @override
+  Future<void> deleteLead(String id) async {
+    await Future.delayed(const Duration(milliseconds: 100));
+    await leadsDataSource.deleteLead(id);
   }
 }

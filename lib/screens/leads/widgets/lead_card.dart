@@ -1,5 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../router/app_routes.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
@@ -16,10 +18,15 @@ class LeadCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
+    return GestureDetector(
+      onTap: () => context.pushNamed(
+        AppRoutes.enquiryDetails,
+        pathParameters: {'id': lead.id},
+      ),
+      child: CustomCard(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
           UserAvatar(
             initials: lead.initials,
             size: 42,
@@ -40,8 +47,9 @@ class LeadCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildDetails(BuildContext context) {
     return Column(
