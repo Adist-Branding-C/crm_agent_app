@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../bloc/attendance/attendance_models.dart';
 import '../../../theme.dart';
 import 'timeline_tile_config.dart';
+import 'timeline_tile_marker.dart';
 
 /// Renders a single event in the activity timeline.
 class TimelineTile extends StatelessWidget {
@@ -21,44 +22,17 @@ class TimelineTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final config = TimelineTileConfig.getConfig(item.type);
     final textTheme = Theme.of(context).textTheme;
-    const lineColor = Color(0xFFE2E8F0);
+    final captionStyle = textTheme.bodyMedium?.copyWith(
+      color: AppColors.textMuted,
+      fontSize: 11,
+      fontWeight: FontWeight.w500,
+    );
 
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            width: 48,
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                if (!isLast)
-                  Positioned(
-                    top: 16,
-                    bottom: 0,
-                    child: Container(width: 1.5, color: lineColor),
-                  ),
-                if (!isFirst)
-                  Positioned(
-                    top: 0,
-                    bottom: 16,
-                    child: Container(width: 1.5, color: lineColor),
-                  ),
-                Positioned(
-                  top: 0,
-                  child: Container(
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: config.bgColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(config.icon, color: config.iconColor, size: 16),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          TimelineTileMarker(isFirst: isFirst, isLast: isLast, config: config),
           const SizedBox(width: 12),
           Expanded(
             child: Padding(
@@ -80,26 +54,12 @@ class TimelineTile extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 3),
-                        Text(
-                          item.subtitle,
-                          style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.textMuted,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        Text(item.subtitle, style: captionStyle),
                       ],
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text(
-                    item.time,
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textMuted,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  Text(item.time, style: captionStyle),
                 ],
               ),
             ),
@@ -109,3 +69,4 @@ class TimelineTile extends StatelessWidget {
     );
   }
 }
+
