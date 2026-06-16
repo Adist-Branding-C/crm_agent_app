@@ -40,7 +40,7 @@ class MonthlyStats extends StatelessWidget {
                 child: MonthlyStatItem(
                   value: '${profile.wonDeals}',
                   label: 'Won deals',
-                  valueColor: const Color(0xFF10B981),
+                  valueColor: AppColors.success,
                 ),
               ),
               divider,
@@ -56,7 +56,7 @@ class MonthlyStats extends StatelessWidget {
                 child: MonthlyStatItem(
                   value: '${(profile.conversionRate * 100).toInt()}%',
                   label: 'Conversion',
-                  valueColor: const Color(0xFF6366F1),
+                  valueColor: AppColors.indigo,
                 ),
               ),
             ],

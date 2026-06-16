@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../attendance/widgets/timeline_tile_config.dart';
@@ -6,27 +7,27 @@ import '../../attendance/widgets/timeline_tile_config.dart';
 const activitiesConfigs = {
   EnquiryActivityType.call: TimelineTileConfig(
     icon: Icons.phone,
-    iconColor: Color(0xFF10B981),
-    bgColor: Color(0xFFECFDF5),
+    iconColor: AppColors.success,
+    bgColor: AppColors.successBackground,
   ),
   EnquiryActivityType.statusChange: TimelineTileConfig(
     icon: Icons.sync,
-    iconColor: Color(0xFF8B5CF6),
-    bgColor: Color(0xFFF5F3FF),
+    iconColor: AppColors.accent,
+    bgColor: AppColors.accentBackground,
   ),
   EnquiryActivityType.note: TimelineTileConfig(
     icon: Icons.description,
-    iconColor: Color(0xFF3B82F6),
-    bgColor: Color(0xFFEFF6FF),
+    iconColor: AppColors.info,
+    bgColor: AppColors.infoBackground,
   ),
   EnquiryActivityType.task: TimelineTileConfig(
     icon: Icons.check_box,
-    iconColor: Color(0xFFF59E0B),
-    bgColor: Color(0xFFFFFBEB),
+    iconColor: AppColors.warning,
+    bgColor: AppColors.warningBackground,
   ),
   EnquiryActivityType.system: TimelineTileConfig(
     icon: Icons.person,
-    iconColor: Color(0xFFEF4444),
-    bgColor: Color(0xFFFEF2F2),
+    iconColor: AppColors.errorColor,
+    bgColor: AppColors.errorBackground,
   ),
 };

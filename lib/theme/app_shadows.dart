@@ -8,7 +8,7 @@ class AppShadows {
   /// Generates a soft, diffuse shadow for card elements.
   static List<BoxShadow> get cardShadow => [
     BoxShadow(
-      color: const Color(0xFF0F172A).withValues(alpha: 0.04),
+      color: AppColors.slate900.withValues(alpha: 0.04),
       blurRadius: 16,
       offset: const Offset(0, 4),
     ),

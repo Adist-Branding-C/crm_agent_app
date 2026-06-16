@@ -14,11 +14,11 @@ class FollowUpCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isPriority = call.tag == FollowUpTag.priority;
     final tagBg = isPriority
-        ? const Color(0xFFFEE2E2)
-        : const Color(0xFFFFFBEB);
+        ? AppColors.primaryColorLight
+        : AppColors.warningBackground;
     final tagText = isPriority
         ? AppColors.primaryColor
-        : const Color(0xFFF59E0B);
+        : AppColors.warning;
 
     return Padding(
       padding: const EdgeInsets.all(16),

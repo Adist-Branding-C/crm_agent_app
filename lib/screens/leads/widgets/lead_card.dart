@@ -8,6 +8,8 @@ import '../../../widgets/user_avatar.dart';
 import '../../../widgets/call_button.dart';
 import '../../../theme.dart';
 
+part 'lead_card_details.dart';
+
 /// Card displaying information about a single Lead.
 class LeadCard extends StatelessWidget {
   /// The lead details to render.
@@ -32,7 +34,7 @@ class LeadCard extends StatelessWidget {
             size: 42,
           ),
           const SizedBox(width: 12),
-          Expanded(child: _buildDetails(context)),
+          Expanded(child: _LeadCardDetails(lead: lead)),
           CallButton(
             borderRadius: 12,
             onTap: () {
@@ -50,27 +52,4 @@ class LeadCard extends StatelessWidget {
     ),
   );
 }
-
-  Widget _buildDetails(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          lead.name,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: AppColors.textDark,
-          ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          '${lead.source.label} · ${lead.status.label}',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontSize: 12,
-            color: AppColors.textMuted,
-          ),
-        ),
-      ],
-    );
-  }
 }

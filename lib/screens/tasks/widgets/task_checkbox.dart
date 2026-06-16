@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 /// Styled checkbox representing task completion.
@@ -20,9 +21,9 @@ class TaskCheckbox extends StatelessWidget {
         width: 22,
         height: 22,
         decoration: BoxDecoration(
-          color: isChecked ? const Color(0xFF10B981) : Colors.white,
+          color: isChecked ? AppColors.success : Colors.white,
           border: Border.all(
-            color: isChecked ? Colors.transparent : const Color(0xFFCBD5E1),
+            color: isChecked ? Colors.transparent : AppColors.slate300,
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(6),

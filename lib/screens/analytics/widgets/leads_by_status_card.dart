@@ -58,16 +58,16 @@ class LeadsByStatusCard extends StatelessWidget {
   Color _getBarColor(LeadStatus status) {
     switch (status) {
       case LeadStatus.newStatus:
-        return const Color(0xFF3B82F6); // blue
+        return AppColors.info; // blue
       case LeadStatus.interested:
-        return const Color(0xFF10B981); // green/teal
+        return AppColors.success; // green/teal
       case LeadStatus.qualified:
-        return const Color(0xFF8B5CF6); // purple
+        return AppColors.accent; // purple
       case LeadStatus.followUp:
-        return const Color(0xFFF59E0B); // orange
+        return AppColors.warning; // orange
       case LeadStatus.lost:
       default:
-        return const Color(0xFFEF4444); // red
+        return AppColors.errorColor; // red
     }
   }
 }

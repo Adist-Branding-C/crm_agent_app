@@ -23,7 +23,7 @@ class FilterSortBy extends StatelessWidget {
       height: 38,
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: const Color(0xFFF1F5F9),
+        color: AppColors.slate100,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -42,7 +42,7 @@ class FilterSortBy extends StatelessWidget {
                   boxShadow: isSel
                       ? [
                           const BoxShadow(
-                            color: Color(0x10000000),
+                            color: AppColors.barrierColor,
                             blurRadius: 4,
                             offset: Offset(0, 2),
                           ),

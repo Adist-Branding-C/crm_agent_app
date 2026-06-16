@@ -33,13 +33,13 @@ class InfoTabView extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: const Color(0xFFFFF7ED),
+              color: AppColors.warningTextBackground,
               borderRadius: BorderRadius.circular(6),
             ),
             child: Text(
               lead.status.label,
               style: const TextStyle(
-                color: Color(0xFFF97316),
+                color: AppColors.warningText,
                 fontWeight: FontWeight.bold,
                 fontSize: 11,
               ),

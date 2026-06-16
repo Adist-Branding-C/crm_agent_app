@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
+import 'count_badge.dart';
+import 'section_header_action.dart';
+
+part 'section_header_title.dart';
 
 /// Reusable section title bar featuring optional count indicators, leading icons, and actions.
 class SectionHeader extends StatelessWidget {
@@ -32,16 +36,9 @@ class SectionHeader extends StatelessWidget {
 
   /// Creates a [SectionHeader].
   const SectionHeader({
-    super.key,
-    required this.title,
-    this.leadingIcon,
-    this.leadingIconColor,
-    this.countBadge,
-    this.badgeBgColor,
-    this.badgeTextColor,
-    this.actionText,
-    this.onActionTap,
-    this.padding = EdgeInsets.zero,
+    super.key, required this.title, this.leadingIcon, this.leadingIconColor,
+    this.countBadge, this.badgeBgColor, this.badgeTextColor, this.actionText,
+    this.onActionTap, this.padding = EdgeInsets.zero,
   });
 
   @override
@@ -50,48 +47,24 @@ class SectionHeader extends StatelessWidget {
       padding: padding,
       child: Row(
         children: [
-          if (leadingIcon != null) ...[
-            Icon(leadingIcon, color: leadingIconColor ?? AppColors.textDark, size: 16),
-            const SizedBox(width: 8),
-          ],
-          Text(
-            title,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: 17,
-              color: AppColors.textDark,
-            ),
+          _SectionHeaderTitle(
+            title: title,
+            leadingIcon: leadingIcon,
+            leadingIconColor: leadingIconColor,
           ),
           if (countBadge != null) ...[
             const SizedBox(width: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              decoration: BoxDecoration(
-                color: badgeBgColor ?? const Color(0xFFF1F5F9),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                '$countBadge',
-                style: TextStyle(
-                  color: badgeTextColor ?? AppColors.textMuted,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 11,
-                ),
-              ),
+            CountBadge(
+              count: countBadge!,
+              bgColor: badgeBgColor,
+              textColor: badgeTextColor,
             ),
           ],
           const Spacer(),
           if (actionText != null && onActionTap != null)
-            GestureDetector(
-              onTap: onActionTap,
-              child: Text(
-                actionText!,
-                style: const TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
-              ),
+            SectionHeaderAction(
+              actionText: actionText!,
+              onActionTap: onActionTap!,
             ),
         ],
       ),

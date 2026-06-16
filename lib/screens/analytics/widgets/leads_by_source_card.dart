@@ -58,14 +58,14 @@ class LeadsBySourceCard extends StatelessWidget {
   Color _getBarColor(LeadSource source) {
     switch (source) {
       case LeadSource.facebook:
-        return const Color(0xFF3B82F6); // blue
+        return AppColors.info; // blue
       case LeadSource.website:
-        return const Color(0xFF10B981); // green/teal
+        return AppColors.success; // green/teal
       case LeadSource.referral:
-        return const Color(0xFF8B5CF6); // purple
+        return AppColors.accent; // purple
       case LeadSource.instagram:
       default:
-        return const Color(0xFFF59E0B); // orange
+        return AppColors.warning; // orange
     }
   }
 }

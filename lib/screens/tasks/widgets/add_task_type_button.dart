@@ -17,17 +17,16 @@ class TaskTypeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final (icon, activeColor, activeBg) = _getConfig(type);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(10),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected ? activeBg : Colors.white,
+          color: isSelected ? type.activeBg : Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: isSelected ? activeColor : AppColors.slate300,
+            color: isSelected ? type.activeColor : AppColors.slate300,
             width: 1.5,
           ),
         ),
@@ -35,15 +34,15 @@ class TaskTypeButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              icon,
+              type.icon,
               size: 16,
-              color: isSelected ? activeColor : AppColors.textMuted,
+              color: isSelected ? type.activeColor : AppColors.textMuted,
             ),
             const SizedBox(width: 6),
             Text(
               type.label,
               style: TextStyle(
-                color: isSelected ? activeColor : AppColors.textMuted,
+                color: isSelected ? type.activeColor : AppColors.textMuted,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
@@ -52,30 +51,5 @@ class TaskTypeButton extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  (IconData, Color, Color) _getConfig(TaskType type) {
-    return switch (type) {
-      TaskType.task => (
-          Icons.check_box_outlined,
-          const Color(0xFF3B82F6),
-          const Color(0xFFEFF6FF),
-        ),
-      TaskType.meeting => (
-          Icons.people_outline_rounded,
-          const Color(0xFF8B5CF6),
-          const Color(0xFFF5F3FF),
-        ),
-      TaskType.call => (
-          Icons.phone_outlined,
-          const Color(0xFF10B981),
-          const Color(0xFFECFDF5),
-        ),
-      TaskType.deal => (
-          Icons.business_center_outlined,
-          const Color(0xFFF59E0B),
-          const Color(0xFFFFFBEB),
-        ),
-    };
   }
 }

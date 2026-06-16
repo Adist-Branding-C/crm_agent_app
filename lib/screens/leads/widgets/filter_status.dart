@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
+import 'filter_status_helpers.dart';
 
 /// Renders status chips styled with distinct colors matching design specs.
 class FilterStatus extends StatelessWidget {
@@ -24,7 +25,7 @@ class FilterStatus extends StatelessWidget {
       runSpacing: 8,
       children: statuses.map((status) {
         final isSel = selectedStatus == status;
-        final cfg = _getChipConfig(status);
+        final cfg = getChipConfig(status);
         return GestureDetector(
           onTap: () => onSelected(isSel ? null : status),
           child: Container(
@@ -50,29 +51,4 @@ class FilterStatus extends StatelessWidget {
       }).toList(),
     );
   }
-
-  _ChipConfig _getChipConfig(LeadStatus status) {
-    switch (status) {
-      case LeadStatus.newStatus:
-        return const _ChipConfig(Color(0xFFEFF6FF), Color(0xFF2563EB));
-      case LeadStatus.interested:
-        return const _ChipConfig(Color(0xFFECFDF5), Color(0xFF10B981));
-      case LeadStatus.qualified:
-        return const _ChipConfig(Color(0xFFF5F3FF), Color(0xFF8B5CF6));
-      case LeadStatus.followUp:
-        return const _ChipConfig(Color(0xFFFEF3C7), Color(0xFFD97706));
-      case LeadStatus.notInterested:
-        return const _ChipConfig(Color(0xFFF3F4F6), Color(0xFF4B5563));
-      case LeadStatus.converted:
-        return const _ChipConfig(Color(0xFFE6FFFA), Color(0xFF0D9488));
-      default:
-        return const _ChipConfig(Color(0xFFF3F4F6), Color(0xFF475569));
-    }
-  }
-}
-
-class _ChipConfig {
-  final Color bgColor;
-  final Color textColor;
-  const _ChipConfig(this.bgColor, this.textColor);
 }

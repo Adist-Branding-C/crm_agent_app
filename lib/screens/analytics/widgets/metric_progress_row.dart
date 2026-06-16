@@ -55,7 +55,7 @@ class MetricProgressRow extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
           child: LinearProgressIndicator(
             value: progressValue,
-            backgroundColor: const Color(0xFFF1F5F9),
+            backgroundColor: AppColors.slate100,
             valueColor: AlwaysStoppedAnimation<Color>(barColor),
             minHeight: 5,
           ),

@@ -31,6 +31,8 @@ class MockAuthRepository implements AuthRepository {
   Future<String?> getToken() async => 'mock';
   @override
   Future<void> logout() async {}
+  @override
+  Future<void> init() async {}
 }
 
 void main() {

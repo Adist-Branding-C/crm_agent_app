@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
@@ -22,8 +23,8 @@ class StatsGrid extends StatelessWidget {
               Expanded(
                 child: StatsCard(
                   icon: Icons.campaign_outlined,
-                  iconColor: const Color(0xFF8B5CF6),
-                  iconBgColor: const Color(0xFFF5F3FF),
+                  iconColor: AppColors.accent,
+                  iconBgColor: AppColors.accentBackground,
                   title: 'Campaign',
                   subtitle: '${stats.activeCampaigns} active',
                   onTap: () => context.pushNamed(AppRoutes.campaigns),
@@ -33,8 +34,8 @@ class StatsGrid extends StatelessWidget {
               Expanded(
                 child: StatsCard(
                   icon: Icons.business_center_outlined,
-                  iconColor: const Color(0xFFF59E0B),
-                  iconBgColor: const Color(0xFFFFFBEB),
+                  iconColor: AppColors.warning,
+                  iconBgColor: AppColors.warningBackground,
                   title: 'Deals',
                   subtitle: '${stats.openDeals} open',
                   onTap: () => context.pushNamed(AppRoutes.deals),
@@ -48,8 +49,8 @@ class StatsGrid extends StatelessWidget {
               Expanded(
                 child: StatsCard(
                   icon: Icons.donut_large_rounded,
-                  iconColor: const Color(0xFF3B82F6),
-                  iconBgColor: const Color(0xFFEFF6FF),
+                  iconColor: AppColors.info,
+                  iconBgColor: AppColors.infoBackground,
                   title: 'Analytics',
                   subtitle: '${stats.analyticsConversionRate.toInt()}% conv.',
                   onTap: () => context.pushNamed(AppRoutes.analytics),
@@ -59,8 +60,8 @@ class StatsGrid extends StatelessWidget {
               Expanded(
                 child: StatsCard(
                   icon: Icons.fingerprint_rounded,
-                  iconColor: const Color(0xFF10B981),
-                  iconBgColor: const Color(0xFFECFDF5),
+                  iconColor: AppColors.success,
+                  iconBgColor: AppColors.successBackground,
                   title: 'Attendance',
                   subtitle: stats.attendanceStatus,
                   onTap: () => context.pushNamed(AppRoutes.attendance),

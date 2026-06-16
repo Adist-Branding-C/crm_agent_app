@@ -49,7 +49,7 @@ class ProfileCard extends StatelessWidget {
                 icon: Icons.email_outlined,
                 label: 'Email',
                 textColor: AppColors.textDark,
-                bgColor: Color(0xFFF1F5F9),
+                bgColor: AppColors.slate100,
               ),
             ],
           ),

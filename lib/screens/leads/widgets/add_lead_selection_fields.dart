@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/selection_group.dart';
 
+part 'source_purpose_fields.dart';
+part 'category_status_fields.dart';
+
 /// Selection options (Source, Purpose, Type, Status) fields section.
 class AddLeadSelectionFields extends StatelessWidget {
   /// Selected source value.
@@ -52,40 +55,18 @@ class AddLeadSelectionFields extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SelectionGroup(
-            label: 'Source',
-            options: LeadSource.values.map((e) => e.label).toList(),
-            selectedOption: source.label,
-            onSelected: (val) => onSourceChanged(
-              LeadSource.values.firstWhere((e) => e.label == val),
-            ),
+          _SourcePurposeFields(
+            source: source,
+            onSourceChanged: onSourceChanged,
+            purpose: purpose,
+            onPurposeChanged: onPurposeChanged,
           ),
           const SizedBox(height: 16),
-          SelectionGroup(
-            label: 'Purpose',
-            options: LeadPurpose.values.map((e) => e.label).toList(),
-            selectedOption: purpose.label,
-            onSelected: (val) => onPurposeChanged(
-              LeadPurpose.values.firstWhere((e) => e.label == val),
-            ),
-          ),
-          const SizedBox(height: 16),
-          SelectionGroup(
-            label: 'Lead Type',
-            options: LeadCategory.values.map((e) => e.label).toList(),
-            selectedOption: category.label,
-            onSelected: (val) => onCategoryChanged(
-              LeadCategory.values.firstWhere((e) => e.label == val),
-            ),
-          ),
-          const SizedBox(height: 16),
-          SelectionGroup(
-            label: 'Status',
-            options: const ['New', 'Interested', 'Qualified', 'Follow Up'],
-            selectedOption: status.label,
-            onSelected: (val) => onStatusChanged(
-              LeadStatus.values.firstWhere((e) => e.label == val),
-            ),
+          _CategoryStatusFields(
+            category: category,
+            onCategoryChanged: onCategoryChanged,
+            status: status,
+            onStatusChanged: onStatusChanged,
           ),
         ],
       ),

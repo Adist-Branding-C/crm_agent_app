@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/tasks/add_task/add_task_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../theme.dart';
+import 'task_priority_extensions.dart';
 
 /// Renders the custom segmented priority control (High, Medium, Low).
 class AddTaskPrioritySelector extends StatelessWidget {
@@ -49,7 +50,7 @@ class AddTaskPrioritySelector extends StatelessWidget {
                           boxShadow: isSelected ? AppTheme.cardShadow : null,
                         ),
                         child: Text(
-                          _getLabel(priority),
+                          priority.label,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: isSelected
@@ -71,13 +72,5 @@ class AddTaskPrioritySelector extends StatelessWidget {
         );
       },
     );
-  }
-
-  String _getLabel(TaskPriority priority) {
-    return switch (priority) {
-      TaskPriority.high => 'High',
-      TaskPriority.medium => 'Medium',
-      TaskPriority.low => 'Low',
-    };
   }
 }

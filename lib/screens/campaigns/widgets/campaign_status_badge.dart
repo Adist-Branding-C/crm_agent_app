@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
 
@@ -14,18 +15,18 @@ class CampaignStatusBadge extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: const Color(0xFFECFDF5),
+          color: AppColors.successBackground,
           borderRadius: BorderRadius.circular(8),
         ),
         child: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.check_rounded, color: Color(0xFF10B981), size: 12),
+            Icon(Icons.check_rounded, color: AppColors.success, size: 12),
             SizedBox(width: 4),
             Text(
               'Done',
               style: TextStyle(
-                color: Color(0xFF10B981),
+                color: AppColors.success,
                 fontWeight: FontWeight.bold,
                 fontSize: 11,
               ),

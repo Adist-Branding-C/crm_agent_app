@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../bloc/leads/filter_result.dart';
@@ -37,7 +38,7 @@ class FilterSheetBody extends StatelessWidget {
             child: Container(
               width: 38, height: 4,
               decoration: BoxDecoration(
-                color: const Color(0xFFE2E8F0),
+                color: AppColors.borderLight,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_text_field.dart';
 
+part 'name_phone_fields.dart';
+part 'email_location_fields.dart';
+
 /// Contact information input fields section with real-time validation error texts.
 class AddLeadContactFields extends StatelessWidget {
   /// Controller for name field.
@@ -58,39 +61,20 @@ class AddLeadContactFields extends StatelessWidget {
       ),
       child: Column(
         children: [
-          CustomTextField(
-            label: 'Full Name',
-            isRequired: true,
-            hintText: 'e.g. Rahul Menon',
-            controller: nameController,
-            errorText: nameError,
-            onChanged: onNameChanged,
+          _NamePhoneFields(
+            nameController: nameController,
+            phoneController: phoneController,
+            nameError: nameError,
+            phoneError: phoneError,
+            onNameChanged: onNameChanged,
+            onPhoneChanged: onPhoneChanged,
           ),
           const SizedBox(height: 16),
-          CustomTextField(
-            label: 'Phone',
-            isRequired: true,
-            hintText: '+91 ...',
-            controller: phoneController,
-            keyboardType: TextInputType.phone,
-            errorText: phoneError,
-            onChanged: onPhoneChanged,
-          ),
-          const SizedBox(height: 16),
-          CustomTextField(
-            label: 'Email',
-            isRequired: true,
-            hintText: 'name@email.com',
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
-            errorText: emailError,
-            onChanged: onEmailChanged,
-          ),
-          const SizedBox(height: 16),
-          CustomTextField(
-            label: 'Location',
-            hintText: 'City, State',
-            controller: locationController,
+          _EmailLocationFields(
+            emailController: emailController,
+            locationController: locationController,
+            emailError: emailError,
+            onEmailChanged: onEmailChanged,
           ),
         ],
       ),

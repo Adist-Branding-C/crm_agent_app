@@ -5,15 +5,15 @@ import '../../../bloc/enquiry_details/enquiry_details_event.dart';
 import '../../../theme.dart';
 
 /// A widget that provides an input field and submit button for adding notes.
-class NoteInput extends StatefulWidget {
-  /// Creates a constant [NoteInput].
-  const NoteInput({super.key});
+class NotesInputField extends StatefulWidget {
+  /// Creates a constant [NotesInputField].
+  const NotesInputField({super.key});
 
   @override
-  State<NoteInput> createState() => _NoteInputState();
+  State<NotesInputField> createState() => _NotesInputFieldState();
 }
 
-class _NoteInputState extends State<NoteInput> {
+class _NotesInputFieldState extends State<NotesInputField> {
   final _controller = TextEditingController();
 
   @override

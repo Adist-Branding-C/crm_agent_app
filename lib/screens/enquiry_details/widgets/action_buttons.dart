@@ -38,8 +38,8 @@ class ActionButtons extends StatelessWidget {
           },
           icon: Icons.chat,
           label: 'WhatsApp',
-          backgroundColor: const Color(0xFFECFDF5),
-          foregroundColor: const Color(0xFF10B981),
+          backgroundColor: AppColors.successBackground,
+          foregroundColor: AppColors.success,
         ),
       ],
     );

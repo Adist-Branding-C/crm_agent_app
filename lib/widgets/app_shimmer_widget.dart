@@ -1,3 +1,4 @@
+import '../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -51,8 +52,8 @@ class AppShimmerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: const Color(0xFFE2E8F0),
-      highlightColor: const Color(0xFFF1F5F9),
+      baseColor: AppColors.borderLight,
+      highlightColor: AppColors.slate100,
       child: Container(
         width: width,
         height: height,

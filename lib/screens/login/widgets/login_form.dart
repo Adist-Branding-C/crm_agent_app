@@ -21,30 +21,34 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
-      builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTextField(
-              label: 'Phone Number',
-              isRequired: true,
-              hintText: '+91 98470 ... or digits',
-              controller: phoneController,
-              keyboardType: TextInputType.phone,
-              onChanged: (value) =>
-                  context.read<LoginBloc>().add(PhoneChanged(value)),
-            ),
-            const SizedBox(height: 20),
-            CustomTextField(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomTextField(
+          label: 'Phone Number',
+          isRequired: true,
+          hintText: '+91 98470 ... or digits',
+          controller: phoneController,
+          keyboardType: TextInputType.phone,
+          onChanged: (value) =>
+              context.read<LoginBloc>().add(PhoneChanged(value)),
+        ),
+        const SizedBox(height: 20),
+        BlocBuilder<LoginBloc, LoginState>(
+          buildWhen: (prev, curr) =>
+              prev.obscurePassword != curr.obscurePassword,
+          builder: (context, state) {
+            final obscurePassword =
+                context.select((LoginBloc s) => s.state.obscurePassword);
+            return CustomTextField(
               label: 'Password',
               isRequired: true,
               hintText: 'Enter password',
               controller: passwordController,
-              obscureText: state.obscurePassword,
+              obscureText: obscurePassword,
               suffixIcon: IconButton(
                 icon: Icon(
-                  state.obscurePassword
+                  obscurePassword
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined,
                   color: AppColors.textMuted,
@@ -58,10 +62,10 @@ class LoginForm extends StatelessWidget {
               ),
               onChanged: (value) =>
                   context.read<LoginBloc>().add(PasswordChanged(value)),
-            ),
-          ],
-        );
-      },
+            );
+          },
+        ),
+      ],
     );
   }
 }

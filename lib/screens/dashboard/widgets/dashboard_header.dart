@@ -22,7 +22,7 @@ class DashboardHeader extends StatelessWidget {
               : 'Checked out';
           return Row(
             children: [
-              const Icon(Icons.circle, size: 8, color: Color(0xFF10B981)),
+              const Icon(Icons.circle, size: 8, color: AppColors.success),
               const SizedBox(width: 6),
               Text(
                 statusText,

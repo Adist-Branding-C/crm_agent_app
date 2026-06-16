@@ -4,9 +4,11 @@ import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 import 'campaign_icon.dart';
 import 'campaign_status_badge.dart';
+import 'campaign_details.dart';
 
 /// Card component that displays details and progress for a single campaign.
 class CampaignCard extends StatelessWidget {
+  /// The campaign model.
   final Campaign campaign;
 
   /// Creates a constant [CampaignCard].
@@ -27,7 +29,7 @@ class CampaignCard extends StatelessWidget {
             children: [
               CampaignIcon(campaign: campaign),
               const SizedBox(width: 12),
-              Expanded(child: _buildDetails()),
+              Expanded(child: CampaignDetails(campaign: campaign)),
               CampaignStatusBadge(campaign: campaign),
             ],
           ),
@@ -37,7 +39,7 @@ class CampaignCard extends StatelessWidget {
             child: LinearProgressIndicator(
               value: progress,
               color: campaign.themeColor,
-              backgroundColor: const Color(0xFFF1F5F9),
+              backgroundColor: AppColors.slate100,
               minHeight: 6,
             ),
           ),
@@ -63,27 +65,6 @@ class CampaignCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildDetails() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          campaign.title,
-          style: const TextStyle(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          '${campaign.type.label} · by ${campaign.creator}',
-          style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
-        ),
-      ],
     );
   }
 }

@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/follow_ups/follow_ups_bloc.dart';
@@ -27,9 +28,9 @@ class FollowUpListBody extends StatelessWidget {
             title: 'Overdue',
             countBadge: overdue.length,
             leadingIcon: Icons.warning_amber_rounded,
-            leadingIconColor: const Color(0xFFEF4444),
-            badgeBgColor: const Color(0xFFFEE2E2),
-            badgeTextColor: const Color(0xFFEF4444),
+            leadingIconColor: AppColors.errorColor,
+            badgeBgColor: AppColors.primaryColorLight,
+            badgeTextColor: AppColors.errorColor,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
           ...overdue.map((c) => FollowUpItemCard(
@@ -43,9 +44,9 @@ class FollowUpListBody extends StatelessWidget {
             title: 'Due Today',
             countBadge: dueToday.length,
             leadingIcon: Icons.access_time_rounded,
-            leadingIconColor: const Color(0xFFEF4444),
-            badgeBgColor: const Color(0xFFFEE2E2),
-            badgeTextColor: const Color(0xFFEF4444),
+            leadingIconColor: AppColors.errorColor,
+            badgeBgColor: AppColors.primaryColorLight,
+            badgeTextColor: AppColors.errorColor,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
           ...dueToday.map((c) => FollowUpItemCard(
@@ -59,9 +60,9 @@ class FollowUpListBody extends StatelessWidget {
             title: 'Upcoming',
             countBadge: upcoming.length,
             leadingIcon: Icons.calendar_month_rounded,
-            leadingIconColor: const Color(0xFF3B82F6),
-            badgeBgColor: const Color(0xFFE0F2FE),
-            badgeTextColor: const Color(0xFF0284C7),
+            leadingIconColor: AppColors.info,
+            badgeBgColor: AppColors.infoBackgroundLight,
+            badgeTextColor: AppColors.infoText,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
           ...upcoming.map((c) => FollowUpItemCard(

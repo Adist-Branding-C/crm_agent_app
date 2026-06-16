@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 
@@ -13,23 +14,23 @@ class TaskTypeBadge extends StatelessWidget {
     final (icon, color, bg) = switch (type) {
       TaskType.task => (
           Icons.check_box_outlined,
-          const Color(0xFF3B82F6),
-          const Color(0xFFEFF6FF)
+          AppColors.info,
+          AppColors.infoBackground
         ),
       TaskType.meeting => (
           Icons.people_outline_rounded,
-          const Color(0xFF8B5CF6),
-          const Color(0xFFF5F3FF)
+          AppColors.accent,
+          AppColors.accentBackground
         ),
       TaskType.call => (
           Icons.phone_outlined,
-          const Color(0xFF10B981),
-          const Color(0xFFECFDF5)
+          AppColors.success,
+          AppColors.successBackground
         ),
       TaskType.deal => (
           Icons.business_center_outlined,
-          const Color(0xFFF59E0B),
-          const Color(0xFFFFFBEB)
+          AppColors.warning,
+          AppColors.warningBackground
         ),
     };
 

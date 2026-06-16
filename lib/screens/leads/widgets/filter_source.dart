@@ -30,13 +30,13 @@ class FilterSource extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: isSel ? AppColors.primaryColor : const Color(0xFFF1F5F9),
+              color: isSel ? AppColors.primaryColor : AppColors.slate100,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
               src.label,
               style: TextStyle(
-                color: isSel ? Colors.white : const Color(0xFF475569),
+                color: isSel ? Colors.white : AppColors.slate600,
                 fontSize: 13,
                 fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
               ),

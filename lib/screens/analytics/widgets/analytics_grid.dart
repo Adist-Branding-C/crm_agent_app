@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_models.dart';
 import 'analytics_stats_card.dart';
@@ -19,8 +20,8 @@ class AnalyticsGrid extends StatelessWidget {
             Expanded(
               child: AnalyticsStatsCard(
                 icon: Icons.people_outline_rounded,
-                iconColor: const Color(0xFFEF4444),
-                iconBgColor: const Color(0xFFFEE2E2),
+                iconColor: AppColors.errorColor,
+                iconBgColor: AppColors.primaryColorLight,
                 value: summary.totalLeads.toString(),
                 label: 'Total leads',
               ),
@@ -29,8 +30,8 @@ class AnalyticsGrid extends StatelessWidget {
             Expanded(
               child: AnalyticsStatsCard(
                 icon: Icons.adjust_rounded,
-                iconColor: const Color(0xFF8B5CF6),
-                iconBgColor: const Color(0xFFF5F3FF),
+                iconColor: AppColors.accent,
+                iconBgColor: AppColors.accentBackground,
                 value: '${summary.conversionRate.toInt()}%',
                 label: 'Conversion',
               ),
@@ -43,8 +44,8 @@ class AnalyticsGrid extends StatelessWidget {
             Expanded(
               child: AnalyticsStatsCard(
                 icon: Icons.business_center_outlined,
-                iconColor: const Color(0xFF10B981),
-                iconBgColor: const Color(0xFFECFDF5),
+                iconColor: AppColors.success,
+                iconBgColor: AppColors.successBackground,
                 value: summary.wonDeals.toString(),
                 label: 'Won deals',
               ),
@@ -53,8 +54,8 @@ class AnalyticsGrid extends StatelessWidget {
             Expanded(
               child: AnalyticsStatsCard(
                 icon: Icons.attach_money_rounded,
-                iconColor: const Color(0xFFF59E0B),
-                iconBgColor: const Color(0xFFFFFBEB),
+                iconColor: AppColors.warning,
+                iconBgColor: AppColors.warningBackground,
                 value: summary.pipelineValue,
                 label: 'Pipeline',
               ),

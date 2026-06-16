@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/add_lead/add_lead_bloc.dart';
+import '../add_lead_error_extensions.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import 'add_lead_additional_fields.dart';
 import 'add_lead_contact_fields.dart';

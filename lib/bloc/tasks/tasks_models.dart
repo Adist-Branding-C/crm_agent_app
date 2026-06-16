@@ -1,15 +1,6 @@
 import 'package:equatable/equatable.dart';
-
-/// Type of task item.
-enum TaskType {
-  task('Task'),
-  meeting('Meeting'),
-  call('Call'),
-  deal('Deal');
-
-  final String label;
-  const TaskType(this.label);
-}
+import 'task_type.dart';
+export 'task_type.dart';
 
 /// Priority of task item.
 enum TaskPriority {

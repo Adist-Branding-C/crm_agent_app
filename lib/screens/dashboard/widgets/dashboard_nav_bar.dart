@@ -21,7 +21,7 @@ class DashboardNavBar extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
-        border: Border(top: BorderSide(color: Color(0xFFF1F5F9), width: 1)),
+        border: Border(top: BorderSide(color: AppColors.slate100, width: 1)),
       ),
       child: BottomNavigationBar(
         currentIndex: currentIndex,

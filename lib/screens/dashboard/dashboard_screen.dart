@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/dashboard/dashboard_bloc.dart';
-import '../../bloc/attendance/attendance_bloc.dart';
 import '../../theme.dart';
 import 'dashboard_navigation_config.dart';
 import 'models/dashboard_navigation_item.dart';
@@ -43,15 +42,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (c) => AttendanceBloc(attendanceRepository: c.read())..add(const LoadAttendance()),
-        ),
-        BlocProvider(
-          create: (c) => DashboardBloc(dashboardRepository: c.read())..add(const FetchDashboardData()),
-        ),
-      ],
+    return BlocProvider(
+      create: (c) => DashboardBloc(
+        dashboardRepository: c.read(),
+      )..add(const FetchDashboardData()),
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
         bottomNavigationBar: DashboardNavBar(

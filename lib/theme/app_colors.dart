@@ -46,4 +46,6 @@ class AppColors {
   static const Color indigo = Color(0xFF6366F1);
   static const Color checkedInCardBg = Color(0xFF242C3D);
   static const Color errorBorder = Color(0xFFFCA5A5);
+  static const Color slate900 = Color(0xFF0F172A);
+  static const Color barrierColor = Color(0x10000000);
 }

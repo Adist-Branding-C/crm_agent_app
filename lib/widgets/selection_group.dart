@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
+part 'selection_chip.dart';
+
 /// A reusable group selection widget using rounded chips.
 class SelectionGroup extends StatelessWidget {
   /// Header label text displayed above options.
@@ -58,32 +60,15 @@ class SelectionGroup extends StatelessWidget {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: options.map((opt) => _buildChip(opt)).toList(),
+          children: options
+              .map((opt) => _SelectionChip(
+                    option: opt,
+                    selectedOption: selectedOption,
+                    onSelected: onSelected,
+                  ))
+              .toList(),
         ),
       ],
-    );
-  }
-
-  Widget _buildChip(String opt) {
-    final isSelected = opt == selectedOption;
-    final color = isSelected ? AppColors.primaryColor : AppColors.borderLight;
-    final textStyle = TextStyle(
-      color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
-      fontWeight: FontWeight.w600,
-      fontSize: 13,
-    );
-
-    return GestureDetector(
-      onTap: () => onSelected(opt),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: color, width: isSelected ? 1.5 : 1),
-        ),
-        child: Text(opt, style: textStyle),
-      ),
     );
   }
 }

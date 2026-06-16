@@ -1,3 +1,4 @@
+import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
@@ -32,7 +33,7 @@ class TasksList extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: tasks.length,
               separatorBuilder: (context, index) => const Divider(
-                color: Color(0xFFF1F5F9),
+                color: AppColors.slate100,
                 height: 1,
                 thickness: 1,
               ),
