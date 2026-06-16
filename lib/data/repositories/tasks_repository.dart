@@ -7,4 +7,7 @@ abstract class TasksRepository {
 
   /// Toggles completion status of a task by ID.
   Future<List<Task>> toggleTaskCompletion(String id);
+
+  /// Adds a new task.
+  Future<List<Task>> addTask(Task task);
 }

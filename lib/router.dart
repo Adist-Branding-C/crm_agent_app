@@ -14,6 +14,7 @@ import 'screens/leads/add_lead_screen.dart';
 import 'screens/campaigns/campaigns_screen.dart';
 import 'screens/account/account_screen.dart';
 import 'screens/enquiry_details/enquiry_details_screen.dart';
+import 'screens/tasks/add_task_screen.dart';
 
 /// Configures and returns the central [GoRouter] for the application.
 GoRouter createRouter(
@@ -56,6 +57,11 @@ GoRouter createRouter(
         builder: (c, s) => EnquiryDetailsScreen(
           leadId: s.pathParameters['id'] ?? '',
         ),
+      ),
+      GoRoute(
+        name: AppRoutes.addTask,
+        path: AppRoutes.addTaskPath,
+        builder: (c, s) => const AddTaskScreen(),
       ),
     ],
   );

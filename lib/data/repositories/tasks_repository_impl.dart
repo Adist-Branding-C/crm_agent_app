@@ -60,4 +60,10 @@ class TasksRepositoryImpl implements TasksRepository {
     }
     return List.unmodifiable(_mockTasks);
   }
+
+  @override
+  Future<List<Task>> addTask(Task task) async {
+    _mockTasks.insert(0, task);
+    return List.unmodifiable(_mockTasks);
+  }
 }

@@ -27,6 +27,7 @@ class Task extends Equatable {
   final bool isCompleted;
   final bool isOverdue;
   final TaskPriority priority;
+  final String? description;
 
   /// Creates a constant [Task].
   const Task({
@@ -37,6 +38,7 @@ class Task extends Equatable {
     required this.isCompleted,
     required this.isOverdue,
     required this.priority,
+    this.description,
   });
 
   /// Copy constructor.
@@ -48,6 +50,7 @@ class Task extends Equatable {
     bool? isCompleted,
     bool? isOverdue,
     TaskPriority? priority,
+    String? description,
   }) {
     return Task(
       id: id ?? this.id,
@@ -57,9 +60,19 @@ class Task extends Equatable {
       isCompleted: isCompleted ?? this.isCompleted,
       isOverdue: isOverdue ?? this.isOverdue,
       priority: priority ?? this.priority,
+      description: description ?? this.description,
     );
   }
 
   @override
-  List<Object?> get props => [id, title, type, time, isCompleted, isOverdue, priority];
+  List<Object?> get props => [
+        id,
+        title,
+        type,
+        time,
+        isCompleted,
+        isOverdue,
+        priority,
+        description,
+      ];
 }

@@ -13,6 +13,7 @@ class AppRoutes {
   static const campaigns = 'campaigns';
   static const account = 'account';
   static const enquiryDetails = 'enquiryDetails';
+  static const addTask = 'addTask';
 
   static const splashPath = '/splash';
   static const loginPath = '/login';
@@ -25,4 +26,5 @@ class AppRoutes {
   static const campaignsPath = '/campaigns';
   static const accountPath = '/account';
   static const enquiryDetailsPath = '/enquiry-details/:id';
+  static const addTaskPath = '/add-task';
 }
