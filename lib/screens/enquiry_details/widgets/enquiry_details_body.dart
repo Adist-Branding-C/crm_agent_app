@@ -44,7 +44,16 @@ class _EnquiryDetailsBodyState extends State<EnquiryDetailsBody> {
                     activeTab: _activeTab,
                     onTabChanged: (val) => setState(() => _activeTab = val),
                   ),
-                  Expanded(child: _buildTabContent(state)),
+                  Expanded(
+                    child: IndexedStack(
+                      index: _activeTab,
+                      children: const [
+                        InfoTabView(),
+                        ActivitiesTabView(),
+                        NotesTabView(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               const FabMenu(),
@@ -64,18 +73,5 @@ class _EnquiryDetailsBodyState extends State<EnquiryDetailsBody> {
         return const SizedBox.shrink();
       },
     );
-  }
-
-  Widget _buildTabContent(EnquiryDetailsLoaded state) {
-    switch (_activeTab) {
-      case 0:
-        return InfoTabView(state: state);
-      case 1:
-        return ActivitiesTabView(activities: state.activities);
-      case 2:
-        return NotesTabView(notes: state.notes);
-      default:
-        return const SizedBox.shrink();
-    }
   }
 }

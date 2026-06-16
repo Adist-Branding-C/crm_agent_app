@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../../bloc/enquiry_details/enquiry_details_event.dart';
 import '../../../bloc/enquiry_details/enquiry_details_state.dart';
-import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme.dart';
 import 'info_item_tile.dart';
+import 'status_selector.dart';
 
 /// Renders the Info Tab containing all the descriptive fields of a lead.
 class InfoTabView extends StatelessWidget {
-  /// The loaded state holding details.
-  final EnquiryDetailsLoaded state;
-
   /// Creates a constant [InfoTabView].
-  const InfoTabView({super.key, required this.state});
+  const InfoTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<EnquiryDetailsBloc>().state
+        as EnquiryDetailsLoaded;
     final lead = state.lead;
+    const sourceFallback = 'Website';
+    const followUpFallback = 'Today, 5:30 PM';
+    const remarkFallback = 'Comparing with competitor. Needs pricing sheet.';
+
     return ListView(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 80),
       children: [
-        InfoItemTile(label: 'Enquiry Source', value: lead.leadSource?.label ?? 'Website'),
+        InfoItemTile(
+          label: 'Enquiry Source',
+          value: lead.leadSource?.label ?? sourceFallback,
+        ),
         InfoItemTile(label: 'Purpose', value: lead.source.label),
         InfoItemTile(
           label: 'Enquiry Status',
@@ -33,7 +38,11 @@ class InfoTabView extends StatelessWidget {
             ),
             child: Text(
               lead.status.label,
-              style: const TextStyle(color: Color(0xFFF97316), fontWeight: FontWeight.bold, fontSize: 11),
+              style: const TextStyle(
+                color: Color(0xFFF97316),
+                fontWeight: FontWeight.bold,
+                fontSize: 11,
+              ),
             ),
           ),
         ),
@@ -42,43 +51,25 @@ class InfoTabView extends StatelessWidget {
         InfoItemTile(label: 'Location', value: lead.location),
         InfoItemTile(
           label: 'Next Follow-up',
-          value: lead.nextFollowUp ?? 'Today, 5:30 PM',
+          value: lead.nextFollowUp ?? followUpFallback,
           valueColor: AppColors.primaryColor,
         ),
-        InfoItemTile(label: 'Remarks', value: lead.note ?? 'Comparing with competitor. Needs pricing sheet.'),
+        InfoItemTile(label: 'Remarks', value: lead.note ?? remarkFallback),
         const SizedBox(height: 16),
         OutlinedButton.icon(
-          onPressed: () => _showStatusSelector(context),
+          onPressed: () => showStatusSelector(context),
           icon: const Icon(Icons.sync, size: 18),
           label: const Text('Change Status'),
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.primaryColor,
             side: const BorderSide(color: AppColors.borderLight),
             padding: const EdgeInsets.symmetric(vertical: 14),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         ),
       ],
-    );
-  }
-
-  void _showStatusSelector(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (c) => SafeArea(
-        child: ListView(
-          shrinkWrap: true,
-          children: LeadStatus.values.map((status) {
-            return ListTile(
-              title: Text(status.label),
-              onTap: () {
-                context.read<EnquiryDetailsBloc>().add(ChangeEnquiryStatus(status));
-                Navigator.pop(c);
-              },
-            );
-          }).toList(),
-        ),
-      ),
     );
   }
 }

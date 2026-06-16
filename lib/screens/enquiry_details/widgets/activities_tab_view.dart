@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
+import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../../theme.dart';
 import '../../attendance/widgets/timeline_tile_marker.dart';
@@ -6,14 +9,14 @@ import 'activities_config.dart';
 
 /// Renders the Activities tab showing a vertical history timeline.
 class ActivitiesTabView extends StatelessWidget {
-  /// The list of activities to show.
-  final List<EnquiryActivity> activities;
-
   /// Creates a constant [ActivitiesTabView].
-  const ActivitiesTabView({super.key, required this.activities});
+  const ActivitiesTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<EnquiryDetailsBloc>().state as EnquiryDetailsLoaded;
+    final activities = state.activities;
+
     return ListView.builder(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 80),
       itemCount: activities.length,
@@ -54,7 +57,10 @@ class ActivitiesTabView extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     act.time,
-                    style: const TextStyle(fontSize: 11, color: AppColors.textMuted),
+                    style: const TextStyle(
+                      fontSize: 11,
+                      color: AppColors.textMuted,
+                    ),
                   ),
                 ],
               ),
@@ -65,4 +71,3 @@ class ActivitiesTabView extends StatelessWidget {
     );
   }
 }
-

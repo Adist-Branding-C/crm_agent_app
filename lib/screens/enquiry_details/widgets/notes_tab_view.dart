@@ -1,73 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../../bloc/enquiry_details/enquiry_details_event.dart';
+import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../../theme.dart';
+import 'note_input.dart';
 
 /// Renders the Notes tab containing notes history and a new note input field.
-class NotesTabView extends StatefulWidget {
-  /// The list of notes to show.
-  final List<EnquiryNote> notes;
-
+class NotesTabView extends StatelessWidget {
   /// Creates a constant [NotesTabView].
-  const NotesTabView({super.key, required this.notes});
-
-  @override
-  State<NotesTabView> createState() => _NotesTabViewState();
-}
-
-class _NotesTabViewState extends State<NotesTabView> {
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  const NotesTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<EnquiryDetailsBloc>().state as EnquiryDetailsLoaded;
+    final notes = state.notes;
+
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _controller,
-                  decoration: InputDecoration(
-                    hintText: 'Add your notes here...',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              IconButton(
-                onPressed: () {
-                  final text = _controller.text.trim();
-                  if (text.isNotEmpty) {
-                    context.read<EnquiryDetailsBloc>().add(AddEnquiryNote(text));
-                    _controller.clear();
-                  }
-                },
-                icon: const Icon(Icons.send, color: Colors.white),
-                style: IconButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  padding: const EdgeInsets.all(12),
-                ),
-              ),
-            ],
-          ),
-        ),
+        const NoteInput(),
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            itemCount: widget.notes.length,
+            itemCount: notes.length,
             itemBuilder: (context, index) {
-              final note = widget.notes[index];
+              final note = notes[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Column(
@@ -78,17 +35,30 @@ class _NotesTabViewState extends State<NotesTabView> {
                         children: [
                           TextSpan(
                             text: '${note.author}, ',
-                            style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.textDark, fontSize: 13),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textDark,
+                              fontSize: 13,
+                            ),
                           ),
                           TextSpan(
                             text: note.content,
-                            style: const TextStyle(color: AppColors.textDark, fontSize: 13),
+                            style: const TextStyle(
+                              color: AppColors.textDark,
+                              fontSize: 13,
+                            ),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text(note.time, style: const TextStyle(color: AppColors.textMuted, fontSize: 11)),
+                    Text(
+                      note.time,
+                      style: const TextStyle(
+                        color: AppColors.textMuted,
+                        fontSize: 11,
+                      ),
+                    ),
                   ],
                 ),
               );
