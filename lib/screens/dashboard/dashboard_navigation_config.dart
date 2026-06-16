@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../theme.dart';
 import '../leads/leads_screen.dart';
 import '../tasks/tasks_screen.dart';
+import '../search/search_screen.dart';
 import 'models/dashboard_navigation_item.dart';
 import 'widgets/dashboard_body.dart';
 
@@ -44,7 +44,7 @@ class DashboardNavigationConfig {
     const DashboardNavigationItem(
       label: 'Search',
       icon: Icon(Icons.search_rounded, size: 22),
-      bodyBuilder: _buildSearchPlaceholder,
+      bodyBuilder: _buildSearchScreen,
     ),
   ];
 
@@ -60,12 +60,7 @@ class DashboardNavigationConfig {
     return const TasksScreen();
   }
 
-  static Widget _buildSearchPlaceholder(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Tab 3 Placeholder',
-        style: TextStyle(color: AppColors.textMuted),
-      ),
-    );
+  static Widget _buildSearchScreen(BuildContext context) {
+    return const SearchScreen();
   }
 }

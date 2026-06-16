@@ -13,6 +13,7 @@ import 'data/repositories/leads_repository.dart';
 import 'data/repositories/leads_repository_impl.dart';
 import 'data/repositories/tasks_repository.dart';
 import 'data/repositories/tasks_repository_impl.dart';
+import 'data/repositories/spotlight_repository.dart';
 
 /// Builds the list of repository providers for the app.
 List<RepositoryProvider> buildRepositoryProviders({
@@ -44,6 +45,9 @@ List<RepositoryProvider> buildRepositoryProviders({
     ),
     RepositoryProvider<TasksRepository>(
       create: (_) => TasksRepositoryImpl(),
+    ),
+    RepositoryProvider<SpotlightRepository>(
+      create: (_) => SpotlightRepositoryImpl(),
     ),
     RepositoryProvider<AccountRepository>(
       create: (_) => AccountRepositoryImpl(),
