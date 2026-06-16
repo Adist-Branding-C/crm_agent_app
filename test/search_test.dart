@@ -1,6 +1,7 @@
 import 'package:crm_agent_app/main.dart';
 import 'package:crm_agent_app/screens/search/search_screen.dart';
 import 'package:crm_agent_app/screens/leads/widgets/lead_card.dart';
+import 'package:crm_agent_app/screens/tasks/widgets/task_checkbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,12 +27,17 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(SearchScreen), findsOneWidget);
-    expect(find.text('RECENT'), findsOneWidget);
-    expect(find.text('Rahul Menon'), findsOneWidget);
+    expect(find.text('SUGGESTED LEADS'), findsOneWidget);
+
+    // Toggle Task checkbox
+    final checkbox = find.byType(TaskCheckbox).first;
+    expect(tester.widget<TaskCheckbox>(checkbox).isChecked, isFalse);
+    await tester.tap(checkbox);
+    await tester.pumpAndSettle();
+    expect(tester.widget<TaskCheckbox>(checkbox).isChecked, isTrue);
 
     // Search query "rahu"
     await tester.enterText(find.byType(TextField), 'rahu');
-    // Debounce wait
     await tester.pump(const Duration(milliseconds: 400));
     await tester.pumpAndSettle();
 
@@ -47,5 +53,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('RECENT'), findsOneWidget);
+    expect(find.text('rahu'), findsOneWidget);
   });
 }

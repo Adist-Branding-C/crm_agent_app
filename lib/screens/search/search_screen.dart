@@ -32,7 +32,7 @@ class _SearchScreenState extends State<SearchScreen> {
         tasksRepo: c.read<TasksRepository>(),
         spotlightRepo: c.read<SpotlightRepository>(),
         followUpsRepo: c.read<FollowUpsRepository>(),
-      ),
+      )..add(const InitializeSearch()),
       child: PageScaffold(
         padding: EdgeInsets.zero,
         child: SearchContent(controller: _controller),

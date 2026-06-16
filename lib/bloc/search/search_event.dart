@@ -8,6 +8,11 @@ abstract class SearchEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+/// Event dispatched to initialize or reset search suggestions.
+class InitializeSearch extends SearchEvent {
+  const InitializeSearch();
+}
+
 /// Event dispatched when the search query text input changes.
 class SearchQueryChanged extends SearchEvent {
   final String query;

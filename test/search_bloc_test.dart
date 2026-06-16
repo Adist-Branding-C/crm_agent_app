@@ -9,69 +9,67 @@ import 'package:crm_agent_app/data/datasources/leads_datasource.dart';
 void main() {
   group('SearchBloc Unit Tests', () {
     late SearchBloc bloc;
-
-    setUp(() {
-      bloc = SearchBloc(
-        leadsRepo: LeadsRepositoryImpl(leadsDataSource: LeadsDataSourceImpl()),
-        tasksRepo: TasksRepositoryImpl(),
-        spotlightRepo: SpotlightRepositoryImpl(),
-        followUpsRepo: FollowUpsRepositoryImpl(),
-      );
-    });
-
+    setUp(() => bloc = SearchBloc(
+      leadsRepo: LeadsRepositoryImpl(leadsDataSource: LeadsDataSourceImpl()),
+      tasksRepo: TasksRepositoryImpl(),
+      spotlightRepo: SpotlightRepositoryImpl(),
+      followUpsRepo: FollowUpsRepositoryImpl(),
+    ));
     tearDown(() => bloc.close());
 
-    test('initial state is SearchInitial with default recent queries', () {
+    test('initial state and loading suggestions', () {
       expect(bloc.state, const SearchInitial());
-      expect((bloc.state as SearchInitial).recentQueries.length, 3);
+      expect((bloc.state as SearchInitial).recentQueries, isEmpty);
+      expectLater(bloc.stream, emitsInOrder([
+        const SearchLoading(),
+        isA<SearchInitial>()
+            .having((s) => s.suggestedLeads.length, 'leads', 2)
+            .having((s) => s.suggestedTasks.length, 'tasks', 2)
+            .having((s) => s.suggestedFollowUps.length, 'followUps', 2),
+      ]));
+      bloc.add(const InitializeSearch());
     });
 
-    test('SearchQueryChanged with "Vishnu" matches all 4 domains', () {
-      expectLater(
-        bloc.stream,
-        emitsInOrder([
-          const SearchLoading(),
-          isA<SearchLoaded>().having((s) {
-            final groups = s.groupedResults;
-            return groups['Leads']?.length == 1 &&
-                groups['Tasks']?.length == 1 &&
-                groups['Spotlights']?.length == 1 &&
-                groups['Follow-ups']?.length == 1;
-          }, 'matches all 4 domains', true),
-        ]),
-      );
+    test('SearchQueryChanged results matching and empty results', () async {
+      expectLater(bloc.stream, emitsInOrder([
+        const SearchLoading(),
+        isA<SearchLoaded>().having((s) => s.groupedResults['Leads']?.length == 1 &&
+            s.groupedResults['Tasks']?.length == 1 &&
+            s.groupedResults['Spotlights']?.length == 1 &&
+            s.groupedResults['Follow-ups']?.length == 1, 'matches all 4 domains', true),
+        const SearchLoading(),
+        isA<SearchLoaded>().having((s) => s.results.any((r) => r.title.contains('Vishnu')), 'partial match', true),
+        const SearchLoading(),
+        isA<SearchLoaded>().having((s) => s.results.isEmpty, 'empty results', true),
+      ]));
       bloc.add(const SearchQueryChanged('Vishnu'));
-    });
-
-    test('SearchQueryChanged with "V" matches all 4 domains (partial search)', () {
-      expectLater(
-        bloc.stream,
-        emitsInOrder([
-          const SearchLoading(),
-          isA<SearchLoaded>().having((s) => s.results.any((r) => r.title.contains('Vishnu')), 'partial match found', true),
-        ]),
-      );
+      await bloc.stream.firstWhere((s) => s is SearchLoaded);
       bloc.add(const SearchQueryChanged('V'));
-    });
-
-    test('SearchQueryChanged with empty string resets to SearchInitial', () {
-      expectLater(bloc.stream, emitsInOrder([const SearchInitial()]));
-      bloc.add(const SearchQueryChanged(''));
-    });
-
-    test('SearchQueryChanged with non-existent query yields empty results', () {
-      expectLater(
-        bloc.stream,
-        emitsInOrder([
-          const SearchLoading(),
-          isA<SearchLoaded>().having((s) => s.results.isEmpty, 'empty results', true),
-        ]),
-      );
+      await bloc.stream.firstWhere((s) => s is SearchLoaded);
       bloc.add(const SearchQueryChanged('xyz123abc'));
     });
 
-    test('ClearSearch resets to SearchInitial', () {
-      expectLater(bloc.stream, emitsInOrder([const SearchInitial()]));
+    test('empty query, clear search, and 3-item chronological history limit', () async {
+      expectLater(bloc.stream, emitsInOrder([
+        const SearchLoading(), isA<SearchInitial>(),
+        const SearchLoading(), isA<SearchInitial>(),
+        const SearchLoading(), isA<SearchLoaded>(),
+        const SearchLoading(), isA<SearchLoaded>(),
+        const SearchLoading(), isA<SearchLoaded>(),
+        const SearchLoading(), isA<SearchLoaded>(),
+        const SearchLoading(), isA<SearchLoaded>(),
+        const SearchLoading(), isA<SearchLoaded>(),
+        const SearchLoading(),
+        isA<SearchInitial>().having((s) => s.recentQueries, 'history', ['b', 'e', 'd']),
+      ]));
+      bloc.add(const SearchQueryChanged(''));
+      await bloc.stream.firstWhere((s) => s is SearchInitial);
+      bloc.add(const ClearSearch());
+      await bloc.stream.firstWhere((s) => s is SearchInitial);
+      for (final q in ['a', 'b', 'c', 'd', 'e', 'b']) {
+        bloc.add(SearchQueryChanged(q));
+        await bloc.stream.firstWhere((s) => s is SearchLoaded);
+      }
       bloc.add(const ClearSearch());
     });
   });

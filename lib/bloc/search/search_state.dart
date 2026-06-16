@@ -11,18 +11,25 @@ abstract class SearchState extends Equatable {
 /// State representing search page with no search query typed yet.
 class SearchInitial extends SearchState {
   final List<String> recentQueries;
+  final List<Lead> suggestedLeads;
+  final List<Task> suggestedTasks;
+  final List<FollowUp> suggestedFollowUps;
 
-  /// Creates a constant [SearchInitial] state with default recent queries.
+  /// Creates a constant [SearchInitial] state.
   const SearchInitial({
-    this.recentQueries = const [
-      'Rahul Menon',
-      'Hot leads',
-      'Follow-ups today',
-    ],
+    this.recentQueries = const [],
+    this.suggestedLeads = const [],
+    this.suggestedTasks = const [],
+    this.suggestedFollowUps = const [],
   });
 
   @override
-  List<Object?> get props => [recentQueries];
+  List<Object?> get props => [
+        recentQueries,
+        suggestedLeads,
+        suggestedTasks,
+        suggestedFollowUps,
+      ];
 }
 
 /// State representing active search execution.

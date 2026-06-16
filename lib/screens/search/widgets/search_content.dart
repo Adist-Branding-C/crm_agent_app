@@ -6,6 +6,7 @@ import '../../../widgets/screen_header.dart';
 import 'recent_section.dart';
 import 'search_field.dart';
 import 'search_results_list.dart';
+import 'search_suggestions.dart';
 
 /// Renders the search screen content containing header, input field, and list.
 class SearchContent extends StatelessWidget {
@@ -47,15 +48,19 @@ class SearchContent extends StatelessWidget {
                   ),
                 );
               }
-              final recent =
-                  state is SearchInitial ? state.recentQueries : const <String>[];
-              return RecentSection(
-                queries: recent,
-                onTap: (q) {
-                  controller.text = q;
-                  context.read<SearchBloc>().add(SearchQueryChanged(q));
-                },
-              );
+              if (state is SearchInitial) {
+                return SearchSuggestions(
+                  recentQueries: state.recentQueries,
+                  onTapRecent: (q) {
+                    controller.text = q;
+                    context.read<SearchBloc>().add(SearchQueryChanged(q));
+                  },
+                  leads: state.suggestedLeads,
+                  tasks: state.suggestedTasks,
+                  followUps: state.suggestedFollowUps,
+                );
+              }
+              return const SizedBox.shrink();
             },
           ),
         ),
