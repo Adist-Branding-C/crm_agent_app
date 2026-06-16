@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/tasks_repository.dart';
 import 'tasks_models.dart';
 
+export 'tasks_selectors.dart';
+
 part 'tasks_event.dart';
 part 'tasks_state.dart';
 

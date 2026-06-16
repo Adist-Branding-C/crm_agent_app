@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/deals_repository.dart';
 import 'deals_models.dart';
 
+export 'deals_selectors.dart';
+
 part 'deals_event.dart';
 part 'deals_state.dart';
 

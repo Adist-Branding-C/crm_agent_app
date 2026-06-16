@@ -24,17 +24,7 @@ class DealsLoaded extends DealsState {
 
   const DealsLoaded({required this.deals});
 
-  /// The sum of all deals in the pipeline.
-  double get totalPipelineValue {
-    return deals.fold(0.0, (sum, deal) => sum + deal.amount);
-  }
 
-  /// The sum of won deals.
-  double get wonValue {
-    return deals
-        .where((d) => d.stage == DealStage.won)
-        .fold(0.0, (sum, deal) => sum + deal.amount);
-  }
 
   @override
   List<Object?> get props => [deals];
