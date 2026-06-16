@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_state.dart';
-import '../../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../../theme.dart';
+
 import 'note_input.dart';
 
 /// Renders the Notes tab containing notes history and a new note input field.
