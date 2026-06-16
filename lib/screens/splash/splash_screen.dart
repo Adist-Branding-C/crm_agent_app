@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/splash/splash_bloc.dart';
+import '../../data/auth_state_notifier.dart';
+import '../../data/repositories/auth_repository.dart';
 import '../../router/app_routes.dart';
 import '../../theme.dart';
 import 'widgets/splash_animator.dart';
@@ -19,7 +21,19 @@ class SplashScreen extends StatelessWidget {
       child: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is SplashNavigateToLogin) {
-            context.goNamed(AppRoutes.login);
+            final authRepo = context.read<AuthRepository>();
+            if (authRepo.isInitialized) {
+              context.goNamed(AppRoutes.login);
+            } else {
+              final notifier = context.read<AuthStateNotifier>();
+              void listener() {
+                if (authRepo.isInitialized) {
+                  notifier.removeListener(listener);
+                  context.goNamed(AppRoutes.login);
+                }
+              }
+              notifier.addListener(listener);
+            }
           }
         },
         child: Scaffold(

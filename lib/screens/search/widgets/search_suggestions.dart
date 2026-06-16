@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../bloc/tasks/tasks_models.dart';
-import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
-import '../../../theme.dart';
 import '../../leads/widgets/lead_card.dart';
-import '../../tasks/widgets/task_card.dart';
 import '../../follow_ups/widgets/follow_up_item_card.dart';
 import 'recent_section.dart';
+import 'search_section_header.dart';
+import 'suggested_tasks_list.dart';
 
+/// Renders the sectioned list of suggested items when search is empty or focused.
 class SearchSuggestions extends StatelessWidget {
   final List<String> recentQueries;
   final ValueChanged<String> onTapRecent;
@@ -36,47 +35,24 @@ class SearchSuggestions extends StatelessWidget {
       ));
     }
     if (leads.isNotEmpty) {
-      list.add(_header('SUGGESTED LEADS'));
+      list.add(const SearchSectionHeader(title: 'SUGGESTED LEADS'));
       list.addAll(leads.map((l) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
         child: LeadCard(lead: l),
       )));
     }
     if (tasks.isNotEmpty) {
-      list.add(_header('SUGGESTED TASKS'));
-      list.add(
-        BlocBuilder<TasksBloc, TasksState>(
-          builder: (context, tasksState) {
-            final resolved = tasksState is TasksLoaded
-                ? tasks.map((t) => tasksState.allTasks.firstWhere((item) => item.id == t.id, orElse: () => t)).toList()
-                : tasks;
-            return Column(
-              children: resolved.map((t) => TaskCard(task: t)).toList(),
-            );
-          },
-        ),
-      );
+      list.add(const SearchSectionHeader(title: 'SUGGESTED TASKS'));
+      list.add(SuggestedTasksList(tasks: tasks));
     }
     if (followUps.isNotEmpty) {
-      list.add(_header('SUGGESTED FOLLOW-UPS'));
+      list.add(const SearchSectionHeader(title: 'SUGGESTED FOLLOW-UPS'));
       list.addAll(followUps.map((f) => FollowUpItemCard(call: f, onTap: () {})));
     }
     return ListView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.only(bottom: 24),
       children: list,
-    );
-  }
-
-  Widget _header(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
-      child: Text(title, style: const TextStyle(
-        color: AppColors.textMuted,
-        fontWeight: FontWeight.bold,
-        fontSize: 12,
-        letterSpacing: 0.8,
-      )),
     );
   }
 }

@@ -4,6 +4,7 @@ import '../../../../widgets/custom_card.dart';
 import '../../../../widgets/user_avatar.dart';
 import '../../../../theme.dart';
 import '../../../../utils/currency_formatter.dart';
+import 'deals_presentation_extensions.dart';
 
 /// Renders a Deal card tailored for the Pipeline view.
 class DealPipelineCard extends StatelessWidget {

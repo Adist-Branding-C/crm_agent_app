@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_bloc.dart';
-import '../../../bloc/search/search_result.dart';
-import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../theme.dart';
-import '../../follow_ups/widgets/follow_up_item_card.dart';
-import '../../leads/widgets/lead_card.dart';
-import '../../tasks/widgets/task_card.dart';
 import 'no_results_view.dart';
-import 'spotlight_card.dart';
+import 'search_result_tile.dart';
 
 /// Renders the list of search results categorized by Leads, Tasks, and Spotlights.
 class SearchResultsList extends StatelessWidget {
@@ -47,7 +41,7 @@ class SearchResultsList extends StatelessWidget {
                 letterSpacing: 0.8)),
       ));
 
-      widgets.addAll(items.map((item) => _buildResultTile(context, item)));
+      widgets.addAll(items.map((item) => SearchResultTile(item: item)));
     }
 
     return ListView(
@@ -55,27 +49,5 @@ class SearchResultsList extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 24),
       children: widgets,
     );
-  }
-
-  Widget _buildResultTile(BuildContext context, SearchResult item) {
-    return switch (item) {
-      LeadSearchResult(lead: final l) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-          child: LeadCard(lead: l)),
-      TaskSearchResult(task: final t) => BlocBuilder<TasksBloc, TasksState>(
-          builder: (context, tasksState) {
-            final resolved = tasksState is TasksLoaded
-                ? tasksState.allTasks.firstWhere((item) => item.id == t.id, orElse: () => t)
-                : t;
-            return TaskCard(task: resolved);
-          },
-        ),
-      SpotlightSearchResult(spotlight: final s) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-          child: SpotlightCard(spotlight: s)),
-      FollowUpSearchResult(followUp: final f) =>
-        FollowUpItemCard(call: f, onTap: () {}),
-      _ => const SizedBox.shrink(),
-    };
   }
 }

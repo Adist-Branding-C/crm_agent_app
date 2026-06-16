@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
+import 'deals_presentation_extensions.dart';
 
 /// Renders the stage badge for a deal.
 class DealStageBadge extends StatelessWidget {

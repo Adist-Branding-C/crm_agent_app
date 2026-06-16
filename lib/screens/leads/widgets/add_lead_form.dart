@@ -18,18 +18,6 @@ class _AddLeadFormState extends State<AddLeadForm> {
   final _follow = TextEditingController(), _note = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    final b = context.read<AddLeadBloc>();
-    _name.addListener(() => b.add(NameChanged(_name.text)));
-    _phone.addListener(() => b.add(PhoneChanged(_phone.text)));
-    _email.addListener(() => b.add(EmailChanged(_email.text)));
-    _loc.addListener(() => b.add(LocationChanged(_loc.text)));
-    _follow.addListener(() => b.add(FollowUpChanged(_follow.text)));
-    _note.addListener(() => b.add(NoteChanged(_note.text)));
-  }
-
-  @override
   void dispose() {
     for (final c in [_name, _phone, _email, _loc, _follow, _note]) {
       c.dispose();

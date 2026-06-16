@@ -3,6 +3,7 @@ import '../../../../bloc/deals/deals_models.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../theme.dart';
 import 'deal_list_card_helpers.dart';
+import 'deals_presentation_extensions.dart';
 
 /// Renders a Deal card tailored for the List view.
 class DealListCard extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
+import 'campaign_presentation_extensions.dart';
 
 /// Renders the styled channel icon for a campaign.
 class CampaignIcon extends StatelessWidget {

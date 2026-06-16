@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'app_providers.dart';
-import 'bloc/attendance/attendance_bloc.dart';
-import 'bloc/account/account_bloc.dart';
-import 'bloc/tasks/tasks_bloc.dart';
-import 'bloc/notifications/notifications_bloc.dart';
+import 'app_bloc_providers.dart';
 import 'bloc/call_log/call_log_bloc.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/datasources/auth_datasource.dart';
@@ -50,13 +47,7 @@ class _MyAppState extends State<MyApp> {
       child: ChangeNotifierProvider<AuthStateNotifier>.value(
         value: _authStateNotifier,
         child: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (c) => AttendanceBloc(attendanceRepository: c.read())..add(const LoadAttendance())),
-            BlocProvider(create: (c) => AccountBloc(accountRepository: c.read(), authRepository: c.read())..add(const LoadAccount())),
-            BlocProvider(create: (c) => TasksBloc(tasksRepository: c.read())..add(const LoadTasks())),
-            BlocProvider(create: (c) => NotificationsBloc(notificationsRepository: c.read())..add(const LoadNotifications())),
-            BlocProvider(create: (c) => CallLogBloc(leadsRepository: c.read())),
-          ],
+          providers: buildBlocProviders(),
           child: BlocListener<CallLogBloc, CallLogState>(
             listener: (context, state) {
               if (state is CallLogNavigationPending) _router.pushNamed(AppRoutes.callLog, extra: state.lead);

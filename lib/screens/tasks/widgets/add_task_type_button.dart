@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../theme.dart';
+import 'task_type_presentation_extensions.dart';
 
 /// Renders a single selectable button for a [TaskType].
 class TaskTypeButton extends StatelessWidget {

@@ -1,13 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/tasks/tasks_bloc.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/repositories/auth_repository.dart';
 import 'router/app_routes.dart';
 import 'screens/splash/splash_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/dashboard/dashboard_navigation_config.dart';
-import 'screens/dashboard/dashboard_screen.dart';
+import 'screens/dashboard/widgets/dashboard_route_provider.dart';
 import 'screens/deals/deals_screen.dart';
 import 'screens/analytics/analytics_screen.dart';
 import 'screens/attendance/attendance_screen.dart';
@@ -52,10 +50,8 @@ GoRouter createRouter(
         builder: (context, state) {
           final tab = state.uri.queryParameters['tab'];
           final idx = DashboardNavigationConfig.tabRegistry[tab] ?? 0;
-          if (state.uri.queryParameters['filter'] == 'overdue') {
-            context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
-          }
-          return DashboardScreen(initialIndex: idx);
+          final filter = state.uri.queryParameters['filter'];
+          return DashboardRouteProvider(initialIndex: idx, initialFilter: filter);
         },
       ),
       GoRoute(name: AppRoutes.addLead, path: AppRoutes.addLeadPath, builder: (c, s) => const AddLeadScreen()),

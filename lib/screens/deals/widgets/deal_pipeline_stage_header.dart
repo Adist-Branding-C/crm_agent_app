@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
 import '../../../../theme.dart';
 import '../../../../utils/currency_formatter.dart';
+import 'deals_presentation_extensions.dart';
 
 /// Header for a single stage column in the Deals pipeline board.
 class DealPipelineStageHeader extends StatelessWidget {

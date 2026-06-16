@@ -1,4 +1,3 @@
-import 'package:crm_agent_app/main.dart';
 import 'package:crm_agent_app/screens/dashboard/dashboard_screen.dart';
 import 'package:crm_agent_app/widgets/call_button.dart';
 import 'package:crm_agent_app/screens/dashboard/widgets/follow_ups_list.dart';
@@ -7,25 +6,13 @@ import 'package:crm_agent_app/screens/follow_ups/widgets/follow_up_item_card.dar
 import 'package:crm_agent_app/screens/enquiry_details/enquiry_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'helpers/test_auth_helpers.dart';
 
 void main() {
   testWidgets(
     'Follow-ups integration, layout, call and back navigation test',
     (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-      await tester.pump(const Duration(seconds: 3));
-      await tester.pumpAndSettle();
-
-      await tester.enterText(
-        find.bySemanticsLabel('Phone Number Input Field'),
-        '9876543210',
-      );
-      await tester.enterText(
-        find.bySemanticsLabel('Password Input Field'),
-        'secure123',
-      );
-      await tester.tap(find.text('Sign In'));
-      await tester.pumpAndSettle();
+      await signInMockUser(tester);
       expect(find.byType(DashboardScreen), findsOneWidget);
 
       await tester.tap(
@@ -35,17 +22,14 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-
       await tester.pump(const Duration(milliseconds: 300));
       await tester.pumpAndSettle();
 
       expect(find.byType(FollowUpsScreen), findsOneWidget);
       expect(find.text('Follow-ups'), findsOneWidget);
       expect(find.text('5 due today'), findsOneWidget);
-
       expect(find.text('Overdue'), findsOneWidget);
       expect(find.text('Due Today'), findsOneWidget);
-
       expect(find.text('Vishnu Prasad'), findsOneWidget);
       expect(find.text('Rahul Menon'), findsOneWidget);
 
@@ -82,27 +66,12 @@ void main() {
   testWidgets(
     'Dashboard follow-up card name click navigates to Lead Enquiry Details',
     (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-      await tester.pump(const Duration(seconds: 3));
-      await tester.pumpAndSettle();
-
-      await tester.enterText(
-        find.bySemanticsLabel('Phone Number Input Field'),
-        '9876543210',
-      );
-      await tester.enterText(
-        find.bySemanticsLabel('Password Input Field'),
-        'secure123',
-      );
-      await tester.tap(find.text('Sign In'));
-      await tester.pumpAndSettle();
-
+      await signInMockUser(tester);
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pumpAndSettle();
 
       await tester.tap(find.text('Call back Rahul Menon'));
       await tester.pumpAndSettle();
-
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pumpAndSettle();
 

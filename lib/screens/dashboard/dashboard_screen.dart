@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/dashboard/dashboard_bloc.dart';
 import '../../bloc/call_log/call_log_bloc.dart';
+import '../../bloc/tasks/tasks_bloc.dart';
 import '../../theme.dart';
 import 'dashboard_navigation_config.dart';
 import 'models/dashboard_navigation_item.dart';
@@ -11,11 +12,13 @@ import 'widgets/dashboard_nav_bar.dart';
 class DashboardScreen extends StatefulWidget {
   final List<DashboardNavigationItem>? navigationItems;
   final int initialIndex;
+  final String? initialFilter;
 
   const DashboardScreen({
     super.key,
     this.navigationItems,
     this.initialIndex = 0,
+    this.initialFilter,
   });
 
   @override
@@ -31,8 +34,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
     super.initState();
     _navIndex = widget.initialIndex;
     _items = widget.navigationItems ?? DashboardNavigationConfig.items;
+    if (widget.initialFilter == 'overdue') {
+      context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
+    }
   }
-
   @override
   void didUpdateWidget(covariant DashboardScreen oldWidget) {
     super.didUpdateWidget(oldWidget);

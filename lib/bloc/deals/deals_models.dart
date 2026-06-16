@@ -1,20 +1,17 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import '../../theme.dart';
 
 /// The stages a Deal can progress through.
 enum DealStage {
-  newStage('New', AppColors.info, 0.2),
-  qualified('Qualified', AppColors.accent, 0.4),
-  proposal('Proposal', AppColors.warning, 0.6),
-  negotiation('Negotiation', AppColors.warningText, 0.8),
-  won('Won', AppColors.success, 1.0);
+  newStage('New', 0.2),
+  qualified('Qualified', 0.4),
+  proposal('Proposal', 0.6),
+  negotiation('Negotiation', 0.8),
+  won('Won', 1.0);
 
   final String label;
-  final Color color;
   final double progress;
 
-  const DealStage(this.label, this.color, this.progress);
+  const DealStage(this.label, this.progress);
 }
 
 /// Represents a single Sales Deal in the pipeline.
@@ -37,16 +34,14 @@ class Deal extends Equatable {
     this.ownerInitials = 'AN',
   });
 
-
-
   @override
   List<Object?> get props => [
-    id,
-    title,
-    clientName,
-    amount,
-    stage,
-    closeDate,
-    ownerInitials,
-  ];
+        id,
+        title,
+        clientName,
+        amount,
+        stage,
+        closeDate,
+        ownerInitials,
+      ];
 }

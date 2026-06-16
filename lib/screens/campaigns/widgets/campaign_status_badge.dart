@@ -1,6 +1,7 @@
 import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
+import 'campaign_presentation_extensions.dart';
 
 /// Renders either the completion percentage or the 'Done' status badge.
 class CampaignStatusBadge extends StatelessWidget {
