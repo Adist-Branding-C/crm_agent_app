@@ -59,19 +59,14 @@ class AddLeadContactFields extends StatelessWidget {
       child: Column(
         children: [
           _NamePhoneFields(
-            nameController: nameController,
-            phoneController: phoneController,
-            nameError: nameError,
-            phoneError: phoneError,
-            onNameChanged: onNameChanged,
-            onPhoneChanged: onPhoneChanged,
+            nameController: nameController, phoneController: phoneController,
+            nameError: nameError, phoneError: phoneError,
+            onNameChanged: onNameChanged, onPhoneChanged: onPhoneChanged,
           ),
           const SizedBox(height: 16),
           _EmailLocationFields(
-            emailController: emailController,
-            locationController: locationController,
-            emailError: emailError,
-            onEmailChanged: onEmailChanged,
+            emailController: emailController, locationController: locationController,
+            emailError: emailError, onEmailChanged: onEmailChanged,
           ),
         ],
       ),

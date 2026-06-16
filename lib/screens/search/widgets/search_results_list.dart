@@ -25,34 +25,25 @@ class SearchResultsList extends StatelessWidget {
     final widgets = <Widget>[];
     final totalCount = state.results.length;
 
-    widgets.add(
-      Padding(
-        padding: const EdgeInsets.only(left: 24, top: 12, bottom: 8),
-        child: Text(
-          '$totalCount result${totalCount == 1 ? "" : "s"}',
-          style: const TextStyle(color: AppColors.textMuted, fontSize: 13),
-        ),
-      ),
-    );
+    widgets.add(Padding(
+      padding: const EdgeInsets.only(left: 24, top: 12, bottom: 8),
+      child: Text('$totalCount result${totalCount == 1 ? "" : "s"}',
+          style: const TextStyle(color: AppColors.textMuted, fontSize: 13)),
+    ));
 
     for (final category in categoriesOrder) {
       final items = grouped[category];
       if (items == null || items.isEmpty) continue;
 
-      widgets.add(
-        Padding(
-          padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
-          child: Text(
-            category.toUpperCase(),
+      widgets.add(Padding(
+        padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
+        child: Text(category.toUpperCase(),
             style: const TextStyle(
-              color: AppColors.textMuted,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-              letterSpacing: 0.8,
-            ),
-          ),
-        ),
-      );
+                color: AppColors.textMuted,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+                letterSpacing: 0.8)),
+      ));
 
       widgets.addAll(items.map((item) => _buildResultTile(context, item)));
     }
@@ -68,17 +59,13 @@ class SearchResultsList extends StatelessWidget {
     return switch (item) {
       LeadSearchResult(lead: final l) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-          child: LeadCard(lead: l),
-        ),
+          child: LeadCard(lead: l)),
       TaskSearchResult(task: final t) => TaskCard(task: t),
       SpotlightSearchResult(spotlight: final s) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-          child: SpotlightCard(spotlight: s),
-        ),
-      FollowUpSearchResult(followUp: final f) => FollowUpItemCard(
-          call: f,
-          onTap: () {},
-        ),
+          child: SpotlightCard(spotlight: s)),
+      FollowUpSearchResult(followUp: final f) =>
+        FollowUpItemCard(call: f, onTap: () {}),
       _ => const SizedBox.shrink(),
     };
   }

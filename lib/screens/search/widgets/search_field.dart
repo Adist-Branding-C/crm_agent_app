@@ -38,9 +38,7 @@ class _SearchFieldState extends State<SearchField> {
 
   void _onTextChanged() {
     final text = widget.controller.text;
-    if (_showClear != text.isNotEmpty) {
-      setState(() => _showClear = text.isNotEmpty);
-    }
+    if (_showClear != text.isNotEmpty) setState(() => _showClear = text.isNotEmpty);
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 300), () {
       if (mounted) widget.onChanged(text);

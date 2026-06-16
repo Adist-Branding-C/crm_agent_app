@@ -21,48 +21,18 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
 
   /// Initializes the BLoC with [AddLeadState].
   AddLeadBloc({required this.leadsRepository}) : super(const AddLeadState()) {
-    on<NameChanged>(_onNameChanged);
-    on<PhoneChanged>(_onPhoneChanged);
-    on<EmailChanged>(_onEmailChanged);
-    on<SourceChanged>(_onSourceChanged);
-    on<PurposeChanged>(_onPurposeChanged);
-    on<CategoryChanged>(_onCategoryChanged);
-    on<StatusChanged>(_onStatusChanged);
-    on<LocationChanged>(_onLocationChanged);
-    on<FollowUpChanged>(_onFollowUpChanged);
-    on<NoteChanged>(_onNoteChanged);
+    on<NameChanged>((ev, emit) => emit(state.copyWith(nameInput: LeadName.dirty(ev.name))));
+    on<PhoneChanged>((ev, emit) => emit(state.copyWith(phoneInput: LeadPhone.dirty(ev.phone))));
+    on<EmailChanged>((ev, emit) => emit(state.copyWith(emailInput: LeadEmail.dirty(ev.email))));
+    on<SourceChanged>((ev, emit) => emit(state.copyWith(source: ev.source)));
+    on<PurposeChanged>((ev, emit) => emit(state.copyWith(purpose: ev.purpose)));
+    on<CategoryChanged>((ev, emit) => emit(state.copyWith(category: ev.category)));
+    on<StatusChanged>((ev, emit) => emit(state.copyWith(status: ev.status)));
+    on<LocationChanged>((ev, emit) => emit(state.copyWith(location: ev.location)));
+    on<FollowUpChanged>((ev, emit) => emit(state.copyWith(nextFollowUp: () => ev.followUp)));
+    on<NoteChanged>((ev, emit) => emit(state.copyWith(note: () => ev.note)));
     on<SubmitForm>(_onSubmitForm);
   }
-
-  void _onNameChanged(NameChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(nameInput: LeadName.dirty(ev.name)));
-
-  void _onPhoneChanged(PhoneChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(phoneInput: LeadPhone.dirty(ev.phone)));
-
-  void _onEmailChanged(EmailChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(emailInput: LeadEmail.dirty(ev.email)));
-
-  void _onSourceChanged(SourceChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(source: ev.source));
-
-  void _onPurposeChanged(PurposeChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(purpose: ev.purpose));
-
-  void _onCategoryChanged(CategoryChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(category: ev.category));
-
-  void _onStatusChanged(StatusChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(status: ev.status));
-
-  void _onLocationChanged(LocationChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(location: ev.location));
-
-  void _onFollowUpChanged(FollowUpChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(nextFollowUp: () => ev.followUp));
-
-  void _onNoteChanged(NoteChanged ev, Emitter<AddLeadState> emit) =>
-      emit(state.copyWith(note: () => ev.note));
 
   Future<void> _onSubmitForm(SubmitForm ev, Emitter<AddLeadState> emit) async {
     if (!state.isValid) return;

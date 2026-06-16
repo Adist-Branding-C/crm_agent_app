@@ -20,13 +20,13 @@ class _AddLeadFormState extends State<AddLeadForm> {
   @override
   void initState() {
     super.initState();
-    final bloc = context.read<AddLeadBloc>();
-    _name.addListener(() => bloc.add(NameChanged(_name.text)));
-    _phone.addListener(() => bloc.add(PhoneChanged(_phone.text)));
-    _email.addListener(() => bloc.add(EmailChanged(_email.text)));
-    _loc.addListener(() => bloc.add(LocationChanged(_loc.text)));
-    _follow.addListener(() => bloc.add(FollowUpChanged(_follow.text)));
-    _note.addListener(() => bloc.add(NoteChanged(_note.text)));
+    final b = context.read<AddLeadBloc>();
+    _name.addListener(() => b.add(NameChanged(_name.text)));
+    _phone.addListener(() => b.add(PhoneChanged(_phone.text)));
+    _email.addListener(() => b.add(EmailChanged(_email.text)));
+    _loc.addListener(() => b.add(LocationChanged(_loc.text)));
+    _follow.addListener(() => b.add(FollowUpChanged(_follow.text)));
+    _note.addListener(() => b.add(NoteChanged(_note.text)));
   }
 
   @override
@@ -46,6 +46,7 @@ class _AddLeadFormState extends State<AddLeadForm> {
 
   @override
   Widget build(BuildContext context) {
+    final b = context.read<AddLeadBloc>();
     return BlocConsumer<AddLeadBloc, AddLeadState>(
       listener: _onState,
       builder: (context, state) => Column(
@@ -57,10 +58,10 @@ class _AddLeadFormState extends State<AddLeadForm> {
               followUpController: _follow, noteController: _note,
               source: state.source, purpose: state.purpose,
               category: state.category, status: state.status, state: state,
-              onSourceChanged: (v) => context.read<AddLeadBloc>().add(SourceChanged(v)),
-              onPurposeChanged: (v) => context.read<AddLeadBloc>().add(PurposeChanged(v)),
-              onCategoryChanged: (v) => context.read<AddLeadBloc>().add(CategoryChanged(v)),
-              onStatusChanged: (v) => context.read<AddLeadBloc>().add(StatusChanged(v)),
+              onSourceChanged: (v) => b.add(SourceChanged(v)),
+              onPurposeChanged: (v) => b.add(PurposeChanged(v)),
+              onCategoryChanged: (v) => b.add(CategoryChanged(v)),
+              onStatusChanged: (v) => b.add(StatusChanged(v)),
             ),
           ),
           Padding(
@@ -68,9 +69,7 @@ class _AddLeadFormState extends State<AddLeadForm> {
             child: CustomButton(
               text: 'Save Lead',
               isLoading: state.isSubmitting,
-              onPressed: state.isValid
-                  ? () => context.read<AddLeadBloc>().add(const SubmitForm())
-                  : null,
+              onPressed: state.isValid ? () => b.add(const SubmitForm()) : null,
             ),
           ),
         ],
