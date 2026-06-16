@@ -120,3 +120,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Temporary documentation and update logs
+new_updates.md
+new_updtaes/
+.git_commit_msg.txt
