@@ -6,13 +6,11 @@ import 'app_providers.dart';
 import 'bloc/attendance/attendance_bloc.dart';
 import 'bloc/account/account_bloc.dart';
 import 'bloc/tasks/tasks_bloc.dart';
+import 'bloc/notifications/notifications_bloc.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/datasources/auth_datasource.dart';
-import 'data/repositories/attendance_repository.dart';
 import 'data/repositories/auth_repository.dart';
 import 'data/repositories/auth_repository_impl.dart';
-import 'data/repositories/account_repository.dart';
-import 'data/repositories/tasks_repository.dart';
 import 'router.dart';
 import 'theme.dart';
 
@@ -53,6 +51,7 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(create: (c) => AttendanceBloc(attendanceRepository: c.read())..add(const LoadAttendance())),
             BlocProvider(create: (c) => AccountBloc(accountRepository: c.read(), authRepository: c.read())..add(const LoadAccount())),
             BlocProvider(create: (c) => TasksBloc(tasksRepository: c.read())..add(const LoadTasks())),
+            BlocProvider(create: (c) => NotificationsBloc(notificationsRepository: c.read())..add(const LoadNotifications())),
           ],
           child: MaterialApp.router(
             title: 'CRM Agent App',

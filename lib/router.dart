@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/tasks/tasks_bloc.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/repositories/auth_repository.dart';
 import 'router/app_routes.dart';
@@ -14,6 +16,8 @@ import 'screens/leads/add_lead_screen.dart';
 import 'screens/campaigns/campaigns_screen.dart';
 import 'screens/account/account_screen.dart';
 import 'screens/enquiry_details/enquiry_details_screen.dart';
+import 'screens/notifications/notifications_screen.dart';
+import 'screens/tasks/task_details_screen.dart';
 
 /// Configures and returns the central [GoRouter] for the application.
 GoRouter createRouter(
@@ -40,6 +44,9 @@ GoRouter createRouter(
         builder: (context, state) {
           final tab = state.uri.queryParameters['tab'];
           final idx = DashboardNavigationConfig.tabRegistry[tab] ?? 0;
+          if (state.uri.queryParameters['filter'] == 'overdue') {
+            context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
+          }
           return DashboardScreen(initialIndex: idx);
         },
       ),
@@ -50,13 +57,9 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.followUps, path: AppRoutes.followUpsPath, builder: (c, s) => const FollowUpsScreen()),
       GoRoute(name: AppRoutes.campaigns, path: AppRoutes.campaignsPath, builder: (c, s) => const CampaignsScreen()),
       GoRoute(name: AppRoutes.account, path: AppRoutes.accountPath, builder: (c, s) => const AccountScreen()),
-      GoRoute(
-        name: AppRoutes.enquiryDetails,
-        path: AppRoutes.enquiryDetailsPath,
-        builder: (c, s) => EnquiryDetailsScreen(
-          leadId: s.pathParameters['id'] ?? '',
-        ),
-      ),
+      GoRoute(name: AppRoutes.enquiryDetails, path: AppRoutes.enquiryDetailsPath, builder: (c, s) => EnquiryDetailsScreen(leadId: s.pathParameters['id'] ?? '')),
+      GoRoute(name: AppRoutes.notifications, path: AppRoutes.notificationsPath, builder: (c, s) => const NotificationsScreen()),
+      GoRoute(name: AppRoutes.taskDetails, path: AppRoutes.taskDetailsPath, builder: (c, s) => TaskDetailsScreen(taskId: s.pathParameters['id'] ?? '')),
     ],
   );
 }

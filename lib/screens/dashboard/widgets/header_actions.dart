@@ -6,6 +6,8 @@ import '../../../router/app_routes.dart';
 import '../../../widgets/user_avatar.dart';
 import 'notification_bell.dart';
 
+import '../../../bloc/notifications/notifications_bloc.dart';
+
 /// Renders the action buttons (notifications and profile avatar) in the header.
 class HeaderActions extends StatelessWidget {
   /// Creates a constant [HeaderActions].
@@ -15,11 +17,18 @@ class HeaderActions extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<AccountBloc>().state;
     final initials = state is AccountLoaded ? state.profile.initials : 'AN';
-    final notifCount = state is AccountLoaded ? state.profile.notificationCount.toString() : '3';
+
+    final notifState = context.watch<NotificationsBloc>().state;
+    final notifCount = notifState is NotificationsLoaded
+        ? notifState.unreadCount.toString()
+        : '3';
 
     return Row(
       children: [
-        NotificationBell(count: notifCount),
+        GestureDetector(
+          onTap: () => context.push(AppRoutes.notificationsPath),
+          child: NotificationBell(count: notifCount),
+        ),
         const SizedBox(width: 12),
         _AvatarButton(initials: initials),
       ],

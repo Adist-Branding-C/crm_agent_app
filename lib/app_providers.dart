@@ -21,6 +21,8 @@ import 'data/repositories/spotlight_repository.dart';
 import 'data/repositories/spotlight_repository_impl.dart';
 import 'data/repositories/follow_ups_repository.dart';
 import 'data/repositories/follow_ups_repository_impl.dart';
+import 'data/repositories/notifications_repository.dart';
+import 'data/repositories/notifications_repository_impl.dart';
 
 
 /// Builds the list of repository providers for the app.
@@ -62,6 +64,9 @@ List<RepositoryProvider> buildRepositoryProviders({
     ),
     RepositoryProvider<AccountRepository>(
       create: (_) => AccountRepositoryImpl(),
+    ),
+    RepositoryProvider<NotificationsRepository>(
+      create: (_) => NotificationsRepositoryImpl(),
     ),
   ];
 }
