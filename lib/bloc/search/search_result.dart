@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import '../../screens/leads/widgets/lead_card.dart';
-import '../../screens/tasks/widgets/task_card.dart';
-import '../../screens/search/widgets/spotlight_card.dart';
-import '../../screens/follow_ups/widgets/follow_up_item_card.dart';
 import '../leads/leads_models.dart';
 import '../tasks/tasks_models.dart';
 import '../follow_ups/follow_ups_models.dart';
@@ -13,7 +8,6 @@ abstract class SearchResult {
   String get id;
   String get title;
   String get categoryName;
-  Widget buildTile(BuildContext context);
 }
 
 /// A search result wrapper for a [Lead].
@@ -26,11 +20,6 @@ class LeadSearchResult implements SearchResult {
   String get title => lead.name;
   @override
   String get categoryName => 'Leads';
-  @override
-  Widget buildTile(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-        child: LeadCard(lead: lead),
-      );
 }
 
 /// A search result wrapper for a [Task].
@@ -43,8 +32,6 @@ class TaskSearchResult implements SearchResult {
   String get title => task.title;
   @override
   String get categoryName => 'Tasks';
-  @override
-  Widget buildTile(BuildContext context) => TaskCard(task: task);
 }
 
 /// A search result wrapper for a [Spotlight].
@@ -57,11 +44,6 @@ class SpotlightSearchResult implements SearchResult {
   String get title => spotlight.title;
   @override
   String get categoryName => 'Spotlights';
-  @override
-  Widget buildTile(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-        child: SpotlightCard(spotlight: spotlight),
-      );
 }
 
 /// A search result wrapper for a [FollowUp].
@@ -74,9 +56,4 @@ class FollowUpSearchResult implements SearchResult {
   String get title => followUp.name;
   @override
   String get categoryName => 'Follow-ups';
-  @override
-  Widget buildTile(BuildContext context) => FollowUpItemCard(
-        call: followUp,
-        onTap: () {},
-      );
 }

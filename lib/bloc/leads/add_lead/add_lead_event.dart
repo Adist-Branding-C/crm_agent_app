@@ -55,3 +55,25 @@ class StatusChanged extends AddLeadEvent {
   @override
   List<Object?> get props => [status];
 }
+
+class LocationChanged extends AddLeadEvent {
+  final String location;
+  const LocationChanged(this.location);
+  @override
+  List<Object?> get props => [location];
+}
+
+class FollowUpChanged extends AddLeadEvent {
+  final String? followUp;
+  const FollowUpChanged(this.followUp);
+  @override
+  List<Object?> get props => [followUp];
+}
+
+class NoteChanged extends AddLeadEvent {
+  final String? note;
+  const NoteChanged(this.note);
+  @override
+  List<Object?> get props => [note];
+}
+

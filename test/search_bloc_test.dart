@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/bloc/search/search_bloc.dart';
 import 'package:crm_agent_app/data/repositories/leads_repository_impl.dart';
 import 'package:crm_agent_app/data/repositories/tasks_repository_impl.dart';
-import 'package:crm_agent_app/data/repositories/spotlight_repository.dart';
-import 'package:crm_agent_app/data/repositories/follow_ups_repository.dart';
+import 'package:crm_agent_app/data/repositories/spotlight_repository_impl.dart';
+import 'package:crm_agent_app/data/repositories/follow_ups_repository_impl.dart';
 import 'package:crm_agent_app/data/datasources/leads_datasource.dart';
 
 void main() {

@@ -5,12 +5,8 @@ import '../../data/repositories/leads_repository.dart';
 import '../../data/repositories/tasks_repository.dart';
 import '../../data/repositories/spotlight_repository.dart';
 import '../../data/repositories/follow_ups_repository.dart';
-import '../../theme.dart';
 import '../../widgets/page_scaffold.dart';
-import '../../widgets/screen_header.dart';
-import 'widgets/recent_section.dart';
-import 'widgets/search_field.dart';
-import 'widgets/search_results_list.dart';
+import 'widgets/search_content.dart';
 
 /// Screen representing the universal search module.
 class SearchScreen extends StatefulWidget {
@@ -39,47 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       child: PageScaffold(
         padding: EdgeInsets.zero,
-        child: Builder(
-          builder: (context) => Column(
-            children: [
-              const ScreenHeader(
-                title: 'Search',
-                showBackButton: false,
-                padding: EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
-              ),
-              SearchField(
-                controller: _controller,
-                onChanged: (q) => context.read<SearchBloc>().add(SearchQueryChanged(q)),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: BlocBuilder<SearchBloc, SearchState>(
-                  builder: (context, state) {
-                    if (state is SearchLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    if (state is SearchLoaded) {
-                      return SearchResultsList(state: state);
-                    }
-                    if (state is SearchError) {
-                      return Center(
-                        child: Text(state.message, style: const TextStyle(color: AppColors.errorColor)),
-                      );
-                    }
-                    final recent = state is SearchInitial ? state.recentQueries : const <String>[];
-                    return RecentSection(
-                      queries: recent,
-                      onTap: (q) {
-                        _controller.text = q;
-                        context.read<SearchBloc>().add(SearchQueryChanged(q));
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
+        child: SearchContent(controller: _controller),
       ),
     );
   }

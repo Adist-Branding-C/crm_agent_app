@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/custom_card.dart';
 
 part 'name_phone_fields.dart';
 part 'email_location_fields.dart';
@@ -53,12 +54,8 @@ class AddLeadContactFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
       child: Column(
         children: [
           _NamePhoneFields(

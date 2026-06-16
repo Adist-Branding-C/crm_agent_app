@@ -7,6 +7,7 @@ import 'leads_models.dart';
 
 part 'leads_event.dart';
 part 'leads_state.dart';
+part 'leads_state_loaded.dart';
 
 /// Business logic component managing lead lists, searching, and filtering.
 class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {

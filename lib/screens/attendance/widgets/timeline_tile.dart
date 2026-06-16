@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/attendance/attendance_models.dart';
 import '../../../theme.dart';
+import '../../../widgets/timeline_layout.dart';
 import 'timeline_tile_config.dart';
-import 'timeline_tile_marker.dart';
 
 /// Renders a single event in the activity timeline.
 class TimelineTile extends StatelessWidget {
@@ -28,45 +28,40 @@ class TimelineTile extends StatelessWidget {
       fontWeight: FontWeight.w500,
     );
 
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TimelineTileMarker(isFirst: isFirst, isLast: isLast, config: config),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 2, bottom: 20),
-              child: Row(
+    return TimelineLayout(
+      isFirst: isFirst,
+      isLast: isLast,
+      config: config,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 2, bottom: 20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item.title,
-                          style: textTheme.titleMedium?.copyWith(
-                            color: AppColors.textDark,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                        const SizedBox(height: 3),
-                        Text(item.subtitle, style: captionStyle),
-                      ],
+                  Text(
+                    item.title,
+                    style: textTheme.titleMedium?.copyWith(
+                      color: AppColors.textDark,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  Text(item.time, style: captionStyle),
+                  const SizedBox(height: 3),
+                  Text(item.subtitle, style: captionStyle),
                 ],
               ),
             ),
-          ),
-        ],
+            const SizedBox(width: 8),
+            Text(item.time, style: captionStyle),
+          ],
+        ),
       ),
     );
   }
 }
+
 

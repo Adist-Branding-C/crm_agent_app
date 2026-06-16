@@ -12,36 +12,37 @@ class DealsStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DealsBloc, DealsState>(
-      builder: (context, state) {
-        final pipelineVal = state is DealsLoaded
-            ? state.totalPipelineValue
-            : 0.0;
-        final wonVal = state is DealsLoaded ? state.wonValue : 0.0;
+    final pipelineVal = context.select((DealsBloc b) {
+      final s = b.state;
+      return s is DealsLoaded ? s.totalPipelineValue : 0.0;
+    });
 
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-          child: Row(
-            children: [
-              Expanded(
-                child: DealsStatsCard(
-                  title: 'Pipeline value',
-                  value: pipelineVal.toRupeeFormat(),
-                  backgroundColor: AppColors.textDark,
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: DealsStatsCard(
-                  title: 'Won this month',
-                  value: wonVal.toRupeeFormat(),
-                  backgroundColor: AppColors.success,
-                ),
-              ),
-            ],
+    final wonVal = context.select((DealsBloc b) {
+      final s = b.state;
+      return s is DealsLoaded ? s.wonValue : 0.0;
+    });
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      child: Row(
+        children: [
+          Expanded(
+            child: DealsStatsCard(
+              title: 'Pipeline value',
+              value: pipelineVal.toRupeeFormat(),
+              backgroundColor: AppColors.textDark,
+            ),
           ),
-        );
-      },
+          const SizedBox(width: 16),
+          Expanded(
+            child: DealsStatsCard(
+              title: 'Won this month',
+              value: wonVal.toRupeeFormat(),
+              backgroundColor: AppColors.success,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

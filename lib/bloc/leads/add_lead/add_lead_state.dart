@@ -23,6 +23,15 @@ class AddLeadState extends Equatable {
   /// Selected lead status.
   final LeadStatus status;
 
+  /// Selected lead location.
+  final String location;
+
+  /// The next follow up date.
+  final String? nextFollowUp;
+
+  /// The optional lead note.
+  final String? note;
+
   /// Submitting status indicator.
   final bool isSubmitting;
 
@@ -44,6 +53,9 @@ class AddLeadState extends Equatable {
     this.purpose = LeadPurpose.enquiry,
     this.category = LeadCategory.warm,
     this.status = LeadStatus.newStatus,
+    this.location = 'Kochi',
+    this.nextFollowUp,
+    this.note,
     this.isSubmitting = false,
     this.isSuccess = false,
     this.error,
@@ -68,6 +80,9 @@ class AddLeadState extends Equatable {
         purpose,
         category,
         status,
+        location,
+        nextFollowUp,
+        note,
         isSubmitting,
         isSuccess,
         error,

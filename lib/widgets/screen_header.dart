@@ -31,19 +31,17 @@ class ScreenHeader extends StatelessWidget {
           fontSize: showBackButton ? 20 : 28,
         );
 
-    Widget? sub;
-    if (subtitleWidget != null) {
-      sub = subtitleWidget;
-    } else if (subtitle != null) {
-      sub = Text(
-        subtitle!,
-        style: const TextStyle(
-          color: AppColors.textMuted,
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-        ),
-      );
-    }
+    final sub = subtitleWidget ??
+        (subtitle != null
+            ? Text(
+                subtitle!,
+                style: const TextStyle(
+                  color: AppColors.textMuted,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+            : null);
 
     return Padding(
       padding: padding,

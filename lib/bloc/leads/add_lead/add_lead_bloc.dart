@@ -28,6 +28,9 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
     on<PurposeChanged>(_onPurposeChanged);
     on<CategoryChanged>(_onCategoryChanged);
     on<StatusChanged>(_onStatusChanged);
+    on<LocationChanged>(_onLocationChanged);
+    on<FollowUpChanged>(_onFollowUpChanged);
+    on<NoteChanged>(_onNoteChanged);
     on<SubmitForm>(_onSubmitForm);
   }
 
@@ -52,15 +55,24 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
   void _onStatusChanged(StatusChanged ev, Emitter<AddLeadState> emit) =>
       emit(state.copyWith(status: ev.status));
 
+  void _onLocationChanged(LocationChanged ev, Emitter<AddLeadState> emit) =>
+      emit(state.copyWith(location: ev.location));
+
+  void _onFollowUpChanged(FollowUpChanged ev, Emitter<AddLeadState> emit) =>
+      emit(state.copyWith(nextFollowUp: () => ev.followUp));
+
+  void _onNoteChanged(NoteChanged ev, Emitter<AddLeadState> emit) =>
+      emit(state.copyWith(note: () => ev.note));
+
   Future<void> _onSubmitForm(SubmitForm ev, Emitter<AddLeadState> emit) async {
     if (!state.isValid) return;
     emit(state.copyWith(isSubmitting: true, isSuccess: false, error: () => null));
     try {
       final lead = Lead(
-        name: ev.name.trim(), phone: ev.phone.trim(), email: ev.email.trim(),
-        location: ev.location.trim(), source: ev.purpose, category: ev.category,
-        status: ev.status, leadSource: ev.source, nextFollowUp: ev.nextFollowUp,
-        note: ev.note,
+        name: state.name.trim(), phone: state.phone.trim(), email: state.email.trim(),
+        location: state.location.trim(), source: state.purpose, category: state.category,
+        status: state.status, leadSource: state.source, nextFollowUp: state.nextFollowUp,
+        note: state.note,
       );
       final assignedLead = await leadsRepository.addLead(lead);
       emit(state.copyWith(isSubmitting: false, isSuccess: true, lead: assignedLead));

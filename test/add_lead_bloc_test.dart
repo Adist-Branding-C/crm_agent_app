@@ -1,6 +1,5 @@
 import 'package:crm_agent_app/bloc/leads/add_lead/add_lead_bloc.dart';
 import 'package:crm_agent_app/screens/leads/add_lead_error_extensions.dart';
-import 'package:crm_agent_app/bloc/leads/leads_enums.dart';
 import 'package:crm_agent_app/bloc/leads/leads_models.dart';
 import 'package:crm_agent_app/data/constants.dart';
 import 'package:crm_agent_app/data/repositories/leads_repository.dart';
@@ -134,18 +133,7 @@ void main() {
       bloc.add(const NameChanged('Rahul Menon'));
       bloc.add(const PhoneChanged('9876543210'));
       bloc.add(const EmailChanged('rahul@email.com'));
-      bloc.add(
-        const SubmitForm(
-          name: 'Rahul Menon',
-          phone: '9876543210',
-          email: 'rahul@email.com',
-          location: 'Kochi',
-          source: LeadSource.facebook,
-          purpose: LeadPurpose.enquiry,
-          category: LeadCategory.hot,
-          status: LeadStatus.newStatus,
-        ),
-      );
+      bloc.add(const SubmitForm());
     });
   });
 }

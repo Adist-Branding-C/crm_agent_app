@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/tasks/add_task/add_task_bloc.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text_field.dart';
@@ -19,7 +20,7 @@ class AddTaskForm extends StatelessWidget {
           prev.errorMessage != curr.errorMessage,
       listener: (context, state) {
         if (state.isSuccess) {
-          Navigator.of(context).pop(true);
+          context.pop(true);
         } else if (state.errorMessage != null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage!)),

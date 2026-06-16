@@ -17,12 +17,17 @@ class DashboardHeader extends StatelessWidget {
       showBackButton: false,
       subtitleWidget: BlocBuilder<AttendanceBloc, AttendanceState>(
         builder: (context, state) {
-          final statusText = state is AttendanceLoaded && state.isCheckedIn
+          final isCheckedIn = state is AttendanceLoaded && state.isCheckedIn;
+          final statusText = isCheckedIn
               ? 'Checked in • ${state.checkInTime ?? '—'}'
               : 'Checked out';
           return Row(
             children: [
-              const Icon(Icons.circle, size: 8, color: AppColors.success),
+              Icon(
+                Icons.circle,
+                size: 8,
+                color: isCheckedIn ? AppColors.success : AppColors.textMuted,
+              ),
               const SizedBox(width: 6),
               Text(
                 statusText,

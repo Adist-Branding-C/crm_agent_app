@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../widgets/custom_card.dart';
 
 /// A debounced search text input field widget.
 class SearchField extends StatefulWidget {
@@ -50,12 +51,8 @@ class _SearchFieldState extends State<SearchField> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: AppTheme.cardShadow,
-        ),
+      child: CustomCard(
+        borderRadius: 16,
         child: TextField(
           controller: widget.controller,
           style: const TextStyle(color: AppColors.textDark, fontSize: 14),

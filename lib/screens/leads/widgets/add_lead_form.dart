@@ -18,6 +18,18 @@ class _AddLeadFormState extends State<AddLeadForm> {
   final _follow = TextEditingController(), _note = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    final bloc = context.read<AddLeadBloc>();
+    _name.addListener(() => bloc.add(NameChanged(_name.text)));
+    _phone.addListener(() => bloc.add(PhoneChanged(_phone.text)));
+    _email.addListener(() => bloc.add(EmailChanged(_email.text)));
+    _loc.addListener(() => bloc.add(LocationChanged(_loc.text)));
+    _follow.addListener(() => bloc.add(FollowUpChanged(_follow.text)));
+    _note.addListener(() => bloc.add(NoteChanged(_note.text)));
+  }
+
+  @override
   void dispose() {
     for (final c in [_name, _phone, _email, _loc, _follow, _note]) {
       c.dispose();
@@ -32,20 +44,8 @@ class _AddLeadFormState extends State<AddLeadForm> {
     }
   }
 
-  void _onSubmit() {
-    final s = context.read<AddLeadBloc>().state;
-    context.read<AddLeadBloc>().add(SubmitForm(
-      name: _name.text, phone: _phone.text, email: _email.text,
-      location: _loc.text.isEmpty ? 'Kochi' : _loc.text,
-      source: s.source, purpose: s.purpose, category: s.category, status: s.status,
-      nextFollowUp: _follow.text.isEmpty ? null : _follow.text,
-      note: _note.text.isEmpty ? null : _note.text,
-    ));
-  }
-
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<AddLeadBloc>();
     return BlocConsumer<AddLeadBloc, AddLeadState>(
       listener: _onState,
       builder: (context, state) => Column(
@@ -57,10 +57,10 @@ class _AddLeadFormState extends State<AddLeadForm> {
               followUpController: _follow, noteController: _note,
               source: state.source, purpose: state.purpose,
               category: state.category, status: state.status, state: state,
-              onSourceChanged: (v) => bloc.add(SourceChanged(v)),
-              onPurposeChanged: (v) => bloc.add(PurposeChanged(v)),
-              onCategoryChanged: (v) => bloc.add(CategoryChanged(v)),
-              onStatusChanged: (v) => bloc.add(StatusChanged(v)),
+              onSourceChanged: (v) => context.read<AddLeadBloc>().add(SourceChanged(v)),
+              onPurposeChanged: (v) => context.read<AddLeadBloc>().add(PurposeChanged(v)),
+              onCategoryChanged: (v) => context.read<AddLeadBloc>().add(CategoryChanged(v)),
+              onStatusChanged: (v) => context.read<AddLeadBloc>().add(StatusChanged(v)),
             ),
           ),
           Padding(
@@ -68,7 +68,9 @@ class _AddLeadFormState extends State<AddLeadForm> {
             child: CustomButton(
               text: 'Save Lead',
               isLoading: state.isSubmitting,
-              onPressed: state.isValid ? _onSubmit : null,
+              onPressed: state.isValid
+                  ? () => context.read<AddLeadBloc>().add(const SubmitForm())
+                  : null,
             ),
           ),
         ],

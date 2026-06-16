@@ -4,7 +4,7 @@ import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../../theme.dart';
-import '../../attendance/widgets/timeline_tile_marker.dart';
+import '../../../widgets/timeline_layout.dart';
 import 'activities_config.dart';
 
 /// Renders the Activities tab showing a vertical history timeline.
@@ -34,39 +34,33 @@ class ActivitiesTabView extends StatelessWidget {
     final config = activitiesConfigs[act.type];
     if (config == null) return const SizedBox.shrink();
 
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TimelineTileMarker(isFirst: isFirst, isLast: isLast, config: config),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 6, bottom: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    act.title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      color: AppColors.textDark,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    act.time,
-                    style: const TextStyle(
-                      fontSize: 11,
-                      color: AppColors.textMuted,
-                    ),
-                  ),
-                ],
+    return TimelineLayout(
+      isFirst: isFirst,
+      isLast: isLast,
+      config: config,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 6, bottom: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              act.title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 13,
+                color: AppColors.textDark,
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 2),
+            Text(
+              act.time,
+              style: const TextStyle(
+                fontSize: 11,
+                color: AppColors.textMuted,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
