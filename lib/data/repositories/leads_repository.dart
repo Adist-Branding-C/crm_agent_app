@@ -1,3 +1,4 @@
+import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 
 /// Repository interface managing leads business operations.
@@ -16,4 +17,10 @@ abstract class LeadsRepository {
 
   /// Deletes a lead by ID.
   Future<void> deleteLead(String id);
+
+  /// Retrieves activities logged for a lead.
+  List<EnquiryActivity> getActivitiesForLead(String leadId);
+
+  /// Adds an activity for a lead.
+  void addActivityForLead(String leadId, EnquiryActivity activity);
 }

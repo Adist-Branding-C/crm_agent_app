@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
+import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../theme.dart';
 import '../../../widgets/call_button.dart';
 
@@ -51,7 +53,14 @@ class TaskRow extends StatelessWidget {
               ],
             ),
           ),
-          if (showCall) ...[const SizedBox(width: 8), const CallButton()],
+          if (showCall) ...[
+            const SizedBox(width: 8),
+            CallButton(
+              onTap: () => context.read<CallLogBloc>().add(
+                    InitiateCallByName(name: task.name),
+                  ),
+            ),
+          ],
         ],
       ),
     );

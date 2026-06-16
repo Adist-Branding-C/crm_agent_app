@@ -28,6 +28,9 @@ class EnquiryDetailsLoaded extends EnquiryDetailsState {
     required this.notes,
   });
 
+  /// Getter to alias lead as enquiry for routing/naming consistency.
+  Lead get enquiry => lead;
+
   /// Copy helper to update parts of the loaded state.
   EnquiryDetailsLoaded copyWith({
     Lead? lead,

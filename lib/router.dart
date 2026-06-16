@@ -18,6 +18,9 @@ import 'screens/account/account_screen.dart';
 import 'screens/enquiry_details/enquiry_details_screen.dart';
 import 'screens/notifications/notifications_screen.dart';
 import 'screens/tasks/task_details_screen.dart';
+import 'screens/call_log/call_log_screen.dart';
+import 'screens/call_log/widgets/call_log_route_provider.dart';
+import 'bloc/leads/leads_models.dart';
 
 /// Configures and returns the central [GoRouter] for the application.
 GoRouter createRouter(
@@ -60,6 +63,11 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.enquiryDetails, path: AppRoutes.enquiryDetailsPath, builder: (c, s) => EnquiryDetailsScreen(leadId: s.pathParameters['id'] ?? '')),
       GoRoute(name: AppRoutes.notifications, path: AppRoutes.notificationsPath, builder: (c, s) => const NotificationsScreen()),
       GoRoute(name: AppRoutes.taskDetails, path: AppRoutes.taskDetailsPath, builder: (c, s) => TaskDetailsScreen(taskId: s.pathParameters['id'] ?? '')),
+      GoRoute(
+        name: AppRoutes.callLog,
+        path: AppRoutes.callLogPath,
+        builder: (c, s) => CallLogRouteProvider(state: s),
+      ),
     ],
   );
 }

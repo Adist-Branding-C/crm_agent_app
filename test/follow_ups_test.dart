@@ -4,6 +4,7 @@ import 'package:crm_agent_app/widgets/call_button.dart';
 import 'package:crm_agent_app/screens/dashboard/widgets/follow_ups_list.dart';
 import 'package:crm_agent_app/screens/follow_ups/follow_ups_screen.dart';
 import 'package:crm_agent_app/screens/follow_ups/widgets/follow_up_item_card.dart';
+import 'package:crm_agent_app/screens/enquiry_details/enquiry_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -75,6 +76,38 @@ void main() {
 
       expect(find.byType(DashboardScreen), findsOneWidget);
       expect(find.byType(FollowUpsScreen), findsNothing);
+    },
+  );
+
+  testWidgets(
+    'Dashboard follow-up card name click navigates to Lead Enquiry Details',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(const MyApp());
+      await tester.pump(const Duration(seconds: 3));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(
+        find.bySemanticsLabel('Phone Number Input Field'),
+        '9876543210',
+      );
+      await tester.enterText(
+        find.bySemanticsLabel('Password Input Field'),
+        'secure123',
+      );
+      await tester.tap(find.text('Sign In'));
+      await tester.pumpAndSettle();
+
+      await tester.pump(const Duration(milliseconds: 600));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Call back Rahul Menon'));
+      await tester.pumpAndSettle();
+
+      await tester.pump(const Duration(milliseconds: 600));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(EnquiryDetailsScreen), findsOneWidget);
+      expect(find.text('Rahul Menon'), findsOneWidget);
     },
   );
 }

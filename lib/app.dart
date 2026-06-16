@@ -7,12 +7,15 @@ import 'bloc/attendance/attendance_bloc.dart';
 import 'bloc/account/account_bloc.dart';
 import 'bloc/tasks/tasks_bloc.dart';
 import 'bloc/notifications/notifications_bloc.dart';
+import 'bloc/call_log/call_log_bloc.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/datasources/auth_datasource.dart';
 import 'data/repositories/auth_repository.dart';
 import 'data/repositories/auth_repository_impl.dart';
 import 'router.dart';
+import 'router/app_routes.dart';
 import 'theme.dart';
+import 'widgets/call_lifecycle_observer.dart';
 
 class MyApp extends StatefulWidget {
   final AuthRepository? authRepository;
@@ -52,12 +55,23 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(create: (c) => AccountBloc(accountRepository: c.read(), authRepository: c.read())..add(const LoadAccount())),
             BlocProvider(create: (c) => TasksBloc(tasksRepository: c.read())..add(const LoadTasks())),
             BlocProvider(create: (c) => NotificationsBloc(notificationsRepository: c.read())..add(const LoadNotifications())),
+            BlocProvider(create: (c) => CallLogBloc(leadsRepository: c.read())),
           ],
-          child: MaterialApp.router(
-            title: 'CRM Agent App',
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            routerConfig: _router,
+          child: BlocListener<CallLogBloc, CallLogState>(
+            listener: (context, state) {
+              if (state is CallLogNavigationPending) {
+                _router.pushNamed(AppRoutes.callLog, extra: state.lead);
+              }
+            },
+            child: MaterialApp.router(
+              title: 'CRM Agent App',
+              debugShowCheckedModeBanner: false,
+              theme: AppTheme.lightTheme,
+              routerConfig: _router,
+              builder: (context, child) => CallLifecycleObserver(
+                child: child ?? const SizedBox.shrink(),
+              ),
+            ),
           ),
         ),
       ),

@@ -1,6 +1,7 @@
-import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/leads_models.dart';
+import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../theme.dart';
 import 'quick_action_button.dart';
 
@@ -17,12 +18,9 @@ class ActionButtons extends StatelessWidget {
     return Row(
       children: [
         QuickActionButton(
-          onTap: () {
-            developer.log('Mock calling ${lead.name} (${lead.phone})');
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Calling ${lead.name}...')),
-            );
-          },
+          onTap: () => context.read<CallLogBloc>().add(
+                InitiateCall(lead: lead),
+              ),
           icon: Icons.phone_in_talk,
           label: 'Call',
           backgroundColor: AppColors.primaryColor,
@@ -31,7 +29,6 @@ class ActionButtons extends StatelessWidget {
         const SizedBox(width: 16),
         QuickActionButton(
           onTap: () {
-            developer.log('Opening mock WhatsApp chat with ${lead.name}');
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Opening WhatsApp for ${lead.name}...')),
             );

@@ -3,6 +3,7 @@ import 'package:crm_agent_app/screens/leads/add_lead_error_extensions.dart';
 import 'package:crm_agent_app/bloc/leads/leads_models.dart';
 import 'package:crm_agent_app/data/constants.dart';
 import 'package:crm_agent_app/data/repositories/leads_repository.dart';
+import 'package:crm_agent_app/bloc/enquiry_details/enquiry_details_models.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class FakeLeadsRepository implements LeadsRepository {
@@ -33,6 +34,10 @@ class FakeLeadsRepository implements LeadsRepository {
   Future<void> updateLead(Lead lead) async {}
   @override
   Future<void> deleteLead(String id) async {}
+  @override
+  List<EnquiryActivity> getActivitiesForLead(String leadId) => [];
+  @override
+  void addActivityForLead(String leadId, EnquiryActivity activity) {}
 }
 
 void main() {

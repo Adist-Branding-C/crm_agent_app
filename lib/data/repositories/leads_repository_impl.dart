@@ -1,3 +1,4 @@
+import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../datasources/leads_datasource.dart';
 import 'leads_repository.dart';
@@ -54,5 +55,15 @@ class LeadsRepositoryImpl implements LeadsRepository {
   Future<void> deleteLead(String id) async {
     await Future.delayed(const Duration(milliseconds: 100));
     await leadsDataSource.deleteLead(id);
+  }
+
+  @override
+  List<EnquiryActivity> getActivitiesForLead(String leadId) {
+    return leadsDataSource.fetchActivitiesForLead(leadId);
+  }
+
+  @override
+  void addActivityForLead(String leadId, EnquiryActivity activity) {
+    leadsDataSource.insertActivityForLead(leadId, activity);
   }
 }

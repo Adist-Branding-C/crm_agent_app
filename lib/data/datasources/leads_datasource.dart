@@ -1,3 +1,4 @@
+import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../../bloc/leads/mock_leads.dart';
 
@@ -17,11 +18,18 @@ abstract class LeadsDataSource {
 
   /// Deletes a lead by ID from the store.
   Future<void> deleteLead(String id);
+
+  /// Retrieves activities logged for a lead.
+  List<EnquiryActivity> fetchActivitiesForLead(String leadId);
+
+  /// Adds an activity for a lead.
+  void insertActivityForLead(String leadId, EnquiryActivity activity);
 }
 
 /// In-memory implementation of [LeadsDataSource] pre-seeded with mock leads.
 class LeadsDataSourceImpl implements LeadsDataSource {
   final List<Lead> _leads = List.from(mockLeads);
+  final Map<String, List<EnquiryActivity>> _activities = {};
 
   @override
   Future<List<Lead>> fetchLeads() async {
@@ -53,5 +61,16 @@ class LeadsDataSourceImpl implements LeadsDataSource {
   @override
   Future<void> deleteLead(String id) async {
     _leads.removeWhere((l) => l.id == id);
+  }
+
+  @override
+  List<EnquiryActivity> fetchActivitiesForLead(String leadId) {
+    return _activities[leadId] ?? const [];
+  }
+
+  @override
+  void insertActivityForLead(String leadId, EnquiryActivity activity) {
+    final list = _activities[leadId] ?? [];
+    _activities[leadId] = [activity, ...list];
   }
 }

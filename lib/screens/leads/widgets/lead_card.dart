@@ -1,8 +1,10 @@
 import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../router/app_routes.dart';
 import '../../../bloc/leads/leads_models.dart';
+import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
 import '../../../widgets/call_button.dart';
@@ -29,27 +31,21 @@ class LeadCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-          UserAvatar(
-            initials: lead.initials,
-            size: 42,
-          ),
-          const SizedBox(width: 12),
-          Expanded(child: _LeadCardDetails(lead: lead)),
-          CallButton(
-            borderRadius: 12,
-            onTap: () {
-              developer.log('Initiating mock call to ${lead.name} (${lead.phone})');
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Calling ${lead.name}...'),
-                  duration: const Duration(seconds: 2),
-                ),
-              );
-            },
-          ),
-        ],
+            UserAvatar(
+              initials: lead.initials,
+              size: 42,
+            ),
+            const SizedBox(width: 12),
+            Expanded(child: _LeadCardDetails(lead: lead)),
+            CallButton(
+              borderRadius: 12,
+              onTap: () => context.read<CallLogBloc>().add(
+                InitiateCall(lead: lead),
+              ),
+            ),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 }

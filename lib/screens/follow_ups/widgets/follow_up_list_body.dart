@@ -1,7 +1,7 @@
 import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../bloc/follow_ups/follow_ups_bloc.dart';
+import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
 import '../../../widgets/section_header.dart';
 import 'follow_up_item_card.dart';
@@ -35,7 +35,7 @@ class FollowUpListBody extends StatelessWidget {
           ),
           ...overdue.map((c) => FollowUpItemCard(
                 call: c,
-                onTap: () => context.read<FollowUpsBloc>().add(TriggerCall(c.id)),
+                onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
           const SizedBox(height: 8),
         ],
@@ -51,7 +51,7 @@ class FollowUpListBody extends StatelessWidget {
           ),
           ...dueToday.map((c) => FollowUpItemCard(
                 call: c,
-                onTap: () => context.read<FollowUpsBloc>().add(TriggerCall(c.id)),
+                onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
           const SizedBox(height: 8),
         ],
@@ -67,7 +67,7 @@ class FollowUpListBody extends StatelessWidget {
           ),
           ...upcoming.map((c) => FollowUpItemCard(
                 call: c,
-                onTap: () => context.read<FollowUpsBloc>().add(TriggerCall(c.id)),
+                onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
           const SizedBox(height: 16),
         ],

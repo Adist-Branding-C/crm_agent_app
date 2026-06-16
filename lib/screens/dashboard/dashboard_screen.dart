@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/dashboard/dashboard_bloc.dart';
+import '../../bloc/call_log/call_log_bloc.dart';
 import '../../theme.dart';
 import 'dashboard_navigation_config.dart';
 import 'models/dashboard_navigation_item.dart';
@@ -46,17 +47,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
       create: (c) => DashboardBloc(
         dashboardRepository: c.read(),
       )..add(const FetchDashboardData()),
-      child: Scaffold(
-        backgroundColor: AppTheme.backgroundColor,
-        bottomNavigationBar: DashboardNavBar(
-          currentIndex: _navIndex,
-          onTap: (index) => setState(() => _navIndex = index),
-          items: _items,
-        ),
-        body: SafeArea(
-          child: IndexedStack(
-            index: _navIndex,
-            children: _items.map((item) => item.bodyBuilder(context)).toList(),
+      child: BlocListener<CallLogBloc, CallLogState>(
+        listener: (context, state) {
+          if (state is CallLogSaveSuccess) {
+            context.read<DashboardBloc>().add(const FetchDashboardData());
+          }
+        },
+        child: Scaffold(
+          backgroundColor: AppTheme.backgroundColor,
+          bottomNavigationBar: DashboardNavBar(
+            currentIndex: _navIndex,
+            onTap: (index) => setState(() => _navIndex = index),
+            items: _items,
+          ),
+          body: SafeArea(
+            child: IndexedStack(
+              index: _navIndex,
+              children: _items.map((item) => item.bodyBuilder(context)).toList(),
+            ),
           ),
         ),
       ),
