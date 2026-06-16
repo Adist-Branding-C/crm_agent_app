@@ -24,6 +24,8 @@ class MockAccountRepository implements AccountRepository {
 
 class MockAuthRepository implements AuthRepository {
   @override
+  bool get isAuthenticated => true;
+  @override
   Future<bool> login(String p, String pass) async => true;
   @override
   Future<String?> getToken() async => 'mock';
