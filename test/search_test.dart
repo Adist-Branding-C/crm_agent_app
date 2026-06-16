@@ -36,9 +36,10 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify search results
-    expect(find.text('2 results'), findsOneWidget);
+    expect(find.text('3 results'), findsOneWidget);
     expect(find.text('LEADS'), findsOneWidget);
     expect(find.text('SPOTLIGHTS'), findsOneWidget);
+    expect(find.text('FOLLOW-UPS'), findsOneWidget);
     expect(find.byType(LeadCard), findsOneWidget);
 
     // Clear search

@@ -15,7 +15,7 @@ class TasksRepositoryImpl implements TasksRepository {
       priority: TaskPriority.medium,
     ),
     const Task(
-      id: '3', title: 'Collect documents — Anjali Suresh', type: TaskType.task,
+      id: '3', title: 'Collect documents — Vishnu Prasad', type: TaskType.task,
       time: 'Today, 7:00 PM', isCompleted: false, isOverdue: false,
       priority: TaskPriority.high,
     ),

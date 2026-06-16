@@ -53,6 +53,11 @@ class SpotlightRepositoryImpl implements SpotlightRepository {
       title: 'Aravind Krishnan campus visit',
       description: 'High-priority campus visit today',
     ),
+    Spotlight(
+      id: 's6',
+      title: 'Vishnu Prasad document review',
+      description: 'Pending document check',
+    ),
   ];
 
   @override

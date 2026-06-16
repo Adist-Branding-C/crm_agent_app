@@ -29,7 +29,7 @@ class SearchResultsList extends StatelessWidget {
       );
     }
 
-    final categoriesOrder = ['Leads', 'Tasks', 'Spotlights'];
+    final categoriesOrder = ['Leads', 'Tasks', 'Spotlights', 'Follow-ups'];
     final widgets = <Widget>[];
 
     final totalCount = state.results.length;
