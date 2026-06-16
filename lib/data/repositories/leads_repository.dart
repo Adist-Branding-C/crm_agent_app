@@ -18,6 +18,9 @@ abstract class LeadsRepository {
   /// Deletes a lead by ID.
   Future<void> deleteLead(String id);
 
+  /// Stream of deleted lead IDs to notify subscribers.
+  Stream<String> get leadDeletedStream;
+
   /// Retrieves activities logged for a lead.
   List<EnquiryActivity> getActivitiesForLead(String leadId);
 

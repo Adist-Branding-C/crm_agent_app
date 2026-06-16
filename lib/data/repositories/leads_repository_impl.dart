@@ -1,39 +1,35 @@
+import 'dart:async';
 import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../datasources/leads_datasource.dart';
 import 'leads_repository.dart';
 
-/// Concrete implementation of [LeadsRepository] interacting with [LeadsDataSource].
+/// Implementation of [LeadsRepository] interacting with [LeadsDataSource].
 class LeadsRepositoryImpl implements LeadsRepository {
-  /// Creates a [LeadsRepositoryImpl] with the given [leadsDataSource].
+  final LeadsDataSource leadsDataSource;
+
   LeadsRepositoryImpl({required this.leadsDataSource});
 
-  /// The data source used to manage leads data.
-  final LeadsDataSource leadsDataSource;
+  final _deletedController = StreamController<String>.broadcast();
+
+  @override
+  Stream<String> get leadDeletedStream => _deletedController.stream;
 
   @override
   Future<List<Lead>> getLeads() async {
-    // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 200));
     return leadsDataSource.fetchLeads();
   }
 
   @override
   Future<Lead> addLead(Lead lead) async {
-    // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 100));
     final leadWithId = Lead(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      name: lead.name,
-      status: lead.status,
-      source: lead.source,
-      category: lead.category,
-      phone: lead.phone,
-      location: lead.location,
-      email: lead.email,
-      leadSource: lead.leadSource,
-      nextFollowUp: lead.nextFollowUp,
-      note: lead.note,
+      name: lead.name, status: lead.status, source: lead.source,
+      category: lead.category, phone: lead.phone, location: lead.location,
+      email: lead.email, leadSource: lead.leadSource,
+      nextFollowUp: lead.nextFollowUp, note: lead.note,
     );
     await leadsDataSource.insertLead(leadWithId);
     return leadWithId;
@@ -42,7 +38,11 @@ class LeadsRepositoryImpl implements LeadsRepository {
   @override
   Future<Lead?> getLeadById(String id) async {
     await Future.delayed(const Duration(milliseconds: 100));
-    return leadsDataSource.getLeadById(id);
+    final lead = await leadsDataSource.getLeadById(id);
+    if (lead == null) {
+      _deletedController.add(id);
+    }
+    return lead;
   }
 
   @override
@@ -55,6 +55,7 @@ class LeadsRepositoryImpl implements LeadsRepository {
   Future<void> deleteLead(String id) async {
     await Future.delayed(const Duration(milliseconds: 100));
     await leadsDataSource.deleteLead(id);
+    _deletedController.add(id);
   }
 
   @override

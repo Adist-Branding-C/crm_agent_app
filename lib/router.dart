@@ -31,6 +31,11 @@ GoRouter createRouter(
     initialLocation: AppRoutes.splashPath,
     refreshListenable: authStateNotifier,
     redirect: (context, state) {
+      if (!authRepository.isInitialized) {
+        final loc = state.matchedLocation;
+        if (loc == AppRoutes.splashPath) return null;
+        return AppRoutes.splashPath;
+      }
       final hasToken = authRepository.isAuthenticated;
       final loc = state.matchedLocation;
       final isAuthPath = loc == AppRoutes.loginPath || loc == AppRoutes.splashPath;

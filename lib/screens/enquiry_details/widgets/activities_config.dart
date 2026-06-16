@@ -1,7 +1,7 @@
 import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/enquiry_details/enquiry_details_models.dart';
-import '../../attendance/widgets/timeline_tile_config.dart';
+import '../../../widgets/timeline_tile_config.dart';
 
 /// Mapping of enquiry activity types to their timeline tile configurations.
 const activitiesConfigs = {

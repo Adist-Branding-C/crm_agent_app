@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../bloc/tasks/tasks_models.dart';
+import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
 import '../../../theme.dart';
 import '../../leads/widgets/lead_card.dart';
@@ -42,7 +44,18 @@ class SearchSuggestions extends StatelessWidget {
     }
     if (tasks.isNotEmpty) {
       list.add(_header('SUGGESTED TASKS'));
-      list.addAll(tasks.map((t) => TaskCard(task: t)));
+      list.add(
+        BlocBuilder<TasksBloc, TasksState>(
+          builder: (context, tasksState) {
+            final resolved = tasksState is TasksLoaded
+                ? tasks.map((t) => tasksState.allTasks.firstWhere((item) => item.id == t.id, orElse: () => t)).toList()
+                : tasks;
+            return Column(
+              children: resolved.map((t) => TaskCard(task: t)).toList(),
+            );
+          },
+        ),
+      );
     }
     if (followUps.isNotEmpty) {
       list.add(_header('SUGGESTED FOLLOW-UPS'));

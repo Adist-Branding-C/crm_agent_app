@@ -25,7 +25,7 @@ class EnquiryDetailsBody extends StatelessWidget {
           return const Center(child: AppLoadingWidget());
         }
         if (state is EnquiryDetailsLoaded) {
-          return const EnquiryDetailsLoadedView();
+          return EnquiryDetailsLoadedView(state: state);
         }
         if (state is EnquiryDetailsError) {
           return Center(

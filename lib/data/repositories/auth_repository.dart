@@ -12,6 +12,9 @@ abstract class AuthRepository {
   /// Returns whether the user is currently authenticated.
   bool get isAuthenticated;
 
+  /// Returns whether the repository has finished initialization.
+  bool get isInitialized;
+
   /// Initializes the repository by reading stored credentials/tokens.
   Future<void> init();
 }

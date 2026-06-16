@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/attendance/widgets/timeline_tile_marker.dart';
-import '../screens/attendance/widgets/timeline_tile_config.dart';
+import 'timeline_tile_marker.dart';
+import 'timeline_tile_config.dart';
 
 /// Standardized layout for a timeline tile, featuring connecting lines and marker.
 class TimelineLayout extends StatelessWidget {

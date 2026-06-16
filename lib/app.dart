@@ -59,18 +59,14 @@ class _MyAppState extends State<MyApp> {
           ],
           child: BlocListener<CallLogBloc, CallLogState>(
             listener: (context, state) {
-              if (state is CallLogNavigationPending) {
-                _router.pushNamed(AppRoutes.callLog, extra: state.lead);
-              }
+              if (state is CallLogNavigationPending) _router.pushNamed(AppRoutes.callLog, extra: state.lead);
             },
             child: MaterialApp.router(
               title: 'CRM Agent App',
               debugShowCheckedModeBanner: false,
               theme: AppTheme.lightTheme,
               routerConfig: _router,
-              builder: (context, child) => CallLifecycleObserver(
-                child: child ?? const SizedBox.shrink(),
-              ),
+              builder: (context, child) => CallLifecycleObserver(child: child ?? const SizedBox.shrink()),
             ),
           ),
         ),

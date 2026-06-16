@@ -5,6 +5,7 @@ import '../../../bloc/notifications/notifications_bloc.dart';
 import '../../../bloc/notifications/notifications_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
+import 'notification_style_resolver.dart';
 
 /// Renders a single notification card with type-based styling and indicators.
 class NotificationItemWidget extends StatelessWidget {
@@ -13,7 +14,7 @@ class NotificationItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = _getStyle(item.type);
+    final style = item.type.style;
     return CustomCard(
       margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
       padding: const EdgeInsets.all(16),
@@ -56,28 +57,4 @@ class NotificationItemWidget extends StatelessWidget {
       ),
     );
   }
-
-  _ItemStyle _getStyle(NotificationType type) {
-    switch (type) {
-      case NotificationType.lead:
-        return _ItemStyle(Icons.people_outline_rounded, AppColors.primaryColorLight, AppColors.primaryColor);
-      case NotificationType.followUp:
-        return _ItemStyle(Icons.phone_in_talk_outlined, AppColors.successBackground, AppColors.success);
-      case NotificationType.task:
-        return _ItemStyle(Icons.check_box_outlined, AppColors.warningLight, AppColors.warningText);
-      case NotificationType.deal:
-        return _ItemStyle(Icons.business_center_outlined, AppColors.accentBackground, AppColors.accent);
-      case NotificationType.leadStatus:
-        return _ItemStyle(Icons.refresh_rounded, AppColors.infoBackground, AppColors.info);
-      case NotificationType.mention:
-        return _ItemStyle(Icons.description_outlined, AppColors.successLight, AppColors.successDark);
-    }
-  }
-}
-
-class _ItemStyle {
-  final IconData icon;
-  final Color bgColor;
-  final Color iconColor;
-  _ItemStyle(this.icon, this.bgColor, this.iconColor);
 }

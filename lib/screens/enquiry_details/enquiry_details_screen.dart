@@ -31,6 +31,12 @@ class EnquiryDetailsScreen extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Lead deleted successfully')),
                 );
+              } else if (state is EnquiryDetailsError &&
+                  state.message.toLowerCase().contains('not found')) {
+                context.pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.message)),
+                );
               }
             },
           ),

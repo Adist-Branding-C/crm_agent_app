@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../bloc/attendance/attendance_models.dart';
-import '../../../theme.dart';
+import '../../../../bloc/attendance/attendance_models.dart';
+import '../../../../theme/app_colors.dart';
+import '../../../../widgets/timeline_tile_config.dart';
 
-/// Configuration details for a timeline event type.
-class TimelineTileConfig {
-  final IconData icon;
-  final Color iconColor;
-  final Color bgColor;
-
-  const TimelineTileConfig({
-    required this.icon,
-    required this.iconColor,
-    required this.bgColor,
-  });
+/// Helper class to resolve timeline configurations for Attendance activities.
+class AttendanceTimelineConfigs {
+  AttendanceTimelineConfigs._();
 
   /// Resolves the theme config for a specific activity type.
   static TimelineTileConfig getConfig(AttendanceActivityType type) {

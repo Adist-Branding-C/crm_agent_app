@@ -35,6 +35,8 @@ class FakeLeadsRepository implements LeadsRepository {
   @override
   Future<void> deleteLead(String id) async {}
   @override
+  Stream<String> get leadDeletedStream => const Stream.empty();
+  @override
   List<EnquiryActivity> getActivitiesForLead(String leadId) => [];
   @override
   void addActivityForLead(String leadId, EnquiryActivity activity) {}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import 'enquiry_details_header.dart';
 import 'tab_selector.dart';
 import 'info_tab_view.dart';
@@ -8,7 +9,8 @@ import 'fab_menu.dart';
 
 /// The loaded view containing the header, tab selector, tab contents and fab.
 class EnquiryDetailsLoadedView extends StatefulWidget {
-  const EnquiryDetailsLoadedView({super.key});
+  final EnquiryDetailsLoaded state;
+  const EnquiryDetailsLoadedView({super.key, required this.state});
 
   @override
   State<EnquiryDetailsLoadedView> createState() =>
@@ -32,10 +34,10 @@ class _EnquiryDetailsLoadedViewState extends State<EnquiryDetailsLoadedView> {
             Expanded(
               child: IndexedStack(
                 index: _activeTab,
-                children: const [
-                  InfoTabView(),
-                  ActivitiesTabView(),
-                  NotesTabView(),
+                children: [
+                  InfoTabView(lead: widget.state.lead),
+                  ActivitiesTabView(activities: widget.state.activities),
+                  NotesTabView(notes: widget.state.notes),
                 ],
               ),
             ),

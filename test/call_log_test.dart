@@ -20,6 +20,8 @@ class MockLeadsRepo implements LeadsRepository {
   @override
   Future<void> deleteLead(String id) async {}
   @override
+  Stream<String> get leadDeletedStream => const Stream.empty();
+  @override
   List<EnquiryActivity> getActivitiesForLead(String id) => activities;
   @override
   void addActivityForLead(String id, EnquiryActivity act) => activities.add(act);

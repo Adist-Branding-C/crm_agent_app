@@ -10,11 +10,16 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource authDataSource;
 
   bool _isAuthenticated = false;
+  bool _isInitialized = false;
+
+  @override
+  bool get isInitialized => _isInitialized;
 
   @override
   Future<void> init() async {
     final token = await authDataSource.readToken();
     _isAuthenticated = token != null;
+    _isInitialized = true;
   }
 
   @override

@@ -67,3 +67,12 @@ class ApplyFilterOptions extends LeadsEvent {
   @override
   List<Object?> get props => [sortBy, status, source];
 }
+
+/// Event dispatched when a lead is deleted.
+class LeadDeleted extends LeadsEvent {
+  final String leadId;
+  const LeadDeleted(this.leadId);
+
+  @override
+  List<Object?> get props => [leadId];
+}

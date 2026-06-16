@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../bloc/attendance/attendance_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/timeline_layout.dart';
-import 'timeline_tile_config.dart';
+import '../../../widgets/timeline_tile_config.dart';
+import 'attendance_timeline_configs.dart';
 
 /// Renders a single event in the activity timeline.
 class TimelineTile extends StatelessWidget {
@@ -20,7 +21,7 @@ class TimelineTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final config = TimelineTileConfig.getConfig(item.type);
+    final config = AttendanceTimelineConfigs.getConfig(item.type);
     final textTheme = Theme.of(context).textTheme;
     final captionStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.textMuted,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme.dart';
+import '../theme/app_colors.dart';
 import 'timeline_tile_config.dart';
 
 /// Renders the circular activity icon and connecting timeline lines.

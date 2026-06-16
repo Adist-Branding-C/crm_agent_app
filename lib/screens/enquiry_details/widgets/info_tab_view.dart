@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../../bloc/enquiry_details/enquiry_details_state.dart';
+import '../../../bloc/leads/leads_models.dart';
 import '../../../theme.dart';
 import 'info_item_tile.dart';
 import 'status_selector.dart';
 
 /// Renders the Info Tab containing all the descriptive fields of a lead.
 class InfoTabView extends StatelessWidget {
-  /// Creates a constant [InfoTabView].
-  const InfoTabView({super.key});
+  final Lead lead;
+  const InfoTabView({super.key, required this.lead});
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<EnquiryDetailsBloc>().state
-        as EnquiryDetailsLoaded;
-    final lead = state.lead;
     const sourceFallback = 'Website';
     const followUpFallback = 'Today, 5:30 PM';
     const remarkFallback = 'Comparing with competitor. Needs pricing sheet.';

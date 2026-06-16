@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_bloc.dart';
 import '../../../bloc/search/search_result.dart';
+import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../theme.dart';
 import '../../follow_ups/widgets/follow_up_item_card.dart';
 import '../../leads/widgets/lead_card.dart';
@@ -60,7 +62,14 @@ class SearchResultsList extends StatelessWidget {
       LeadSearchResult(lead: final l) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
           child: LeadCard(lead: l)),
-      TaskSearchResult(task: final t) => TaskCard(task: t),
+      TaskSearchResult(task: final t) => BlocBuilder<TasksBloc, TasksState>(
+          builder: (context, tasksState) {
+            final resolved = tasksState is TasksLoaded
+                ? tasksState.allTasks.firstWhere((item) => item.id == t.id, orElse: () => t)
+                : t;
+            return TaskCard(task: resolved);
+          },
+        ),
       SpotlightSearchResult(spotlight: final s) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
           child: SpotlightCard(spotlight: s)),
