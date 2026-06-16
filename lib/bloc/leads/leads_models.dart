@@ -38,7 +38,7 @@ class Lead extends Equatable {
 
   /// Creates a constant [Lead].
   const Lead({
-    required this.id,
+    this.id = '',
     required this.name,
     required this.status,
     required this.source,

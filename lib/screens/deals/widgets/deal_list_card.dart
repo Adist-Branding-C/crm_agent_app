@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../theme.dart';
+import '../../../../utils/currency_formatter.dart';
 
 /// Renders a Deal card tailored for the List view.
 class DealListCard extends StatelessWidget {
@@ -32,7 +33,7 @@ class DealListCard extends StatelessWidget {
                 ),
               ),
               Text(
-                deal.formattedAmount,
+                deal.amount.toRupeeFormat(),
                 style: const TextStyle(
                   color: AppColors.textDark,
                   fontWeight: FontWeight.w800,

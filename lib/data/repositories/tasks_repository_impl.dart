@@ -62,8 +62,11 @@ class TasksRepositoryImpl implements TasksRepository {
   }
 
   @override
-  Future<List<Task>> addTask(Task task) async {
-    _mockTasks.insert(0, task);
-    return List.unmodifiable(_mockTasks);
+  Future<Task> addTask(Task task) async {
+    final taskWithId = task.copyWith(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+    );
+    _mockTasks.insert(0, taskWithId);
+    return taskWithId;
   }
 }

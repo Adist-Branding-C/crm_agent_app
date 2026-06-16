@@ -7,7 +7,7 @@ abstract class LeadsRepository {
   Future<List<Lead>> getLeads();
 
   /// Adds a new lead.
-  Future<void> addLead(Lead lead);
+  Future<Lead> addLead(Lead lead);
 
   /// Retrieves a single lead by ID.
   Future<Lead?> getLeadById(String id);
@@ -35,10 +35,24 @@ class LeadsRepositoryImpl implements LeadsRepository {
   }
 
   @override
-  Future<void> addLead(Lead lead) async {
+  Future<Lead> addLead(Lead lead) async {
     // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 100));
-    await leadsDataSource.insertLead(lead);
+    final leadWithId = Lead(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      name: lead.name,
+      status: lead.status,
+      source: lead.source,
+      category: lead.category,
+      phone: lead.phone,
+      location: lead.location,
+      email: lead.email,
+      leadSource: lead.leadSource,
+      nextFollowUp: lead.nextFollowUp,
+      note: lead.note,
+    );
+    await leadsDataSource.insertLead(leadWithId);
+    return leadWithId;
   }
 
   @override

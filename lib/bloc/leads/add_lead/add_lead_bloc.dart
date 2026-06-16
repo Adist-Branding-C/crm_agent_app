@@ -58,14 +58,13 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
     emit(state.copyWith(isSubmitting: true, isSuccess: false, error: () => null));
     try {
       final lead = Lead(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
         name: ev.name.trim(), phone: ev.phone.trim(), email: ev.email.trim(),
         location: ev.location.trim(), source: ev.purpose, category: ev.category,
         status: ev.status, leadSource: ev.source, nextFollowUp: ev.nextFollowUp,
         note: ev.note,
       );
-      await leadsRepository.addLead(lead);
-      emit(state.copyWith(isSubmitting: false, isSuccess: true, lead: lead));
+      final assignedLead = await leadsRepository.addLead(lead);
+      emit(state.copyWith(isSubmitting: false, isSuccess: true, lead: assignedLead));
     } catch (e) {
       emit(state.copyWith(isSubmitting: false, error: () => e.toString()));
     }

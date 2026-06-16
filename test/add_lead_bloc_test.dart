@@ -10,7 +10,23 @@ class FakeLeadsRepository implements LeadsRepository {
   @override
   Future<List<Lead>> getLeads() async => leads;
   @override
-  Future<void> addLead(Lead lead) async => leads.add(lead);
+  Future<Lead> addLead(Lead lead) async {
+    final leadWithId = Lead(
+      id: 'mock_id',
+      name: lead.name,
+      status: lead.status,
+      source: lead.source,
+      category: lead.category,
+      phone: lead.phone,
+      location: lead.location,
+      email: lead.email,
+      leadSource: lead.leadSource,
+      nextFollowUp: lead.nextFollowUp,
+      note: lead.note,
+    );
+    leads.add(leadWithId);
+    return leadWithId;
+  }
   @override
   Future<Lead?> getLeadById(String id) async => null;
   @override

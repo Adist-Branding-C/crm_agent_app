@@ -37,13 +37,7 @@ class Deal extends Equatable {
     this.ownerInitials = 'AN',
   });
 
-  /// Formatted amount helper (e.g., ₹45K or ₹1.20L).
-  String get formattedAmount {
-    if (amount >= 100000) {
-      return '₹${(amount / 100000).toStringAsFixed(2)}L';
-    }
-    return '₹${(amount / 1000).toStringAsFixed(0)}K';
-  }
+
 
   @override
   List<Object?> get props => [

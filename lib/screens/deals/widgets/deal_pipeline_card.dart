@@ -3,6 +3,7 @@ import '../../../../bloc/deals/deals_models.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../widgets/user_avatar.dart';
 import '../../../../theme.dart';
+import '../../../../utils/currency_formatter.dart';
 
 /// Renders a Deal card tailored for the Pipeline view.
 class DealPipelineCard extends StatelessWidget {
@@ -40,7 +41,7 @@ class DealPipelineCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      deal.formattedAmount,
+                      deal.amount.toRupeeFormat(),
                       style: const TextStyle(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.w800,

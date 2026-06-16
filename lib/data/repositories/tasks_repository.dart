@@ -9,5 +9,5 @@ abstract class TasksRepository {
   Future<List<Task>> toggleTaskCompletion(String id);
 
   /// Adds a new task.
-  Future<List<Task>> addTask(Task task);
+  Future<Task> addTask(Task task);
 }

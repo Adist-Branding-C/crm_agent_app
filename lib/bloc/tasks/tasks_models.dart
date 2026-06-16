@@ -31,7 +31,7 @@ class Task extends Equatable {
 
   /// Creates a constant [Task].
   const Task({
-    required this.id,
+    this.id = '',
     required this.title,
     required this.type,
     required this.time,

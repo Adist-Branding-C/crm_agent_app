@@ -49,7 +49,6 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
     emit(state.copyWith(isSubmitting: true, isSuccess: false, errorMessage: () => null));
     try {
       final task = Task(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
         title: state.title.value.trim(),
         description: state.description.value.isEmpty ? null : state.description.value.trim(),
         type: state.type,
@@ -58,8 +57,8 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
         isOverdue: false,
         priority: state.priority,
       );
-      await tasksRepository.addTask(task);
-      emit(state.copyWith(isSubmitting: false, isSuccess: true, newTask: () => task));
+      final assignedTask = await tasksRepository.addTask(task);
+      emit(state.copyWith(isSubmitting: false, isSuccess: true, newTask: () => assignedTask));
     } catch (e) {
       emit(state.copyWith(isSubmitting: false, errorMessage: () => e.toString()));
     }
