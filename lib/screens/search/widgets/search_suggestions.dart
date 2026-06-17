@@ -3,8 +3,8 @@ import '../../../bloc/leads/leads_models.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
 import '../../leads/widgets/lead_card.dart';
-import '../../follow_ups/widgets/follow_up_item_card.dart';
 import 'recent_section.dart';
+import 'search_follow_up_tile.dart';
 import 'search_section_header.dart';
 import 'suggested_tasks_list.dart';
 
@@ -47,7 +47,7 @@ class SearchSuggestions extends StatelessWidget {
     }
     if (followUps.isNotEmpty) {
       list.add(const SearchSectionHeader(title: 'SUGGESTED FOLLOW-UPS'));
-      list.addAll(followUps.map((f) => FollowUpItemCard(call: f, onTap: () {})));
+      list.addAll(followUps.map((f) => SearchFollowUpTile(followUp: f)));
     }
     return ListView(
       physics: const BouncingScrollPhysics(),

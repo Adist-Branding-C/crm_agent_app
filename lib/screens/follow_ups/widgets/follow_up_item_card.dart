@@ -11,13 +11,17 @@ class FollowUpItemCard extends StatelessWidget {
   final FollowUp call;
 
   /// Callback when the call button is pressed.
-  final VoidCallback onTap;
+  final VoidCallback onCallTap;
+
+  /// Callback when the name or card is tapped (e.g. navigate to details).
+  final VoidCallback? onCardTap;
 
   /// Creates a constant [FollowUpItemCard].
   const FollowUpItemCard({
     super.key,
     required this.call,
-    required this.onTap,
+    required this.onCallTap,
+    this.onCardTap,
   });
 
   @override
@@ -36,12 +40,15 @@ class FollowUpItemCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  call.name,
-                  style: const TextStyle(
-                    color: AppColors.textDark,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                GestureDetector(
+                  onTap: onCardTap,
+                  child: Text(
+                    call.name,
+                    style: const TextStyle(
+                      color: AppColors.textDark,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -56,7 +63,7 @@ class FollowUpItemCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          CallButton(onTap: onTap),
+          CallButton(onTap: onCallTap),
         ],
       ),
     );

@@ -35,7 +35,7 @@ class FollowUpListBody extends StatelessWidget {
           ),
           ...overdue.map((c) => FollowUpItemCard(
                 call: c,
-                onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
+                onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
           const SizedBox(height: 8),
         ],
@@ -51,7 +51,7 @@ class FollowUpListBody extends StatelessWidget {
           ),
           ...dueToday.map((c) => FollowUpItemCard(
                 call: c,
-                onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
+                onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
           const SizedBox(height: 8),
         ],
@@ -67,7 +67,7 @@ class FollowUpListBody extends StatelessWidget {
           ),
           ...upcoming.map((c) => FollowUpItemCard(
                 call: c,
-                onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
+                onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
           const SizedBox(height: 16),
         ],

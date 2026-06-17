@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_result.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
-import '../../follow_ups/widgets/follow_up_item_card.dart';
 import '../../leads/widgets/lead_card.dart';
 import '../../tasks/widgets/task_card.dart';
+import 'search_follow_up_tile.dart';
 import 'spotlight_card.dart';
 
 /// Renders a single search result item by dispatching on its concrete type.
@@ -27,7 +27,7 @@ class SearchResultTile extends StatelessWidget {
           child: SpotlightCard(spotlight: s),
         ),
       FollowUpSearchResult(followUp: final f) =>
-        FollowUpItemCard(call: f, onTap: () {}),
+        SearchFollowUpTile(followUp: f),
       _ => const SizedBox.shrink(),
     };
   }
