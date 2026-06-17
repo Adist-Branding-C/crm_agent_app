@@ -5,6 +5,7 @@ import '../../bloc/call_log/call_log_bloc.dart';
 import '../../bloc/tasks/tasks_bloc.dart';
 import '../../theme.dart';
 import 'dashboard_navigation_config.dart';
+import 'dashboard_tab_notifier.dart';
 import 'models/dashboard_navigation_item.dart';
 import 'widgets/dashboard_nav_bar.dart';
 
@@ -26,28 +27,27 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  late int _navIndex;
   late final List<DashboardNavigationItem> _items;
+  bool _filterDispatched = false;
 
   @override
   void initState() {
     super.initState();
-    _navIndex = widget.initialIndex;
     _items = widget.navigationItems ?? DashboardNavigationConfig.items;
-    if (widget.initialFilter == 'overdue') {
-      context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
-    }
   }
+
   @override
-  void didUpdateWidget(covariant DashboardScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.initialIndex != oldWidget.initialIndex) {
-      setState(() => _navIndex = widget.initialIndex);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_filterDispatched && widget.initialFilter == 'overdue') {
+      context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
+      _filterDispatched = true;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final tabNotifier = context.watch<DashboardTabNotifier>();
     return BlocProvider(
       create: (c) => DashboardBloc(
         dashboardRepository: c.read(),
@@ -61,13 +61,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Scaffold(
           backgroundColor: AppTheme.backgroundColor,
           bottomNavigationBar: DashboardNavBar(
-            currentIndex: _navIndex,
-            onTap: (index) => setState(() => _navIndex = index),
+            currentIndex: tabNotifier.currentIndex,
+            onTap: tabNotifier.setIndex,
             items: _items,
           ),
           body: SafeArea(
             child: IndexedStack(
-              index: _navIndex,
+              index: tabNotifier.currentIndex,
               children: _items.map((item) => item.bodyBuilder(context)).toList(),
             ),
           ),

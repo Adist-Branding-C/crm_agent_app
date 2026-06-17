@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../dashboard_screen.dart';
+import '../dashboard_tab_notifier.dart';
 
-/// Wraps the [DashboardScreen].
-class DashboardRouteProvider extends StatelessWidget {
+/// Wraps the [DashboardScreen] and owns the shared [DashboardTabNotifier].
+class DashboardRouteProvider extends StatefulWidget {
   final int initialIndex;
   final String? initialFilter;
 
@@ -13,10 +15,32 @@ class DashboardRouteProvider extends StatelessWidget {
   });
 
   @override
+  State<DashboardRouteProvider> createState() => _DashboardRouteProviderState();
+}
+
+class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
+  late final DashboardTabNotifier _tabNotifier;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabNotifier = DashboardTabNotifier(initialIndex: widget.initialIndex);
+  }
+
+  @override
+  void dispose() {
+    _tabNotifier.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return DashboardScreen(
-      initialIndex: initialIndex,
-      initialFilter: initialFilter,
+    return ChangeNotifierProvider.value(
+      value: _tabNotifier,
+      child: DashboardScreen(
+        initialIndex: widget.initialIndex,
+        initialFilter: widget.initialFilter,
+      ),
     );
   }
 }
