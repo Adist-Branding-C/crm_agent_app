@@ -40,14 +40,21 @@ class AnalyticsLoaded extends AnalyticsState {
   List<Object?> get props => [summary, statusMetrics, sourceMetrics];
 }
 
+enum AnalyticsFailure { load, unknown }
+
 /// State emitted when loading analytics data fails.
 class AnalyticsError extends AnalyticsState {
-  /// The descriptive error message.
-  final String errorMessage;
+  final AnalyticsFailure failure;
 
-  /// Creates a constant [AnalyticsError] state.
-  const AnalyticsError({required this.errorMessage});
+  const AnalyticsError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case AnalyticsFailure.load: return 'Failed to load analytics';
+      case AnalyticsFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

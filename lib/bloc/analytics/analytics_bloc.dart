@@ -34,7 +34,7 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
         ),
       );
     } catch (e) {
-      emit(const AnalyticsError(errorMessage: 'Failed to load analytics'));
+      emit(const AnalyticsError(failure: AnalyticsFailure.load));
     }
   }
 }

@@ -30,7 +30,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       final profile = await accountRepository.getProfile();
       emit(AccountLoaded(profile: profile));
     } catch (_) {
-      emit(const AccountError(errorMessage: 'Failed to load profile.'));
+      emit(const AccountError(failure: AccountFailure.loadProfile));
     }
   }
 

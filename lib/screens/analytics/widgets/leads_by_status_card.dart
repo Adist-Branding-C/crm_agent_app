@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_models.dart';
-import '../../../bloc/leads/lead_presentation_extensions.dart';
+import '../../../widgets/lead_presentation_extensions.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'metric_progress_row.dart';

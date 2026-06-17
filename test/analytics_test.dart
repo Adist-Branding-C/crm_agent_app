@@ -1,15 +1,14 @@
-import 'package:crm_agent_app/main.dart';
 import 'package:crm_agent_app/screens/dashboard/dashboard_screen.dart';
 import 'package:crm_agent_app/screens/analytics/analytics_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'helpers/test_auth_helpers.dart';
 
 void main() {
   testWidgets('Analytics Screen navigation and metrics smoke test', (
     WidgetTester tester,
   ) async {
-    // 1. Build the app and bypass splash screen
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(createTestApp());
     await tester.pump(const Duration(seconds: 3));
     await tester.pumpAndSettle();
 

@@ -32,12 +32,21 @@ class DashboardLoaded extends DashboardState {
   List<Object?> get props => [stats, followUps];
 }
 
+enum DashboardFailure { load, unknown }
+
 /// State emitted when dashboard data loading fails.
 class DashboardError extends DashboardState {
-  final String errorMessage;
+  final DashboardFailure failure;
 
-  const DashboardError({required this.errorMessage});
+  const DashboardError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case DashboardFailure.load: return 'Failed to fetch dashboard data';
+      case DashboardFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

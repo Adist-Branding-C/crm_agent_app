@@ -18,12 +18,21 @@ class AttendanceLoading extends AttendanceState {
   const AttendanceLoading();
 }
 
+enum AttendanceFailure { load, unknown }
+
 /// State emitted on error.
 class AttendanceError extends AttendanceState {
-  final String errorMessage;
+  final AttendanceFailure failure;
 
-  const AttendanceError({required this.errorMessage});
+  const AttendanceError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case AttendanceFailure.load: return 'Failed to load attendance';
+      case AttendanceFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

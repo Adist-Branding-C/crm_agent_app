@@ -11,7 +11,7 @@ extension CallLogHandlers on CallLogBloc {
     final leads = await leadsRepository.getLeads();
     final matches = leads.where((l) => l.name.toLowerCase() == clean.toLowerCase());
     if (matches.isEmpty) {
-      emit(CallLogFailure(error: 'No lead found for "$clean"'));
+      emit(CallLogFailure(failure: CallLogFailureType.leadNotFound, leadName: clean));
       return;
     }
     emit(CallInProgress(lead: matches.first));
@@ -53,9 +53,8 @@ extension CallLogHandlers on CallLogBloc {
         activityRepository.addActivityForLead(ev.lead.id, activity);
       }
       emit(CallLogSaveSuccess(lead: updatedLead));
-      emit(const CallLogInitial());
     } catch (e) {
-      emit(CallLogFailure(error: e.toString()));
+      emit(const CallLogFailure(failure: CallLogFailureType.save));
     }
   }
 

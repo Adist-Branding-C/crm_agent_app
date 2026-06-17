@@ -32,10 +32,19 @@ class NotificationsLoaded extends NotificationsState {
   List<Object?> get props => [notifications];
 }
 
+enum NotificationsFailure { load, unknown }
+
 class NotificationsError extends NotificationsState {
-  final String errorMessage;
-  const NotificationsError({required this.errorMessage});
+  final NotificationsFailure failure;
+  const NotificationsError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case NotificationsFailure.load: return 'Failed to load notifications';
+      case NotificationsFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

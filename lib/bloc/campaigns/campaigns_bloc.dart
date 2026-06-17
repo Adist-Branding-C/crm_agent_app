@@ -26,7 +26,7 @@ class CampaignsBloc extends Bloc<CampaignsEvent, CampaignsState> {
       final campaignsList = await campaignsRepository.getCampaigns();
       emit(CampaignsLoaded(campaigns: campaignsList));
     } catch (e) {
-      emit(const CampaignsError(errorMessage: 'Failed to fetch campaigns'));
+      emit(const CampaignsError(failure: CampaignsFailure.load));
     }
   }
 }

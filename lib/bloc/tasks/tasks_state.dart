@@ -2,10 +2,13 @@ part of 'tasks_bloc.dart';
 
 /// Available filters for the Tasks screen.
 enum TasksFilter {
-  all,
-  pending,
-  overdue,
-  completed,
+  all('All'),
+  pending('Pending'),
+  overdue('Overdue'),
+  completed('Completed');
+
+  final String label;
+  const TasksFilter(this.label);
 }
 
 /// Base class for all Tasks states.
@@ -54,13 +57,21 @@ class TasksLoaded extends TasksState {
   List<Object?> get props => [allTasks, filter];
 }
 
+enum TasksFailure { load, unknown }
+
 /// Error state.
 class TasksError extends TasksState {
-  final String errorMessage;
+  final TasksFailure failure;
 
-  /// Creates a constant [TasksError] state.
-  const TasksError({required this.errorMessage});
+  const TasksError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case TasksFailure.load: return 'Failed to load tasks';
+      case TasksFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

@@ -49,3 +49,11 @@ refactor: apply architectural review fixes — SOLID, DRY, error handling
   ActivityRepository; update BLoCs and test mocks
 - P3.1: Extract shared BottomSheetHandle widget (duplicated in
   add_task_bottom_sheet and filter_sheet_body)
+
+
+fix: restore task completion checkbox in task list view
+
+Fix overly restrictive buildWhen filter in TasksListView that prevented
+rebuild when TasksLoaded state content changed (same runtimeType).
+Changed from runtimeType check to Equatable deep equality (prev != curr)
+so toggling a task's completion status re-renders the TaskCard.

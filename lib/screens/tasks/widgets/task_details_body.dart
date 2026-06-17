@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
-import '../../../bloc/tasks/task_priority_color_ext.dart';
+import 'task_priority_color_ext.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'task_meta_row.dart';

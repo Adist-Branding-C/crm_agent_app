@@ -16,6 +16,12 @@ class LeadsHeaderActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LeadsBloc, LeadsState>(
+      buildWhen: (prev, curr) {
+        if (prev is LeadsLoaded && curr is LeadsLoaded) {
+          return prev.isSpotlightOnly != curr.isSpotlightOnly;
+        }
+        return prev.runtimeType != curr.runtimeType;
+      },
       builder: (context, state) {
         final isSpotlight = state is LeadsLoaded && state.isSpotlightOnly;
         return Row(

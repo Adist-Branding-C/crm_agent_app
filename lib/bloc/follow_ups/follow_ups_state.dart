@@ -39,14 +39,21 @@ class FollowUpsLoaded extends FollowUpsState {
   List<Object?> get props => [followUps, callingName];
 }
 
+enum FollowUpsFailure { load, unknown }
+
 /// State emitted when an error occurs.
 class FollowUpsError extends FollowUpsState {
-  /// Error description message.
-  final String errorMessage;
+  final FollowUpsFailure failure;
 
-  /// Creates a constant [FollowUpsError] state.
-  const FollowUpsError(this.errorMessage);
+  const FollowUpsError(this.failure);
+
+  String get errorMessage {
+    switch (failure) {
+      case FollowUpsFailure.load: return 'Failed to load follow-ups';
+      case FollowUpsFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

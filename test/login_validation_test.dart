@@ -1,12 +1,11 @@
-import 'package:crm_agent_app/main.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'helpers/test_auth_helpers.dart';
 
 void main() {
   testWidgets('Validation error messages are displayed properly', (
     WidgetTester tester,
   ) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(createTestApp());
     await tester.pump(const Duration(seconds: 3));
     await tester.pumpAndSettle();
 

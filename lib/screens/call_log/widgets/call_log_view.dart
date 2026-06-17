@@ -35,7 +35,10 @@ class CallLogView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<CallLogBloc, CallLogState>(
       listener: (context, state) {
-        if (state is CallLogSaveSuccess) context.pop();
+        if (state is CallLogSaveSuccess) {
+          context.read<CallLogBloc>().add(const ResetCallLog());
+          context.pop();
+        }
       },
       child: Column(
         children: [

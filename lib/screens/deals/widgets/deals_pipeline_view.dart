@@ -12,21 +12,19 @@ class DealsPipelineView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final byStage = {for (final s in DealStage.values) s: deals.where((d) => d.stage == s).toList()};
+    final totals = {for (final e in byStage.entries) e.key: e.value.fold(0.0, (s, d) => s + d.amount)};
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: DealStage.values.map((stage) {
-          final stageDeals = deals.where((d) => d.stage == stage).toList();
-          final totalAmount = stageDeals.fold(0.0, (sum, d) => sum + d.amount);
-          return DealPipelineStageColumn(
-            stage: stage,
-            stageDeals: stageDeals,
-            totalAmount: totalAmount,
-          );
-        }).toList(),
+        children: byStage.entries.map((e) => DealPipelineStageColumn(
+          stage: e.key,
+          stageDeals: e.value,
+          totalAmount: totals[e.key] ?? 0,
+        )).toList(),
       ),
     );
   }

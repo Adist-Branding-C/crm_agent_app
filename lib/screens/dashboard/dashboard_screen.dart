@@ -43,28 +43,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final tabNotifier = context.watch<DashboardTabNotifier>();
-    return BlocProvider(
-      create: (c) => DashboardBloc(
-        dashboardRepository: c.read(),
-      )..add(const FetchDashboardData()),
-      child: BlocListener<CallLogBloc, CallLogState>(
-        listener: (context, state) {
-          if (state is CallLogSaveSuccess) {
-            context.read<DashboardBloc>().add(const FetchDashboardData());
-          }
-        },
-        child: Scaffold(
-          backgroundColor: AppTheme.backgroundColor,
-          bottomNavigationBar: DashboardNavBar(
-            currentIndex: tabNotifier.currentIndex,
-            onTap: tabNotifier.setIndex,
-            items: _items,
-          ),
-          body: SafeArea(
-            child: IndexedStack(
-              index: tabNotifier.currentIndex,
-              children: _items.map((item) => item.body).toList(),
-            ),
+    return BlocListener<CallLogBloc, CallLogState>(
+      listener: (context, state) {
+        if (state is CallLogSaveSuccess) {
+          context.read<DashboardBloc>().add(const FetchDashboardData());
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppTheme.backgroundColor,
+        bottomNavigationBar: DashboardNavBar(
+          currentIndex: tabNotifier.currentIndex,
+          onTap: tabNotifier.setIndex,
+          items: _items,
+        ),
+        body: SafeArea(
+          child: IndexedStack(
+            index: tabNotifier.currentIndex,
+            children: _items.map((item) => item.body).toList(),
           ),
         ),
       ),

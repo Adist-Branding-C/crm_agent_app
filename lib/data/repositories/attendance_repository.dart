@@ -1,13 +1,9 @@
-import '../../bloc/attendance/attendance_bloc.dart';
+import '../models/attendance_data.dart';
 
-/// Repository interface managing Daily activity & Attendance.
 abstract class AttendanceRepository {
-  /// Fetches the current user attendance details.
-  Future<AttendanceLoaded> getAttendanceData();
+  Future<AttendanceData> getAttendanceData();
 
-  /// Updates status to checked in.
-  Future<AttendanceLoaded> checkIn(AttendanceLoaded current);
+  Future<AttendanceData> checkIn(AttendanceData current);
 
-  /// Updates status to checked out.
-  Future<AttendanceLoaded> checkOut(AttendanceLoaded current);
+  Future<AttendanceData> checkOut(AttendanceData current);
 }

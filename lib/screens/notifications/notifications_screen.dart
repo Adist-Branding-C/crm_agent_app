@@ -26,6 +26,12 @@ class NotificationsScreen extends StatelessWidget {
 
   Widget _buildHeader(BuildContext context) {
     return BlocBuilder<NotificationsBloc, NotificationsState>(
+      buildWhen: (prev, curr) {
+        if (prev is NotificationsLoaded && curr is NotificationsLoaded) {
+          return prev.unreadCount != curr.unreadCount;
+        }
+        return prev.runtimeType != curr.runtimeType;
+      },
       builder: (context, state) {
         final count = state is NotificationsLoaded ? state.unreadCount : 0;
         return ScreenHeader(
@@ -52,6 +58,13 @@ class _NotificationsListBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotificationsBloc, NotificationsState>(
+      buildWhen: (prev, curr) {
+        if (prev is NotificationsLoaded && curr is NotificationsLoaded) {
+          return prev.notifications.length != curr.notifications.length ||
+              prev.unreadCount != curr.unreadCount;
+        }
+        return prev.runtimeType != curr.runtimeType;
+      },
       builder: (context, state) {
         final list = state is NotificationsLoaded ? state.notifications : const [];
         return AsyncStateView(

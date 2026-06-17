@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/follow_ups/follow_ups_bloc.dart';
 import '../../bloc/follow_ups/follow_ups_models.dart';
 import '../../bloc/call_log/call_log_bloc.dart';
-import '../../theme.dart';
+import '../../data/repositories/follow_ups_repository.dart';
 import '../../widgets/async_state_view.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/follow_up_header.dart';
@@ -17,7 +17,9 @@ class FollowUpsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FollowUpsBloc()..add(const LoadFollowUps()),
+      create: (context) => FollowUpsBloc(
+        followUpsRepository: context.read<FollowUpsRepository>(),
+      )..add(const LoadFollowUps()),
       child: PageScaffold(
         padding: EdgeInsets.zero,
         child: MultiBlocListener(

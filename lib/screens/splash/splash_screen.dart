@@ -9,9 +9,7 @@ import '../../theme.dart';
 import 'widgets/splash_animator.dart';
 import 'widgets/splash_loader.dart';
 
-/// The startup landing page showing CRM Agent branding.
 class SplashScreen extends StatelessWidget {
-  /// Creates a constant [SplashScreen] widget.
   const SplashScreen({super.key});
 
   @override
@@ -21,19 +19,7 @@ class SplashScreen extends StatelessWidget {
       child: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is SplashNavigateToLogin) {
-            final authRepo = context.read<AuthRepository>();
-            if (authRepo.isInitialized) {
-              context.goNamed(AppRoutes.login);
-            } else {
-              final notifier = context.read<AuthStateNotifier>();
-              void listener() {
-                if (authRepo.isInitialized) {
-                  notifier.removeListener(listener);
-                  context.goNamed(AppRoutes.login);
-                }
-              }
-              notifier.addListener(listener);
-            }
+            _navigateWhenReady(context);
           }
         },
         child: Scaffold(
@@ -44,9 +30,7 @@ class SplashScreen extends StatelessWidget {
               ),
               const Center(child: SplashAnimator()),
               const Positioned(
-                bottom: 64,
-                left: 0,
-                right: 0,
+                bottom: 64, left: 0, right: 0,
                 child: Center(child: SplashLoader()),
               ),
             ],
@@ -55,4 +39,19 @@ class SplashScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void _navigateWhenReady(BuildContext context) {
+  final authRepo = context.read<AuthRepository>();
+  if (authRepo.isInitialized) {
+    context.goNamed(AppRoutes.login);
+    return;
+  }
+  final notifier = context.read<AuthStateNotifier>();
+  void listener() {
+    if (!authRepo.isInitialized || !context.mounted) return;
+    notifier.removeListener(listener);
+    context.goNamed(AppRoutes.login);
+  }
+  notifier.addListener(listener);
 }

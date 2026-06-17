@@ -28,7 +28,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       emit(DashboardLoaded(stats: stats, followUps: followUps));
     } catch (e) {
       emit(
-        const DashboardError(errorMessage: 'Failed to fetch dashboard data'),
+        const DashboardError(failure: DashboardFailure.load),
       );
     }
   }

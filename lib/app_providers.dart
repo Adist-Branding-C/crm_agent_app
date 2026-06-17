@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'data/datasources/activity_datasource.dart';
 import 'data/datasources/leads_datasource.dart';
 import 'data/repositories/account_repository.dart';
 import 'data/repositories/account_repository_impl.dart';
+import 'data/repositories/activity_repository.dart';
+import 'data/repositories/activity_repository_impl.dart';
 import 'data/repositories/analytics_repository.dart';
 import 'data/repositories/analytics_repository_impl.dart';
 import 'data/repositories/attendance_repository.dart';
@@ -13,7 +16,6 @@ import 'data/repositories/dashboard_repository.dart';
 import 'data/repositories/dashboard_repository_impl.dart';
 import 'data/repositories/deals_repository.dart';
 import 'data/repositories/deals_repository_impl.dart';
-import 'data/repositories/activity_repository.dart';
 import 'data/repositories/leads_repository.dart';
 import 'data/repositories/leads_repository_impl.dart';
 import 'data/repositories/tasks_repository.dart';
@@ -25,22 +27,19 @@ import 'data/repositories/follow_ups_repository_impl.dart';
 import 'data/repositories/notifications_repository.dart';
 import 'data/repositories/notifications_repository_impl.dart';
 
-
-/// Builds the list of repository providers for the app.
 List<RepositoryProvider> buildRepositoryProviders({
   required AuthRepository authRepository,
 }) {
-  final leadsRepo = LeadsRepositoryImpl(
-    leadsDataSource: LeadsDataSourceImpl(),
-  );
+  final leadsDataSource = LeadsDataSourceImpl();
+  final activityDataSource = ActivityDataSourceImpl();
+  final leadsRepo = LeadsRepositoryImpl(leadsDataSource: leadsDataSource);
 
   return [
-    RepositoryProvider<AuthRepository>(
-      create: (_) => authRepository,
-    ),
+    RepositoryProvider<AuthRepository>(create: (_) => authRepository),
     RepositoryProvider<LeadsRepository>.value(value: leadsRepo),
-    RepositoryProvider<ActivityRepository>.value(value: leadsRepo),
-
+    RepositoryProvider<ActivityRepository>(
+      create: (_) => ActivityRepositoryImpl(activityDataSource: activityDataSource),
+    ),
     RepositoryProvider<AnalyticsRepository>(
       create: (_) => AnalyticsRepositoryImpl(),
     ),

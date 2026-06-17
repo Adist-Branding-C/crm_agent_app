@@ -15,18 +15,19 @@ class HeaderActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AccountBloc>().state;
-    final initials = state is AccountLoaded ? state.profile.initials : 'AN';
-
-    final notifState = context.watch<NotificationsBloc>().state;
-    final notifCount = notifState is NotificationsLoaded
-        ? notifState.unreadCount.toString()
-        : '3';
+    final initials = context.select<AccountBloc, String>(
+      (b) => b.state is AccountLoaded ? (b.state as AccountLoaded).profile.initials : 'AN',
+    );
+    final notifCount = context.select<NotificationsBloc, String>(
+      (b) => b.state is NotificationsLoaded
+          ? (b.state as NotificationsLoaded).unreadCount.toString()
+          : '3',
+    );
 
     return Row(
       children: [
         GestureDetector(
-          onTap: () => context.push(AppRoutes.notificationsPath),
+          onTap: () => context.pushNamed(AppRoutes.notifications),
           child: NotificationBell(count: notifCount),
         ),
         const SizedBox(width: 12),
@@ -43,7 +44,7 @@ class _AvatarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push(AppRoutes.accountPath),
+      onTap: () => context.pushNamed(AppRoutes.account),
       child: UserAvatar(initials: initials, size: 40),
     );
   }

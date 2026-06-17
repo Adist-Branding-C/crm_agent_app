@@ -1,6 +1,5 @@
 part of 'attendance_bloc.dart';
 
-/// State emitted when attendance data is loaded.
 class AttendanceLoaded extends AttendanceState {
   final bool isCheckedIn;
   final String? checkInTime;
@@ -22,21 +21,37 @@ class AttendanceLoaded extends AttendanceState {
     required this.timeline,
   });
 
-  /// Factory constructor to create a default/empty state.
+  factory AttendanceLoaded.fromData(AttendanceData data) => AttendanceLoaded(
+    isCheckedIn: data.isCheckedIn,
+    checkInTime: data.checkInTime,
+    location: data.location,
+    callsCount: data.callsCount,
+    visitsCount: data.visitsCount,
+    notesCount: data.notesCount,
+    hoursCount: data.hoursCount,
+    timeline: data.timeline,
+  );
+
+  AttendanceData toData() => AttendanceData(
+    isCheckedIn: isCheckedIn,
+    checkInTime: checkInTime,
+    location: location,
+    callsCount: callsCount,
+    visitsCount: visitsCount,
+    notesCount: notesCount,
+    hoursCount: hoursCount,
+    timeline: timeline,
+  );
+
   factory AttendanceLoaded.initial() {
     return const AttendanceLoaded(
-      isCheckedIn: false,
-      checkInTime: null,
-      location: 'Calicut Branch',
-      callsCount: 22,
-      visitsCount: 3,
-      notesCount: 8,
-      hoursCount: 5.4,
+      isCheckedIn: false, checkInTime: null,
+      location: 'Calicut Branch', callsCount: 22,
+      visitsCount: 3, notesCount: 8, hoursCount: 5.4,
       timeline: [],
     );
   }
 
-  /// Utility to copy and modify state values.
   AttendanceLoaded copyWith({
     bool? isCheckedIn,
     String? checkInTime,
@@ -61,13 +76,7 @@ class AttendanceLoaded extends AttendanceState {
 
   @override
   List<Object?> get props => [
-    isCheckedIn,
-    checkInTime,
-    location,
-    callsCount,
-    visitsCount,
-    notesCount,
-    hoursCount,
-    timeline,
+    isCheckedIn, checkInTime, location, callsCount,
+    visitsCount, notesCount, hoursCount, timeline,
   ];
 }

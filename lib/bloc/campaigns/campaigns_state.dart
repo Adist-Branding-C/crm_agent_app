@@ -28,12 +28,21 @@ class CampaignsLoaded extends CampaignsState {
   List<Object?> get props => [campaigns];
 }
 
+enum CampaignsFailure { load, unknown }
+
 /// State emitted when campaigns loading fails.
 class CampaignsError extends CampaignsState {
-  final String errorMessage;
+  final CampaignsFailure failure;
 
-  const CampaignsError({required this.errorMessage});
+  const CampaignsError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case CampaignsFailure.load: return 'Failed to fetch campaigns';
+      case CampaignsFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }

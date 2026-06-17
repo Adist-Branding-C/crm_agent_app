@@ -10,21 +10,22 @@ class TasksFilterTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TasksBloc, TasksState>(
+      buildWhen: (prev, curr) {
+        if (prev is TasksLoaded && curr is TasksLoaded) {
+          return prev.filter != curr.filter;
+        }
+        return prev.runtimeType != curr.runtimeType;
+      },
       builder: (context, state) {
         if (state is! TasksLoaded) return const SizedBox.shrink();
         final selected = state.filter;
         return FilterChipBar(
           options: [
-            for (final entry in [
-              (TasksFilter.all, 'All'),
-              (TasksFilter.pending, 'Pending'),
-              (TasksFilter.overdue, 'Overdue'),
-              (TasksFilter.completed, 'Completed'),
-            ])
+            for (final filter in TasksFilter.values)
               FilterChipOption(
-                label: entry.$2,
-                isSelected: selected == entry.$1,
-                onTap: () => context.read<TasksBloc>().add(FilterChanged(entry.$1)),
+                label: filter.label,
+                isSelected: selected == filter,
+                onTap: () => context.read<TasksBloc>().add(FilterChanged(filter)),
               ),
           ],
         );

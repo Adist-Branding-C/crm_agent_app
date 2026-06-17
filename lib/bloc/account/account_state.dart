@@ -28,14 +28,24 @@ class AccountLoaded extends AccountState {
   List<Object?> get props => [profile];
 }
 
+enum AccountFailure { loadProfile, logout, unknown }
+
 /// Error state.
 class AccountError extends AccountState {
-  final String errorMessage;
+  final AccountFailure failure;
 
-  const AccountError({required this.errorMessage});
+  const AccountError({required this.failure});
+
+  String get errorMessage {
+    switch (failure) {
+      case AccountFailure.loadProfile: return 'Failed to load profile.';
+      case AccountFailure.logout: return 'Failed to logout.';
+      case AccountFailure.unknown: return 'An error occurred.';
+    }
+  }
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [failure];
 }
 
 /// State representing a successful logout transition.

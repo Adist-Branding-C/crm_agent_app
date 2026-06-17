@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
-import 'filter_status_helpers.dart';
+import '../../../widgets/lead_presentation_extensions.dart';
 
 /// Renders status chips styled with distinct colors matching design specs.
 class FilterStatus extends StatelessWidget {
@@ -25,7 +25,7 @@ class FilterStatus extends StatelessWidget {
       runSpacing: 8,
       children: statuses.map((status) {
         final isSel = selectedStatus == status;
-        final cfg = getChipConfig(status);
+        final cfg = status.chipConfig;
         return GestureDetector(
           onTap: () => onSelected(isSel ? null : status),
           child: Container(

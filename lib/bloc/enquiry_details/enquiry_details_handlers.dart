@@ -6,7 +6,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
     try {
       final lead = await leadsRepository.getLeadById(ev.leadId);
       if (lead == null) {
-        emit(const EnquiryDetailsError('Lead not found'));
+        emit(const EnquiryDetailsError(EnquiryDetailsFailure.leadNotFound));
         return;
       }
       final customAct = activityRepository.getActivitiesForLead(lead.id);
@@ -17,7 +17,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
         notes: EnquiryDetailsMockHelper.getNotes(lead),
       ));
     } catch (e) {
-      emit(EnquiryDetailsError(e.toString()));
+      emit(const EnquiryDetailsError(EnquiryDetailsFailure.unknown));
     }
   }
 

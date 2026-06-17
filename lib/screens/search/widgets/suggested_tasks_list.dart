@@ -12,15 +12,14 @@ class SuggestedTasksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TasksBloc, TasksState>(
-      builder: (context, tasksState) {
-        final resolved = tasksState is TasksLoaded
-            ? tasks.map((t) => tasksState.allTasks.firstWhere((item) => item.id == t.id, orElse: () => t)).toList()
-            : tasks;
-        return Column(
-          children: resolved.map((t) => TaskCard(task: t)).toList(),
-        );
-      },
+    final taskMap = context.select<TasksBloc, Map<String, Task>>(
+      (b) => b.state is TasksLoaded
+          ? {for (final t in (b.state as TasksLoaded).allTasks) t.id: t}
+          : const {},
+    );
+    final resolved = tasks.map((t) => taskMap[t.id] ?? t).toList();
+    return Column(
+      children: resolved.map((t) => TaskCard(task: t)).toList(),
     );
   }
 }

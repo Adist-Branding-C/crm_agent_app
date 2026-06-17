@@ -26,7 +26,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
       final list = await notificationsRepository.getNotifications();
       emit(NotificationsLoaded(notifications: list));
     } catch (_) {
-      emit(const NotificationsError(errorMessage: 'Failed to load notifications'));
+      emit(const NotificationsError(failure: NotificationsFailure.load));
     }
   }
 

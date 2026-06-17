@@ -1,15 +1,15 @@
-import 'package:crm_agent_app/main.dart';
 import 'package:crm_agent_app/screens/search/search_screen.dart';
 import 'package:crm_agent_app/screens/leads/widgets/lead_card.dart';
 import 'package:crm_agent_app/screens/tasks/widgets/task_checkbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'helpers/test_auth_helpers.dart';
 
 void main() {
   testWidgets('Global Search Screen integration test', (
     WidgetTester tester,
   ) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(createTestApp());
     await tester.pumpAndSettle();
 
     // Login

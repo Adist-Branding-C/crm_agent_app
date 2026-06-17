@@ -58,13 +58,22 @@ class SearchLoaded extends SearchState {
   List<Object?> get props => [query, results];
 }
 
+enum SearchFailure { load, query, unknown }
+
 /// State representing a failed search.
 class SearchError extends SearchState {
-  final String message;
+  final SearchFailure failure;
 
-  /// Creates a constant [SearchError] state.
-  const SearchError(this.message);
+  const SearchError(this.failure);
+
+  String get message {
+    switch (failure) {
+      case SearchFailure.load: return 'Failed to load search data';
+      case SearchFailure.query: return 'Search failed';
+      case SearchFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [failure];
 }

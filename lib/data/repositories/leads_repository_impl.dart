@@ -1,12 +1,9 @@
 import 'dart:async';
-import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../datasources/leads_datasource.dart';
-import 'activity_repository.dart';
 import 'leads_repository.dart';
 
-/// Implementation of [LeadsRepository] and [ActivityRepository].
-class LeadsRepositoryImpl implements LeadsRepository, ActivityRepository {
+class LeadsRepositoryImpl implements LeadsRepository {
   final LeadsDataSource leadsDataSource;
 
   LeadsRepositoryImpl({required this.leadsDataSource});
@@ -40,9 +37,7 @@ class LeadsRepositoryImpl implements LeadsRepository, ActivityRepository {
   Future<Lead?> getLeadById(String id) async {
     await Future.delayed(const Duration(milliseconds: 100));
     final lead = await leadsDataSource.getLeadById(id);
-    if (lead == null) {
-      _deletedController.add(id);
-    }
+    if (lead == null) _deletedController.add(id);
     return lead;
   }
 
@@ -57,15 +52,5 @@ class LeadsRepositoryImpl implements LeadsRepository, ActivityRepository {
     await Future.delayed(const Duration(milliseconds: 100));
     await leadsDataSource.deleteLead(id);
     _deletedController.add(id);
-  }
-
-  @override
-  List<EnquiryActivity> getActivitiesForLead(String leadId) {
-    return leadsDataSource.fetchActivitiesForLead(leadId);
-  }
-
-  @override
-  void addActivityForLead(String leadId, EnquiryActivity activity) {
-    leadsDataSource.insertActivityForLead(leadId, activity);
   }
 }

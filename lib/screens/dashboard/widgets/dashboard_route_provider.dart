@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import '../../../bloc/dashboard/dashboard_bloc.dart';
 import '../dashboard_screen.dart';
 import '../dashboard_tab_notifier.dart';
 
-/// Wraps the [DashboardScreen] and owns the shared [DashboardTabNotifier].
+/// Wraps the [DashboardScreen] and owns the shared [DashboardTabNotifier] and [DashboardBloc].
 class DashboardRouteProvider extends StatefulWidget {
   final int initialIndex;
   final String? initialFilter;
@@ -20,16 +22,20 @@ class DashboardRouteProvider extends StatefulWidget {
 
 class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
   late final DashboardTabNotifier _tabNotifier;
+  late final DashboardBloc _dashboardBloc;
 
   @override
   void initState() {
     super.initState();
     _tabNotifier = DashboardTabNotifier(initialIndex: widget.initialIndex);
+    _dashboardBloc = DashboardBloc(dashboardRepository: context.read())
+      ..add(const FetchDashboardData());
   }
 
   @override
   void dispose() {
     _tabNotifier.dispose();
+    _dashboardBloc.close();
     super.dispose();
   }
 
@@ -37,9 +43,12 @@ class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: _tabNotifier,
-      child: DashboardScreen(
-        initialIndex: widget.initialIndex,
-        initialFilter: widget.initialFilter,
+      child: BlocProvider.value(
+        value: _dashboardBloc,
+        child: DashboardScreen(
+          initialIndex: widget.initialIndex,
+          initialFilter: widget.initialFilter,
+        ),
       ),
     );
   }

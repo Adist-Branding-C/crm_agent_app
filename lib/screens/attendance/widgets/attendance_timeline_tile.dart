@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../bloc/attendance/attendance_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/timeline_layout.dart';
-import '../../../widgets/timeline_tile_config.dart';
 import 'attendance_timeline_configs.dart';
 
-/// Renders a single event in the activity timeline.
-class TimelineTile extends StatelessWidget {
+class AttendanceTimelineTile extends StatelessWidget {
   final AttendanceTimelineItem item;
   final bool isFirst;
   final bool isLast;
 
-  /// Creates a constant [TimelineTile].
-  const TimelineTile({
+  const AttendanceTimelineTile({
     super.key,
     required this.item,
     required this.isFirst,
@@ -43,14 +40,9 @@ class TimelineTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.title,
-                    style: textTheme.titleMedium?.copyWith(
-                      color: AppColors.textDark,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                  ),
+                  Text(item.title, style: textTheme.titleMedium?.copyWith(
+                    color: AppColors.textDark, fontWeight: FontWeight.bold, fontSize: 14,
+                  )),
                   const SizedBox(height: 3),
                   Text(item.subtitle, style: captionStyle),
                 ],

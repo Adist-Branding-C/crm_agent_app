@@ -28,7 +28,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       final list = await tasksRepository.getTasks();
       emit(TasksLoaded(allTasks: list));
     } catch (e) {
-      emit(const TasksError(errorMessage: 'Failed to load tasks'));
+      emit(const TasksError(failure: TasksFailure.load));
     }
   }
 

@@ -6,32 +6,30 @@ import 'app_providers.dart';
 import 'app_bloc_providers.dart';
 import 'bloc/call_log/call_log_bloc.dart';
 import 'data/auth_state_notifier.dart';
-import 'data/datasources/auth_datasource.dart';
 import 'data/repositories/auth_repository.dart';
-import 'data/repositories/auth_repository_impl.dart';
 import 'router.dart';
 import 'router/app_routes.dart';
 import 'theme.dart';
 import 'widgets/call_lifecycle_observer.dart';
 
 class MyApp extends StatefulWidget {
-  final AuthRepository? authRepository;
-  const MyApp({super.key, this.authRepository});
+  final AuthRepository authRepository;
+
+  const MyApp({super.key, required this.authRepository});
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  late final AuthRepository _authRepository;
-  final _authStateNotifier = AuthStateNotifier();
   late final GoRouter _router;
+  final _authStateNotifier = AuthStateNotifier();
 
   @override
   void initState() {
     super.initState();
-    _authRepository = widget.authRepository ??
-        AuthRepositoryImpl(authDataSource: AuthDataSourceImpl());
-    _router = createRouter(_authRepository, _authStateNotifier);
+    widget.authRepository.init();
+    _router = createRouter(widget.authRepository, _authStateNotifier);
   }
 
   @override
@@ -43,7 +41,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: buildRepositoryProviders(authRepository: _authRepository),
+      providers: buildRepositoryProviders(authRepository: widget.authRepository),
       child: ChangeNotifierProvider<AuthStateNotifier>.value(
         value: _authStateNotifier,
         child: MultiBlocProvider(

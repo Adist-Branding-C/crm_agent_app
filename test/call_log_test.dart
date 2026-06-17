@@ -66,7 +66,6 @@ void main() {
       expectLater(bloc.stream, emitsInOrder([
         const CallLogSaving(),
         isA<CallLogSaveSuccess>().having((s) => s.lead.status, 'status', LeadStatus.interested),
-        const CallLogInitial(),
       ]));
       bloc.add(SaveCallLog(lead: lead, callStatus: 'Connected', leadStatus: LeadStatus.interested, purpose: LeadPurpose.newAdmission, remark: 'ok'));
       await Future.delayed(const Duration(milliseconds: 10));

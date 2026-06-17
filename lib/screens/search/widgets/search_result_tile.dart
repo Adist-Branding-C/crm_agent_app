@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_result.dart';
-import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../leads/widgets/lead_card.dart';
 import '../../tasks/widgets/task_card.dart';
@@ -11,8 +9,9 @@ import 'spotlight_card.dart';
 /// Renders a single search result item by dispatching on its concrete type.
 class SearchResultTile extends StatelessWidget {
   final SearchResult item;
+  final Map<String, Task> taskMap;
 
-  const SearchResultTile({super.key, required this.item});
+  const SearchResultTile({super.key, required this.item, required this.taskMap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,8 @@ class SearchResultTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
           child: LeadCard(lead: l),
         ),
-      TaskSearchResult(task: final t) => SearchResultTaskTile(task: t),
+      TaskSearchResult(task: final t) =>
+        SearchResultTaskTile(task: t, taskMap: taskMap),
       SpotlightSearchResult(spotlight: final s) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
           child: SpotlightCard(spotlight: s),
@@ -33,21 +33,16 @@ class SearchResultTile extends StatelessWidget {
   }
 }
 
-/// Renders a task search result resolved dynamically against the Tasks bloc state.
+/// Renders a task search result resolved against a pre-computed task map.
 class SearchResultTaskTile extends StatelessWidget {
   final Task task;
+  final Map<String, Task> taskMap;
 
-  const SearchResultTaskTile({super.key, required this.task});
+  const SearchResultTaskTile({super.key, required this.task, required this.taskMap});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TasksBloc, TasksState>(
-      builder: (context, tasksState) {
-        final resolved = tasksState is TasksLoaded
-            ? tasksState.allTasks.firstWhere((item) => item.id == task.id, orElse: () => task)
-            : task;
-        return TaskCard(task: resolved);
-      },
-    );
+    final resolved = taskMap[task.id] ?? task;
+    return TaskCard(task: resolved);
   }
 }

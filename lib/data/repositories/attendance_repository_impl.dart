@@ -1,8 +1,7 @@
-import '../../bloc/attendance/attendance_bloc.dart';
 import '../../bloc/attendance/attendance_models.dart';
+import '../models/attendance_data.dart';
 import 'attendance_repository.dart';
 
-/// Concrete implementation of [AttendanceRepository] pre-seeded with mock data.
 class AttendanceRepositoryImpl implements AttendanceRepository {
   static const _mockTimeline = [
     AttendanceTimelineItem(
@@ -43,8 +42,8 @@ class AttendanceRepositoryImpl implements AttendanceRepository {
   ];
 
   @override
-  Future<AttendanceLoaded> getAttendanceData() async {
-    return const AttendanceLoaded(
+  Future<AttendanceData> getAttendanceData() async {
+    return const AttendanceData(
       isCheckedIn: true,
       checkInTime: '9:02 AM',
       location: 'Calicut Branch',
@@ -57,10 +56,10 @@ class AttendanceRepositoryImpl implements AttendanceRepository {
   }
 
   @override
-  Future<AttendanceLoaded> checkIn(AttendanceLoaded current) async =>
+  Future<AttendanceData> checkIn(AttendanceData current) async =>
       current.copyWith(isCheckedIn: true, checkInTime: '9:02 AM');
 
   @override
-  Future<AttendanceLoaded> checkOut(AttendanceLoaded current) async =>
+  Future<AttendanceData> checkOut(AttendanceData current) async =>
       current.copyWith(isCheckedIn: false, checkInTime: null);
 }

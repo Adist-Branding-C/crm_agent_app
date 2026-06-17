@@ -16,6 +16,13 @@ class TasksHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TasksBloc, TasksState>(
+      buildWhen: (prev, curr) {
+        if (prev is TasksLoaded && curr is TasksLoaded) {
+          return prev.pendingCount != curr.pendingCount ||
+              prev.overdueCount != curr.overdueCount;
+        }
+        return prev.runtimeType != curr.runtimeType;
+      },
       builder: (context, state) {
         int pending = 0;
         int overdue = 0;

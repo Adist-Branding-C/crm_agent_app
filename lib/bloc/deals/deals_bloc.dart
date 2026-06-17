@@ -24,7 +24,7 @@ class DealsBloc extends Bloc<DealsEvent, DealsState> {
       final deals = await dealsRepository.getDeals();
       emit(DealsLoaded(deals: deals));
     } catch (e) {
-      emit(const DealsError(errorMessage: 'Failed to fetch deals'));
+      emit(const DealsError(failure: DealsFailure.load));
     }
   }
 }

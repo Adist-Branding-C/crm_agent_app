@@ -48,13 +48,23 @@ class EnquiryDetailsLoaded extends EnquiryDetailsState {
   List<Object?> get props => [lead, activities, notes];
 }
 
+enum EnquiryDetailsFailure { leadNotFound, load, unknown }
+
 /// Error state.
 class EnquiryDetailsError extends EnquiryDetailsState {
-  final String message;
-  const EnquiryDetailsError(this.message);
+  final EnquiryDetailsFailure failureCode;
+  const EnquiryDetailsError(this.failureCode);
+
+  String get message {
+    switch (failureCode) {
+      case EnquiryDetailsFailure.leadNotFound: return 'Lead not found';
+      case EnquiryDetailsFailure.load: return 'Failed to load enquiry details';
+      case EnquiryDetailsFailure.unknown: return 'An error occurred';
+    }
+  }
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [failureCode];
 }
 
 /// Deleted state signifying successfully deleted lead.

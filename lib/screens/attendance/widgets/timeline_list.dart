@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/attendance/attendance_models.dart';
 import '../../../theme.dart';
-import 'timeline_tile.dart';
+import 'attendance_timeline_tile.dart';
 
 /// Renders the section for "Today's Timeline" and list of tiles.
 class TimelineList extends StatelessWidget {
@@ -38,7 +38,7 @@ class TimelineList extends StatelessWidget {
         else
           Column(
             children: List.generate(items.length, (index) {
-              return TimelineTile(
+              return AttendanceTimelineTile(
                 item: items[index],
                 isFirst: index == 0,
                 isLast: index == items.length - 1,

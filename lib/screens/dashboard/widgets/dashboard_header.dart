@@ -16,6 +16,13 @@ class DashboardHeader extends StatelessWidget {
       title: 'Dashboard',
       showBackButton: false,
       subtitleWidget: BlocBuilder<AttendanceBloc, AttendanceState>(
+        buildWhen: (prev, curr) {
+          if (prev is AttendanceLoaded && curr is AttendanceLoaded) {
+            return prev.isCheckedIn != curr.isCheckedIn ||
+                prev.checkInTime != curr.checkInTime;
+          }
+          return prev.runtimeType != curr.runtimeType;
+        },
         builder: (context, state) {
           final isCheckedIn = state is AttendanceLoaded && state.isCheckedIn;
           final statusText = isCheckedIn
