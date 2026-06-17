@@ -28,20 +28,15 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   late final List<DashboardNavigationItem> _items;
-  bool _filterDispatched = false;
 
   @override
   void initState() {
     super.initState();
     _items = widget.navigationItems ?? DashboardNavigationConfig.items;
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!_filterDispatched && widget.initialFilter == 'overdue') {
-      context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
-      _filterDispatched = true;
+    if (widget.initialFilter == 'overdue') {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
+      });
     }
   }
 

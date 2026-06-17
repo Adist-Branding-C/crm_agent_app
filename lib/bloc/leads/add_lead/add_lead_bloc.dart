@@ -8,18 +8,18 @@ import '../leads_models.dart';
 part 'add_lead_event.dart';
 part 'add_lead_submit_event.dart';
 part 'add_lead_state.dart';
-part 'add_lead_state_getters.dart';
+part 'add_lead_form_state.dart';
+part 'add_lead_submission_status.dart';
 part 'add_lead_state_copy.dart';
+part 'add_lead_state_getters.dart';
 part 'lead_name_input.dart';
 part 'lead_phone_input.dart';
 part 'lead_email_input.dart';
 
 /// BLoC managing the state transitions and form validation of the Add Lead form.
 class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
-  /// The leads repository.
   final LeadsRepository leadsRepository;
 
-  /// Initializes the BLoC with [AddLeadState].
   AddLeadBloc({required this.leadsRepository}) : super(const AddLeadState()) {
     on<NameChanged>((ev, emit) => emit(state.copyWith(nameInput: LeadName.dirty(ev.name))));
     on<PhoneChanged>((ev, emit) => emit(state.copyWith(phoneInput: LeadPhone.dirty(ev.phone))));
@@ -38,11 +38,12 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
     if (!state.isValid) return;
     emit(state.copyWith(isSubmitting: true, isSuccess: false, error: () => null));
     try {
+      final f = state.formInputs;
       final lead = Lead(
-        name: state.name.trim(), phone: state.phone.trim(), email: state.email.trim(),
-        location: state.location.trim(), source: state.purpose, category: state.category,
-        status: state.status, leadSource: state.source, nextFollowUp: state.nextFollowUp,
-        note: state.note,
+        name: f.nameInput.value.trim(), phone: f.phoneInput.value.trim(), email: f.emailInput.value.trim(),
+        location: f.location.trim(), source: f.purpose, category: f.category,
+        status: f.status, leadSource: f.source, nextFollowUp: f.nextFollowUp,
+        note: f.note,
       );
       final assignedLead = await leadsRepository.addLead(lead);
       emit(state.copyWith(isSubmitting: false, isSuccess: true, lead: assignedLead));

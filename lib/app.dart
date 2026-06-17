@@ -50,7 +50,10 @@ class _MyAppState extends State<MyApp> {
           providers: buildBlocProviders(),
           child: BlocListener<CallLogBloc, CallLogState>(
             listener: (context, state) {
-              if (state is CallLogNavigationPending) _router.pushNamed(AppRoutes.callLog, extra: state.lead);
+              if (state is CallLogNavigationPending) {
+                _router.pushNamed(AppRoutes.callLog, extra: state.lead);
+                context.read<CallLogBloc>().add(const ResetCallLog());
+              }
             },
             child: MaterialApp.router(
               title: 'CRM Agent App',

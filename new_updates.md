@@ -11,4 +11,9 @@ feat: unify task data, fix View All nav, add row-tap + empty-state hide
 - Hide the entire Tasks section (heading, View All, card) when there
   are no pending tasks to display
 
-  
+  fix(search): wire follow-up card tap navigation and call dialer in search results
+
+- Rename FollowUpItemCard onTap→onCallTap, add onCardTap for detail navigation
+- Create shared SearchFollowUpTile widget to avoid callback duplication
+- Replace no-op callbacks in search_result_tile and search_suggestions
+- Update follow_up_list_body to use renamed onCallTap parameter

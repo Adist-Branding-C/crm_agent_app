@@ -1,49 +1,25 @@
 import 'package:flutter/material.dart';
-import '../../../../bloc/deals/deals_models.dart';
-import 'deals_header.dart';
-import 'deals_stats.dart';
-import 'deals_toggle.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/deals/deals_bloc.dart';
+import '../../../bloc/deals/deals_models.dart';
+import '../models/deals_view_notifier.dart';
 import 'deals_pipeline_view.dart';
 import 'deals_list_view.dart';
 
-/// Renders the loaded content of the Deals screen.
-class DealsLoadedContent extends StatelessWidget {
-  /// The list of deals.
-  final List<Deal> deals;
-
-  /// The index of the selected view (0 for Pipeline, 1 for List).
-  final int viewIndex;
-
-  /// Callback when the view mode changes.
-  final ValueChanged<int> onToggle;
-
-  /// Creates a constant [DealsLoadedContent].
-  const DealsLoadedContent({
-    super.key,
-    required this.deals,
-    required this.viewIndex,
-    required this.onToggle,
-  });
+/// Renders the pipeline or list view based on the current toggle state.
+class DealsContent extends StatelessWidget {
+  const DealsContent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const DealsHeader(),
-        const DealsStats(),
-        DealsToggle(
-          selectedIndex: viewIndex,
-          onChanged: onToggle,
-        ),
-        const SizedBox(height: 8),
-        Expanded(
-          child: viewIndex == 0
-              ? DealsPipelineView(deals: deals)
-              : DealsListView(deals: deals),
-        ),
-        const SizedBox(height: 24),
-      ],
+    return BlocBuilder<DealsBloc, DealsState>(
+      builder: (context, state) {
+        final deals = state is DealsLoaded ? state.deals : const <Deal>[];
+        final viewIndex = context.watch<DealsViewNotifier>().value;
+        return viewIndex == 0
+            ? DealsPipelineView(deals: deals)
+            : DealsListView(deals: deals);
+      },
     );
   }
 }

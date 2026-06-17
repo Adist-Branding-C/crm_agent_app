@@ -12,15 +12,16 @@ import 'tasks_list.dart';
 
 /// Renders the scrollable body of the Dashboard screen.
 class DashboardBody extends StatelessWidget {
-  /// Creates a constant [DashboardBody].
   const DashboardBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final tasksState = context.watch<TasksBloc>().state;
-    final pendingTasks = tasksState is TasksLoaded
-        ? tasksState.allTasks.where((t) => !t.isCompleted).take(3).toList()
-        : <Task>[];
+    final pendingTasks = context.select<TasksBloc, List<Task>>((bloc) {
+      final s = bloc.state;
+      return s is TasksLoaded
+          ? s.allTasks.where((t) => !t.isCompleted).take(3).toList()
+          : <Task>[];
+    });
     return BlocBuilder<DashboardBloc, DashboardState>(
       builder: (context, state) {
         if (state is DashboardLoading || state is DashboardInitial) {

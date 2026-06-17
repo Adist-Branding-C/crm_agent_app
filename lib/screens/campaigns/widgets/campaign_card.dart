@@ -9,10 +9,8 @@ import 'campaign_details.dart';
 
 /// Card component that displays details and progress for a single campaign.
 class CampaignCard extends StatelessWidget {
-  /// The campaign model.
   final Campaign campaign;
 
-  /// Creates a constant [CampaignCard].
   const CampaignCard({super.key, required this.campaign});
 
   @override
@@ -20,6 +18,7 @@ class CampaignCard extends StatelessWidget {
     final double progress = campaign.totalCount == 0
         ? 0
         : campaign.doneCount / campaign.totalCount;
+    final captionStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11);
 
     return CustomCard(
       padding: const EdgeInsets.all(16),
@@ -48,20 +47,8 @@ class CampaignCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '${campaign.doneCount} of ${campaign.totalCount} done',
-                style: const TextStyle(
-                  color: AppColors.textMuted,
-                  fontSize: 11,
-                ),
-              ),
-              Text(
-                '${campaign.remainingCount} remaining',
-                style: const TextStyle(
-                  color: AppColors.textMuted,
-                  fontSize: 11,
-                ),
-              ),
+              Text('${campaign.doneCount} of ${campaign.totalCount} done', style: captionStyle),
+              Text('${campaign.remainingCount} remaining', style: captionStyle),
             ],
           ),
         ],
