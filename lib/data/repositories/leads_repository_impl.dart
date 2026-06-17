@@ -2,10 +2,11 @@ import 'dart:async';
 import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../datasources/leads_datasource.dart';
+import 'activity_repository.dart';
 import 'leads_repository.dart';
 
-/// Implementation of [LeadsRepository] interacting with [LeadsDataSource].
-class LeadsRepositoryImpl implements LeadsRepository {
+/// Implementation of [LeadsRepository] and [ActivityRepository].
+class LeadsRepositoryImpl implements LeadsRepository, ActivityRepository {
   final LeadsDataSource leadsDataSource;
 
   LeadsRepositoryImpl({required this.leadsDataSource});

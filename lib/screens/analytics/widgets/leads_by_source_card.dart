@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_models.dart';
-import '../../../bloc/leads/leads_enums.dart';
+import '../../../bloc/leads/lead_presentation_extensions.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'metric_progress_row.dart';
@@ -45,7 +45,7 @@ class LeadsBySourceCard extends StatelessWidget {
                   title: item.source.label,
                   count: item.count.toString(),
                   progressValue: item.count / maxCount,
-                  barColor: _getBarColor(item.source),
+                  barColor: item.source.barColor,
                 ),
               );
             }),
@@ -53,19 +53,5 @@ class LeadsBySourceCard extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  Color _getBarColor(LeadSource source) {
-    switch (source) {
-      case LeadSource.facebook:
-        return AppColors.info; // blue
-      case LeadSource.website:
-        return AppColors.success; // green/teal
-      case LeadSource.referral:
-        return AppColors.accent; // purple
-      case LeadSource.instagram:
-      default:
-        return AppColors.warning; // orange
-    }
   }
 }

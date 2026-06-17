@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_models.dart';
-import '../../../bloc/leads/leads_enums.dart';
+import '../../../bloc/leads/lead_presentation_extensions.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'metric_progress_row.dart';
@@ -45,7 +45,7 @@ class LeadsByStatusCard extends StatelessWidget {
                   title: item.status.label,
                   count: item.count.toString(),
                   progressValue: item.count / maxCount,
-                  barColor: _getBarColor(item.status),
+                  barColor: item.status.barColor,
                 ),
               );
             }),
@@ -53,21 +53,5 @@ class LeadsByStatusCard extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  Color _getBarColor(LeadStatus status) {
-    switch (status) {
-      case LeadStatus.newStatus:
-        return AppColors.info; // blue
-      case LeadStatus.interested:
-        return AppColors.success; // green/teal
-      case LeadStatus.qualified:
-        return AppColors.accent; // purple
-      case LeadStatus.followUp:
-        return AppColors.warning; // orange
-      case LeadStatus.lost:
-      default:
-        return AppColors.errorColor; // red
-    }
   }
 }

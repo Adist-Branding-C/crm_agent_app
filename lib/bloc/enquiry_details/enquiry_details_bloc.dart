@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/repositories/activity_repository.dart';
 import '../../data/repositories/leads_repository.dart';
 import 'enquiry_details_event.dart';
 import 'enquiry_details_state.dart';
@@ -10,9 +11,12 @@ part 'enquiry_details_handlers.dart';
 class EnquiryDetailsBloc
     extends Bloc<EnquiryDetailsEvent, EnquiryDetailsState> {
   final LeadsRepository leadsRepository;
+  final ActivityRepository activityRepository;
 
-  EnquiryDetailsBloc({required this.leadsRepository})
-      : super(EnquiryDetailsInitial()) {
+  EnquiryDetailsBloc({
+    required this.leadsRepository,
+    required this.activityRepository,
+  }) : super(EnquiryDetailsInitial()) {
     on<LoadEnquiryDetails>(_onLoad);
     on<ChangeEnquiryStatus>(_onChangeStatus);
     on<AddEnquiryNote>(_onAddNote);

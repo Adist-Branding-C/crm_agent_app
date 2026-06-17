@@ -38,17 +38,15 @@ class LoginForm extends StatelessWidget {
           buildWhen: (prev, curr) =>
               prev.obscurePassword != curr.obscurePassword,
           builder: (context, state) {
-            final obscurePassword =
-                context.select((LoginBloc s) => s.state.obscurePassword);
             return CustomTextField(
               label: 'Password',
               isRequired: true,
               hintText: 'Enter password',
               controller: passwordController,
-              obscureText: obscurePassword,
+              obscureText: state.obscurePassword,
               suffixIcon: IconButton(
                 icon: Icon(
-                  obscurePassword
+                  state.obscurePassword
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined,
                   color: AppColors.textMuted,

@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _authRepository = widget.authRepository ??
-        (AuthRepositoryImpl(authDataSource: AuthDataSourceImpl())..init().then((_) => _authStateNotifier.refresh()));
+        AuthRepositoryImpl(authDataSource: AuthDataSourceImpl());
     _router = createRouter(_authRepository, _authStateNotifier);
   }
 

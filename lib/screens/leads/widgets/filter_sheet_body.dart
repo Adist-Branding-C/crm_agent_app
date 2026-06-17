@@ -1,6 +1,6 @@
-import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../widgets/bottom_sheet_handle.dart';
 import '../../../../bloc/leads/filter_result.dart';
 import '../../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/custom_button.dart';
@@ -34,15 +34,7 @@ class FilterSheetBody extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: Container(
-              width: 38, height: 4,
-              decoration: BoxDecoration(
-                color: AppColors.borderLight,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-          ),
+          const BottomSheetHandle(),
           const SizedBox(height: 16),
           Text(
             'Filter & Sort',

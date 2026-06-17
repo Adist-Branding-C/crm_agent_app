@@ -23,6 +23,7 @@ class DashboardBody extends StatelessWidget {
           : <Task>[];
     });
     return BlocBuilder<DashboardBloc, DashboardState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         if (state is DashboardLoading || state is DashboardInitial) {
           return const DashboardShimmer();

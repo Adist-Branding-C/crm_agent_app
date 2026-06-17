@@ -13,6 +13,7 @@ import 'data/repositories/dashboard_repository.dart';
 import 'data/repositories/dashboard_repository_impl.dart';
 import 'data/repositories/deals_repository.dart';
 import 'data/repositories/deals_repository_impl.dart';
+import 'data/repositories/activity_repository.dart';
 import 'data/repositories/leads_repository.dart';
 import 'data/repositories/leads_repository_impl.dart';
 import 'data/repositories/tasks_repository.dart';
@@ -29,15 +30,17 @@ import 'data/repositories/notifications_repository_impl.dart';
 List<RepositoryProvider> buildRepositoryProviders({
   required AuthRepository authRepository,
 }) {
+  final leadsRepo = LeadsRepositoryImpl(
+    leadsDataSource: LeadsDataSourceImpl(),
+  );
+
   return [
     RepositoryProvider<AuthRepository>(
       create: (_) => authRepository,
     ),
-    RepositoryProvider<LeadsRepository>(
-      create: (_) => LeadsRepositoryImpl(
-        leadsDataSource: LeadsDataSourceImpl(),
-      ),
-    ),
+    RepositoryProvider<LeadsRepository>.value(value: leadsRepo),
+    RepositoryProvider<ActivityRepository>.value(value: leadsRepo),
+
     RepositoryProvider<AnalyticsRepository>(
       create: (_) => AnalyticsRepositoryImpl(),
     ),

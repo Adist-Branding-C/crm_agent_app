@@ -3,10 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/bloc/leads/leads_bloc.dart';
 import 'package:crm_agent_app/bloc/leads/leads_models.dart';
 import 'package:crm_agent_app/bloc/leads/leads_enums.dart';
+import 'package:crm_agent_app/data/repositories/activity_repository.dart';
 import 'package:crm_agent_app/data/repositories/leads_repository.dart';
 import 'package:crm_agent_app/bloc/enquiry_details/enquiry_details_models.dart';
 
-class FakeLeadsRepository implements LeadsRepository {
+class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
   final List<Lead> leads = [];
   final _controller = StreamController<String>.broadcast();
   @override

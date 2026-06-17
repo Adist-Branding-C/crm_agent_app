@@ -9,7 +9,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
         emit(const EnquiryDetailsError('Lead not found'));
         return;
       }
-      final customAct = leadsRepository.getActivitiesForLead(lead.id);
+      final customAct = activityRepository.getActivitiesForLead(lead.id);
       final defaultAct = EnquiryDetailsMockHelper.getActivities(lead.name);
       emit(EnquiryDetailsLoaded(
         lead: lead,
@@ -31,7 +31,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
         title: '@You changed status of ${s.lead.name} -> ${ev.status.label}',
         time: 'Just now', type: EnquiryActivityType.statusChange,
       );
-      leadsRepository.addActivityForLead(s.lead.id, newAct);
+      activityRepository.addActivityForLead(s.lead.id, newAct);
       emit(s.copyWith(lead: updated, activities: [newAct, ...s.activities]));
     }
   }
@@ -48,7 +48,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
         title: '@You added a note on ${s.lead.name}',
         time: 'Just now', type: EnquiryActivityType.note,
       );
-      leadsRepository.addActivityForLead(s.lead.id, newAct);
+      activityRepository.addActivityForLead(s.lead.id, newAct);
       emit(s.copyWith(
         notes: [newNote, ...s.notes],
         activities: [newAct, ...s.activities],

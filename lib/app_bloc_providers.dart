@@ -9,7 +9,10 @@ import 'bloc/notifications/notifications_bloc.dart';
 List<BlocProvider> buildBlocProviders() {
   return [
     BlocProvider<CallLogBloc>(
-      create: (c) => CallLogBloc(leadsRepository: c.read()),
+      create: (c) => CallLogBloc(
+        leadsRepository: c.read(),
+        activityRepository: c.read(),
+      ),
     ),
     BlocProvider<AttendanceBloc>(
       create: (c) => AttendanceBloc(

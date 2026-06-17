@@ -14,14 +14,14 @@ class DashboardNavigationItem {
   /// The icon displayed when the tab is selected.
   final Widget? activeIcon;
 
-  /// A builder function that returns the widget tree for this tab's screen/body.
-  final WidgetBuilder bodyBuilder;
+  /// The widget tree for this tab's screen/body.
+  final Widget body;
 
   /// Creates a constant [DashboardNavigationItem].
   const DashboardNavigationItem({
     required this.label,
     required this.icon,
     this.activeIcon,
-    required this.bodyBuilder,
+    required this.body,
   });
 }

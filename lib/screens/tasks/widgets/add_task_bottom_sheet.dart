@@ -1,5 +1,5 @@
-import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import '../../../widgets/bottom_sheet_handle.dart';
 import 'add_task_form.dart';
 
 /// Modal bottom sheet container for the Add Task form.
@@ -18,16 +18,7 @@ class AddTaskBottomSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 12),
-          Center(
-            child: Container(
-              width: 38,
-              height: 4,
-              decoration: BoxDecoration(
-                color: AppColors.borderLight,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-          ),
+          const BottomSheetHandle(),
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),

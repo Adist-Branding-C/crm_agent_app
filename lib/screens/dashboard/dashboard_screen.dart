@@ -63,7 +63,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           body: SafeArea(
             child: IndexedStack(
               index: tabNotifier.currentIndex,
-              children: _items.map((item) => item.bodyBuilder(context)).toList(),
+              children: _items.map((item) => item.body).toList(),
             ),
           ),
         ),

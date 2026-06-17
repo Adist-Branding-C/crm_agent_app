@@ -9,16 +9,13 @@ extension CallLogHandlers on CallLogBloc {
   Future<void> _onInitiateCallByName(InitiateCallByName ev, Emitter<CallLogState> emit) async {
     final clean = ev.name.replaceAll('Call back ', '').trim();
     final leads = await leadsRepository.getLeads();
-    final match = leads.firstWhere(
-      (l) => l.name.toLowerCase() == clean.toLowerCase(),
-      orElse: () => Lead(
-        name: clean, phone: '9876543210',
-        status: LeadStatus.newStatus, source: LeadPurpose.enquiry,
-        category: LeadCategory.cold, location: '',
-      ),
-    );
-    emit(CallInProgress(lead: match));
-    await dialerService.launchDialer(match.phone);
+    final matches = leads.where((l) => l.name.toLowerCase() == clean.toLowerCase());
+    if (matches.isEmpty) {
+      emit(CallLogFailure(error: 'No lead found for "$clean"'));
+      return;
+    }
+    emit(CallInProgress(lead: matches.first));
+    await dialerService.launchDialer(matches.first.phone);
   }
 
   void _onAppReturnedFromCall(AppReturnedFromCall ev, Emitter<CallLogState> emit) {
@@ -53,7 +50,7 @@ extension CallLogHandlers on CallLogBloc {
           time: 'Just now',
           type: EnquiryActivityType.call,
         );
-        leadsRepository.addActivityForLead(ev.lead.id, activity);
+        activityRepository.addActivityForLead(ev.lead.id, activity);
       }
       emit(CallLogSaveSuccess(lead: updatedLead));
       emit(const CallLogInitial());

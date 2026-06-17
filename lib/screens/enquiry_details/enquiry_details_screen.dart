@@ -21,6 +21,7 @@ class EnquiryDetailsScreen extends StatelessWidget {
     return BlocProvider(
       create: (c) => EnquiryDetailsBloc(
         leadsRepository: c.read(),
+        activityRepository: c.read(),
       )..add(LoadEnquiryDetails(leadId)),
       child: MultiBlocListener(
         listeners: [

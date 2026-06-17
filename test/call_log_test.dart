@@ -3,10 +3,11 @@ import 'package:crm_agent_app/bloc/call_log/call_log_bloc.dart';
 import 'package:crm_agent_app/bloc/leads/leads_models.dart';
 import 'package:crm_agent_app/bloc/leads/leads_enums.dart';
 import 'package:crm_agent_app/bloc/enquiry_details/enquiry_details_models.dart';
+import 'package:crm_agent_app/data/repositories/activity_repository.dart';
 import 'package:crm_agent_app/data/repositories/leads_repository.dart';
 import 'package:crm_agent_app/utils/phone_dialer_service.dart';
 
-class MockLeadsRepo implements LeadsRepository {
+class MockLeadsRepo implements LeadsRepository, ActivityRepository {
   final List<Lead> leads = [];
   final List<EnquiryActivity> activities = [];
   @override
@@ -43,7 +44,7 @@ void main() {
     setUp(() {
       repo = MockLeadsRepo()..leads.add(lead);
       dialer = MockDialer();
-      bloc = CallLogBloc(leadsRepository: repo, dialerService: dialer);
+      bloc = CallLogBloc(leadsRepository: repo, activityRepository: repo, dialerService: dialer);
     });
 
     test('Initial state', () => expect(bloc.state, const CallLogInitial()));

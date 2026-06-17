@@ -15,6 +15,7 @@ class AnalyticsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnalyticsBloc, AnalyticsState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         final summary = state is AnalyticsLoaded
             ? state.summary
