@@ -25,8 +25,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     try {
       final stats = await dashboardRepository.getStats();
       final followUps = await dashboardRepository.getFollowUps();
-      final tasks = await dashboardRepository.getTasks();
-      emit(DashboardLoaded(stats: stats, followUps: followUps, tasks: tasks));
+      emit(DashboardLoaded(stats: stats, followUps: followUps));
     } catch (e) {
       emit(
         const DashboardError(errorMessage: 'Failed to fetch dashboard data'),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
+import '../../../bloc/tasks/tasks_bloc.dart';
+import '../../../bloc/tasks/tasks_models.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../../widgets/dashboard_shimmer.dart';
 import 'dashboard_header.dart';
@@ -15,6 +17,10 @@ class DashboardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tasksState = context.watch<TasksBloc>().state;
+    final pendingTasks = tasksState is TasksLoaded
+        ? tasksState.allTasks.where((t) => !t.isCompleted).take(3).toList()
+        : <Task>[];
     return BlocBuilder<DashboardBloc, DashboardState>(
       builder: (context, state) {
         if (state is DashboardLoading || state is DashboardInitial) {
@@ -28,7 +34,7 @@ class DashboardBody extends StatelessWidget {
                 const DashboardHeader(),
                 StatsGrid(stats: state.stats),
                 FollowUpsList(calls: state.followUps),
-                TasksList(tasks: state.tasks),
+                TasksList(tasks: pendingTasks),
                 const SizedBox(height: 24),
               ],
             ),

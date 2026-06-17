@@ -7,8 +7,5 @@ abstract class DashboardRepository {
 
   /// Fetches pending follow-up calls.
   Future<List<FollowUpCall>> getFollowUps();
-
-  /// Fetches pending task items.
-  Future<List<TaskItem>> getTasks();
 }
 

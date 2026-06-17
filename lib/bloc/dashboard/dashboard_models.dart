@@ -26,28 +26,6 @@ class FollowUpCall extends Equatable {
   List<Object?> get props => [tag, name, time];
 }
 
-/// Type of task item.
-enum TaskType {
-  call('Call'),
-  task('Task'),
-  meeting('Meeting');
-
-  final String label;
-  const TaskType(this.label);
-}
-
-/// Models representing a single task item.
-class TaskItem extends Equatable {
-  final TaskType type;
-  final String name;
-  final String time;
-
-  const TaskItem({required this.type, required this.name, required this.time});
-
-  @override
-  List<Object?> get props => [type, name, time];
-}
-
 /// Models representing stats metrics shown at the top.
 class DashboardStats extends Equatable {
   final int activeCampaigns;

@@ -22,16 +22,14 @@ class DashboardLoading extends DashboardState {
 class DashboardLoaded extends DashboardState {
   final DashboardStats stats;
   final List<FollowUpCall> followUps;
-  final List<TaskItem> tasks;
 
   const DashboardLoaded({
     required this.stats,
     required this.followUps,
-    required this.tasks,
   });
 
   @override
-  List<Object?> get props => [stats, followUps, tasks];
+  List<Object?> get props => [stats, followUps];
 }
 
 /// State emitted when dashboard data loading fails.

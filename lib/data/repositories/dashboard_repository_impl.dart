@@ -34,12 +34,4 @@ class DashboardRepositoryImpl implements DashboardRepository {
     ];
   }
 
-  @override
-  Future<List<TaskItem>> getTasks() async {
-    return const [
-      TaskItem(type: TaskType.call, name: 'Rahul Menon', time: 'Today, 4:00 PM'),
-      TaskItem(type: TaskType.task, name: 'Sneha Pillai', time: 'Today, 5:30 PM'),
-      TaskItem(type: TaskType.meeting, name: 'Aravind Krishnan', time: 'Today, 6:00 PM'),
-    ];
-  }
 }
