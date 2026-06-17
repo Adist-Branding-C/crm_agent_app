@@ -15,6 +15,7 @@ class FollowUpHeader extends StatelessWidget {
     return ScreenHeader(
       title: 'Follow-ups',
       subtitleWidget: BlocBuilder<FollowUpsBloc, FollowUpsState>(
+        buildWhen: (prev, curr) => curr is FollowUpsLoaded,
         builder: (context, state) {
           var dueTodayCount = 0;
           if (state is FollowUpsLoaded) {

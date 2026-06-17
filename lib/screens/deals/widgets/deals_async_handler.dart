@@ -12,6 +12,7 @@ class DealsAsyncHandler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DealsBloc, DealsState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         final isLoading = state is DealsLoading || state is DealsInitial;
         return AsyncStateView(

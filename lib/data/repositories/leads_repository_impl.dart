@@ -53,4 +53,7 @@ class LeadsRepositoryImpl implements LeadsRepository {
     await leadsDataSource.deleteLead(id);
     _deletedController.add(id);
   }
+
+  @override
+  void dispose() => _deletedController.close();
 }

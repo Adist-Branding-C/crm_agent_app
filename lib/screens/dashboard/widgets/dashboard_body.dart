@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
-import '../../../bloc/tasks/tasks_bloc.dart';
-import '../../../bloc/tasks/tasks_models.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../../widgets/dashboard_shimmer.dart';
 import 'dashboard_header.dart';
 import 'stats_grid.dart';
 import 'follow_ups_list.dart';
-import 'tasks_list.dart';
+import 'pending_tasks_section.dart';
 
-/// Renders the scrollable body of the Dashboard screen.
 class DashboardBody extends StatelessWidget {
   const DashboardBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pendingTasks = context.select<TasksBloc, List<Task>>((bloc) {
-      final s = bloc.state;
-      return s is TasksLoaded
-          ? s.allTasks.where((t) => !t.isCompleted).take(3).toList()
-          : <Task>[];
-    });
     return BlocBuilder<DashboardBloc, DashboardState>(
       buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
@@ -36,7 +27,7 @@ class DashboardBody extends StatelessWidget {
                 const DashboardHeader(),
                 StatsGrid(stats: state.stats),
                 FollowUpsList(calls: state.followUps),
-                TasksList(tasks: pendingTasks),
+                const PendingTasksSection(),
                 const SizedBox(height: 24),
               ],
             ),

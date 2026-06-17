@@ -11,6 +11,7 @@ class SplashLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SplashBloc, SplashState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         if (state is SplashLoading) {
           return const SizedBox(

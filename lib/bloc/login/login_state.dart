@@ -11,7 +11,7 @@ class LoginState extends Equatable {
     this.obscurePassword = true,
     this.isSubmitted = false,
     this.isSuccess = false,
-    this.phoneErrorMsg,
+    this.authFailure,
   });
 
   /// The phone number value input by the user.
@@ -29,8 +29,8 @@ class LoginState extends Equatable {
   /// True if authentication was successful.
   final bool isSuccess;
 
-  /// Specific error message from API submission if any.
-  final String? phoneErrorMsg;
+  /// Authentication failure type from API submission if any.
+  final AuthFailure? authFailure;
 
   /// Returns a copy of the state with modified fields.
   LoginState copyWith({
@@ -39,8 +39,8 @@ class LoginState extends Equatable {
     bool? obscurePassword,
     bool? isSubmitted,
     bool? isSuccess,
-    String? phoneErrorMsg,
-    bool? clearPhoneErrorMsg,
+    AuthFailure? authFailure,
+    bool? clearAuthFailure,
   }) {
     return LoginState(
       phone: phone ?? this.phone,
@@ -48,9 +48,9 @@ class LoginState extends Equatable {
       obscurePassword: obscurePassword ?? this.obscurePassword,
       isSubmitted: isSubmitted ?? this.isSubmitted,
       isSuccess: isSuccess ?? this.isSuccess,
-      phoneErrorMsg: clearPhoneErrorMsg == true
+      authFailure: clearAuthFailure == true
           ? null
-          : (phoneErrorMsg ?? this.phoneErrorMsg),
+          : (authFailure ?? this.authFailure),
     );
   }
 
@@ -61,7 +61,7 @@ class LoginState extends Equatable {
         obscurePassword,
         isSubmitted,
         isSuccess,
-        phoneErrorMsg,
+        authFailure,
       ];
 }
 

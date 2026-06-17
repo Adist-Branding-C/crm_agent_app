@@ -46,4 +46,7 @@ class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
 
   @override
   void addActivityForLead(String leadId, EnquiryActivity activity) {}
+
+  @override
+  void dispose() {}
 }

@@ -1,11 +1,17 @@
+import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_models.dart';
+import '../../../theme/app_colors.dart';
 
-/// Extension for priority label formatting.
 extension TaskPriorityExtension on TaskPriority {
-  /// Returns the user-facing label for this priority.
   String get label => switch (this) {
         TaskPriority.high => 'High',
         TaskPriority.medium => 'Medium',
         TaskPriority.low => 'Low',
+      };
+
+  Color get displayColor => switch (this) {
+        TaskPriority.high => AppColors.errorColor,
+        TaskPriority.medium => AppColors.warningText,
+        TaskPriority.low => AppColors.success,
       };
 }

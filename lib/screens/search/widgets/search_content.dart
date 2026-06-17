@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_bloc.dart';
 import '../../../theme.dart';
 import '../../../widgets/screen_header.dart';
-import 'recent_section.dart';
 import 'search_field.dart';
 import 'search_results_list.dart';
 import 'search_suggestions.dart';
@@ -33,6 +32,7 @@ class SearchContent extends StatelessWidget {
         const SizedBox(height: 16),
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
+            buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType || (curr is SearchLoaded && (prev as SearchLoaded?)?.results != curr.results),
             builder: (context, state) {
               if (state is SearchLoading) {
                 return const Center(child: CircularProgressIndicator());

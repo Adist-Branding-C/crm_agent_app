@@ -50,6 +50,7 @@ class _FollowUpsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FollowUpsBloc, FollowUpsState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         final followUps =
             state is FollowUpsLoaded ? state.followUps : const <FollowUp>[];

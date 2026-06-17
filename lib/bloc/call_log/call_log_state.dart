@@ -46,15 +46,6 @@ class CallLogFailure extends CallLogState {
   final String? leadName;
   const CallLogFailure({required this.failure, this.leadName});
 
-  String get error {
-    switch (failure) {
-      case CallLogFailureType.leadNotFound:
-        return 'No lead found for "${leadName ?? ""}"';
-      case CallLogFailureType.save: return 'Failed to save call log';
-      case CallLogFailureType.unknown: return 'An error occurred';
-    }
-  }
-
   @override
   List<Object?> get props => [failure, leadName];
 }

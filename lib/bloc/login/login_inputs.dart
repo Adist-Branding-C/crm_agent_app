@@ -46,6 +46,9 @@ enum LoginPasswordValidationError {
   tooShort,
 }
 
+/// Authentication failure types emitted by the bloc (not UI strings).
+enum AuthFailure { invalidCredentials, unknown }
+
 /// Represents the Password input field in the login form.
 class LoginPassword extends FormzInput<String, LoginPasswordValidationError> {
   /// Constructor for a pure (unmodified) password.

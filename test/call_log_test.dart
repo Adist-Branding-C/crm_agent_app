@@ -26,6 +26,9 @@ class MockLeadsRepo implements LeadsRepository, ActivityRepository {
   List<EnquiryActivity> getActivitiesForLead(String id) => activities;
   @override
   void addActivityForLead(String id, EnquiryActivity act) => activities.add(act);
+
+  @override
+  void dispose() {}
 }
 
 class MockDialer extends PhoneDialerService {

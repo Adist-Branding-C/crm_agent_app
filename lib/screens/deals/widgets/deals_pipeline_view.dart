@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../bloc/deals/deals_bloc.dart';
 import '../../../../bloc/deals/deals_models.dart';
 import 'deal_pipeline_stage_column.dart';
 
@@ -12,15 +13,15 @@ class DealsPipelineView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final byStage = {for (final s in DealStage.values) s: deals.where((d) => d.stage == s).toList()};
-    final totals = {for (final e in byStage.entries) e.key: e.value.fold(0.0, (s, d) => s + d.amount)};
+    final grouped = deals.byStage;
+    final totals = deals.stageTotals;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: byStage.entries.map((e) => DealPipelineStageColumn(
+        children: grouped.entries.map((e) => DealPipelineStageColumn(
           stage: e.key,
           stageDeals: e.value,
           totalAmount: totals[e.key] ?? 0,

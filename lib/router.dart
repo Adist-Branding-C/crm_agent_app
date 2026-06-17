@@ -16,9 +16,7 @@ import 'screens/account/account_screen.dart';
 import 'screens/enquiry_details/enquiry_details_screen.dart';
 import 'screens/notifications/notifications_screen.dart';
 import 'screens/tasks/task_details_screen.dart';
-import 'screens/call_log/call_log_screen.dart';
 import 'screens/call_log/widgets/call_log_route_provider.dart';
-import 'bloc/leads/leads_models.dart';
 
 /// Configures and returns the central [GoRouter] for the application.
 GoRouter createRouter(

@@ -35,6 +35,7 @@ class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {
   @override
   Future<void> close() {
     _deletedSub.cancel();
+    leadsRepository.dispose();
     return super.close();
   }
 }

@@ -13,6 +13,7 @@ class DealsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DealsBloc, DealsState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType || (curr is DealsLoaded && (prev as DealsLoaded?)?.deals != curr.deals),
       builder: (context, state) {
         final deals = state is DealsLoaded ? state.deals : const <Deal>[];
         final viewIndex = context.watch<DealsViewNotifier>().value;

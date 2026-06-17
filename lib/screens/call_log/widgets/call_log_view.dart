@@ -54,6 +54,7 @@ class CallLogView extends StatelessWidget {
               onPurposeChanged: onPurposeChanged,
               remarkController: remarkController,
               saveButton: BlocBuilder<CallLogBloc, CallLogState>(
+                buildWhen: (prev, curr) => curr is CallLogSaving,
                 builder: (context, state) => SaveButton(
                   isLoading: state is CallLogSaving,
                   onTap: () => context.read<CallLogBloc>().add(

@@ -38,6 +38,7 @@ class _CampaignsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CampaignsBloc, CampaignsState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         final campaigns =
             state is CampaignsLoaded ? state.campaigns : const <Campaign>[];

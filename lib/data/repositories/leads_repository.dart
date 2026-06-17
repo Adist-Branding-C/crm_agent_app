@@ -19,4 +19,7 @@ abstract class LeadsRepository {
 
   /// Stream of deleted lead IDs to notify subscribers.
   Stream<String> get leadDeletedStream;
+
+  /// Releases internal resources (e.g., stream controllers).
+  void dispose();
 }

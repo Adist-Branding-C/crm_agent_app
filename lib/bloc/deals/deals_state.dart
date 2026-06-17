@@ -24,14 +24,6 @@ class DealsLoaded extends DealsState {
 
   const DealsLoaded({required this.deals});
 
-  Map<DealStage, List<Deal>> get dealsByStage {
-    return {for (final stage in DealStage.values) stage: deals.where((d) => d.stage == stage).toList()};
-  }
-
-  Map<DealStage, double> get stageTotals {
-    return {for (final e in dealsByStage.entries) e.key: e.value.fold(0.0, (s, d) => s + d.amount)};
-  }
-
   @override
   List<Object?> get props => [deals];
 }

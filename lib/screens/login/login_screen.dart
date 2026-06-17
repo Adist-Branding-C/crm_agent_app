@@ -7,11 +7,8 @@ import 'widgets/login_body.dart';
 
 /// The authentication screen that allows agents to sign in.
 class LoginScreen extends StatefulWidget {
-  /// The authentication repository.
-  final AuthRepository? authRepository;
-
   /// Creates a constant [LoginScreen] widget.
-  const LoginScreen({super.key, this.authRepository});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -30,10 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final repo = widget.authRepository ?? context.read<AuthRepository>();
-
     return BlocProvider(
-      create: (_) => LoginBloc(authRepository: repo),
+      create: (_) => LoginBloc(authRepository: context.read<AuthRepository>()),
       child: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.isSuccess) {

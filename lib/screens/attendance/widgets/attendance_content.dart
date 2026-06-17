@@ -15,6 +15,7 @@ class AttendanceContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AttendanceBloc, AttendanceState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         if (state is AttendanceLoading || state is AttendanceInitial) {
           return const Padding(

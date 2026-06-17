@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import '../../data/constants.dart';
 import '../../data/repositories/auth_repository.dart';
 
 part 'login_event.dart';
@@ -28,7 +27,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final phone = LoginPhone.dirty(event.phone);
     emit(state.copyWith(
       phone: phone,
-      clearPhoneErrorMsg: true,
+      clearAuthFailure: true,
     ));
   }
 
@@ -47,7 +46,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       phone: phone,
       password: password,
       isSubmitted: true,
-      clearPhoneErrorMsg: true,
+      clearAuthFailure: true,
     ));
 
     if (phone.isNotValid || password.isNotValid) {
@@ -59,7 +58,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final ok = await authRepository.login(phone.value, password.value);
       emit(state.copyWith(isSuccess: ok));
     } catch (_) {
-      emit(state.copyWith(phoneErrorMsg: AppStrings.authFailed, isSuccess: false));
+      emit(state.copyWith(authFailure: AuthFailure.invalidCredentials, isSuccess: false));
     }
   }
 }

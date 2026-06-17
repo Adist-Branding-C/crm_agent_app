@@ -14,6 +14,7 @@ class CampaignsHeader extends StatelessWidget {
     return ScreenHeader(
       title: 'Campaigns',
       subtitleWidget: BlocBuilder<CampaignsBloc, CampaignsState>(
+        buildWhen: (prev, curr) => curr is CampaignsLoaded,
         builder: (context, state) {
           final count = state is CampaignsLoaded ? state.campaigns.length : 0;
           return Text(

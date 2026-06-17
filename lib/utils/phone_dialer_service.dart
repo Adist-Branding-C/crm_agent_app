@@ -11,7 +11,6 @@ class PhoneDialerService {
 
     final Uri launchUri = Uri.parse('tel:$cleanNumber');
     try {
-      final canLaunch = await canLaunchUrl(launchUri);
       return await launchUrl(
         launchUri,
         mode: LaunchMode.externalApplication,
