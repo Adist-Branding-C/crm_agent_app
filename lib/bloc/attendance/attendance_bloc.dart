@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/attendance_repository.dart';
 import 'attendance_event.dart';
+import 'attendance_mappers.dart';
 import 'attendance_state.dart';
 import 'attendance_state_loaded.dart';
 
@@ -25,7 +26,7 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
     emit(const AttendanceLoading());
     try {
       final data = await attendanceRepository.getAttendanceData();
-      emit(AttendanceLoaded.fromData(data));
+      emit(data.toState());
     } catch (e) {
       emit(const AttendanceError(failure: AttendanceFailure.load));
     }
@@ -37,7 +38,7 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
       emit(const AttendanceLoading());
       try {
         final data = await attendanceRepository.checkIn(current.toData());
-        emit(AttendanceLoaded.fromData(data));
+        emit(data.toState());
       } catch (e) {
         emit(current);
       }
@@ -53,7 +54,7 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
       emit(const AttendanceLoading());
       try {
         final data = await attendanceRepository.checkOut(current.toData());
-        emit(AttendanceLoaded.fromData(data));
+        emit(data.toState());
       } catch (e) {
         emit(current);
       }

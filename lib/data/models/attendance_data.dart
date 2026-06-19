@@ -11,6 +11,13 @@ class AttendanceData extends Equatable {
   final double hoursCount;
   final List<AttendanceTimelineItem> timeline;
 
+  static const initial = AttendanceData(
+    isCheckedIn: false, checkInTime: null,
+    location: 'Calicut Branch', callsCount: 22,
+    visitsCount: 3, notesCount: 8, hoursCount: 5.4,
+    timeline: [],
+  );
+
   const AttendanceData({
     required this.isCheckedIn,
     this.checkInTime,

@@ -1,9 +1,8 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-/// A standard circular user profile avatar rendering initials.
 class UserAvatar extends StatelessWidget {
-  /// User initials (e.g. "AN").
   final String initials;
 
   /// Width/height diameter of the avatar.
@@ -18,7 +17,12 @@ class UserAvatar extends StatelessWidget {
   /// Custom font size (defaults to size * 0.35).
   final double? fontSize;
 
-  /// Creates a [UserAvatar].
+  static String initialsFromName(String name) {
+    final parts = name.trim().split(' ');
+    if (parts.length >= 2) return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
+    return name.substring(0, min(2, name.length)).toUpperCase();
+  }
+
   const UserAvatar({
     super.key,
     required this.initials,

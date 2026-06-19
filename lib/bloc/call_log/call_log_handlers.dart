@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/enquiry_details/enquiry_details_models.dart';
+import '../../data/models/activity_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import 'call_log_bloc.dart';
 

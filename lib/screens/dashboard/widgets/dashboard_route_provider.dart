@@ -5,7 +5,6 @@ import '../../../bloc/dashboard/dashboard_bloc.dart';
 import '../dashboard_screen.dart';
 import '../dashboard_tab_notifier.dart';
 
-/// Wraps the [DashboardScreen] and owns the shared [DashboardTabNotifier] and [DashboardBloc].
 class DashboardRouteProvider extends StatefulWidget {
   final int initialIndex;
   final String? initialFilter;
@@ -21,32 +20,43 @@ class DashboardRouteProvider extends StatefulWidget {
 }
 
 class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
-  late final DashboardTabNotifier _tabNotifier;
+  DashboardTabNotifier? _tabNotifier;
   late final DashboardBloc _dashboardBloc;
+  int _resolvedIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _tabNotifier = DashboardTabNotifier(initialIndex: widget.initialIndex);
     _dashboardBloc = DashboardBloc(dashboardRepository: context.read())
       ..add(const FetchDashboardData());
+    _restoreTabIndex();
+  }
+
+  Future<void> _restoreTabIndex() async {
+    final saved = await DashboardTabNotifier.loadSavedIndex(defaultIndex: widget.initialIndex);
+    if (!mounted) return;
+    setState(() {
+      _resolvedIndex = saved;
+      _tabNotifier = DashboardTabNotifier(initialIndex: saved);
+    });
   }
 
   @override
   void dispose() {
-    _tabNotifier.dispose();
+    _tabNotifier?.dispose();
     _dashboardBloc.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final notifier = _tabNotifier ?? DashboardTabNotifier(initialIndex: widget.initialIndex);
     return ChangeNotifierProvider.value(
-      value: _tabNotifier,
+      value: notifier,
       child: BlocProvider.value(
         value: _dashboardBloc,
         child: DashboardScreen(
-          initialIndex: widget.initialIndex,
+          initialIndex: _resolvedIndex,
           initialFilter: widget.initialFilter,
         ),
       ),

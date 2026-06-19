@@ -9,7 +9,8 @@ extension MyActivityHandlers on MyActivityBloc {
     emit(const MyActivityLoading());
     try {
       final items = repository.getAllActivities();
-      final leads = items.map((e) => e.assignee).toSet().toList()..sort();
+      final loadedLeads = await leadsRepository.getLeads();
+      final leads = loadedLeads.map((l) => l.name).toList()..sort();
       final filtered = applyActivityFilters(
         items,
         timeFilter: ActivityTimeFilter.all,

@@ -64,11 +64,11 @@ void main() {
       await expectLater(bloc.stream, emitsInOrder([isA<LeadsLoading>(), isA<LeadsLoaded>()]));
 
       final stateBefore = bloc.state as LeadsLoaded;
-      expect(stateBefore.allLeads.length, 1);
-      expect(stateBefore.allLeads.first.id, '123');
+      expect(stateBefore.filteredLeads.length, 1);
+      expect(stateBefore.filteredLeads.first.id, '123');
 
       await repository.deleteLead('123');
-      await expectLater(bloc.stream, emits(predicate<LeadsLoaded>((s) => s.allLeads.isEmpty)));
+      await expectLater(bloc.stream, emits(predicate<LeadsLoaded>((s) => s.filteredLeads.isEmpty)));
     });
   });
 }

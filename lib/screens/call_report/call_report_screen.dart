@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/page_scaffold.dart';
+import '../../widgets/screen_header.dart';
 import 'models/call_report_data.dart';
-import 'widgets/call_report_header.dart';
 import 'widgets/call_status_list.dart';
 import 'widgets/lead_status_breakdown_card.dart';
 
@@ -14,7 +14,7 @@ class CallReportScreen extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Column(
         children: [
-          const CallReportHeader(title: 'Call Report', subtitle: 'This month'),
+          const ScreenHeader(title: 'Call Report', subtitle: 'This month'),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(bottom: 24),

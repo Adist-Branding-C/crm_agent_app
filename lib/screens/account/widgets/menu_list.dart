@@ -1,81 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import '../../../bloc/account/account_models.dart';
 import '../../../router/app_routes.dart';
 import '../../../widgets/custom_card.dart';
-import '../../../theme.dart';
-import '../../../bloc/account/account_models.dart';
-import 'menu_item_widget.dart';
+import 'menu_divider.dart';
+import 'menu_item_model.dart';
 
-/// Renders the grouped list of profile and settings options.
 class MenuList extends StatelessWidget {
   final AccountProfile profile;
 
-  /// Creates a [MenuList].
   const MenuList({super.key, required this.profile});
+
+  static List<List<MenuItemModel>> _sections(AccountProfile p) => [
+    [
+      const MenuItemModel(icon: Icons.person_outline_rounded, title: 'Edit Profile'),
+      MenuItemModel(icon: Icons.show_chart_rounded, title: 'My Activity', route: AppRoutes.myActivity),
+      MenuItemModel(icon: Icons.phone_outlined, title: 'Call Report', route: AppRoutes.callReport),
+      const MenuItemModel(icon: Icons.fingerprint_rounded, title: 'Attendance History'),
+      MenuItemModel(icon: Icons.notifications_none_rounded, title: 'Notifications', route: AppRoutes.notifications, badge: '${p.notificationCount}'),
+    ],
+    [
+      const MenuItemModel(icon: Icons.settings_outlined, title: 'Settings'),
+      const MenuItemModel(icon: Icons.description_outlined, title: 'Help & Support'),
+    ],
+  ];
 
   @override
   Widget build(BuildContext context) {
-    const divider = Divider(
-      height: 1,
-      indent: 16,
-      endIndent: 16,
-      color: AppColors.borderLight,
-    );
-
+    const divider = MenuDivider();
     return Column(
-      children: [
-        CustomCard(
+      children: _sections(profile).map((items) => Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: CustomCard(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Column(
-            children: [
-              const MenuItemWidget(
-                icon: Icons.person_outline_rounded,
-                title: 'Edit Profile',
-              ),
-              divider,
-              MenuItemWidget(
-                icon: Icons.show_chart_rounded,
-                title: 'My Activity',
-                onTap: () => context.pushNamed(AppRoutes.myActivity),
-              ),
-              divider,
-              MenuItemWidget(
-                icon: Icons.phone_outlined,
-                title: 'Call Report',
-                onTap: () => context.pushNamed(AppRoutes.callReport),
-              ),
-              divider,
-              const MenuItemWidget(
-                icon: Icons.fingerprint_rounded,
-                title: 'Attendance History',
-              ),
-              divider,
-              MenuItemWidget(
-                icon: Icons.notifications_none_rounded,
-                title: 'Notifications',
-                badge: '${profile.notificationCount}',
-              ),
-            ],
+            children: items
+                .expand((item) => [item.toListItem(context), divider])
+                .toList()..removeLast(),
           ),
         ),
-        const SizedBox(height: 16),
-        CustomCard(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Column(
-            children: [
-              const MenuItemWidget(
-                icon: Icons.settings_outlined,
-                title: 'Settings',
-              ),
-              divider,
-              const MenuItemWidget(
-                icon: Icons.description_outlined,
-                title: 'Help & Support',
-              ),
-            ],
-          ),
-        ),
-      ],
+      )).toList(),
     );
   }
 }

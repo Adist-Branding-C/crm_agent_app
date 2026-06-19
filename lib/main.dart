@@ -1,6 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'data/datasources/auth_datasource.dart';
 import 'data/repositories/auth_repository_impl.dart';
@@ -19,6 +19,7 @@ void main() async {
     return true;
   };
 
+  await SharedPreferences.getInstance();
   final authRepo = AuthRepositoryImpl(authDataSource: AuthDataSourceImpl());
   await authRepo.init();
   runApp(MyApp(authRepository: authRepo));

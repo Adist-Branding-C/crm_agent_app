@@ -1,4 +1,4 @@
-import '../../bloc/enquiry_details/enquiry_details_models.dart';
+import '../models/activity_models.dart';
 
 /// Repository interface for lead activity management.
 abstract class ActivityRepository {

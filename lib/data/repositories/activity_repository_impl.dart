@@ -1,4 +1,4 @@
-import '../../bloc/enquiry_details/enquiry_details_models.dart';
+import '../models/activity_models.dart';
 import '../datasources/activity_datasource.dart';
 import 'activity_repository.dart';
 
