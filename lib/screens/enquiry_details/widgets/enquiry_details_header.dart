@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../../theme.dart';
 import '../../../widgets/screen_header.dart';
 import 'action_buttons.dart';

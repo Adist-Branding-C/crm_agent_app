@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'enquiry_details_bloc.dart';
-import 'enquiry_details_event.dart';
-import 'enquiry_details_state.dart';
 import 'enquiry_details_models.dart';
 
 extension EnquiryDetailsHandlers on EnquiryDetailsBloc {

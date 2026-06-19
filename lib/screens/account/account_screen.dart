@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/account/account_bloc.dart';
-import '../../bloc/account/account_state.dart';
 import '../../data/auth_state_notifier.dart';
 import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';

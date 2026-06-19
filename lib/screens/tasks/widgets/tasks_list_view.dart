@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
-import '../../../bloc/tasks/tasks_state.dart';
 import '../../../widgets/async_state_view.dart';
 import 'task_card.dart';
 

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../bloc/enquiry_details/enquiry_details_event.dart';
-import '../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../bloc/call_log/call_log_bloc.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/enquiry_details_body.dart';

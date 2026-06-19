@@ -2,8 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/enquiry_details/enquiry_details_models.dart';
 import '../../bloc/leads/leads_models.dart';
 import 'call_log_bloc.dart';
-import 'call_log_event.dart';
-import 'call_log_state.dart';
 
 extension CallLogHandlers on CallLogBloc {
   Future<void> onInitiateCall(InitiateCall ev, Emitter<CallLogState> emit) async {

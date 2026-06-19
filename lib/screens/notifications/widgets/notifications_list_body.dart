@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/notifications/notifications_bloc.dart';
-import '../../../bloc/notifications/notifications_state.dart';
 import '../../../widgets/async_state_view.dart';
 import 'notification_item_widget.dart';
 

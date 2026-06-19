@@ -9,8 +9,10 @@ import 'lead_phone_input.dart';
 import 'lead_email_input.dart';
 
 export 'add_lead_event.dart';
+export 'add_lead_form_inputs.dart';
 export 'add_lead_state.dart';
 export 'add_lead_state_extensions.dart';
+export 'add_lead_submission_status.dart';
 export 'lead_name_input.dart';
 export 'lead_phone_input.dart';
 export 'lead_email_input.dart';

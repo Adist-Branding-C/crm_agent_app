@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../bloc/leads/leads_enums.dart';
+import '../bloc/leads/leads_models.dart';
 
 class ChipConfig {
   final Color bgColor;
@@ -31,6 +32,17 @@ extension LeadStatusColors on LeadStatus {
       LeadStatus.converted => const ChipConfig(AppColors.successLight, AppColors.successDark),
       LeadStatus.lost => const ChipConfig(AppColors.slate50, AppColors.slate600),
     };
+  }
+}
+
+extension LeadInitials on Lead {
+  String get initials {
+    if (name.isEmpty) return '';
+    final parts = name.trim().split(RegExp(r'\s+'));
+    if (parts.length > 1) {
+      return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
+    }
+    return parts[0][0].toUpperCase();
   }
 }
 

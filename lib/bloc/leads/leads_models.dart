@@ -51,16 +51,6 @@ class Lead extends Equatable {
     this.note,
   });
 
-  /// Computes the initials from the name.
-  String get initials {
-    if (name.isEmpty) return '';
-    final parts = name.trim().split(RegExp(r'\s+'));
-    if (parts.length > 1) {
-      return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
-    }
-    return parts[0][0].toUpperCase();
-  }
-
   @override
   List<Object?> get props => [
         id,

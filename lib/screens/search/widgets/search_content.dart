@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_bloc.dart';
-import '../../../bloc/search/search_state.dart';
 import '../../../theme.dart';
 import '../../../widgets/screen_header.dart';
 import 'search_field.dart';

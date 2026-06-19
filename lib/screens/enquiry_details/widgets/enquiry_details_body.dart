@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../../bloc/enquiry_details/enquiry_details_event.dart';
-import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../../widgets/app_loading_widget.dart';
 import '../../../widgets/app_error_widget.dart';
 import 'enquiry_details_loaded_view.dart';
