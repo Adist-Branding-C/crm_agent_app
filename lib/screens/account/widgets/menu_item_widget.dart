@@ -6,6 +6,7 @@ class MenuItemWidget extends StatelessWidget {
   final IconData icon;
   final String title;
   final String? badge;
+  final VoidCallback? onTap;
 
   /// Creates a [MenuItemWidget].
   const MenuItemWidget({
@@ -13,12 +14,13 @@ class MenuItemWidget extends StatelessWidget {
     required this.icon,
     required this.title,
     this.badge,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(

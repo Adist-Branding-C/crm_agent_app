@@ -17,6 +17,7 @@ class AppRoutes {
   static const notifications = 'notifications';
   static const taskDetails = 'taskDetails';
   static const callLog = 'callLog';
+  static const callReport = 'callReport';
 
   static const splashPath = '/splash';
   static const loginPath = '/login';
@@ -33,4 +34,5 @@ class AppRoutes {
   static const notificationsPath = '/notifications';
   static const taskDetailsPath = '/task-details/:id';
   static const callLogPath = '/call-log';
+  static const callReportPath = '/call-report';
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../router/app_routes.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 import '../../../bloc/account/account_models.dart';
@@ -36,9 +38,10 @@ class MenuList extends StatelessWidget {
                 title: 'My Activity',
               ),
               divider,
-              const MenuItemWidget(
+              MenuItemWidget(
                 icon: Icons.phone_outlined,
                 title: 'Call Report',
+                onTap: () => context.pushNamed(AppRoutes.callReport),
               ),
               divider,
               const MenuItemWidget(

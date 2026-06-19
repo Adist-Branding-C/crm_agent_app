@@ -17,6 +17,7 @@ import 'screens/enquiry_details/enquiry_details_screen.dart';
 import 'screens/notifications/notifications_screen.dart';
 import 'screens/tasks/task_details_screen.dart';
 import 'screens/call_log/widgets/call_log_route_provider.dart';
+import 'screens/call_report/call_report_screen.dart';
 
 /// Configures and returns the central [GoRouter] for the application.
 GoRouter createRouter(
@@ -66,6 +67,11 @@ GoRouter createRouter(
         name: AppRoutes.callLog,
         path: AppRoutes.callLogPath,
         builder: (c, s) => CallLogRouteProvider(state: s),
+      ),
+      GoRoute(
+        name: AppRoutes.callReport,
+        path: AppRoutes.callReportPath,
+        builder: (c, s) => const CallReportScreen(),
       ),
     ],
   );
