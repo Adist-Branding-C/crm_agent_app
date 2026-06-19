@@ -1,0 +1,48 @@
+import 'my_activity_model.dart';
+import 'my_activity_enums.dart';
+
+/// First batch of mock activity data.
+List<MyActivityItem> firstBatchActivities() => const [
+  MyActivityItem(
+    id: 'act1', title: 'Logged a call',
+    description: 'Connected - 4:12 · Interested',
+    status: ActivityStatus.call, entityType: ActivityTypeFilter.call,
+    assignee: 'Rahul Menon', time: '2:35 PM', dateLabel: 'May 12, 2026',
+  ),
+  MyActivityItem(
+    id: 'act2', title: 'Edited enquiry',
+    description: 'Updated phone & location',
+    status: ActivityStatus.edited, entityType: ActivityTypeFilter.lead,
+    assignee: 'Rahul Menon', time: '2:31 PM', dateLabel: 'May 12, 2026',
+  ),
+  MyActivityItem(
+    id: 'act3', title: 'Created deal',
+    description: 'Premium Course · ₹85,000',
+    status: ActivityStatus.created, entityType: ActivityTypeFilter.deal,
+    assignee: 'Rahul Menon', time: '1:50 PM', dateLabel: 'May 12, 2026',
+  ),
+  MyActivityItem(
+    id: 'act4', title: 'Changed status',
+    description: 'Follow Up → Interested',
+    status: ActivityStatus.statusChange, entityType: ActivityTypeFilter.lead,
+    assignee: 'Anjali Suresh', time: '1:45 PM', dateLabel: 'May 12, 2026',
+  ),
+  MyActivityItem(
+    id: 'act5', title: 'Created task',
+    description: 'Collect documents',
+    status: ActivityStatus.created, entityType: ActivityTypeFilter.task,
+    assignee: 'Anjali Suresh', time: '1:40 PM', dateLabel: 'May 12, 2026',
+  ),
+  MyActivityItem(
+    id: 'act6', title: 'Lead assigned to you',
+    description: 'Instagram enquiry',
+    status: ActivityStatus.assigned, entityType: ActivityTypeFilter.lead,
+    assignee: 'Divya Raveendran', time: '11:05 AM', dateLabel: 'May 12, 2026',
+  ),
+  MyActivityItem(
+    id: 'act7', title: 'Added a note',
+    description: '"Needs pricing sheet"',
+    status: ActivityStatus.note, entityType: ActivityTypeFilter.lead,
+    assignee: 'Sneha Pillai', time: '10:10 AM', dateLabel: 'May 12, 2026',
+  ),
+];

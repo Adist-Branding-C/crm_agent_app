@@ -33,9 +33,10 @@ class MenuList extends StatelessWidget {
                 title: 'Edit Profile',
               ),
               divider,
-              const MenuItemWidget(
+              MenuItemWidget(
                 icon: Icons.show_chart_rounded,
                 title: 'My Activity',
+                onTap: () => context.pushNamed(AppRoutes.myActivity),
               ),
               divider,
               MenuItemWidget(

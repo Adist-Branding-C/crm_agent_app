@@ -26,12 +26,16 @@ import 'data/repositories/follow_ups_repository.dart';
 import 'data/repositories/follow_ups_repository_impl.dart';
 import 'data/repositories/notifications_repository.dart';
 import 'data/repositories/notifications_repository_impl.dart';
+import 'data/repositories/my_activity_repository.dart';
+import 'data/repositories/my_activity_repository_impl.dart';
+import 'data/datasources/my_activity_datasource.dart';
 
 List<RepositoryProvider> buildRepositoryProviders({
   required AuthRepository authRepository,
 }) {
   final leadsDataSource = LeadsDataSourceImpl();
   final activityDataSource = ActivityDataSourceImpl();
+  final myActivityDataSource = MyActivityDataSourceImpl();
   final leadsRepo = LeadsRepositoryImpl(leadsDataSource: leadsDataSource);
 
   return [
@@ -69,6 +73,9 @@ List<RepositoryProvider> buildRepositoryProviders({
     ),
     RepositoryProvider<NotificationsRepository>(
       create: (_) => NotificationsRepositoryImpl(),
+    ),
+    RepositoryProvider<MyActivityRepository>(
+      create: (_) => MyActivityRepositoryImpl(dataSource: myActivityDataSource),
     ),
   ];
 }
