@@ -36,13 +36,6 @@ class CampaignsError extends CampaignsState {
 
   const CampaignsError({required this.failure});
 
-  String get errorMessage {
-    switch (failure) {
-      case CampaignsFailure.load: return 'Failed to fetch campaigns';
-      case CampaignsFailure.unknown: return 'An error occurred';
-    }
-  }
-
   @override
   List<Object?> get props => [failure];
 }

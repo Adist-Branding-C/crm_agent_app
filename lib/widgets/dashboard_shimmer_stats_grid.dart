@@ -1,7 +1,8 @@
-part of 'dashboard_shimmer.dart';
+import 'package:flutter/material.dart';
+import 'app_shimmer_widget.dart';
 
-class _DashboardShimmerStatsGrid extends StatelessWidget {
-  const _DashboardShimmerStatsGrid();
+class DashboardShimmerStatsGrid extends StatelessWidget {
+  const DashboardShimmerStatsGrid({super.key});
 
   @override
   Widget build(BuildContext context) {

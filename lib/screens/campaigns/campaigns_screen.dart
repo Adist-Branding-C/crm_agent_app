@@ -8,6 +8,13 @@ import '../../widgets/page_scaffold.dart';
 import 'widgets/campaigns_header.dart';
 import 'widgets/campaigns_list.dart';
 
+String _campaignsErrorString(CampaignsFailure f) {
+  switch (f) {
+    case CampaignsFailure.load: return 'Failed to fetch campaigns';
+    case CampaignsFailure.unknown: return 'An error occurred';
+  }
+}
+
 /// The screen displaying all active and completed marketing campaigns.
 class CampaignsScreen extends StatelessWidget {
   /// Creates a constant [CampaignsScreen] widget.
@@ -46,7 +53,7 @@ class _CampaignsBody extends StatelessWidget {
         return AsyncStateView(
           isLoading: state is CampaignsLoading || state is CampaignsInitial,
           hasError: state is CampaignsError,
-          errorMessage: state is CampaignsError ? state.errorMessage : 'Error',
+          errorMessage: state is CampaignsError ? _campaignsErrorString(state.failure) : 'Error',
           onRetry: () =>
               context.read<CampaignsBloc>().add(const LoadCampaigns()),
           child: CampaignsList(campaigns: campaigns),

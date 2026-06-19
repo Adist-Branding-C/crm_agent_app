@@ -9,7 +9,6 @@ import 'dashboard_tab_notifier.dart';
 import 'models/dashboard_navigation_item.dart';
 import 'widgets/dashboard_nav_bar.dart';
 
-/// The main Dashboard Screen wrapper.
 class DashboardScreen extends StatefulWidget {
   final List<DashboardNavigationItem>? navigationItems;
   final int initialIndex;
@@ -42,25 +41,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final tabNotifier = context.watch<DashboardTabNotifier>();
     return BlocListener<CallLogBloc, CallLogState>(
       listener: (context, state) {
         if (state is CallLogSaveSuccess) {
           context.read<DashboardBloc>().add(const FetchDashboardData());
         }
       },
-      child: Scaffold(
-        backgroundColor: AppTheme.backgroundColor,
-        bottomNavigationBar: DashboardNavBar(
-          currentIndex: tabNotifier.currentIndex,
-          onTap: tabNotifier.setIndex,
-          items: _items,
-        ),
-        body: SafeArea(
-          child: IndexedStack(
-            index: tabNotifier.currentIndex,
-            children: _items.map((item) => item.body).toList(),
-          ),
+      child: _DashboardTabbedBody(items: _items),
+    );
+  }
+}
+
+class _DashboardTabbedBody extends StatelessWidget {
+  final List<DashboardNavigationItem> items;
+  const _DashboardTabbedBody({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    final tabNotifier = context.watch<DashboardTabNotifier>();
+    return Scaffold(
+      backgroundColor: AppTheme.backgroundColor,
+      bottomNavigationBar: DashboardNavBar(
+        currentIndex: tabNotifier.currentIndex,
+        onTap: tabNotifier.setIndex,
+        items: items,
+      ),
+      body: SafeArea(
+        child: IndexedStack(
+          index: tabNotifier.currentIndex,
+          children: items.map((item) => item.body).toList(),
         ),
       ),
     );

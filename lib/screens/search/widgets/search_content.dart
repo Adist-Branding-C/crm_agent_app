@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/search/search_bloc.dart';
+import '../../../bloc/search/search_state.dart';
 import '../../../theme.dart';
 import '../../../widgets/screen_header.dart';
 import 'search_field.dart';
 import 'search_results_list.dart';
 import 'search_suggestions.dart';
+
+String _searchErrorString(SearchFailure f) {
+  switch (f) {
+    case SearchFailure.load: return 'Failed to load search data';
+    case SearchFailure.query: return 'Search failed';
+    case SearchFailure.unknown: return 'An error occurred';
+  }
+}
 
 /// Renders the search screen content containing header, input field, and list.
 class SearchContent extends StatelessWidget {
@@ -43,7 +52,7 @@ class SearchContent extends StatelessWidget {
               if (state is SearchError) {
                 return Center(
                   child: Text(
-                    state.message,
+                    _searchErrorString(state.failure),
                     style: const TextStyle(color: AppColors.errorColor),
                   ),
                 );

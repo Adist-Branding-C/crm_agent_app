@@ -1,4 +1,6 @@
-part of 'leads_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'leads_enums.dart';
+import 'leads_models.dart';
 
 /// Base class for all events handled by the [LeadsBloc].
 abstract class LeadsEvent extends Equatable {

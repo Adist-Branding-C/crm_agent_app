@@ -1,7 +1,8 @@
-part of 'dashboard_shimmer.dart';
+import 'package:flutter/material.dart';
+import 'app_shimmer_widget.dart';
 
-class _DashboardShimmerHeader extends StatelessWidget {
-  const _DashboardShimmerHeader();
+class DashboardShimmerHeader extends StatelessWidget {
+  const DashboardShimmerHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

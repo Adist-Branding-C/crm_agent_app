@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/notifications/notifications_bloc.dart';
+import '../../../bloc/notifications/notifications_state.dart';
 import '../../../widgets/async_state_view.dart';
 import 'notification_item_widget.dart';
+
+String _notificationsErrorString(NotificationsFailure f) {
+  switch (f) {
+    case NotificationsFailure.load: return 'Failed to load notifications';
+    case NotificationsFailure.unknown: return 'An error occurred';
+  }
+}
 
 class NotificationsListBody extends StatelessWidget {
   const NotificationsListBody({super.key});
@@ -22,7 +30,7 @@ class NotificationsListBody extends StatelessWidget {
         return AsyncStateView(
           isLoading: state is NotificationsLoading || state is NotificationsInitial,
           hasError: state is NotificationsError,
-          errorMessage: state is NotificationsError ? state.errorMessage : 'Error',
+          errorMessage: state is NotificationsError ? _notificationsErrorString(state.failure) : 'Error',
           onRetry: () => context.read<NotificationsBloc>().add(const LoadNotifications()),
           child: ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 8),

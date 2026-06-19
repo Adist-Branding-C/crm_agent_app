@@ -7,9 +7,7 @@ import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
 import '../../../widgets/call_button.dart';
-import '../../../theme.dart';
-
-part 'lead_card_details.dart';
+import 'lead_card_details.dart';
 
 /// Card displaying information about a single Lead.
 class LeadCard extends StatelessWidget {
@@ -35,7 +33,7 @@ class LeadCard extends StatelessWidget {
               size: 42,
             ),
             const SizedBox(width: 12),
-            Expanded(child: _LeadCardDetails(lead: lead)),
+            Expanded(child: LeadCardDetails(lead: lead)),
             CallButton(
               borderRadius: 12,
               onTap: () => context.read<CallLogBloc>().add(

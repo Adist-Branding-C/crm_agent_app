@@ -36,13 +36,6 @@ class DealsError extends DealsState {
 
   const DealsError({required this.failure});
 
-  String get errorMessage {
-    switch (failure) {
-      case DealsFailure.load: return 'Failed to fetch deals';
-      case DealsFailure.unknown: return 'An error occurred';
-    }
-  }
-
   @override
   List<Object?> get props => [failure];
 }

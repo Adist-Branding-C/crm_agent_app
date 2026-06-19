@@ -1,4 +1,5 @@
-part of 'account_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'account_models.dart';
 
 /// Base class for all Account states.
 abstract class AccountState extends Equatable {
@@ -35,14 +36,6 @@ class AccountError extends AccountState {
   final AccountFailure failure;
 
   const AccountError({required this.failure});
-
-  String get errorMessage {
-    switch (failure) {
-      case AccountFailure.loadProfile: return 'Failed to load profile.';
-      case AccountFailure.logout: return 'Failed to logout.';
-      case AccountFailure.unknown: return 'An error occurred.';
-    }
-  }
 
   @override
   List<Object?> get props => [failure];

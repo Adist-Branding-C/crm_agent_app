@@ -1,16 +1,14 @@
-import 'dart:async';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/enquiry_details/enquiry_details_models.dart';
-import '../../bloc/leads/leads_enums.dart';
-import '../../bloc/leads/leads_models.dart';
 import '../../data/repositories/activity_repository.dart';
 import '../../data/repositories/leads_repository.dart';
 import '../../utils/phone_dialer_service.dart';
 
-part 'call_log_event.dart';
-part 'call_log_state.dart';
-part 'call_log_handlers.dart';
+import 'call_log_event.dart';
+import 'call_log_state.dart';
+import 'call_log_handlers.dart';
+
+export 'call_log_event.dart';
+export 'call_log_state.dart';
 
 class CallLogBloc extends Bloc<CallLogEvent, CallLogState> {
   final LeadsRepository leadsRepository;
@@ -22,10 +20,10 @@ class CallLogBloc extends Bloc<CallLogEvent, CallLogState> {
     required this.activityRepository,
     this.dialerService = const PhoneDialerService(),
   }) : super(const CallLogInitial()) {
-    on<InitiateCall>(_onInitiateCall);
-    on<InitiateCallByName>(_onInitiateCallByName);
-    on<AppReturnedFromCall>(_onAppReturnedFromCall);
-    on<SaveCallLog>(_onSaveCallLog);
-    on<ResetCallLog>(_onResetCallLog);
+    on<InitiateCall>(onInitiateCall);
+    on<InitiateCallByName>(onInitiateCallByName);
+    on<AppReturnedFromCall>(onAppReturnedFromCall);
+    on<SaveCallLog>(onSaveCallLog);
+    on<ResetCallLog>(onResetCallLog);
   }
 }

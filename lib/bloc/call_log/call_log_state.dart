@@ -1,4 +1,5 @@
-part of 'call_log_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../../bloc/leads/leads_models.dart';
 
 abstract class CallLogState extends Equatable {
   const CallLogState();

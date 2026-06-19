@@ -28,7 +28,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _router = createRouter(widget.authRepository, _authStateNotifier);
-    Future.microtask(() => widget.authRepository.init());
   }
 
   @override

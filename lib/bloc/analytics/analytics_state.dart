@@ -48,13 +48,6 @@ class AnalyticsError extends AnalyticsState {
 
   const AnalyticsError({required this.failure});
 
-  String get errorMessage {
-    switch (failure) {
-      case AnalyticsFailure.load: return 'Failed to load analytics';
-      case AnalyticsFailure.unknown: return 'An error occurred';
-    }
-  }
-
   @override
   List<Object?> get props => [failure];
 }

@@ -1,4 +1,4 @@
-part of 'notifications_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class NotificationsEvent extends Equatable {
   const NotificationsEvent();

@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../call_log_screen.dart';
 
-/// Resolves the routing argument for the Call Log screen.
 class CallLogRouteProvider extends StatelessWidget {
   final GoRouterState state;
 
@@ -11,7 +10,8 @@ class CallLogRouteProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lead = state.extra as Lead?;
+    final extra = state.extra;
+    final lead = extra is Lead ? extra : null;
     return CallLogScreen(lead: lead);
   }
 }

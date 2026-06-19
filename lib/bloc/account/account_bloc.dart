@@ -1,11 +1,11 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/account_repository.dart';
 import '../../data/repositories/auth_repository.dart';
-import 'account_models.dart';
+import 'account_event.dart';
+import 'account_state.dart';
 
-part 'account_event.dart';
-part 'account_state.dart';
+export 'account_event.dart';
+export 'account_state.dart';
 
 /// BLoC managing states and events for the Account/Profile screen.
 class AccountBloc extends Bloc<AccountEvent, AccountState> {

@@ -1,4 +1,8 @@
-part of 'search_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../leads/leads_models.dart';
+import '../tasks/tasks_models.dart';
+import '../follow_ups/follow_ups_models.dart';
+import 'search_result.dart';
 
 /// Base class for all states emitted by the [SearchBloc].
 abstract class SearchState extends Equatable {
@@ -65,14 +69,6 @@ class SearchError extends SearchState {
   final SearchFailure failure;
 
   const SearchError(this.failure);
-
-  String get message {
-    switch (failure) {
-      case SearchFailure.load: return 'Failed to load search data';
-      case SearchFailure.query: return 'Search failed';
-      case SearchFailure.unknown: return 'An error occurred';
-    }
-  }
 
   @override
   List<Object?> get props => [failure];

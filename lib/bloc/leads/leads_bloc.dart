@@ -1,15 +1,14 @@
 import 'dart:async';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/leads_repository.dart';
-import 'leads_enums.dart';
-import 'leads_filter_helper.dart';
-import 'leads_models.dart';
 
-part 'leads_event.dart';
-part 'leads_state.dart';
-part 'leads_state_loaded.dart';
-part 'leads_handlers.dart';
+import 'leads_event.dart';
+import 'leads_state.dart';
+import 'leads_handlers.dart';
+
+export 'leads_event.dart';
+export 'leads_state.dart';
+export 'leads_state_loaded.dart';
 
 /// Business logic component managing lead lists, searching, and filtering.
 class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {
@@ -19,13 +18,13 @@ class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {
 
   /// Initializes the BLoC with [LeadsInitial].
   LeadsBloc({required this.leadsRepository}) : super(const LeadsInitial()) {
-    on<FetchLeads>(_onFetchLeads);
-    on<SearchLeadsChanged>(_onSearchLeadsChanged);
-    on<FilterCategoryChanged>(_onFilterCategoryChanged);
-    on<ToggleSpotlight>(_onToggleSpotlight);
-    on<AddLead>(_onAddLead);
-    on<ApplyFilterOptions>(_onApplyFilterOptions);
-    on<LeadDeleted>(_onLeadDeleted);
+    on<FetchLeads>(onFetchLeads);
+    on<SearchLeadsChanged>(onSearchLeadsChanged);
+    on<FilterCategoryChanged>(onFilterCategoryChanged);
+    on<ToggleSpotlight>(onToggleSpotlight);
+    on<AddLead>(onAddLead);
+    on<ApplyFilterOptions>(onApplyFilterOptions);
+    on<LeadDeleted>(onLeadDeleted);
 
     _deletedSub = leadsRepository.leadDeletedStream.listen(
       (id) => add(LeadDeleted(id)),

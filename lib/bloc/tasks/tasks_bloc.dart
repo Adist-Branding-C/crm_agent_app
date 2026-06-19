@@ -1,12 +1,11 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/tasks_repository.dart';
-import 'tasks_models.dart';
+import 'tasks_event.dart';
+import 'tasks_state.dart';
 
 export 'tasks_selectors.dart';
-
-part 'tasks_event.dart';
-part 'tasks_state.dart';
+export 'tasks_event.dart';
+export 'tasks_state.dart';
 
 /// BLoC managing states and events for Tasks.
 class TasksBloc extends Bloc<TasksEvent, TasksState> {

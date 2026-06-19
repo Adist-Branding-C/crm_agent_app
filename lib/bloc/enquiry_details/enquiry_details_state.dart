@@ -55,14 +55,6 @@ class EnquiryDetailsError extends EnquiryDetailsState {
   final EnquiryDetailsFailure failureCode;
   const EnquiryDetailsError(this.failureCode);
 
-  String get message {
-    switch (failureCode) {
-      case EnquiryDetailsFailure.leadNotFound: return 'Lead not found';
-      case EnquiryDetailsFailure.load: return 'Failed to load enquiry details';
-      case EnquiryDetailsFailure.unknown: return 'An error occurred';
-    }
-  }
-
   @override
   List<Object?> get props => [failureCode];
 }

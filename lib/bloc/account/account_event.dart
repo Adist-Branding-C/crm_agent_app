@@ -1,4 +1,4 @@
-part of 'account_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base class for all Account events.
 abstract class AccountEvent extends Equatable {

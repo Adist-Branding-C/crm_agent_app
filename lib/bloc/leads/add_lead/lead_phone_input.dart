@@ -1,4 +1,4 @@
-part of 'add_lead_bloc.dart';
+import 'package:formz/formz.dart';
 
 /// Validation errors for the [LeadPhone] input.
 enum LeadPhoneValidationError {

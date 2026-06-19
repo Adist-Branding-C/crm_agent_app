@@ -1,16 +1,17 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/leads_repository.dart';
 import '../../data/repositories/tasks_repository.dart';
 import '../../data/repositories/spotlight_repository.dart';
 import '../../data/repositories/follow_ups_repository.dart';
-import '../leads/leads_models.dart';
-import '../tasks/tasks_models.dart';
-import '../follow_ups/follow_ups_models.dart';
 import 'search_result.dart';
 import 'search_cache.dart';
-part 'search_event.dart';
-part 'search_state.dart';
+import 'search_event.dart';
+import 'search_state.dart';
+
+export 'search_event.dart';
+export 'search_state.dart';
+export 'search_result.dart';
+
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final SearchCache _cache;
   SearchBloc({

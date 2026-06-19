@@ -1,4 +1,4 @@
-part of 'leads_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base class for all states emitted by the [LeadsBloc].
 abstract class LeadsState extends Equatable {

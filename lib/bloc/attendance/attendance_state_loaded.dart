@@ -1,4 +1,6 @@
-part of 'attendance_bloc.dart';
+import '../../data/models/attendance_data.dart';
+import 'attendance_models.dart';
+import 'attendance_state.dart';
 
 class AttendanceLoaded extends AttendanceState {
   final bool isCheckedIn;

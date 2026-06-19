@@ -7,6 +7,13 @@ import 'check_in_card.dart';
 import 'stats_row.dart';
 import 'timeline_list.dart';
 
+String _attendanceErrorString(AttendanceFailure f) {
+  switch (f) {
+    case AttendanceFailure.load: return 'Failed to load attendance';
+    case AttendanceFailure.unknown: return 'An error occurred';
+  }
+}
+
 /// Content display block for the Attendance Screen.
 class AttendanceContent extends StatelessWidget {
   /// Creates a constant [AttendanceContent].
@@ -43,7 +50,7 @@ class AttendanceContent extends StatelessWidget {
             ],
           );
         }
-        final msg = state is AttendanceError ? state.errorMessage : 'Error';
+        final msg = state is AttendanceError ? _attendanceErrorString(state.failure) : 'Error';
         return AppErrorWidget(
           message: msg,
           onRetry: () =>

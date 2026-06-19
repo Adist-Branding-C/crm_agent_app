@@ -1,11 +1,13 @@
-part of 'selection_group.dart';
+import 'package:flutter/material.dart';
+import '../theme.dart';
 
-class _SelectionChip extends StatelessWidget {
+class SelectionChip extends StatelessWidget {
   final String option;
   final String selectedOption;
   final ValueChanged<String> onSelected;
 
-  const _SelectionChip({
+  const SelectionChip({
+    super.key,
     required this.option,
     required this.selectedOption,
     required this.onSelected,

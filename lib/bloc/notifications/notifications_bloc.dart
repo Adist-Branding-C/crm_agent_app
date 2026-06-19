@@ -1,10 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/notifications_repository.dart';
-import 'notifications_models.dart';
+import 'notifications_event.dart';
+import 'notifications_state.dart';
 
-part 'notifications_event.dart';
-part 'notifications_state.dart';
+export 'notifications_event.dart';
+export 'notifications_state.dart';
 
 /// BLoC managing states and events for Notifications.
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {

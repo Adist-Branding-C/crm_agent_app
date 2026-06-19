@@ -7,6 +7,14 @@ import '../../../widgets/app_loading_widget.dart';
 import '../../../widgets/app_error_widget.dart';
 import 'enquiry_details_loaded_view.dart';
 
+String _enquiryDetailsErrorString(EnquiryDetailsFailure f) {
+  switch (f) {
+    case EnquiryDetailsFailure.leadNotFound: return 'Lead not found';
+    case EnquiryDetailsFailure.load: return 'Failed to load enquiry details';
+    case EnquiryDetailsFailure.unknown: return 'An error occurred';
+  }
+}
+
 /// Renders the overall details screen body including tab routing.
 class EnquiryDetailsBody extends StatelessWidget {
   /// The ID of the lead.
@@ -30,7 +38,7 @@ class EnquiryDetailsBody extends StatelessWidget {
         if (state is EnquiryDetailsError) {
           return Center(
             child: AppErrorWidget(
-              message: state.message,
+              message: _enquiryDetailsErrorString(state.failureCode),
               onRetry: () => context.read<EnquiryDetailsBloc>().add(
                     LoadEnquiryDetails(leadId),
                   ),

@@ -1,4 +1,5 @@
-part of 'tasks_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'tasks_state.dart';
 
 /// Base class for all Tasks events.
 abstract class TasksEvent extends Equatable {

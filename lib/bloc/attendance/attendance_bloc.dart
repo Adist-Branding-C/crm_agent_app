@@ -1,19 +1,16 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/attendance_data.dart';
 import '../../data/repositories/attendance_repository.dart';
-import 'attendance_models.dart';
+import 'attendance_event.dart';
+import 'attendance_state.dart';
+import 'attendance_state_loaded.dart';
 
-part 'attendance_event.dart';
-part 'attendance_state.dart';
-part 'attendance_state_loaded.dart';
+export 'attendance_event.dart';
+export 'attendance_state.dart';
+export 'attendance_state_loaded.dart';
 
-/// BLoC for managing user daily activity and attendance status.
 class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
-  /// The attendance repository.
   final AttendanceRepository attendanceRepository;
 
-  /// Initializes the BLoC with the initial state.
   AttendanceBloc({required this.attendanceRepository})
       : super(const AttendanceInitial()) {
     on<LoadAttendance>(_onLoadAttendance);

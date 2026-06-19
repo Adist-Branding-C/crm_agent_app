@@ -1,20 +1,19 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import '../../../data/repositories/leads_repository.dart';
-import '../leads_enums.dart';
 import '../leads_models.dart';
+import 'add_lead_event.dart';
+import 'add_lead_state.dart';
+import 'add_lead_state_extensions.dart';
+import 'lead_name_input.dart';
+import 'lead_phone_input.dart';
+import 'lead_email_input.dart';
 
-part 'add_lead_event.dart';
-part 'add_lead_submit_event.dart';
-part 'add_lead_state.dart';
-part 'add_lead_form_state.dart';
-part 'add_lead_submission_status.dart';
-part 'add_lead_state_copy.dart';
-part 'add_lead_state_getters.dart';
-part 'lead_name_input.dart';
-part 'lead_phone_input.dart';
-part 'lead_email_input.dart';
+export 'add_lead_event.dart';
+export 'add_lead_state.dart';
+export 'add_lead_state_extensions.dart';
+export 'lead_name_input.dart';
+export 'lead_phone_input.dart';
+export 'lead_email_input.dart';
 
 /// BLoC managing the state transitions and form validation of the Add Lead form.
 class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {

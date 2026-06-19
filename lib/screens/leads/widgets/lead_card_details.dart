@@ -1,9 +1,11 @@
-part of 'lead_card.dart';
+import 'package:flutter/material.dart';
+import '../../../bloc/leads/leads_models.dart';
+import '../../../theme.dart';
 
-class _LeadCardDetails extends StatelessWidget {
+class LeadCardDetails extends StatelessWidget {
   final Lead lead;
 
-  const _LeadCardDetails({required this.lead});
+  const LeadCardDetails({super.key, required this.lead});
 
   @override
   Widget build(BuildContext context) {

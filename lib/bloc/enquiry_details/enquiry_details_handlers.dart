@@ -1,7 +1,11 @@
-part of 'enquiry_details_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'enquiry_details_bloc.dart';
+import 'enquiry_details_event.dart';
+import 'enquiry_details_state.dart';
+import 'enquiry_details_models.dart';
 
 extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
-  Future<void> _onLoad(LoadEnquiryDetails ev, Emitter<EnquiryDetailsState> emit) async {
+  Future<void> onLoad(LoadEnquiryDetails ev, Emitter<EnquiryDetailsState> emit) async {
     emit(EnquiryDetailsLoading());
     try {
       final lead = await leadsRepository.getLeadById(ev.leadId);
@@ -21,7 +25,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
     }
   }
 
-  Future<void> _onChangeStatus(ChangeEnquiryStatus ev, Emitter<EnquiryDetailsState> emit) async {
+  Future<void> onChangeStatus(ChangeEnquiryStatus ev, Emitter<EnquiryDetailsState> emit) async {
     final s = state;
     if (s is EnquiryDetailsLoaded) {
       final updated = EnquiryDetailsMockHelper.copyLeadWithStatus(s.lead, ev.status);
@@ -36,7 +40,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
     }
   }
 
-  Future<void> _onAddNote(AddEnquiryNote ev, Emitter<EnquiryDetailsState> emit) async {
+  Future<void> onAddNote(AddEnquiryNote ev, Emitter<EnquiryDetailsState> emit) async {
     final s = state;
     if (s is EnquiryDetailsLoaded) {
       final newNote = EnquiryNote(
@@ -56,7 +60,7 @@ extension EnquiryDetailsHandlers on EnquiryDetailsBloc {
     }
   }
 
-  Future<void> _onDelete(DeleteEnquiry ev, Emitter<EnquiryDetailsState> emit) async {
+  Future<void> onDelete(DeleteEnquiry ev, Emitter<EnquiryDetailsState> emit) async {
     final s = state;
     if (s is EnquiryDetailsLoaded) {
       await leadsRepository.deleteLead(s.lead.id);

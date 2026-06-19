@@ -3,11 +3,11 @@ import '../../data/repositories/activity_repository.dart';
 import '../../data/repositories/leads_repository.dart';
 import 'enquiry_details_event.dart';
 import 'enquiry_details_state.dart';
-import 'enquiry_details_models.dart';
+import 'enquiry_details_handlers.dart';
 
-part 'enquiry_details_handlers.dart';
+export 'enquiry_details_event.dart';
+export 'enquiry_details_state.dart';
 
-/// BLoC to manage the Enquiry Details state and business logic.
 class EnquiryDetailsBloc
     extends Bloc<EnquiryDetailsEvent, EnquiryDetailsState> {
   final LeadsRepository leadsRepository;
@@ -17,9 +17,9 @@ class EnquiryDetailsBloc
     required this.leadsRepository,
     required this.activityRepository,
   }) : super(EnquiryDetailsInitial()) {
-    on<LoadEnquiryDetails>(_onLoad);
-    on<ChangeEnquiryStatus>(_onChangeStatus);
-    on<AddEnquiryNote>(_onAddNote);
-    on<DeleteEnquiry>(_onDelete);
+    on<LoadEnquiryDetails>(onLoad);
+    on<ChangeEnquiryStatus>(onChangeStatus);
+    on<AddEnquiryNote>(onAddNote);
+    on<DeleteEnquiry>(onDelete);
   }
 }

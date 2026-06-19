@@ -40,13 +40,6 @@ class DashboardError extends DashboardState {
 
   const DashboardError({required this.failure});
 
-  String get errorMessage {
-    switch (failure) {
-      case DashboardFailure.load: return 'Failed to fetch dashboard data';
-      case DashboardFailure.unknown: return 'An error occurred';
-    }
-  }
-
   @override
   List<Object?> get props => [failure];
 }

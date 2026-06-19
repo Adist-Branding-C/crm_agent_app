@@ -1,4 +1,6 @@
-part of 'leads_bloc.dart';
+import 'leads_enums.dart';
+import 'leads_models.dart';
+import 'leads_state.dart';
 
 /// State emitted once the leads dataset is loaded and filtered.
 class LeadsLoaded extends LeadsState {

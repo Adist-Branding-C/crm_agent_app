@@ -1,4 +1,5 @@
-part of 'notifications_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'notifications_models.dart';
 
 abstract class NotificationsState extends Equatable {
   const NotificationsState();
@@ -37,13 +38,6 @@ enum NotificationsFailure { load, unknown }
 class NotificationsError extends NotificationsState {
   final NotificationsFailure failure;
   const NotificationsError({required this.failure});
-
-  String get errorMessage {
-    switch (failure) {
-      case NotificationsFailure.load: return 'Failed to load notifications';
-      case NotificationsFailure.unknown: return 'An error occurred';
-    }
-  }
 
   @override
   List<Object?> get props => [failure];

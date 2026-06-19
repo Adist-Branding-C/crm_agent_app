@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/account/account_bloc.dart';
+import '../../bloc/account/account_state.dart';
 import '../../data/auth_state_notifier.dart';
 import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';
@@ -10,6 +11,14 @@ import 'widgets/profile_card.dart';
 import 'widgets/monthly_stats.dart';
 import 'widgets/menu_list.dart';
 import 'widgets/logout_button.dart';
+
+String _accountErrorString(AccountFailure f) {
+  switch (f) {
+    case AccountFailure.loadProfile: return 'Failed to load profile.';
+    case AccountFailure.logout: return 'Failed to logout.';
+    case AccountFailure.unknown: return 'An error occurred.';
+  }
+}
 
 /// Screen displaying agent profile settings, metrics, and actions.
 class AccountScreen extends StatelessWidget {
@@ -37,7 +46,7 @@ class AccountScreen extends StatelessWidget {
               child: AsyncStateView(
                 isLoading: state is AccountInitial || state is AccountLoading,
                 hasError: state is AccountError,
-                errorMessage: state is AccountError ? state.errorMessage : '',
+                errorMessage: state is AccountError ? _accountErrorString(state.failure) : '',
                 onRetry: () => context.read<AccountBloc>().add(const LoadAccount()),
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
@@ -65,4 +74,3 @@ class AccountScreen extends StatelessWidget {
     );
   }
 }
-

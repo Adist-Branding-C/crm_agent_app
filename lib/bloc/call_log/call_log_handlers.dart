@@ -1,12 +1,17 @@
-part of 'call_log_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/enquiry_details/enquiry_details_models.dart';
+import '../../bloc/leads/leads_models.dart';
+import 'call_log_bloc.dart';
+import 'call_log_event.dart';
+import 'call_log_state.dart';
 
 extension CallLogHandlers on CallLogBloc {
-  Future<void> _onInitiateCall(InitiateCall ev, Emitter<CallLogState> emit) async {
+  Future<void> onInitiateCall(InitiateCall ev, Emitter<CallLogState> emit) async {
     emit(CallInProgress(lead: ev.lead));
     await dialerService.launchDialer(ev.lead.phone);
   }
 
-  Future<void> _onInitiateCallByName(InitiateCallByName ev, Emitter<CallLogState> emit) async {
+  Future<void> onInitiateCallByName(InitiateCallByName ev, Emitter<CallLogState> emit) async {
     final clean = ev.name.replaceAll('Call back ', '').trim();
     final leads = await leadsRepository.getLeads();
     final matches = leads.where((l) => l.name.toLowerCase() == clean.toLowerCase());
@@ -18,14 +23,14 @@ extension CallLogHandlers on CallLogBloc {
     await dialerService.launchDialer(matches.first.phone);
   }
 
-  void _onAppReturnedFromCall(AppReturnedFromCall ev, Emitter<CallLogState> emit) {
+  void onAppReturnedFromCall(AppReturnedFromCall ev, Emitter<CallLogState> emit) {
     final s = state;
     if (s is CallInProgress) {
       emit(CallLogNavigationPending(lead: s.lead));
     }
   }
 
-  Future<void> _onSaveCallLog(SaveCallLog ev, Emitter<CallLogState> emit) async {
+  Future<void> onSaveCallLog(SaveCallLog ev, Emitter<CallLogState> emit) async {
     emit(const CallLogSaving());
     try {
       final updatedLead = Lead(
@@ -58,7 +63,7 @@ extension CallLogHandlers on CallLogBloc {
     }
   }
 
-  void _onResetCallLog(ResetCallLog ev, Emitter<CallLogState> emit) {
+  void onResetCallLog(ResetCallLog ev, Emitter<CallLogState> emit) {
     emit(const CallLogInitial());
   }
 }

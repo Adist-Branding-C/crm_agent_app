@@ -1,4 +1,4 @@
-part of 'search_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base class for all events handled by the [SearchBloc].
 abstract class SearchEvent extends Equatable {

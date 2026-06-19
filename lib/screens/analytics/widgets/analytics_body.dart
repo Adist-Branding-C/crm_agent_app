@@ -6,6 +6,13 @@ import 'analytics_summary_grid.dart';
 import 'status_metrics_section.dart';
 import 'source_metrics_section.dart';
 
+String _analyticsErrorString(AnalyticsFailure f) {
+  switch (f) {
+    case AnalyticsFailure.load: return 'Failed to load analytics';
+    case AnalyticsFailure.unknown: return 'An error occurred';
+  }
+}
+
 class AnalyticsBody extends StatelessWidget {
   const AnalyticsBody({super.key});
 
@@ -17,7 +24,7 @@ class AnalyticsBody extends StatelessWidget {
         return AsyncStateView(
           isLoading: state is AnalyticsLoading || state is AnalyticsInitial,
           hasError: state is AnalyticsError,
-          errorMessage: state is AnalyticsError ? state.errorMessage : 'Error',
+          errorMessage: state is AnalyticsError ? _analyticsErrorString(state.failure) : 'Error',
           onRetry: () =>
               context.read<AnalyticsBloc>().add(const LoadAnalytics()),
           child: SingleChildScrollView(

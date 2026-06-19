@@ -1,4 +1,5 @@
-part of 'add_lead_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../leads_enums.dart';
 
 /// Base class for all events of [AddLeadBloc].
 abstract class AddLeadEvent extends Equatable {
@@ -77,3 +78,8 @@ class NoteChanged extends AddLeadEvent {
   List<Object?> get props => [note];
 }
 
+/// Event dispatched to submit the Add Lead form.
+class SubmitForm extends AddLeadEvent {
+  /// Creates a constant [SubmitForm] event.
+  const SubmitForm();
+}

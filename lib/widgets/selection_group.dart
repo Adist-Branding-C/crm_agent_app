@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
-
-part 'selection_chip.dart';
+import 'selection_chip.dart';
 
 /// A reusable group selection widget using rounded chips.
 class SelectionGroup extends StatelessWidget {
@@ -61,7 +60,7 @@ class SelectionGroup extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: options
-              .map((opt) => _SelectionChip(
+              .map((opt) => SelectionChip(
                     option: opt,
                     selectedOption: selectedOption,
                     onSelected: onSelected,

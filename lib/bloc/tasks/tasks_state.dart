@@ -1,4 +1,5 @@
-part of 'tasks_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'tasks_models.dart';
 
 /// Available filters for the Tasks screen.
 enum TasksFilter {
@@ -64,13 +65,6 @@ class TasksError extends TasksState {
   final TasksFailure failure;
 
   const TasksError({required this.failure});
-
-  String get errorMessage {
-    switch (failure) {
-      case TasksFailure.load: return 'Failed to load tasks';
-      case TasksFailure.unknown: return 'An error occurred';
-    }
-  }
 
   @override
   List<Object?> get props => [failure];

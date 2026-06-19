@@ -8,6 +8,13 @@ import 'stats_grid.dart';
 import 'follow_ups_list.dart';
 import 'pending_tasks_section.dart';
 
+String _dashboardErrorString(DashboardFailure f) {
+  switch (f) {
+    case DashboardFailure.load: return 'Failed to fetch dashboard data';
+    case DashboardFailure.unknown: return 'An error occurred';
+  }
+}
+
 class DashboardBody extends StatelessWidget {
   const DashboardBody({super.key});
 
@@ -33,7 +40,7 @@ class DashboardBody extends StatelessWidget {
             ),
           );
         }
-        final msg = state is DashboardError ? state.errorMessage : 'Error';
+        final msg = state is DashboardError ? _dashboardErrorString(state.failure) : 'Error';
         return AppErrorWidget(
           message: msg,
           onRetry: () =>
