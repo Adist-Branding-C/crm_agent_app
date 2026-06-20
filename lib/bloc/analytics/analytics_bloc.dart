@@ -4,6 +4,7 @@ import '../../data/repositories/analytics_repository.dart';
 import '../leads/leads_enums.dart';
 import 'analytics_models.dart';
 import 'deal_analytics_models.dart';
+import 'analytics_tab_data.dart';
 
 part 'analytics_event.dart';
 part 'analytics_state.dart';
@@ -30,10 +31,7 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
         activeTab: event.tab, selectedPeriod: s.selectedPeriod,
         customStartDate: s.customStartDate, customEndDate: s.customEndDate,
         selectedStatuses: s.selectedStatuses, selectedSources: s.selectedSources,
-        leadsSummary: s.leadsSummary, dealsSummary: s.dealsSummary,
-        statusMetrics: s.statusMetrics, sourceMetrics: s.sourceMetrics,
-        dealStageMetrics: s.dealStageMetrics, pipelineValueStageMetrics: s.pipelineValueStageMetrics,
-        dealTypeMetrics: s.dealTypeMetrics,
+        leadsData: s.leadsData, dealsData: s.dealsData,
       ));
     }
   }
@@ -65,9 +63,9 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
       final dTypes = await analyticsRepository.getValueByDealType(statuses, sources, period, start, end);
       emit(AnalyticsLoaded(
         activeTab: tab, selectedPeriod: period, customStartDate: start, customEndDate: end,
-        selectedStatuses: statuses, selectedSources: sources, leadsSummary: leads, dealsSummary: deals,
-        statusMetrics: status, sourceMetrics: source, dealStageMetrics: stages,
-        pipelineValueStageMetrics: pStages, dealTypeMetrics: dTypes,
+        selectedStatuses: statuses, selectedSources: sources,
+        leadsData: LeadsTabData(summary: leads, statusMetrics: status, sourceMetrics: source),
+        dealsData: DealsTabData(summary: deals, stageMetrics: stages, pipelineMetrics: pStages, typeMetrics: dTypes),
       ));
     } catch (_) {
       emit(const AnalyticsError(failure: AnalyticsFailure.load));

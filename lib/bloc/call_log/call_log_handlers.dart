@@ -31,20 +31,11 @@ extension CallLogHandlers on CallLogBloc {
   Future<void> onSaveCallLog(SaveCallLog ev, Emitter<CallLogState> emit) async {
     emit(const CallLogSaving());
     try {
-      final updatedLead = Lead(
-        id: ev.lead.id,
-        name: ev.lead.name,
-        status: ev.leadStatus,
-        source: ev.purpose,
-        category: ev.lead.category,
-        phone: ev.lead.phone,
-        location: ev.lead.location,
-        email: ev.lead.email,
-        leadSource: ev.lead.leadSource,
-        nextFollowUp: ev.lead.nextFollowUp,
-        note: ev.remark.isNotEmpty ? ev.remark : ev.lead.note,
+      final updatedLead = ev.lead.copyWithCallLog(
+        newStatus: ev.leadStatus,
+        newPurpose: ev.purpose,
+        remark: ev.remark,
       );
-
       if (ev.lead.id.isNotEmpty) {
         await leadsRepository.updateLead(updatedLead);
         final activity = EnquiryActivity(

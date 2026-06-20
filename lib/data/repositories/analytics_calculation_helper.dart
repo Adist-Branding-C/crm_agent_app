@@ -8,8 +8,7 @@ class AnalyticsCalculationHelper {
   AnalyticsCalculationHelper._();
 
   static List<Lead> filterLeads(List<Lead> leads, Set<LeadStatus> statuses, Set<LeadSource> sources, String period) {
-    var list = leads.where((l) => statuses.contains(l.status) && (l.leadSource == null || sources.contains(l.leadSource!))).toList();
-    return _applyPeriod(list, period);
+    return _applyPeriod(leads.where((l) => statuses.contains(l.status) && (l.leadSource == null || sources.contains(l.leadSource!))).toList(), period);
   }
 
   static List<Deal> filterDeals(List<Deal> deals, List<Lead> leads, Set<LeadStatus> statuses, Set<LeadSource> sources, String period) {
@@ -24,9 +23,8 @@ class AnalyticsCalculationHelper {
   }
 
   static List<T> _applyPeriod<T>(List<T> list, String period) {
-    if (period == 'Today') return list.take((list.length * 0.1).ceil()).toList();
-    if (period == 'This Week') return list.take((list.length * 0.4).ceil()).toList();
-    if (period == 'Custom range') return list.take((list.length * 0.6).ceil()).toList();
+    // Period filtering is a pass-through here; implement date-based
+    // filtering at the data source level when timestamps are available.
     return list;
   }
 

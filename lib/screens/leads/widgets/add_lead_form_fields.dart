@@ -35,7 +35,6 @@ class AddLeadFormFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<AddLeadBloc>();
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Column(
@@ -44,9 +43,9 @@ class AddLeadFormFields extends StatelessWidget {
             nameController: nameController, phoneController: phoneController,
             emailController: emailController, locationController: locationController,
             nameError: state.nameError, phoneError: state.phoneError, emailError: state.emailError,
-            onNameChanged: (v) => bloc.add(NameChanged(v)),
-            onPhoneChanged: (v) => bloc.add(PhoneChanged(v)),
-            onEmailChanged: (v) => bloc.add(EmailChanged(v)),
+            onNameChanged: (v) => context.read<AddLeadBloc>().add(NameChanged(v)),
+            onPhoneChanged: (v) => context.read<AddLeadBloc>().add(PhoneChanged(v)),
+            onEmailChanged: (v) => context.read<AddLeadBloc>().add(EmailChanged(v)),
           ),
           const SizedBox(height: 16),
           AddLeadSelectionFields(

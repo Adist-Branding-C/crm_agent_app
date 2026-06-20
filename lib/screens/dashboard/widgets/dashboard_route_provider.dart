@@ -20,40 +20,27 @@ class DashboardRouteProvider extends StatefulWidget {
 }
 
 class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
-  DashboardTabNotifier? _tabNotifier;
-  late final DashboardBloc _dashboardBloc;
+  late final DashboardTabNotifier _tabNotifier;
 
   @override
   void initState() {
     super.initState();
-    _dashboardBloc = DashboardBloc(dashboardRepository: context.read())
-      ..add(const FetchDashboardData());
-    WidgetsBinding.instance.addPostFrameCallback((_) => _restoreTabIndex());
-  }
-
-  Future<void> _restoreTabIndex() async {
-    if (!mounted) return;
-    final saved = await DashboardTabNotifier.loadSavedIndex(defaultIndex: widget.initialIndex);
-    if (!mounted) return;
-    setState(() {
-      _tabNotifier = DashboardTabNotifier(initialIndex: saved);
-    });
+    _tabNotifier = DashboardTabNotifier(initialIndex: widget.initialIndex);
   }
 
   @override
   void dispose() {
-    _tabNotifier?.dispose();
-    _dashboardBloc.close();
+    _tabNotifier.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final notifier = _tabNotifier ?? DashboardTabNotifier(initialIndex: widget.initialIndex);
     return ChangeNotifierProvider.value(
-      value: notifier,
-      child: BlocProvider.value(
-        value: _dashboardBloc,
+      value: _tabNotifier,
+      child: BlocProvider<DashboardBloc>(
+        create: (_) => DashboardBloc(dashboardRepository: context.read())
+          ..add(const FetchDashboardData()),
         child: DashboardScreen(
           initialIndex: widget.initialIndex,
           initialFilter: widget.initialFilter,

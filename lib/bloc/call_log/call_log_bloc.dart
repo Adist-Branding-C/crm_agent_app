@@ -18,7 +18,7 @@ class CallLogBloc extends Bloc<CallLogEvent, CallLogState> {
   CallLogBloc({
     required this.leadsRepository,
     required this.activityRepository,
-    this.dialerService = const PhoneDialerService(),
+    required this.dialerService,
   }) : super(const CallLogInitial()) {
     on<InitiateCall>(onInitiateCall);
     on<InitiateCallByName>(onInitiateCallByName);

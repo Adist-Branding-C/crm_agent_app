@@ -13,9 +13,16 @@ class AddLeadForm extends StatefulWidget {
 }
 
 class _AddLeadFormState extends State<AddLeadForm> {
+  late final AddLeadBloc _bloc;
   final _name = TextEditingController(), _phone = TextEditingController();
   final _email = TextEditingController(), _loc = TextEditingController();
   final _follow = TextEditingController(), _note = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = context.read<AddLeadBloc>();
+  }
 
   @override
   void dispose() {
@@ -34,7 +41,6 @@ class _AddLeadFormState extends State<AddLeadForm> {
 
   @override
   Widget build(BuildContext context) {
-    final b = context.read<AddLeadBloc>();
     return BlocConsumer<AddLeadBloc, AddLeadState>(
       listener: _onState,
       builder: (context, state) => Column(
@@ -46,10 +52,10 @@ class _AddLeadFormState extends State<AddLeadForm> {
               followUpController: _follow, noteController: _note,
               source: state.source, purpose: state.purpose,
               category: state.category, status: state.status, state: state,
-              onSourceChanged: (v) => b.add(SourceChanged(v)),
-              onPurposeChanged: (v) => b.add(PurposeChanged(v)),
-              onCategoryChanged: (v) => b.add(CategoryChanged(v)),
-              onStatusChanged: (v) => b.add(StatusChanged(v)),
+              onSourceChanged: (v) => _bloc.add(SourceChanged(v)),
+              onPurposeChanged: (v) => _bloc.add(PurposeChanged(v)),
+              onCategoryChanged: (v) => _bloc.add(CategoryChanged(v)),
+              onStatusChanged: (v) => _bloc.add(StatusChanged(v)),
             ),
           ),
           Padding(
@@ -57,7 +63,7 @@ class _AddLeadFormState extends State<AddLeadForm> {
             child: CustomButton(
               text: 'Save Lead',
               isLoading: state.isSubmitting,
-              onPressed: state.isValid ? () => b.add(const SubmitForm()) : null,
+              onPressed: state.isValid ? () => _bloc.add(const SubmitForm()) : null,
             ),
           ),
         ],

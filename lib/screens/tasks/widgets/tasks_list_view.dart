@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
+import '../../../bloc/error_messages.dart';
 import '../../../widgets/async_state_view.dart';
 import 'task_card.dart';
-
-String _tasksErrorString(TasksFailure f) {
-  switch (f) {
-    case TasksFailure.load: return 'Failed to load tasks';
-    case TasksFailure.unknown: return 'An error occurred';
-  }
-}
 
 /// Renders the list of tasks inside an async state wrapper.
 class TasksListView extends StatelessWidget {
@@ -25,7 +19,7 @@ class TasksListView extends StatelessWidget {
         return AsyncStateView(
           isLoading: state is TasksLoading || state is TasksInitial,
           hasError: state is TasksError,
-          errorMessage: state is TasksError ? _tasksErrorString(state.failure) : '',
+          errorMessage: state is TasksError ? state.failure.message : '',
           onRetry: () => context.read<TasksBloc>().add(const LoadTasks()),
           child: tasks.isEmpty
               ? const Center(

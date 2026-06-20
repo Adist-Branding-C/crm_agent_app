@@ -9,7 +9,6 @@ class LeadsFilterTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<LeadsBloc>();
     return BlocBuilder<LeadsBloc, LeadsState>(
       buildWhen: (prev, curr) {
         if (prev is LeadsLoaded && curr is LeadsLoaded) {
@@ -20,6 +19,7 @@ class LeadsFilterTabs extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is! LeadsLoaded) return const SizedBox.shrink();
+        final bloc = context.read<LeadsBloc>();
         final all = bloc.allLeads;
         final counts = {
           for (final cat in LeadCategory.values)

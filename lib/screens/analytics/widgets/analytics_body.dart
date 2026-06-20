@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
+import '../../../bloc/error_messages.dart';
 import '../../../widgets/async_state_view.dart';
 import 'analytics_tab_toggle.dart';
 import 'analytics_period_dropdown.dart';
 import 'leads_tab_content.dart';
 import 'deals_tab_content.dart';
 
-String _analyticsErrorString(AnalyticsFailure f) {
-  switch (f) {
-    case AnalyticsFailure.load: return 'Failed to load analytics';
-    case AnalyticsFailure.unknown: return 'An error occurred';
-  }
-}
-
 class AnalyticsBody extends StatelessWidget {
   const AnalyticsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<AnalyticsBloc>();
     return BlocBuilder<AnalyticsBloc, AnalyticsState>(
       builder: (context, state) {
-        final bloc = context.read<AnalyticsBloc>();
         return AsyncStateView(
           isLoading: state is AnalyticsLoading || state is AnalyticsInitial,
           hasError: state is AnalyticsError,
-          errorMessage: state is AnalyticsError ? _analyticsErrorString(state.failure) : 'Error',
+          errorMessage: state is AnalyticsError ? state.failure.message : 'Error',
           onRetry: () => bloc.add(const LoadAnalytics()),
           child: state is AnalyticsLoaded
               ? SingleChildScrollView(
@@ -43,18 +37,18 @@ class AnalyticsBody extends StatelessWidget {
                         onPeriodChanged: (p) => bloc.add(ChangePeriod(p)),
                       ),
                       const SizedBox(height: 20),
-                      if (state.activeTab == AnalyticsTab.leads)
+                      if (state.activeTab == AnalyticsTab.leads && state.leadsData != null)
                         LeadsTabContent(
-                          summary: state.leadsSummary,
-                          statusMetrics: state.statusMetrics,
-                          sourceMetrics: state.sourceMetrics,
+                          summary: state.leadsData!.summary,
+                          statusMetrics: state.leadsData!.statusMetrics,
+                          sourceMetrics: state.leadsData!.sourceMetrics,
                         )
-                      else
+                      else if (state.dealsData != null)
                         DealsTabContent(
-                          summary: state.dealsSummary,
-                          stageMetrics: state.dealStageMetrics,
-                          pipelineMetrics: state.pipelineValueStageMetrics,
-                          typeMetrics: state.dealTypeMetrics,
+                          summary: state.dealsData!.summary,
+                          stageMetrics: state.dealsData!.stageMetrics,
+                          pipelineMetrics: state.dealsData!.pipelineMetrics,
+                          typeMetrics: state.dealsData!.typeMetrics,
                         ),
                       const SizedBox(height: 24),
                     ],

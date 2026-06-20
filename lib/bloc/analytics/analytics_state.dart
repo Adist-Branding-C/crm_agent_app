@@ -29,13 +29,8 @@ class AnalyticsLoaded extends AnalyticsState {
   final DateTime? customEndDate;
   final Set<LeadStatus> selectedStatuses;
   final Set<LeadSource> selectedSources;
-  final LeadsSummary leadsSummary;
-  final DealsSummary dealsSummary;
-  final List<StatusMetric> statusMetrics;
-  final List<SourceMetric> sourceMetrics;
-  final List<DealStageMetric> dealStageMetrics;
-  final List<PipelineValueStageMetric> pipelineValueStageMetrics;
-  final List<DealTypeMetric> dealTypeMetrics;
+  final LeadsTabData? leadsData;
+  final DealsTabData? dealsData;
 
   const AnalyticsLoaded({
     required this.activeTab,
@@ -44,21 +39,22 @@ class AnalyticsLoaded extends AnalyticsState {
     this.customEndDate,
     required this.selectedStatuses,
     required this.selectedSources,
-    required this.leadsSummary,
-    required this.dealsSummary,
-    required this.statusMetrics,
-    required this.sourceMetrics,
-    required this.dealStageMetrics,
-    required this.pipelineValueStageMetrics,
-    required this.dealTypeMetrics,
+    this.leadsData,
+    this.dealsData,
   });
+
+  LeadsSummary? get leadsSummary => leadsData?.summary;
+  List<StatusMetric>? get statusMetrics => leadsData?.statusMetrics;
+  List<SourceMetric>? get sourceMetrics => leadsData?.sourceMetrics;
+  DealsSummary? get dealsSummary => dealsData?.summary;
+  List<DealStageMetric>? get dealStageMetrics => dealsData?.stageMetrics;
+  List<PipelineValueStageMetric>? get pipelineValueStageMetrics => dealsData?.pipelineMetrics;
+  List<DealTypeMetric>? get dealTypeMetrics => dealsData?.typeMetrics;
 
   @override
   List<Object?> get props => [
         activeTab, selectedPeriod, customStartDate, customEndDate,
-        selectedStatuses, selectedSources, leadsSummary, dealsSummary,
-        statusMetrics, sourceMetrics, dealStageMetrics,
-        pipelineValueStageMetrics, dealTypeMetrics,
+        selectedStatuses, selectedSources, leadsData, dealsData,
       ];
 }
 

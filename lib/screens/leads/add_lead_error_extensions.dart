@@ -1,5 +1,5 @@
 import '../../bloc/leads/add_lead/add_lead_bloc.dart';
-import '../../data/constants.dart';
+import '../app_strings.dart';
 
 /// Extension to map [LeadNameValidationError] to user-facing error messages.
 extension LeadNameValidationErrorX on LeadNameValidationError {

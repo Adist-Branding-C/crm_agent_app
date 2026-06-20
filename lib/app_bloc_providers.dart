@@ -5,6 +5,7 @@ import 'bloc/account/account_bloc.dart';
 import 'bloc/tasks/tasks_bloc.dart';
 import 'bloc/notifications/notifications_bloc.dart';
 import 'bloc/deals/deals_bloc.dart';
+import 'utils/phone_dialer_service.dart';
 
 /// Builds the list of global BLoC providers for session-scoped state.
 List<BlocProvider> buildBlocProviders() {
@@ -13,6 +14,7 @@ List<BlocProvider> buildBlocProviders() {
       create: (c) => CallLogBloc(
         leadsRepository: c.read(),
         activityRepository: c.read(),
+        dialerService: const PhoneDialerService(),
       ),
     ),
     BlocProvider<AttendanceBloc>(

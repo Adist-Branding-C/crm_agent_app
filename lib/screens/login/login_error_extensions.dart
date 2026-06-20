@@ -1,5 +1,5 @@
 import '../../bloc/login/login_bloc.dart';
-import '../../data/constants.dart';
+import '../app_strings.dart';
 
 /// Extension to map [LoginPhoneValidationError] to user-facing error messages.
 extension LoginPhoneValidationErrorX on LoginPhoneValidationError {

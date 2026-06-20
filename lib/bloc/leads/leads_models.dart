@@ -51,6 +51,27 @@ class Lead extends Equatable {
     this.note,
   });
 
+  Lead copyWithCallLog({
+    required LeadStatus newStatus,
+    required LeadPurpose newPurpose,
+    String? remark,
+  }) => Lead(
+    id: id, name: name, status: newStatus,
+    source: newPurpose, category: category,
+    phone: phone, location: location,
+    email: email, leadSource: leadSource,
+    nextFollowUp: nextFollowUp,
+    note: (remark != null && remark.isNotEmpty) ? remark : note,
+  );
+
+  Lead copyWithStatus(LeadStatus newStatus) => Lead(
+    id: id, name: name, status: newStatus,
+    source: source, category: category,
+    phone: phone, location: location,
+    email: email, leadSource: leadSource,
+    nextFollowUp: nextFollowUp, note: note,
+  );
+
   @override
   List<Object?> get props => [
         id,
