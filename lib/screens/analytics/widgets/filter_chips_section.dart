@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import '../../../theme/app_colors.dart';
+
+class FilterChipsSection<T> extends StatelessWidget {
+  final String title;
+  final List<T> options;
+  final String Function(T) labelBuilder;
+  final Set<T> selectedValues;
+  final ValueChanged<T> onToggle;
+
+  const FilterChipsSection({
+    super.key,
+    required this.title,
+    required this.options,
+    required this.labelBuilder,
+    required this.selectedValues,
+    required this.onToggle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title.toUpperCase(),
+          style: const TextStyle(
+            color: AppColors.textMuted,
+            fontWeight: FontWeight.bold,
+            fontSize: 11,
+            letterSpacing: 0.5,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: options.map((option) {
+            final isSelected = selectedValues.contains(option);
+            return GestureDetector(
+              onTap: () => onToggle(option),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  color: isSelected ? AppColors.primaryColor : Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  border: isSelected ? null : Border.all(color: AppColors.borderLight),
+                ),
+                child: Text(
+                  labelBuilder(option),
+                  style: TextStyle(
+                    color: isSelected ? Colors.white : AppColors.textMuted,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+}

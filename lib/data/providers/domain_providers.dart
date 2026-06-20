@@ -19,13 +19,19 @@ import '../repositories/notifications_repository.dart';
 import '../repositories/notifications_repository_impl.dart';
 import '../repositories/account_repository.dart';
 import '../repositories/account_repository_impl.dart';
+import '../repositories/leads_repository.dart';
 
 List<RepositoryProvider> buildDomainProviders() => [
-  RepositoryProvider<AnalyticsRepository>(create: (_) => AnalyticsRepositoryImpl()),
+  RepositoryProvider<DealsRepository>(create: (_) => DealsRepositoryImpl()),
+  RepositoryProvider<AnalyticsRepository>(
+    create: (context) => AnalyticsRepositoryImpl(
+      leadsRepository: context.read<LeadsRepository>(),
+      dealsRepository: context.read<DealsRepository>(),
+    ),
+  ),
   RepositoryProvider<AttendanceRepository>(create: (_) => AttendanceRepositoryImpl()),
   RepositoryProvider<CampaignsRepository>(create: (_) => CampaignsRepositoryImpl()),
   RepositoryProvider<DashboardRepository>(create: (_) => DashboardRepositoryImpl()),
-  RepositoryProvider<DealsRepository>(create: (_) => DealsRepositoryImpl()),
   RepositoryProvider<TasksRepository>(create: (_) => TasksRepositoryImpl()),
   RepositoryProvider<SpotlightRepository>(create: (_) => SpotlightRepositoryImpl()),
   RepositoryProvider<FollowUpsRepository>(create: (_) => FollowUpsRepositoryImpl()),

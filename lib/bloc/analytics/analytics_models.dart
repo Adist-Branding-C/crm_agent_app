@@ -1,34 +1,34 @@
 import 'package:equatable/equatable.dart';
 import '../leads/leads_enums.dart';
 
-/// Summarized top-level metrics for the analytics.
-class AnalyticsSummary extends Equatable {
+/// Summarized top-level metrics for leads.
+class LeadsSummary extends Equatable {
   /// Total number of leads.
   final int totalLeads;
 
   /// Conversion rate percentage (e.g. 64.0 for 64%).
   final double conversionRate;
 
-  /// Number of won deals.
-  final int wonDeals;
+  /// Number of interested leads.
+  final int interestedCount;
 
-  /// Pipeline value display string (e.g. "₹18.40L").
-  final String pipelineValue;
+  /// Number of lost leads.
+  final int lostCount;
 
-  /// Creates a constant [AnalyticsSummary].
-  const AnalyticsSummary({
+  /// Creates a constant [LeadsSummary].
+  const LeadsSummary({
     required this.totalLeads,
     required this.conversionRate,
-    required this.wonDeals,
-    required this.pipelineValue,
+    required this.interestedCount,
+    required this.lostCount,
   });
 
   @override
   List<Object?> get props => [
         totalLeads,
         conversionRate,
-        wonDeals,
-        pipelineValue,
+        interestedCount,
+        lostCount,
       ];
 }
 
