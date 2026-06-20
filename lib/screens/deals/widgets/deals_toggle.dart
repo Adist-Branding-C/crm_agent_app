@@ -16,7 +16,7 @@ class DealsToggle extends StatelessWidget {
         height: 44,
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: AppColors.borderLight.withValues(alpha: 0.5),
+          color: AppColors.borderLightAlpha50,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(

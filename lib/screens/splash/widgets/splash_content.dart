@@ -20,7 +20,7 @@ class SplashContent extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: AppTheme.primaryColor.withValues(alpha: 0.3),
+                color: AppColors.primaryAlpha30,
                 blurRadius: 24,
                 offset: const Offset(0, 8),
                 spreadRadius: 2,

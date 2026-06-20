@@ -30,7 +30,7 @@ class QuickActionTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.08),
+              color: AppColors.greyAlpha8,
               spreadRadius: 1,
               blurRadius: 6,
               offset: const Offset(0, 3),

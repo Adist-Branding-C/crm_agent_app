@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 import '../../../theme.dart';
 import 'whatsapp_template_model.dart';
 
-/// Card displaying a single message template option.
 class WhatsAppTemplateCard extends StatelessWidget {
-  /// The message template data.
   final WhatsAppTemplateModel template;
-
-  /// Whether this template is currently selected.
   final bool isSelected;
-
-  /// Callback when this card is clicked.
   final VoidCallback onTap;
 
-  /// Creates a constant [WhatsAppTemplateCard].
   const WhatsAppTemplateCard({
     super.key,
     required this.template,
@@ -36,13 +29,7 @@ class WhatsAppTemplateCard extends StatelessWidget {
             width: isSelected ? 2 : 1,
           ),
           boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: AppColors.success.withOpacity(0.08),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  )
-                ]
+              ? [BoxShadow(color: AppColors.success.withValues(alpha: 0.08), blurRadius: 8, offset: Offset(0, 2))]
               : AppTheme.cardShadow,
         ),
         child: Stack(
@@ -52,38 +39,14 @@ class WhatsAppTemplateCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    template.title,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
-                    ),
-                  ),
+                  Text(template.title, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: AppColors.textDark)),
                   const SizedBox(height: 6),
-                  Text(
-                    template.contentTemplate,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: AppColors.textMuted,
-                      height: 1.4,
-                    ),
-                  ),
+                  Text(template.contentTemplate, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 13, color: AppColors.textMuted, height: 1.4)),
                 ],
               ),
             ),
             if (isSelected)
-              const Positioned(
-                top: 0,
-                right: 0,
-                child: Icon(
-                  Icons.check_circle,
-                  color: AppColors.success,
-                  size: 20,
-                ),
-              ),
+              const Positioned(top: 0, right: 0, child: Icon(Icons.check_circle, color: AppColors.success, size: 20)),
           ],
         ),
       ),

@@ -35,7 +35,7 @@ class DealsStatsCard extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.6),
+              color: AppColors.whiteAlpha60,
               fontSize: 12,
               fontWeight: FontWeight.w500,
             ),

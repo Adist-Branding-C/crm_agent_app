@@ -45,7 +45,7 @@ class WhatsAppSendButton extends StatelessWidget {
           backgroundColor: isEnabled ? AppColors.success : AppColors.slate300,
           disabledBackgroundColor: AppColors.slate300,
           foregroundColor: Colors.white,
-          disabledForegroundColor: Colors.white.withOpacity(0.6),
+          disabledForegroundColor: Colors.white.withValues(alpha: 0.6),
           elevation: isEnabled ? 2 : 0,
           padding: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(

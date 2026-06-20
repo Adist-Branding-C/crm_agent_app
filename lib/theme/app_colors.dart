@@ -48,4 +48,13 @@ class AppColors {
   static const Color errorBorder = Color(0xFFFCA5A5);
   static const Color slate900 = Color(0xFF0F172A);
   static const Color barrierColor = Color(0x10000000);
+
+  // Pre-computed alpha variants (avoids withValues(alpha:) allocations)
+  static const Color primaryAlpha30 = Color(0x4DE53935);
+  static const Color slate900Alpha4 = Color(0x0A0F172A);
+  static const Color blackAlpha5 = Color(0x0D000000);
+  static const Color blackAlpha8 = Color(0x14000000);
+  static const Color whiteAlpha60 = Color(0x99FFFFFF);
+  static const Color greyAlpha8 = Color(0x149E9E9E);
+  static const Color borderLightAlpha50 = Color(0x80E2E8F0);
 }

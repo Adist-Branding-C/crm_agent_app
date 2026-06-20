@@ -55,7 +55,7 @@ class _TabButton extends StatelessWidget {
           color: isSelected ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
           border: isSelected && isDeals
-              ? Border.all(color: const Color(0xFFD97706), width: 1.5)
+              ? Border.all(color: AppColors.warningDark, width: 1.5)
               : null,
           boxShadow: isSelected ? AppShadows.cardShadow : null,
         ),

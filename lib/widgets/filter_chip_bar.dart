@@ -46,7 +46,7 @@ class _FilterChip extends StatelessWidget {
     final themeColor = option.isSelected ? AppColors.primaryColor : Colors.white;
     final textColor = option.isSelected ? Colors.white : AppColors.textMuted;
     final border = option.isSelected
-        ? Border.all(color: Colors.black.withValues(alpha: 0.08), width: 1.5)
+        ? Border.all(color: AppColors.blackAlpha8, width: 1.5)
         : Border.all(color: AppColors.borderLight);
 
     return GestureDetector(

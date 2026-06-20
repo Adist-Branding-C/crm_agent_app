@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../widgets/colored_dot.dart';
 import '../models/lead_status_item.dart';
 
 /// A single legend entry: colored dot on top, count bold, label below.
@@ -13,7 +14,7 @@ class LeadStatusLegendItem extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _Dot(color: item.color),
+        ColoredDot(color: item.color),
         const SizedBox(height: 4),
         Text(
           '${item.count}',
@@ -36,16 +37,4 @@ class LeadStatusLegendItem extends StatelessWidget {
   }
 }
 
-class _Dot extends StatelessWidget {
-  final Color color;
-  const _Dot({required this.color});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 10,
-      height: 10,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-    );
-  }
-}

@@ -22,21 +22,20 @@ class DashboardRouteProvider extends StatefulWidget {
 class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
   DashboardTabNotifier? _tabNotifier;
   late final DashboardBloc _dashboardBloc;
-  int _resolvedIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _dashboardBloc = DashboardBloc(dashboardRepository: context.read())
       ..add(const FetchDashboardData());
-    _restoreTabIndex();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _restoreTabIndex());
   }
 
   Future<void> _restoreTabIndex() async {
+    if (!mounted) return;
     final saved = await DashboardTabNotifier.loadSavedIndex(defaultIndex: widget.initialIndex);
     if (!mounted) return;
     setState(() {
-      _resolvedIndex = saved;
       _tabNotifier = DashboardTabNotifier(initialIndex: saved);
     });
   }
@@ -56,7 +55,7 @@ class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
       child: BlocProvider.value(
         value: _dashboardBloc,
         child: DashboardScreen(
-          initialIndex: _resolvedIndex,
+          initialIndex: widget.initialIndex,
           initialFilter: widget.initialFilter,
         ),
       ),

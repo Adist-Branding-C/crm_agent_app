@@ -5,21 +5,21 @@ import 'app_colors.dart';
 class AppShadows {
   AppShadows._();
 
-  /// Generates a soft, diffuse shadow for card elements.
-  static List<BoxShadow> get cardShadow => [
+  /// Soft, diffuse shadow for card elements.
+  static const List<BoxShadow> cardShadow = [
     BoxShadow(
-      color: AppColors.slate900.withValues(alpha: 0.04),
+      color: AppColors.slate900Alpha4,
       blurRadius: 16,
-      offset: const Offset(0, 4),
+      offset: Offset(0, 4),
     ),
   ];
 
-  /// Generates a brand-tinted glow shadow for call-to-action buttons.
-  static List<BoxShadow> get buttonShadow => [
+  /// Brand-tinted glow shadow for call-to-action buttons.
+  static const List<BoxShadow> buttonShadow = [
     BoxShadow(
-      color: AppColors.primaryColor.withValues(alpha: 0.25),
+      color: AppColors.primaryAlpha30,
       blurRadius: 12,
-      offset: const Offset(0, 4),
+      offset: Offset(0, 4),
     ),
   ];
 }
