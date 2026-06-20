@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import '../../bloc/deals/deals_bloc.dart';
-import '../../data/repositories/deals_repository.dart';
 import '../../widgets/page_scaffold.dart';
 import 'models/deals_view_notifier.dart';
 import 'widgets/deals_async_handler.dart';
@@ -15,21 +12,16 @@ class DealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DealsBloc(
-        dealsRepository: context.read<DealsRepository>(),
-      )..add(const LoadDeals()),
-      child: ChangeNotifierProvider(
-        create: (_) => DealsViewNotifier(0),
-        child: PageScaffold(
-          padding: EdgeInsets.zero,
-          child: Column(
-            children: [
-              const DealsAsyncHandler(),
-              const DealsToggle(),
-              const Expanded(child: DealsContent()),
-            ],
-          ),
+    return ChangeNotifierProvider(
+      create: (_) => DealsViewNotifier(0),
+      child: PageScaffold(
+        padding: EdgeInsets.zero,
+        child: Column(
+          children: [
+            const DealsAsyncHandler(),
+            const DealsToggle(),
+            const Expanded(child: DealsContent()),
+          ],
         ),
       ),
     );

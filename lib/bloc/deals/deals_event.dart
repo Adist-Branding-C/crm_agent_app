@@ -12,3 +12,12 @@ abstract class DealsEvent extends Equatable {
 class LoadDeals extends DealsEvent {
   const LoadDeals();
 }
+
+/// Event triggered to add a new deal.
+class AddDeal extends DealsEvent {
+  final Deal deal;
+  const AddDeal(this.deal);
+
+  @override
+  List<Object?> get props => [deal];
+}

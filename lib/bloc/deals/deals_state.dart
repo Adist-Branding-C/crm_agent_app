@@ -28,6 +28,17 @@ class DealsLoaded extends DealsState {
   List<Object?> get props => [deals];
 }
 
+/// State emitted when a deal is added (success or failure).
+class DealAdded extends DealsState {
+  final Deal deal;
+  final String? error;
+
+  const DealAdded({required this.deal, this.error});
+
+  @override
+  List<Object?> get props => [deal, error];
+}
+
 enum DealsFailure { load, unknown }
 
 /// State emitted when deals loading fails.
