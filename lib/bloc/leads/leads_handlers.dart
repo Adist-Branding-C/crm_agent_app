@@ -59,6 +59,15 @@ extension LeadsHandlers on LeadsBloc {
     }
   }
 
+  void onLeadUpdated(LeadUpdated event, Emitter<LeadsState> emit) {
+    final s = state;
+    if (s is LeadsLoaded) {
+      final updatedList = allLeads.map((l) => l.id == event.lead.id ? event.lead : l).toList();
+      updateAllLeads(updatedList);
+      emitFilteredState(emit, s.searchQuery, s.selectedCategory, s.isSpotlightOnly, s.sortBy, s.selectedStatus, s.selectedSource);
+    }
+  }
+
   void emitFilteredState(Emitter<LeadsState> emit, String q, LeadCategory? c, bool s, SortLeadsBy sort, LeadStatus? status, LeadSource? src) {
     final filtered = applyLeadsFilteringAndSorting(allLeads, query: q, category: c, spotlight: s, sortBy: sort, status: status, source: src);
     emit(LeadsLoaded(filteredLeads: filtered, searchQuery: q, selectedCategory: c, isSpotlightOnly: s, sortBy: sort, selectedStatus: status, selectedSource: src));

@@ -14,6 +14,7 @@ class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {
   final LeadsRepository leadsRepository;
   List<Lead>? _allLeads;
   late final StreamSubscription<String> _deletedSub;
+  late final StreamSubscription<Lead> _updatedSub;
 
   List<Lead> get allLeads => _allLeads ?? [];
 
@@ -27,15 +28,20 @@ class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {
     on<AddLead>(onAddLead);
     on<ApplyFilterOptions>(onApplyFilterOptions);
     on<LeadDeleted>(onLeadDeleted);
+    on<LeadUpdated>(onLeadUpdated);
 
     _deletedSub = leadsRepository.leadDeletedStream.listen(
       (id) => add(LeadDeleted(id)),
+    );
+    _updatedSub = leadsRepository.leadUpdatedStream.listen(
+      (lead) => add(LeadUpdated(lead)),
     );
   }
 
   @override
   Future<void> close() {
     _deletedSub.cancel();
+    _updatedSub.cancel();
     leadsRepository.dispose();
     return super.close();
   }

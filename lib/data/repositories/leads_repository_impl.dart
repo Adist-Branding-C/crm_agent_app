@@ -9,9 +9,13 @@ class LeadsRepositoryImpl implements LeadsRepository {
   LeadsRepositoryImpl({required this.leadsDataSource});
 
   final _deletedController = StreamController<String>.broadcast();
+  final _updatedController = StreamController<Lead>.broadcast();
 
   @override
   Stream<String> get leadDeletedStream => _deletedController.stream;
+
+  @override
+  Stream<Lead> get leadUpdatedStream => _updatedController.stream;
 
   @override
   Future<List<Lead>> getLeads() async {
@@ -45,6 +49,7 @@ class LeadsRepositoryImpl implements LeadsRepository {
   Future<void> updateLead(Lead lead) async {
     await Future.delayed(const Duration(milliseconds: 100));
     await leadsDataSource.updateLead(lead);
+    _updatedController.add(lead);
   }
 
   @override
@@ -55,5 +60,8 @@ class LeadsRepositoryImpl implements LeadsRepository {
   }
 
   @override
-  void dispose() => _deletedController.close();
+  void dispose() {
+    _deletedController.close();
+    _updatedController.close();
+  }
 }

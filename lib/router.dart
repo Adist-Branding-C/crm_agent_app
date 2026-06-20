@@ -19,6 +19,7 @@ import 'screens/tasks/task_details_screen.dart';
 import 'screens/call_log/widgets/call_log_route_provider.dart';
 import 'screens/call_report/call_report_screen.dart';
 import 'screens/my_activity/my_activity_screen.dart';
+import 'router/edit_enquiry_route.dart';
 
 GoRouter createRouter(
   AuthRepository authRepository,
@@ -65,6 +66,7 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.callLog, path: AppRoutes.callLogPath, builder: (c, s) => CallLogRouteProvider(state: s)),
       GoRoute(name: AppRoutes.callReport, path: AppRoutes.callReportPath, builder: (c, s) => const CallReportScreen()),
       GoRoute(name: AppRoutes.myActivity, path: AppRoutes.myActivityPath, builder: (c, s) => const MyActivityScreen()),
+      buildEditEnquiryRoute(),
     ],
   );
 }

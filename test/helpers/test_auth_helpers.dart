@@ -2,9 +2,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/data/datasources/auth_datasource.dart';
 import 'package:crm_agent_app/data/repositories/auth_repository_impl.dart';
 import 'package:crm_agent_app/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 MyApp createTestApp() {
+  SharedPreferences.setMockInitialValues({});
   final repo = AuthRepositoryImpl(authDataSource: AuthDataSourceImpl());
+  repo.init();
   return MyApp(authRepository: repo);
 }
 

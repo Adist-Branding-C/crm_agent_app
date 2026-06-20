@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// A reusable action button for details screens.
 class QuickActionButton extends StatelessWidget {
   final VoidCallback onTap;
-  final IconData icon;
+  final Widget icon;
   final String label;
   final Color backgroundColor;
   final Color foregroundColor;
@@ -32,7 +32,7 @@ class QuickActionButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, color: foregroundColor, size: 18),
+              icon,
               const SizedBox(width: 8),
               Text(
                 label,

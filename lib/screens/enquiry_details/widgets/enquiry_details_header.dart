@@ -4,6 +4,7 @@ import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
 import '../../../theme.dart';
 import '../../../widgets/screen_header.dart';
 import 'action_buttons.dart';
+import 'edit_enquiry_button.dart';
 
 /// Top header of the detail screen showing name, email, phone, and action buttons.
 class EnquiryDetailsHeader extends StatelessWidget {
@@ -26,10 +27,11 @@ class EnquiryDetailsHeader extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ScreenHeader(
+            ScreenHeader(
               title: 'Enquiry Details',
               showBackButton: true,
-              padding: EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 4),
+              actions: EditEnquiryButton(lead: lead),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 4),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),

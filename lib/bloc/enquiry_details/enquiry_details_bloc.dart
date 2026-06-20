@@ -21,5 +21,6 @@ class EnquiryDetailsBloc
     on<ChangeEnquiryStatus>(onChangeStatus);
     on<AddEnquiryNote>(onAddNote);
     on<DeleteEnquiry>(onDelete);
+    on<UpdateEnquiryDetails>(onUpdateDetails);
   }
 }

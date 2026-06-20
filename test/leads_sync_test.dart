@@ -28,6 +28,8 @@ class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
   @override
   Future<void> updateLead(Lead lead) async {}
   @override
+  Stream<Lead> get leadUpdatedStream => const Stream.empty();
+  @override
   Future<void> deleteLead(String id) async {
     leads.removeWhere((l) => l.id == id);
     _controller.add(id);

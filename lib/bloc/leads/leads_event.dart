@@ -78,3 +78,12 @@ class LeadDeleted extends LeadsEvent {
   @override
   List<Object?> get props => [leadId];
 }
+
+/// Event dispatched when a lead is updated.
+class LeadUpdated extends LeadsEvent {
+  final Lead lead;
+  const LeadUpdated(this.lead);
+
+  @override
+  List<Object?> get props => [lead];
+}
