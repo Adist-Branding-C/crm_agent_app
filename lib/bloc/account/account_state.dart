@@ -29,6 +29,25 @@ class AccountLoaded extends AccountState {
   List<Object?> get props => [profile];
 }
 
+/// State indicating that the profile is being updated in-progress.
+class AccountUpdating extends AccountLoaded {
+  const AccountUpdating({required super.profile});
+}
+
+/// State representing a successfully saved profile update.
+class AccountUpdateSuccess extends AccountLoaded {
+  const AccountUpdateSuccess({required super.profile});
+}
+
+/// State representing a failed profile update attempt.
+class AccountUpdateFailure extends AccountLoaded {
+  final String error;
+  const AccountUpdateFailure({required super.profile, required this.error});
+
+  @override
+  List<Object?> get props => [profile, error];
+}
+
 enum AccountFailure { loadProfile, logout, unknown }
 
 /// Error state.

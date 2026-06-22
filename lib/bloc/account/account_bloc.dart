@@ -19,6 +19,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   }) : super(const AccountInitial()) {
     on<LoadAccount>(_onLoadAccount);
     on<LogoutRequested>(_onLogoutRequested);
+    on<UpdateProfile>(_onUpdateProfile);
   }
 
   Future<void> _onLoadAccount(
@@ -43,6 +44,25 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       emit(const AccountLoggedOut());
     } catch (_) {
       emit(const AccountLoggedOut());
+    }
+  }
+
+  Future<void> _onUpdateProfile(
+    UpdateProfile event,
+    Emitter<AccountState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is AccountLoaded) {
+      emit(AccountUpdating(profile: currentState.profile));
+      try {
+        final updated = await accountRepository.updateProfile(event.profile);
+        emit(AccountUpdateSuccess(profile: updated));
+      } catch (_) {
+        emit(AccountUpdateFailure(
+          profile: currentState.profile,
+          error: 'Failed to update profile details.',
+        ));
+      }
     }
   }
 }

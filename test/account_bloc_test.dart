@@ -1,49 +1,7 @@
 import 'package:crm_agent_app/bloc/account/account_bloc.dart';
-import 'package:crm_agent_app/bloc/account/account_models.dart';
-import 'package:crm_agent_app/data/repositories/account_repository.dart';
-import 'package:crm_agent_app/data/repositories/auth_repository.dart';
+import 'package:crm_agent_app/bloc/account/account_profile_extensions.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-class MockAccountRepository implements AccountRepository {
-  @override
-  Future<AccountProfile> getProfile() async {
-    return const AccountProfile(
-      initials: 'AN',
-      name: 'Arjun Nair',
-      role: 'Sales Agent',
-      branch: 'Calicut Branch',
-      email: 'arjun.nair@example.com',
-      phone: '+91 98765 43210',
-      wonDeals: 11,
-      myLeads: 96,
-      conversionRate: 0.64,
-      notificationCount: 3,
-    );
-  }
-}
-
-class MockAuthRepository implements AuthRepository {
-  @override
-  bool get isAuthenticated => true;
-  @override
-  bool get isInitialized => true;
-  @override
-  Future<bool> login(String p, String pass) async => true;
-  @override
-  Future<String?> getToken() async => 'mock';
-  @override
-  Future<void> logout() async {}
-  @override
-  Future<void> init() async {}
-  @override
-  Future<void> sendOtp(String phone) async {}
-  @override
-  Future<bool> verifyOtp(String phone, String code) async => true;
-  @override
-  Future<bool> updatePassword(String phone, String password) async => true;
-  @override
-  Future<bool> changePassword(String currentPassword, String newPassword) async => true;
-}
+import 'mock_account_repositories.dart';
 
 void main() {
   group('AccountBloc Unit Tests', () {
@@ -82,6 +40,24 @@ void main() {
         ]),
       );
       bloc.add(const LogoutRequested());
+    });
+
+    test('UpdateProfile emits AccountUpdating and AccountUpdateSuccess', () async {
+      bloc.add(const LoadAccount());
+      await bloc.stream.firstWhere((s) => s is AccountLoaded);
+
+      final p = (bloc.state as AccountLoaded).profile;
+      final updated = p.copyWith(name: 'Updated Name');
+
+      expectLater(
+        bloc.stream,
+        emitsInOrder([
+          isA<AccountUpdating>(),
+          isA<AccountUpdateSuccess>().having((s) => s.profile.name, 'name', 'Updated Name'),
+        ]),
+      );
+
+      bloc.add(UpdateProfile(profile: updated));
     });
   });
 }

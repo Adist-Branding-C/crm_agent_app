@@ -12,6 +12,10 @@ class AccountProfile extends Equatable {
   final int myLeads;
   final double conversionRate;
   final int notificationCount;
+  final String joinedDate;
+  final String baseLocation;
+  final int monthlyTarget;
+  final int achievedAmount;
 
   /// Creates a constant [AccountProfile].
   const AccountProfile({
@@ -25,6 +29,10 @@ class AccountProfile extends Equatable {
     required this.myLeads,
     required this.conversionRate,
     required this.notificationCount,
+    required this.joinedDate,
+    required this.baseLocation,
+    required this.monthlyTarget,
+    required this.achievedAmount,
   });
 
   @override
@@ -39,5 +47,9 @@ class AccountProfile extends Equatable {
         myLeads,
         conversionRate,
         notificationCount,
+        joinedDate,
+        baseLocation,
+        monthlyTarget,
+        achievedAmount,
       ];
 }

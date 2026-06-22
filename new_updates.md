@@ -64,3 +64,13 @@ feat: redesign call action flow with actions bottom sheet and fix GoRouter conte
 - Resolved GoRouter context exceptions by utilizing `rootNavigatorKey.currentContext` inside `CallLogNavigationHandler` during modal presentation and post-call logging navigation.
 - Created modular widgets (each strictly < 80 lines): `CallActionsBottomSheet`, `CallActionsBottomSheetBody`, `CallActionsSheetHeader`, and `CallActionTile`.
 - Extracted mock repository classes to `test/mock_repositories.dart` and updated `test/call_log_test.dart` and `test/follow_ups_test.dart` to verify the redesigned sheet interaction flows.
+
+feat(profile): implement change password feature
+
+- Add `changePassword` method to `AuthRepository` and its mock implementation.
+- Register change password routes and map to `ChangePasswordScreen`.
+- Replace "Settings" menu item with "Change Password" in `MenuList`.
+- Implement `ChangePasswordBloc` with Formz validators (`ChangeCurrentPassword`, `ChangeNewPassword`, and `ChangeConfirmPassword`) enforcing formatting rules.
+- Build the `ChangePasswordScreen` layout and UI subcomponents adhering strictly to the < 80 lines per file constraint.
+- Stretch body column components to ensure requirements header box spans full screen width.
+- Add comprehensive integration tests in `change_password_flow_test.dart` verifying all validation and navigation flows.
