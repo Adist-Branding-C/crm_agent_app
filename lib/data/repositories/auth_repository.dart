@@ -26,4 +26,7 @@ abstract class AuthRepository {
 
   /// Updates the user's password.
   Future<bool> updatePassword(String phone, String password);
+
+  /// Changes the authenticated user's password.
+  Future<bool> changePassword(String currentPassword, String newPassword);
 }

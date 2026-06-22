@@ -22,6 +22,7 @@ import 'screens/call_report/call_report_screen.dart';
 import 'screens/my_activity/my_activity_screen.dart';
 import 'router/edit_enquiry_route.dart';
 import 'router/forgot_password_routes.dart';
+import 'screens/change_password/change_password_screen.dart';
 
 GoRouter createRouter(
   AuthRepository authRepository,
@@ -66,6 +67,7 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.callLog, path: AppRoutes.callLogPath, builder: (c, s) => CallLogRouteProvider(state: s)),
       GoRoute(name: AppRoutes.callReport, path: AppRoutes.callReportPath, builder: (c, s) => const CallReportScreen()),
       GoRoute(name: AppRoutes.myActivity, path: AppRoutes.myActivityPath, builder: (c, s) => const MyActivityScreen()),
+      GoRoute(name: AppRoutes.changePassword, path: AppRoutes.changePasswordPath, builder: (c, s) => const ChangePasswordScreen()),
       buildEditEnquiryRoute(),
       ...buildForgotPasswordRoutes(),
     ],

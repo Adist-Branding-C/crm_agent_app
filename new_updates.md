@@ -54,3 +54,13 @@ feat(auth): implement New Password screen and recovery flow integration
 - Add integration widget tests in `new_password_flow_test.dart` and update `forgot_password_flow_test.dart`.
 - Keep all created and modified source files strictly under the 80 lines of code limit.
 
+feat: redesign call action flow with actions bottom sheet and fix GoRouter context crash
+
+- Redesigned call action buttons across screens to open a custom CallActionsBottomSheet instead of dialing immediately.
+- Added bottom sheet options: Call now, WhatsApp, Send SMS, and Copy number.
+- Added `SmsService` to launch system SMS intents and integrated clipboard copy with feedback.
+- Updated `CallLogBloc` events and states to include `LaunchDialer` and `CallLogBottomSheetTriggered` for handling sheet interactions.
+- Nest `CallLogNavigationHandler` inside `MaterialApp.router`'s builder and configure a global `rootNavigatorKey` for GoRouter.
+- Resolved GoRouter context exceptions by utilizing `rootNavigatorKey.currentContext` inside `CallLogNavigationHandler` during modal presentation and post-call logging navigation.
+- Created modular widgets (each strictly < 80 lines): `CallActionsBottomSheet`, `CallActionsBottomSheetBody`, `CallActionsSheetHeader`, and `CallActionTile`.
+- Extracted mock repository classes to `test/mock_repositories.dart` and updated `test/call_log_test.dart` and `test/follow_ups_test.dart` to verify the redesigned sheet interaction flows.

@@ -19,7 +19,7 @@ class MenuList extends StatelessWidget {
       MenuItemModel(icon: Icons.notifications_none_rounded, title: 'Notifications', route: AppRoutes.notifications, badge: '${p.notificationCount}'),
     ],
     [
-      const MenuItemModel(icon: Icons.settings_outlined, title: 'Settings'),
+      const MenuItemModel(icon: Icons.lock_outline_rounded, title: 'Change Password', route: AppRoutes.changePassword),
       const MenuItemModel(icon: Icons.description_outlined, title: 'Help & Support'),
     ],
   ];
