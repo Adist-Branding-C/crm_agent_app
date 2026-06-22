@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Represents a single action item in the enquiry details FAB menu.
 class FabMenuAction {
   final String label;
   final IconData icon;

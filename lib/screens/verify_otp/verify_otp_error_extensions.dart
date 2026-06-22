@@ -1,8 +1,8 @@
 import '../../bloc/verify_otp/verify_otp_bloc.dart';
+import '../../bloc/verify_otp/verify_otp_failure.dart';
 
 /// Extension to map [VerifyOtpCodeValidationError] to localized messages.
 extension VerifyOtpCodeValidationErrorX on VerifyOtpCodeValidationError {
-  /// User-facing error message.
   String get message {
     switch (this) {
       case VerifyOtpCodeValidationError.empty:
@@ -17,9 +17,8 @@ extension VerifyOtpCodeValidationErrorX on VerifyOtpCodeValidationError {
 
 /// Extension providing presentation-related getters for [VerifyOtpState].
 extension VerifyOtpStatePresentation on VerifyOtpState {
-  /// Specific validation error text for the OTP field.
   String? get codeError {
     if (code.isPure) return null;
-    return code.error?.message ?? errorMessage;
+    return code.error?.message ?? failure?.message;
   }
 }

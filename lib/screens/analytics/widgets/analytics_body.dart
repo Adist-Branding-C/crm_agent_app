@@ -15,6 +15,11 @@ class AnalyticsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<AnalyticsBloc>();
     return BlocBuilder<AnalyticsBloc, AnalyticsState>(
+      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType ||
+          (curr is AnalyticsLoaded && prev is AnalyticsLoaded &&
+              (prev.activeTab != curr.activeTab ||
+               prev.leadsData != curr.leadsData ||
+               prev.dealsData != curr.dealsData)),
       builder: (context, state) {
         return AsyncStateView(
           isLoading: state is AnalyticsLoading || state is AnalyticsInitial,

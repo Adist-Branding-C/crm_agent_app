@@ -1,32 +1,32 @@
+export 'search_event.dart';
+export 'search_state.dart';
+export 'search_result.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/repositories/leads_repository.dart';
-import '../../data/repositories/tasks_repository.dart';
-import '../../data/repositories/spotlight_repository.dart';
-import '../../data/repositories/follow_ups_repository.dart';
 import 'search_result.dart';
 import 'search_cache.dart';
 import 'search_event.dart';
 import 'search_state.dart';
 
-export 'search_event.dart';
-export 'search_state.dart';
-export 'search_result.dart';
+Map<String, List<SearchResult>> _groupResults(List<SearchResult> results) {
+  final Map<String, List<SearchResult>> groups = {};
+  for (final result in results) {
+    groups.putIfAbsent(result.categoryName, () => []).add(result);
+  }
+  return groups;
+}
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final SearchCache _cache;
+
   SearchBloc({
-    required LeadsRepository leadsRepo,
-    required TasksRepository tasksRepo,
-    required SpotlightRepository spotlightRepo,
-    required FollowUpsRepository followUpsRepo,
-  }) : _cache = SearchCache(
-      leadsRepo: leadsRepo, tasksRepo: tasksRepo,
-      spotlightRepo: spotlightRepo, followUpsRepo: followUpsRepo,
-    ), super(const SearchInitial()) {
+    required SearchCache cache,
+  }) : _cache = cache, super(const SearchInitial()) {
     on<InitializeSearch>((e, emit) => _loadAllData(emit));
     on<SearchQueryChanged>(_onChange);
     on<ClearSearch>((e, emit) => _loadAllData(emit));
   }
+
   Future<void> _loadAllData(Emitter<SearchState> emit) async {
     emit(const SearchLoading());
     try {
@@ -41,6 +41,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       emit(const SearchError(SearchFailure.load));
     }
   }
+
   Future<void> _onChange(SearchQueryChanged event, Emitter<SearchState> emit) async {
     final q = event.query.trim();
     if (q.isEmpty) return _loadAllData(emit);
@@ -60,9 +61,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final mf = _cache.followUps
           .where((f) => f.name.toLowerCase().contains(queryLower)).map(FollowUpSearchResult.new);
       _cache.addRecent(q);
-      emit(SearchLoaded(query: event.query, results: [
-        ...ml, ...mt, ...ms, ...mf,
-      ]));
+      final results = [...ml, ...mt, ...ms, ...mf];
+      emit(SearchLoaded(query: event.query, results: results, groupedResults: _groupResults(results)));
     } catch (e) {
       emit(const SearchError(SearchFailure.query));
     }

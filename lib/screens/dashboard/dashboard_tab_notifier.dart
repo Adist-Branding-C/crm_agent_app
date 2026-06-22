@@ -9,12 +9,11 @@ class DashboardTabNotifier extends ChangeNotifier {
 
   int get currentIndex => _currentIndex;
 
-  Future<void> setIndex(int index) async {
+  void setIndex(int index) {
     if (_currentIndex == index) return;
     _currentIndex = index;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_key, index);
     notifyListeners();
+    SharedPreferences.getInstance().then((prefs) => prefs.setInt(_key, index));
   }
 
   static Future<int> loadSavedIndex({int defaultIndex = 0}) async {

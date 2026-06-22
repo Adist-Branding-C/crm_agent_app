@@ -45,21 +45,16 @@ class SearchLoading extends SearchState {
 class SearchLoaded extends SearchState {
   final String query;
   final List<SearchResult> results;
+  final Map<String, List<SearchResult>> groupedResults;
 
-  /// Creates a constant [SearchLoaded] state.
-  const SearchLoaded({required this.query, required this.results});
-
-  /// Groups the results by category name.
-  Map<String, List<SearchResult>> get groupedResults {
-    final Map<String, List<SearchResult>> groups = {};
-    for (final result in results) {
-      groups.putIfAbsent(result.categoryName, () => []).add(result);
-    }
-    return groups;
-  }
+  const SearchLoaded({
+    required this.query,
+    required this.results,
+    required this.groupedResults,
+  });
 
   @override
-  List<Object?> get props => [query, results];
+  List<Object?> get props => [query, results, groupedResults];
 }
 
 enum SearchFailure { load, query, unknown }

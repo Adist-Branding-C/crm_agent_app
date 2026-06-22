@@ -1,38 +1,39 @@
 part of 'verify_otp_bloc.dart';
 
-/// State representation of the OTP Verification flow.
 class VerifyOtpState extends Equatable {
   final VerifyOtpCode code;
   final FormzSubmissionStatus status;
   final int timerCount;
   final bool canResend;
-  final String? errorMessage;
+  final VerifyOtpFailure? failure;
 
   const VerifyOtpState({
     this.code = const VerifyOtpCode.pure(),
     this.status = FormzSubmissionStatus.initial,
     this.timerCount = 30,
     this.canResend = false,
-    this.errorMessage,
+    this.failure,
   });
 
-  /// Factory method to copy state with modified fields.
+  String? get errorMessage => failure?.message;
+
   VerifyOtpState copyWith({
     VerifyOtpCode? code,
     FormzSubmissionStatus? status,
     int? timerCount,
     bool? canResend,
-    String? errorMessage,
+    VerifyOtpFailure? failure,
+    bool clearFailure = false,
   }) {
     return VerifyOtpState(
       code: code ?? this.code,
       status: status ?? this.status,
       timerCount: timerCount ?? this.timerCount,
       canResend: canResend ?? this.canResend,
-      errorMessage: errorMessage ?? this.errorMessage,
+      failure: clearFailure ? null : (failure ?? this.failure),
     );
   }
 
   @override
-  List<Object?> get props => [code, status, timerCount, canResend, errorMessage];
+  List<Object?> get props => [code, status, timerCount, canResend, failure];
 }

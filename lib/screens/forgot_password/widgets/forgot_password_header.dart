@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import '../../../theme/app_colors.dart';
+import '../../../theme/app_context_theme.dart';
+
+class ForgotPasswordHeader extends StatelessWidget {
+  const ForgotPasswordHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 24),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: AppColors.primaryColorLight,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Icon(
+            Icons.phone_android_rounded,
+            color: context.primary,
+            size: 32,
+          ),
+        ),
+        const SizedBox(height: 24),
+        Text(
+          'Enter your phone',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: context.textDark,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          "We'll send a 6-digit OTP to your registered mobile number.",
+          style: TextStyle(fontSize: 14, color: context.textMuted),
+        ),
+      ],
+    );
+  }
+}

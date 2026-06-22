@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import '../../../bloc/analytics/deal_analytics_models.dart';
 import '../../../widgets/donut_segment.dart';
 import '../../deals/widgets/deals_presentation_extensions.dart';
-import '../../../utils/currency_formatter.dart';
-import '../../../theme/app_colors.dart';
 import 'analytics_stats_grid_deals.dart';
 import 'donut_chart_card.dart';
 import 'bar_chart_card.dart';
 import 'legend_row.dart';
-import 'metric_progress_row.dart';
+import 'deals_tab_helpers.dart';
 
 class DealsTabContent extends StatelessWidget {
   final DealsSummary summary;
@@ -26,9 +24,9 @@ class DealsTabContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final totalDeals = stageMetrics.fold<int>(0, (sum, e) => sum + e.count);
-    final maxPipeline = pipelineMetrics.fold<double>(1.0, (max, e) => e.amount > max ? e.amount : max);
-    final maxType = typeMetrics.fold<double>(1.0, (max, e) => e.amount > max ? e.amount : max);
+    final total = totalDealCount(stageMetrics);
+    final maxPipeline = maxPipelineValue(pipelineMetrics);
+    final maxType = maxTypeValue(typeMetrics);
 
     final stageSegments = stageMetrics
         .map((e) => DonutSegment(value: e.count.toDouble(), color: e.stage.color))
@@ -38,25 +36,8 @@ class DealsTabContent extends StatelessWidget {
         .map((e) => LegendRow(label: e.stage.label, count: e.count, color: e.stage.color))
         .toList();
 
-    final pipelineRows = pipelineMetrics
-        .map((e) => MetricProgressRow(
-              title: e.stage.label,
-              count: e.amount.toRupeeFormat(),
-              progressValue: maxPipeline > 0 ? e.amount / maxPipeline : 0.0,
-              barColor: e.stage.color,
-            ))
-        .toList();
-
-    final typeColors = [AppColors.info, AppColors.accent, AppColors.warning];
-    final typeRows = List.generate(typeMetrics.length, (index) {
-      final e = typeMetrics[index];
-      return MetricProgressRow(
-        title: e.dealType,
-        count: e.amount.toRupeeFormat(),
-        progressValue: maxType > 0 ? e.amount / maxType : 0.0,
-        barColor: typeColors[index % typeColors.length],
-      );
-    });
+    final pipelineRows = buildPipelineRows(pipelineMetrics, maxPipeline);
+    final typeRows = buildTypeRows(typeMetrics, maxType);
 
     return Column(
       children: [
@@ -65,7 +46,7 @@ class DealsTabContent extends StatelessWidget {
         DonutChartCard(
           title: 'Deals by stage',
           segments: stageSegments,
-          centerLabel: totalDeals.toString(),
+          centerLabel: total.toString(),
           centerSubLabel: 'deals',
           legendItems: stageLegends,
         ),

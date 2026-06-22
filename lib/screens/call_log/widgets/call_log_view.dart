@@ -5,28 +5,24 @@ import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../widgets/screen_header.dart';
+import '../models/call_log_form_state.dart';
 import 'call_log_body.dart';
 import 'save_button.dart';
 
-/// The presentational view layer of the Call Log screen.
 class CallLogView extends StatelessWidget {
   final Lead lead;
-  final String callStatus;
+  final CallLogFormState formState;
   final ValueChanged<String> onCallStatusChanged;
-  final LeadStatus leadStatus;
   final ValueChanged<LeadStatus> onLeadStatusChanged;
-  final LeadPurpose purpose;
   final ValueChanged<LeadPurpose> onPurposeChanged;
   final TextEditingController remarkController;
 
   const CallLogView({
     super.key,
     required this.lead,
-    required this.callStatus,
+    required this.formState,
     required this.onCallStatusChanged,
-    required this.leadStatus,
     required this.onLeadStatusChanged,
-    required this.purpose,
     required this.onPurposeChanged,
     required this.remarkController,
   });
@@ -46,11 +42,9 @@ class CallLogView extends StatelessWidget {
           Expanded(
             child: CallLogBody(
               lead: lead,
-              callStatus: callStatus,
+              formState: formState,
               onCallStatusChanged: onCallStatusChanged,
-              leadStatus: leadStatus,
               onLeadStatusChanged: onLeadStatusChanged,
-              purpose: purpose,
               onPurposeChanged: onPurposeChanged,
               remarkController: remarkController,
               saveButton: BlocBuilder<CallLogBloc, CallLogState>(
@@ -58,14 +52,14 @@ class CallLogView extends StatelessWidget {
                 builder: (context, state) => SaveButton(
                   isLoading: state is CallLogSaving,
                   onTap: () => context.read<CallLogBloc>().add(
-                        SaveCallLog(
-                          lead: lead,
-                          callStatus: callStatus,
-                          leadStatus: leadStatus,
-                          purpose: purpose,
-                          remark: remarkController.text,
-                        ),
-                      ),
+                    SaveCallLog(
+                      lead: lead,
+                      callStatus: formState.callStatus,
+                      leadStatus: formState.leadStatus,
+                      purpose: formState.purpose,
+                      remark: remarkController.text,
+                    ),
+                  ),
                 ),
               ),
             ),

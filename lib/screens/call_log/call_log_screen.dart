@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../bloc/leads/leads_enums.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../../theme.dart';
+import 'models/call_log_form_state.dart';
 import 'widgets/call_log_view.dart';
 
 class CallLogScreen extends StatefulWidget {
@@ -13,10 +14,17 @@ class CallLogScreen extends StatefulWidget {
 }
 
 class _CallLogScreenState extends State<CallLogScreen> {
-  late String _callStatus = 'Connected';
-  late LeadStatus _leadStatus = widget.lead?.status ?? LeadStatus.interested;
-  late LeadPurpose _purpose = widget.lead?.source ?? LeadPurpose.newAdmission;
   final _remarkController = TextEditingController();
+  late CallLogFormState _formState;
+
+  @override
+  void initState() {
+    super.initState();
+    _formState = CallLogFormState(
+      leadStatus: widget.lead?.status ?? LeadStatus.interested,
+      purpose: widget.lead?.source ?? LeadPurpose.newAdmission,
+    );
+  }
 
   @override
   void dispose() {
@@ -28,12 +36,9 @@ class _CallLogScreenState extends State<CallLogScreen> {
   Widget build(BuildContext context) {
     final lead = widget.lead ??
         const Lead(
-          name: 'Unknown Lead',
-          phone: '',
-          status: LeadStatus.newStatus,
-          source: LeadPurpose.enquiry,
-          category: LeadCategory.cold,
-          location: '',
+          name: 'Unknown Lead', phone: '',
+          status: LeadStatus.newStatus, source: LeadPurpose.enquiry,
+          category: LeadCategory.cold, location: '',
         );
 
     return Scaffold(
@@ -41,12 +46,10 @@ class _CallLogScreenState extends State<CallLogScreen> {
       body: SafeArea(
         child: CallLogView(
           lead: lead,
-          callStatus: _callStatus,
-          onCallStatusChanged: (val) => setState(() => _callStatus = val),
-          leadStatus: _leadStatus,
-          onLeadStatusChanged: (val) => setState(() => _leadStatus = val),
-          purpose: _purpose,
-          onPurposeChanged: (val) => setState(() => _purpose = val),
+          formState: _formState,
+          onCallStatusChanged: (val) => setState(() => _formState = _formState.copyWith(callStatus: val)),
+          onLeadStatusChanged: (val) => setState(() => _formState = _formState.copyWith(leadStatus: val)),
+          onPurposeChanged: (val) => setState(() => _formState = _formState.copyWith(purpose: val)),
           remarkController: _remarkController,
         ),
       ),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
-import '../../../theme/app_context_theme.dart';
+import 'digit_box.dart';
 
-/// Renders a row of 6 stylized OTP digits overlaying a hidden text field.
 class OtpInputWidget extends StatefulWidget {
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
@@ -66,32 +64,7 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
               final text = widget.controller.text;
               final isFocused = _focusNode.hasFocus && text.length == index;
               final char = text.length > index ? text[index] : '';
-
-              return Container(
-                width: 48,
-                height: 56,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: isFocused
-                        ? context.primary
-                        : (char.isNotEmpty ? context.primary : context.border),
-                    width: isFocused ? 2.0 : 1.0,
-                  ),
-                ),
-                child: isFocused
-                    ? Container(width: 2, height: 24, color: context.primary)
-                    : Text(
-                        char,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: context.textDark,
-                        ),
-                      ),
-              );
+              return DigitBox(char: char, isFocused: isFocused);
             }),
           ),
         ],

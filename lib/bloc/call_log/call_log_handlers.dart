@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/activity_models.dart';
-import '../../bloc/leads/leads_models.dart';
+import '../../bloc/leads/lead_copy_extensions.dart';
 import 'call_log_bloc.dart';
 
 extension CallLogHandlers on CallLogBloc {
