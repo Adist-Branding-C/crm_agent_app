@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import '../screens/forgot_password/forgot_password_screen.dart';
 import '../screens/verify_otp/verify_otp_screen.dart';
+import '../screens/new_password/new_password_screen.dart';
 import 'app_routes.dart';
 
 /// Builds the Forgot Password and Verify OTP routes for the application.
@@ -17,6 +18,14 @@ List<RouteBase> buildForgotPasswordRoutes() {
       builder: (context, state) {
         final phone = state.extra as String? ?? '';
         return VerifyOtpScreen(phone: phone);
+      },
+    ),
+    GoRoute(
+      name: AppRoutes.newPassword,
+      path: AppRoutes.newPasswordPath,
+      builder: (context, state) {
+        final phone = state.extra as String? ?? '';
+        return NewPasswordScreen(phone: phone);
       },
     ),
   ];

@@ -61,7 +61,7 @@ void main() {
     await tester.pump(const Duration(milliseconds: 500));
     await tester.pumpAndSettle();
 
-    // 9. Verify transition back to Login
-    expect(find.text('Sign In'), findsOneWidget);
+    // 9. Verify transition to New Password
+    expect(find.text('Set new password'), findsOneWidget);
   });
 }

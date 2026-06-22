@@ -23,4 +23,7 @@ abstract class AuthRepository {
 
   /// Verifies the 6-digit OTP code sent to the phone.
   Future<bool> verifyOtp(String phone, String code);
+
+  /// Updates the user's password.
+  Future<bool> updatePassword(String phone, String password);
 }

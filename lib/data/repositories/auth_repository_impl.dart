@@ -56,4 +56,10 @@ class AuthRepositoryImpl implements AuthRepository {
     await Future.delayed(const Duration(milliseconds: 300));
     return code.length == 6;
   }
+
+  @override
+  Future<bool> updatePassword(String phone, String password) async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    return true;
+  }
 }

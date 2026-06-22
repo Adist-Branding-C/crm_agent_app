@@ -39,6 +39,8 @@ class MockAuthRepository implements AuthRepository {
   Future<void> sendOtp(String phone) async {}
   @override
   Future<bool> verifyOtp(String phone, String code) async => true;
+  @override
+  Future<bool> updatePassword(String phone, String password) async => true;
 }
 
 void main() {

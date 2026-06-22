@@ -42,7 +42,9 @@ class AppRoutes {
 
   static const forgotPassword = 'forgotPassword';
   static const verifyOtp = 'verifyOtp';
+  static const newPassword = 'newPassword';
 
   static const forgotPasswordPath = '/forgot-password';
   static const verifyOtpPath = '/verify-otp';
+  static const newPasswordPath = '/new-password';
 }

@@ -40,7 +40,8 @@ GoRouter createRouter(
       final isAuthPath = loc == AppRoutes.loginPath ||
           loc == AppRoutes.splashPath ||
           loc == AppRoutes.forgotPasswordPath ||
-          loc == AppRoutes.verifyOtpPath;
+          loc == AppRoutes.verifyOtpPath ||
+          loc == AppRoutes.newPasswordPath;
       if (!hasToken && !isAuthPath) return AppRoutes.loginPath;
       if (hasToken && isAuthPath) return AppRoutes.dashboardPath;
       return null;

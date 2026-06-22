@@ -34,12 +34,13 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         phone: widget.phone,
       ),
       child: BlocListener<VerifyOtpBloc, VerifyOtpState>(
+        listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('OTP Verified successfully!')),
             );
-            context.go(AppRoutes.loginPath);
+            context.pushReplacementNamed(AppRoutes.newPassword, extra: widget.phone);
           }
         },
         child: Scaffold(
