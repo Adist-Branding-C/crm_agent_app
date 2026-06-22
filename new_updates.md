@@ -46,26 +46,12 @@
 - Visual subcomponents: summary cards, stats counters, calendar grid, daily activity logs.
 - Integration test covering tab toggling and day selections.
 
-## Bug Fixes
 - **GoRouter context crash** — Nested `CallLogNavigationHandler` inside `MaterialApp.router`'s builder with global `rootNavigatorKey`; resolved modal presentation and post-call navigation exceptions.
 - **StreamController double-close** — Guarded `StreamController.close()` in `LeadsRepositoryImpl.dispose()`.
 - **Inline state loss** — Converted `HistoryContent` to `StatefulWidget`.
 - **Unsafe cast** — Added type check + default initializers in `AnalyticsFilterSheet.initState`.
 - **Nested ValueListenableBuilder cascade** — Extracted `HistoryLoadedBody` from `history_content.dart` (108 → 48 lines).
 
-## Architecture & Code Quality
-
-### 80-Line Limit Enforcement
-All new/modified files comply strictly. Decompositions:
-| File | Before | After |
-|---|---|---|
-| `history_summary_card` | 107 | 42 |
-| `history_calendar_view` | 80 | 34 |
-| `change_password_body` | 82 | 46 |
-| `change_password_handlers.dart` | 92 | 66 + 20 |
-| `history_content.dart` | 108 | 48 |
-
-### Separation of Concerns (SoC) & Single Responsibility (SRP)
 - Moved `error_messages.dart` from `bloc/` → `screens/`.
 - Moved activity title formatting out of BLoC into data model factory.
 - Extracted private `_build*` methods from bloated widgets into standalone files.
@@ -75,33 +61,18 @@ All new/modified files comply strictly. Decompositions:
 - Replaced `part/part-of` in `custom_text_field.dart` with standalone `TextFieldLabel` import.
 - Split analytics tab content into 5 sub-widgets (`deal_stage_donut`, `deal_pipeline_chart`, `deal_type_chart`, `lead_status_donut`, `lead_source_chart`) to isolate un-memoized mapping.
 
-### Interface Segregation (ISP)
 - Segregated `AuthRepository` into `SessionRepository`, `OtpRepository`, `PasswordRepository`; narrowed all 6 consuming BLoCs to their required interface.
 
-### Dependency Inversion & Decoupling
 - Removed `BlocListener<CallLogBloc>` from `DashboardScreen` (cross-feature coupling).
 - Dropped unused `dashboard_bloc` import from `dashboard_screen.dart`.
 - Extracted mock repository classes to `test/mock_repositories.dart`.
 - Documented `CallLogBloc` global provisioning trade-off (required by root-level listeners).
-
-### State Management & Performance
 - Moved `_allLeads` mutable cache into `LeadsLoaded` state as immutable `allLeads` field.
 - Replaced hardcoded `Color(0xFF1E293B)` with `AppColors.textDark` token.
 - Replaced `NotificationBell` String count with `int`.
 
-## Testing
-
-| Test File | Purpose |
-|---|---|
-| `test/forgot_password_flow_test.dart` | Entry points, validators, resend timers, success redirections |
-| `test/new_password_flow_test.dart` | Complexity/match validation, navigation |
-| `test/change_password_flow_test.dart` | All validation and navigation flows |
-| `test/attendance_history_test.dart` | Tab toggling, day selections |
-| `test/call_log_test.dart` | Bottom sheet interaction flows |
-| `test/follow_ups_test.dart` | Bottom sheet interaction flows |
-| `test/account_bloc_test.dart` | Profile updating flows |
-| `test/add_lead_bloc_validation_test.dart` | Compiler errors resolved (deleted `constants.dart`) |
-
 ---
 
-**Status:** All 37 tests passing. `flutter analyze`: 0 errors, 0 warnings. 22 architectural review items resolved across 13 new files and 15 modified files.
+**Demo Video:** [App Walkthrough](https://drive.google.com/file/d/1WZDVm9ItePl9V3t18PhLwPEZdSHS4RRD/view?usp=sharing)
+
+
