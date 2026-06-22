@@ -18,10 +18,10 @@ class HeaderActions extends StatelessWidget {
     final initials = context.select<AccountBloc, String>(
       (b) => b.state is AccountLoaded ? (b.state as AccountLoaded).profile.initials : 'AN',
     );
-    final notifCount = context.select<NotificationsBloc, String>(
+    final notifCount = context.select<NotificationsBloc, int>(
       (b) => b.state is NotificationsLoaded
-          ? (b.state as NotificationsLoaded).unreadCount.toString()
-          : '3',
+          ? (b.state as NotificationsLoaded).unreadCount
+          : 3,
     );
 
     return Row(

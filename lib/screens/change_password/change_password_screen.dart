@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/change_password/change_password_bloc.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/password_repository.dart';
 import 'widgets/change_password_body.dart';
 
 /// Entry page/screen for the Change Password feature.
@@ -31,7 +31,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (c) => ChangePasswordBloc(
-        authRepository: c.read<AuthRepository>(),
+        authRepository: c.read<PasswordRepository>(),
       ),
       child: BlocListener<ChangePasswordBloc, ChangePasswordState>(
         listenWhen: (p, c) => p.status != c.status,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
-import '../../../bloc/error_messages.dart';
+import '../../error_messages.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../../widgets/dashboard_shimmer.dart';
 import 'dashboard_header.dart';

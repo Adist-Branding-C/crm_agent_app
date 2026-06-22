@@ -9,15 +9,10 @@ import '../screens/enquiry_details/widgets/whatsapp_bottom_sheet.dart';
 import 'call_actions_sheet_header.dart';
 import 'call_action_tile.dart';
 
-/// Renders the action options body list for Call Actions.
 class CallActionsBottomSheetBody extends StatelessWidget {
-  /// The target lead model.
   final Lead lead;
-
-  /// The sms service used to trigger native sms composer.
   final SmsService smsService;
 
-  /// Creates a constant [CallActionsBottomSheetBody].
   const CallActionsBottomSheetBody({
     super.key,
     required this.lead,
@@ -33,48 +28,24 @@ class CallActionsBottomSheetBody extends StatelessWidget {
         children: [
           CallActionsSheetHeader(lead: lead),
           const SizedBox(height: 8),
-          CallActionTile(
-            icon: Icons.call_rounded,
-            title: 'Call now',
-            subtitle: lead.phone,
-            iconColor: AppColors.success,
-            iconBgColor: AppColors.successBackground,
-            onTap: () {
-              Navigator.pop(context);
-              context.read<CallLogBloc>().add(LaunchDialer(lead: lead));
-            },
+          _ActionItem(
+            icon: Icons.call_rounded, title: 'Call now', subtitle: lead.phone,
+            iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
+            onTap: () { Navigator.pop(context); context.read<CallLogBloc>().add(LaunchDialer(lead: lead)); },
           ),
-          const Divider(color: AppColors.borderLight, height: 1),
-          CallActionTile(
-            icon: Icons.chat_bubble_outline_rounded,
-            title: 'WhatsApp',
-            subtitle: 'Choose template',
-            iconColor: AppColors.success,
-            iconBgColor: AppColors.successBackground,
-            onTap: () {
-              Navigator.pop(context);
-              WhatsAppBottomSheet.show(context, lead: lead);
-            },
+          _ActionItem(
+            icon: Icons.chat_bubble_outline_rounded, title: 'WhatsApp', subtitle: 'Choose template',
+            iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
+            onTap: () { Navigator.pop(context); WhatsAppBottomSheet.show(context, lead: lead); },
           ),
-          const Divider(color: AppColors.borderLight, height: 1),
-          CallActionTile(
-            icon: Icons.sms_outlined,
-            title: 'Send SMS',
-            subtitle: lead.phone,
-            iconColor: AppColors.info,
-            iconBgColor: AppColors.infoBackground,
-            onTap: () {
-              Navigator.pop(context);
-              smsService.launchSms(lead.phone);
-            },
+          _ActionItem(
+            icon: Icons.sms_outlined, title: 'Send SMS', subtitle: lead.phone,
+            iconColor: AppColors.info, iconBgColor: AppColors.infoBackground,
+            onTap: () { Navigator.pop(context); smsService.launchSms(lead.phone); },
           ),
-          const Divider(color: AppColors.borderLight, height: 1),
-          CallActionTile(
-            icon: Icons.file_copy_outlined,
-            title: 'Copy number',
-            subtitle: lead.phone,
-            iconColor: AppColors.slate600,
-            iconBgColor: AppColors.slate100,
+          _ActionItem(
+            icon: Icons.file_copy_outlined, title: 'Copy number', subtitle: lead.phone,
+            iconColor: AppColors.slate600, iconBgColor: AppColors.slate100,
             onTap: () => _handleCopy(context),
           ),
           const SizedBox(height: 24),
@@ -88,11 +59,28 @@ class CallActionsBottomSheetBody extends StatelessWidget {
     await Clipboard.setData(ClipboardData(text: lead.phone));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Phone number copied to clipboard'),
-          duration: Duration(seconds: 2),
-        ),
+        const SnackBar(content: Text('Phone number copied to clipboard'), duration: Duration(seconds: 2)),
       );
     }
+  }
+}
+
+class _ActionItem extends StatelessWidget {
+  final IconData icon; final String title; final String subtitle;
+  final Color iconColor; final Color iconBgColor; final VoidCallback onTap;
+
+  const _ActionItem({
+    required this.icon, required this.title, required this.subtitle,
+    required this.iconColor, required this.iconBgColor, required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Divider(color: AppColors.borderLight, height: 1),
+        CallActionTile(icon: icon, title: title, subtitle: subtitle, iconColor: iconColor, iconBgColor: iconBgColor, onTap: onTap),
+      ],
+    );
   }
 }

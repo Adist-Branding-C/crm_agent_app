@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../widgets/custom_text_field.dart';
+import 'personal_details_validators.dart';
 
-/// Form section for agent personal details (Name, Phone, Email).
 class PersonalDetailsSection extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController phoneController;
@@ -34,12 +34,7 @@ class PersonalDetailsSection extends StatelessWidget {
                 isRequired: true,
                 hintText: 'Enter full name',
                 controller: nameController,
-                validator: (val) {
-                  if (val == null || val.trim().isEmpty) {
-                    return 'Full Name is required';
-                  }
-                  return null;
-                },
+                validator: (val) => PersonalDetailsValidators.requiredField(val, 'Full Name'),
               ),
               const SizedBox(height: 16),
               CustomTextField(
@@ -48,15 +43,7 @@ class PersonalDetailsSection extends StatelessWidget {
                 hintText: 'Enter phone number',
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
-                validator: (val) {
-                  if (val == null || val.trim().isEmpty) {
-                    return 'Phone number is required';
-                  }
-                  if (!RegExp(r'^\+?[0-9\s\-]{7,15}$').hasMatch(val.trim())) {
-                    return 'Enter a valid phone number';
-                  }
-                  return null;
-                },
+                validator: PersonalDetailsValidators.phone,
               ),
               const SizedBox(height: 16),
               CustomTextField(
@@ -64,15 +51,7 @@ class PersonalDetailsSection extends StatelessWidget {
                 hintText: 'Enter email address',
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-                validator: (val) {
-                  if (val != null && val.trim().isNotEmpty) {
-                    final cleanVal = val.trim();
-                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(cleanVal)) {
-                      return 'Enter a valid email address';
-                    }
-                  }
-                  return null;
-                },
+                validator: PersonalDetailsValidators.email,
               ),
             ],
           ),

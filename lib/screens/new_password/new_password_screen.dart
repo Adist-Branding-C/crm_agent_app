@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/new_password/new_password_bloc.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/password_repository.dart';
 import '../../router/app_routes.dart';
 import 'widgets/new_password_body.dart';
 
@@ -32,7 +32,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (c) => NewPasswordBloc(
-        authRepository: c.read<AuthRepository>(),
+        authRepository: c.read<PasswordRepository>(),
         phone: widget.phone,
       ),
       child: BlocListener<NewPasswordBloc, NewPasswordState>(

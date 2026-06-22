@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
-import '../../../bloc/error_messages.dart';
+import '../../error_messages.dart';
 import '../../../widgets/app_loading_widget.dart';
 import '../../../widgets/app_error_widget.dart';
 import 'enquiry_details_loaded_view.dart';

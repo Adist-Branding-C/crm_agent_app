@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
 
-/// Standardized notification bell button with badges.
 class NotificationBell extends StatelessWidget {
-  final String count;
+  final int count;
+
   const NotificationBell({super.key, required this.count});
 
   @override
@@ -24,7 +24,7 @@ class NotificationBell extends StatelessWidget {
             size: 24,
           ),
         ),
-        if (count != '0')
+        if (count > 0)
           Positioned(
             top: -2,
             right: -2,
@@ -35,7 +35,7 @@ class NotificationBell extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Text(
-                count,
+                count.toString(),
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 9,

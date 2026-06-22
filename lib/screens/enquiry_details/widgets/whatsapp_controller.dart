@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'whatsapp_template_model.dart';
+import '../../../data/models/whatsapp_template_model.dart';
 
 /// Controller managing the input state for the WhatsApp message builder.
 class WhatsAppController extends ChangeNotifier {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../data/repositories/whatsapp_template_repository.dart';
 import '../../../theme.dart';
 import 'whatsapp_controller.dart';
 import 'whatsapp_template_card.dart';
-import 'whatsapp_template_model.dart';
 
 /// Renders the section headers and list of selectable templates.
 class WhatsAppTemplatesList extends StatelessWidget {
@@ -14,7 +14,7 @@ class WhatsAppTemplatesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final templates = WhatsAppTemplateModel.getDefaultTemplates();
+    final templates = const WhatsAppTemplateRepository().getTemplates();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

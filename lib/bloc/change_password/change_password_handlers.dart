@@ -45,21 +45,6 @@ extension ChangePasswordHandlers on ChangePasswordBloc {
     ));
   }
 
-  void _onToggleCurrentPasswordVisibility(
-    ToggleCurrentPasswordVisibility e,
-    Emitter<ChangePasswordState> emit,
-  ) => emit(state.copyWith(obscureCurrentPassword: !state.obscureCurrentPassword));
-
-  void _onToggleNewPasswordVisibility(
-    ToggleNewPasswordVisibility e,
-    Emitter<ChangePasswordState> emit,
-  ) => emit(state.copyWith(obscureNewPassword: !state.obscureNewPassword));
-
-  void _onToggleConfirmPasswordVisibility(
-    ToggleConfirmPasswordVisibility e,
-    Emitter<ChangePasswordState> emit,
-  ) => emit(state.copyWith(obscureConfirmPassword: !state.obscureConfirmPassword));
-
   Future<void> _onSubmitted(
     ChangePasswordSubmitted e,
     Emitter<ChangePasswordState> emit,

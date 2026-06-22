@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/splash/splash_bloc.dart';
 import '../../data/auth_state_notifier.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/session_repository.dart';
 import '../../router/app_routes.dart';
 import '../../theme.dart';
 import 'widgets/splash_animator.dart';
@@ -42,7 +42,7 @@ class SplashScreen extends StatelessWidget {
 }
 
 void _navigateWhenReady(BuildContext context) {
-  final authRepo = context.read<AuthRepository>();
+  final authRepo = context.read<SessionRepository>();
   if (authRepo.isInitialized) {
     context.goNamed(AppRoutes.login);
     return;

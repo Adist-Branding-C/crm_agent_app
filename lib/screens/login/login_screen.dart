@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/login/login_bloc.dart';
 import '../../data/auth_state_notifier.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/session_repository.dart';
 import 'widgets/login_body.dart';
 
 /// The authentication screen that allows agents to sign in.
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(authRepository: context.read<AuthRepository>()),
+      create: (_) => LoginBloc(authRepository: context.read<SessionRepository>()),
       child: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.isSuccess) {

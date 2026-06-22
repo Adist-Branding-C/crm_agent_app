@@ -1,16 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/otp_repository.dart';
 
 part 'forgot_password_event.dart';
 part 'forgot_password_state.dart';
 part 'forgot_password_inputs.dart';
 
-/// BLoC to handle user inputs and validation for request OTP phase.
 class ForgotPasswordBloc
     extends Bloc<ForgotPasswordEvent, ForgotPasswordState> {
-  final AuthRepository authRepository;
+  final OtpRepository authRepository;
 
   ForgotPasswordBloc({required this.authRepository})
       : super(const ForgotPasswordState()) {

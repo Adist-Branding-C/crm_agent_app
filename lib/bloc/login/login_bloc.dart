@@ -1,16 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/session_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 part 'login_inputs.dart';
 
-/// BLoC that manages state transitions and validations on the Login Screen.
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  /// The authentication repository.
-  final AuthRepository authRepository;
+  final SessionRepository authRepository;
 
   /// Initializes the BLoC with the initial [LoginState].
   LoginBloc({required this.authRepository}) : super(const LoginState()) {

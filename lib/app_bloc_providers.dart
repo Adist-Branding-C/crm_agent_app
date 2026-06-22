@@ -8,6 +8,10 @@ import 'bloc/deals/deals_bloc.dart';
 import 'utils/phone_dialer_service.dart';
 
 /// Builds the list of global BLoC providers for session-scoped state.
+///
+/// CallLogBloc is included here because [CallLifecycleObserver] and
+/// [CallLogNavigationHandler] at the root widget layer depend on it.
+/// For apps without root-level BlocListeners, prefer per-screen provisioning.
 List<BlocProvider> buildBlocProviders() {
   return [
     BlocProvider<CallLogBloc>(

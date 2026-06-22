@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
-import 'whatsapp_template_model.dart';
+import '../../../data/models/whatsapp_template_model.dart';
 
 class WhatsAppTemplateCard extends StatelessWidget {
   final WhatsAppTemplateModel template;

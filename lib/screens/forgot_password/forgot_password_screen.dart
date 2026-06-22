@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/forgot_password/forgot_password_bloc.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/otp_repository.dart';
 import '../../router/app_routes.dart';
 import 'widgets/forgot_password_body.dart';
 
@@ -28,7 +28,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (c) => ForgotPasswordBloc(
-        authRepository: c.read<AuthRepository>(),
+        authRepository: c.read<OtpRepository>(),
       ),
       child: BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
         listener: (context, state) {

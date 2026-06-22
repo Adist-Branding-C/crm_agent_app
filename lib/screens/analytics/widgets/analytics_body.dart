@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
-import '../../../bloc/error_messages.dart';
+import '../../error_messages.dart';
 import '../../../widgets/async_state_view.dart';
 import 'analytics_tab_toggle.dart';
 import 'analytics_period_dropdown.dart';

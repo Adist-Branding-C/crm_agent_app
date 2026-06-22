@@ -44,11 +44,10 @@ extension CallLogHandlers on CallLogBloc {
       );
       if (ev.lead.id.isNotEmpty) {
         await leadsRepository.updateLead(updatedLead);
-        final activity = EnquiryActivity(
+        final activity = EnquiryActivity.callLog(
           id: DateTime.now().toString(),
-          title: '@You logged a call (${ev.callStatus}) - Purpose: ${ev.purpose.label}',
-          time: 'Just now',
-          type: EnquiryActivityType.call,
+          callStatus: ev.callStatus,
+          purposeLabel: ev.purpose.label,
         );
         activityRepository.addActivityForLead(ev.lead.id, activity);
       }

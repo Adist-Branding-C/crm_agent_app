@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/enquiry_details/enquiry_details_bloc.dart';
 import '../../bloc/call_log/call_log_bloc.dart';
-import '../../bloc/error_messages.dart';
+import '../error_messages.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/enquiry_details_body.dart';
 

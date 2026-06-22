@@ -1,12 +1,13 @@
 import '../datasources/auth_datasource.dart';
+import 'session_repository.dart';
+import 'otp_repository.dart';
+import 'password_repository.dart';
 import 'auth_repository.dart';
 
-/// Concrete implementation of [AuthRepository] interacting with [AuthDataSource].
-class AuthRepositoryImpl implements AuthRepository {
-  /// Creates an [AuthRepositoryImpl] with the given [authDataSource].
+class AuthRepositoryImpl
+    implements AuthRepository, SessionRepository, OtpRepository, PasswordRepository {
   AuthRepositoryImpl({required this.authDataSource});
 
-  /// The data source used for token persistence.
   final AuthDataSource authDataSource;
 
   bool _isAuthenticated = false;

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/otp_repository.dart';
 import 'otp_timer_service.dart';
 import 'verify_otp_failure.dart';
 
@@ -10,7 +10,7 @@ part 'verify_otp_state.dart';
 part 'verify_otp_inputs.dart';
 
 class VerifyOtpBloc extends Bloc<VerifyOtpEvent, VerifyOtpState> {
-  final AuthRepository authRepository;
+  final OtpRepository authRepository;
   final String phone;
   final OtpTimerService _timerService = OtpTimerService();
 

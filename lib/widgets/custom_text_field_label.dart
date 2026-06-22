@@ -1,12 +1,14 @@
-part of 'custom_text_field.dart';
+import 'package:flutter/material.dart';
+import '../theme.dart';
 
-class _TextFieldLabel extends StatelessWidget {
+class TextFieldLabel extends StatelessWidget {
   final String label;
   final bool isRequired;
 
-  const _TextFieldLabel({
+  const TextFieldLabel({
+    super.key,
     required this.label,
-    required this.isRequired,
+    this.isRequired = false,
   });
 
   @override

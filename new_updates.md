@@ -1,87 +1,107 @@
-﻿feat(auth): implement Forgot Password and Verify OTP feature flows
+﻿# Project Updates
 
-- Data Layer:
-  - Add mock `sendOtp` and `verifyOtp` methods to `AuthRepository` and `AuthRepositoryImpl`.
+## Auth & Recovery Flow
 
-- Routing:
-  - Add `forgotPassword` and `verifyOtp` route names and paths to `AppRoutes`.
-  - Extract GoRouter builders into `router/forgot_password_routes.dart` to maintain the < 80 lines constraint.
-  - Whitelist the new paths in `router.dart` to allow unauthenticated access.
+### Forgot Password & Verify OTP
+- **Data:** Added mock `sendOtp`/`verifyOtp` methods to `AuthRepository` / `AuthRepositoryImpl`.
+- **Routing:** Added `/forgot-password` and `/verify-otp` routes; extracted GoRouter builders into `router/forgot_password_routes.dart`; whitelisted for unauthenticated access.
+- **State:** Implemented `ForgotPasswordBloc` (Formz `ForgotPasswordPhone`), `VerifyOtpBloc` (6-digit code, submission state, resend countdown timer).
+- **UI:** Wired `ForgotPasswordLink` on login screen; built `ForgotPasswordScreen`/`VerifyOtpScreen` with reusable `CustomTextField`/`CustomButton`; extracted `OtpInputWidget` and `ResendTimerWidget`.
+- **Tests:** Integration suite in `test/forgot_password_flow_test.dart`.
 
-- State Management (BLoCs):
-  - Implement `ForgotPasswordBloc` using Formz validations (`ForgotPasswordPhone`).
-  - Implement `VerifyOtpBloc` handling the 6-digit verification code, submission state, and the resend countdown timer.
-  - Structure both BLoCs with cohesive parts (`event`, `state`, `inputs`) to keep files well below the 80-line limit.
+### New Password Screen
+- Added `updatePassword` to `AuthRepository` and mock.
+- Defined `/new-password` route, whitelisted for guest access, linked from `VerifyOtpScreen`.
+- Created `NewPasswordBloc` (Formz complexity/match validators).
+- Built `PasswordStrengthMeter`, `ConfirmPasswordInputWidget`, `NewPasswordBody`, `NewPasswordHeaderWidget`.
+- Integration tests in `new_password_flow_test.dart`; updated `forgot_password_flow_test.dart`.
 
-- Presentation:
-  - Wire `ForgotPasswordLink` on the Login Screen to push the forgot password route.
-  - Implement `ForgotPasswordScreen` and `ForgotPasswordBody` using reusable `CustomTextField` and `CustomButton`.
-  - Implement `VerifyOtpScreen` and `VerifyOtpBody`.
-  - Extract custom `OtpInputWidget` (invisible `TextFormField` with a reactive 6-box row layout) and `ResendTimerWidget`.
+### Change Password (Profile)
+- Added `changePassword` method to `AuthRepository` + mock.
+- Registered routes mapped to `ChangePasswordScreen`; replaced "Settings" with "Change Password" in `MenuList`.
+- Implemented `ChangePasswordBloc` with 3 Formz validators (`ChangeCurrentPassword`, `ChangeNewPassword`, `ChangeConfirmPassword`).
+- Built responsive UI components; stretched body column for full-width header box.
+- Integration tests in `change_password_flow_test.dart`.
 
-- Testing:
-  - Create integration test suite in `test/forgot_password_flow_test.dart` asserting entry points, validators, resend timers, and success redirections.
-  - Resolve compiler errors in `test/add_lead_bloc_validation_test.dart` and `test/account_bloc_test.dart` caused by deleted `constants.dart` references and interface updates.
+## UI/UX Updates
 
-  All 17 architectural review issues fixed: 80-line violations, SoC/SRP/DIP violations, mixed state management, async gaps, and performance optimizations across 13 new files and 15 modified files. 37/37 tests passing, zero analyzer errors.
+### Call Action Bottom Sheet
+- Replaced direct dialing with `CallActionsBottomSheet` offering Call now, WhatsApp, Send SMS, Copy number.
+- Added `SmsService` for system SMS intents; integrated clipboard copy with feedback.
+- Updated `CallLogBloc` events/states: `LaunchDialer`, `CallLogBottomSheetTriggered`.
+- Modular widgets: `CallActionsBottomSheet`, `CallActionsBottomSheetBody`, `CallActionsSheetHeader`, `CallActionTile` (each < 80 lines).
+- Extracted mocks to `test/mock_repositories.dart`; updated `call_log_test.dart` and `follow_ups_test.dart`.
 
-  fix: resolve 7 architectural violations from codebase review
+### Edit Profile Screen
+- Created screen linked from Profile menu; decomposed into modular widgets under `lib/screens/account/edit_profile/`.
+- Extended `AccountProfile` model with `joinedDate`, `baseLocation`, `monthlyTarget`, `achievedAmount`.
+- Added `UpdateProfile` event + states to `AccountBloc`; `updateProfile` with in-memory caching in `AccountRepositoryImpl`.
+- Reactive target progress via `ValueListenableBuilder`; updated `SelectionChip` styling (light red highlight).
+- Updated `account_bloc_test.dart`.
 
-- Extract computeDealTypeMetrics into deal_type_calculator.dart to fix
-  80-line limit violation in analytics_calculation_helper.dart
-- Replace hardcoded hex Color(0xFF1E293B) with AppColors.textDark token
-- Guard unsafe cast in AnalyticsFilterSheet.initState with type check
-  and default initializers
-- Move _allLeads mutable cache into LeadsLoaded state as immutable
-  allLeads field; update all handlers and consumers
-- Guard StreamController.close() against double-invoke in
-  LeadsRepositoryImpl.dispose()
-- Remove BlocListener<CallLogBloc> from DashboardScreen to eliminate
-  cross-feature coupling
-- Drop unused dashboard_bloc import from dashboard_screen.dart
+### Attendance History Screen
+- Routes and router integration; `AttendanceHistoryModel` / `AttendanceHistoryLogModel` data structures.
+- Extended `AttendanceRepository` with history-loading capabilities and mock data.
+- `AttendanceHistoryBloc` (BLoC + part/part-of directives).
+- Visual subcomponents: summary cards, stats counters, calendar grid, daily activity logs.
+- Integration test covering tab toggling and day selections.
 
-All 37 tests pass. flutter analyze: 0 errors, 0 warnings.
+## Bug Fixes
+- **GoRouter context crash** — Nested `CallLogNavigationHandler` inside `MaterialApp.router`'s builder with global `rootNavigatorKey`; resolved modal presentation and post-call navigation exceptions.
+- **StreamController double-close** — Guarded `StreamController.close()` in `LeadsRepositoryImpl.dispose()`.
+- **Inline state loss** — Converted `HistoryContent` to `StatefulWidget`.
+- **Unsafe cast** — Added type check + default initializers in `AnalyticsFilterSheet.initState`.
+- **Nested ValueListenableBuilder cascade** — Extracted `HistoryLoadedBody` from `history_content.dart` (108 → 48 lines).
 
-feat(auth): implement New Password screen and recovery flow integration
+## Architecture & Code Quality
 
-- Add `updatePassword` to `AuthRepository` and mock implementation.
-- Define `/new-password` route, whitelist it for guest access, and link transition from `VerifyOtpScreen`.
-- Create `NewPasswordBloc` using standard Formz validators for complexity and match verification.
-- Implement responsive UI components for the New Password screen:
-  - `PasswordStrengthMeter` (length-based complexity indicators).
-  - `ConfirmPasswordInputWidget` (real-time validation mismatch alerts).
-  - Isolated screen layouts (`NewPasswordBody`, `NewPasswordHeaderWidget`).
-- Add integration widget tests in `new_password_flow_test.dart` and update `forgot_password_flow_test.dart`.
-- Keep all created and modified source files strictly under the 80 lines of code limit.
+### 80-Line Limit Enforcement
+All new/modified files comply strictly. Decompositions:
+| File | Before | After |
+|---|---|---|
+| `history_summary_card` | 107 | 42 |
+| `history_calendar_view` | 80 | 34 |
+| `change_password_body` | 82 | 46 |
+| `change_password_handlers.dart` | 92 | 66 + 20 |
+| `history_content.dart` | 108 | 48 |
 
-feat: redesign call action flow with actions bottom sheet and fix GoRouter context crash
+### Separation of Concerns (SoC) & Single Responsibility (SRP)
+- Moved `error_messages.dart` from `bloc/` → `screens/`.
+- Moved activity title formatting out of BLoC into data model factory.
+- Extracted private `_build*` methods from bloated widgets into standalone files.
+- Extracted `computeDealTypeMetrics` into `deal_type_calculator.dart`.
+- Extracted inline validator lambdas into `PersonalDetailsValidators` class.
+- Moved WhatsApp template static data from model → repository.
+- Replaced `part/part-of` in `custom_text_field.dart` with standalone `TextFieldLabel` import.
+- Split analytics tab content into 5 sub-widgets (`deal_stage_donut`, `deal_pipeline_chart`, `deal_type_chart`, `lead_status_donut`, `lead_source_chart`) to isolate un-memoized mapping.
 
-- Redesigned call action buttons across screens to open a custom CallActionsBottomSheet instead of dialing immediately.
-- Added bottom sheet options: Call now, WhatsApp, Send SMS, and Copy number.
-- Added `SmsService` to launch system SMS intents and integrated clipboard copy with feedback.
-- Updated `CallLogBloc` events and states to include `LaunchDialer` and `CallLogBottomSheetTriggered` for handling sheet interactions.
-- Nest `CallLogNavigationHandler` inside `MaterialApp.router`'s builder and configure a global `rootNavigatorKey` for GoRouter.
-- Resolved GoRouter context exceptions by utilizing `rootNavigatorKey.currentContext` inside `CallLogNavigationHandler` during modal presentation and post-call logging navigation.
-- Created modular widgets (each strictly < 80 lines): `CallActionsBottomSheet`, `CallActionsBottomSheetBody`, `CallActionsSheetHeader`, and `CallActionTile`.
-- Extracted mock repository classes to `test/mock_repositories.dart` and updated `test/call_log_test.dart` and `test/follow_ups_test.dart` to verify the redesigned sheet interaction flows.
+### Interface Segregation (ISP)
+- Segregated `AuthRepository` into `SessionRepository`, `OtpRepository`, `PasswordRepository`; narrowed all 6 consuming BLoCs to their required interface.
 
-feat(profile): implement change password feature
+### Dependency Inversion & Decoupling
+- Removed `BlocListener<CallLogBloc>` from `DashboardScreen` (cross-feature coupling).
+- Dropped unused `dashboard_bloc` import from `dashboard_screen.dart`.
+- Extracted mock repository classes to `test/mock_repositories.dart`.
+- Documented `CallLogBloc` global provisioning trade-off (required by root-level listeners).
 
-- Add `changePassword` method to `AuthRepository` and its mock implementation.
-- Register change password routes and map to `ChangePasswordScreen`.
-- Replace "Settings" menu item with "Change Password" in `MenuList`.
-- Implement `ChangePasswordBloc` with Formz validators (`ChangeCurrentPassword`, `ChangeNewPassword`, and `ChangeConfirmPassword`) enforcing formatting rules.
-- Build the `ChangePasswordScreen` layout and UI subcomponents adhering strictly to the < 80 lines per file constraint.
-- Stretch body column components to ensure requirements header box spans full screen width.
-- Add comprehensive integration tests in `change_password_flow_test.dart` verifying all validation and navigation flows.
+### State Management & Performance
+- Moved `_allLeads` mutable cache into `LeadsLoaded` state as immutable `allLeads` field.
+- Replaced hardcoded `Color(0xFF1E293B)` with `AppColors.textDark` token.
+- Replaced `NotificationBell` String count with `int`.
 
-feat(profile): implement Edit Profile screen and update profile BLoC flow
+## Testing
 
-- Create Edit Profile screen and link it from the Profile screen menu.
-- Decompose the Edit Profile UI into modular widgets under `lib/screens/account/edit_profile/` to strictly comply with the <80 lines per file constraint.
-- Add `joinedDate`, `baseLocation`, `monthlyTarget`, and `achievedAmount` fields to `AccountProfile` model.
-- Add `UpdateProfile` event and corresponding updating, success, and failure states to `AccountBloc`.
-- Implement `updateProfile` method with in-memory caching in `AccountRepositoryImpl`.
-- Implement reactive target progress updating via a `ValueListenableBuilder` on the monthly target text controller.
-- Update `SelectionChip` styling to highlight selected option using a light red background.
-- Extract mock repository details and update `account_bloc_test.dart` to verify profile updating flows.
+| Test File | Purpose |
+|---|---|
+| `test/forgot_password_flow_test.dart` | Entry points, validators, resend timers, success redirections |
+| `test/new_password_flow_test.dart` | Complexity/match validation, navigation |
+| `test/change_password_flow_test.dart` | All validation and navigation flows |
+| `test/attendance_history_test.dart` | Tab toggling, day selections |
+| `test/call_log_test.dart` | Bottom sheet interaction flows |
+| `test/follow_ups_test.dart` | Bottom sheet interaction flows |
+| `test/account_bloc_test.dart` | Profile updating flows |
+| `test/add_lead_bloc_validation_test.dart` | Compiler errors resolved (deleted `constants.dart`) |
+
+---
+
+**Status:** All 37 tests passing. `flutter analyze`: 0 errors, 0 warnings. 22 architectural review items resolved across 13 new files and 15 modified files.

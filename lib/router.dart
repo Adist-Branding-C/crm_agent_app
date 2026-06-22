@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'data/auth_state_notifier.dart';
 import 'router/navigator_key.dart';
-import 'data/repositories/auth_repository.dart';
+import 'data/repositories/session_repository.dart';
 import 'router/app_routes.dart';
 import 'screens/splash/splash_screen.dart';
 import 'screens/login/login_screen.dart';
@@ -27,7 +27,7 @@ import 'screens/account/edit_profile/edit_profile_screen.dart';
 import 'router/attendance_routes.dart';
 
 GoRouter createRouter(
-  AuthRepository authRepository,
+  SessionRepository authRepository,
   AuthStateNotifier authStateNotifier,
 ) {
   return GoRouter(

@@ -1,7 +1,7 @@
-import 'analytics/analytics_bloc.dart' show AnalyticsFailure;
-import 'dashboard/dashboard_bloc.dart' show DashboardFailure;
-import 'enquiry_details/enquiry_details_state.dart' show EnquiryDetailsFailure;
-import 'tasks/tasks_state.dart' show TasksFailure;
+import '../bloc/analytics/analytics_bloc.dart' show AnalyticsFailure;
+import '../bloc/dashboard/dashboard_bloc.dart' show DashboardFailure;
+import '../bloc/enquiry_details/enquiry_details_state.dart' show EnquiryDetailsFailure;
+import '../bloc/tasks/tasks_state.dart' show TasksFailure;
 
 extension AnalyticsFailureMessage on AnalyticsFailure {
   String get message => switch (this) {

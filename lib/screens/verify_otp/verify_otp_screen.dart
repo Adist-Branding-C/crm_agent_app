@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/verify_otp/verify_otp_bloc.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/otp_repository.dart';
 import '../../router/app_routes.dart';
 import 'widgets/verify_otp_body.dart';
 
@@ -30,7 +30,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (c) => VerifyOtpBloc(
-        authRepository: c.read<AuthRepository>(),
+        authRepository: c.read<OtpRepository>(),
         phone: widget.phone,
       ),
       child: BlocListener<VerifyOtpBloc, VerifyOtpState>(
