@@ -15,7 +15,7 @@ class MenuList extends StatelessWidget {
       const MenuItemModel(icon: Icons.person_outline_rounded, title: 'Edit Profile', route: AppRoutes.editProfile),
       MenuItemModel(icon: Icons.show_chart_rounded, title: 'My Activity', route: AppRoutes.myActivity),
       MenuItemModel(icon: Icons.phone_outlined, title: 'Call Report', route: AppRoutes.callReport),
-      const MenuItemModel(icon: Icons.fingerprint_rounded, title: 'Attendance History'),
+      const MenuItemModel(icon: Icons.fingerprint_rounded, title: 'Attendance History', route: AppRoutes.attendanceHistory),
       MenuItemModel(icon: Icons.notifications_none_rounded, title: 'Notifications', route: AppRoutes.notifications, badge: '${p.notificationCount}'),
     ],
     [

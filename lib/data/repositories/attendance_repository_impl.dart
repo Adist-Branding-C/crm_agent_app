@@ -1,6 +1,8 @@
 import '../../bloc/attendance/attendance_models.dart';
 import '../models/attendance_data.dart';
+import '../models/attendance_history_model.dart';
 import 'attendance_repository.dart';
+import 'mock_attendance_history_data.dart';
 
 class AttendanceRepositoryImpl implements AttendanceRepository {
   static const _mockTimeline = [
@@ -62,4 +64,10 @@ class AttendanceRepositoryImpl implements AttendanceRepository {
   @override
   Future<AttendanceData> checkOut(AttendanceData current) async =>
       current.copyWith(isCheckedIn: false, checkInTime: null);
+
+  @override
+  Future<AttendanceHistoryModel> getAttendanceHistory() async {
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    return MockAttendanceHistoryData.mockHistory;
+  }
 }

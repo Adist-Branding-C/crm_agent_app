@@ -24,6 +24,7 @@ import 'router/edit_enquiry_route.dart';
 import 'router/forgot_password_routes.dart';
 import 'screens/change_password/change_password_screen.dart';
 import 'screens/account/edit_profile/edit_profile_screen.dart';
+import 'router/attendance_routes.dart';
 
 GoRouter createRouter(
   AuthRepository authRepository,
@@ -72,6 +73,7 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.editProfile, path: AppRoutes.editProfilePath, builder: (c, s) => const EditProfileScreen()),
       buildEditEnquiryRoute(),
       ...buildForgotPasswordRoutes(),
+      buildAttendanceHistoryRoute(),
     ],
   );
 }

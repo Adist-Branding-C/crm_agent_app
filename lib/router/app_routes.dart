@@ -45,10 +45,12 @@ class AppRoutes {
   static const newPassword = 'newPassword';
   static const changePassword = 'changePassword';
   static const editProfile = 'editProfile';
+  static const attendanceHistory = 'attendanceHistory';
 
   static const forgotPasswordPath = '/forgot-password';
   static const verifyOtpPath = '/verify-otp';
   static const newPasswordPath = '/new-password';
   static const changePasswordPath = '/change-password';
   static const editProfilePath = '/account/edit';
+  static const attendanceHistoryPath = '/attendance-history';
 }

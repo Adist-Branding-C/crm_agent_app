@@ -74,3 +74,14 @@ feat(profile): implement change password feature
 - Build the `ChangePasswordScreen` layout and UI subcomponents adhering strictly to the < 80 lines per file constraint.
 - Stretch body column components to ensure requirements header box spans full screen width.
 - Add comprehensive integration tests in `change_password_flow_test.dart` verifying all validation and navigation flows.
+
+feat(profile): implement Edit Profile screen and update profile BLoC flow
+
+- Create Edit Profile screen and link it from the Profile screen menu.
+- Decompose the Edit Profile UI into modular widgets under `lib/screens/account/edit_profile/` to strictly comply with the <80 lines per file constraint.
+- Add `joinedDate`, `baseLocation`, `monthlyTarget`, and `achievedAmount` fields to `AccountProfile` model.
+- Add `UpdateProfile` event and corresponding updating, success, and failure states to `AccountBloc`.
+- Implement `updateProfile` method with in-memory caching in `AccountRepositoryImpl`.
+- Implement reactive target progress updating via a `ValueListenableBuilder` on the monthly target text controller.
+- Update `SelectionChip` styling to highlight selected option using a light red background.
+- Extract mock repository details and update `account_bloc_test.dart` to verify profile updating flows.
