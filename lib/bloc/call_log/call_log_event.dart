@@ -51,3 +51,11 @@ class SaveCallLog extends CallLogEvent {
 class ResetCallLog extends CallLogEvent {
   const ResetCallLog();
 }
+
+class LaunchDialer extends CallLogEvent {
+  final Lead lead;
+  const LaunchDialer({required this.lead});
+
+  @override
+  List<Object?> get props => [lead];
+}

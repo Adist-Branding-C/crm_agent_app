@@ -5,8 +5,7 @@ import 'call_log_bloc.dart';
 
 extension CallLogHandlers on CallLogBloc {
   Future<void> onInitiateCall(InitiateCall ev, Emitter<CallLogState> emit) async {
-    emit(CallInProgress(lead: ev.lead));
-    await dialerService.launchDialer(ev.lead.phone);
+    emit(CallLogBottomSheetTriggered(lead: ev.lead));
   }
 
   Future<void> onInitiateCallByName(InitiateCallByName ev, Emitter<CallLogState> emit) async {
@@ -17,8 +16,15 @@ extension CallLogHandlers on CallLogBloc {
       emit(CallLogFailure(failure: CallLogFailureType.leadNotFound, leadName: clean));
       return;
     }
-    emit(CallInProgress(lead: matches.first));
-    await dialerService.launchDialer(matches.first.phone);
+    emit(CallLogBottomSheetTriggered(lead: matches.first));
+  }
+
+  Future<void> onLaunchDialer(LaunchDialer ev, Emitter<CallLogState> emit) async {
+    emit(CallInProgress(lead: ev.lead));
+    final launched = await dialerService.launchDialer(ev.lead.phone);
+    if (!launched) {
+      emit(const CallLogFailure(failure: CallLogFailureType.unknown));
+    }
   }
 
   void onAppReturnedFromCall(AppReturnedFromCall ev, Emitter<CallLogState> emit) {

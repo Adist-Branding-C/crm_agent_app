@@ -50,3 +50,11 @@ class CallLogFailure extends CallLogState {
   @override
   List<Object?> get props => [failure, leadName];
 }
+
+class CallLogBottomSheetTriggered extends CallLogState {
+  final Lead lead;
+  const CallLogBottomSheetTriggered({required this.lead});
+
+  @override
+  List<Object?> get props => [lead];
+}

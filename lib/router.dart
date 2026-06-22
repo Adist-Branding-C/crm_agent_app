@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'data/auth_state_notifier.dart';
+import 'router/navigator_key.dart';
 import 'data/repositories/auth_repository.dart';
 import 'router/app_routes.dart';
 import 'screens/splash/splash_screen.dart';
@@ -27,36 +28,30 @@ GoRouter createRouter(
   AuthStateNotifier authStateNotifier,
 ) {
   return GoRouter(
+    navigatorKey: rootNavigatorKey,
     initialLocation: AppRoutes.splashPath,
     refreshListenable: authStateNotifier,
     redirect: (context, state) {
+      final loc = state.matchedLocation;
       if (!authRepository.isInitialized) {
-        final loc = state.matchedLocation;
-        if (loc == AppRoutes.splashPath) return null;
-        return AppRoutes.splashPath;
+        return loc == AppRoutes.splashPath ? null : AppRoutes.splashPath;
       }
       final hasToken = authRepository.isAuthenticated;
-      final loc = state.matchedLocation;
-      final isAuthPath = loc == AppRoutes.loginPath ||
-          loc == AppRoutes.splashPath ||
-          loc == AppRoutes.forgotPasswordPath ||
-          loc == AppRoutes.verifyOtpPath ||
+      final isAuth = loc == AppRoutes.loginPath || loc == AppRoutes.splashPath ||
+          loc == AppRoutes.forgotPasswordPath || loc == AppRoutes.verifyOtpPath ||
           loc == AppRoutes.newPasswordPath;
-      if (!hasToken && !isAuthPath) return AppRoutes.loginPath;
-      if (hasToken && isAuthPath) return AppRoutes.dashboardPath;
-      return null;
+      if (!hasToken && !isAuth) return AppRoutes.loginPath;
+      return (hasToken && isAuth) ? AppRoutes.dashboardPath : null;
     },
     routes: [
       GoRoute(name: AppRoutes.splash, path: AppRoutes.splashPath, builder: (c, s) => const SplashScreen()),
       GoRoute(name: AppRoutes.login, path: AppRoutes.loginPath, builder: (c, s) => const LoginScreen()),
       GoRoute(
         name: AppRoutes.dashboard, path: AppRoutes.dashboardPath,
-        builder: (context, state) {
-          final tab = state.uri.queryParameters['tab'];
-          final idx = DashboardNavigationConfig.tabRegistry[tab] ?? 0;
-          final filter = state.uri.queryParameters['filter'];
-          return DashboardRouteProvider(initialIndex: idx, initialFilter: filter);
-        },
+        builder: (c, s) => DashboardRouteProvider(
+          initialIndex: DashboardNavigationConfig.tabRegistry[s.uri.queryParameters['tab']] ?? 0,
+          initialFilter: s.uri.queryParameters['filter'],
+        ),
       ),
       GoRoute(name: AppRoutes.addLead, path: AppRoutes.addLeadPath, builder: (c, s) => const AddLeadScreen()),
       GoRoute(name: AppRoutes.deals, path: AppRoutes.dealsPath, builder: (c, s) => const DealsScreen()),

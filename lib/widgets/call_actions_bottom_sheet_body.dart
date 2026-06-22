@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/call_log/call_log_bloc.dart';
+import '../bloc/leads/leads_models.dart';
+import '../theme.dart';
+import '../utils/sms_service.dart';
+import '../screens/enquiry_details/widgets/whatsapp_bottom_sheet.dart';
+import 'call_actions_sheet_header.dart';
+import 'call_action_tile.dart';
+
+/// Renders the action options body list for Call Actions.
+class CallActionsBottomSheetBody extends StatelessWidget {
+  /// The target lead model.
+  final Lead lead;
+
+  /// The sms service used to trigger native sms composer.
+  final SmsService smsService;
+
+  /// Creates a constant [CallActionsBottomSheetBody].
+  const CallActionsBottomSheetBody({
+    super.key,
+    required this.lead,
+    this.smsService = const SmsService(),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CallActionsSheetHeader(lead: lead),
+          const SizedBox(height: 8),
+          CallActionTile(
+            icon: Icons.call_rounded,
+            title: 'Call now',
+            subtitle: lead.phone,
+            iconColor: AppColors.success,
+            iconBgColor: AppColors.successBackground,
+            onTap: () {
+              Navigator.pop(context);
+              context.read<CallLogBloc>().add(LaunchDialer(lead: lead));
+            },
+          ),
+          const Divider(color: AppColors.borderLight, height: 1),
+          CallActionTile(
+            icon: Icons.chat_bubble_outline_rounded,
+            title: 'WhatsApp',
+            subtitle: 'Choose template',
+            iconColor: AppColors.success,
+            iconBgColor: AppColors.successBackground,
+            onTap: () {
+              Navigator.pop(context);
+              WhatsAppBottomSheet.show(context, lead: lead);
+            },
+          ),
+          const Divider(color: AppColors.borderLight, height: 1),
+          CallActionTile(
+            icon: Icons.sms_outlined,
+            title: 'Send SMS',
+            subtitle: lead.phone,
+            iconColor: AppColors.info,
+            iconBgColor: AppColors.infoBackground,
+            onTap: () {
+              Navigator.pop(context);
+              smsService.launchSms(lead.phone);
+            },
+          ),
+          const Divider(color: AppColors.borderLight, height: 1),
+          CallActionTile(
+            icon: Icons.file_copy_outlined,
+            title: 'Copy number',
+            subtitle: lead.phone,
+            iconColor: AppColors.slate600,
+            iconBgColor: AppColors.slate100,
+            onTap: () => _handleCopy(context),
+          ),
+          const SizedBox(height: 24),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _handleCopy(BuildContext context) async {
+    Navigator.pop(context);
+    await Clipboard.setData(ClipboardData(text: lead.phone));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Phone number copied to clipboard'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+}

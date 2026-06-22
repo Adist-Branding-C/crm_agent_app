@@ -53,3 +53,4 @@ feat(auth): implement New Password screen and recovery flow integration
   - Isolated screen layouts (`NewPasswordBody`, `NewPasswordHeaderWidget`).
 - Add integration widget tests in `new_password_flow_test.dart` and update `forgot_password_flow_test.dart`.
 - Keep all created and modified source files strictly under the 80 lines of code limit.
+

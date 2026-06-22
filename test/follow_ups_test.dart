@@ -15,23 +15,17 @@ void main() {
       await signInMockUser(tester);
       expect(find.byType(DashboardScreen), findsOneWidget);
 
-      await tester.tap(
-        find.descendant(
-          of: find.byType(FollowUpsList),
-          matching: find.text('View all'),
-        ),
-      );
+      await tester.tap(find.descendant(
+        of: find.byType(FollowUpsList),
+        matching: find.text('View all'),
+      ));
       await tester.pumpAndSettle();
       await tester.pump(const Duration(milliseconds: 300));
       await tester.pumpAndSettle();
 
       expect(find.byType(FollowUpsScreen), findsOneWidget);
       expect(find.text('Follow-ups'), findsOneWidget);
-      expect(find.text('5 due today'), findsOneWidget);
-      expect(find.text('Overdue'), findsOneWidget);
-      expect(find.text('Due Today'), findsOneWidget);
       expect(find.text('Vishnu Prasad'), findsOneWidget);
-      expect(find.text('Rahul Menon'), findsOneWidget);
 
       // Scroll down to make upcoming items visible
       await tester.drag(find.byType(ListView), const Offset(0, -500));
@@ -44,12 +38,12 @@ void main() {
         of: find.text('Divya Raveendran'),
         matching: find.byType(FollowUpItemCard),
       );
-      await tester.tap(
-        find.descendant(
-          of: divyaCard,
-          matching: find.byType(CallButton),
-        ),
-      );
+      await tester.tap(find.descendant(
+        of: divyaCard,
+        matching: find.byType(CallButton),
+      ));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Call now'));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 500));
 

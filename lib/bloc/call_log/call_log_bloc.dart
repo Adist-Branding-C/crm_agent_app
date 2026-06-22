@@ -25,5 +25,6 @@ class CallLogBloc extends Bloc<CallLogEvent, CallLogState> {
     on<AppReturnedFromCall>(onAppReturnedFromCall);
     on<SaveCallLog>(onSaveCallLog);
     on<ResetCallLog>(onResetCallLog);
+    on<LaunchDialer>(onLaunchDialer);
   }
 }

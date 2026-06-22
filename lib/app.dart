@@ -44,13 +44,13 @@ class _MyAppState extends State<MyApp> {
         value: _authStateNotifier,
         child: MultiBlocProvider(
           providers: buildBlocProviders(),
-          child: CallLogNavigationHandler(
-            child: MaterialApp.router(
-              title: 'CRM Agent App',
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.lightTheme,
-              routerConfig: _router,
-              builder: (context, child) => CallLifecycleObserver(child: child ?? const SizedBox.shrink()),
+          child: MaterialApp.router(
+            title: 'CRM Agent App',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            routerConfig: _router,
+            builder: (context, child) => CallLogNavigationHandler(
+              child: CallLifecycleObserver(child: child ?? const SizedBox.shrink()),
             ),
           ),
         ),
