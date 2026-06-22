@@ -39,4 +39,10 @@ class AppRoutes {
   static const callLogPath = '/call-log';
   static const callReportPath = '/call-report';
   static const myActivityPath = '/my-activity';
+
+  static const forgotPassword = 'forgotPassword';
+  static const verifyOtp = 'verifyOtp';
+
+  static const forgotPasswordPath = '/forgot-password';
+  static const verifyOtpPath = '/verify-otp';
 }

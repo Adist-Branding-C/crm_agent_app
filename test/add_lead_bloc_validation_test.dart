@@ -1,6 +1,6 @@
 import 'package:crm_agent_app/bloc/leads/add_lead/add_lead_bloc.dart';
 import 'package:crm_agent_app/screens/leads/add_lead_error_extensions.dart';
-import 'package:crm_agent_app/data/constants.dart';
+import 'package:crm_agent_app/screens/app_strings.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'mocks/fake_leads_repository.dart';
 

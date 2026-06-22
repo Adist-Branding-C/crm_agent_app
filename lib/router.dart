@@ -20,6 +20,7 @@ import 'screens/call_log/widgets/call_log_route_provider.dart';
 import 'screens/call_report/call_report_screen.dart';
 import 'screens/my_activity/my_activity_screen.dart';
 import 'router/edit_enquiry_route.dart';
+import 'router/forgot_password_routes.dart';
 
 GoRouter createRouter(
   AuthRepository authRepository,
@@ -36,7 +37,10 @@ GoRouter createRouter(
       }
       final hasToken = authRepository.isAuthenticated;
       final loc = state.matchedLocation;
-      final isAuthPath = loc == AppRoutes.loginPath || loc == AppRoutes.splashPath;
+      final isAuthPath = loc == AppRoutes.loginPath ||
+          loc == AppRoutes.splashPath ||
+          loc == AppRoutes.forgotPasswordPath ||
+          loc == AppRoutes.verifyOtpPath;
       if (!hasToken && !isAuthPath) return AppRoutes.loginPath;
       if (hasToken && isAuthPath) return AppRoutes.dashboardPath;
       return null;
@@ -67,6 +71,7 @@ GoRouter createRouter(
       GoRoute(name: AppRoutes.callReport, path: AppRoutes.callReportPath, builder: (c, s) => const CallReportScreen()),
       GoRoute(name: AppRoutes.myActivity, path: AppRoutes.myActivityPath, builder: (c, s) => const MyActivityScreen()),
       buildEditEnquiryRoute(),
+      ...buildForgotPasswordRoutes(),
     ],
   );
 }

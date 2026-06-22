@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../theme.dart';
+import '../../../router/app_routes.dart';
 
 /// Link button to reset passwords.
 class ForgotPasswordLink extends StatelessWidget {
@@ -12,9 +14,7 @@ class ForgotPasswordLink extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Forgot Password? Clicked.')),
-          );
+          context.pushNamed(AppRoutes.forgotPassword);
         },
         style: TextButton.styleFrom(
           padding: EdgeInsets.zero,

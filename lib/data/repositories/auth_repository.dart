@@ -17,4 +17,10 @@ abstract class AuthRepository {
 
   /// Initializes the repository by reading stored credentials/tokens.
   Future<void> init();
+
+  /// Sends a 6-digit OTP code to the registered mobile number.
+  Future<void> sendOtp(String phone);
+
+  /// Verifies the 6-digit OTP code sent to the phone.
+  Future<bool> verifyOtp(String phone, String code);
 }
