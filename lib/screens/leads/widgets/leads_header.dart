@@ -12,10 +12,9 @@ class LeadsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final headerState = context.select<LeadsBloc, ({int total, int hot, bool isSpotlight})>((bloc) {
-      final all = bloc.allLeads;
       if (bloc.state is LeadsLoaded) {
         final s = bloc.state as LeadsLoaded;
-        return (total: all.length, hot: all.where((l) => l.category == LeadCategory.hot).length, isSpotlight: s.isSpotlightOnly);
+        return (total: s.allLeads.length, hot: s.allLeads.where((l) => l.category == LeadCategory.hot).length, isSpotlight: s.isSpotlightOnly);
       }
       return (total: 0, hot: 0, isSpotlight: false);
     });

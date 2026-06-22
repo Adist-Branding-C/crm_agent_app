@@ -3,6 +3,7 @@ import '../../bloc/analytics/deal_analytics_models.dart';
 import '../../bloc/leads/leads_enums.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../../bloc/deals/deals_models.dart';
+import 'deal_type_calculator.dart';
 
 class AnalyticsCalculationHelper {
   AnalyticsCalculationHelper._();
@@ -67,14 +68,6 @@ class AnalyticsCalculationHelper {
     return DealStage.values.map((s) => PipelineValueStageMetric(stage: s, amount: deals.where((d) => d.stage == s).fold(0.0, (sum, d) => sum + d.amount))).toList();
   }
 
-  static List<DealTypeMetric> calculateDealTypeMetrics(List<Deal> deals) {
-    const types = ['New Admission', 'Corporate', 'Enquiry'];
-    return types.map((t) {
-      final amt = deals.where((d) {
-        final type = d.title.toLowerCase().contains('corporate') ? 'Corporate' : (d.stage == DealStage.newStage ? 'Enquiry' : 'New Admission');
-        return type == t;
-      }).fold(0.0, (sum, d) => sum + d.amount);
-      return DealTypeMetric(dealType: t, amount: amt);
-    }).toList();
-  }
+  static List<DealTypeMetric> calculateDealTypeMetrics(List<Deal> deals) =>
+      computeDealTypeMetrics(deals);
 }

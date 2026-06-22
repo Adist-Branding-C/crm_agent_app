@@ -3,6 +3,7 @@ import 'leads_models.dart';
 import 'leads_state.dart';
 
 class LeadsLoaded extends LeadsState {
+  final List<Lead> allLeads;
   final List<Lead> filteredLeads;
   final String searchQuery;
   final LeadCategory? selectedCategory;
@@ -12,6 +13,7 @@ class LeadsLoaded extends LeadsState {
   final LeadSource? selectedSource;
 
   const LeadsLoaded({
+    required this.allLeads,
     required this.filteredLeads,
     required this.searchQuery,
     required this.selectedCategory,
@@ -23,7 +25,7 @@ class LeadsLoaded extends LeadsState {
 
   @override
   List<Object?> get props => [
-    filteredLeads, searchQuery, selectedCategory,
+    allLeads, filteredLeads, searchQuery, selectedCategory,
     isSpotlightOnly, sortBy, selectedStatus, selectedSource,
   ];
 }

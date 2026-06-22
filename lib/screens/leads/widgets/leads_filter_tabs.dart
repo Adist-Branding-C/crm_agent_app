@@ -19,8 +19,7 @@ class LeadsFilterTabs extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is! LeadsLoaded) return const SizedBox.shrink();
-        final bloc = context.read<LeadsBloc>();
-        final all = bloc.allLeads;
+        final all = state.allLeads;
         final counts = {
           for (final cat in LeadCategory.values)
             cat: all.where((l) => l.category == cat).length,

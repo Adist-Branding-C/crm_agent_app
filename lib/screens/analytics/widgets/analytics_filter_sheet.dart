@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
+import '../../../theme/app_colors.dart';
 import '../../../widgets/bottom_sheet_handle.dart';
 import 'filter_action_buttons.dart';
 import 'analytics_filter_sections.dart';
@@ -13,18 +14,21 @@ class AnalyticsFilterSheet extends StatefulWidget {
 }
 
 class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
-  late String _period; DateTime? _start; DateTime? _end;
-  late Set<LeadStatus> _statuses; late Set<LeadSource> _sources;
+  String _period = 'This Month'; DateTime? _start; DateTime? _end;
+  Set<LeadStatus> _statuses = LeadStatus.values.toSet();
+  Set<LeadSource> _sources = LeadSource.values.toSet();
 
   @override
   void initState() {
     super.initState();
-    final s = context.read<AnalyticsBloc>().state as AnalyticsLoaded;
-    _period = s.selectedPeriod;
-    _start = s.customStartDate;
-    _end = s.customEndDate;
-    _statuses = Set.from(s.selectedStatuses);
-    _sources = Set.from(s.selectedSources);
+    final state = context.read<AnalyticsBloc>().state;
+    if (state is AnalyticsLoaded) {
+      _period = state.selectedPeriod;
+      _start = state.customStartDate;
+      _end = state.customEndDate;
+      _statuses = Set.from(state.selectedStatuses);
+      _sources = Set.from(state.selectedSources);
+    }
   }
 
   void _reset() => setState(() {
@@ -66,5 +70,5 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 class _FilterTitle extends StatelessWidget {
   const _FilterTitle();
   @override
-  Widget build(BuildContext context) => const Text('Filter analytics', style: TextStyle(color: Color(0xFF1E293B), fontSize: 18, fontWeight: FontWeight.bold));
+  Widget build(BuildContext context) => const Text('Filter analytics', style: TextStyle(color: AppColors.textDark, fontSize: 18, fontWeight: FontWeight.bold));
 }

@@ -12,13 +12,8 @@ export 'leads_state_loaded.dart';
 
 class LeadsBloc extends Bloc<LeadsEvent, LeadsState> {
   final LeadsRepository leadsRepository;
-  List<Lead>? _allLeads;
   late final StreamSubscription<String> _deletedSub;
   late final StreamSubscription<Lead> _updatedSub;
-
-  List<Lead> get allLeads => _allLeads ?? [];
-
-  void updateAllLeads(List<Lead> leads) => _allLeads = leads;
 
   LeadsBloc({required this.leadsRepository}) : super(const LeadsInitial()) {
     on<FetchLeads>(onFetchLeads);

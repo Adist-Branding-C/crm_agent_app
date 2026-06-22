@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/dashboard/dashboard_bloc.dart';
-import '../../bloc/call_log/call_log_bloc.dart';
 import '../../bloc/tasks/tasks_bloc.dart';
 import '../../theme.dart';
 import 'dashboard_navigation_config.dart';
@@ -41,14 +39,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CallLogBloc, CallLogState>(
-      listener: (context, state) {
-        if (state is CallLogSaveSuccess) {
-          context.read<DashboardBloc>().add(const FetchDashboardData());
-        }
-      },
-      child: _DashboardTabbedBody(items: _items),
-    );
+    return _DashboardTabbedBody(items: _items);
   }
 }
 

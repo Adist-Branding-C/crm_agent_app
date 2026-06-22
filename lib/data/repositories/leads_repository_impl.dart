@@ -61,7 +61,7 @@ class LeadsRepositoryImpl implements LeadsRepository {
 
   @override
   void dispose() {
-    _deletedController.close();
-    _updatedController.close();
+    if (!_deletedController.isClosed) _deletedController.close();
+    if (!_updatedController.isClosed) _updatedController.close();
   }
 }

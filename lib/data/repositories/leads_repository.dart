@@ -23,6 +23,7 @@ abstract class LeadsRepository {
   /// Stream of updated leads to notify subscribers.
   Stream<Lead> get leadUpdatedStream;
 
-  /// Releases internal resources (e.g., stream controllers).
+  /// Closes internal stream controllers.
+  /// Safe to call when the repository is no longer needed.
   void dispose();
 }
