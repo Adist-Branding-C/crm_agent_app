@@ -3,10 +3,7 @@ import 'data/auth_state_notifier.dart';
 import 'router/navigator_key.dart';
 import 'data/repositories/session_repository.dart';
 import 'router/app_routes.dart';
-import 'screens/splash/splash_screen.dart';
-import 'screens/login/login_screen.dart';
-import 'screens/dashboard/dashboard_navigation_config.dart';
-import 'screens/dashboard/widgets/dashboard_route_provider.dart';
+import 'router/core_routes.dart';
 import 'screens/deals/deals_screen.dart';
 import 'screens/analytics/analytics_screen.dart';
 import 'screens/attendance/attendance_screen.dart';
@@ -47,15 +44,7 @@ GoRouter createRouter(
       return (hasToken && isAuth) ? AppRoutes.dashboardPath : null;
     },
     routes: [
-      GoRoute(name: AppRoutes.splash, path: AppRoutes.splashPath, builder: (c, s) => const SplashScreen()),
-      GoRoute(name: AppRoutes.login, path: AppRoutes.loginPath, builder: (c, s) => const LoginScreen()),
-      GoRoute(
-        name: AppRoutes.dashboard, path: AppRoutes.dashboardPath,
-        builder: (c, s) => DashboardRouteProvider(
-          initialIndex: DashboardNavigationConfig.tabRegistry[s.uri.queryParameters['tab']] ?? 0,
-          initialFilter: s.uri.queryParameters['filter'],
-        ),
-      ),
+      ...buildCoreRoutes(),
       GoRoute(name: AppRoutes.addLead, path: AppRoutes.addLeadPath, builder: (c, s) => const AddLeadScreen()),
       GoRoute(name: AppRoutes.deals, path: AppRoutes.dealsPath, builder: (c, s) => const DealsScreen()),
       GoRoute(name: AppRoutes.analytics, path: AppRoutes.analyticsPath, builder: (c, s) => const AnalyticsScreen()),

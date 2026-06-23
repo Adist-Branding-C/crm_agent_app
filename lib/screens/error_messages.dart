@@ -28,6 +28,7 @@ extension EnquiryDetailsFailureMessage on EnquiryDetailsFailure {
 extension TasksFailureMessage on TasksFailure {
   String get message => switch (this) {
     TasksFailure.load => 'Failed to load tasks',
+    TasksFailure.toggle => 'Failed to toggle task',
     TasksFailure.unknown => 'An error occurred',
   };
 }

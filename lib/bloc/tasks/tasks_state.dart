@@ -36,12 +36,14 @@ class TasksLoaded extends TasksState {
   final List<Task> allTasks;
   final TasksFilter filter;
   final TaskFilterCriteria filterCriteria;
+  final TasksFailure? actionFailure;
 
   /// Creates a constant [TasksLoaded] state.
   const TasksLoaded({
     required this.allTasks,
     this.filter = TasksFilter.all,
     this.filterCriteria = const TaskFilterCriteria(),
+    this.actionFailure,
   });
 
   /// Copy constructor.
@@ -49,19 +51,19 @@ class TasksLoaded extends TasksState {
     List<Task>? allTasks,
     TasksFilter? filter,
     TaskFilterCriteria? filterCriteria,
-  }) {
-    return TasksLoaded(
-      allTasks: allTasks ?? this.allTasks,
-      filter: filter ?? this.filter,
-      filterCriteria: filterCriteria ?? this.filterCriteria,
-    );
-  }
+    TasksFailure? Function()? actionFailure,
+  }) => TasksLoaded(
+    allTasks: allTasks ?? this.allTasks,
+    filter: filter ?? this.filter,
+    filterCriteria: filterCriteria ?? this.filterCriteria,
+    actionFailure: actionFailure != null ? actionFailure() : this.actionFailure,
+  );
 
   @override
-  List<Object?> get props => [allTasks, filter, filterCriteria];
+  List<Object?> get props => [allTasks, filter, filterCriteria, actionFailure];
 }
 
-enum TasksFailure { load, unknown }
+enum TasksFailure { load, toggle, unknown }
 
 /// Error state.
 class TasksError extends TasksState {

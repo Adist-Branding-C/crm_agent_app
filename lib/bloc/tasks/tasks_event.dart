@@ -47,3 +47,8 @@ class ApplyFilterCriteria extends TasksEvent {
   @override
   List<Object?> get props => [criteria];
 }
+
+/// Event to clear active action failures.
+class ClearActionFailure extends TasksEvent {
+  const ClearActionFailure();
+}

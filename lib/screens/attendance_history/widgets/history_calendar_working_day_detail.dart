@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../theme.dart';
+import 'history_detail_box.dart';
 
 /// Inside content showing timing metrics for a selected working day.
 class HistoryCalendarWorkingDayDetail extends StatelessWidget {
@@ -16,11 +17,26 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
       children: [
         Row(
           children: [
-            _buildDetailBox(context, Icons.login_rounded, log.checkInTime ?? '—', 'Check in', AppColors.success),
+            HistoryDetailBox(
+              icon: Icons.login_rounded,
+              val: log.checkInTime ?? '—',
+              label: 'Check in',
+              color: AppColors.success,
+            ),
             const SizedBox(width: 8),
-            _buildDetailBox(context, Icons.logout_rounded, log.checkOutTime ?? '—', 'Check out', AppColors.errorColor),
+            HistoryDetailBox(
+              icon: Icons.logout_rounded,
+              val: log.checkOutTime ?? '—',
+              label: 'Check out',
+              color: AppColors.errorColor,
+            ),
             const SizedBox(width: 8),
-            _buildDetailBox(context, Icons.access_time_rounded, log.hours ?? '—', 'Hours', AppColors.info),
+            HistoryDetailBox(
+              icon: Icons.access_time_rounded,
+              val: log.hours ?? '—',
+              label: 'Hours',
+              color: AppColors.info,
+            ),
           ],
         ),
         const SizedBox(height: 12),
@@ -38,23 +54,6 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-
-  Widget _buildDetailBox(BuildContext context, IconData icon, String val, String label, Color color) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        decoration: BoxDecoration(color: AppColors.slate50, borderRadius: BorderRadius.circular(10)),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 18),
-            const SizedBox(height: 4),
-            Text(val, style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark)),
-            Text(label, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted)),
-          ],
-        ),
-      ),
     );
   }
 }
