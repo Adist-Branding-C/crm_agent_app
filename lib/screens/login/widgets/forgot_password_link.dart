@@ -21,11 +21,10 @@ class ForgotPasswordLink extends StatelessWidget {
           minimumSize: const Size(0, 0),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
-        child: const Text(
+        child: Text(
           'Forgot password?',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppTheme.primaryColor,
-            fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -15,9 +15,12 @@ class CheckOutButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       ),
       onPressed: () => context.read<AttendanceBloc>().add(const CheckOut()),
-      child: const Text(
+      child: Text(
         'Check out',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
       ),
     );
   }

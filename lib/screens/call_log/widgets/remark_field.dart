@@ -13,18 +13,18 @@ class RemarkField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Remark',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColors.textDark),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark),
           ),
           const SizedBox(height: 8),
           TextField(
             controller: controller,
             maxLines: 4,
-            style: const TextStyle(color: AppColors.textDark, fontSize: 14),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
             decoration: InputDecoration(
               hintText: 'What was discussed on the call...',
-              hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
+              hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
               contentPadding: const EdgeInsets.all(12),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),

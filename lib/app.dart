@@ -13,8 +13,9 @@ import 'widgets/call_log_navigation_handler.dart';
 
 class MyApp extends StatefulWidget {
   final AuthRepository authRepository;
+  final bool scaleText;
 
-  const MyApp({super.key, required this.authRepository});
+  const MyApp({super.key, required this.authRepository, this.scaleText = true});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -49,9 +50,18 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             routerConfig: _router,
-            builder: (context, child) => CallLogNavigationHandler(
-              child: CallLifecycleObserver(child: child ?? const SizedBox.shrink()),
-            ),
+            builder: widget.scaleText
+                ? (context, child) => Theme(
+                      data: AppTheme.scaledLightTheme(context),
+                      child: CallLogNavigationHandler(
+                        child: CallLifecycleObserver(
+                            child: child ?? const SizedBox.shrink()),
+                      ),
+                    )
+                : (context, child) => CallLogNavigationHandler(
+                      child: CallLifecycleObserver(
+                          child: child ?? const SizedBox.shrink()),
+                    ),
           ),
         ),
       ),

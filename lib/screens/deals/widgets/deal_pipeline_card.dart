@@ -34,19 +34,17 @@ class DealPipelineCard extends StatelessWidget {
                   children: [
                     Text(
                       '${deal.title} — ${deal.clientName}',
-                      style: const TextStyle(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       deal.amount.toRupeeFormat(),
-                      style: const TextStyle(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.w800,
-                        fontSize: 14,
                       ),
                     ),
                   ],

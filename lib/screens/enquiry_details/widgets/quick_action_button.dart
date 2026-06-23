@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// A reusable action button for details screens.
 class QuickActionButton extends StatelessWidget {
@@ -39,7 +40,7 @@ class QuickActionButton extends StatelessWidget {
                 style: TextStyle(
                   color: foregroundColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: context.scaleFont(16),
                 ),
               ),
             ],

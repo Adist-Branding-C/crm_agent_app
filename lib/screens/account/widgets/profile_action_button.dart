@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// A button representing a profile action (like Call or Email).
 class ProfileActionButton extends StatelessWidget {
@@ -34,7 +35,7 @@ class ProfileActionButton extends StatelessWidget {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: 14,
+              fontSize: context.scaleFont(14),
             ),
           ),
         ],

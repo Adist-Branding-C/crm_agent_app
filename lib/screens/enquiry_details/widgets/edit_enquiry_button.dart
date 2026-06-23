@@ -28,20 +28,19 @@ class EditEnquiryButton extends StatelessWidget {
           color: AppColors.primaryColorLight,
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const Row(
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.edit_outlined,
               size: 14,
               color: AppColors.primaryColor,
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Text(
               'Edit',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.primaryColor,
-                fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -50,9 +50,8 @@ class QuickActionTile extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               label,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
-                fontSize: 12,
                 fontWeight: FontWeight.w600,
               ),
             ),

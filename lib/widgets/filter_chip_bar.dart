@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
+import '../utils/context_text_extension.dart';
 
 class FilterChipOption {
   final String label;
@@ -64,7 +65,7 @@ class _FilterChip extends StatelessWidget {
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.bold,
-            fontSize: 13,
+            fontSize: context.scaleFont(13),
           ),
         ),
       ),

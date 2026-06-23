@@ -17,13 +17,12 @@ class HistoryLogView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           child: Text(
             'Daily log',
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 16,
               color: AppColors.textDark,
             ),
           ),

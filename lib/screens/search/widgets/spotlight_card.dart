@@ -37,19 +37,17 @@ class SpotlightCard extends StatelessWidget {
               children: [
                 Text(
                   spotlight.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: AppColors.textDark,
-                  ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textDark,
+                ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   spotlight.description,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColors.textMuted,
-                  ),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.textMuted,
+                ),
                 ),
               ],
             ),

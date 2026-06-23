@@ -8,14 +8,19 @@ class WeekDaysHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: days.map((d) => SizedBox(
-        width: 32,
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(d, style: const TextStyle(color: AppColors.textMuted, fontSize: 12, fontWeight: FontWeight.w500)),
-        ),
-      )).toList(),
+      children: days
+          .map((d) => Expanded(
+                child: Center(
+                  child: Text(
+                    d,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: AppColors.textMuted,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ))
+          .toList(),
     );
   }
 }

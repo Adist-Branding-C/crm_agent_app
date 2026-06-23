@@ -40,8 +40,7 @@ class EnquiryDetailsHeader extends StatelessWidget {
                 children: [
                   Text(
                     lead.name,
-                    style: const TextStyle(
-                      fontSize: 26,
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.textDark,
                     ),
@@ -49,16 +48,14 @@ class EnquiryDetailsHeader extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     lead.email ?? 'No email provided',
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     lead.phone,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
                     ),
                   ),

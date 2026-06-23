@@ -42,21 +42,19 @@ class FollowUpItemCard extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: onCardTap,
-                  child: Text(
-                    call.name,
-                    style: const TextStyle(
-                      color: AppColors.textDark,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                    child: Text(
+                      call.name,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: AppColors.textDark,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   '${call.category} · ${call.status}',
-                  style: const TextStyle(
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: AppColors.textMuted,
-                    fontSize: 13,
                   ),
                 ),
               ],

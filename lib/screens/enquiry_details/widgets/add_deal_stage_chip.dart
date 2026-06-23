@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/deals/deals_models.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 import '../../deals/widgets/deals_presentation_extensions.dart';
 
 class AddDealStageChip extends StatelessWidget {
@@ -41,7 +42,7 @@ class AddDealStageChip extends StatelessWidget {
         labelStyle: TextStyle(
           color: isSelected ? color : AppColors.slate600,
           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          fontSize: 12,
+          fontSize: context.scaleFont(12),
         ),
       ),
     );

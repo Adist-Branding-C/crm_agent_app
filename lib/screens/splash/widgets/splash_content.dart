@@ -36,9 +36,8 @@ class SplashContent extends StatelessWidget {
         const SizedBox(height: 24),
         // Brand Name
         RichText(
-          text: const TextSpan(
-            style: TextStyle(
-              fontSize: 32,
+          text: TextSpan(
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
               fontWeight: FontWeight.w800,
               letterSpacing: -0.5,
             ),

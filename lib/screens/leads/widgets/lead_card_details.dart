@@ -23,7 +23,6 @@ class LeadCardDetails extends StatelessWidget {
         Text(
           '${lead.source.label} · ${lead.status.label}',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontSize: 12,
                 color: AppColors.textMuted,
               ),
         ),

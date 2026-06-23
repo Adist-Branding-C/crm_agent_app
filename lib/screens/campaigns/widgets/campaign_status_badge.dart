@@ -2,6 +2,7 @@ import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
 import 'campaign_presentation_extensions.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Renders either the completion percentage or the 'Done' status badge.
 class CampaignStatusBadge extends StatelessWidget {
@@ -19,17 +20,16 @@ class CampaignStatusBadge extends StatelessWidget {
           color: AppColors.successBackground,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Row(
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.check_rounded, color: AppColors.success, size: 12),
-            SizedBox(width: 4),
+            const Icon(Icons.check_rounded, color: AppColors.success, size: 12),
+            const SizedBox(width: 4),
             Text(
               'Done',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: AppColors.success,
                 fontWeight: FontWeight.bold,
-                fontSize: 11,
               ),
             ),
           ],
@@ -42,7 +42,7 @@ class CampaignStatusBadge extends StatelessWidget {
       style: TextStyle(
         color: campaign.themeColor,
         fontWeight: FontWeight.bold,
-        fontSize: 14,
+        fontSize: context.scaleFont(14),
       ),
     );
   }

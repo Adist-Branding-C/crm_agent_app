@@ -28,23 +28,21 @@ class CallEndedBanner extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 14),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Call ended',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: AppColors.textDark,
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
                 ),
               ),
-              SizedBox(height: 2),
+              const SizedBox(height: 2),
               Text(
                 'Duration 4:12 · just now',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 12,
                 ),
               ),
             ],

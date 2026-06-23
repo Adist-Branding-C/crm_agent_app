@@ -53,6 +53,8 @@ void main() {
     await tester.pumpAndSettle();
 
     // Tap day 11 cell
+    await tester.ensureVisible(find.text('11'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('11'));
     await tester.pumpAndSettle();
     expect(find.text('MON, 11 May'), findsOneWidget);

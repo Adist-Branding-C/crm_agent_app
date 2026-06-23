@@ -8,30 +8,31 @@ class CheckedOutInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Start your day',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
-            fontSize: 15,
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.location_on_outlined,
               color: AppColors.textMuted,
               size: 13,
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Expanded(
               child: Text(
                 'Punch in to log attendance',
-                style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.textMuted,
+                ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

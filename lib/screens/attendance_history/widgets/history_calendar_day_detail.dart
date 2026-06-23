@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 import '../../../widgets/custom_card.dart';
 import 'history_calendar_off_day_detail.dart';
 import 'history_calendar_working_day_detail.dart';
@@ -27,9 +28,9 @@ class HistoryCalendarDayDetail extends StatelessWidget {
             children: [
               Text(
                 '${log.dayName}, ${log.day} May',
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: AppColors.textDark),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark),
               ),
-              _buildStatusBadge(),
+              _buildStatusBadge(context),
             ],
           ),
           const SizedBox(height: 16),
@@ -41,7 +42,7 @@ class HistoryCalendarDayDetail extends StatelessWidget {
     );
   }
 
-  Widget _buildStatusBadge() {
+  Widget _buildStatusBadge(BuildContext context) {
     Color bg = AppColors.successBackground;
     Color fg = AppColors.success;
     if (log.status == 'Late') { bg = AppColors.warningLight; fg = AppColors.warningText; }
@@ -53,7 +54,7 @@ class HistoryCalendarDayDetail extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(12)),
-      child: Text(log.status, style: TextStyle(color: fg, fontSize: 11, fontWeight: FontWeight.bold)),
+      child: Text(log.status, style: TextStyle(color: fg, fontSize: context.scaleFont(11), fontWeight: FontWeight.bold)),
     );
   }
 }

@@ -52,10 +52,9 @@ class WhatsAppSheetHeader extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Send a message',
-                    style: TextStyle(
-                      fontSize: 18,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.textDark,
                     ),
@@ -63,8 +62,7 @@ class WhatsAppSheetHeader extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     'To $name · $phone',
-                    style: const TextStyle(
-                      fontSize: 13,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textMuted,
                     ),
                   ),

@@ -30,10 +30,9 @@ class CountBadge extends StatelessWidget {
       ),
       child: Text(
         '$count',
-        style: TextStyle(
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
           color: textColor ?? AppColors.textMuted,
           fontWeight: FontWeight.bold,
-          fontSize: 11,
         ),
       ),
     );

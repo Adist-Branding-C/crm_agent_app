@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals
+
 export 'search_event.dart';
 export 'search_state.dart';
 export 'search_result.dart';

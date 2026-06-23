@@ -35,18 +35,16 @@ class CallActionsSheetHeader extends StatelessWidget {
                 children: [
                   Text(
                     lead.name,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: AppColors.textDark,
-                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     lead.location,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
-                      fontSize: 13,
                     ),
                   ),
                 ],

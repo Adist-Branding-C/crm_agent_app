@@ -35,15 +35,14 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
             children: [
               Text(
                 'Checked in · since ${checkedInSince ?? "--"}',
-                style: const TextStyle(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Colors.white,
-                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
                 '$checkInLocation · GPS verified',
-                style: const TextStyle(color: AppColors.slate400, fontSize: 10),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.slate400),
               ),
             ],
           ),
@@ -59,9 +58,9 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: const Text(
+          child: Text(
             'Check out',
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
       ],

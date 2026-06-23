@@ -30,7 +30,7 @@ class SearchResultsList extends StatelessWidget {
     widgets.add(Padding(
       padding: const EdgeInsets.only(left: 24, top: 12, bottom: 8),
       child: Text('$totalCount result${totalCount == 1 ? "" : "s"}',
-          style: const TextStyle(color: AppColors.textMuted, fontSize: 13)),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
     ));
 
     for (final category in categoriesOrder) {
@@ -40,10 +40,9 @@ class SearchResultsList extends StatelessWidget {
       widgets.add(Padding(
         padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
         child: Text(category.toUpperCase(),
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textMuted,
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
                 letterSpacing: 0.8)),
       ));
 

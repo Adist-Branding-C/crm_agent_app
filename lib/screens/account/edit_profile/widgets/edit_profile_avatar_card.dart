@@ -34,9 +34,8 @@ class EditProfileAvatarCard extends StatelessWidget {
                 const SizedBox(width: 6),
                 Text(
                   'Joined $joinedDate',
-                  style: const TextStyle(
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.textMuted,
-                    fontSize: 13,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

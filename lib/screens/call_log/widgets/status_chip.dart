@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 
 class StatusChip extends StatelessWidget {
   final String label;
@@ -24,7 +25,7 @@ class StatusChip extends StatelessWidget {
       labelStyle: TextStyle(
         color: isSelected ? AppColors.success : AppColors.textMuted,
         fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-        fontSize: 13,
+        fontSize: context.scaleFont(13),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 import 'attendance_status_theme.dart';
 
 /// Middle element block rendering status badges and location info for log lists.
@@ -18,10 +19,10 @@ class HistoryLogItemDetails extends StatelessWidget {
       children: [
         Row(
           children: [
-            _buildBadge(log.status),
+            _buildBadge(context, log.status),
             if (log.isActive) ...[
               const SizedBox(width: 4),
-              _buildBadge('ACTIVE', isDot: true),
+              _buildBadge(context, 'ACTIVE', isDot: true),
             ],
           ],
         ),
@@ -30,18 +31,18 @@ class HistoryLogItemDetails extends StatelessWidget {
           children: [
             const Icon(Icons.location_on_outlined, color: AppColors.textMuted, size: 12),
             const SizedBox(width: 4),
-            Text(log.location ?? '—', style: const TextStyle(color: AppColors.textMuted, fontSize: 11)),
+            Text(log.location ?? '—', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted)),
           ],
         ),
         if (log.note != null || log.approvedBy != null) ...[
           const SizedBox(height: 8),
-          _buildNoteBlock(),
+          _buildNoteBlock(context),
         ],
       ],
     );
   }
 
-  Widget _buildBadge(String text, {bool isDot = false}) {
+  Widget _buildBadge(BuildContext context, String text, {bool isDot = false}) {
     final statusTheme = AttendanceStatusTheme.resolve(text);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -57,13 +58,13 @@ class HistoryLogItemDetails extends StatelessWidget {
             ),
             const SizedBox(width: 4),
           ],
-          Text(text, style: TextStyle(color: statusTheme.fg, fontSize: 9, fontWeight: FontWeight.bold)),
+          Text(text, style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(9), fontWeight: FontWeight.bold)),
         ],
       ),
     );
   }
 
-  Widget _buildNoteBlock() {
+  Widget _buildNoteBlock(BuildContext context) {
     final isApproved = log.approvedBy != null;
     final text = log.approvedBy ?? log.note!;
     final icon = isApproved ? Icons.check_circle_outline : Icons.error_outline_rounded;
@@ -76,7 +77,7 @@ class HistoryLogItemDetails extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w500),
+            style: TextStyle(color: color, fontSize: context.scaleFont(10), fontWeight: FontWeight.w500),
           ),
         ),
       ],

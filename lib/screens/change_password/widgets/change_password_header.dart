@@ -25,12 +25,11 @@ class ChangePasswordHeader extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'Use at least 8 characters with a mix of\nuppercase, lowercase and numbers.',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
-              fontSize: 13,
               fontWeight: FontWeight.w500,
               height: 1.5,
             ),

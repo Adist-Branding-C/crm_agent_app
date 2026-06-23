@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Renders a single monthly statistic item.
 class MonthlyStatItem extends StatelessWidget {
@@ -22,7 +23,7 @@ class MonthlyStatItem extends StatelessWidget {
         Text(
           value,
           style: TextStyle(
-            fontSize: 22,
+            fontSize: context.scaleFont(22),
             fontWeight: FontWeight.bold,
             color: valueColor,
           ),
@@ -30,8 +31,7 @@ class MonthlyStatItem extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 12,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.w500,
           ),

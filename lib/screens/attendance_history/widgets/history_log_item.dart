@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 import '../../../widgets/custom_card.dart';
 import 'attendance_status_theme.dart';
 import 'history_log_item_details.dart';
@@ -21,17 +22,17 @@ class HistoryLogItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildDateBlock(),
+          _buildDateBlock(context),
           const SizedBox(width: 12),
           Expanded(child: HistoryLogItemDetails(log: log)),
           const SizedBox(width: 12),
-          _buildTimeBlock(),
+          _buildTimeBlock(context),
         ],
       ),
     );
   }
 
-  Widget _buildDateBlock() {
+  Widget _buildDateBlock(BuildContext context) {
     final statusTheme = AttendanceStatusTheme.resolve(log.status);
     return Container(
       width: 48,
@@ -40,14 +41,14 @@ class HistoryLogItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('${log.day}', style: TextStyle(color: statusTheme.fg, fontSize: 16, fontWeight: FontWeight.bold)),
-          Text(log.dayName, style: TextStyle(color: statusTheme.fg, fontSize: 9, fontWeight: FontWeight.bold)),
+          Text('${log.day}', style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(16), fontWeight: FontWeight.bold)),
+          Text(log.dayName, style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(9), fontWeight: FontWeight.bold)),
         ],
       ),
     );
   }
 
-  Widget _buildTimeBlock() {
+  Widget _buildTimeBlock(BuildContext context) {
     final timeStr = log.checkInTime != null
         ? '${log.checkInTime} – ${log.checkOutTime ?? "now"}'
         : '—';
@@ -57,13 +58,13 @@ class HistoryLogItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(timeStr, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: AppColors.textDark)),
+        Text(timeStr, style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark)),
         if (durationStr.isNotEmpty) ...[
           const SizedBox(height: 4),
           Text(
             durationStr,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: context.scaleFont(10),
               color: isOngoing ? AppColors.success : AppColors.textMuted,
               fontWeight: isOngoing ? FontWeight.bold : FontWeight.normal,
             ),

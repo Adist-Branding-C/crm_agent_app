@@ -31,9 +31,8 @@ class VerifyOtpForm extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: Text(
                   state.codeError!,
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.error,
-                    fontSize: 13,
                   ),
                 ),
               );

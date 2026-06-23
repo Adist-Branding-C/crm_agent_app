@@ -21,10 +21,9 @@ class WhatsAppTemplatesList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               'QUICK MESSAGES',
-              style: TextStyle(
-                fontSize: 12,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 letterSpacing: 0.8,
                 color: AppColors.textMuted,
@@ -32,14 +31,13 @@ class WhatsAppTemplatesList extends StatelessWidget {
             ),
             InkWell(
               onTap: () => controller.selectCustomWrite(),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.edit, size: 14, color: AppColors.textMuted),
-                  SizedBox(width: 4),
+                  const Icon(Icons.edit, size: 14, color: AppColors.textMuted),
+                  const SizedBox(width: 4),
                   Text(
                     'Write your own',
-                    style: TextStyle(
-                      fontSize: 12,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.textMuted,
                     ),

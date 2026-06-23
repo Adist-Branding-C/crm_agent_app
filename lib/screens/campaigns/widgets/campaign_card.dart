@@ -18,7 +18,7 @@ class CampaignCard extends StatelessWidget {
     final double progress = campaign.totalCount == 0
         ? 0
         : campaign.doneCount / campaign.totalCount;
-    final captionStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11);
+    final captionStyle = Theme.of(context).textTheme.bodyMedium;
 
     return CustomCard(
       padding: const EdgeInsets.all(16),

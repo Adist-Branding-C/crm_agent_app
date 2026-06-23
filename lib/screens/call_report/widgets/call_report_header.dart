@@ -24,9 +24,8 @@ class CallReportHeader extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: AppColors.textDark,
-                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -34,9 +33,8 @@ class CallReportHeader extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     subtitle!,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
-                      fontSize: 14,
                     ),
                   ),
                 ],

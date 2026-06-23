@@ -56,18 +56,16 @@ class CallActionTile extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: AppColors.textDark,
-                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     subtitle,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textMuted,
-                      fontSize: 12,
                     ),
                   ),
                 ],

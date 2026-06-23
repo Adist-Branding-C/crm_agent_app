@@ -37,8 +37,7 @@ class MenuItemWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 15,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w600,
                   color: AppColors.textDark,
                 ),
@@ -47,8 +46,7 @@ class MenuItemWidget extends StatelessWidget {
             if (badge != null) ...[
               Text(
                 badge!,
-                style: const TextStyle(
-                  fontSize: 14,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textMuted,
                   fontWeight: FontWeight.w500,
                 ),

@@ -26,14 +26,17 @@ class SectionHeader extends StatelessWidget {
       padding: padding,
       child: Row(
         children: [
-          _SectionHeaderTitle(title: title, leadingIcon: leadingIcon, leadingIconColor: leadingIconColor),
+          Expanded(
+            child: _SectionHeaderTitle(title: title, leadingIcon: leadingIcon, leadingIconColor: leadingIconColor),
+          ),
           if (countBadge != null) ...[
             const SizedBox(width: 8),
             CountBadge(count: countBadge!, bgColor: badgeBgColor, textColor: badgeTextColor),
           ],
-          const Spacer(),
-          if (actionText != null && onActionTap != null)
+          if (actionText != null && onActionTap != null) ...[
+            const SizedBox(width: 16),
             SectionHeaderAction(actionText: actionText!, onActionTap: onActionTap!),
+          ],
         ],
       ),
     );
@@ -50,17 +53,20 @@ class _SectionHeaderTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
       children: [
         if (leadingIcon != null) ...[
           Icon(leadingIcon, color: leadingIconColor ?? AppColors.textDark, size: 16),
           const SizedBox(width: 8),
         ],
-        Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold, fontSize: 17, color: AppColors.textDark,
-              ),
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold, color: AppColors.textDark,
+                ),
+          ),
         ),
       ],
     );

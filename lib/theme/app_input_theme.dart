@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/text_scaler.dart';
 import 'app_colors.dart';
 
 /// Global theme configurations for text input elements.
@@ -41,4 +42,22 @@ class AppInputTheme {
       fontWeight: FontWeight.w500,
     ),
   );
+
+  /// Returns an input theme with hint/label text size scaled to screen width.
+  static InputDecorationTheme scaledInputDecorationTheme(
+      BuildContext context) {
+    final w = MediaQuery.sizeOf(context).width;
+    return inputDecorationTheme.copyWith(
+      hintStyle: TextStyle(
+        color: AppColors.textMuted,
+        fontSize: AppTextScaler.scale(w, 14),
+        fontWeight: FontWeight.normal,
+      ),
+      labelStyle: TextStyle(
+        color: AppColors.textMuted,
+        fontSize: AppTextScaler.scale(w, 14),
+        fontWeight: FontWeight.w500,
+      ),
+    );
+  }
 }

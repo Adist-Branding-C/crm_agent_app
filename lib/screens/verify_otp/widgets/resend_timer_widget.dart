@@ -34,7 +34,7 @@ class ResendTimerWidget extends StatelessWidget {
         return Center(
           child: Text(
             'Resend OTP in $min:$sec',
-            style: TextStyle(fontSize: 14, color: context.textMuted),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
           ),
         );
       },

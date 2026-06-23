@@ -6,11 +6,11 @@ class CalendarHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('May 2026', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.textDark)),
-        Text('Through 12 May', style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
+        Text('May 2026', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark)),
+        Text('Through 12 May', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
       ],
     );
   }

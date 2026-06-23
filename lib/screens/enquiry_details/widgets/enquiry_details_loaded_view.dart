@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/enquiry_details/enquiry_details_state.dart';
+import '../../../widgets/responsive_width_container.dart';
 import 'enquiry_details_header.dart';
 import 'tab_selector.dart';
 import 'info_tab_view.dart';
@@ -13,8 +14,7 @@ class EnquiryDetailsLoadedView extends StatefulWidget {
   const EnquiryDetailsLoadedView({super.key, required this.state});
 
   @override
-  State<EnquiryDetailsLoadedView> createState() =>
-      _EnquiryDetailsLoadedViewState();
+  State<EnquiryDetailsLoadedView> createState() => _EnquiryDetailsLoadedViewState();
 }
 
 class _EnquiryDetailsLoadedViewState extends State<EnquiryDetailsLoadedView> {
@@ -22,29 +22,32 @@ class _EnquiryDetailsLoadedViewState extends State<EnquiryDetailsLoadedView> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            const EnquiryDetailsHeader(),
-            TabSelector(
-              activeTab: _activeTab,
-              onTabChanged: (val) => setState(() => _activeTab = val),
-            ),
-            Expanded(
-              child: IndexedStack(
-                index: _activeTab,
-                children: [
-                  InfoTabView(lead: widget.state.lead),
-                  ActivitiesTabView(activities: widget.state.activities),
-                  NotesTabView(notes: widget.state.notes),
-                ],
+    return ResponsiveWidthContainer(
+      maxWidth: 800,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              const EnquiryDetailsHeader(),
+              TabSelector(
+                activeTab: _activeTab,
+                onTabChanged: (val) => setState(() => _activeTab = val),
               ),
-            ),
-          ],
-        ),
-        const FabMenu(),
-      ],
+              Expanded(
+                child: IndexedStack(
+                  index: _activeTab,
+                  children: [
+                    InfoTabView(lead: widget.state.lead),
+                    ActivitiesTabView(activities: widget.state.activities),
+                    NotesTabView(notes: widget.state.notes),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const FabMenu(),
+        ],
+      ),
     );
   }
 }

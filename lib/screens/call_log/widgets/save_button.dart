@@ -30,11 +30,10 @@ class SaveButton extends StatelessWidget {
                     height: 24,
                     child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5),
                   )
-                : const Text(
+                : Text(
                     'Save Call Log',
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Colors.white,
-                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

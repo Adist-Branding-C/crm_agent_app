@@ -34,10 +34,9 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               selectedPeriod,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
               ),
             ),
             const SizedBox(width: 4),

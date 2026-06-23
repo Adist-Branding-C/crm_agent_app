@@ -16,10 +16,9 @@ class WhatsAppMessageInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'MESSAGE',
-          style: TextStyle(
-            fontSize: 12,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontWeight: FontWeight.bold,
             letterSpacing: 0.8,
             color: AppColors.textMuted,
@@ -29,8 +28,7 @@ class WhatsAppMessageInput extends StatelessWidget {
         TextField(
           controller: controller.textController,
           maxLines: 4,
-          style: const TextStyle(
-            fontSize: 14,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.textDark,
           ),
           decoration: InputDecoration(

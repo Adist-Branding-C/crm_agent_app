@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 import 'attendance_status_theme.dart';
 
 /// Single cell rendering the day number, selection outline, and status dot.
@@ -45,8 +46,6 @@ class HistoryCalendarDayCell extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 36,
-        height: 36,
         decoration: BoxDecoration(
           color: bg,
           borderRadius: BorderRadius.circular(8),
@@ -57,7 +56,7 @@ class HistoryCalendarDayCell extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('$day', style: TextStyle(color: fg, fontWeight: FontWeight.bold, fontSize: 12)),
+            Text('$day', style: TextStyle(color: fg, fontWeight: FontWeight.bold, fontSize: context.scaleFont(12))),
             if (dotColor != Colors.transparent)
               Container(
                 margin: const EdgeInsets.only(top: 2),

@@ -29,17 +29,15 @@ class AddDealLeadCard extends StatelessWidget {
               children: [
                 Text(
                   lead.name,
-                  style: const TextStyle(
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.textDark,
                     fontWeight: FontWeight.bold,
-                    fontSize: 14,
                   ),
                 ),
                 Text(
                   '${lead.source.label} · ${lead.phone}',
-                  style: const TextStyle(
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: AppColors.textMuted,
-                    fontSize: 12,
                   ),
                 ),
               ],
@@ -51,14 +49,13 @@ class AddDealLeadCard extends StatelessWidget {
               color: AppColors.primaryColorLight,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Text(
-              'Linked enquiry',
-              style: TextStyle(
-                color: AppColors.primaryColor,
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
+            child: Text(
+                'Linked enquiry',
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
           ),
         ],
       ),

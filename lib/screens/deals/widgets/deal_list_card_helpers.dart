@@ -20,19 +20,17 @@ class DealCardHeader extends StatelessWidget {
         Expanded(
           child: Text(
             '${deal.title} — ${deal.clientName}',
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: AppColors.textDark,
               fontWeight: FontWeight.bold,
-              fontSize: 14,
             ),
           ),
         ),
         Text(
           deal.amount.toRupeeFormat(),
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.w800,
-            fontSize: 14,
           ),
         ),
       ],
@@ -63,9 +61,8 @@ class DealCardMeta extends StatelessWidget {
             const SizedBox(width: 4),
             Text(
               deal.closeDate,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textMuted,
-                fontSize: 12,
               ),
             ),
           ],

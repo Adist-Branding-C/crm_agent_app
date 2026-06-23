@@ -22,7 +22,6 @@ class AttendanceTimelineTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final captionStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.textMuted,
-      fontSize: 11,
       fontWeight: FontWeight.w500,
     );
 
@@ -41,7 +40,7 @@ class AttendanceTimelineTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(item.title, style: textTheme.titleMedium?.copyWith(
-                    color: AppColors.textDark, fontWeight: FontWeight.bold, fontSize: 14,
+                    color: AppColors.textDark, fontWeight: FontWeight.bold,
                   )),
                   const SizedBox(height: 3),
                   Text(item.subtitle, style: captionStyle),

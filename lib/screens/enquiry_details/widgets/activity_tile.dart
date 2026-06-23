@@ -32,17 +32,15 @@ class ActivityTile extends StatelessWidget {
           children: [
             Text(
               activity.title,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 13,
                 color: AppColors.textDark,
               ),
             ),
             const SizedBox(height: 2),
             Text(
               activity.time,
-              style: const TextStyle(
-                fontSize: 11,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: AppColors.textMuted,
               ),
             ),

@@ -50,16 +50,14 @@ class _CenterLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 28,
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),
         ),
         Text(
           subLabel,
-          style: const TextStyle(
-            fontSize: 12,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
           ),
         ),

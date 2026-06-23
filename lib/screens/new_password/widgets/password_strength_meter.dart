@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_context_theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Password complexity indicator displaying a 3-segment progress indicator.
 class PasswordStrengthMeter extends StatelessWidget {
@@ -44,7 +45,7 @@ class PasswordStrengthMeter extends StatelessWidget {
           Text(
             textLabel,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: context.scaleFont(12),
               fontWeight: FontWeight.bold,
               color: activeColor,
             ),

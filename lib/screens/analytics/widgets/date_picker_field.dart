@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 
 class DatePickerField extends StatelessWidget {
   final String label;
@@ -20,9 +21,8 @@ class DatePickerField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.textMuted,
-            fontSize: 11,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -44,7 +44,7 @@ class DatePickerField extends StatelessWidget {
                   dateStr,
                   style: TextStyle(
                     color: dateStr == 'dd-mm-yyyy' ? AppColors.textMuted : AppColors.textDark,
-                    fontSize: 13,
+                    fontSize: context.scaleFont(13),
                     fontWeight: FontWeight.w500,
                   ),
                 ),

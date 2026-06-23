@@ -30,7 +30,7 @@ class TaskDetailsBody extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(color: AppColors.errorBackground, borderRadius: BorderRadius.circular(8)),
-                  child: const Text('OVERDUE', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppColors.errorColor)),
+                  child: Text('OVERDUE', style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold, color: AppColors.errorColor)),
                 ),
             ],
           ),
@@ -51,7 +51,7 @@ class TaskDetailsBody extends StatelessWidget {
               ),
               onPressed: () => context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
               icon: Icon(task.isCompleted ? Icons.check_circle_outline_rounded : Icons.check_circle_rounded),
-              label: Text(task.isCompleted ? 'Mark Incomplete' : 'Mark Completed', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+              label: Text(task.isCompleted ? 'Mark Incomplete' : 'Mark Completed', style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600)),
             ),
           ),
         ],

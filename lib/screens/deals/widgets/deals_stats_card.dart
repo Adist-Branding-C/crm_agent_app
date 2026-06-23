@@ -34,18 +34,16 @@ class DealsStatsCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.whiteAlpha60,
-              fontSize: 12,
               fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             value,
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               color: Colors.white,
-              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
           ),

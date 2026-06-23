@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../utils/text_scaler.dart';
 import 'app_colors.dart';
+
 
 /// Global text styling definitions for the application text theme.
 class AppTextTheme {
@@ -40,4 +42,29 @@ class AppTextTheme {
       fontWeight: FontWeight.w600,
     ),
   );
+
+  /// Returns a TextTheme with font sizes scaled to the screen width.
+  static TextTheme scaledTextTheme(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+    return textTheme.copyWith(
+      displayLarge: textTheme.displayLarge?.copyWith(
+        fontSize: AppTextScaler.scale(width, 32),
+      ),
+      headlineMedium: textTheme.headlineMedium?.copyWith(
+        fontSize: AppTextScaler.scale(width, 24),
+      ),
+      titleMedium: textTheme.titleMedium?.copyWith(
+        fontSize: AppTextScaler.scale(width, 16),
+      ),
+      bodyLarge: textTheme.bodyLarge?.copyWith(
+        fontSize: AppTextScaler.scale(width, 16),
+      ),
+      bodyMedium: textTheme.bodyMedium?.copyWith(
+        fontSize: AppTextScaler.scale(width, 14),
+      ),
+      labelLarge: textTheme.labelLarge?.copyWith(
+        fontSize: AppTextScaler.scale(width, 14),
+      ),
+    );
+  }
 }

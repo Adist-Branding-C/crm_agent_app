@@ -10,30 +10,22 @@ class HistoryCalendarLegend extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16),
-      child: Column(
+      child: Wrap(
+        spacing: 12,
+        runSpacing: 8,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildItem('Present', AppColors.success),
-              _buildItem('Late', AppColors.warning),
-              _buildItem('Half Day', AppColors.warningText),
-              _buildItem('On Leave', AppColors.info),
-              _buildItem('Holiday', AppColors.accent),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              _buildItem('Week Off', AppColors.slate400),
-            ],
-          ),
+          _buildItem(context, 'Present', AppColors.success),
+          _buildItem(context, 'Late', AppColors.warning),
+          _buildItem(context, 'Half Day', AppColors.warningText),
+          _buildItem(context, 'On Leave', AppColors.info),
+          _buildItem(context, 'Holiday', AppColors.accent),
+          _buildItem(context, 'Week Off', AppColors.slate400),
         ],
       ),
     );
   }
 
-  Widget _buildItem(String label, Color color) {
+  Widget _buildItem(BuildContext context, String label, Color color) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -45,7 +37,7 @@ class HistoryCalendarLegend extends StatelessWidget {
         const SizedBox(width: 4),
         Text(
           label,
-          style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
         ),
       ],
     );

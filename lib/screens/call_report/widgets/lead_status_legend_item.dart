@@ -18,8 +18,7 @@ class LeadStatusLegendItem extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           '${item.count}',
-          style: const TextStyle(
-            fontSize: 16,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),
@@ -27,8 +26,7 @@ class LeadStatusLegendItem extends StatelessWidget {
         const SizedBox(height: 2),
         Text(
           item.label,
-          style: const TextStyle(
-            fontSize: 11,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.textMuted,
           ),
         ),

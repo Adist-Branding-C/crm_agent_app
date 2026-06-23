@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/new_password/new_password_bloc.dart';
 import '../../../theme/app_context_theme.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Input field wrapper for the confirm password input and matching text indicator.
 class ConfirmPasswordInputWidget extends StatelessWidget {
@@ -52,7 +53,7 @@ class ConfirmPasswordInputWidget extends StatelessWidget {
                 color: state.confirmPassword.isValid
                     ? context.success
                     : context.error,
-                fontSize: 13,
+                fontSize: context.scaleFont(13),
                 fontWeight: FontWeight.w500,
               ),
             ),

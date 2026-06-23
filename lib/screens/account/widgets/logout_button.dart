@@ -16,28 +16,26 @@ class LogoutButton extends StatelessWidget {
         CustomCard(
           onTap: onTap,
           padding: const EdgeInsets.symmetric(vertical: 16),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.logout_rounded, color: AppColors.primaryColor, size: 20),
-              SizedBox(width: 8),
+              const Icon(Icons.logout_rounded, color: AppColors.primaryColor, size: 20),
+              const SizedBox(width: 8),
               Text(
                 'Log Out',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
                 ),
               ),
             ],
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
+        Text(
           'CRM Agent · v1.0.0',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
-            fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
         ),

@@ -19,9 +19,8 @@ class CampaignsHeader extends StatelessWidget {
           final count = state is CampaignsLoaded ? state.campaigns.length : 0;
           return Text(
             '$count active',
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
-              fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
           );

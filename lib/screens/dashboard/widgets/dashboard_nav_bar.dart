@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../utils/text_scaler.dart';
 import '../models/dashboard_navigation_item.dart';
 
 /// Bottom navigation bar aligned with the dashboard designs.
@@ -18,6 +19,7 @@ class DashboardNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double w = MediaQuery.sizeOf(context).width;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -31,8 +33,8 @@ class DashboardNavBar extends StatelessWidget {
         selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.textMuted,
         elevation: 0,
-        selectedFontSize: 11,
-        unselectedFontSize: 11,
+        selectedFontSize: AppTextScaler.scale(w, 11),
+        unselectedFontSize: AppTextScaler.scale(w, 11),
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         items: items

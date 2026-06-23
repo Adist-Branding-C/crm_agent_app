@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../bloc/new_password/new_password_bloc.dart';
 import '../../../widgets/custom_button.dart';
+import '../../../widgets/responsive_width_container.dart';
 import '../../../widgets/screen_header.dart';
 import 'confirm_password_input_widget.dart';
 import 'new_password_header_widget.dart';
@@ -31,33 +32,31 @@ class NewPasswordBody extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const NewPasswordHeaderWidget(),
-                  const SizedBox(height: 32),
-                  NewPasswordInputWidget(controller: passwordController),
-                  const SizedBox(height: 20),
-                  ConfirmPasswordInputWidget(controller: confirmController),
-                  const SizedBox(height: 24),
-                  BlocBuilder<NewPasswordBloc, NewPasswordState>(
-                    buildWhen: (p, c) =>
-                        p.newPassword.isValid != c.newPassword.isValid ||
-                        p.confirmPassword.isValid !=
-                            c.confirmPassword.isValid ||
-                        p.status != c.status,
-                    builder: (context, state) => CustomButton(
-                      text: 'Update Password',
-                      icon: Icons.check_rounded,
-                      isLoading:
-                          state.status == FormzSubmissionStatus.inProgress,
-                      onPressed: state.newPassword.isValid &&
-                              state.confirmPassword.isValid
-                          ? onSubmit
-                          : null,
+              child: ResponsiveWidthContainer(
+                maxWidth: 480,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const NewPasswordHeaderWidget(),
+                    const SizedBox(height: 32),
+                    NewPasswordInputWidget(controller: passwordController),
+                    const SizedBox(height: 20),
+                    ConfirmPasswordInputWidget(controller: confirmController),
+                    const SizedBox(height: 24),
+                    BlocBuilder<NewPasswordBloc, NewPasswordState>(
+                      buildWhen: (p, c) =>
+                          p.newPassword.isValid != c.newPassword.isValid ||
+                          p.confirmPassword.isValid != c.confirmPassword.isValid ||
+                          p.status != c.status,
+                      builder: (context, state) => CustomButton(
+                        text: 'Update Password',
+                        icon: Icons.check_rounded,
+                        isLoading: state.status == FormzSubmissionStatus.inProgress,
+                        onPressed: state.newPassword.isValid && state.confirmPassword.isValid ? onSubmit : null,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 
 class FilterChipsSection<T> extends StatelessWidget {
   final String title;
@@ -24,10 +25,9 @@ class FilterChipsSection<T> extends StatelessWidget {
       children: [
         Text(
           title.toUpperCase(),
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.bold,
-            fontSize: 11,
             letterSpacing: 0.5,
           ),
         ),
@@ -51,7 +51,7 @@ class FilterChipsSection<T> extends StatelessWidget {
                   style: TextStyle(
                     color: isSelected ? Colors.white : AppColors.textMuted,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12,
+                    fontSize: context.scaleFont(12),
                   ),
                 ),
               ),

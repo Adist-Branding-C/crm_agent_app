@@ -26,17 +26,15 @@ class NotesHistoryList extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: '${note.author}, ',
-                      style: const TextStyle(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppColors.textDark,
-                        fontSize: 13,
                       ),
                     ),
                     TextSpan(
                       text: note.content,
-                      style: const TextStyle(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: AppColors.textDark,
-                        fontSize: 13,
                       ),
                     ),
                   ],
@@ -45,9 +43,8 @@ class NotesHistoryList extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 note.time,
-                style: const TextStyle(
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 11,
                 ),
               ),
             ],

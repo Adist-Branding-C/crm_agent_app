@@ -37,7 +37,7 @@ class NotificationItemWidget extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Expanded(child: Text(item.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: AppColors.textDark))),
+                    Expanded(child: Text(item.title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark))),
                     if (!item.isRead)
                       Container(
                         margin: const EdgeInsets.only(left: 6),
@@ -47,9 +47,9 @@ class NotificationItemWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 4),
-                Text(item.subtitle, style: const TextStyle(color: AppColors.textMuted, fontSize: 13)),
+                Text(item.subtitle, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
                 const SizedBox(height: 6),
-                Text(item.time, style: const TextStyle(color: AppColors.textMuted, fontSize: 11)),
+                Text(item.time, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted)),
               ],
             ),
           ),

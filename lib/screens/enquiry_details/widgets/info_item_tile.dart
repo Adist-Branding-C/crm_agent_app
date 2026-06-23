@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Renders a single field item with a muted label and custom value or child.
 class InfoItemTile extends StatelessWidget {
@@ -33,8 +34,7 @@ class InfoItemTile extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 12,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
               fontWeight: FontWeight.w500,
             ),
@@ -46,7 +46,7 @@ class InfoItemTile extends StatelessWidget {
             Text(
               value ?? '',
               style: TextStyle(
-                fontSize: 15,
+                fontSize: context.scaleFont(15),
                 fontWeight: FontWeight.w600,
                 color: valueColor ?? AppColors.textDark,
               ),

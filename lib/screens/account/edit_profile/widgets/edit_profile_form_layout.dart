@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../bloc/account/account_models.dart';
+import '../../../../widgets/responsive_width_container.dart';
 import '../../../../widgets/screen_header.dart';
 import 'edit_profile_actions.dart';
 import 'edit_profile_avatar_card.dart';
@@ -31,46 +32,35 @@ class EditProfileFormLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const ScreenHeader(
-          title: 'Edit Profile',
-          subtitle: 'Your account details',
-          showBackButton: true,
-        ),
+        const ScreenHeader(title: 'Edit Profile', subtitle: 'Your account details', showBackButton: true),
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-            child: Column(
-              children: [
-                EditProfileAvatarCard(
-                  initials: profile.initials,
-                  joinedDate: profile.joinedDate,
-                ),
-                const SizedBox(height: 16),
-                PersonalDetailsSection(
-                  nameController: nameController,
-                  phoneController: phoneController,
-                  emailController: emailController,
-                ),
-                const SizedBox(height: 16),
-                WorkDetailsSection(
-                  selectedRole: selectedRole,
-                  selectedBranch: selectedBranch,
-                  baseLocationController: baseLocationController,
-                  onRoleChanged: onRoleChanged,
-                  onBranchChanged: onBranchChanged,
-                ),
-                const SizedBox(height: 16),
-                TargetDetailsSection(
-                  targetController: targetController,
-                  achievedAmount: profile.achievedAmount,
-                ),
-                const SizedBox(height: 24),
-                EditProfileActions(
-                  onCancel: () => context.pop(),
-                  onSave: onSave,
-                  isLoading: isSaving,
-                ),
-              ],
+            child: ResponsiveWidthContainer(
+              maxWidth: 540,
+              child: Column(
+                children: [
+                  EditProfileAvatarCard(initials: profile.initials, joinedDate: profile.joinedDate),
+                  const SizedBox(height: 16),
+                  PersonalDetailsSection(
+                    nameController: nameController,
+                    phoneController: phoneController,
+                    emailController: emailController,
+                  ),
+                  const SizedBox(height: 16),
+                  WorkDetailsSection(
+                    selectedRole: selectedRole,
+                    selectedBranch: selectedBranch,
+                    baseLocationController: baseLocationController,
+                    onRoleChanged: onRoleChanged,
+                    onBranchChanged: onBranchChanged,
+                  ),
+                  const SizedBox(height: 16),
+                  TargetDetailsSection(targetController: targetController, achievedAmount: profile.achievedAmount),
+                  const SizedBox(height: 24),
+                  EditProfileActions(onCancel: () => context.pop(), onSave: onSave, isLoading: isSaving),
+                ],
+              ),
             ),
           ),
         ),

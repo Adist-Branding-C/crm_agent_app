@@ -70,5 +70,5 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 class _FilterTitle extends StatelessWidget {
   const _FilterTitle();
   @override
-  Widget build(BuildContext context) => const Text('Filter analytics', style: TextStyle(color: AppColors.textDark, fontSize: 18, fontWeight: FontWeight.bold));
+  Widget build(BuildContext context) => Text('Filter analytics', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold));
 }

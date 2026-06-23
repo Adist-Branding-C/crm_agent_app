@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import 'task_type_presentation_extensions.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Styled badge displaying the task category/type.
 class TaskTypeBadge extends StatelessWidget {
@@ -27,7 +28,7 @@ class TaskTypeBadge extends StatelessWidget {
           const SizedBox(width: 4),
           Text(
             type.label,
-            style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.bold),
+            style: TextStyle(color: color, fontSize: context.scaleFont(11), fontWeight: FontWeight.bold),
           ),
         ],
       ),

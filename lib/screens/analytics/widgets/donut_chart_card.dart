@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../../theme/app_colors.dart';
+import '../../../utils/responsive_helper.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/donut_chart.dart';
 import '../../../widgets/donut_segment.dart';
-import '../../../theme/app_colors.dart';
 import 'legend_row.dart';
 
 class DonutChartCard extends StatelessWidget {
@@ -23,28 +24,25 @@ class DonutChartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-        ),
-        const SizedBox(height: 12),
-        CustomCard(
-          padding: const EdgeInsets.all(20),
-          child: Row(
+    final isMobileSmall = ResponsiveHelper.isMobileSmall(context);
+    final chart = DonutChart(
+      segments: segments,
+      centerLabel: centerLabel,
+      centerSubLabel: centerSubLabel,
+      size: 130,
+    );
+
+    final content = isMobileSmall
+        ? Column(
             children: [
-              DonutChart(
-                segments: segments,
-                centerLabel: centerLabel,
-                centerSubLabel: centerSubLabel,
-                size: 130,
-              ),
+              chart,
+              const SizedBox(height: 16),
+              ...legendItems,
+            ],
+          )
+        : Row(
+            children: [
+              chart,
               const SizedBox(width: 20),
               Expanded(
                 child: Column(
@@ -53,7 +51,19 @@ class DonutChartCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+          );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 12),
+        CustomCard(
+          padding: const EdgeInsets.all(20),
+          child: content,
         ),
       ],
     );

@@ -54,7 +54,14 @@ class TaskCardDetails extends StatelessWidget {
             const SizedBox(width: 8),
             Icon(Icons.access_time_rounded, size: 12, color: timeColor),
             const SizedBox(width: 4),
-            Text(task.time, style: timeStyle),
+            Expanded(
+              child: Text(
+                task.time,
+                style: timeStyle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       ],

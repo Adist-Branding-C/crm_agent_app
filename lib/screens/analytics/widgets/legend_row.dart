@@ -31,18 +31,16 @@ class LegendRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
-                fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           Text(
             count.toString(),
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textDark,
-              fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
           ),

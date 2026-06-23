@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 
 class PurposeSelector extends StatelessWidget {
   final LeadPurpose selectedPurpose;
@@ -19,9 +20,9 @@ class PurposeSelector extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Purpose',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColors.textDark),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark),
           ),
           const SizedBox(height: 8),
           Wrap(
@@ -38,7 +39,7 @@ class PurposeSelector extends StatelessWidget {
                 labelStyle: TextStyle(
                   color: isSel ? AppColors.primaryColor : AppColors.textMuted,
                   fontWeight: isSel ? FontWeight.w600 : FontWeight.normal,
-                  fontSize: 13,
+                  fontSize: context.scaleFont(13),
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

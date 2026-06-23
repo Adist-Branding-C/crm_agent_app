@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
+import '../utils/context_text_extension.dart';
 
 /// Trailing action text link for SectionHeader.
 class SectionHeaderAction extends StatelessWidget {
@@ -22,10 +23,10 @@ class SectionHeaderAction extends StatelessWidget {
       onTap: onActionTap,
       child: Text(
         actionText,
-        style: const TextStyle(
+        style: TextStyle(
           color: AppColors.primaryColor,
           fontWeight: FontWeight.bold,
-          fontSize: 13,
+          fontSize: context.scaleFont(13),
         ),
       ),
     );

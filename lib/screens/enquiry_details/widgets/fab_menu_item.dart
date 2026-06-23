@@ -46,8 +46,7 @@ class FabMenuItem extends StatelessWidget {
             ),
             child: Text(
               text,
-              style: const TextStyle(
-                fontSize: 12,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppColors.textDark,
               ),

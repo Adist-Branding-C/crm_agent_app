@@ -13,14 +13,14 @@ class HistoryStatsText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Attendance this month',
-          style: TextStyle(color: AppColors.slate400, fontSize: 12),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.slate400),
         ),
         Text(
           '${history.presentDays} of ${history.totalWorkingDays} working days',
-          style: const TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            color: Colors.white, fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),

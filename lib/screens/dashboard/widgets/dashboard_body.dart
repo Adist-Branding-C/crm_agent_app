@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
+import '../../../utils/responsive_helper.dart';
 import '../../error_messages.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../../widgets/dashboard_shimmer.dart';
@@ -21,14 +22,29 @@ class DashboardBody extends StatelessWidget {
           return const DashboardShimmer();
         }
         if (state is DashboardLoaded) {
+          final lists = ResponsiveHelper.isTablet(context)
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: FollowUpsList(calls: state.followUps)),
+                    const SizedBox(width: 16),
+                    const Expanded(child: PendingTasksSection()),
+                  ],
+                )
+              : Column(
+                  children: [
+                    FollowUpsList(calls: state.followUps),
+                    const PendingTasksSection(),
+                  ],
+                );
+
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 const DashboardHeader(),
                 StatsGrid(stats: state.stats),
-                FollowUpsList(calls: state.followUps),
-                const PendingTasksSection(),
+                lists,
                 const SizedBox(height: 24),
               ],
             ),

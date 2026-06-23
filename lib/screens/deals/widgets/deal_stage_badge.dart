@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
+import '../../../../utils/context_text_extension.dart';
 import 'deals_presentation_extensions.dart';
 
 /// Renders the stage badge for a deal.
@@ -23,7 +24,7 @@ class DealStageBadge extends StatelessWidget {
         style: TextStyle(
           color: baseColor,
           fontWeight: FontWeight.bold,
-          fontSize: 11,
+          fontSize: context.scaleFont(11),
         ),
       ),
     );

@@ -33,14 +33,13 @@ class TargetProgressIndicator extends StatelessWidget {
           children: [
             Text(
               'Achieved ${_formatToLakhs(achieved)} of ${_formatToLakhs(target)}',
-              style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
             ),
             Text(
               '$percentage%',
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
               ),
             ),
           ],

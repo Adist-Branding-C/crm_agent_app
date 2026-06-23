@@ -4,6 +4,7 @@ import '../../../bloc/tasks/add_task/add_task_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../theme.dart';
 import 'task_priority_extensions.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Renders the custom segmented priority control (High, Medium, Low).
 class AddTaskPrioritySelector extends StatelessWidget {
@@ -17,11 +18,10 @@ class AddTaskPrioritySelector extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Priority',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
-                fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -59,7 +59,7 @@ class AddTaskPrioritySelector extends StatelessWidget {
                             fontWeight: isSelected
                                 ? FontWeight.bold
                                 : FontWeight.normal,
-                            fontSize: 13,
+                            fontSize: context.scaleFont(13),
                           ),
                         ),
                       ),

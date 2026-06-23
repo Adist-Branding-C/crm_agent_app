@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 class AnalyticsTabToggle extends StatelessWidget {
   final AnalyticsTab activeTab;
@@ -64,7 +65,7 @@ class _TabButton extends StatelessWidget {
           style: TextStyle(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
-            fontSize: 14,
+            fontSize: context.scaleFont(14),
           ),
         ),
       ),

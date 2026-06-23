@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 
 /// Renders the title and meta information for a Campaign.
 class CampaignDetails extends StatelessWidget {
@@ -17,16 +18,17 @@ class CampaignDetails extends StatelessWidget {
       children: [
         Text(
           campaign.title,
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
-            fontSize: 15,
           ),
         ),
         const SizedBox(height: 2),
         Text(
           '${campaign.type.label} · by ${campaign.creator}',
-          style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: AppColors.textMuted,
+          ),
         ),
       ],
     );

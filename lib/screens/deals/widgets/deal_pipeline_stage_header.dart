@@ -30,12 +30,15 @@ class DealPipelineStageHeader extends StatelessWidget {
       children: [
         Icon(Icons.circle, size: 8, color: stage.color),
         const SizedBox(width: 6),
-        Text(
-          stage.label,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 13,
+        Flexible(
+          child: Text(
+            stage.label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: AppColors.textDark,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(width: 4),
@@ -43,7 +46,6 @@ class DealPipelineStageHeader extends StatelessWidget {
           '$dealsCount',
           style: theme.textTheme.bodyMedium?.copyWith(
             color: AppColors.textMuted,
-            fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -52,7 +54,6 @@ class DealPipelineStageHeader extends StatelessWidget {
           totalAmount.toRupeeFormat(),
           style: theme.textTheme.bodyMedium?.copyWith(
             color: AppColors.textMuted,
-            fontSize: 12,
             fontWeight: FontWeight.w600,
           ),
         ),

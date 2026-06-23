@@ -20,12 +20,11 @@ class RecentSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'RECENT',
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
               fontWeight: FontWeight.bold,
-              fontSize: 12,
               letterSpacing: 0.8,
             ),
           ),
@@ -47,9 +46,8 @@ class RecentSection extends StatelessWidget {
                         ),
                         title: Text(
                           q,
-                          style: const TextStyle(
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppColors.textDark,
-                            fontSize: 14,
                           ),
                         ),
                         trailing: const Icon(

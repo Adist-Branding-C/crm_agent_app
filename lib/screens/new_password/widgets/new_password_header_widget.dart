@@ -27,8 +27,7 @@ class NewPasswordHeaderWidget extends StatelessWidget {
         const SizedBox(height: 24),
         Text(
           'Set new password',
-          style: TextStyle(
-            fontSize: 24,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: context.textDark,
           ),
@@ -36,7 +35,7 @@ class NewPasswordHeaderWidget extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'Choose a strong password for your account.',
-          style: TextStyle(fontSize: 14, color: context.textMuted),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
         ),
       ],
     );

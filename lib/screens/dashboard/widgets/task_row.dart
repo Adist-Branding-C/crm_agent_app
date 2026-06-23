@@ -32,27 +32,24 @@ class TaskRow extends StatelessWidget {
                 children: [
                   Text(
                     task.type.label,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textMuted,
-                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     task.title,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: AppColors.textDark,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15,
                     ),
                   ),
                   const SizedBox(height: 3),
                   Text(
                     task.time,
-                    style: const TextStyle(
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
-                      fontSize: 13,
                     ),
                   ),
                 ],

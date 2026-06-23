@@ -18,7 +18,7 @@ class AddDealStageSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Stage', style: TextStyle(color: AppColors.slate600, fontWeight: FontWeight.w500, fontSize: 12)),
+        Text('Stage', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.slate600, fontWeight: FontWeight.w500)),
         const SizedBox(height: 8),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

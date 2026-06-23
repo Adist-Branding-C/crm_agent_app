@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_card.dart';
+import '../../../widgets/responsive_width_container.dart';
 import '../../../widgets/screen_header.dart';
 import 'change_password_header.dart';
 import 'change_password_submit_bar.dart';
@@ -37,26 +38,29 @@ class ChangePasswordBody extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const ChangePasswordHeader(),
-                  const SizedBox(height: 16),
-                  CustomCard(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        CurrentPasswordInput(controller: currentController),
-                        const SizedBox(height: 16),
-                        NewPasswordInput(controller: newController),
-                        const SizedBox(height: 16),
-                        ConfirmPasswordInput(controller: confirmController),
-                      ],
+              child: ResponsiveWidthContainer(
+                maxWidth: 480,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const ChangePasswordHeader(),
+                    const SizedBox(height: 12),
+                    CustomCard(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          CurrentPasswordInput(controller: currentController),
+                          const SizedBox(height: 12),
+                          NewPasswordInput(controller: newController),
+                          const SizedBox(height: 12),
+                          ConfirmPasswordInput(controller: confirmController),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                  ChangePasswordSubmitBar(onCancel: onCancel, onSubmit: onSubmit),
-                ],
+                    const SizedBox(height: 16),
+                    ChangePasswordSubmitBar(onCancel: onCancel, onSubmit: onSubmit),
+                  ],
+                ),
               ),
             ),
           ),

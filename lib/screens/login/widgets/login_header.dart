@@ -37,9 +37,8 @@ class LoginHeader extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           RichText(
-            text: const TextSpan(
-              style: TextStyle(
-                fontSize: 26,
+            text: TextSpan(
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.w900,
                 letterSpacing: -0.5,
               ),
@@ -56,11 +55,10 @@ class LoginHeader extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'Sign in to your agent account',
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: AppTheme.textMuted,
-              fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
           ),

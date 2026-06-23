@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Segmented custom toggle capsule to switch between Log and Calendar views.
 class HistoryToggleBar extends StatelessWidget {
@@ -27,14 +28,14 @@ class HistoryToggleBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(child: _buildItem('Log')),
-          Expanded(child: _buildItem('Calendar')),
+          Expanded(child: _buildItem(context, 'Log')),
+          Expanded(child: _buildItem(context, 'Calendar')),
         ],
       ),
     );
   }
 
-  Widget _buildItem(String value) {
+  Widget _buildItem(BuildContext context, String value) {
     final isSelected = selected == value;
     return GestureDetector(
       onTap: () => onChanged(value),
@@ -53,7 +54,7 @@ class HistoryToggleBar extends StatelessWidget {
           style: TextStyle(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            fontSize: 13,
+            fontSize: context.scaleFont(13),
           ),
         ),
       ),

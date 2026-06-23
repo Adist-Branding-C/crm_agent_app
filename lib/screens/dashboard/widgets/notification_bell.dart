@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 class NotificationBell extends StatelessWidget {
   final int count;
@@ -36,9 +37,9 @@ class NotificationBell extends StatelessWidget {
               ),
               child: Text(
                 count.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
-                  fontSize: 9,
+                  fontSize: context.scaleFont(9),
                   fontWeight: FontWeight.bold,
                 ),
               ),

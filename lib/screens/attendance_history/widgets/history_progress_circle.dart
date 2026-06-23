@@ -22,8 +22,8 @@ class HistoryProgressCircle extends StatelessWidget {
           ),
           Text(
             '${attendanceRate.toInt()}%',
-            style: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              color: Colors.white, fontWeight: FontWeight.bold,
             ),
           ),
         ],

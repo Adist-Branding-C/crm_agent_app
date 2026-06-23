@@ -33,11 +33,10 @@ class InfoTabView extends StatelessWidget {
             ),
             child: Text(
               lead.status.label,
-              style: const TextStyle(
-                color: AppColors.warningText,
-                fontWeight: FontWeight.bold,
-                fontSize: 11,
-              ),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.warningText,
+                  fontWeight: FontWeight.bold,
+                ),
             ),
           ),
         ),

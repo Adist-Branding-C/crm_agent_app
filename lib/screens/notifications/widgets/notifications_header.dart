@@ -23,7 +23,7 @@ class NotificationsHeader extends StatelessWidget {
           showBackButton: true,
           subtitleWidget: Text(
             '$count unread',
-            style: const TextStyle(fontSize: 14, color: AppColors.textMuted, fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted, fontWeight: FontWeight.w600),
           ),
           actions: TextButton(
             onPressed: () => context.read<NotificationsBloc>().add(const MarkAllAsRead()),

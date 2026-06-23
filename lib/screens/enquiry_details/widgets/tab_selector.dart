@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 
 /// Tab selector bar displaying Info, Activities, and Notes.
 class TabSelector extends StatelessWidget {
@@ -41,7 +42,7 @@ class TabSelector extends StatelessWidget {
                       style: TextStyle(
                         color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
                         fontWeight: FontWeight.bold,
-                        fontSize: 14,
+                        fontSize: context.scaleFont(14),
                       ),
                     ),
                   ),

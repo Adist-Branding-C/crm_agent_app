@@ -53,10 +53,9 @@ class WhatsAppSendButton extends StatelessWidget {
           ),
         ),
         icon: const Icon(Icons.send_rounded, size: 18),
-        label: const Text(
+        label: Text(
           'Send on WhatsApp',
-          style: TextStyle(
-            fontSize: 16,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),

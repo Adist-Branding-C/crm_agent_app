@@ -20,10 +20,9 @@ class BarChartCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
-            fontSize: 16,
           ),
         ),
         const SizedBox(height: 12),

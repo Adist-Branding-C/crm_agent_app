@@ -17,9 +17,12 @@ class CheckInButton extends StatelessWidget {
         elevation: 0,
       ),
       onPressed: () => context.read<AttendanceBloc>().add(const CheckIn()),
-      child: const Text(
+      child: Text(
         'Check in',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
       ),
     );
   }

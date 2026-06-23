@@ -27,8 +27,7 @@ class DigitBox extends StatelessWidget {
           ? Container(width: 2, height: 24, color: context.primary)
           : Text(
               char,
-              style: TextStyle(
-                fontSize: 20,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.textDark,
               ),

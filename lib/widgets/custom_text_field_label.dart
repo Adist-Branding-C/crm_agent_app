@@ -17,18 +17,16 @@ class TextFieldLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textDark,
-            fontSize: 13,
             fontWeight: FontWeight.bold,
           ),
         ),
         if (isRequired)
-          const Text(
+          Text(
             ' *',
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.primaryColor,
-              fontSize: 13,
               fontWeight: FontWeight.bold,
             ),
           ),

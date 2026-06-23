@@ -14,12 +14,11 @@ class CheckedInInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "You're checked in",
-          style: TextStyle(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 15,
           ),
         ),
         const SizedBox(height: 4),
@@ -34,7 +33,7 @@ class CheckedInInfo extends StatelessWidget {
             Expanded(
               child: Text(
                 '$location · since $checkInTime',
-                style: const TextStyle(color: AppColors.slate400, fontSize: 11),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.slate400),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

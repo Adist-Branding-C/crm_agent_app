@@ -41,7 +41,7 @@ class AddDealBottomSheetContent extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const Text('New Deal', style: TextStyle(color: AppColors.textDark, fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('New Deal', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           AddDealLeadCard(lead: lead),
           const SizedBox(height: 16),
@@ -56,7 +56,7 @@ class AddDealBottomSheetContent extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8),
               child: Text(
                 controller.errorMessage!,
-                style: const TextStyle(color: AppColors.errorColor, fontSize: 13),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.errorColor),
                 textAlign: TextAlign.center,
               ),
             ),

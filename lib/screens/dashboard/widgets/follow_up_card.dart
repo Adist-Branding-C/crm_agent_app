@@ -7,6 +7,7 @@ import '../../../bloc/leads/leads_models.dart';
 import '../../../data/repositories/leads_repository.dart';
 import '../../../router/app_routes.dart';
 import '../../../theme.dart';
+import '../../../utils/context_text_extension.dart';
 import '../../../widgets/call_button.dart';
 
 /// Renders a single row in the follow-up calls list.
@@ -34,7 +35,7 @@ class FollowUpCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(6)),
-                  child: Text(call.tag.label, style: TextStyle(color: tagText, fontSize: 11, fontWeight: FontWeight.bold)),
+                  child: Text(call.tag.label, style: TextStyle(color: tagText, fontSize: context.scaleFont(11), fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 8),
                 GestureDetector(
@@ -46,10 +47,10 @@ class FollowUpCard extends StatelessWidget {
                       context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': match.id});
                     }
                   },
-                  child: Text(call.name, style: const TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold, fontSize: 15)),
+                  child: Text(call.name, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 3),
-                Text(call.time, style: const TextStyle(color: AppColors.textMuted, fontSize: 13)),
+                Text(call.time, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted)),
               ],
             ),
           ),

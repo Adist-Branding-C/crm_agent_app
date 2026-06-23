@@ -25,9 +25,8 @@ class FollowUpHeader extends StatelessWidget {
           }
           return Text(
             '$dueTodayCount due today',
-            style: const TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
-              fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
           );

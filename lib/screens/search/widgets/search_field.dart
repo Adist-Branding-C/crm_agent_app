@@ -53,10 +53,10 @@ class _SearchFieldState extends State<SearchField> {
         borderRadius: 16,
         child: TextField(
           controller: widget.controller,
-          style: const TextStyle(color: AppColors.textDark, fontSize: 14),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
           decoration: InputDecoration(
             hintText: 'Search enquiries, phone, location...',
-            hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
+            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
             prefixIcon: const Icon(Icons.search_rounded, color: AppColors.textMuted, size: 20),
             suffixIcon: _showClear
                 ? IconButton(

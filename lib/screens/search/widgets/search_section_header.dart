@@ -13,10 +13,9 @@ class SearchSectionHeader extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
       child: Text(
         title.toUpperCase(),
-        style: const TextStyle(
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
           color: AppColors.textMuted,
           fontWeight: FontWeight.bold,
-          fontSize: 12,
           letterSpacing: 0.8,
         ),
       ),

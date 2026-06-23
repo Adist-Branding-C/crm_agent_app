@@ -19,19 +19,20 @@ class TimelineList extends StatelessWidget {
         Text(
           "Today's Timeline",
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontSize: 16,
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),
         ),
         const SizedBox(height: 16),
         if (items.isEmpty)
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24),
             child: Center(
               child: Text(
                 'No activities logged today.',
-                style: TextStyle(color: AppColors.textMuted, fontSize: 13),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.textMuted,
+                ),
               ),
             ),
           )

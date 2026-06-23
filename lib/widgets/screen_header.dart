@@ -28,16 +28,14 @@ class ScreenHeader extends StatelessWidget {
     final titleStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
           color: AppColors.textDark,
           fontWeight: FontWeight.bold,
-          fontSize: showBackButton ? 20 : 28,
         );
 
     final sub = subtitleWidget ??
         (subtitle != null
             ? Text(
                 subtitle!,
-                style: const TextStyle(
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
               )

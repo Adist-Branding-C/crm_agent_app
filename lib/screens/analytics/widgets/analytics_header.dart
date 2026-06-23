@@ -55,15 +55,14 @@ class _FilterButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: const [
-            Icon(Icons.filter_alt_outlined, size: 16, color: Colors.white),
-            SizedBox(width: 8),
+          children: [
+            const Icon(Icons.filter_alt_outlined, size: 16, color: Colors.white),
+            const SizedBox(width: 8),
             Text(
               'Filter',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 13,
               ),
             ),
           ],

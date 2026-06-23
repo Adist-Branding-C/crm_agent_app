@@ -28,8 +28,7 @@ class VerifyOtpHeader extends StatelessWidget {
         const SizedBox(height: 24),
         Text(
           'Enter OTP',
-          style: TextStyle(
-            fontSize: 24,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: context.textDark,
           ),
@@ -37,7 +36,7 @@ class VerifyOtpHeader extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'We sent a 6-digit code to\n$phone',
-          style: TextStyle(fontSize: 14, color: context.textMuted),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
         ),
       ],
     );

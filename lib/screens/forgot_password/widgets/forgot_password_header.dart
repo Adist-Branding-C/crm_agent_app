@@ -26,8 +26,7 @@ class ForgotPasswordHeader extends StatelessWidget {
         const SizedBox(height: 24),
         Text(
           'Enter your phone',
-          style: TextStyle(
-            fontSize: 24,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: context.textDark,
           ),
@@ -35,7 +34,7 @@ class ForgotPasswordHeader extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           "We'll send a 6-digit OTP to your registered mobile number.",
-          style: TextStyle(fontSize: 14, color: context.textMuted),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
         ),
       ],
     );

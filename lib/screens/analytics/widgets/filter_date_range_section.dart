@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 import 'date_picker_field.dart';
 
 class FilterDateRangeSection extends StatelessWidget {
@@ -10,10 +11,8 @@ class FilterDateRangeSection extends StatelessWidget {
   final ValueChanged<DateTime?> onStartDateChanged;
   final ValueChanged<DateTime?> onEndDateChanged;
 
-  const FilterDateRangeSection({
-    super.key, required this.selectedPeriod, this.startDate, this.endDate,
-    required this.onPeriodChanged, required this.onStartDateChanged, required this.onEndDateChanged,
-  });
+  const FilterDateRangeSection({super.key, required this.selectedPeriod, this.startDate, this.endDate,
+    required this.onPeriodChanged, required this.onStartDateChanged, required this.onEndDateChanged});
 
   Future<void> _selectDate(BuildContext context, bool isStart) async {
     final picked = await showDatePicker(
@@ -21,11 +20,7 @@ class FilterDateRangeSection extends StatelessWidget {
       firstDate: DateTime(2020), lastDate: DateTime(2030),
     );
     if (picked != null) {
-      if (isStart) {
-        onStartDateChanged(picked);
-      } else {
-        onEndDateChanged(picked);
-      }
+      (isStart ? onStartDateChanged : onEndDateChanged)(picked);
     }
   }
 
@@ -40,7 +35,7 @@ class FilterDateRangeSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('DATE RANGE', style: TextStyle(color: AppColors.textMuted, fontWeight: FontWeight.bold, fontSize: 11, letterSpacing: 0.5)),
+        Text('DATE RANGE', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
         const SizedBox(height: 10),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -59,7 +54,7 @@ class FilterDateRangeSection extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       border: isSel ? null : Border.all(color: AppColors.borderLight),
                     ),
-                    child: Text(period, style: TextStyle(color: isSel ? Colors.white : AppColors.textMuted, fontWeight: FontWeight.w600, fontSize: 12)),
+                    child: Text(period, style: TextStyle(color: isSel ? Colors.white : AppColors.textMuted, fontWeight: FontWeight.w600, fontSize: context.scaleFont(12))),
                   ),
                 ),
               );

@@ -7,15 +7,15 @@ class NoResultsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.search_off_rounded, size: 48, color: AppColors.textMuted),
-          SizedBox(height: 12),
+          const Icon(Icons.search_off_rounded, size: 48, color: AppColors.textMuted),
+          const SizedBox(height: 12),
           Text(
             'No results found',
-            style: TextStyle(color: AppColors.textMuted, fontSize: 14),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
           ),
         ],
       ),

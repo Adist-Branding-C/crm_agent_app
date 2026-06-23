@@ -39,7 +39,6 @@ class FilterSheetBody extends StatelessWidget {
           Text(
             'Filter & Sort',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
           ),

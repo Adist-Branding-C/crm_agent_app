@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/attendance/attendance_bloc.dart';
+import '../../../utils/responsive_helper.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../../widgets/app_loading_widget.dart';
 import 'check_in_card.dart';
@@ -31,20 +32,35 @@ class AttendanceContent extends StatelessWidget {
           );
         }
         if (state is AttendanceLoaded) {
+          final leftCol = [
+            CheckInCard(
+              isCheckedIn: state.isCheckedIn,
+              checkInTime: state.checkInTime,
+              location: state.location,
+            ),
+            const SizedBox(height: 20),
+            StatsRow(
+              callsCount: state.callsCount,
+              visitsCount: state.visitsCount,
+              notesCount: state.notesCount,
+              hoursCount: state.hoursCount,
+            ),
+          ];
+
+          if (ResponsiveHelper.isTablet(context)) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: Column(children: leftCol)),
+                const SizedBox(width: 24),
+                Expanded(child: TimelineList(items: state.timeline)),
+              ],
+            );
+          }
+
           return Column(
             children: [
-              CheckInCard(
-                isCheckedIn: state.isCheckedIn,
-                checkInTime: state.checkInTime,
-                location: state.location,
-              ),
-              const SizedBox(height: 20),
-              StatsRow(
-                callsCount: state.callsCount,
-                visitsCount: state.visitsCount,
-                notesCount: state.notesCount,
-                hoursCount: state.hoursCount,
-              ),
+              ...leftCol,
               const SizedBox(height: 24),
               TimelineList(items: state.timeline),
             ],

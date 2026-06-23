@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/context_text_extension.dart';
 import 'add_deal_date_picker_helper.dart';
 
 class AddDealDatePicker extends StatelessWidget {
@@ -28,12 +29,11 @@ class AddDealDatePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Expected close',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.slate600,
             fontWeight: FontWeight.w500,
-            fontSize: 12,
           ),
         ),
         const SizedBox(height: 6),
@@ -54,7 +54,7 @@ class AddDealDatePicker extends StatelessWidget {
                   displayText,
                   style: TextStyle(
                     color: selectedDate != null ? AppColors.textDark : AppColors.textMuted,
-                    fontSize: 14,
+                    fontSize: context.scaleFont(14),
                   ),
                 ),
                 const Icon(

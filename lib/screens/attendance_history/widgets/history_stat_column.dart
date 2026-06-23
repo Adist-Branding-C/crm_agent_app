@@ -14,11 +14,11 @@ class HistoryStatColumn extends StatelessWidget {
       children: [
         Text(
           value,
-          style: const TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Colors.white, fontWeight: FontWeight.bold,
           ),
         ),
-        Text(label, style: const TextStyle(color: AppColors.slate400, fontSize: 11)),
+        Text(label, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.slate400)),
       ],
     );
   }
