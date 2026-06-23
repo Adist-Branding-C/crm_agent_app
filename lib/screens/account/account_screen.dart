@@ -6,33 +6,38 @@ import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';
 import 'account_body.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
 
   @override
+  State<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends State<AccountScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AccountBloc>().add(const LoadAccount());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => AccountBloc(
-        accountRepository: context.read(),
-        authRepository: context.read(),
-      )..add(const LoadAccount()),
-      child: PageScaffold(
-        padding: EdgeInsets.zero,
-        child: Column(
-          children: [
-            const ScreenHeader(
-              title: 'Profile',
-              showBackButton: true,
+    return PageScaffold(
+      padding: EdgeInsets.zero,
+      child: Column(
+        children: [
+          const ScreenHeader(
+            title: 'Profile',
+            showBackButton: true,
+          ),
+          Expanded(
+            child: BlocListener<AccountBloc, AccountState>(
+              listenWhen: (_, state) => state is AccountLoggedOut,
+              listener: (context, _) => context.read<AuthStateNotifier>().refresh(),
+              child: const AccountBody(),
             ),
-            Expanded(
-              child: BlocListener<AccountBloc, AccountState>(
-                listenWhen: (_, state) => state is AccountLoggedOut,
-                listener: (context, _) => context.read<AuthStateNotifier>().refresh(),
-                child: const AccountBody(),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,5 +1,6 @@
 ﻿feat(tasks): implement task filtering on Tasks screen
 
+
 - Add filter button next to the plus button in TasksHeader.
 - Implement filter modal bottom sheet displaying choices for:
   - Task Type (multi-select choice chips)
@@ -33,3 +34,9 @@ Testing:
   - Fix test helper to pass scaleText: false to prevent off-screen issues
   - All 42 tests pass, flutter analyze clean
   - No file exceeds 80-line limit
+
+  fix(attendance): resolve ProviderNotFoundException for AttendanceBloc
+
+- Register AttendanceBloc globally in buildBlocProviders so it is available to the DashboardHeader.
+- Remove duplicate local BlocProvider from AttendanceScreen to inherit the global bloc context.
+- Trigger LoadAttendance immediately on startup to initialize status indicators.

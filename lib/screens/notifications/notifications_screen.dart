@@ -5,23 +5,29 @@ import '../../widgets/page_scaffold.dart';
 import 'widgets/notifications_header.dart';
 import 'widgets/notifications_list_body.dart';
 
-class NotificationsScreen extends StatelessWidget {
+class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
 
   @override
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
+}
+
+class _NotificationsScreenState extends State<NotificationsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<NotificationsBloc>().add(const LoadNotifications());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => NotificationsBloc(
-        notificationsRepository: context.read(),
-      )..add(const LoadNotifications()),
-      child: PageScaffold(
-        padding: EdgeInsets.zero,
-        child: const Column(
-          children: [
-            NotificationsHeader(),
-            Expanded(child: NotificationsListBody()),
-          ],
-        ),
+    return const PageScaffold(
+      padding: EdgeInsets.zero,
+      child: Column(
+        children: [
+          NotificationsHeader(),
+          Expanded(child: NotificationsListBody()),
+        ],
       ),
     );
   }

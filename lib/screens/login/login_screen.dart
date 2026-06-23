@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/account/account_bloc.dart';
 import '../../bloc/login/login_bloc.dart';
+import '../../bloc/notifications/notifications_bloc.dart';
 import '../../data/auth_state_notifier.dart';
 import '../../data/repositories/session_repository.dart';
 import 'widgets/login_body.dart';
@@ -32,6 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.isSuccess) {
+            context.read<AccountBloc>().add(const LoadAccount());
+            context.read<NotificationsBloc>().add(const LoadNotifications());
             context.read<AuthStateNotifier>().refresh();
           }
         },
