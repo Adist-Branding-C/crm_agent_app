@@ -37,7 +37,7 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   }
 
   void _onDueDateChanged(TaskDueDateChanged ev, Emitter<AddTaskState> emit) {
-    emit(state.copyWith(dueDate: ev.dueDate));
+    emit(state.copyWith(dueDate: ev.dueDate, dueDateTime: ev.dueDateTime));
   }
 
   void _onPriorityChanged(TaskPriorityChanged ev, Emitter<AddTaskState> emit) {
@@ -56,6 +56,7 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
         isCompleted: false,
         isOverdue: false,
         priority: state.priority,
+        dueDate: state.dueDateTime ?? DateTime.now(),
       );
       final assignedTask = await tasksRepository.addTask(task);
       emit(state.copyWith(isSubmitting: false, isSuccess: true, newTask: () => assignedTask));

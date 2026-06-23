@@ -3,6 +3,7 @@ import '../../data/repositories/tasks_repository.dart';
 import 'tasks_event.dart';
 import 'tasks_state.dart';
 
+export 'tasks_filter_criteria.dart';
 export 'tasks_selectors.dart';
 export 'tasks_event.dart';
 export 'tasks_state.dart';
@@ -16,6 +17,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     on<LoadTasks>(_onLoadTasks);
     on<ToggleTaskCompletion>(_onToggleTaskCompletion);
     on<FilterChanged>(_onFilterChanged);
+    on<ApplyFilterCriteria>(_onApplyFilterCriteria);
   }
 
   Future<void> _onLoadTasks(
@@ -54,6 +56,16 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     final currState = state;
     if (currState is TasksLoaded) {
       emit(currState.copyWith(filter: event.filter));
+    }
+  }
+
+  void _onApplyFilterCriteria(
+    ApplyFilterCriteria event,
+    Emitter<TasksState> emit,
+  ) {
+    final currState = state;
+    if (currState is TasksLoaded) {
+      emit(currState.copyWith(filterCriteria: event.criteria));
     }
   }
 }

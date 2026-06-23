@@ -6,6 +6,7 @@ class AddTaskState extends Equatable {
   final TaskDescriptionInput description;
   final TaskType type;
   final String dueDate;
+  final DateTime? dueDateTime;
   final TaskPriority priority;
   final bool isSubmitting;
   final bool isSuccess;
@@ -17,6 +18,7 @@ class AddTaskState extends Equatable {
     this.description = const TaskDescriptionInput.pure(),
     this.type = TaskType.task,
     this.dueDate = 'Today, 5:00 PM',
+    this.dueDateTime,
     this.priority = TaskPriority.high,
     this.isSubmitting = false,
     this.isSuccess = false,
@@ -33,6 +35,7 @@ class AddTaskState extends Equatable {
     TaskDescriptionInput? description,
     TaskType? type,
     String? dueDate,
+    DateTime? dueDateTime,
     TaskPriority? priority,
     bool? isSubmitting,
     bool? isSuccess,
@@ -44,6 +47,7 @@ class AddTaskState extends Equatable {
       description: description ?? this.description,
       type: type ?? this.type,
       dueDate: dueDate ?? this.dueDate,
+      dueDateTime: dueDateTime ?? this.dueDateTime,
       priority: priority ?? this.priority,
       isSubmitting: isSubmitting ?? this.isSubmitting,
       isSuccess: isSuccess ?? this.isSuccess,
@@ -58,6 +62,7 @@ class AddTaskState extends Equatable {
         description,
         type,
         dueDate,
+        dueDateTime,
         priority,
         isSubmitting,
         isSuccess,

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'tasks_filter_criteria.dart';
 import 'tasks_models.dart';
 
 /// Available filters for the Tasks screen.
@@ -34,28 +35,30 @@ class TasksLoading extends TasksState {
 class TasksLoaded extends TasksState {
   final List<Task> allTasks;
   final TasksFilter filter;
+  final TaskFilterCriteria filterCriteria;
 
   /// Creates a constant [TasksLoaded] state.
   const TasksLoaded({
     required this.allTasks,
     this.filter = TasksFilter.all,
+    this.filterCriteria = const TaskFilterCriteria(),
   });
-
-
 
   /// Copy constructor.
   TasksLoaded copyWith({
     List<Task>? allTasks,
     TasksFilter? filter,
+    TaskFilterCriteria? filterCriteria,
   }) {
     return TasksLoaded(
       allTasks: allTasks ?? this.allTasks,
       filter: filter ?? this.filter,
+      filterCriteria: filterCriteria ?? this.filterCriteria,
     );
   }
 
   @override
-  List<Object?> get props => [allTasks, filter];
+  List<Object?> get props => [allTasks, filter, filterCriteria];
 }
 
 enum TasksFailure { load, unknown }

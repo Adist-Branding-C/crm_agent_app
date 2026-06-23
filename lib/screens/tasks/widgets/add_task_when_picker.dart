@@ -52,6 +52,6 @@ class _AddTaskWhenPickerState extends State<AddTaskWhenPicker> {
     if (dt == null || !context.mounted) return;
 
     final formatted = AddTaskDatePickerHelper.format(dt);
-    context.read<AddTaskBloc>().add(TaskDueDateChanged(formatted));
+    context.read<AddTaskBloc>().add(TaskDueDateChanged(formatted, dt));
   }
 }

@@ -38,10 +38,11 @@ class TaskTypeChanged extends AddTaskEvent {
 /// Triggered when the due date changes.
 class TaskDueDateChanged extends AddTaskEvent {
   final String dueDate;
-  const TaskDueDateChanged(this.dueDate);
+  final DateTime dueDateTime;
+  const TaskDueDateChanged(this.dueDate, this.dueDateTime);
 
   @override
-  List<Object?> get props => [dueDate];
+  List<Object?> get props => [dueDate, dueDateTime];
 }
 
 /// Triggered when the selected priority changes.
