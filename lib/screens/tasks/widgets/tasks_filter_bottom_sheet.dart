@@ -32,10 +32,7 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
+      decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: SingleChildScrollView(
         child: Column(
@@ -43,17 +40,10 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TasksFilterForm(
-              types: _types,
-              dateRange: _dateRange,
-              customFrom: _customFrom,
-              customTo: _customTo,
-              priorities: _priorities,
+              types: _types, dateRange: _dateRange, customFrom: _customFrom, customTo: _customTo, priorities: _priorities,
               onTypesChanged: (val) => setState(() => _types = val),
               onDateRangeChanged: (val) => setState(() => _dateRange = val),
-              onCustomDatesChanged: (f, t) => setState(() {
-                _customFrom = f;
-                _customTo = t;
-              }),
+              onCustomDatesChanged: (f, t) => setState(() { _customFrom = f; _customTo = t; }),
               onPrioritiesChanged: (val) => setState(() => _priorities = val),
             ),
             const SizedBox(height: 24),
@@ -64,22 +54,7 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
     );
   }
 
-  void _reset() => setState(() {
-        _types.clear();
-        _dateRange = DateRangeType.none;
-        _customFrom = null;
-        _customTo = null;
-        _priorities.clear();
-      });
+  void _reset() => setState(() { _types.clear(); _dateRange = DateRangeType.none; _customFrom = null; _customTo = null; _priorities.clear(); });
 
-  void _apply() => Navigator.pop(
-        context,
-        TaskFilterCriteria(
-          types: _types,
-          dateRange: _dateRange,
-          customFrom: _customFrom,
-          customTo: _customTo,
-          priorities: _priorities,
-        ),
-      );
+  void _apply() => Navigator.pop(context, TaskFilterCriteria(types: _types, dateRange: _dateRange, customFrom: _customFrom, customTo: _customTo, priorities: _priorities));
 }

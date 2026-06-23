@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/tasks_repository.dart';
 import 'tasks_event.dart';
@@ -43,8 +44,13 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         final updatedList =
             await tasksRepository.toggleTaskCompletion(event.taskId);
         emit(currState.copyWith(allTasks: updatedList));
-      } catch (_) {
-        // Fallback or ignore
+      } catch (e, stackTrace) {
+        developer.log(
+          'Failed to toggle task completion for taskId: ${event.taskId}',
+          error: e,
+          stackTrace: stackTrace,
+          name: 'TasksBloc',
+        );
       }
     }
   }

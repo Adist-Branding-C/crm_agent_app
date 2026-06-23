@@ -1,91 +1,18 @@
 import '../../bloc/tasks/tasks_models.dart';
 
-/// Generates mock tasks with dynamic DateTimes relative to current local time.
+Task _t(String id, String title, TaskType type, String time, bool done, bool overdue, TaskPriority pri, DateTime due) =>
+  Task(id: id, title: title, type: type, time: time, isCompleted: done, isOverdue: overdue, priority: pri, dueDate: due);
+
 List<Task> createMockTasks() {
-  final now = DateTime.now();
-  final today = DateTime(now.year, now.month, now.day);
+  final t = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   return [
-    Task(
-      id: '1',
-      title: 'Prepare project proposal',
-      type: TaskType.task,
-      time: 'Today, 5:30 PM',
-      isCompleted: false,
-      isOverdue: false,
-      priority: TaskPriority.high,
-      dueDate: today.add(const Duration(hours: 17, minutes: 30)),
-    ),
-    Task(
-      id: '2',
-      title: 'Campus visit — Aravind Krishnan',
-      type: TaskType.meeting,
-      time: 'Today, 6:00 PM',
-      isCompleted: false,
-      isOverdue: false,
-      priority: TaskPriority.medium,
-      dueDate: today.add(const Duration(hours: 18)),
-    ),
-    Task(
-      id: '3',
-      title: 'Collect documents — Vishnu Prasad',
-      type: TaskType.task,
-      time: 'Today, 7:00 PM',
-      isCompleted: false,
-      isOverdue: false,
-      priority: TaskPriority.high,
-      dueDate: today.add(const Duration(hours: 19)),
-    ),
-    Task(
-      id: '4',
-      title: 'Confirm batch slot — Lakshmi Warrier',
-      type: TaskType.call,
-      time: 'Today, 2:30 PM OVERDUE',
-      isCompleted: false,
-      isOverdue: true,
-      priority: TaskPriority.high,
-      dueDate: today.add(const Duration(hours: 14, minutes: 30)),
-    ),
-    Task(
-      id: '5',
-      title: 'Demo reminder — Divya Raveendran',
-      type: TaskType.call,
-      time: 'Yesterday, 11:00 AM OVERDUE',
-      isCompleted: false,
-      isOverdue: true,
-      priority: TaskPriority.medium,
-      dueDate:
-          today.subtract(const Duration(days: 1)).add(const Duration(hours: 11)),
-    ),
-    Task(
-      id: '6',
-      title: 'Deal paperwork — Enterprise batch',
-      type: TaskType.deal,
-      time: 'Tomorrow, 10:00 AM',
-      isCompleted: false,
-      isOverdue: false,
-      priority: TaskPriority.medium,
-      dueDate: today.add(const Duration(days: 1, hours: 10)),
-    ),
-    Task(
-      id: '7',
-      title: 'Welcome call — new admission',
-      type: TaskType.call,
-      time: 'Yesterday, 9:00 AM',
-      isCompleted: true,
-      isOverdue: false,
-      priority: TaskPriority.low,
-      dueDate:
-          today.subtract(const Duration(days: 1)).add(const Duration(hours: 9)),
-    ),
-    Task(
-      id: '8',
-      title: 'Quarterly review prep',
-      type: TaskType.task,
-      time: '2 days ago',
-      isCompleted: true,
-      isOverdue: false,
-      priority: TaskPriority.low,
-      dueDate: today.subtract(const Duration(days: 2)),
-    ),
+    _t('1', 'Prepare project proposal', TaskType.task, 'Today, 5:30 PM', false, false, TaskPriority.high, t.add(const Duration(hours: 17, minutes: 30))),
+    _t('2', 'Campus visit — Aravind Krishnan', TaskType.meeting, 'Today, 6:00 PM', false, false, TaskPriority.medium, t.add(const Duration(hours: 18))),
+    _t('3', 'Collect documents — Vishnu Prasad', TaskType.task, 'Today, 7:00 PM', false, false, TaskPriority.high, t.add(const Duration(hours: 19))),
+    _t('4', 'Confirm batch slot — Lakshmi Warrier', TaskType.call, 'Today, 2:30 PM OVERDUE', false, true, TaskPriority.high, t.add(const Duration(hours: 14, minutes: 30))),
+    _t('5', 'Demo reminder — Divya Raveendran', TaskType.call, 'Yesterday, 11:00 AM OVERDUE', false, true, TaskPriority.medium, t.subtract(const Duration(days: 1)).add(const Duration(hours: 11))),
+    _t('6', 'Deal paperwork — Enterprise batch', TaskType.deal, 'Tomorrow, 10:00 AM', false, false, TaskPriority.medium, t.add(const Duration(days: 1, hours: 10))),
+    _t('7', 'Welcome call — new admission', TaskType.call, 'Yesterday, 9:00 AM', true, false, TaskPriority.low, t.subtract(const Duration(days: 1)).add(const Duration(hours: 9))),
+    _t('8', 'Quarterly review prep', TaskType.task, '2 days ago', true, false, TaskPriority.low, t.subtract(const Duration(days: 2))),
   ];
 }

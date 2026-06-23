@@ -16,7 +16,7 @@ class AddDealFormFields extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildLabel(context, 'Deal name'),
+        const _RequiredLabel(text: 'Deal name'),
         const SizedBox(height: 6),
         TextFormField(
           controller: nameController,
@@ -25,7 +25,7 @@ class AddDealFormFields extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        _buildLabel(context, 'Amount (₹)'),
+        const _RequiredLabel(text: 'Amount (₹)'),
         const SizedBox(height: 6),
         TextFormField(
           controller: amountController,
@@ -37,8 +37,14 @@ class AddDealFormFields extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _buildLabel(BuildContext context, String text) {
+class _RequiredLabel extends StatelessWidget {
+  final String text;
+  const _RequiredLabel({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
         text: text,

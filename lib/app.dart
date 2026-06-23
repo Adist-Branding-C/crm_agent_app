@@ -5,17 +5,23 @@ import 'package:provider/provider.dart';
 import 'app_providers.dart';
 import 'app_bloc_providers.dart';
 import 'data/auth_state_notifier.dart';
-import 'data/repositories/auth_repository.dart';
+import 'data/repositories/session_repository.dart';
+import 'data/datasources/auth_datasource.dart';
 import 'router.dart';
 import 'theme.dart';
-import 'widgets/call_lifecycle_observer.dart';
-import 'widgets/call_log_navigation_handler.dart';
+import 'widgets/app_builder.dart';
 
 class MyApp extends StatefulWidget {
-  final AuthRepository authRepository;
+  final SessionRepository sessionRepository;
+  final AuthDataSource authDataSource;
   final bool scaleText;
 
-  const MyApp({super.key, required this.authRepository, this.scaleText = true});
+  const MyApp({
+    super.key,
+    required this.sessionRepository,
+    required this.authDataSource,
+    this.scaleText = true,
+  });
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -28,7 +34,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _router = createRouter(widget.authRepository, _authStateNotifier);
+    _router = createRouter(widget.sessionRepository, _authStateNotifier);
   }
 
   @override
@@ -39,8 +45,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-      providers: buildRepositoryProviders(authRepository: widget.authRepository),
+    return MultiProvider(
+      providers: buildRepositoryProviders(
+        authDataSource: widget.authDataSource,
+        sessionRepository: widget.sessionRepository,
+      ),
       child: ChangeNotifierProvider<AuthStateNotifier>.value(
         value: _authStateNotifier,
         child: MultiBlocProvider(
@@ -50,18 +59,10 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             routerConfig: _router,
-            builder: widget.scaleText
-                ? (context, child) => Theme(
-                      data: AppTheme.scaledLightTheme(context),
-                      child: CallLogNavigationHandler(
-                        child: CallLifecycleObserver(
-                            child: child ?? const SizedBox.shrink()),
-                      ),
-                    )
-                : (context, child) => CallLogNavigationHandler(
-                      child: CallLifecycleObserver(
-                          child: child ?? const SizedBox.shrink()),
-                    ),
+            builder: (context, child) => AppBuilderWidget(
+              scaleText: widget.scaleText,
+              child: child,
+            ),
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../bloc/leads/leads_enums.dart';
 import '../../bloc/leads/leads_models.dart';
 import '../../theme.dart';
+import '../../widgets/screen_header.dart';
 import 'models/call_log_form_state.dart';
 import 'widgets/call_log_view.dart';
 
@@ -34,12 +35,27 @@ class _CallLogScreenState extends State<CallLogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final lead = widget.lead ??
-        const Lead(
-          name: 'Unknown Lead', phone: '',
-          status: LeadStatus.newStatus, source: LeadPurpose.enquiry,
-          category: LeadCategory.cold, location: '',
-        );
+    final lead = widget.lead;
+    if (lead == null) {
+      return Scaffold(
+        backgroundColor: AppTheme.backgroundColor,
+        body: const SafeArea(
+          child: Column(
+            children: [
+              ScreenHeader(title: 'Log Call', showBackButton: true),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'No valid lead provided for call logging.',
+                    style: TextStyle(color: AppColors.textMuted, fontSize: 14),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,

@@ -1,11 +1,12 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import '../../data/repositories/session_repository.dart';
+import 'login_event.dart';
+import 'login_state.dart';
+import 'login_inputs.dart';
 
-part 'login_event.dart';
-part 'login_state.dart';
-part 'login_inputs.dart';
+export 'login_event.dart';
+export 'login_state.dart';
+export 'login_inputs.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final SessionRepository authRepository;

@@ -5,22 +5,19 @@ import '../search/search_screen.dart';
 import 'models/dashboard_navigation_item.dart';
 import 'widgets/dashboard_body.dart';
 
-/// Central configuration for Dashboard navigation tabs.
-///
-/// By separating the tab definitions into this config, the system adheres
-/// to the Open/Closed Principle: new tabs can be added by editing this configuration
-/// without altering the dashboard screen and layout components.
 class DashboardNavigationConfig {
   DashboardNavigationConfig._();
 
-  /// Map registry translating tab names to their corresponding indices.
-  static const Map<String, int> tabRegistry = {
-    'leads': 1,
-    'tasks': 2,
-    'search': 3,
-  };
+  /// Auto-generated registry from items list. Adding a new tab to [items]
+  /// automatically adds its label → index mapping here (OCP-compliant).
+  static Map<String, int> get tabRegistry {
+    final map = <String, int>{};
+    for (var i = 0; i < items.length; i++) {
+      map[items[i].label.toLowerCase()] = i;
+    }
+    return map;
+  }
 
-  /// Defines the list of tabs displayed in the dashboard navigation.
   static final List<DashboardNavigationItem> items = [
     const DashboardNavigationItem(
       label: 'Dashboard',

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/data/datasources/auth_datasource.dart';
-import 'package:crm_agent_app/data/repositories/auth_repository_impl.dart';
+import 'package:crm_agent_app/data/repositories/session_repository_impl.dart';
 import 'package:crm_agent_app/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Widget createTestApp() {
   SharedPreferences.setMockInitialValues({});
-  final repo = AuthRepositoryImpl(authDataSource: AuthDataSourceImpl());
+  final dataSource = AuthDataSourceImpl();
+  final repo = SessionRepositoryImpl(authDataSource: dataSource);
   repo.init();
-  return MyApp(authRepository: repo, scaleText: false);
+  return MyApp(sessionRepository: repo, authDataSource: dataSource, scaleText: false);
 }
 
 Future<void> signInMockUser(WidgetTester tester) async {

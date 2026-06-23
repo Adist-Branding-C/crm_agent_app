@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
-import '../utils/context_text_extension.dart';
 
 /// A reusable, brand-styled Call button with icons and glow shadows.
 class CallButton extends StatelessWidget {
@@ -26,19 +25,19 @@ class CallButton extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(borderRadius),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.call_rounded, color: Colors.white, size: 14),
-                const SizedBox(width: 6),
+                Icon(Icons.call_rounded, color: Colors.white, size: 14),
+                SizedBox(width: 6),
                 Text(
                   'Call',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: context.scaleFont(13),
+                    fontSize: 13,
                   ),
                 ),
               ],

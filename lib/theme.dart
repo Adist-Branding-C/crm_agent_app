@@ -4,8 +4,9 @@ import 'theme/app_shadows.dart';
 import 'theme/app_text_theme.dart';
 import 'theme/app_input_theme.dart';
 import 'theme/app_button_theme.dart';
-import 'utils/text_scaler.dart';
 
+
+import 'theme/app_scaled_theme.dart';
 
 export 'theme/app_colors.dart';
 export 'theme/app_shadows.dart';
@@ -60,22 +61,5 @@ class AppTheme {
   }
 
   /// Returns a ThemeData with font sizes scaled to the screen width.
-  static ThemeData scaledLightTheme(BuildContext context) {
-    final w = MediaQuery.sizeOf(context).width;
-    final base = lightTheme;
-    return base.copyWith(
-      textTheme: AppTextTheme.scaledTextTheme(context),
-      appBarTheme: base.appBarTheme.copyWith(
-        titleTextStyle: TextStyle(
-          color: AppColors.textDark,
-          fontSize: AppTextScaler.scale(w, 20),
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      inputDecorationTheme:
-          AppInputTheme.scaledInputDecorationTheme(context),
-      elevatedButtonTheme:
-          AppButtonTheme.scaledElevatedButtonTheme(context),
-    );
-  }
+  static ThemeData scaledLightTheme(BuildContext context) => getScaledLightTheme(context);
 }

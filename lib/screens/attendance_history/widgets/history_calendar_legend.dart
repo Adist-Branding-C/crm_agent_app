@@ -13,19 +13,30 @@ class HistoryCalendarLegend extends StatelessWidget {
       child: Wrap(
         spacing: 12,
         runSpacing: 8,
-        children: [
-          _buildItem(context, 'Present', AppColors.success),
-          _buildItem(context, 'Late', AppColors.warning),
-          _buildItem(context, 'Half Day', AppColors.warningText),
-          _buildItem(context, 'On Leave', AppColors.info),
-          _buildItem(context, 'Holiday', AppColors.accent),
-          _buildItem(context, 'Week Off', AppColors.slate400),
+        children: const [
+          _LegendItem(label: 'Present', color: AppColors.success),
+          _LegendItem(label: 'Late', color: AppColors.warning),
+          _LegendItem(label: 'Half Day', color: AppColors.warningText),
+          _LegendItem(label: 'On Leave', color: AppColors.info),
+          _LegendItem(label: 'Holiday', color: AppColors.accent),
+          _LegendItem(label: 'Week Off', color: AppColors.slate400),
         ],
       ),
     );
   }
+}
 
-  Widget _buildItem(BuildContext context, String label, Color color) {
+class _LegendItem extends StatelessWidget {
+  final String label;
+  final Color color;
+
+  const _LegendItem({
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [

@@ -7,6 +7,7 @@ part 'change_password_event.dart';
 part 'change_password_state.dart';
 part 'change_password_inputs.dart';
 part 'change_password_handlers.dart';
+part 'change_password_submit_handler.dart';
 part 'change_password_toggle_handlers.dart';
 
 class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> {

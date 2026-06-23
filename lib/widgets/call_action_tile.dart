@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-/// An individual action option item inside the call actions bottom sheet.
 class CallActionTile extends StatelessWidget {
-  /// The icon representing the action.
   final IconData icon;
-
-  /// The title of the action.
   final String title;
-
-  /// The subtitle of the action (e.g. phone number or details).
   final String subtitle;
-
-  /// The color of the icon.
   final Color iconColor;
-
-  /// The background color for the circular icon container.
   final Color iconBgColor;
-
-  /// The callback to run when the tile is clicked.
   final VoidCallback onTap;
 
-  /// Creates a constant [CallActionTile].
   const CallActionTile({
     super.key,
     required this.icon,

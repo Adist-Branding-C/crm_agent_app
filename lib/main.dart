@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'data/datasources/auth_datasource.dart';
-import 'data/repositories/auth_repository_impl.dart';
+import 'data/repositories/session_repository_impl.dart';
 
 export 'app.dart';
 
@@ -20,7 +20,11 @@ void main() async {
   };
 
   await SharedPreferences.getInstance();
-  final authRepo = AuthRepositoryImpl(authDataSource: AuthDataSourceImpl());
-  await authRepo.init();
-  runApp(MyApp(authRepository: authRepo));
+  final authDataSource = AuthDataSourceImpl();
+  final sessionRepo = SessionRepositoryImpl(authDataSource: authDataSource);
+  await sessionRepo.init();
+  runApp(MyApp(
+    sessionRepository: sessionRepo,
+    authDataSource: authDataSource,
+  ));
 }

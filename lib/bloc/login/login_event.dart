@@ -1,6 +1,5 @@
-part of 'login_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-/// Base class for all events related to the Login Screen.
 abstract class LoginEvent extends Equatable {
   /// Creates a constant [LoginEvent].
   const LoginEvent();

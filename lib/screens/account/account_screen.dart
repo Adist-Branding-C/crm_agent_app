@@ -11,22 +11,28 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
-      padding: EdgeInsets.zero,
-      child: Column(
-        children: [
-          const ScreenHeader(
-            title: 'Profile',
-            showBackButton: true,
-          ),
-          Expanded(
-            child: BlocListener<AccountBloc, AccountState>(
-              listenWhen: (_, state) => state is AccountLoggedOut,
-              listener: (context, _) => context.read<AuthStateNotifier>().refresh(),
-              child: const AccountBody(),
+    return BlocProvider(
+      create: (_) => AccountBloc(
+        accountRepository: context.read(),
+        authRepository: context.read(),
+      )..add(const LoadAccount()),
+      child: PageScaffold(
+        padding: EdgeInsets.zero,
+        child: Column(
+          children: [
+            const ScreenHeader(
+              title: 'Profile',
+              showBackButton: true,
             ),
-          ),
-        ],
+            Expanded(
+              child: BlocListener<AccountBloc, AccountState>(
+                listenWhen: (_, state) => state is AccountLoggedOut,
+                listener: (context, _) => context.read<AuthStateNotifier>().refresh(),
+                child: const AccountBody(),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

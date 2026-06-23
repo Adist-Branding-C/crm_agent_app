@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_model.dart';
 import '../../../theme.dart';
 import '../../../utils/responsive_helper.dart';
-import '../../../widgets/custom_card.dart';
+import 'history_stat_card.dart';
 
 /// Row element showing the monthly count metrics for statuses.
 class HistoryStatsRow extends StatelessWidget {
@@ -15,10 +15,10 @@ class HistoryStatsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      _buildItem(context, '${history.presentDays}', 'Present', AppColors.success),
-      _buildItem(context, '${history.lateCount}', 'Late', AppColors.warning),
-      _buildItem(context, '${history.halfDayCount}', 'Half Day', AppColors.warningText),
-      _buildItem(context, '${history.leaveCount}', 'Leave', AppColors.info),
+      HistoryStatCard(count: '${history.presentDays}', label: 'Present', color: AppColors.success),
+      HistoryStatCard(count: '${history.lateCount}', label: 'Late', color: AppColors.warning),
+      HistoryStatCard(count: '${history.halfDayCount}', label: 'Half Day', color: AppColors.warningText),
+      HistoryStatCard(count: '${history.leaveCount}', label: 'Leave', color: AppColors.info),
     ];
 
     final isMobileSmall = ResponsiveHelper.isMobileSmall(context);
@@ -55,26 +55,6 @@ class HistoryStatsRow extends StatelessWidget {
                 Expanded(child: items[3]),
               ],
             ),
-    );
-  }
-
-  Widget _buildItem(BuildContext context, String count, String label, Color color) {
-    return CustomCard(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            count,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: color, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted, fontWeight: FontWeight.w500),
-          ),
-        ],
-      ),
     );
   }
 }

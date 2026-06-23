@@ -8,6 +8,8 @@ import '../../../widgets/card_icon_button.dart';
 import 'add_task_bottom_sheet.dart';
 import 'tasks_filter_bottom_sheet.dart';
 
+part 'tasks_header_actions_handlers.dart';
+
 /// Renders the action buttons (Filter and Add) for the Tasks header.
 class TasksHeaderActions extends StatelessWidget {
   /// Creates a constant [TasksHeaderActions].
@@ -44,39 +46,5 @@ class TasksHeaderActions extends StatelessWidget {
         );
       },
     );
-  }
-
-  Future<void> _openFilter(BuildContext context) async {
-    final bloc = context.read<TasksBloc>();
-    final state = bloc.state;
-    if (state is! TasksLoaded) return;
-
-    final res = await showModalBottomSheet<TaskFilterCriteria>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => TasksFilterBottomSheet(initialCriteria: state.filterCriteria),
-    );
-    if (res != null) {
-      bloc.add(ApplyFilterCriteria(res));
-    }
-  }
-
-  Future<void> _openAddTask(BuildContext context) async {
-    final bloc = context.read<TasksBloc>();
-    final isAdded = await showModalBottomSheet<bool>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => BlocProvider(
-        create: (context) => AddTaskBloc(
-          tasksRepository: context.read<TasksRepository>(),
-        ),
-        child: const AddTaskBottomSheet(),
-      ),
-    );
-    if (isAdded == true) {
-      bloc.add(const LoadTasks());
-    }
   }
 }

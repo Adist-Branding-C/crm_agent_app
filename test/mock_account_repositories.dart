@@ -1,8 +1,7 @@
 import 'package:crm_agent_app/bloc/account/account_models.dart';
 import 'package:crm_agent_app/data/repositories/account_repository.dart';
-import 'package:crm_agent_app/data/repositories/auth_repository.dart';
+import 'package:crm_agent_app/data/repositories/session_repository.dart';
 
-/// Mock Account Repository for account unit tests.
 class MockAccountRepository implements AccountRepository {
   AccountProfile? _cachedProfile;
 
@@ -33,8 +32,7 @@ class MockAccountRepository implements AccountRepository {
   }
 }
 
-/// Mock Auth Repository for account unit tests.
-class MockAuthRepository implements AuthRepository {
+class MockAuthRepository implements SessionRepository {
   @override
   bool get isAuthenticated => true;
   @override
@@ -47,12 +45,4 @@ class MockAuthRepository implements AuthRepository {
   Future<void> logout() async {}
   @override
   Future<void> init() async {}
-  @override
-  Future<void> sendOtp(String phone) async {}
-  @override
-  Future<bool> verifyOtp(String phone, String code) async => true;
-  @override
-  Future<bool> updatePassword(String phone, String password) async => true;
-  @override
-  Future<bool> changePassword(String c, String n) async => true;
 }

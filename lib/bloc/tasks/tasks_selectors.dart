@@ -4,7 +4,7 @@ import 'tasks_models.dart';
 /// Presentation selectors and filters for the [TasksLoaded] state.
 extension TasksSelectors on TasksLoaded {
   /// Returns tasks filtered by the selected filter.
-  List<Task> get filteredTasks {
+  List<Task> getFilteredTasks(DateTime now) {
     List<Task> tasks = allTasks;
 
     switch (filter) {
@@ -29,7 +29,6 @@ extension TasksSelectors on TasksLoaded {
     }
 
     if (filterCriteria.dateRange != DateRangeType.none) {
-      final now = DateTime.now();
       final today = DateTime(now.year, now.month, now.day);
       tasks = tasks.where((t) {
         if (t.dueDate == null) return false;

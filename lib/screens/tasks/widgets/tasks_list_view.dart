@@ -15,7 +15,7 @@ class TasksListView extends StatelessWidget {
     return BlocBuilder<TasksBloc, TasksState>(
       buildWhen: (prev, curr) => prev != curr,
       builder: (context, state) {
-        final tasks = state is TasksLoaded ? state.filteredTasks : const [];
+        final tasks = state is TasksLoaded ? state.getFilteredTasks(DateTime.now()) : const [];
         return AsyncStateView(
           isLoading: state is TasksLoading || state is TasksInitial,
           hasError: state is TasksError,

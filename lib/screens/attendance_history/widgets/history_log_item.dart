@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
-import '../../../theme.dart';
-import '../../../utils/context_text_extension.dart';
-import '../../../widgets/custom_card.dart';
-import 'attendance_status_theme.dart';
+import 'history_log_blocks.dart';
 import 'history_log_item_details.dart';
 
 /// Card list item representing a single daily log record in the list view.
@@ -16,61 +13,23 @@ class HistoryLogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
+    return Card(
       margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildDateBlock(context),
-          const SizedBox(width: 12),
-          Expanded(child: HistoryLogItemDetails(log: log)),
-          const SizedBox(width: 12),
-          _buildTimeBlock(context),
-        ],
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HistoryLogDateBlock(log: log),
+            const SizedBox(width: 12),
+            Expanded(child: HistoryLogItemDetails(log: log)),
+            const SizedBox(width: 12),
+            HistoryLogTimeBlock(log: log),
+          ],
+        ),
       ),
-    );
-  }
-
-  Widget _buildDateBlock(BuildContext context) {
-    final statusTheme = AttendanceStatusTheme.resolve(log.status);
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(color: statusTheme.bg, borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('${log.day}', style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(16), fontWeight: FontWeight.bold)),
-          Text(log.dayName, style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(9), fontWeight: FontWeight.bold)),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTimeBlock(BuildContext context) {
-    final timeStr = log.checkInTime != null
-        ? '${log.checkInTime} – ${log.checkOutTime ?? "now"}'
-        : '—';
-    final durationStr = log.hours ?? (log.status == 'On Leave' ? 'Casual leave' : '');
-    final isOngoing = log.hours == 'Ongoing';
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(timeStr, style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark)),
-        if (durationStr.isNotEmpty) ...[
-          const SizedBox(height: 4),
-          Text(
-            durationStr,
-            style: TextStyle(
-              fontSize: context.scaleFont(10),
-              color: isOngoing ? AppColors.success : AppColors.textMuted,
-              fontWeight: isOngoing ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-        ],
-      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_filter_criteria.dart';
-import '../../../theme.dart';
+import '../../../theme/app_colors.dart';
+import 'filter_date_chip.dart';
 import 'tasks_filter_custom_date_inputs.dart';
 
 /// Selection widget for Date Ranges inside the filter bottom sheet.
@@ -41,7 +42,11 @@ class TasksFilterDateSelector extends StatelessWidget {
           runSpacing: 8,
           children: DateRangeType.values
               .where((r) => r != DateRangeType.none)
-              .map((range) => _buildChip(range, selectedRange == range))
+              .map((range) => FilterDateChip(
+                range: range,
+                isSelected: selectedRange == range,
+                onTap: () => onRangeChanged(range),
+              ))
               .toList(),
         ),
         if (active) ...[
@@ -53,42 +58,6 @@ class TasksFilterDateSelector extends StatelessWidget {
           ),
         ],
       ],
-    );
-  }
-
-  Widget _buildChip(DateRangeType range, bool isSel) {
-    final color = isSel ? AppColors.warningText : AppColors.slate300;
-    return GestureDetector(
-      onTap: () => onRangeChanged(range),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: isSel ? AppColors.warningTextBackground : Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: color, width: isSel ? 1.5 : 1),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (range == DateRangeType.custom) ...[
-              Icon(
-                Icons.calendar_today_outlined,
-                size: 14,
-                color: isSel ? AppColors.warningText : AppColors.textMuted,
-              ),
-              const SizedBox(width: 6),
-            ],
-            Text(
-              range.label,
-              style: TextStyle(
-                color: isSel ? AppColors.warningText : AppColors.textMuted,
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
