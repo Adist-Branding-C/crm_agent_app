@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../bloc/call_log/call_log_bloc.dart';
 import '../bloc/leads/leads_models.dart';
 import '../theme.dart';
@@ -31,17 +32,17 @@ class CallActionsBottomSheetBody extends StatelessWidget {
           CallActionItem(
             icon: Icons.call_rounded, title: 'Call now', subtitle: lead.phone,
             iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
-            onTap: () { Navigator.pop(context); context.read<CallLogBloc>().add(LaunchDialer(lead: lead)); },
+            onTap: () { context.pop(); context.read<CallLogBloc>().add(LaunchDialer(lead: lead)); },
           ),
           CallActionItem(
             icon: Icons.chat_bubble_outline_rounded, title: 'WhatsApp', subtitle: 'Choose template',
             iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
-            onTap: () { Navigator.pop(context); WhatsAppBottomSheet.show(context, lead: lead); },
+            onTap: () { context.pop(); WhatsAppBottomSheet.show(context, lead: lead); },
           ),
           CallActionItem(
             icon: Icons.sms_outlined, title: 'Send SMS', subtitle: lead.phone,
             iconColor: AppColors.info, iconBgColor: AppColors.infoBackground,
-            onTap: () { Navigator.pop(context); smsService.launchSms(lead.phone); },
+            onTap: () { context.pop(); smsService.launchSms(lead.phone); },
           ),
           CallActionItem(
             icon: Icons.file_copy_outlined, title: 'Copy number', subtitle: lead.phone,
@@ -55,7 +56,7 @@ class CallActionsBottomSheetBody extends StatelessWidget {
   }
 
   Future<void> _handleCopy(BuildContext context) async {
-    Navigator.pop(context);
+    context.pop();
     await Clipboard.setData(ClipboardData(text: lead.phone));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

@@ -10,7 +10,7 @@ Widget createTestApp() {
   final dataSource = AuthDataSourceImpl();
   final repo = SessionRepositoryImpl(authDataSource: dataSource);
   repo.init();
-  return MyApp(sessionRepository: repo, authDataSource: dataSource, scaleText: false);
+  return MyApp(sessionRepository: repo, scaleText: false);
 }
 
 Future<void> signInMockUser(WidgetTester tester) async {

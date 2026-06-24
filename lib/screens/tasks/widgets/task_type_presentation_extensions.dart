@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../bloc/tasks/task_type.dart';
+import '../../../data/models/task_models.dart';
 import '../../../theme/app_colors.dart';
 
 /// Extension on [TaskType] to provide UI/theme configurations in the presentation layer.

@@ -1,5 +1,5 @@
 import 'dart:async';
-import '../../bloc/leads/leads_models.dart';
+import '../models/lead_models.dart';
 import '../datasources/leads_datasource.dart';
 import 'leads_repository.dart';
 

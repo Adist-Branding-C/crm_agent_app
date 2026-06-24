@@ -42,7 +42,7 @@ class TasksListView extends StatelessWidget {
                 ? const Center(
                     child: Text(
                       'No tasks found',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: AppColors.surfaceGrey),
                     ),
                   )
                 : ListView.builder(

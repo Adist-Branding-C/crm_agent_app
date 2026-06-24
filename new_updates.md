@@ -82,3 +82,19 @@ refactor: centralize all spacing into AppSpacing constants
 - Replace ~550 hardcoded spacing literals with AppSpacing.* references
   across 110+ widget files (EdgeInsets, SizedBox, Wrap spacing, etc.)
 - Clean up unnecessary duplicate theme imports
+
+refactor: centralize all spacing into AppSpacing constants
+
+Add missing constants: xxs, xs2, ten, fourteen, hundred
+Add gap helpers: gapXxs, gapXxxl, gapWXxs, gapWXxl
+Add fabBottomPadding convenience inset
+Replace ~550 hardcoded spacing literals with AppSpacing references across 110+ widget files
+Clean up unnecessary duplicate theme imports
+
+refactor(theme): split ThemeData and fix layout & dynamic theming bugs
+
+- Decomposed `lib/theme.dart` into `app_theme_light.dart` and `app_theme_dark.dart` to strictly meet the under-80-line constraint.
+- Updated `ThemeColors` BuildContext extension in `app_context_theme.dart` to fetch color values dynamically depending on theme brightness instead of using static light-theme constants.
+- Reordered state checks in `TaskDetailsScreen` to check for error states first, fixing an infinite loading spinner when `TasksError` occurs.
+- Fixed `ParentDataWidget` assertion failure in `StatsGrid` by placing `Expanded` outside the `Padding` widget inside the horizontal row.
+- Corrected string interpolation in `LeadCardDetails` by removing backslash escapes (`\$` changed to `$`), restoring correct rendering of the lead source and status labels.

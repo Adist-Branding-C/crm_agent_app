@@ -1,4 +1,4 @@
-import '../../bloc/account/account_models.dart';
+import '../models/account_models.dart';
 import 'account_repository.dart';
 
 /// Concrete implementation of [AccountRepository] returning mock data.

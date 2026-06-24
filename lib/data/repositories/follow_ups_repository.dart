@@ -1,4 +1,4 @@
-import '../../bloc/follow_ups/follow_ups_models.dart';
+import '../models/follow_up_models.dart';
 
 /// Repository interface managing Follow-ups.
 abstract class FollowUpsRepository {

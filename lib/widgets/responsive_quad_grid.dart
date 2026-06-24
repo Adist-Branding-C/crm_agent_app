@@ -9,21 +9,23 @@ class ResponsiveQuadGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCompact = ResponsiveHelper.isMobileSmall(context);
-    if (isCompact) {
-      return Column(
+    final isTablet = ResponsiveHelper.isTablet(context);
+    if (isTablet) {
+      return Row(
         children: [
-          Row(children: [Expanded(child: children[0]), AppSpacing.gapWSm, Expanded(child: children[1])]),
-          AppSpacing.gapSm,
-          Row(children: [Expanded(child: children[2]), AppSpacing.gapWSm, Expanded(child: children[3])]),
+          Expanded(child: Padding(padding: EdgeInsets.only(right: AppSpacing.xs), child: children[0])),
+          Expanded(child: Padding(padding: EdgeInsets.only(right: AppSpacing.xs), child: children[1])),
+          Expanded(child: Padding(padding: EdgeInsets.only(right: AppSpacing.xs), child: children[2])),
+          Expanded(child: children[3]),
         ],
       );
     }
-    return Row(
-      children: children.map((c) => Padding(
-        padding: const EdgeInsets.only(right: AppSpacing.sm),
-        child: Expanded(child: c),
-      )).toList(),
+    return Column(
+      children: [
+        Row(children: [Expanded(child: children[0]), SizedBox(width: AppSpacing.lg), Expanded(child: children[1])]),
+        SizedBox(height: AppSpacing.lg),
+        Row(children: [Expanded(child: children[2]), SizedBox(width: AppSpacing.lg), Expanded(child: children[3])]),
+      ],
     );
   }
 }

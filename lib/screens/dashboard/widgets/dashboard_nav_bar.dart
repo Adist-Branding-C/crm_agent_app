@@ -22,14 +22,14 @@ class DashboardNavBar extends StatelessWidget {
     final double w = MediaQuery.sizeOf(context).width;
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surfaceWhite,
         border: Border(top: BorderSide(color: AppColors.slate100, width: 1)),
       ),
       child: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surfaceWhite,
         selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.textMuted,
         selectedFontSize: AppTextScaler.scale(w, 12),

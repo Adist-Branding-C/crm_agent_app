@@ -1,4 +1,4 @@
-import '../../bloc/deals/deals_models.dart';
+import '../models/deal_models.dart';
 
 /// Repository interface managing Deals and pipelines.
 abstract class DealsRepository {

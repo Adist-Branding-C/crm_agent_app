@@ -1,4 +1,4 @@
-import '../../bloc/dashboard/dashboard_models.dart';
+import '../models/dashboard_models.dart';
 import 'dashboard_repository.dart';
 
 /// Concrete implementation of [DashboardRepository] pre-seeded with mock data.

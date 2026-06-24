@@ -64,6 +64,12 @@ class AppColors {
   static const Color infoAlpha15 = Color(0x263B82F6);
   static const Color warningAlpha15 = Color(0x26F59E0B);
 
+  // Common surface tokens
+  static const Color surfaceWhite = Color(0xFFFFFFFF);
+  static const Color surfaceGrey = Color(0xFF9E9E9E);
+  static const Color surfaceGrey200 = Color(0xFFEEEEEE);
+  static const Color transparent = Color(0x00000000);
+
   // Dark theme surface colors
   static const Color darkBackground = Color(0xFF121212);
   static const Color darkSurface = Color(0xFF1E1E1E);

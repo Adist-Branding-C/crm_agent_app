@@ -1,4 +1,4 @@
-import '../../bloc/deals/deals_models.dart';
+import '../models/deal_models.dart';
 import 'deals_repository.dart';
 
 /// Concrete implementation of [DealsRepository] pre-seeded with mock data.

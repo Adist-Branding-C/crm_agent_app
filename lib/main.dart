@@ -20,11 +20,9 @@ void main() async {
   };
 
   await SharedPreferences.getInstance();
-  final authDataSource = AuthDataSourceImpl();
-  final sessionRepo = SessionRepositoryImpl(authDataSource: authDataSource);
+  final sessionRepo = SessionRepositoryImpl(
+    authDataSource: AuthDataSourceImpl(),
+  );
   await sessionRepo.init();
-  runApp(MyApp(
-    sessionRepository: sessionRepo,
-    authDataSource: authDataSource,
-  ));
+  runApp(MyApp(sessionRepository: sessionRepo));
 }

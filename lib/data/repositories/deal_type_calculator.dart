@@ -1,5 +1,5 @@
-import '../../bloc/analytics/deal_analytics_models.dart';
-import '../../bloc/deals/deals_models.dart';
+import '../models/analytics_deal_models.dart';
+import '../models/deal_models.dart';
 
 List<DealTypeMetric> computeDealTypeMetrics(List<Deal> deals) {
   const types = ['New Admission', 'Corporate', 'Enquiry'];

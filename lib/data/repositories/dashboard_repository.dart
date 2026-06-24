@@ -1,4 +1,4 @@
-import '../../bloc/dashboard/dashboard_models.dart';
+import '../models/dashboard_models.dart';
 
 /// Repository interface managing Dashboard statistics and tasks.
 abstract class DashboardRepository {

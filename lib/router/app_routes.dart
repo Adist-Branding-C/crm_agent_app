@@ -40,6 +40,13 @@ class AppRoutes {
   static const callReportPath = '/call-report';
   static const myActivityPath = '/my-activity';
 
+  static const _authPaths = <String>{
+    loginPath, splashPath, forgotPasswordPath,
+    verifyOtpPath, newPasswordPath,
+  };
+
+  static bool isAuthRoute(String path) => _authPaths.contains(path);
+
   static const forgotPassword = 'forgotPassword';
   static const verifyOtp = 'verifyOtp';
   static const newPassword = 'newPassword';

@@ -1,4 +1,4 @@
-import '../../bloc/notifications/notifications_models.dart';
+import '../models/notification_models.dart';
 import 'notifications_repository.dart';
 
 /// Concrete implementation of [NotificationsRepository] returning mock data.

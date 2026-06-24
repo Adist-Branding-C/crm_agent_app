@@ -1,8 +1,8 @@
-import '../../bloc/analytics/analytics_models.dart';
-import '../../bloc/analytics/deal_analytics_models.dart';
-import '../../bloc/leads/leads_enums.dart';
-import '../../bloc/leads/leads_models.dart';
-import '../../bloc/deals/deals_models.dart';
+import '../models/analytics_models.dart';
+import '../models/analytics_deal_models.dart';
+import '../models/lead_enums.dart';
+import '../models/lead_models.dart';
+import '../models/deal_models.dart';
 import 'deal_type_calculator.dart';
 
 class AnalyticsCalculationHelper {

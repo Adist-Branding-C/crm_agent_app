@@ -1,4 +1,4 @@
-import '../../bloc/tasks/tasks_models.dart';
+import '../models/task_models.dart';
 import 'mock_tasks_data.dart';
 import 'tasks_repository.dart';
 

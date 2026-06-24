@@ -1,6 +1,6 @@
-import '../../bloc/analytics/analytics_models.dart';
-import '../../bloc/analytics/deal_analytics_models.dart';
-import '../../bloc/leads/leads_enums.dart';
+import '../models/analytics_models.dart';
+import '../models/analytics_deal_models.dart';
+import '../models/lead_enums.dart';
 
 /// Repository interface managing Analytics metrics.
 abstract class AnalyticsRepository {

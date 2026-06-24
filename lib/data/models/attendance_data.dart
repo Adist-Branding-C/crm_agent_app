@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../bloc/attendance/attendance_models.dart';
+import 'attendance_models.dart';
 
 class AttendanceData extends Equatable {
   final bool isCheckedIn;

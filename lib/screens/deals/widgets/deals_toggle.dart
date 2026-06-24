@@ -45,7 +45,7 @@ class DealsToggleItem extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.transparent,
+          color: isSelected ? AppColors.surfaceWhite : AppColors.transparent,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(

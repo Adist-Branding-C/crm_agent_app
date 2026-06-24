@@ -37,9 +37,7 @@ GoRouter createRouter(
         return loc == AppRoutes.splashPath ? null : AppRoutes.splashPath;
       }
       final hasToken = authRepository.isAuthenticated;
-      final isAuth = loc == AppRoutes.loginPath || loc == AppRoutes.splashPath ||
-          loc == AppRoutes.forgotPasswordPath || loc == AppRoutes.verifyOtpPath ||
-          loc == AppRoutes.newPasswordPath;
+      final isAuth = AppRoutes.isAuthRoute(loc);
       if (!hasToken && !isAuth) return AppRoutes.loginPath;
       return (hasToken && isAuth) ? AppRoutes.dashboardPath : null;
     },

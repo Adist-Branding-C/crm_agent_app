@@ -1,4 +1,4 @@
-import '../../bloc/tasks/tasks_models.dart';
+import '../models/task_models.dart';
 
 /// Repository interface managing Tasks.
 abstract class TasksRepository {

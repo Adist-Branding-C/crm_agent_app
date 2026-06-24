@@ -1,6 +1,6 @@
-import '../../bloc/analytics/analytics_models.dart';
-import '../../bloc/analytics/deal_analytics_models.dart';
-import '../../bloc/leads/leads_enums.dart';
+import '../models/analytics_models.dart';
+import '../models/analytics_deal_models.dart';
+import '../models/lead_enums.dart';
 import 'analytics_calculation_helper.dart';
 import 'analytics_repository.dart';
 import 'leads_repository.dart';

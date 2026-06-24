@@ -1,5 +1,5 @@
-import '../../bloc/leads/leads_models.dart';
-import '../../bloc/leads/mock_leads.dart';
+import '../models/lead_models.dart';
+import '../models/mock_leads.dart';
 
 /// Data source interface for fetching and adding leads.
 abstract class LeadsDataSource {

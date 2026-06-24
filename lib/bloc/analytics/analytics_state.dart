@@ -43,14 +43,6 @@ class AnalyticsLoaded extends AnalyticsState {
     this.dealsData,
   });
 
-  LeadsSummary? get leadsSummary => leadsData?.summary;
-  List<StatusMetric>? get statusMetrics => leadsData?.statusMetrics;
-  List<SourceMetric>? get sourceMetrics => leadsData?.sourceMetrics;
-  DealsSummary? get dealsSummary => dealsData?.summary;
-  List<DealStageMetric>? get dealStageMetrics => dealsData?.stageMetrics;
-  List<PipelineValueStageMetric>? get pipelineValueStageMetrics => dealsData?.pipelineMetrics;
-  List<DealTypeMetric>? get dealTypeMetrics => dealsData?.typeMetrics;
-
   @override
   List<Object?> get props => [
         activeTab, selectedPeriod, customStartDate, customEndDate,

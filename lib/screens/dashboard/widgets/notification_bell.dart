@@ -15,7 +15,7 @@ class NotificationBell extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
-            color: Colors.white,
+                  color: AppColors.surfaceWhite,
             borderRadius: BorderRadius.circular(12),
           ),
           child: const Icon(
@@ -37,7 +37,7 @@ class NotificationBell extends StatelessWidget {
               child: Text(
                 count.toString(),
                 style: TextStyle(
-                  color: Colors.white,
+            color: AppColors.surfaceWhite,
                   fontSize: context.scaleFont(9),
                   fontWeight: FontWeight.bold,
                 ),

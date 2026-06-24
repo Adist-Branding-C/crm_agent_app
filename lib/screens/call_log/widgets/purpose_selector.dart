@@ -36,7 +36,7 @@ class PurposeSelector extends StatelessWidget {
                 selected: isSel,
                 onSelected: (_) => onPurposeChanged(p),
                 selectedColor: AppColors.primaryColorLight,
-                backgroundColor: Colors.white,
+                backgroundColor: AppColors.surfaceWhite,
                 labelStyle: TextStyle(
                   color: isSel ? AppColors.primaryColor : AppColors.textMuted,
                   fontWeight: isSel ? FontWeight.w600 : FontWeight.normal,
@@ -45,7 +45,7 @@ class PurposeSelector extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                   side: BorderSide(
-                    color: isSel ? AppColors.primaryColor : Colors.grey.shade200,
+                    color: isSel ? AppColors.primaryColor : AppColors.surfaceGrey200,
                     width: isSel ? 1.5 : 1,
                   ),
                 ),

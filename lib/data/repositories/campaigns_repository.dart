@@ -1,4 +1,4 @@
-import '../../bloc/campaigns/campaigns_models.dart';
+import '../models/campaign_models.dart';
 
 /// Repository interface managing Marketing Campaigns.
 abstract class CampaignsRepository {

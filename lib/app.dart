@@ -6,20 +6,17 @@ import 'app_providers.dart';
 import 'app_bloc_providers.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/repositories/session_repository.dart';
-import 'data/datasources/auth_datasource.dart';
 import 'router.dart';
 import 'theme.dart';
 import 'widgets/app_builder.dart';
 
 class MyApp extends StatefulWidget {
   final SessionRepository sessionRepository;
-  final AuthDataSource authDataSource;
   final bool scaleText;
 
   const MyApp({
     super.key,
     required this.sessionRepository,
-    required this.authDataSource,
     this.scaleText = true,
   });
 
@@ -47,7 +44,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: buildRepositoryProviders(
-        authDataSource: widget.authDataSource,
         sessionRepository: widget.sessionRepository,
       ),
       child: ChangeNotifierProvider<AuthStateNotifier>.value(

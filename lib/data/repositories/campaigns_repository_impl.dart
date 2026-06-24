@@ -1,4 +1,4 @@
-import '../../bloc/campaigns/campaigns_models.dart';
+import '../models/campaign_models.dart';
 import 'campaigns_repository.dart';
 
 /// Concrete implementation of [CampaignsRepository] pre-seeded with mock data.

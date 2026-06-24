@@ -1,4 +1,4 @@
-import '../../bloc/attendance/attendance_models.dart';
+import '../models/attendance_models.dart';
 import '../models/attendance_data.dart';
 import '../models/attendance_history_model.dart';
 import 'attendance_repository.dart';

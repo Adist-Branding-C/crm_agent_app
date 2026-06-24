@@ -1,4 +1,4 @@
-import '../../bloc/leads/leads_models.dart';
+import '../models/lead_models.dart';
 
 /// Repository interface managing leads CRUD operations.
 abstract class LeadsRepository {

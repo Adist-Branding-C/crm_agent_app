@@ -1,5 +1,5 @@
-import '../../bloc/follow_ups/follow_ups_models.dart';
-import '../../bloc/follow_ups/mock_follow_ups.dart';
+import '../models/follow_up_models.dart';
+import '../models/mock_follow_ups.dart';
 import 'follow_ups_repository.dart';
 
 /// Concrete implementation of [FollowUpsRepository] with mock data.

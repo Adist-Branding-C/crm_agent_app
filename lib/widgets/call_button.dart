@@ -18,7 +18,7 @@ class CallButton extends StatelessWidget {
         button: true,
         label: 'Call lead',
         child: Material(
-          color: Colors.transparent,
+          color: AppColors.transparent,
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(borderRadius),
@@ -27,12 +27,12 @@ class CallButton extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.call_rounded, color: Colors.white, size: 14),
+                  Icon(Icons.call_rounded, color: AppColors.surfaceWhite, size: 14),
                   SizedBox(width: AppSpacing.xs2),
                   Text(
                     'Call',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.surfaceWhite,
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
                     ),

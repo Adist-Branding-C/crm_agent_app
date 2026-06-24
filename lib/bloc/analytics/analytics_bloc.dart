@@ -2,8 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/analytics_repository.dart';
 import '../leads/leads_enums.dart';
-import 'analytics_models.dart';
-import 'deal_analytics_models.dart';
 import 'analytics_tab_data.dart';
 
 part 'analytics_event.dart';

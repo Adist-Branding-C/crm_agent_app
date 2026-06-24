@@ -38,7 +38,7 @@ class _FilterButton extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColors.transparent,
           builder: (_) => BlocProvider.value(
             value: context.read<AnalyticsBloc>(),
             child: const AnalyticsFilterSheet(),
@@ -55,12 +55,12 @@ class _FilterButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.filter_alt_outlined, size: 16, color: Colors.white),
+            const Icon(Icons.filter_alt_outlined, size: 16, color: AppColors.surfaceWhite),
             AppSpacing.gapWSm,
             Text(
               'Filter',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Colors.white,
+                color: AppColors.surfaceWhite,
                 fontWeight: FontWeight.bold,
               ),
             ),

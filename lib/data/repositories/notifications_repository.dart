@@ -1,4 +1,4 @@
-import '../../bloc/notifications/notifications_models.dart';
+import '../models/notification_models.dart';
 
 /// Repository interface managing Notifications.
 abstract class NotificationsRepository {

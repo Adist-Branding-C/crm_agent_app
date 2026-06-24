@@ -1,4 +1,4 @@
-import '../../bloc/tasks/tasks_models.dart';
+import '../models/task_models.dart';
 
 Task _t(String id, String title, TaskType type, String time, bool done, bool overdue, TaskPriority pri, DateTime due) =>
   Task(id: id, title: title, type: type, time: time, isCompleted: done, isOverdue: overdue, priority: pri, dueDate: due);
