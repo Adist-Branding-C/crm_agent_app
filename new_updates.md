@@ -111,3 +111,17 @@ refactor: resolve architectural violations from code review
 - Eliminate duplicated responsive grids via shared ResponsiveQuadGrid
 - Replace inline Colors.white/grey literals with AppColors tokens across 7 files
 - Shrink app_theme_dark.dart below 80-line limit (extract dark input theme)
+
+
+feat: implement call log details view, edit flow, and follow-up creation bottom sheet
+
+- Created dedicated shadowless 'View Call Log' screen and sub-widgets (CallSummaryCard, LogDetailsSection, RemarkSection, ViewCallLogButtons).
+- Integrated call log timeline tiles under Enquiry Details to navigate to the new view call log screen.
+- Expanded EnquiryActivity model to include detailed call properties (status, duration, lead status, purpose, remark, date, time).
+- Refactored CallLogScreen and CallLogView to support editing call logs, pre-populating inputs, and saving changes in-place.
+- Split CallLogBloc handlers to ensure all files remain strictly under the 80-line limit.
+- Implemented 'Create Follow-up' modal bottom sheet mimicking the task creation sheet layout.
+- Added input fields to capture follow-up details (date-time picker, priority tag selector).
+- Updated DashboardRepository with a broadcast stream and DashboardBloc to reactively update the dashboard calls list when follow-ups are added.
+- Integrated follow-up creation into both DashboardRepository and FollowUpsRepository, ensuring items appear on the dashboard and global follow-ups list.
+- Updated mock repositories in tests and fixed BuildContext async gap warnings.

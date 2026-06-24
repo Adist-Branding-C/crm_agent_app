@@ -35,7 +35,7 @@ class _AddFollowUpFormState extends State<AddFollowUpForm> {
     final dashRepo = context.read<DashboardRepository>();
     final followUpRepo = context.read<FollowUpsRepository>();
     setState(() => _isSubmitting = true);
-    final fc = FollowUpCall(tag: _selectedTag, name: 'Call back ${widget.lead.name}', time: _whenController.text);
+    final fc = FollowUpCall(id: widget.lead.id, tag: _selectedTag, name: 'Call back ${widget.lead.name}', time: _whenController.text);
     final f = FollowUp(
       id: DateTime.now().toString(), name: widget.lead.name, category: widget.lead.source, status: widget.lead.status,
       urgency: _selectedTag == FollowUpTag.priority ? FollowUpUrgency.dueToday : FollowUpUrgency.upcoming,

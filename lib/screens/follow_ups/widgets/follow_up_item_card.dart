@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
+import '../../../router/app_routes.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
@@ -41,15 +43,15 @@ class FollowUpItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: onCardTap,
-                    child: Text(
-                      call.name,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
+                  onTap: onCardTap ?? () => context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': call.id}),
+                  child: Text(
+                    call.name,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 AppSpacing.gapXs,
                 Text(
-                  '${call.category} · ${call.status}',
+                  '${call.category.label} · ${call.status.label}',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],

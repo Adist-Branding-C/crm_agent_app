@@ -28,7 +28,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Tap on Rahul Menon to navigate to Enquiry Details screen
-      await tester.tap(find.text('Call back Rahul Menon'));
+      await tester.tap(find.text('Rahul Menon'));
       await tester.pumpAndSettle();
 
       await tester.pump(const Duration(milliseconds: 600));

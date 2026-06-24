@@ -3,17 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
 import '../../../bloc/call_log/call_log_bloc.dart';
-import '../../../bloc/leads/leads_models.dart';
-import '../../../data/repositories/leads_repository.dart';
 import '../../../router/app_routes.dart';
 import '../../../theme.dart';
 import '../../../widgets/call_button.dart';
 
-/// Renders a single row in the follow-up calls list.
 class FollowUpCard extends StatelessWidget {
   final FollowUpCall call;
 
-  /// Creates a constant [FollowUpCard].
   const FollowUpCard({super.key, required this.call});
 
   @override
@@ -21,6 +17,7 @@ class FollowUpCard extends StatelessWidget {
     final isPriority = call.tag == FollowUpTag.priority;
     final tagBg = isPriority ? AppColors.primaryColorLight : AppColors.warningBackground;
     final tagText = isPriority ? AppColors.primaryColor : AppColors.warning;
+    final displayName = call.name.replaceAll('Call back ', '').trim();
 
     return Padding(
       padding: EdgeInsets.all(AppSpacing.lg),
@@ -31,22 +28,27 @@ class FollowUpCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
-                  decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(6)),
-                  child: Text(call.tag.label, style: TextStyle(color: tagText, fontSize: 11, fontWeight: FontWeight.bold)),
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+                      decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(6)),
+                      child: Text(call.tag.label, style: TextStyle(color: tagText, fontSize: 11, fontWeight: FontWeight.bold)),
+                    ),
+                    if (call.isOverdue) ...[
+                      SizedBox(width: 6),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+                        decoration: BoxDecoration(color: AppColors.errorBackground, borderRadius: BorderRadius.circular(6)),
+                        child: Text('Overdue', style: TextStyle(color: AppColors.errorColor, fontSize: 11, fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ],
                 ),
                 AppSpacing.gapSm,
                 GestureDetector(
-                  onTap: () async {
-                    final clean = call.name.replaceAll('Call back ', '').trim().toLowerCase();
-                    final leads = await context.read<LeadsRepository>().getLeads();
-                    final match = leads.cast<Lead?>().firstWhere((l) => l?.name.toLowerCase() == clean, orElse: () => null);
-                    if (match != null && context.mounted) {
-                      context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': match.id});
-                    }
-                  },
-                  child: Text(call.name, style: Theme.of(context).textTheme.titleMedium),
+                  onTap: () => context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': call.id}),
+                  child: Text(displayName, style: Theme.of(context).textTheme.titleMedium),
                 ),
                 AppSpacing.gapXs,
                 Text(call.time, style: Theme.of(context).textTheme.bodySmall),
@@ -55,7 +57,7 @@ class FollowUpCard extends StatelessWidget {
           ),
           AppSpacing.gapWSm,
           CallButton(
-            onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: call.name)),
+            onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: displayName)),
           ),
         ],
       ),

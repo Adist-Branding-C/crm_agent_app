@@ -13,7 +13,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // 2. Navigate to Enquiry Details for Rahul Menon
-      await tester.tap(find.text('Call back Rahul Menon'));
+      await tester.tap(find.text('Rahul Menon'));
       await tester.pumpAndSettle();
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pumpAndSettle();

@@ -8,19 +8,26 @@ class DashboardRepositoryImpl implements DashboardRepository {
 
   final List<FollowUpCall> _followUps = [
     const FollowUpCall(
+      id: '1',
       tag: FollowUpTag.priority,
       name: 'Call back Rahul Menon',
       time: 'Today, 4:00 PM',
+      description: 'Follow up on admission inquiry',
+      isOverdue: true,
     ),
     const FollowUpCall(
+      id: '2',
       tag: FollowUpTag.followUp,
       name: 'Call back Sneha Pillai',
       time: 'Today, 5:30 PM',
+      description: 'Share course details',
     ),
     const FollowUpCall(
+      id: '3',
       tag: FollowUpTag.priority,
       name: 'Call back Aravind Krishnan',
       time: 'Today, 6:00 PM',
+      description: 'Confirm demo slot',
     ),
   ];
 

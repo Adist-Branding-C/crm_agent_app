@@ -1,5 +1,7 @@
 import '../models/lead_models.dart';
 import '../models/mock_leads.dart';
+import '../models/mock_follow_ups.dart';
+import '../models/lead_enums.dart';
 
 /// Data source interface for fetching and adding leads.
 abstract class LeadsDataSource {
@@ -38,7 +40,21 @@ class LeadsDataSourceImpl implements LeadsDataSource {
     try {
       return _leads.firstWhere((lead) => lead.id == id);
     } catch (_) {
-      return null;
+      try {
+        final f = mockFollowUps.firstWhere((followUp) => followUp.id == id);
+        return Lead(
+          id: f.id,
+          name: f.name,
+          status: f.status,
+          source: f.category,
+          category: LeadCategory.warm,
+          phone: '9876543210',
+          location: 'Kochi',
+          leadSource: LeadSource.website,
+        );
+      } catch (_) {
+        return null;
+      }
     }
   }
 

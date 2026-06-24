@@ -10,14 +10,24 @@ enum FollowUpTag {
 }
 
 class FollowUpCall extends Equatable {
+  final String id;
   final FollowUpTag tag;
   final String name;
   final String time;
+  final String description;
+  final bool isOverdue;
 
-  const FollowUpCall({required this.tag, required this.name, required this.time});
+  const FollowUpCall({
+    required this.id,
+    required this.tag,
+    required this.name,
+    required this.time,
+    this.description = '',
+    this.isOverdue = false,
+  });
 
   @override
-  List<Object?> get props => [tag, name, time];
+  List<Object?> get props => [id, tag, name, time, description, isOverdue];
 }
 
 class DashboardStats extends Equatable {
