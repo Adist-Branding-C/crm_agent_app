@@ -2,8 +2,7 @@
 
 Here is a summary of the features, improvements, and refactoring changes recently brought into the project.
 
-### 🎥 Video Demonstration
-* [Watch the Walkthrough Video](https://drive.google.com/file/d/1KPKHWem_5gPCJgHcNCHGBVIOjEXeCL7j/view?usp=sharing)
+
 
 ### ✨ Features Implemented
 
