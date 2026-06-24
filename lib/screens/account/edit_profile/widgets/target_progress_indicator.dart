@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../theme.dart';
+import '../../../../utils/currency_formatter.dart';
 
 /// A progress indicator widget showing monthly target metrics.
 class TargetProgressIndicator extends StatelessWidget {
@@ -11,14 +12,6 @@ class TargetProgressIndicator extends StatelessWidget {
     required this.achieved,
     required this.target,
   });
-
-  String _formatToLakhs(num value) {
-    final lakhs = value / 100000;
-    if (lakhs == lakhs.toInt()) {
-      return '₹${lakhs.toInt()}L';
-    }
-    return '₹${lakhs.toStringAsFixed(2)}L';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +25,7 @@ class TargetProgressIndicator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Achieved ${_formatToLakhs(achieved)} of ${_formatToLakhs(target)}',
+              'Achieved ${achieved.toDouble().toRupeeFormat()} of ${target.toDouble().toRupeeFormat()}',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
             ),
             Text(
@@ -58,3 +51,4 @@ class TargetProgressIndicator extends StatelessWidget {
     );
   }
 }
+

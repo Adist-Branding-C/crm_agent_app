@@ -6,6 +6,10 @@ extension CurrencyFormatter on double {
   /// Other values are formatted as thousands (e.g., ₹50K).
   String toCurrencyFormat({String symbol = '₹', bool useIndianNotation = true}) {
     if (useIndianNotation && this >= 100000) {
+      final lakhs = this / 100000;
+      if (lakhs == lakhs.toInt()) {
+        return '$symbol${lakhs.toInt()}L';
+      }
       return '$symbol${(this / 100000).toStringAsFixed(2)}L';
     }
     return '$symbol${(this / 1000).toStringAsFixed(0)}K';

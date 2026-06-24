@@ -42,7 +42,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Password updated successfully!')),
             );
-            context.go(AppRoutes.loginPath);
+            context.goNamed(AppRoutes.login);
           }
         },
         child: Scaffold(

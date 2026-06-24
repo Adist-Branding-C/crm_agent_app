@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
+  // Brand Colors
   static const Color primaryColor = Color(0xFFE53935);
   static const Color primaryColorLight = Color(0xFFFEE2E2);
   static const Color backgroundColor = Color(0xFFF7F8FA);
@@ -13,7 +14,7 @@ class AppColors {
   static const Color errorColor = Color(0xFFEF4444);
   static const Color errorBackground = Color(0xFFFEF2F2);
 
-  // Semantic/Utility Colors
+  // Semantic & Utility Colors
   static const Color success = Color(0xFF10B981);
   static const Color successBackground = Color(0xFFECFDF5);
   static const Color successIconBg = Color(0xFF104A41);
@@ -58,19 +59,17 @@ class AppColors {
   static const Color greyAlpha8 = Color(0x149E9E9E);
   static const Color borderLightAlpha50 = Color(0x80E2E8F0);
 
-  // Pre-computed 15% alpha for semantic colors (used in stat_item, etc.)
+  // Pre-computed 15% alpha for semantic colors
   static const Color successAlpha15 = Color(0x2610B981);
   static const Color accentAlpha15 = Color(0x268B5CF6);
   static const Color infoAlpha15 = Color(0x263B82F6);
   static const Color warningAlpha15 = Color(0x26F59E0B);
 
-  // Common surface tokens
+  // Common surface tokens & Dark theme surface colors
   static const Color surfaceWhite = Color(0xFFFFFFFF);
   static const Color surfaceGrey = Color(0xFF9E9E9E);
   static const Color surfaceGrey200 = Color(0xFFEEEEEE);
   static const Color transparent = Color(0x00000000);
-
-  // Dark theme surface colors
   static const Color darkBackground = Color(0xFF121212);
   static const Color darkSurface = Color(0xFF1E1E1E);
   static const Color darkCard = Color(0xFF2C2C2C);

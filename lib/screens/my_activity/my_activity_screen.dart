@@ -1,70 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../theme.dart';
 import '../../bloc/my_activity/my_activity_bloc.dart';
-import '../../data/models/my_activity/my_activity_enums.dart';
 import '../../data/repositories/leads_repository.dart';
 import '../../data/repositories/my_activity_repository.dart';
-import '../../widgets/page_scaffold.dart';
-import 'widgets/my_activity_header.dart';
-import 'widgets/my_activity_time_filters.dart';
-import 'widgets/my_activity_type_filters.dart';
-import 'widgets/my_activity_lead_selector.dart';
-import 'widgets/my_activity_list.dart';
-import 'widgets/lead_filter_sheet.dart';
+import 'widgets/my_activity_body.dart';
 
 class MyActivityScreen extends StatelessWidget {
   const MyActivityScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final activityRepo = context.read<MyActivityRepository>();
     final leadsRepo = context.read<LeadsRepository>();
     return BlocProvider(
       create: (_) => MyActivityBloc(repository: activityRepo, leadsRepository: leadsRepo)..add(const LoadMyActivity()),
-      child: const _MyActivityBody(),
+      child: const MyActivityBody(),
     );
   }
 }
 
-class _MyActivityBody extends StatelessWidget {
-  const _MyActivityBody();
 
-  void _openLeadSheet(BuildContext ctx, MyActivityLoaded? state) {
-    showModalBottomSheet<void>(
-      context: ctx, isScrollControlled: true, backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
-      builder: (_) => LeadFilterSheet(
-        selectedLead: state?.selectedLead ?? 'All leads',
-        availableLeads: state?.availableLeads ?? [],
-        onSelected: (name) { Navigator.pop(ctx); if (name != null) ctx.read<MyActivityBloc>().add(LeadFilterChanged(name)); },
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) => PageScaffold(
-    padding: EdgeInsets.zero,
-    child: BlocBuilder<MyActivityBloc, MyActivityState>(
-      builder: (context, state) {
-        final loaded = state is MyActivityLoaded ? state : null;
-        return Column(children: [
-          const MyActivityHeader(),
-          AppSpacing.gapXs,
-          MyActivityTimeFilters(selected: loaded?.selectedTimeFilter ?? ActivityTimeFilter.all,
-            onSelected: (f) => context.read<MyActivityBloc>().add(TimeFilterChanged(f))),
-          AppSpacing.gapMd,
-          MyActivityTypeFilters(selected: loaded?.selectedTypeFilter ?? ActivityTypeFilter.all,
-            onSelected: (label) {
-              final t = ActivityTypeFilter.values.firstWhere((e) => e.label == label);
-              context.read<MyActivityBloc>().add(TypeFilterChanged(t));
-            }),
-          AppSpacing.gapMd,
-          MyActivityLeadSelector(selectedLead: loaded?.selectedLead ?? 'All leads',
-            onTap: () => _openLeadSheet(context, loaded)),
-          AppSpacing.gapSm,
-          const MyActivityList(),
-        ]);
-      },
-    ),
-  );
-}

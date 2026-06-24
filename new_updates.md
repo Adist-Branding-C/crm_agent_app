@@ -125,3 +125,13 @@ feat: implement call log details view, edit flow, and follow-up creation bottom 
 - Updated DashboardRepository with a broadcast stream and DashboardBloc to reactively update the dashboard calls list when follow-ups are added.
 - Integrated follow-up creation into both DashboardRepository and FollowUpsRepository, ensuring items appear on the dashboard and global follow-ups list.
 - Updated mock repositories in tests and fixed BuildContext async gap warnings.
+
+fix: align follow-up IDs and clean description layout
+
+- Removed the description subtitle and unnecessary vertical padding from the dashboard's follow-up cards.
+- Corrected the follow-up data model IDs in `mock_follow_ups` to match their actual corresponding `Lead` IDs.
+- Assigned unique IDs (11, 12, 13) to follow-up entries not present in `mockLeads` and updated `LeadsDataSourceImpl.getLeadById` to fallback to `mockFollowUps` and dynamically construct a `Lead` object.
+- Replaced raw enum strings (e.g. `LeadPurpose.enquiry` and `LeadStatus.followUp`) with user-friendly `.label` values on the View All Follow-ups card screen.
+- Configured default onCardTap navigation in `FollowUpItemCard` to push details page route with the correct `call.id`.
+- Updated test finders and count assertions to conform to the layout improvements and ID structures.
+- created view call log page
