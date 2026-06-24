@@ -10,7 +10,6 @@ class AttendanceHeader extends StatelessWidget {
       title: 'Daily Activity',
       subtitle: 'Tuesday, 12 May',
       showBackButton: true,
-      padding: EdgeInsets.zero,
     );
   }
 }

@@ -28,9 +28,6 @@ class WhatsAppTemplateCard extends StatelessWidget {
             color: isSelected ? AppColors.success : AppColors.borderLight,
             width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected
-              ? [BoxShadow(color: AppColors.success.withValues(alpha: 0.08), blurRadius: 8, offset: Offset(0, 2))]
-              : AppTheme.cardShadow,
         ),
         child: Stack(
           children: [

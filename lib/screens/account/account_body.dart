@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/account/account_bloc.dart';
+import '../../theme.dart';
+import '../../widgets/app_loading_widget.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_card.dart';
 import 'account_content.dart';
 
 class AccountBody extends StatelessWidget {
@@ -11,7 +15,7 @@ class AccountBody extends StatelessWidget {
     return BlocBuilder<AccountBloc, AccountState>(
       builder: (context, state) {
         if (state is AccountInitial || state is AccountLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const AppLoadingWidget();
         }
         if (state is AccountError) {
           return _ErrorView(state: state);
@@ -37,16 +41,25 @@ class _ErrorView extends StatelessWidget {
       AccountFailure.unknown => 'An error occurred.',
     };
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(msg),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () => context.read<AccountBloc>().add(const LoadAccount()),
-            child: const Text('Retry'),
-          ),
-        ],
+      child: CustomCard(
+        padding: EdgeInsets.all(AppSpacing.xxl),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.error_outline_rounded, color: AppColors.errorColor, size: 48),
+            AppSpacing.gapLg,
+            Text(msg, style: Theme.of(context).textTheme.titleMedium, textAlign: TextAlign.center),
+            AppSpacing.gapXxl,
+            SizedBox(
+              width: 140,
+              child: CustomButton(
+                text: 'Retry',
+                onPressed: () => context.read<AccountBloc>().add(const LoadAccount()),
+                icon: Icons.refresh_rounded,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

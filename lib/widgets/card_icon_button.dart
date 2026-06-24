@@ -42,20 +42,23 @@ class CardIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: backgroundColor ?? Colors.white,
-          borderRadius: BorderRadius.circular(borderRadius),
-          boxShadow: shadow ?? AppTheme.cardShadow,
-        ),
-        child: Icon(
-          icon,
-          color: iconColor ?? AppColors.textDark,
-          size: iconSize,
+    return Semantics(
+      button: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: backgroundColor ?? Colors.white,
+            borderRadius: BorderRadius.circular(borderRadius),
+            boxShadow: shadow ?? AppTheme.cardShadow,
+          ),
+          child: Icon(
+            icon,
+            color: iconColor ?? AppColors.textDark,
+            size: iconSize,
+          ),
         ),
       ),
     );

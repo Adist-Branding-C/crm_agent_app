@@ -15,7 +15,7 @@ class LogoutButton extends StatelessWidget {
       children: [
         CustomCard(
           onTap: onTap,
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -31,7 +31,7 @@ class LogoutButton extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         Text(
           'CRM Agent · v1.0.0',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(

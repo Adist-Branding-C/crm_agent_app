@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../bloc/forgot_password/forgot_password_bloc.dart';
 import '../../data/repositories/otp_repository.dart';
 import '../../router/app_routes.dart';
+import '../../widgets/page_scaffold.dart';
 import 'widgets/forgot_password_body.dart';
 
 /// Screen container for the Forgot Password flow.
@@ -36,8 +37,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             context.pushNamed(AppRoutes.verifyOtp, extra: state.phone.value);
           }
         },
-        child: Scaffold(
-          body: ForgotPasswordBody(
+        child: PageScaffold(
+          child: ForgotPasswordBody(
             phoneController: _phoneController,
           ),
         ),

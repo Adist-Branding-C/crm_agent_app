@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
+import '../../../../theme.dart';
 import 'deal_list_card.dart';
 
 /// Renders the Deals list view scrollable vertically.
@@ -12,7 +13,7 @@ class DealsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: AppSpacing.screenPadding,
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: deals.length,

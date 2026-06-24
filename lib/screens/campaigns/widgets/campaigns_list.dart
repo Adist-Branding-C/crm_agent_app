@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
+import '../../../theme.dart';
 import 'campaign_card.dart';
 
 /// A scrollable list of Campaign Cards.
@@ -12,7 +13,7 @@ class CampaignsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+      padding: EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxl),
       physics: const BouncingScrollPhysics(),
       itemCount: campaigns.length,
       separatorBuilder: (context, index) => const SizedBox(height: 16),

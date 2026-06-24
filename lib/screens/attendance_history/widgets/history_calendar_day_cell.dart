@@ -50,7 +50,7 @@ class HistoryCalendarDayCell extends StatelessWidget {
           color: bg,
           borderRadius: BorderRadius.circular(8),
           border: isSelected
-              ? Border.all(color: Colors.black, width: 1.5)
+              ? Border.all(color: AppColors.primaryColor, width: 1.5)
               : null,
         ),
         child: Column(

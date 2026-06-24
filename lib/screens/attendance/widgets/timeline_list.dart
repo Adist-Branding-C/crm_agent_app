@@ -23,10 +23,10 @@ class TimelineList extends StatelessWidget {
             color: AppColors.textDark,
           ),
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         if (items.isEmpty)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
+            padding: EdgeInsets.symmetric(vertical: AppSpacing.xxl),
             child: Center(
               child: Text(
                 'No activities logged today.',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/responsive_width_container.dart';
 import '../../../widgets/screen_header.dart';
@@ -26,8 +27,7 @@ class ChangePasswordBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const ScreenHeader(
@@ -37,27 +37,26 @@ class ChangePasswordBody extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: ResponsiveWidthContainer(
                 maxWidth: 480,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const ChangePasswordHeader(),
-                    const SizedBox(height: 12),
+                    AppSpacing.gapMd,
                     CustomCard(
-                      padding: const EdgeInsets.all(16),
+                      padding: AppSpacing.cardPadding,
                       child: Column(
                         children: [
                           CurrentPasswordInput(controller: currentController),
-                          const SizedBox(height: 12),
+                          AppSpacing.gapMd,
                           NewPasswordInput(controller: newController),
-                          const SizedBox(height: 12),
+                          AppSpacing.gapMd,
                           ConfirmPasswordInput(controller: confirmController),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    AppSpacing.gapLg,
                     ChangePasswordSubmitBar(onCancel: onCancel, onSubmit: onSubmit),
                   ],
                 ),
@@ -65,7 +64,6 @@ class ChangePasswordBody extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 }

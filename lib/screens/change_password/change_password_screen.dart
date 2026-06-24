@@ -4,6 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import '../../bloc/change_password/change_password_bloc.dart';
 import '../../data/repositories/password_repository.dart';
+import '../../widgets/page_scaffold.dart';
 import 'widgets/change_password_body.dart';
 
 /// Entry page/screen for the Change Password feature.
@@ -48,8 +49,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             );
           }
         },
-        child: Scaffold(
-          body: Builder(
+        child: PageScaffold(
+          child: Builder(
             builder: (context) => ChangePasswordBody(
               currentController: _currentController,
               newController: _newController,

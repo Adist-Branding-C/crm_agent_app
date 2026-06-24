@@ -18,14 +18,6 @@ class SplashContent extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppTheme.primaryColor,
             borderRadius: BorderRadius.circular(24),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primaryAlpha30,
-                blurRadius: 24,
-                offset: const Offset(0, 8),
-                spreadRadius: 2,
-              ),
-            ],
           ),
           child: const Icon(
             Icons.people_rounded,

@@ -23,7 +23,7 @@ class DealsStats extends StatelessWidget {
     });
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
       child: Row(
         children: [
           Expanded(

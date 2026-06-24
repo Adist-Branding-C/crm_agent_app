@@ -39,15 +39,6 @@ class FilterSortBy extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSel ? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
-                  boxShadow: isSel
-                      ? [
-                          const BoxShadow(
-                            color: AppColors.barrierColor,
-                            blurRadius: 4,
-                            offset: Offset(0, 2),
-                          ),
-                        ]
-                      : null,
                 ),
                 child: Text(
                   opt.label,

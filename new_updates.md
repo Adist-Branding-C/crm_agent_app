@@ -1,42 +1,33 @@
-﻿feat(tasks): implement task filtering on Tasks screen
-view : https://drive.google.com/file/d/1lhKkNWGo7PZ27JXittTUxo2tIJHT0gTM/view?usp=sharing
+﻿feat: comprehensive UI/UX design system overhaul
 
-- Add filter button next to the plus button in TasksHeader.
-- Implement filter modal bottom sheet displaying choices for:
-  - Task Type (multi-select choice chips)
-  - Date Range (Today, Tomorrow, Last Week, and Custom date pickers)
-  - Priority selectors with ColoredDot indicators (High, Medium, Low)
-- Introduce a 'dueDate' DateTime field to the Task model to enable precise date range filtering.
-- Update repository mock data to instantiate tasks with valid DateTime objects.
-- Decompose UI widgets into small sub-components to strictly respect the 80-line file length limit.
+- Complete AppTextTheme with all 15 Material text style slots
+  (added displayMedium, headlineLarge, headlineSmall, titleLarge,
+  titleSmall, bodySmall, labelMedium, labelSmall)
+- Add AppSpacing constants class with standardized spacing scale
+  and EdgeInsets presets (xs=4 through massive=60)
+- Add dark mode support (AppTheme.darkTheme) with full dark palette
+- Add SnackBarTheme (floating, branded) to both light and dark themes
+- Wire darkTheme + themeMode into MaterialApp.router
 
-feat(theme): implement responsive text sizing across all screens
+Unify card padding across all list-item cards to AppSpacing constants
+(lead_card, task_card, task_row, follow_up_card, follow_up_item_card,
+notification_item_widget, deal_list_card, profile_card,
+checked_in_card_body, checked_out_card_body)
 
-Add width-proportional text scaling infrastructure and migrate all
-hardcoded TextStyle(fontSize:) to theme-driven responsive sizes.
+Fix visual/style bugs:
+- DonutChart: displayLarge(32px) → headlineSmall(20px) to prevent overflow
+- ScreenHeader: titleLarge(undefined) → headlineSmall(now defined)
+- MetricCardVertical: headlineMedium(24px) → titleLarge(18px) for proportion
+- CustomButton: hardcoded styleFrom → consume elevatedButtonTheme
+- StatItem: runtime withValues(alpha:) → pre-computed alpha constants
+- SelectionChip/FilterChipBar: direct scaleFont → theme-aware fontSize
+- DashboardHeader: remove corrupted duplicate Text widgets
 
-Infrastructure:
-  - Create AppTextScaler utility (referenceWidth=375, clamp 0.8-1.2)
-  - Create ScaledText extension on BuildContext for context.scaleFont()
-  - Add scaledTextTheme(context) to AppTextTheme with 6 scaled styles
-  - Add scaled variants for button, input, and appBar themes
-  - Add scaledLightTheme(context) to AppTheme assembling all sub-themes
-  - Apply scaled theme in MaterialApp.router builder via Theme widget
-  - Add scaleText flag to MyApp for test opt-out
+Remove redundant copyWith overrides: 10+ widgets now use theme styles
+directly instead of re-declaring colors/weights already in the theme.
 
-Migration (~80 files):
-  - Replace all hardcoded fontSize: values in shared widgets (17 files)
-  - Replace all hardcoded fontSize: in feature widgets (23 screens, ~60 files)
-  - Remove fontSize overrides from Theme.of(context).copyWith() calls
-  - Fix Row overflow in DealPipelineStageHeader with Flexible widget
+Add reusable EmptyStateWidget with icon, title, subtitle, and action.
 
-Testing:
-  - Fix test helper to pass scaleText: false to prevent off-screen issues
-  - All 42 tests pass, flutter analyze clean
-  - No file exceeds 80-line limit
+Clean up imports: remove unused directives, fix duplicate imports,
+reorder per convention.
 
-  fix(attendance): resolve ProviderNotFoundException for AttendanceBloc
-
-- Register AttendanceBloc globally in buildBlocProviders so it is available to the DashboardHeader.
-- Remove duplicate local BlocProvider from AttendanceScreen to inherit the global bloc context.
-- Trigger LoadAttendance immediately on startup to initialize status indicators.

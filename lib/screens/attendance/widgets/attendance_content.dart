@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/attendance/attendance_bloc.dart';
+import '../../../theme.dart';
 import '../../../utils/responsive_helper.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../../widgets/app_loading_widget.dart';
@@ -38,7 +39,7 @@ class AttendanceContent extends StatelessWidget {
               checkInTime: state.checkInTime,
               location: state.location,
             ),
-            const SizedBox(height: 20),
+            AppSpacing.gapXl,
             StatsRow(
               callsCount: state.callsCount,
               visitsCount: state.visitsCount,
@@ -61,7 +62,7 @@ class AttendanceContent extends StatelessWidget {
           return Column(
             children: [
               ...leftCol,
-              const SizedBox(height: 24),
+              AppSpacing.gapXxl,
               TimelineList(items: state.timeline),
             ],
           );

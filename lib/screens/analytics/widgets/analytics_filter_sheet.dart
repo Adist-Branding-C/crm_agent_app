@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../widgets/bottom_sheet_handle.dart';
 import 'filter_action_buttons.dart';
 import 'analytics_filter_sections.dart';
@@ -46,7 +46,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
-      padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+      padding: EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxl),
       child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
         const Center(child: BottomSheetHandle()),
         const SizedBox(height: 16),
@@ -70,5 +70,5 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 class _FilterTitle extends StatelessWidget {
   const _FilterTitle();
   @override
-  Widget build(BuildContext context) => Text('Filter analytics', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold));
+  Widget build(BuildContext context) => Text('Filter analytics', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold));
 }

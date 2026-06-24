@@ -23,16 +23,21 @@ class SelectionChip extends StatelessWidget {
       fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
     );
 
-    return GestureDetector(
-      onTap: () => onSelected(option),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.primaryColorLight : Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: color, width: isSelected ? 1.5 : 1),
+    return Semantics(
+      button: true,
+      label: option,
+      selected: isSelected,
+      child: GestureDetector(
+        onTap: () => onSelected(option),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: isSelected ? AppColors.primaryColorLight : Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: color, width: isSelected ? 1.5 : 1),
+          ),
+          child: Text(option, style: textStyle),
         ),
-        child: Text(option, style: textStyle),
       ),
     );
   }

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/tasks/tasks_bloc.dart';
 import '../../bloc/tasks/tasks_models.dart';
+import '../../theme.dart';
+import '../../widgets/app_loading_widget.dart';
+import '../../widgets/app_error_widget.dart';
 import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';
 import 'widgets/task_details_body.dart';
@@ -30,14 +33,14 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
       padding: EdgeInsets.zero,
       child: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {
-          if (state is TasksInitial || state is TasksLoading) {
-            return const Center(child: CircularProgressIndicator());
+          if (state is TasksInitial || state is TasksLoading || state is! TasksLoaded) {
+            return const AppLoadingWidget();
           }
           if (state is TasksError) {
-            return const Center(child: Text('Error loading task details'));
-          }
-          if (state is! TasksLoaded) {
-            return const Center(child: CircularProgressIndicator());
+            return AppErrorWidget(
+              message: 'Error loading task details',
+              onRetry: () => context.read<TasksBloc>().add(const LoadTasks()),
+            );
           }
           final task = state.allTasks.firstWhere(
             (t) => t.id == widget.taskId,
@@ -52,11 +55,10 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               const ScreenHeader(
                 title: 'Task Details',
                 showBackButton: true,
-                padding: EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding: AppSpacing.screenPaddingV,
                   child: TaskDetailsBody(task: task),
                 ),
               ),

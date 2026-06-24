@@ -28,9 +28,8 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: AppSpacing.screenPaddingV,
+    return SingleChildScrollView(
+        padding: AppSpacing.screenPadding,
         child: ResponsiveWidthContainer(
           maxWidth: 480,
           child: Column(
@@ -49,7 +48,7 @@ class LoginBody extends StatelessWidget {
                   final activeError = state.phoneError ?? state.passwordError;
                   if (activeError != null) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
+                      padding: const EdgeInsets.only(bottom: AppSpacing.lg),
                       child: ErrorBanner(message: activeError),
                     );
                   }
@@ -70,7 +69,6 @@ class LoginBody extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

@@ -19,17 +19,17 @@ class ProfileCard extends StatelessWidget {
       child: Column(
         children: [
           UserAvatar(initials: profile.initials, size: 80, fontSize: 28),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           Text(
             profile.name,
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          const SizedBox(height: 6),
+          AppSpacing.gapSm,
           Text(
             '${profile.role} · ${profile.branch}',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

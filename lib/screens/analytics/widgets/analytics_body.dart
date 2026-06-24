@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../error_messages.dart';
+import '../../../theme.dart';
 import '../../../widgets/async_state_view.dart';
 import 'analytics_tab_toggle.dart';
 import 'analytics_period_dropdown.dart';
@@ -29,19 +30,19 @@ class AnalyticsBody extends StatelessWidget {
           child: state is AnalyticsLoaded
               ? SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  padding: AppSpacing.screenPadding,
                   child: Column(
                     children: [
                       AnalyticsTabToggle(
                         activeTab: state.activeTab,
                         onTabChanged: (tab) => bloc.add(ChangeTab(tab)),
                       ),
-                      const SizedBox(height: 20),
+                      AppSpacing.gapXl,
                       AnalyticsPeriodDropdown(
                         selectedPeriod: state.selectedPeriod,
                         onPeriodChanged: (p) => bloc.add(ChangePeriod(p)),
                       ),
-                      const SizedBox(height: 20),
+                      AppSpacing.gapXl,
                       if (state.activeTab == AnalyticsTab.leads && state.leadsData != null)
                         LeadsTabContent(
                           summary: state.leadsData!.summary,
@@ -55,7 +56,7 @@ class AnalyticsBody extends StatelessWidget {
                           pipelineMetrics: state.dealsData!.pipelineMetrics,
                           typeMetrics: state.dealsData!.typeMetrics,
                         ),
-                      const SizedBox(height: 24),
+                      AppSpacing.gapXxl,
                     ],
                   ),
                 )

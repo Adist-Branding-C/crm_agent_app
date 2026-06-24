@@ -55,13 +55,16 @@ class CustomCard extends StatelessWidget {
     );
 
     if (onTap != null) {
-      return Material(
-        type: MaterialType.transparency,
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: InkWell(
+      return Semantics(
+        button: true,
+        child: Material(
+          type: MaterialType.transparency,
           borderRadius: BorderRadius.circular(borderRadius),
-          onTap: onTap,
-          child: card,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(borderRadius),
+            onTap: onTap,
+            child: card,
+          ),
         ),
       );
     }

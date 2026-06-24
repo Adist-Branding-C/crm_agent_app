@@ -36,13 +36,7 @@ class FabMenuItem extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.blackAlpha5,
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                )
-              ],
+              border: Border.all(color: AppColors.borderLight),
             ),
             child: Text(
               text,
@@ -56,16 +50,10 @@ class FabMenuItem extends StatelessWidget {
           Container(
             width: 40,
             height: 40,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 4,
-                  offset: Offset(0, 2),
-                )
-              ],
+              border: Border.all(color: AppColors.borderLight),
             ),
             child: Icon(icon, color: color, size: 20),
           ),

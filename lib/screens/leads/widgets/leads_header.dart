@@ -24,11 +24,11 @@ class LeadsHeader extends StatelessWidget {
       title: headerState.isSpotlight ? 'Spotlights' : 'My Leads',
       subtitleWidget: Text(
         '${headerState.total} total · ${headerState.hot} hot',
-        style: const TextStyle(color: AppColors.textMuted, fontSize: 13, fontWeight: FontWeight.w600),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
       ),
       showBackButton: false,
       actions: const LeadsHeaderActions(),
-      padding: const EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
+      padding: AppSpacing.headerPadding,
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/my_activity/my_activity_model.dart';
 import '../../../widgets/timeline_layout.dart';
-import '../../../widgets/timeline_tile_config.dart';
 import '../../../theme.dart';
+import '../../../widgets/timeline_tile_config.dart';
 import 'activity_title_row.dart';
 import 'activity_metadata_row.dart';
 import 'activity_icon_config.dart';
@@ -32,21 +32,19 @@ class MyActivityItemWidget extends StatelessWidget {
         bgColor: iconConfig.bgColor,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.only(bottom: AppSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ActivityTitleRow(title: item.title, status: item.status),
-            const SizedBox(height: 4),
+            AppSpacing.gapXs,
             Text(
               item.description,
-              style: const TextStyle(
-                fontSize: 13,
-                color: AppColors.textMuted,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 6),
+            AppSpacing.gapXs,
             ActivityMetadataRow(assignee: item.assignee, time: item.time),
           ],
         ),

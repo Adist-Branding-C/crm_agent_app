@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../theme.dart';
+import '../../../../widgets/custom_card.dart';
 
 /// A card displaying a single statistic for the Deals screen.
 class DealsStatsCard extends StatelessWidget {
@@ -22,13 +23,9 @@ class DealsStatsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppTheme.cardShadow,
-      ),
+    return CustomCard(
+      color: backgroundColor,
+      padding: AppSpacing.cardPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -5,6 +5,7 @@ import '../../bloc/login/login_bloc.dart';
 import '../../bloc/notifications/notifications_bloc.dart';
 import '../../data/auth_state_notifier.dart';
 import '../../data/repositories/session_repository.dart';
+import '../../widgets/page_scaffold.dart';
 import 'widgets/login_body.dart';
 
 /// The authentication screen that allows agents to sign in.
@@ -39,8 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
             context.read<AuthStateNotifier>().refresh();
           }
         },
-        child: Scaffold(
-          body: LoginBody(
+        child: PageScaffold(
+          child: LoginBody(
             phoneController: _phoneController,
             passwordController: _passwordController,
           ),

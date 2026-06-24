@@ -14,14 +14,12 @@ class ForgotPasswordBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const ScreenHeader(title: 'Forgot password', showBackButton: true),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: ResponsiveWidthContainer(
                 maxWidth: 480,
                 child: Column(
@@ -35,7 +33,6 @@ class ForgotPasswordBody extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 }
