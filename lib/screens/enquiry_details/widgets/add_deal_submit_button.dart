@@ -25,7 +25,7 @@ class AddDealSubmitButton extends StatelessWidget {
         disabledForegroundColor: Colors.white,
         minimumSize: const Size.fromHeight(52),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(8),
         ),
         elevation: 0,
       ),

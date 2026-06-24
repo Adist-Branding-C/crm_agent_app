@@ -47,7 +47,7 @@ class TaskDetailsBody extends StatelessWidget {
                 backgroundColor: task.isCompleted ? AppColors.slate300 : AppColors.primaryColor,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
               onPressed: () => context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
               icon: Icon(task.isCompleted ? Icons.check_circle_outline_rounded : Icons.check_circle_rounded),

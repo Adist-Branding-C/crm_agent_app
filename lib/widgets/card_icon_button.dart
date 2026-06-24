@@ -36,7 +36,7 @@ class CardIconButton extends StatelessWidget {
     this.backgroundColor,
     this.size = 40,
     this.iconSize = 24,
-    this.borderRadius = 12,
+    this.borderRadius = 8,
     this.shadow,
   });
 

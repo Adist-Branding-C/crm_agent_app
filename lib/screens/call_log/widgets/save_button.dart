@@ -15,14 +15,14 @@ class SaveButton extends StatelessWidget {
       margin: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(8),
         boxShadow: AppTheme.buttonShadow,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: isLoading ? null : onTap,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(8),
           child: Center(
             child: isLoading
                 ? const SizedBox(

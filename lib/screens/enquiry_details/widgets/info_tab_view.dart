@@ -33,10 +33,10 @@ class InfoTabView extends StatelessWidget {
             ),
             child: Text(
               lead.status.label,
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.warningText,
-                  fontWeight: FontWeight.bold,
-                ),
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: AppColors.warningText,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ),
         ),
@@ -59,7 +59,7 @@ class InfoTabView extends StatelessWidget {
             side: const BorderSide(color: AppColors.borderLight),
             padding: const EdgeInsets.symmetric(vertical: 14),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
         ),

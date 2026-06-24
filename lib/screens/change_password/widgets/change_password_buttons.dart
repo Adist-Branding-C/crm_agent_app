@@ -29,7 +29,7 @@ class ChangePasswordButtons extends StatelessWidget {
               side: const BorderSide(color: AppColors.borderLight),
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
             onPressed: onCancel,
