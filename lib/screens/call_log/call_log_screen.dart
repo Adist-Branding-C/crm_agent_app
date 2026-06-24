@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../bloc/leads/leads_enums.dart';
 import '../../bloc/leads/leads_models.dart';
+import '../../data/models/activity_models.dart';
 import '../../theme.dart';
 import '../../widgets/screen_header.dart';
 import 'models/call_log_form_state.dart';
@@ -8,7 +9,9 @@ import 'widgets/call_log_view.dart';
 
 class CallLogScreen extends StatefulWidget {
   final Lead? lead;
-  const CallLogScreen({super.key, this.lead});
+  final EnquiryActivity? activity;
+
+  const CallLogScreen({super.key, this.lead, this.activity});
 
   @override
   State<CallLogScreen> createState() => _CallLogScreenState();
@@ -21,9 +24,11 @@ class _CallLogScreenState extends State<CallLogScreen> {
   @override
   void initState() {
     super.initState();
+    _remarkController.text = widget.activity?.remark ?? '';
     _formState = CallLogFormState(
-      leadStatus: widget.lead?.status ?? LeadStatus.interested,
-      purpose: widget.lead?.source ?? LeadPurpose.newAdmission,
+      callStatus: widget.activity?.callStatus ?? 'Connected',
+      leadStatus: widget.activity?.leadStatus ?? widget.lead?.status ?? LeadStatus.interested,
+      purpose: widget.activity?.purpose ?? widget.lead?.source ?? LeadPurpose.newAdmission,
     );
   }
 
@@ -62,6 +67,7 @@ class _CallLogScreenState extends State<CallLogScreen> {
       body: SafeArea(
         child: CallLogView(
           lead: lead,
+          activity: widget.activity,
           formState: _formState,
           onCallStatusChanged: (val) => setState(() => _formState = _formState.copyWith(callStatus: val)),
           onLeadStatusChanged: (val) => setState(() => _formState = _formState.copyWith(leadStatus: val)),

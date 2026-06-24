@@ -98,3 +98,16 @@ refactor(theme): split ThemeData and fix layout & dynamic theming bugs
 - Reordered state checks in `TaskDetailsScreen` to check for error states first, fixing an infinite loading spinner when `TasksError` occurs.
 - Fixed `ParentDataWidget` assertion failure in `StatsGrid` by placing `Expanded` outside the `Padding` widget inside the horizontal row.
 - Corrected string interpolation in `LeadCardDetails` by removing backslash escapes (`\$` changed to `$`), restoring correct rendering of the lead source and status labels.
+
+refactor: resolve architectural violations from code review
+
+- Fix DIP layer violation: move all domain models from bloc/ to data/models/,
+  update 24 data layer imports to remove bloc dependency, remove redundant
+  TaskType enum declaration
+- Replace Navigator.pop() with GoRouter context.pop() in call actions sheet
+- Remove dead AuthRepository abstraction and orphan authDataSource wiring
+- Remove business-logic getters from AnalyticsLoaded state
+- Registry-drive auth route detection via AppRoutes.isAuthRoute set
+- Eliminate duplicated responsive grids via shared ResponsiveQuadGrid
+- Replace inline Colors.white/grey literals with AppColors tokens across 7 files
+- Shrink app_theme_dark.dart below 80-line limit (extract dark input theme)

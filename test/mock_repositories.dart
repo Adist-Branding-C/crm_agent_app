@@ -25,6 +25,11 @@ class MockLeadsRepo implements LeadsRepository, ActivityRepository {
   List<EnquiryActivity> getActivitiesForLead(String id) => activities;
   @override
   void addActivityForLead(String id, EnquiryActivity act) => activities.add(act);
+  @override
+  void updateActivityForLead(String id, EnquiryActivity act) {
+    final idx = activities.indexWhere((a) => a.id == act.id);
+    if (idx != -1) activities[idx] = act;
+  }
 
   @override
   void dispose() {}

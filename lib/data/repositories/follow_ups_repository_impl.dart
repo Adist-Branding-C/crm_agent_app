@@ -8,4 +8,9 @@ class FollowUpsRepositoryImpl implements FollowUpsRepository {
   Future<List<FollowUp>> getFollowUps() async {
     return mockFollowUps;
   }
+
+  @override
+  Future<void> addFollowUp(FollowUp followUp) async {
+    mockFollowUps.add(followUp);
+  }
 }

@@ -7,4 +7,7 @@ abstract class ActivityRepository {
 
   /// Adds an activity for a lead.
   void addActivityForLead(String leadId, EnquiryActivity activity);
+
+  /// Updates an existing activity for a lead.
+  void updateActivityForLead(String leadId, EnquiryActivity activity);
 }

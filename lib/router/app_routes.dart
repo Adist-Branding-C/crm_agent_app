@@ -20,6 +20,7 @@ class AppRoutes {
   static const callLog = 'callLog';
   static const callReport = 'callReport';
   static const myActivity = 'myActivity';
+  static const viewCallLog = 'viewCallLog';
 
   static const splashPath = '/splash';
   static const loginPath = '/login';
@@ -39,6 +40,7 @@ class AppRoutes {
   static const callLogPath = '/call-log';
   static const callReportPath = '/call-report';
   static const myActivityPath = '/my-activity';
+  static const viewCallLogPath = '/view-call-log';
 
   static const _authPaths = <String>{
     loginPath, splashPath, forgotPasswordPath,

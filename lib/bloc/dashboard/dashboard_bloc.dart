@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/dashboard_repository.dart';
@@ -10,11 +11,23 @@ part 'dashboard_state.dart';
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   /// The dashboard repository.
   final DashboardRepository dashboardRepository;
+  StreamSubscription<List<FollowUpCall>>? _followUpsSubscription;
 
   /// Initializes the BLoC with [DashboardInitial].
   DashboardBloc({required this.dashboardRepository})
       : super(const DashboardInitial()) {
     on<FetchDashboardData>(_onFetchDashboardData);
+    on<UpdateDashboardFollowUps>(_onUpdateDashboardFollowUps);
+
+    _followUpsSubscription = dashboardRepository.followUpsStream.listen((calls) {
+      add(UpdateDashboardFollowUps(calls));
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _followUpsSubscription?.cancel();
+    return super.close();
   }
 
   Future<void> _onFetchDashboardData(
@@ -30,6 +43,16 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       emit(
         const DashboardError(failure: DashboardFailure.load),
       );
+    }
+  }
+
+  void _onUpdateDashboardFollowUps(
+    UpdateDashboardFollowUps event,
+    Emitter<DashboardState> emit,
+  ) {
+    final s = state;
+    if (s is DashboardLoaded) {
+      emit(DashboardLoaded(stats: s.stats, followUps: event.followUps));
     }
   }
 }

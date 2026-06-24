@@ -7,6 +7,9 @@ abstract class ActivityDataSource {
 
   /// Adds an activity for a lead.
   void insertActivityForLead(String leadId, EnquiryActivity activity);
+
+  /// Updates an existing activity for a lead.
+  void updateActivityForLead(String leadId, EnquiryActivity activity);
 }
 
 /// In-memory implementation of [ActivityDataSource].
@@ -22,5 +25,15 @@ class ActivityDataSourceImpl implements ActivityDataSource {
   void insertActivityForLead(String leadId, EnquiryActivity activity) {
     final list = _activities[leadId] ?? [];
     _activities[leadId] = [activity, ...list];
+  }
+
+  @override
+  void updateActivityForLead(String leadId, EnquiryActivity activity) {
+    final list = _activities[leadId] ?? [];
+    final idx = list.indexWhere((a) => a.id == activity.id);
+    if (idx != -1) {
+      list[idx] = activity;
+      _activities[leadId] = List.from(list);
+    }
   }
 }

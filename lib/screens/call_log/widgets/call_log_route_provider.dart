@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/leads/leads_models.dart';
+import '../../../data/models/activity_models.dart';
 import '../call_log_screen.dart';
 
 class CallLogRouteProvider extends StatelessWidget {
@@ -11,7 +12,13 @@ class CallLogRouteProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final extra = state.extra;
-    final lead = extra is Lead ? extra : null;
-    return CallLogScreen(lead: lead);
+    if (extra is Lead) {
+      return CallLogScreen(lead: extra);
+    } else if (extra is Map<String, dynamic>) {
+      final lead = extra['lead'] as Lead?;
+      final activity = extra['activity'] as EnquiryActivity?;
+      return CallLogScreen(lead: lead, activity: activity);
+    }
+    return const CallLogScreen();
   }
 }

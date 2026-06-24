@@ -38,7 +38,10 @@ class _EnquiryDetailsLoadedViewState extends State<EnquiryDetailsLoadedView> {
                   index: _activeTab,
                   children: [
                     InfoTabView(lead: widget.state.lead),
-                    ActivitiesTabView(activities: widget.state.activities),
+                    ActivitiesTabView(
+                      activities: widget.state.activities,
+                      lead: widget.state.lead,
+                    ),
                     NotesTabView(notes: widget.state.notes),
                   ],
                 ),

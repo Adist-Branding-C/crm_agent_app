@@ -63,6 +63,9 @@ class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
   void addActivityForLead(String leadId, EnquiryActivity activity) {}
 
   @override
+  void updateActivityForLead(String leadId, EnquiryActivity activity) {}
+
+  @override
   void dispose() {
     _deletedController.close();
     _updatedController.close();

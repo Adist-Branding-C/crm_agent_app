@@ -35,6 +35,7 @@ class SaveCallLog extends CallLogEvent {
   final LeadStatus leadStatus;
   final LeadPurpose purpose;
   final String remark;
+  final String? activityId;
 
   const SaveCallLog({
     required this.lead,
@@ -42,10 +43,11 @@ class SaveCallLog extends CallLogEvent {
     required this.leadStatus,
     required this.purpose,
     required this.remark,
+    this.activityId,
   });
 
   @override
-  List<Object?> get props => [lead, callStatus, leadStatus, purpose, remark];
+  List<Object?> get props => [lead, callStatus, leadStatus, purpose, remark, activityId];
 }
 
 class ResetCallLog extends CallLogEvent {

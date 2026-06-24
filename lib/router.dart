@@ -22,6 +22,7 @@ import 'router/forgot_password_routes.dart';
 import 'screens/change_password/change_password_screen.dart';
 import 'screens/account/edit_profile/edit_profile_screen.dart';
 import 'router/attendance_routes.dart';
+import 'router/view_call_log_route.dart';
 
 GoRouter createRouter(
   SessionRepository authRepository,
@@ -61,6 +62,7 @@ GoRouter createRouter(
       buildEditEnquiryRoute(),
       ...buildForgotPasswordRoutes(),
       buildAttendanceHistoryRoute(),
+      buildViewCallLogRoute(),
     ],
   );
 }

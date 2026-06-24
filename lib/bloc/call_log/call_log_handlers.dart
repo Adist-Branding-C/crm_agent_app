@@ -4,36 +4,6 @@ import '../../bloc/leads/lead_copy_extensions.dart';
 import 'call_log_bloc.dart';
 
 extension CallLogHandlers on CallLogBloc {
-  Future<void> onInitiateCall(InitiateCall ev, Emitter<CallLogState> emit) async {
-    emit(CallLogBottomSheetTriggered(lead: ev.lead));
-  }
-
-  Future<void> onInitiateCallByName(InitiateCallByName ev, Emitter<CallLogState> emit) async {
-    final clean = ev.name.replaceAll('Call back ', '').trim();
-    final leads = await leadsRepository.getLeads();
-    final matches = leads.where((l) => l.name.toLowerCase() == clean.toLowerCase());
-    if (matches.isEmpty) {
-      emit(CallLogFailure(failure: CallLogFailureType.leadNotFound, leadName: clean));
-      return;
-    }
-    emit(CallLogBottomSheetTriggered(lead: matches.first));
-  }
-
-  Future<void> onLaunchDialer(LaunchDialer ev, Emitter<CallLogState> emit) async {
-    emit(CallInProgress(lead: ev.lead));
-    final launched = await dialerService.launchDialer(ev.lead.phone);
-    if (!launched) {
-      emit(const CallLogFailure(failure: CallLogFailureType.unknown));
-    }
-  }
-
-  void onAppReturnedFromCall(AppReturnedFromCall ev, Emitter<CallLogState> emit) {
-    final s = state;
-    if (s is CallInProgress) {
-      emit(CallLogNavigationPending(lead: s.lead));
-    }
-  }
-
   Future<void> onSaveCallLog(SaveCallLog ev, Emitter<CallLogState> emit) async {
     emit(const CallLogSaving());
     try {
@@ -44,20 +14,38 @@ extension CallLogHandlers on CallLogBloc {
       );
       if (ev.lead.id.isNotEmpty) {
         await leadsRepository.updateLead(updatedLead);
-        final activity = EnquiryActivity.callLog(
-          id: DateTime.now().toString(),
-          callStatus: ev.callStatus,
-          purposeLabel: ev.purpose.label,
-        );
-        activityRepository.addActivityForLead(ev.lead.id, activity);
+        if (ev.activityId != null) {
+          final list = activityRepository.getActivitiesForLead(ev.lead.id);
+          final match = list.where((a) => a.id == ev.activityId).firstOrNull;
+          final updated = EnquiryActivity(
+            id: ev.activityId!,
+            title: '@You logged a call (${ev.callStatus}) - Purpose: ${ev.purpose.label}',
+            time: match?.time ?? 'Just now',
+            type: EnquiryActivityType.call,
+            callStatus: ev.callStatus,
+            duration: match?.duration ?? '4:12 mins',
+            leadStatus: ev.leadStatus,
+            purpose: ev.purpose,
+            remark: ev.remark,
+            date: match?.date ?? 'Today, 22 June 2026',
+            timeOfDay: match?.timeOfDay ?? '9:30 AM',
+          );
+          activityRepository.updateActivityForLead(ev.lead.id, updated);
+        } else {
+          final activity = EnquiryActivity.callLog(
+            id: DateTime.now().toString(),
+            callStatus: ev.callStatus,
+            purposeLabel: ev.purpose.label,
+            leadStatus: ev.leadStatus,
+            purpose: ev.purpose,
+            remark: ev.remark,
+          );
+          activityRepository.addActivityForLead(ev.lead.id, activity);
+        }
       }
       emit(CallLogSaveSuccess(lead: updatedLead));
     } catch (e) {
       emit(const CallLogFailure(failure: CallLogFailureType.save));
     }
-  }
-
-  void onResetCallLog(ResetCallLog ev, Emitter<CallLogState> emit) {
-    emit(const CallLogInitial());
   }
 }

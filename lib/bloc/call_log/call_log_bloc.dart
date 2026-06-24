@@ -6,6 +6,7 @@ import '../../utils/phone_dialer_service.dart';
 import 'call_log_event.dart';
 import 'call_log_state.dart';
 import 'call_log_handlers.dart';
+import 'call_log_init_handlers.dart';
 
 export 'call_log_event.dart';
 export 'call_log_state.dart';

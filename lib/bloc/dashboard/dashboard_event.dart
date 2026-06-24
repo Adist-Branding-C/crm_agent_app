@@ -12,3 +12,11 @@ abstract class DashboardEvent extends Equatable {
 class FetchDashboardData extends DashboardEvent {
   const FetchDashboardData();
 }
+
+class UpdateDashboardFollowUps extends DashboardEvent {
+  final List<FollowUpCall> followUps;
+  const UpdateDashboardFollowUps(this.followUps);
+
+  @override
+  List<Object?> get props => [followUps];
+}

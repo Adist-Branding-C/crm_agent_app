@@ -16,4 +16,9 @@ class ActivityRepositoryImpl implements ActivityRepository {
   void addActivityForLead(String leadId, EnquiryActivity activity) {
     activityDataSource.insertActivityForLead(leadId, activity);
   }
+
+  @override
+  void updateActivityForLead(String leadId, EnquiryActivity activity) {
+    activityDataSource.updateActivityForLead(leadId, activity);
+  }
 }

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../bloc/call_log/call_log_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../bloc/leads/leads_models.dart';
+import '../../../data/models/activity_models.dart';
 import '../../../widgets/screen_header.dart';
 import '../models/call_log_form_state.dart';
 import 'call_log_body.dart';
@@ -11,6 +12,7 @@ import 'save_button.dart';
 
 class CallLogView extends StatelessWidget {
   final Lead lead;
+  final EnquiryActivity? activity;
   final CallLogFormState formState;
   final ValueChanged<String> onCallStatusChanged;
   final ValueChanged<LeadStatus> onLeadStatusChanged;
@@ -20,6 +22,7 @@ class CallLogView extends StatelessWidget {
   const CallLogView({
     super.key,
     required this.lead,
+    this.activity,
     required this.formState,
     required this.onCallStatusChanged,
     required this.onLeadStatusChanged,
@@ -38,7 +41,10 @@ class CallLogView extends StatelessWidget {
       },
       child: Column(
         children: [
-          ScreenHeader(title: 'Log Call', subtitle: lead.name),
+          ScreenHeader(
+            title: activity != null ? 'Edit Call Log' : 'Log Call',
+            subtitle: lead.name,
+          ),
           Expanded(
             child: CallLogBody(
               lead: lead,
@@ -58,6 +64,7 @@ class CallLogView extends StatelessWidget {
                       leadStatus: formState.leadStatus,
                       purpose: formState.purpose,
                       remark: remarkController.text,
+                      activityId: activity?.id,
                     ),
                   ),
                 ),

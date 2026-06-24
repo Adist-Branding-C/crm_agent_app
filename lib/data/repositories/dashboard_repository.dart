@@ -5,7 +5,12 @@ abstract class DashboardRepository {
   /// Fetches summary stats for dashboard widgets.
   Future<DashboardStats> getStats();
 
-  /// Fetches pending follow-up calls.
+  /// Fetches all follow-ups.
   Future<List<FollowUpCall>> getFollowUps();
-}
 
+  /// Adds a new follow-up.
+  Future<void> addFollowUp(FollowUpCall followUp);
+
+  /// A stream of follow-up call list updates.
+  Stream<List<FollowUpCall>> get followUpsStream;
+}

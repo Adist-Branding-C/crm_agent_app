@@ -1,7 +1,7 @@
 import 'lead_enums.dart';
 import 'follow_up_models.dart';
 
-const mockFollowUps = [
+final List<FollowUp> mockFollowUps = [
   FollowUp(id: '1', name: 'Vishnu Prasad', category: LeadPurpose.enquiry, status: LeadStatus.followUp, urgency: FollowUpUrgency.overdue),
   FollowUp(id: '2', name: 'Rahul Menon', category: LeadPurpose.newAdmission, status: LeadStatus.interested, urgency: FollowUpUrgency.dueToday),
   FollowUp(id: '3', name: 'Sneha Pillai', category: LeadPurpose.enquiry, status: LeadStatus.followUp, urgency: FollowUpUrgency.dueToday),
