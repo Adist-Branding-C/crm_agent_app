@@ -14,7 +14,6 @@ class CheckInButton extends StatelessWidget {
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        elevation: 0,
       ),
       onPressed: () => context.read<AttendanceBloc>().add(const CheckIn()),
       child: Text(

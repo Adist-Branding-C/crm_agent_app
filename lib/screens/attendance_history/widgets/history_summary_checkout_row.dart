@@ -52,7 +52,6 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.slate600,
             foregroundColor: Colors.white,
-            elevation: 0,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),

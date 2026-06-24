@@ -17,7 +17,6 @@ class NotificationBell extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: AppTheme.cardShadow,
           ),
           child: const Icon(
             Icons.notifications_none_rounded,

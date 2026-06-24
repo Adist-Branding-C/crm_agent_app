@@ -27,7 +27,6 @@ class AddDealSubmitButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        elevation: 0,
       ),
       child: isLoading
           ? const SizedBox(

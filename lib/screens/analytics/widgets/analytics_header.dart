@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../../widgets/screen_header.dart';
-import '../../../theme.dart';
+import '../../../theme/app_colors.dart';
 import 'analytics_filter_sheet.dart';
 
 class AnalyticsHeader extends StatelessWidget {
@@ -50,7 +50,6 @@ class _FilterButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: AppShadows.buttonShadow,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(

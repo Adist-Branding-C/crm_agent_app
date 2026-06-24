@@ -20,7 +20,6 @@ class LoginHeader extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.primaryColor,
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: AppTheme.buttonShadow,
               ),
               child: const Icon(
                 Icons.people_rounded,

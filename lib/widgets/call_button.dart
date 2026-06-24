@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-/// A reusable, brand-styled Call button with icons and glow shadows.
 class CallButton extends StatelessWidget {
-  /// Optional callback for when the button is tapped.
   final VoidCallback? onTap;
-
-  /// Corner radius of the button (defaults to 8).
   final double borderRadius;
 
-  /// Creates a constant [CallButton].
   const CallButton({super.key, this.onTap, this.borderRadius = 8});
 
   @override
@@ -18,7 +13,6 @@ class CallButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: AppTheme.buttonShadow,
       ),
       child: Semantics(
         button: true,

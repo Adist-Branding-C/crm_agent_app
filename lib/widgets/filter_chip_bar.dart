@@ -57,7 +57,6 @@ class _FilterChip extends StatelessWidget {
           color: themeColor,
           borderRadius: BorderRadius.circular(20),
           border: border,
-          boxShadow: option.isSelected ? AppTheme.buttonShadow : AppTheme.cardShadow,
         ),
         child: Text(
           option.label,

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'theme/app_colors.dart';
-import 'theme/app_shadows.dart';
 import 'theme/app_text_theme.dart';
 import 'theme/app_input_theme.dart';
 import 'theme/app_button_theme.dart';
 import 'theme/app_scaled_theme.dart';
 
 export 'theme/app_colors.dart';
-export 'theme/app_shadows.dart';
 export 'theme/app_spacing.dart';
 
 class AppTheme {
@@ -23,8 +21,6 @@ class AppTheme {
   static const Color errorColor = AppColors.errorColor;
   static const Color errorBackground = AppColors.errorBackground;
 
-  static List<BoxShadow> get cardShadow => AppShadows.cardShadow;
-  static List<BoxShadow> get buttonShadow => AppShadows.buttonShadow;
 
   static ThemeData get lightTheme {
     return ThemeData(

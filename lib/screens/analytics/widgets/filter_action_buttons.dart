@@ -34,7 +34,6 @@ class FilterActionButtons extends StatelessWidget {
               backgroundColor: AppColors.primaryColor,
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              elevation: 0,
             ),
             child: Text('Apply Filters', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
           ),

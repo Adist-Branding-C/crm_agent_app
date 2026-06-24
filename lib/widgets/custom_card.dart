@@ -1,33 +1,15 @@
 import 'package:flutter/material.dart';
-import '../theme.dart';
 
-/// A styled card widget sharing uniform borders, backgrounds, and shadows.
+/// A styled card widget sharing uniform borders and backgrounds.
 class CustomCard extends StatelessWidget {
-  /// The contents inside the card.
   final Widget child;
-
-  /// Inner padding.
   final EdgeInsetsGeometry? padding;
-
-  /// Outer margin.
   final EdgeInsetsGeometry? margin;
-
-  /// Background color (defaults to white).
   final Color? color;
-
-  /// Border radius (defaults to 16).
   final double borderRadius;
-
-  /// Custom list of shadows (defaults to AppTheme.cardShadow).
-  final List<BoxShadow>? shadow;
-
-  /// Optional border line.
   final BoxBorder? border;
-
-  /// Action when tapped.
   final VoidCallback? onTap;
 
-  /// Creates a [CustomCard].
   const CustomCard({
     super.key,
     required this.child,
@@ -35,7 +17,6 @@ class CustomCard extends StatelessWidget {
     this.margin,
     this.color,
     this.borderRadius = 16,
-    this.shadow,
     this.border,
     this.onTap,
   });
@@ -48,7 +29,6 @@ class CustomCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: color ?? Colors.white,
         borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: shadow ?? AppTheme.cardShadow,
         border: border,
       ),
       child: child,

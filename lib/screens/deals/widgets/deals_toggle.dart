@@ -47,7 +47,6 @@ class DealsToggleItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: isSelected ? AppTheme.cardShadow : null,
         ),
         child: Text(
           label,

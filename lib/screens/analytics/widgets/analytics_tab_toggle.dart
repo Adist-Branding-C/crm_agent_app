@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
-import '../../../theme.dart';
+import '../../../theme/app_colors.dart';
 import '../../../utils/context_text_extension.dart';
 
 class AnalyticsTabToggle extends StatelessWidget {
@@ -52,14 +52,13 @@ class _TabButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-          border: isSelected && isDeals
-              ? Border.all(color: AppColors.warningDark, width: 1.5)
-              : null,
-          boxShadow: isSelected ? AppShadows.cardShadow : null,
-        ),
+          decoration: BoxDecoration(
+            color: isSelected ? Colors.white : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+            border: isSelected && isDeals
+                ? Border.all(color: AppColors.warningDark, width: 1.5)
+                : null,
+          ),
         child: Text(
           label,
           style: TextStyle(

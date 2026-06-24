@@ -47,7 +47,6 @@ class AddTaskPrioritySelector extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: isSelected ? Colors.white : Colors.transparent,
                           borderRadius: BorderRadius.circular(8),
-                          boxShadow: isSelected ? AppTheme.cardShadow : null,
                         ),
                         child: Text(
                           priority.label,

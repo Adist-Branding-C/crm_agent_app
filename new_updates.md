@@ -31,14 +31,6 @@ Add reusable EmptyStateWidget with icon, title, subtitle, and action.
 Clean up imports: remove unused directives, fix duplicate imports,
 reorder per convention.
 
-style: remove all shadows and transition to flat UI
-
-- Empty global cardShadow and buttonShadow lists in AppShadows.
-- Remove inline custom BoxShadow definitions from QuickActionTile, FabMenuItem, WhatsAppTemplateCard, FilterSortBy, and SplashContent.
-- Add outline borders to QuickActionTile and FabMenuItem to maintain structure and visual separation.
-- Set elevation to 0 in WhatsAppSendButton.
-- Clean up unused import of app_colors.dart in app_shadows.dart.
-
 style: unify button border radius to professional soft squares (8px)
 
 Updates all primary, secondary, cancel, and action buttons in the CRM application from heavily curved/pill shapes (ranging from 10px to 20px) to a consistent and subtle border radius of 8px. This alignment establishes a more modern, human-designed aesthetic across the entire application interface.
@@ -60,3 +52,24 @@ Modified Components:
   - EditEnquiryButtons cancel button & InfoTabView status button (12px -> 8px)
   - TaskDetailsBody toggle button & TasksFilterActions reset button (12px -> 8px)
   - HistorySummaryCheckoutRow & HistoryLeavesCard buttons (20px -> 8px)
+
+  design: comprehensive UI/UX audit fixes across all screens
+
+- Migrate Login, Attendance, ChangePassword, ForgotPassword to
+  PageScaffold for consistent screen layout
+- Replace all hardcoded EdgeInsets/SizedBox with AppSpacing constants
+- Normalize ScreenHeader padding (remove inline overrides)
+- Replace raw CircularProgressIndicator/ElevatedButton with
+  AppLoadingWidget/AppErrorWidget/CustomButton
+- Convert inline fontSize:13 styles to text theme tokens
+- Increase bottom nav label from 11px to 12px for accessibility
+- Fix calendar selection border to use primaryColor
+- Add Semantics labels to tappable cards, buttons, chips
+- Migrate DealsStatsCard from raw Container to CustomCard
+- Remove unused imports; flutter analyze passes with 0 issues
+
+style: remove all drop shadows for flat design
+
+- Strip boxShadow, elevation, and shadow fields from 18 widget and theme files
+- Delete AppShadows class and remove its import/export from AppTheme
+- Purge shadow guidelines from ARCHITECTURE.md, rules.md, and new_updates.md

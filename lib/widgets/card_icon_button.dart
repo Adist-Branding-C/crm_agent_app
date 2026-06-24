@@ -1,33 +1,16 @@
 import 'package:flutter/material.dart';
-import '../theme.dart';
+import '../theme/app_colors.dart';
 
-/// A reusable shadow-styled square icon button.
+/// A reusable square icon button.
 class CardIconButton extends StatelessWidget {
-  /// The icon vector.
   final IconData icon;
-
-  /// Trigger callback.
   final VoidCallback onTap;
-
-  /// Custom icon color (defaults to AppColors.textDark).
   final Color? iconColor;
-
-  /// Background color of the card (defaults to white).
   final Color? backgroundColor;
-
-  /// Width/height diameter (defaults to 40).
   final double size;
-
-  /// Size of the icon (defaults to 24).
   final double iconSize;
-
-  /// Corner border radius (defaults to 12).
   final double borderRadius;
 
-  /// Optional shadow override (defaults to AppTheme.cardShadow).
-  final List<BoxShadow>? shadow;
-
-  /// Creates a [CardIconButton].
   const CardIconButton({
     super.key,
     required this.icon,
@@ -37,7 +20,6 @@ class CardIconButton extends StatelessWidget {
     this.size = 40,
     this.iconSize = 24,
     this.borderRadius = 8,
-    this.shadow,
   });
 
   @override
@@ -52,7 +34,6 @@ class CardIconButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: backgroundColor ?? Colors.white,
             borderRadius: BorderRadius.circular(borderRadius),
-            boxShadow: shadow ?? AppTheme.cardShadow,
           ),
           child: Icon(
             icon,

@@ -363,14 +363,8 @@ linter:
   hero text, section headlines, list headlines, keywords in paragraphs.
 * **Background:** Apply subtle noise texture to the main background to add a
   premium, tactile feel.
-* **Shadows:** Multi-layered drop shadows create a strong sense of depth; cards
-  have a soft, deep shadow to look "lifted."
 * **Icons:** Incorporate icons to enhance the user’s understanding and the
   logical navigation of the app.
-* **Interactive Elements:** Buttons, checkboxes, sliders, lists, charts, graphs,
-  and other interactive elements have a shadow with elegant use of color to
-  create a "glow" effect.
-
 ### Theming
 * **Centralized Theme:** Define a centralized `ThemeData` object to ensure a
   consistent application-wide style.

@@ -10,25 +10,22 @@ class CustomButton extends StatelessWidget {
   final ButtonStyle? buttonStyle;
   final IconData? icon;
   final String? semanticsLabel;
-  final List<BoxShadow>? shadow;
 
   const CustomButton({
     super.key, required this.text, this.onPressed, this.isLoading = false,
-    this.width, this.buttonStyle, this.icon, this.semanticsLabel, this.shadow,
+    this.width, this.buttonStyle, this.icon, this.semanticsLabel,
   });
 
   @override
   Widget build(BuildContext context) {
     final active = onPressed != null && !isLoading;
-    final resolvedShadow = shadow ?? (active ? AppTheme.buttonShadow : <BoxShadow>[]);
 
     return Semantics(
       button: true,
       enabled: active,
       label: semanticsLabel ?? text,
-      child: Container(
+      child: SizedBox(
         width: width,
-        decoration: BoxDecoration(boxShadow: resolvedShadow),
         child: ElevatedButton(
           style: (buttonStyle ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
             backgroundColor: WidgetStateProperty.resolveWith((states) {

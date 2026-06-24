@@ -42,7 +42,7 @@ To group related BLoC files into a single logical library, we utilize Dart's `pa
 
 ### 2.3 Strict File Length Constraint (< 80 Lines)
 All coding files are strictly limited to **under 80 lines of code**. Large layouts, widget builds, and design setups are decomposed into smaller sub-files:
-- **Theme** is split into colors, text themes, buttons, shadows, and inputs.
+- **Theme** is split into colors, text themes, buttons, and inputs.
 - **Login screen** is split into inputs, header, body, buttons, and alert banners.
 - **Splash screen** is split into animations, loader, and logo contents.
 
@@ -80,7 +80,6 @@ Orchestrates business logic and maps inputs to outputs.
 Exposes visual design tokens.
 
 - `AppColors`: Primary reds (`#E53935`), dark slates (`#1E293B`), and neutral backgrounds.
-- `AppShadows`: BoxShadow definitions to create depth.
 - `AppTextTheme` / `AppInputTheme` / `AppButtonTheme`: Theme components styling text typography, input fields, and elevated button shapes.
 - `AppTheme`: Main integrator building global theme profiles.
 

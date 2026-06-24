@@ -16,7 +16,6 @@ class LeadsSearchBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: AppTheme.cardShadow,
         ),
         child: TextField(
           onChanged: (val) {
