@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import 'task_type_presentation_extensions.dart';
 import '../../../utils/context_text_extension.dart';
@@ -16,7 +17,7 @@ class TaskTypeBadge extends StatelessWidget {
     final bg = type.activeBg;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(6),
@@ -25,7 +26,7 @@ class TaskTypeBadge extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(type.icon, size: 12, color: color),
-          const SizedBox(width: 4),
+          AppSpacing.gapWXs,
           Text(
             type.label,
             style: TextStyle(color: color, fontSize: context.scaleFont(11), fontWeight: FontWeight.bold),

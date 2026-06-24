@@ -16,7 +16,7 @@ class RecentSection extends StatelessWidget {
   Widget build(BuildContext context) {
     if (queries.isEmpty) return const SizedBox.shrink();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,7 +28,7 @@ class RecentSection extends StatelessWidget {
               letterSpacing: 0.8,
             ),
           ),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           CustomCard(
             padding: EdgeInsets.zero,
             child: Column(

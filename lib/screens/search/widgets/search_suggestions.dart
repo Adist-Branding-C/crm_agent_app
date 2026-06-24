@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
@@ -30,14 +31,14 @@ class SearchSuggestions extends StatelessWidget {
     final list = <Widget>[];
     if (recentQueries.isNotEmpty) {
       list.add(Padding(
-        padding: const EdgeInsets.only(top: 8),
+        padding: EdgeInsets.only(top: AppSpacing.sm),
         child: RecentSection(queries: recentQueries, onTap: onTapRecent),
       ));
     }
     if (leads.isNotEmpty) {
       list.add(const SearchSectionHeader(title: 'SUGGESTED LEADS'));
       list.addAll(leads.map((l) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
         child: LeadCard(lead: l),
       )));
     }
@@ -51,7 +52,7 @@ class SearchSuggestions extends StatelessWidget {
     }
     return ListView(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.only(bottom: 24),
+      padding: EdgeInsets.only(bottom: AppSpacing.xxl),
       children: list,
     );
   }

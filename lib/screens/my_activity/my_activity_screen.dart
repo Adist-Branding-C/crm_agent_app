@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../theme.dart';
 import '../../bloc/my_activity/my_activity_bloc.dart';
 import '../../data/models/my_activity/my_activity_enums.dart';
 import '../../data/repositories/leads_repository.dart';
@@ -48,19 +49,19 @@ class _MyActivityBody extends StatelessWidget {
         final loaded = state is MyActivityLoaded ? state : null;
         return Column(children: [
           const MyActivityHeader(),
-          const SizedBox(height: 4),
+          AppSpacing.gapXs,
           MyActivityTimeFilters(selected: loaded?.selectedTimeFilter ?? ActivityTimeFilter.all,
             onSelected: (f) => context.read<MyActivityBloc>().add(TimeFilterChanged(f))),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           MyActivityTypeFilters(selected: loaded?.selectedTypeFilter ?? ActivityTypeFilter.all,
             onSelected: (label) {
               final t = ActivityTypeFilter.values.firstWhere((e) => e.label == label);
               context.read<MyActivityBloc>().add(TypeFilterChanged(t));
             }),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           MyActivityLeadSelector(selectedLead: loaded?.selectedLead ?? 'All leads',
             onTap: () => _openLeadSheet(context, loaded)),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           const MyActivityList(),
         ]);
       },

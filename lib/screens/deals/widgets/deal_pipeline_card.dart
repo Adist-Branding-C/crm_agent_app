@@ -16,7 +16,7 @@ class DealPipelineCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.only(bottom: AppSpacing.md),
       borderRadius: 16,
       padding: EdgeInsets.zero,
       child: ClipRRect(
@@ -25,7 +25,7 @@ class DealPipelineCard extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(left: BorderSide(color: deal.stage.color, width: 4)),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           child: Row(
             children: [
               Expanded(
@@ -50,7 +50,7 @@ class DealPipelineCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
+              AppSpacing.gapWSm,
               UserAvatar(
                 initials: deal.ownerInitials,
                 size: 28,

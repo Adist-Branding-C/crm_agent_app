@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/lead_presentation_extensions.dart';
+import '../../../theme.dart';
 
 /// Renders status chips styled with distinct colors matching design specs.
 class FilterStatus extends StatelessWidget {
@@ -21,15 +22,15 @@ class FilterStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     final statuses = LeadStatus.values.where((e) => e != LeadStatus.lost).toList();
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+      spacing: AppSpacing.sm,
+      runSpacing: AppSpacing.sm,
       children: statuses.map((status) {
         final isSel = selectedStatus == status;
         final cfg = status.chipConfig;
         return GestureDetector(
           onTap: () => onSelected(isSel ? null : status),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
             decoration: BoxDecoration(
               color: cfg.bgColor,
               borderRadius: BorderRadius.circular(10),

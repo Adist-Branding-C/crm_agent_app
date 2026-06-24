@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_context_theme.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../utils/context_text_extension.dart';
 
 /// Password complexity indicator displaying a 3-segment progress indicator.
@@ -23,7 +24,7 @@ class PasswordStrengthMeter extends StatelessWidget {
         : (strength == 2 ? 'Medium' : 'Strong');
 
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: EdgeInsets.only(top: AppSpacing.sm),
       child: Row(
         children: [
           ...List.generate(3, (index) {
@@ -41,7 +42,7 @@ class PasswordStrengthMeter extends StatelessWidget {
               ),
             );
           }),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Text(
             textLabel,
             style: TextStyle(

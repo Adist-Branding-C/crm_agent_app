@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/deals/deals_models.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import 'add_deal_stage_chip.dart';
 
 class AddDealStageSelector extends StatelessWidget {
@@ -19,7 +19,7 @@ class AddDealStageSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Stage', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.slate600, fontWeight: FontWeight.w500)),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(

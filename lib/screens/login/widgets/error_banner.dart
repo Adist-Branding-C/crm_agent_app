@@ -15,7 +15,7 @@ class ErrorBanner extends StatelessWidget {
       label: 'Error message: $message',
       liveRegion: true,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
         decoration: BoxDecoration(
           color: AppTheme.errorBackground,
           borderRadius: BorderRadius.circular(12),
@@ -28,7 +28,7 @@ class ErrorBanner extends StatelessWidget {
               color: AppTheme.errorColor,
               size: 20,
             ),
-            const SizedBox(width: 8),
+            AppSpacing.gapWSm,
             Expanded(
               child: Text(
                 message,

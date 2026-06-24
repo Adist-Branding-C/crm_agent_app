@@ -33,7 +33,7 @@ class DealsStats extends StatelessWidget {
               backgroundColor: AppColors.textDark,
             ),
           ),
-          const SizedBox(width: 16),
+          AppSpacing.gapWLg,
           Expanded(
             child: DealsStatsCard(
               title: 'Won this month',

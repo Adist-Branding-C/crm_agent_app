@@ -22,12 +22,12 @@ class CallActionsBottomSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           CallActionsSheetHeader(lead: lead),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           CallActionItem(
             icon: Icons.call_rounded, title: 'Call now', subtitle: lead.phone,
             iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
@@ -48,7 +48,7 @@ class CallActionsBottomSheetBody extends StatelessWidget {
             iconColor: AppColors.slate600, iconBgColor: AppColors.slate100,
             onTap: () => _handleCopy(context),
           ),
-          const SizedBox(height: 24),
+          AppSpacing.gapXxl,
         ],
       ),
     );

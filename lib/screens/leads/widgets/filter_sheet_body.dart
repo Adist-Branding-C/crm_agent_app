@@ -4,6 +4,7 @@ import '../../../widgets/bottom_sheet_handle.dart';
 import '../../../../bloc/leads/filter_result.dart';
 import '../../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/custom_button.dart';
+import '../../../theme.dart';
 import 'filter_section.dart';
 import 'filter_sort_by.dart';
 import 'filter_source.dart';
@@ -29,20 +30,20 @@ class FilterSheetBody extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const BottomSheetHandle(),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           Text(
             'Filter & Sort',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           FilterSection(
             title: 'SORT BY',
             child: FilterSortBy(selectedSort: sortBy, onSelected: onSortChanged),
@@ -55,7 +56,7 @@ class FilterSheetBody extends StatelessWidget {
             title: 'SOURCE',
             child: FilterSource(selectedSource: source, onSelected: onSourceChanged),
           ),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           CustomButton(
             text: 'Apply Filters',
             onPressed: () => context.pop(

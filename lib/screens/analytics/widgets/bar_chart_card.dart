@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_card.dart';
-import '../../../theme/app_colors.dart';
 import 'metric_progress_row.dart';
+import '../../../theme.dart';
 
 class BarChartCard extends StatelessWidget {
   final String title;
@@ -25,9 +25,9 @@ class BarChartCard extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 12),
+        AppSpacing.gapMd,
         CustomCard(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(AppSpacing.xl),
           child: Column(
             children: List.generate(progressRows.length, (index) {
               return Padding(

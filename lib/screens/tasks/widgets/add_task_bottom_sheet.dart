@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../widgets/bottom_sheet_handle.dart';
 import 'add_task_form.dart';
 
@@ -17,11 +18,11 @@ class AddTaskBottomSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           const BottomSheetHandle(),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
             child: Text(
               'New Task',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(

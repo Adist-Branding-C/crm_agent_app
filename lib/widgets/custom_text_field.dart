@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import 'custom_text_field_label.dart';
 
 /// A reusable custom text form input field.
@@ -38,7 +39,7 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFieldLabel(label: label, isRequired: isRequired),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         Semantics(
           label: semanticsLabel ?? '$label Input Field',
           textField: true,

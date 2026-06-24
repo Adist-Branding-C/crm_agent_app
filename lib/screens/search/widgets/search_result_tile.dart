@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/search/search_result.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../leads/widgets/lead_card.dart';
@@ -17,13 +18,13 @@ class SearchResultTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return switch (item) {
       LeadSearchResult(lead: final l) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
           child: LeadCard(lead: l),
         ),
       TaskSearchResult(task: final t) =>
         SearchResultTaskTile(task: t, taskMap: taskMap),
       SpotlightSearchResult(spotlight: final s) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
           child: SpotlightCard(spotlight: s),
         ),
       FollowUpSearchResult(followUp: final f) =>

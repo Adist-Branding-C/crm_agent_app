@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 
 class HistoryStatCard extends StatelessWidget {
@@ -17,7 +17,7 @@ class HistoryStatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -28,7 +28,7 @@ class HistoryStatCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          const SizedBox(height: 4),
+          AppSpacing.gapXs,
           Text(
             label,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(

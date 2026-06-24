@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../theme.dart';
 import 'card_icon_button.dart';
 
 /// Standardized header widget for screens featuring optional back-navigation.
@@ -19,7 +20,7 @@ class ScreenHeader extends StatelessWidget {
     this.subtitleWidget,
     this.showBackButton = true,
     this.actions,
-    this.padding = const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+    this.padding = const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
   });
 
   @override
@@ -41,7 +42,7 @@ class ScreenHeader extends StatelessWidget {
               icon: Icons.chevron_left_rounded,
               onTap: () => context.pop(),
             ),
-            const SizedBox(width: 16),
+            AppSpacing.gapWLg,
           ],
           Expanded(
             child: Column(
@@ -50,14 +51,14 @@ class ScreenHeader extends StatelessWidget {
               children: [
                 Text(title, style: titleStyle),
                 if (sub != null) ...[
-                  const SizedBox(height: 2),
+                  AppSpacing.gapXxs,
                   sub,
                 ],
               ],
             ),
           ),
           if (actions != null) ...[
-            const SizedBox(width: 16),
+            AppSpacing.gapWLg,
             actions!,
           ],
         ],

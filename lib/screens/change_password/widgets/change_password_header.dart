@@ -9,11 +9,11 @@ class ChangePasswordHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: AppColors.primaryColorLight,
               borderRadius: BorderRadius.circular(12),
@@ -24,7 +24,7 @@ class ChangePasswordHeader extends StatelessWidget {
               size: 24,
             ),
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           Text(
             'Use at least 8 characters with a mix of\nuppercase, lowercase and numbers.',
             textAlign: TextAlign.center,

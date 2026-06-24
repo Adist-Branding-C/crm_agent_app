@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/colored_dot.dart';
 import '../models/lead_status_item.dart';
 
@@ -15,7 +16,7 @@ class LeadStatusLegendItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ColoredDot(color: item.color),
-        const SizedBox(height: 4),
+        AppSpacing.gapXs,
         Text(
           '${item.count}',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -23,7 +24,7 @@ class LeadStatusLegendItem extends StatelessWidget {
             color: AppColors.textDark,
           ),
         ),
-        const SizedBox(height: 2),
+        AppSpacing.gapXxs,
         Text(
           item.label,
           style: Theme.of(context).textTheme.labelSmall?.copyWith(

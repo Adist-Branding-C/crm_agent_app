@@ -26,7 +26,7 @@ class _CategoryStatusFields extends StatelessWidget {
             LeadCategory.values.firstWhere((e) => e.label == val),
           ),
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         SelectionGroup(
           label: 'Status',
           options: const ['New', 'Interested', 'Qualified', 'Follow Up'],

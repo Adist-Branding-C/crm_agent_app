@@ -34,12 +34,12 @@ class TaskRow extends StatelessWidget {
                     task.type.label,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.w600),
                   ),
-                  const SizedBox(height: 6),
+                  AppSpacing.gapXs,
                   Text(
                     task.title,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  const SizedBox(height: 3),
+                  AppSpacing.gapXxs,
                   Text(
                     task.time,
                     style: Theme.of(context).textTheme.bodySmall,
@@ -48,7 +48,7 @@ class TaskRow extends StatelessWidget {
               ),
             ),
             if (showCall) ...[
-              const SizedBox(width: 8),
+              AppSpacing.gapWSm,
               CallButton(
                 onTap: () => context.read<CallLogBloc>().add(
                       InitiateCallByName(name: task.title),

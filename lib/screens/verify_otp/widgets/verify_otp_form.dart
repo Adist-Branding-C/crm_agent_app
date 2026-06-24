@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../bloc/verify_otp/verify_otp_bloc.dart';
+import '../../../theme/app_spacing.dart';
 import '../verify_otp_error_extensions.dart';
 import '../../../widgets/custom_button.dart';
 import 'otp_input_widget.dart';
@@ -16,19 +17,19 @@ class VerifyOtpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 32),
+        AppSpacing.gapXxxl,
         OtpInputWidget(
           controller: otpController,
           onChanged: (val) =>
             context.read<VerifyOtpBloc>().add(VerifyOtpCodeChanged(val)),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         BlocBuilder<VerifyOtpBloc, VerifyOtpState>(
           buildWhen: (p, c) => p.codeError != c.codeError,
           builder: (context, state) {
             if (state.codeError != null) {
               return Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
+                padding: EdgeInsets.only(bottom: AppSpacing.lg),
                 child: Text(
                   state.codeError!,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -52,7 +53,7 @@ class VerifyOtpForm extends StatelessWidget {
               context.read<VerifyOtpBloc>().add(const VerifyOtpSubmitted()),
           ),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         const ResendTimerWidget(),
       ],
     );

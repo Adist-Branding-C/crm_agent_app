@@ -4,6 +4,7 @@ import 'analytics_stats_grid_deals.dart';
 import 'deal_stage_donut.dart';
 import 'deal_pipeline_chart.dart';
 import 'deal_type_chart.dart';
+import '../../../theme.dart';
 
 class DealsTabContent extends StatelessWidget {
   final DealsSummary summary;
@@ -24,11 +25,11 @@ class DealsTabContent extends StatelessWidget {
     return Column(
       children: [
         AnalyticsStatsGridDeals(summary: summary),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         DealStageDonut(stageMetrics: stageMetrics),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         DealPipelineChart(pipelineMetrics: pipelineMetrics),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         DealTypeChart(typeMetrics: typeMetrics),
       ],
     );

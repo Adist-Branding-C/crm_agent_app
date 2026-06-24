@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/text_scaler.dart';
 import 'app_colors.dart';
+import 'app_spacing.dart';
 
 /// Global theme configurations for text input elements.
 class AppInputTheme {
@@ -10,7 +11,7 @@ class AppInputTheme {
   static InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.lg),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(14),
       borderSide: const BorderSide(color: AppColors.borderLight, width: 1),

@@ -21,14 +21,14 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 8,
-          height: 8,
+          width: AppSpacing.sm,
+          height: AppSpacing.sm,
           decoration: const BoxDecoration(
             color: AppColors.success,
             shape: BoxShape.circle,
           ),
         ),
-        const SizedBox(width: 8),
+        AppSpacing.gapWSm,
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +52,7 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.slate600,
             foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),

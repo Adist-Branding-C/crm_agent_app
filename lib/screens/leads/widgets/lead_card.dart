@@ -31,7 +31,7 @@ class LeadCard extends StatelessWidget {
         child: Row(
           children: [
             UserAvatar(initials: lead.initials, size: 42),
-            const SizedBox(width: 12),
+            AppSpacing.gapWMd,
             Expanded(child: LeadCardDetails(lead: lead)),
             CallButton(
               borderRadius: 8,

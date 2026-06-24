@@ -15,20 +15,20 @@ class HistorySummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       color: AppColors.checkedInCardBg,
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         children: [
           Row(
             children: [
               HistoryProgressCircle(attendanceRate: history.attendanceRate),
-              const SizedBox(width: 16),
+              AppSpacing.gapWLg,
               Expanded(child: HistoryStatsText(history: history)),
             ],
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           const Divider(color: AppColors.slate600, height: 1),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           HistorySummaryCheckoutRow(
             checkedInSince: history.checkedInSince,
             checkInLocation: history.checkInLocation,

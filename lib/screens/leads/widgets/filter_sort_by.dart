@@ -21,7 +21,7 @@ class FilterSortBy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 38,
-      padding: const EdgeInsets.all(3),
+      padding: EdgeInsets.all(AppSpacing.xs),
       decoration: BoxDecoration(
         color: AppColors.slate100,
         borderRadius: BorderRadius.circular(10),

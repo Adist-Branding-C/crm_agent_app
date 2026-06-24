@@ -4,6 +4,7 @@ import 'theme/app_text_theme.dart';
 import 'theme/app_input_theme.dart';
 import 'theme/app_button_theme.dart';
 import 'theme/app_scaled_theme.dart';
+import 'theme/app_spacing.dart';
 
 export 'theme/app_colors.dart';
 export 'theme/app_spacing.dart';
@@ -98,7 +99,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.darkCard,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.lg),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
           borderSide: const BorderSide(color: AppColors.darkBorder, width: 1),

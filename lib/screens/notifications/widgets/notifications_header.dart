@@ -29,7 +29,7 @@ class NotificationsHeader extends StatelessWidget {
             onPressed: () => context.read<NotificationsBloc>().add(const MarkAllAsRead()),
             child: const Text('Mark all', style: TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.bold)),
           ),
-          padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
+          padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
         );
       },
     );

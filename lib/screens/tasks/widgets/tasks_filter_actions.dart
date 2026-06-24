@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_button.dart';
 
 /// Reset and Apply buttons located at the bottom of the filter sheet.
@@ -19,7 +20,7 @@ class TasksFilterActions extends StatelessWidget {
         Expanded(
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 14),
+              padding: EdgeInsets.symmetric(vertical: AppSpacing.fourteen),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -35,7 +36,7 @@ class TasksFilterActions extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 16),
+        AppSpacing.gapWLg,
         Expanded(
           flex: 2,
           child: CustomButton(

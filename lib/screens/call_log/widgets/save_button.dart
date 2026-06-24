@@ -12,7 +12,7 @@ class SaveButton extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 52,
-      margin: const EdgeInsets.all(24),
+      margin: EdgeInsets.all(AppSpacing.xxl),
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(8),

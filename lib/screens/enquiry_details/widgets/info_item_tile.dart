@@ -28,7 +28,7 @@ class InfoItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: EdgeInsets.only(bottom: AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,7 +39,7 @@ class InfoItemTile extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 4),
+          AppSpacing.gapXs,
           if (child != null)
             Row(children: [child!])
           else
@@ -51,7 +51,7 @@ class InfoItemTile extends StatelessWidget {
                 color: valueColor ?? AppColors.textDark,
               ),
             ),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           const Divider(color: AppColors.borderLight, height: 1, thickness: 0.5),
         ],
       ),

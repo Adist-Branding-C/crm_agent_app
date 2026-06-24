@@ -53,10 +53,10 @@ class SelectionGroup extends StatelessWidget {
               ),
           ],
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: AppSpacing.sm,
+          runSpacing: AppSpacing.sm,
           children: options
               .map((opt) => SelectionChip(
                     option: opt,

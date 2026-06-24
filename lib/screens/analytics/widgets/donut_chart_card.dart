@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
 import '../../../utils/responsive_helper.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/donut_chart.dart';
 import '../../../widgets/donut_segment.dart';
 import 'legend_row.dart';
+import '../../../theme.dart';
 
 class DonutChartCard extends StatelessWidget {
   final String title;
@@ -36,14 +36,14 @@ class DonutChartCard extends StatelessWidget {
         ? Column(
             children: [
               chart,
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               ...legendItems,
             ],
           )
         : Row(
             children: [
               chart,
-              const SizedBox(width: 20),
+              AppSpacing.gapWXl,
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -60,9 +60,9 @@ class DonutChartCard extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+        AppSpacing.gapMd,
         CustomCard(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(AppSpacing.xl),
           child: content,
         ),
       ],

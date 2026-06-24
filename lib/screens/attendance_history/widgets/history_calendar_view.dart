@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_model.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'calendar_grid.dart';
 import 'calendar_header.dart';
@@ -21,15 +22,15 @@ class HistoryCalendarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const CalendarHeader(),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           const WeekDaysHeader(),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           CalendarGrid(history: history, selectedDay: selectedDay, onDaySelected: onDaySelected),
           const HistoryCalendarLegend(),
         ],

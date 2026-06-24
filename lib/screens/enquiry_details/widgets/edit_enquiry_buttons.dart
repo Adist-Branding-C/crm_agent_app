@@ -16,13 +16,13 @@ class EditEnquiryButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Row(
         children: [
           Expanded(
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
                 side: const BorderSide(color: AppColors.borderLight),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -38,7 +38,7 @@ class EditEnquiryButtons extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 16),
+          AppSpacing.gapWLg,
           Expanded(
             child: CustomButton(
               text: 'Save Changes',

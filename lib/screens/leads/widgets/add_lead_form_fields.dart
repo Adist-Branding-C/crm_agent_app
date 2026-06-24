@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/leads/add_lead/add_lead_bloc.dart';
 import '../add_lead_error_extensions.dart';
 import '../../../bloc/leads/leads_enums.dart';
+import '../../../theme.dart';
 import 'add_lead_additional_fields.dart';
 import 'add_lead_contact_fields.dart';
 import 'add_lead_selection_fields.dart';
@@ -36,7 +37,7 @@ class AddLeadFormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
       child: Column(
         children: [
           AddLeadContactFields(
@@ -47,14 +48,14 @@ class AddLeadFormFields extends StatelessWidget {
             onPhoneChanged: (v) => context.read<AddLeadBloc>().add(PhoneChanged(v)),
             onEmailChanged: (v) => context.read<AddLeadBloc>().add(EmailChanged(v)),
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           AddLeadSelectionFields(
             source: source, onSourceChanged: onSourceChanged,
             purpose: purpose, onPurposeChanged: onPurposeChanged,
             category: category, onCategoryChanged: onCategoryChanged,
             status: status, onStatusChanged: onStatusChanged,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           AddLeadAdditionalFields(
             followUpController: followUpController, noteController: noteController,
           ),

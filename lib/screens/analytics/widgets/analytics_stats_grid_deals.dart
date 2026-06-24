@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/deal_analytics_models.dart';
-import '../../../theme/app_colors.dart';
 import '../../../utils/currency_formatter.dart';
 import '../../../utils/responsive_helper.dart';
 import 'analytics_stats_card.dart';
+import '../../../theme.dart';
 
 class AnalyticsStatsGridDeals extends StatelessWidget {
   final DealsSummary summary;
@@ -48,11 +48,11 @@ class AnalyticsStatsGridDeals extends StatelessWidget {
         ? Row(
             children: [
               Expanded(child: cards[0]),
-              const SizedBox(width: 16),
+              AppSpacing.gapWLg,
               Expanded(child: cards[1]),
-              const SizedBox(width: 16),
+              AppSpacing.gapWLg,
               Expanded(child: cards[2]),
-              const SizedBox(width: 16),
+              AppSpacing.gapWLg,
               Expanded(child: cards[3]),
             ],
           )
@@ -61,15 +61,15 @@ class AnalyticsStatsGridDeals extends StatelessWidget {
               Row(
                 children: [
                   Expanded(child: cards[0]),
-                  const SizedBox(width: 16),
+                  AppSpacing.gapWLg,
                   Expanded(child: cards[1]),
                 ],
               ),
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               Row(
                 children: [
                   Expanded(child: cards[2]),
-                  const SizedBox(width: 16),
+                  AppSpacing.gapWLg,
                   Expanded(child: cards[3]),
                 ],
               ),

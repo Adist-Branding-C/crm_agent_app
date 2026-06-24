@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/tasks/add_task/add_task_bloc.dart';
 import '../../data/repositories/tasks_repository.dart';
+import '../../theme.dart';
 import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';
 import 'widgets/add_task_form.dart';
@@ -23,7 +24,7 @@ class AddTaskScreen extends StatelessWidget {
             ScreenHeader(
               title: 'Add Task',
               showBackButton: true,
-              padding: EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
+              padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
             ),
             Expanded(
               child: AddTaskForm(),

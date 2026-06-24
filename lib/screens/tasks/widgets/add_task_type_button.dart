@@ -22,7 +22,7 @@ class TaskTypeButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.ten),
         decoration: BoxDecoration(
           color: isSelected ? type.activeBg : Colors.white,
           borderRadius: BorderRadius.circular(8),
@@ -39,7 +39,7 @@ class TaskTypeButton extends StatelessWidget {
               size: 16,
               color: isSelected ? type.activeColor : AppColors.textMuted,
             ),
-            const SizedBox(width: 6),
+            SizedBox(width: AppSpacing.xs2),
             Text(
               type.label,
               style: TextStyle(

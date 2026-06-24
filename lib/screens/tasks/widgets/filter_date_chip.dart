@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_filter_criteria.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 
 class FilterDateChip extends StatelessWidget {
   final DateRangeType range;
@@ -20,7 +20,7 @@ class FilterDateChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.warningTextBackground : Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -34,7 +34,7 @@ class FilterDateChip extends StatelessWidget {
                 size: 14,
                 color: isSelected ? AppColors.warningText : AppColors.textMuted,
               ),
-              const SizedBox(width: 6),
+              SizedBox(width: AppSpacing.xs2),
             ],
             Text(range.label, style: TextStyle(
               color: isSelected ? AppColors.warningText : AppColors.textMuted,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../bloc/new_password/new_password_bloc.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/responsive_width_container.dart';
 import '../../../widgets/screen_header.dart';
@@ -31,18 +32,18 @@ class NewPasswordBody extends StatelessWidget {
           const ScreenHeader(title: 'New password', showBackButton: true),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
               child: ResponsiveWidthContainer(
                 maxWidth: 480,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const NewPasswordHeaderWidget(),
-                    const SizedBox(height: 32),
+                    AppSpacing.gapXxxl,
                     NewPasswordInputWidget(controller: passwordController),
-                    const SizedBox(height: 20),
+                    AppSpacing.gapXl,
                     ConfirmPasswordInputWidget(controller: confirmController),
-                    const SizedBox(height: 24),
+                    AppSpacing.gapXxl,
                     BlocBuilder<NewPasswordBloc, NewPasswordState>(
                       buildWhen: (p, c) =>
                           p.newPassword.isValid != c.newPassword.isValid ||

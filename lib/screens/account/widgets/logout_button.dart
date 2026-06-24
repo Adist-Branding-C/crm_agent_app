@@ -20,7 +20,7 @@ class LogoutButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.logout_rounded, color: AppColors.primaryColor, size: 20),
-              const SizedBox(width: 8),
+              AppSpacing.gapWSm,
               Text(
                 'Log Out',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(

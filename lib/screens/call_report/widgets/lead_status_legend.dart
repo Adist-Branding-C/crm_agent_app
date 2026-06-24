@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme/app_spacing.dart';
 import '../models/lead_status_item.dart';
 import 'lead_status_legend_item.dart';
 
@@ -13,7 +14,7 @@ class LeadStatusLegend extends StatelessWidget {
     return Wrap(
       alignment: WrapAlignment.center,
       spacing: 28,
-      runSpacing: 16,
+      runSpacing: AppSpacing.lg,
       children: items
           .map((item) => LeadStatusLegendItem(item: item))
           .toList(),

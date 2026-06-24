@@ -21,14 +21,14 @@ class FilterSource extends StatelessWidget {
   Widget build(BuildContext context) {
     final sources = LeadSource.values.where((e) => e != LeadSource.googleAds).toList();
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+      spacing: AppSpacing.sm,
+      runSpacing: AppSpacing.sm,
       children: sources.map((src) {
         final isSel = selectedSource == src;
         return GestureDetector(
           onTap: () => onSelected(isSel ? null : src),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
             decoration: BoxDecoration(
               color: isSel ? AppColors.primaryColor : AppColors.slate100,
               borderRadius: BorderRadius.circular(10),

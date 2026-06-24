@@ -24,7 +24,7 @@ class _NotesInputFieldState extends State<NotesInputField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Row(
         children: [
           Expanded(
@@ -42,13 +42,13 @@ class _NotesInputFieldState extends State<NotesInputField> {
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
           IconButton(
             onPressed: _submitNote,
             icon: const Icon(Icons.send, color: Colors.white),
             style: IconButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
-              padding: const EdgeInsets.all(12),
+              padding: EdgeInsets.all(AppSpacing.md),
             ),
           ),
         ],

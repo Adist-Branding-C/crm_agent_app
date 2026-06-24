@@ -25,14 +25,14 @@ class AddTaskTypeSelector extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
+            AppSpacing.gapSm,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: TaskType.values.map((type) {
                 final isSelected = state.type == type;
                 return Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                     child: TaskTypeButton(
                       type: type,
                       isSelected: isSelected,

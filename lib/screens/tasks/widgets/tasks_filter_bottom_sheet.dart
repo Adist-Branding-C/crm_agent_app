@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_filter_criteria.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import 'tasks_filter_actions.dart';
@@ -33,7 +34,7 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -46,7 +47,7 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
               onCustomDatesChanged: (f, t) => setState(() { _customFrom = f; _customTo = t; }),
               onPrioritiesChanged: (val) => setState(() => _priorities = val),
             ),
-            const SizedBox(height: 24),
+            AppSpacing.gapXxl,
             TasksFilterActions(onReset: _reset, onApply: _apply),
           ],
         ),

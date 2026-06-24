@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../error_messages.dart';
 import '../../../widgets/async_state_view.dart';
@@ -45,7 +46,7 @@ class TasksListView extends StatelessWidget {
                     ),
                   )
                 : ListView.builder(
-                    padding: const EdgeInsets.only(bottom: 24),
+                    padding: EdgeInsets.only(bottom: AppSpacing.xxl),
                     itemCount: tasks.length,
                     itemBuilder: (context, index) {
                       return TaskCard(task: tasks[index]);

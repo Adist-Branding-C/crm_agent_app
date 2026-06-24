@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 
 class AddDealSubmitButton extends StatelessWidget {
   final bool isValid;
@@ -41,7 +41,7 @@ class AddDealSubmitButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(Icons.add, size: 18),
-                const SizedBox(width: 6),
+                SizedBox(width: AppSpacing.xs2),
                 Text(
                   'Add Deal',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(

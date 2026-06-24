@@ -12,12 +12,12 @@ class NotesHistoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       itemCount: notes.length,
       itemBuilder: (context, index) {
         final note = notes[index];
         return Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: EdgeInsets.only(bottom: AppSpacing.xl),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,7 +40,7 @@ class NotesHistoryList extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 4),
+              AppSpacing.gapXs,
               Text(
                 note.time,
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(

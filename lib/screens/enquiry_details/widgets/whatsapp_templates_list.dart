@@ -34,7 +34,7 @@ class WhatsAppTemplatesList extends StatelessWidget {
               child: Row(
                 children: [
                   const Icon(Icons.edit, size: 14, color: AppColors.textMuted),
-                  const SizedBox(width: 4),
+                  AppSpacing.gapWXs,
                   Text(
                     'Write your own',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -47,7 +47,7 @@ class WhatsAppTemplatesList extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         SizedBox(
           height: 230,
           child: ListView.builder(

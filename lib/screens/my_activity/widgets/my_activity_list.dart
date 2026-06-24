@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../theme.dart';
 import '../../../bloc/my_activity/my_activity_bloc.dart';
 import 'my_activity_item.dart';
 import 'my_activity_date_header.dart';
@@ -21,7 +22,7 @@ class MyActivityList extends StatelessWidget {
         }
         return Expanded(
           child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
             physics: const BouncingScrollPhysics(),
             children: [
               for (final group in state.groupedActivities) ...[

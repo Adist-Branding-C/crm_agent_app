@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../theme.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/tasks/add_task/add_task_bloc.dart';
 import '../../../widgets/custom_button.dart';
@@ -26,7 +27,7 @@ class AddTaskForm extends StatelessWidget {
       },
       builder: (context, state) {
         return SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(AppSpacing.xxl),
           child: ResponsiveWidthContainer(
             maxWidth: 480,
             child: Column(
@@ -39,20 +40,20 @@ class AddTaskForm extends StatelessWidget {
                   onChanged: (val) => context.read<AddTaskBloc>().add(TaskTitleChanged(val)),
                   errorText: state.title.displayError != null ? 'Title cannot be empty' : null,
                 ),
-                const SizedBox(height: 16),
+                AppSpacing.gapLg,
                 CustomTextField(
                   label: 'Description',
                   hintText: 'Add description (optional)',
                   maxLines: 3,
                   onChanged: (val) => context.read<AddTaskBloc>().add(TaskDescriptionChanged(val)),
                 ),
-                const SizedBox(height: 16),
+                AppSpacing.gapLg,
                 const AddTaskTypeSelector(),
-                const SizedBox(height: 16),
+                AppSpacing.gapLg,
                 const AddTaskWhenPicker(),
-                const SizedBox(height: 16),
+                AppSpacing.gapLg,
                 const AddTaskPrioritySelector(),
-                const SizedBox(height: 24),
+                AppSpacing.gapXxl,
                 CustomButton(
                   text: 'Add Task',
                   isLoading: state.isSubmitting,

@@ -16,7 +16,7 @@ class CampaignsList extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxl),
       physics: const BouncingScrollPhysics(),
       itemCount: campaigns.length,
-      separatorBuilder: (context, index) => const SizedBox(height: 16),
+      separatorBuilder: (context, index) => AppSpacing.gapLg,
       itemBuilder: (context, index) {
         return CampaignCard(campaign: campaigns[index]);
       },

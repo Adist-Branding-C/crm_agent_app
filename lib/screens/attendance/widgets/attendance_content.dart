@@ -28,7 +28,7 @@ class AttendanceContent extends StatelessWidget {
       builder: (context, state) {
         if (state is AttendanceLoading || state is AttendanceInitial) {
           return const Padding(
-            padding: EdgeInsets.only(top: 100),
+            padding: EdgeInsets.only(top: AppSpacing.hundred),
             child: AppLoadingWidget(),
           );
         }
@@ -53,7 +53,7 @@ class AttendanceContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(child: Column(children: leftCol)),
-                const SizedBox(width: 24),
+                AppSpacing.gapWXxl,
                 Expanded(child: TimelineList(items: state.timeline)),
               ],
             );

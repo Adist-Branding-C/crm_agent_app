@@ -21,19 +21,19 @@ class CampaignCard extends StatelessWidget {
     final captionStyle = Theme.of(context).textTheme.bodyMedium;
 
     return CustomCard(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               CampaignIcon(campaign: campaign),
-              const SizedBox(width: 12),
+              AppSpacing.gapWMd,
               Expanded(child: CampaignDetails(campaign: campaign)),
               CampaignStatusBadge(campaign: campaign),
             ],
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           ClipRRect(
             borderRadius: BorderRadius.circular(3),
             child: LinearProgressIndicator(
@@ -43,7 +43,7 @@ class CampaignCard extends StatelessWidget {
               minHeight: 6,
             ),
           ),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

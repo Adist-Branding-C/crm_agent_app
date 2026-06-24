@@ -48,7 +48,7 @@ class MetricProgressRow extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 6),
+        AppSpacing.gapXs,
         ClipRRect(
           borderRadius: BorderRadius.circular(4),
           child: LinearProgressIndicator(

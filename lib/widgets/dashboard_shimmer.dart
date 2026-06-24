@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import 'dashboard_shimmer_header.dart';
 import 'dashboard_shimmer_stats_grid.dart';
 import 'dashboard_shimmer_list_section.dart';
@@ -12,16 +13,16 @@ class DashboardShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DashboardShimmerHeader(),
-          SizedBox(height: 24),
+          AppSpacing.gapXxl,
           DashboardShimmerStatsGrid(),
-          SizedBox(height: 24),
+          AppSpacing.gapXxl,
           DashboardShimmerListSection(),
-          SizedBox(height: 24),
+          AppSpacing.gapXxl,
           DashboardShimmerListSection(),
         ],
       ),

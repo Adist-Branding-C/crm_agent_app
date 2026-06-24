@@ -49,9 +49,9 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
       padding: EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxl),
       child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
         const Center(child: BottomSheetHandle()),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         const _FilterTitle(),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         Flexible(child: AnalyticsFilterSections(
           period: _period, start: _start, end: _end,
           onPeriodChanged: (p) => setState(() => _period = p),

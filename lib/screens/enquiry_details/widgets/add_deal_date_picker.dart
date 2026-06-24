@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../utils/context_text_extension.dart';
 import 'add_deal_date_picker_helper.dart';
 
@@ -36,12 +36,12 @@ class AddDealDatePicker extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 6),
+        AppSpacing.gapXs,
         InkWell(
           onTap: () => _pickDate(context),
           borderRadius: BorderRadius.circular(14),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.lg),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.borderLight),
               borderRadius: BorderRadius.circular(14),

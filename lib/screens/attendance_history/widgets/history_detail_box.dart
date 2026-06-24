@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 
 /// Standalone visual box showing timing metrics for selected day.
 class HistoryDetailBox extends StatelessWidget {
@@ -20,7 +21,7 @@ class HistoryDetailBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: AppColors.slate50,
           borderRadius: BorderRadius.circular(10),
@@ -28,7 +29,7 @@ class HistoryDetailBox extends StatelessWidget {
         child: Column(
           children: [
             Icon(icon, color: color, size: 18),
-            const SizedBox(height: 4),
+            AppSpacing.gapXs,
             Text(
               val,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(

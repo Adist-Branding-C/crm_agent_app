@@ -16,15 +16,15 @@ class DealListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: EdgeInsets.only(bottom: AppSpacing.lg),
       padding: AppSpacing.cardPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DealCardHeader(deal: deal),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           DealCardMeta(deal: deal),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           ClipRRect(
             borderRadius: BorderRadius.circular(3),
             child: LinearProgressIndicator(

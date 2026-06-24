@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 /// Reusable circular fingerprint icon used in the attendance check-in cards.
 class FingerprintIcon extends StatelessWidget {
@@ -18,7 +19,7 @@ class FingerprintIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(AppSpacing.ten),
       decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
       child: Icon(Icons.fingerprint_rounded, color: iconColor, size: 26),
     );

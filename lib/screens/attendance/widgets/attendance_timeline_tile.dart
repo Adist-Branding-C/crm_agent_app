@@ -30,7 +30,7 @@ class AttendanceTimelineTile extends StatelessWidget {
       isLast: isLast,
       config: config,
       child: Padding(
-        padding: const EdgeInsets.only(top: 2, bottom: 20),
+        padding: const EdgeInsets.only(top: AppSpacing.xxs, bottom: AppSpacing.xl),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,12 +42,12 @@ class AttendanceTimelineTile extends StatelessWidget {
                   Text(item.title, style: textTheme.titleMedium?.copyWith(
                     color: AppColors.textDark, fontWeight: FontWeight.bold,
                   )),
-                  const SizedBox(height: 3),
+                  AppSpacing.gapXs,
                   Text(item.subtitle, style: captionStyle),
                 ],
               ),
             ),
-            const SizedBox(width: 8),
+            AppSpacing.gapWSm,
             Text(item.time, style: captionStyle),
           ],
         ),

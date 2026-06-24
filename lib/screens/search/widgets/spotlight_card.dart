@@ -14,11 +14,11 @@ class SpotlightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(AppSpacing.sm),
             decoration: const BoxDecoration(
               color: AppColors.warningTextBackground,
               shape: BoxShape.circle,
@@ -29,7 +29,7 @@ class SpotlightCard extends StatelessWidget {
               size: 22,
             ),
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +42,7 @@ class SpotlightCard extends StatelessWidget {
                   color: AppColors.textDark,
                 ),
                 ),
-                const SizedBox(height: 4),
+                AppSpacing.gapXs,
                 Text(
                   spotlight.description,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(

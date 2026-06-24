@@ -22,7 +22,7 @@ class WhatsAppSheetHeader extends StatelessWidget {
       children: [
         Center(
           child: Container(
-            margin: const EdgeInsets.only(top: 8, bottom: 16),
+            margin: EdgeInsets.only(top: AppSpacing.sm, bottom: AppSpacing.lg),
             width: 40,
             height: 4,
             decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class WhatsAppSheetHeader extends StatelessWidget {
                 size: 20,
               ),
             ),
-            const SizedBox(width: 12),
+            AppSpacing.gapWMd,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class WhatsAppSheetHeader extends StatelessWidget {
                       color: AppColors.textDark,
                     ),
                   ),
-                  const SizedBox(height: 2),
+                  AppSpacing.gapXxs,
                   Text(
                     'To $name · $phone',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(

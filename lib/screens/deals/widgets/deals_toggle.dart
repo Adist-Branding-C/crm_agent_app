@@ -12,10 +12,10 @@ class DealsToggle extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedIndex = context.watch<DealsViewNotifier>().value;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
       child: Container(
         height: 44,
-        padding: const EdgeInsets.all(4),
+        padding: EdgeInsets.all(AppSpacing.xs),
         decoration: BoxDecoration(
           color: AppColors.borderLightAlpha50,
           borderRadius: BorderRadius.circular(12),

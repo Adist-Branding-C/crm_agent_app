@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_models.dart';
-import '../../../theme/app_colors.dart';
 import 'priority_chip.dart';
 
 /// Selection widget for priorities inside the filter bottom sheet.
@@ -28,7 +28,7 @@ class TasksFilterPrioritySelector extends StatelessWidget {
             letterSpacing: 0.8,
           ),
         ),
-        const SizedBox(height: 10),
+        AppSpacing.gapSm,
         Row(
           children: TaskPriority.values.map((priority) {
             final active = selectedPriorities.contains(priority);

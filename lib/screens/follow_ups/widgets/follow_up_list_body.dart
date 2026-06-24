@@ -1,4 +1,5 @@
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/call_log/call_log_bloc.dart';
@@ -31,13 +32,13 @@ class FollowUpListBody extends StatelessWidget {
             leadingIconColor: AppColors.errorColor,
             badgeBgColor: AppColors.primaryColorLight,
             badgeTextColor: AppColors.errorColor,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
           ),
           ...overdue.map((c) => FollowUpItemCard(
                 call: c,
                 onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
         ],
         if (dueToday.isNotEmpty) ...[
           SectionHeader(
@@ -47,13 +48,13 @@ class FollowUpListBody extends StatelessWidget {
             leadingIconColor: AppColors.errorColor,
             badgeBgColor: AppColors.primaryColorLight,
             badgeTextColor: AppColors.errorColor,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
           ),
           ...dueToday.map((c) => FollowUpItemCard(
                 call: c,
                 onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
         ],
         if (upcoming.isNotEmpty) ...[
           SectionHeader(
@@ -63,13 +64,13 @@ class FollowUpListBody extends StatelessWidget {
             leadingIconColor: AppColors.info,
             badgeBgColor: AppColors.infoBackgroundLight,
             badgeTextColor: AppColors.infoText,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
           ),
           ...upcoming.map((c) => FollowUpItemCard(
                 call: c,
                 onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
               )),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
         ],
       ],
     );

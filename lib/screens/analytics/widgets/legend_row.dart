@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 
 class LegendRow extends StatelessWidget {
   final String label;
@@ -16,7 +16,7 @@ class LegendRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: Row(
         children: [
           Container(
@@ -27,7 +27,7 @@ class LegendRow extends StatelessWidget {
               shape: BoxShape.circle,
             ),
           ),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
           Expanded(
             child: Text(
               label,

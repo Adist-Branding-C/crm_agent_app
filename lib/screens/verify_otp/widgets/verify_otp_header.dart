@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_context_theme.dart';
+import '../../../theme/app_spacing.dart';
 
 class VerifyOtpHeader extends StatelessWidget {
   final String phone;
@@ -12,9 +13,9 @@ class VerifyOtpHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.primaryColorLight,
             borderRadius: BorderRadius.circular(16),
@@ -25,7 +26,7 @@ class VerifyOtpHeader extends StatelessWidget {
             size: 32,
           ),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         Text(
           'Enter OTP',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -33,7 +34,7 @@ class VerifyOtpHeader extends StatelessWidget {
             color: context.textDark,
           ),
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         Text(
           'We sent a 6-digit code to\n$phone',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),

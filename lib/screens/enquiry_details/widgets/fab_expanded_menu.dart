@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'fab_menu_item.dart';
 import 'fab_actions.dart';
 
@@ -16,9 +17,9 @@ class FabExpandedMenu extends StatelessWidget {
       children: [
         for (final action in actions) ...[
           FabMenuItem(text: action.label, icon: action.icon, color: action.color, onTap: action.onTap),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
         ],
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
       ],
     );
   }

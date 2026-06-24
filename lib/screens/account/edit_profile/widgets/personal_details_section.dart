@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../theme.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../widgets/custom_text_field.dart';
 import 'personal_details_validators.dart';
@@ -24,9 +25,9 @@ class PersonalDetailsSection extends StatelessWidget {
           'Personal details',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+        AppSpacing.gapMd,
         CustomCard(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           child: Column(
             children: [
               CustomTextField(
@@ -36,7 +37,7 @@ class PersonalDetailsSection extends StatelessWidget {
                 controller: nameController,
                 validator: (val) => PersonalDetailsValidators.requiredField(val, 'Full Name'),
               ),
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               CustomTextField(
                 label: 'Phone',
                 isRequired: true,
@@ -45,7 +46,7 @@ class PersonalDetailsSection extends StatelessWidget {
                 keyboardType: TextInputType.phone,
                 validator: PersonalDetailsValidators.phone,
               ),
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               CustomTextField(
                 label: 'Email',
                 hintText: 'Enter email address',

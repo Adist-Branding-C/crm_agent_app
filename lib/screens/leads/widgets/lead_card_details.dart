@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_models.dart';
+import '../../../theme.dart';
 
 class LeadCardDetails extends StatelessWidget {
   final Lead lead;
@@ -15,9 +16,9 @@ class LeadCardDetails extends StatelessWidget {
           lead.name,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        const SizedBox(height: 2),
+        AppSpacing.gapXxs,
         Text(
-          '${lead.source.label} · ${lead.status.label}',
+          '\${lead.source.label} · \${lead.status.label}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

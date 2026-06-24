@@ -35,7 +35,7 @@ class FollowUpItemCard extends StatelessWidget {
             initials: call.initials,
             size: 44,
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +47,7 @@ class FollowUpItemCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                 ),
-                const SizedBox(height: 4),
+                AppSpacing.gapXs,
                 Text(
                   '${call.category} · ${call.status}',
                   style: Theme.of(context).textTheme.bodySmall,
@@ -55,7 +55,7 @@ class FollowUpItemCard extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
           CallButton(onTap: onCallTap),
         ],
       ),

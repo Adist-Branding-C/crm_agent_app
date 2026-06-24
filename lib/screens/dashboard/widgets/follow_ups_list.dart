@@ -1,10 +1,10 @@
-import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
 import '../../../router/app_routes.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/section_header.dart';
+import '../../../theme.dart';
 import 'follow_up_card.dart';
 
 /// Renders the entire Follow-up Calls list container with headers.
@@ -17,7 +17,7 @@ class FollowUpsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../utils/context_text_extension.dart';
 
 class NoteBlock extends StatelessWidget {
@@ -18,7 +18,7 @@ class NoteBlock extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: color, size: 12),
-        const SizedBox(width: 4),
+        AppSpacing.gapWXs,
         Expanded(
           child: Text(text, style: TextStyle(
             color: color,

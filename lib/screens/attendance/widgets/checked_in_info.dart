@@ -21,7 +21,7 @@ class CheckedInInfo extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 4),
+        AppSpacing.gapXs,
         Row(
           children: [
             const Icon(
@@ -29,7 +29,7 @@ class CheckedInInfo extends StatelessWidget {
               color: AppColors.slate400,
               size: 13,
             ),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             Expanded(
               child: Text(
                 '$location · since $checkInTime',

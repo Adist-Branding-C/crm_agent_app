@@ -23,12 +23,12 @@ class CallButton extends StatelessWidget {
             onTap: onTap,
             borderRadius: BorderRadius.circular(borderRadius),
             child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.fourteen, vertical: AppSpacing.sm),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(Icons.call_rounded, color: Colors.white, size: 14),
-                  SizedBox(width: 6),
+                  SizedBox(width: AppSpacing.xs2),
                   Text(
                     'Call',
                     style: TextStyle(

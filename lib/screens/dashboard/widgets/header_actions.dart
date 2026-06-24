@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../bloc/account/account_bloc.dart';
 import '../../../router/app_routes.dart';
 import '../../../widgets/user_avatar.dart';
+import '../../../theme.dart';
 import 'notification_bell.dart';
 
 import '../../../bloc/notifications/notifications_bloc.dart';
@@ -30,7 +31,7 @@ class HeaderActions extends StatelessWidget {
           onTap: () => context.pushNamed(AppRoutes.notifications),
           child: NotificationBell(count: notifCount),
         ),
-        const SizedBox(width: 12),
+        AppSpacing.gapWMd,
         _AvatarButton(initials: initials),
       ],
     );

@@ -57,7 +57,7 @@ class HistoryLogTimeBlock extends StatelessWidget {
               ),
         ),
         if (durationStr.isNotEmpty) ...[
-          const SizedBox(height: 4),
+          AppSpacing.gapXs,
           Text(
             durationStr,
             style: TextStyle(

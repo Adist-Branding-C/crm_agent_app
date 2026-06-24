@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/responsive_width_container.dart';
 import '../../../widgets/screen_header.dart';
 import 'verify_otp_header.dart';
@@ -23,7 +24,7 @@ class VerifyOtpBody extends StatelessWidget {
           const ScreenHeader(title: 'Verify OTP', showBackButton: true),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
               child: ResponsiveWidthContainer(
                 maxWidth: 480,
                 child: Column(

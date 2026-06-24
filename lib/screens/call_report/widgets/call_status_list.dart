@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/donut_chart.dart';
 import '../../../widgets/donut_segment.dart';
@@ -23,8 +24,8 @@ class CallStatusList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.all(AppSpacing.xl),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Column(
         children: [
           DonutChart(
@@ -32,7 +33,7 @@ class CallStatusList extends StatelessWidget {
             centerLabel: '$totalCalls',
             centerSubLabel: 'Total calls',
           ),
-          const SizedBox(height: 20),
+          AppSpacing.gapXl,
           ...items.map((item) => CallStatusRow(item: item)),
         ],
       ),

@@ -13,7 +13,7 @@ class NotificationBell extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -29,7 +29,7 @@ class NotificationBell extends StatelessWidget {
             top: -2,
             right: -2,
             child: Container(
-              padding: const EdgeInsets.all(4),
+              padding: EdgeInsets.all(AppSpacing.xs),
               decoration: const BoxDecoration(
                 color: AppColors.errorColor,
                 shape: BoxShape.circle,

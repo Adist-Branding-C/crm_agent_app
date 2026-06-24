@@ -14,12 +14,12 @@ class HistoryLeavesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.all(AppSpacing.md),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
               color: AppColors.infoBackground,
               borderRadius: BorderRadius.circular(10),
@@ -30,7 +30,7 @@ class HistoryLeavesCard extends StatelessWidget {
               size: 20,
             ),
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class HistoryLeavesCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
             ),
             child: Text(
               'Apply',

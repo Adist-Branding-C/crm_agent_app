@@ -25,9 +25,9 @@ class AddTaskPrioritySelector extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
+            AppSpacing.gapSm,
             Container(
-              padding: const EdgeInsets.all(4),
+              padding: EdgeInsets.all(AppSpacing.xs),
               decoration: BoxDecoration(
                 color: AppColors.slate100,
                 borderRadius: BorderRadius.circular(10),
@@ -43,7 +43,7 @@ class AddTaskPrioritySelector extends StatelessWidget {
                             .add(TaskPriorityChanged(priority));
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
                         decoration: BoxDecoration(
                           color: isSelected ? Colors.white : Colors.transparent,
                           borderRadius: BorderRadius.circular(8),

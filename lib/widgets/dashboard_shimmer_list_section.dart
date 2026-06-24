@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import 'app_shimmer_widget.dart';
 
 class DashboardShimmerListSection extends StatelessWidget {
@@ -10,7 +11,7 @@ class DashboardShimmerListSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const AppShimmerWidget(width: 120, height: 18, borderRadius: 4),
-        const SizedBox(height: 12),
+        AppSpacing.gapMd,
         AppShimmerWidget.card(height: 150),
       ],
     );

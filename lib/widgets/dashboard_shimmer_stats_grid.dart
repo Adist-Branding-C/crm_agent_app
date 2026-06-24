@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import 'app_shimmer_widget.dart';
 
 class DashboardShimmerStatsGrid extends StatelessWidget {
@@ -10,11 +11,11 @@ class DashboardShimmerStatsGrid extends StatelessWidget {
       children: List.generate(
         2,
         (_) => Padding(
-          padding: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.only(bottom: AppSpacing.lg),
           child: Row(
             children: [
               Expanded(child: AppShimmerWidget.card(height: 72)),
-              const SizedBox(width: 16),
+              AppSpacing.gapWLg,
               Expanded(child: AppShimmerWidget.card(height: 72)),
             ],
           ),

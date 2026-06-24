@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../theme/app_colors.dart';
 import '../../../utils/context_text_extension.dart';
 
@@ -16,7 +17,7 @@ class PurposeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,10 +25,10 @@ class PurposeSelector extends StatelessWidget {
             'Purpose',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark),
           ),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           Wrap(
-            spacing: 8,
-            runSpacing: 8,
+            spacing: AppSpacing.sm,
+            runSpacing: AppSpacing.sm,
             children: LeadPurpose.values.map((p) {
               final isSel = p == selectedPurpose;
               return ChoiceChip(

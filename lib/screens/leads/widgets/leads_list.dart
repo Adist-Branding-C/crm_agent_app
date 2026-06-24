@@ -27,7 +27,7 @@ class LeadsList extends StatelessWidget {
             itemCount: 5,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: EdgeInsets.only(bottom: AppSpacing.md),
               child: AppShimmerWidget.card(height: 72),
             ),
           );
@@ -52,7 +52,7 @@ class LeadsList extends StatelessWidget {
             itemCount: list.length,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: EdgeInsets.only(bottom: AppSpacing.md),
               child: LeadCard(lead: list[index]),
             ),
           );

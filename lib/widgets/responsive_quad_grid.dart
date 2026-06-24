@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import '../utils/responsive_helper.dart';
 
 class ResponsiveQuadGrid extends StatelessWidget {
@@ -12,15 +13,15 @@ class ResponsiveQuadGrid extends StatelessWidget {
     if (isCompact) {
       return Column(
         children: [
-          Row(children: [Expanded(child: children[0]), const SizedBox(width: 8), Expanded(child: children[1])]),
-          const SizedBox(height: 8),
-          Row(children: [Expanded(child: children[2]), const SizedBox(width: 8), Expanded(child: children[3])]),
+          Row(children: [Expanded(child: children[0]), AppSpacing.gapWSm, Expanded(child: children[1])]),
+          AppSpacing.gapSm,
+          Row(children: [Expanded(child: children[2]), AppSpacing.gapWSm, Expanded(child: children[3])]),
         ],
       );
     }
     return Row(
       children: children.map((c) => Padding(
-        padding: const EdgeInsets.only(right: 8),
+        padding: const EdgeInsets.only(right: AppSpacing.sm),
         child: Expanded(child: c),
       )).toList(),
     );

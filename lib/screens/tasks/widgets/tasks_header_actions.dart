@@ -32,7 +32,7 @@ class TasksHeaderActions extends StatelessWidget {
               iconSize: 20,
               onTap: () => _openFilter(context),
             ),
-            const SizedBox(width: 8),
+            AppSpacing.gapWSm,
             CardIconButton(
               icon: Icons.add_rounded,
               iconColor: AppColors.primaryColor,

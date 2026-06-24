@@ -31,10 +31,10 @@ class EnquiryDetailsHeader extends StatelessWidget {
               title: 'Enquiry Details',
               showBackButton: true,
               actions: EditEnquiryButton(lead: lead),
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 4),
+              padding: EdgeInsets.only(left: AppSpacing.lg, right: AppSpacing.lg, top: AppSpacing.md, bottom: AppSpacing.xs),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -45,23 +45,23 @@ class EnquiryDetailsHeader extends StatelessWidget {
                       color: AppColors.textDark,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  AppSpacing.gapXs,
                   Text(
                     lead.email ?? 'No email provided',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
                     ),
                   ),
-                  const SizedBox(height: 2),
+                  AppSpacing.gapXxs,
                   Text(
                     lead.phone,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textMuted,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  AppSpacing.gapLg,
                   ActionButtons(lead: lead),
-                  const SizedBox(height: 16),
+                  AppSpacing.gapLg,
                 ],
               ),
             ),

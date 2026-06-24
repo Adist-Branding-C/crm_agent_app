@@ -17,12 +17,12 @@ class EditProfileAvatarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.symmetric(vertical: 24),
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.xxl),
       child: Center(
         child: Column(
           children: [
             UserAvatar(initials: initials, size: 90, fontSize: 32),
-            const SizedBox(height: 12),
+            AppSpacing.gapMd,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -31,7 +31,7 @@ class EditProfileAvatarCard extends StatelessWidget {
                   size: 14,
                   color: AppColors.textMuted,
                 ),
-                const SizedBox(width: 6),
+                SizedBox(width: AppSpacing.xs2),
                 Text(
                   'Joined $joinedDate',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(

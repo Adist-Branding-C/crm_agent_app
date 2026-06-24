@@ -39,7 +39,7 @@ class ProfileCard extends StatelessWidget {
                 textColor: AppColors.primaryColor,
                 bgColor: AppColors.primaryColorLight,
               ),
-              const SizedBox(width: 12),
+              AppSpacing.gapWMd,
               const ProfileActionButton(
                 icon: Icons.email_outlined,
                 label: 'Email',

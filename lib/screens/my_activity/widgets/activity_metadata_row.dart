@@ -18,7 +18,7 @@ class ActivityMetadataRow extends StatelessWidget {
       children: [
         const Icon(Icons.person_outline_rounded,
             size: 14, color: AppColors.textMuted),
-        const SizedBox(width: 4),
+        AppSpacing.gapWXs,
         Text(
           assignee,
           style: const TextStyle(
@@ -27,13 +27,13 @@ class ActivityMetadataRow extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(width: 8),
+        AppSpacing.gapWSm,
         const Text('·',
             style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
-        const SizedBox(width: 8),
+        AppSpacing.gapWSm,
         const Icon(Icons.access_time_rounded,
             size: 14, color: AppColors.textMuted),
-        const SizedBox(width: 4),
+        AppSpacing.gapWXs,
         Text(
           time,
           style: const TextStyle(

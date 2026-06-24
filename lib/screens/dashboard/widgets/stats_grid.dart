@@ -15,14 +15,14 @@ class StatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final isTablet = ResponsiveHelper.isTablet(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
       child: isTablet ? _horizontalRow(context) : _verticalGrid(context),
     );
   }
 
   Widget _horizontalRow(BuildContext context) {
     return Row(children: _allCards(context).map((c) => Padding(
-      padding: const EdgeInsets.only(right: 16),
+      padding: EdgeInsets.only(right: AppSpacing.lg),
       child: Expanded(child: c),
     )).toList());
   }
@@ -30,9 +30,9 @@ class StatsGrid extends StatelessWidget {
   Widget _verticalGrid(BuildContext context) {
     final cards = _allCards(context);
     return Column(children: [
-      Row(children: [Expanded(child: cards[0]), const SizedBox(width: 16), Expanded(child: cards[1])]),
-      const SizedBox(height: 16),
-      Row(children: [Expanded(child: cards[2]), const SizedBox(width: 16), Expanded(child: cards[3])]),
+      Row(children: [Expanded(child: cards[0]), AppSpacing.gapWLg, Expanded(child: cards[1])]),
+      AppSpacing.gapLg,
+      Row(children: [Expanded(child: cards[2]), AppSpacing.gapWLg, Expanded(child: cards[3])]),
     ]);
   }
 

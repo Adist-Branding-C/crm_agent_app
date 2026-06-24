@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import 'status_badge.dart';
 import 'note_block.dart';
 
@@ -19,21 +19,21 @@ class HistoryLogItemDetails extends StatelessWidget {
           children: [
             StatusBadge(text: log.status),
             if (log.isActive) ...[
-              const SizedBox(width: 4),
+              AppSpacing.gapWXs,
               StatusBadge(text: 'ACTIVE', showDot: true),
             ],
           ],
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: AppSpacing.xs2),
         Row(
           children: [
             const Icon(Icons.location_on_outlined, color: AppColors.textMuted, size: 12),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             Text(log.location ?? '—', style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
           ],
         ),
         if (log.note != null || log.approvedBy != null) ...[
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           NoteBlock(approvedBy: log.approvedBy, note: log.note),
         ],
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../utils/context_text_extension.dart';
 import 'attendance_status_theme.dart';
 
@@ -13,7 +13,7 @@ class StatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final statusTheme = AttendanceStatusTheme.resolve(text);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
         color: statusTheme.bg,
         borderRadius: BorderRadius.circular(6),
@@ -28,7 +28,7 @@ class StatusBadge extends StatelessWidget {
                 color: AppColors.success, shape: BoxShape.circle,
               ),
             ),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
           ],
           Text(text, style: TextStyle(
             color: statusTheme.fg,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
-import '../../../theme/app_colors.dart';
 import '../../../theme.dart';
 
 /// Renders the title and meta information for a Campaign.
@@ -23,7 +22,7 @@ class CampaignDetails extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 2),
+        AppSpacing.gapXxs,
         Text(
           '${campaign.type.label} · by ${campaign.creator}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(

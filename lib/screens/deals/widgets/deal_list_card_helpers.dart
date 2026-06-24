@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
-import '../../../../theme/app_colors.dart';
+import '../../../../theme.dart';
 import '../../../../utils/currency_formatter.dart';
 import 'deal_stage_badge.dart';
 
@@ -58,7 +58,7 @@ class DealCardMeta extends StatelessWidget {
               size: 13,
               color: AppColors.textMuted,
             ),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             Text(
               deal.closeDate,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(

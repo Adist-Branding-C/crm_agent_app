@@ -26,7 +26,7 @@ class _EmailLocationFields extends StatelessWidget {
           errorText: emailError,
           onChanged: onEmailChanged,
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         CustomTextField(
           label: 'Location',
           hintText: 'City, State',

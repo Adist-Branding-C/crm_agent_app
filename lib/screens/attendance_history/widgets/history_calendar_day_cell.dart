@@ -59,9 +59,9 @@ class HistoryCalendarDayCell extends StatelessWidget {
             Text('$day', style: TextStyle(color: fg, fontWeight: FontWeight.bold, fontSize: context.scaleFont(12))),
             if (dotColor != Colors.transparent)
               Container(
-                margin: const EdgeInsets.only(top: 2),
-                width: 4,
-                height: 4,
+                margin: EdgeInsets.only(top: AppSpacing.xxs),
+                width: AppSpacing.xs,
+                height: AppSpacing.xs,
                 decoration: BoxDecoration(color: dotColor, shape: BoxShape.circle),
               ),
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../theme.dart';
 
 /// Additional information input fields section.
 class AddLeadAdditionalFields extends StatelessWidget {
@@ -19,7 +20,7 @@ class AddLeadAdditionalFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -31,7 +32,7 @@ class AddLeadAdditionalFields extends StatelessWidget {
             hintText: 'e.g. Tomorrow, 11:00 AM',
             controller: followUpController,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           CustomTextField(
             label: 'Note',
             hintText: 'Anything important about this lead...',

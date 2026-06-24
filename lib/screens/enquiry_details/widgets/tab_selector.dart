@@ -36,7 +36,7 @@ class TabSelector extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
                     child: Text(
                       tabs[index],
                       style: TextStyle(

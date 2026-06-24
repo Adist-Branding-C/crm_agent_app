@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 import 'toggle_item.dart';
 
 /// Segmented custom toggle capsule to switch between Log and Calendar views.
@@ -16,8 +17,8 @@ class HistoryToggleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      padding: const EdgeInsets.all(4),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.all(AppSpacing.xs),
       decoration: BoxDecoration(
         color: AppColors.slate100,
         borderRadius: BorderRadius.circular(25),

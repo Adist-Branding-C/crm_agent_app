@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_colors.dart';
+import '../theme.dart';
 
 /// A badge displaying a numeric count indicator, typically used in section headers.
 class CountBadge extends StatelessWidget {
@@ -23,7 +23,7 @@ class CountBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
         color: bgColor ?? AppColors.slate100,
         borderRadius: BorderRadius.circular(10),

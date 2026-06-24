@@ -25,7 +25,7 @@ class AddLeadScreen extends StatelessWidget {
               ScreenHeader(
                 title: 'Add Lead',
                 showBackButton: true,
-                padding: EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
+                padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
               ),
               Expanded(child: AddLeadForm()),
             ],

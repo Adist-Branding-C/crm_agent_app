@@ -1,4 +1,3 @@
-import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
@@ -6,6 +5,7 @@ import '../../../bloc/tasks/tasks_models.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/section_header.dart';
 import '../../dashboard/dashboard_tab_notifier.dart';
+import '../../../theme.dart';
 import 'task_row.dart';
 
 /// Renders the entire Tasks list container with headers.
@@ -20,7 +20,7 @@ class TasksList extends StatelessWidget {
     if (tasks.isEmpty) return const SizedBox.shrink();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

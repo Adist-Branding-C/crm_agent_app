@@ -30,11 +30,11 @@ class SectionHeader extends StatelessWidget {
             child: _SectionHeaderTitle(title: title, leadingIcon: leadingIcon, leadingIconColor: leadingIconColor),
           ),
           if (countBadge != null) ...[
-            const SizedBox(width: 8),
+            AppSpacing.gapWSm,
             CountBadge(count: countBadge!, bgColor: badgeBgColor, textColor: badgeTextColor),
           ],
           if (actionText != null && onActionTap != null) ...[
-            const SizedBox(width: 16),
+            AppSpacing.gapWLg,
             SectionHeaderAction(actionText: actionText!, onActionTap: onActionTap!),
           ],
         ],
@@ -56,7 +56,7 @@ class _SectionHeaderTitle extends StatelessWidget {
       children: [
         if (leadingIcon != null) ...[
           Icon(leadingIcon, color: leadingIconColor ?? AppColors.textDark, size: 16),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
         ],
         Expanded(
           child: Text(

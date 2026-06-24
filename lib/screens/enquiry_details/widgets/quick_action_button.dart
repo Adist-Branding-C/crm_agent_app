@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../utils/context_text_extension.dart';
 
 /// A reusable action button for details screens.
@@ -25,7 +26,7 @@ class QuickActionButton extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(8),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
           decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(8),
@@ -34,7 +35,7 @@ class QuickActionButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               icon,
-              const SizedBox(width: 8),
+              AppSpacing.gapWSm,
               Text(
                 label,
                 style: TextStyle(

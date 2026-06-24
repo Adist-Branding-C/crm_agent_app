@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_filter_criteria.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import 'tasks_filter_date_selector.dart';
@@ -37,12 +38,12 @@ class TasksFilterForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const TasksFilterHeader(),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         TasksFilterTypeSelector(
           selectedTypes: types,
           onChanged: onTypesChanged,
         ),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         TasksFilterDateSelector(
           selectedRange: dateRange,
           customFrom: customFrom,
@@ -50,7 +51,7 @@ class TasksFilterForm extends StatelessWidget {
           onRangeChanged: onDateRangeChanged,
           onCustomDatesChanged: onCustomDatesChanged,
         ),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         TasksFilterPrioritySelector(
           selectedPriorities: priorities,
           onChanged: onPrioritiesChanged,

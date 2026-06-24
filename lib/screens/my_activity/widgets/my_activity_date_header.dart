@@ -10,7 +10,7 @@ class MyActivityDateHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 8),
+      padding: EdgeInsets.only(top: AppSpacing.xl, bottom: AppSpacing.sm),
       child: Text(
         dateLabel,
         style: const TextStyle(

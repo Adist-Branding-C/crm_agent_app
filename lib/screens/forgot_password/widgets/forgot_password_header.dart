@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_context_theme.dart';
+import '../../../theme/app_spacing.dart';
 
 class ForgotPasswordHeader extends StatelessWidget {
   const ForgotPasswordHeader({super.key});
@@ -10,9 +11,9 @@ class ForgotPasswordHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.primaryColorLight,
             borderRadius: BorderRadius.circular(16),
@@ -23,7 +24,7 @@ class ForgotPasswordHeader extends StatelessWidget {
             size: 32,
           ),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         Text(
           'Enter your phone',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -31,7 +32,7 @@ class ForgotPasswordHeader extends StatelessWidget {
             color: context.textDark,
           ),
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         Text(
           "We'll send a 6-digit OTP to your registered mobile number.",
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),

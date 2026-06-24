@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_models.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../widgets/user_avatar.dart';
 
 class AddDealLeadCard extends StatelessWidget {
@@ -11,7 +11,7 @@ class AddDealLeadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.slate50,
         borderRadius: BorderRadius.circular(16),
@@ -22,7 +22,7 @@ class AddDealLeadCard extends StatelessWidget {
             initials: lead.name.split(' ').map((e) => e.isNotEmpty ? e[0] : '').take(2).join(),
             size: 40,
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +44,7 @@ class AddDealLeadCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
             decoration: BoxDecoration(
               color: AppColors.primaryColorLight,
               borderRadius: BorderRadius.circular(8),

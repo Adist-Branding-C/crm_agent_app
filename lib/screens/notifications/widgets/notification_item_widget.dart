@@ -26,11 +26,11 @@ class NotificationItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(AppSpacing.ten),
             decoration: BoxDecoration(color: style.bgColor, shape: BoxShape.circle),
             child: Icon(style.icon, color: style.iconColor, size: 20),
           ),
-          const SizedBox(width: 16),
+          AppSpacing.gapWLg,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,15 +40,15 @@ class NotificationItemWidget extends StatelessWidget {
                     Expanded(child: Text(item.title, style: Theme.of(context).textTheme.titleMedium)),
                     if (!item.isRead)
                       Container(
-                        margin: const EdgeInsets.only(left: 6),
+                        margin: EdgeInsets.only(left: AppSpacing.xs2),
                         width: 6, height: 6,
                         decoration: const BoxDecoration(color: AppColors.primaryColor, shape: BoxShape.circle),
                       ),
                   ],
                 ),
-                const SizedBox(height: 4),
+                AppSpacing.gapXs,
                 Text(item.subtitle, style: Theme.of(context).textTheme.bodySmall),
-                const SizedBox(height: 6),
+                AppSpacing.gapXs,
                 Text(item.time, style: Theme.of(context).textTheme.labelSmall),
               ],
             ),

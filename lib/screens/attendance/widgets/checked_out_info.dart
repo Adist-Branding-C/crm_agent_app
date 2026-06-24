@@ -18,7 +18,7 @@ class CheckedOutInfo extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 4),
+        AppSpacing.gapXs,
         Row(
           children: [
             const Icon(
@@ -26,7 +26,7 @@ class CheckedOutInfo extends StatelessWidget {
               color: AppColors.textMuted,
               size: 13,
             ),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             Expanded(
               child: Text(
                 'Punch in to log attendance',

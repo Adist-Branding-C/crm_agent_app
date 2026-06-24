@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 
 /// An individual menu item displaying an icon and text badge inside [FabMenu].
 class FabMenuItem extends StatelessWidget {
@@ -32,7 +32,7 @@ class FabMenuItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -46,7 +46,7 @@ class FabMenuItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Container(
             width: 40,
             height: 40,

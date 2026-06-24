@@ -25,7 +25,7 @@ class SplashContent extends StatelessWidget {
             size: 48,
           ),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         // Brand Name
         RichText(
           text: TextSpan(
@@ -45,7 +45,7 @@ class SplashContent extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         // Tagline
         Text(
           'Connecting you to your leads',

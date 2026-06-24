@@ -18,7 +18,7 @@ class HistoryLogView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
           child: Text(
             'Daily log',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(

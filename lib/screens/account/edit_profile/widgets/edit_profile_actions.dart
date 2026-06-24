@@ -23,7 +23,7 @@ class EditProfileActions extends StatelessWidget {
           flex: 1,
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
               side: const BorderSide(color: AppColors.borderLight),
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
@@ -40,7 +40,7 @@ class EditProfileActions extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 16),
+        AppSpacing.gapWLg,
         Expanded(
           flex: 2,
           child: CustomButton(

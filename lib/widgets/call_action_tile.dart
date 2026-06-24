@@ -24,7 +24,7 @@ class CallActionTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md, horizontal: AppSpacing.xs),
         child: Row(
           children: [
             Container(
@@ -36,7 +36,7 @@ class CallActionTile extends StatelessWidget {
               ),
               child: Icon(icon, color: iconColor, size: 20),
             ),
-            const SizedBox(width: 16),
+            AppSpacing.gapWLg,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class CallActionTile extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 2),
+                  AppSpacing.gapXxs,
                   Text(
                     subtitle,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(

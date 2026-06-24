@@ -22,7 +22,7 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: AppColors.borderLight),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -31,7 +31,7 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
               size: 16,
               color: AppColors.errorColor,
             ),
-            const SizedBox(width: 8),
+            AppSpacing.gapWSm,
             Text(
               selectedPeriod,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -39,7 +39,7 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             const Icon(
               Icons.keyboard_arrow_down_rounded,
               size: 18,

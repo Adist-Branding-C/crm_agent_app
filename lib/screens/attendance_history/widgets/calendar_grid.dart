@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../data/models/attendance_history_model.dart';
+import '../../../theme.dart';
 import 'history_calendar_day_cell.dart';
 
 class CalendarGrid extends StatelessWidget {
@@ -37,8 +38,8 @@ class CalendarGrid extends StatelessWidget {
       crossAxisCount: 7,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      mainAxisSpacing: 8,
-      crossAxisSpacing: 6,
+      mainAxisSpacing: AppSpacing.sm,
+      crossAxisSpacing: AppSpacing.xs2,
       childAspectRatio: 1.0,
       children: list,
     );

@@ -11,7 +11,7 @@ class LeadsSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -32,7 +32,7 @@ class LeadsSearchBar extends StatelessWidget {
             border: InputBorder.none,
             enabledBorder: InputBorder.none,
             focusedBorder: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
           ),
           style: const TextStyle(color: AppColors.textDark, fontSize: 14),
         ),

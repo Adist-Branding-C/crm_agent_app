@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../theme.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../widgets/custom_text_field.dart';
 import '../../../../widgets/selection_group.dart';
@@ -29,9 +30,9 @@ class WorkDetailsSection extends StatelessWidget {
           'Work details',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+        AppSpacing.gapMd,
         CustomCard(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,14 +42,14 @@ class WorkDetailsSection extends StatelessWidget {
                 selectedOption: selectedRole,
                 onSelected: onRoleChanged,
               ),
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               SelectionGroup(
                 label: 'Branch',
                 options: const ['Calicut', 'Kochi', 'Trivandrum', 'Kannur'],
                 selectedOption: selectedBranch,
                 onSelected: onBranchChanged,
               ),
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               CustomTextField(
                 label: 'Base location',
                 hintText: 'Enter base location',

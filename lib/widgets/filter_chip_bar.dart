@@ -23,11 +23,11 @@ class FilterChipBar extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Row(
         children: options
             .map((opt) => Padding(
-                  padding: const EdgeInsets.only(right: 8),
+                  padding: const EdgeInsets.only(right: AppSpacing.sm),
                   child: _FilterChip(option: opt),
                 ))
             .toList(),
@@ -52,7 +52,7 @@ class _FilterChip extends StatelessWidget {
     return GestureDetector(
       onTap: option.onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: themeColor,
           borderRadius: BorderRadius.circular(20),

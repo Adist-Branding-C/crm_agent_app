@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 
 class MetricCardHorizontal extends StatelessWidget {
   final IconData icon;
@@ -25,14 +26,14 @@ class MetricCardHorizontal extends StatelessWidget {
           decoration: BoxDecoration(color: iconBgColor, borderRadius: BorderRadius.circular(12)),
           child: Icon(icon, color: iconColor, size: 20),
         ),
-        const SizedBox(width: 12),
+        AppSpacing.gapWMd,
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(primaryText, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
-              const SizedBox(height: 2),
+              AppSpacing.gapXxs,
               Text(secondaryText, style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500), maxLines: 1, overflow: TextOverflow.ellipsis),
             ],
           ),

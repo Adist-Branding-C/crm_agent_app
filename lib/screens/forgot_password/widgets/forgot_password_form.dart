@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../bloc/forgot_password/forgot_password_bloc.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text_field.dart';
 import '../forgot_password_error_extensions.dart';
@@ -15,7 +16,7 @@ class ForgotPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 32),
+        AppSpacing.gapXxxl,
         BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
           buildWhen: (p, c) =>
               p.phone != c.phone || p.status != c.status,
@@ -31,7 +32,7 @@ class ForgotPasswordForm extends StatelessWidget {
               context.read<ForgotPasswordBloc>().add(ForgotPasswordPhoneChanged(val)),
           ),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
           buildWhen: (p, c) =>
               p.phone.isValid != c.phone.isValid ||

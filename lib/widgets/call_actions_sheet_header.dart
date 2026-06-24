@@ -17,9 +17,9 @@ class CallActionsSheetHeader extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         const BottomSheetHandle(),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         Row(
           children: [
             UserAvatar(
@@ -28,7 +28,7 @@ class CallActionsSheetHeader extends StatelessWidget {
               backgroundColor: AppColors.primaryColorLight,
               textColor: AppColors.primaryColor,
             ),
-            const SizedBox(width: 16),
+            AppSpacing.gapWLg,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class CallActionsSheetHeader extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 2),
+                  AppSpacing.gapXxs,
                   Text(
                     lead.location,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -52,7 +52,7 @@ class CallActionsSheetHeader extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         const Divider(color: AppColors.borderLight, height: 1),
       ],
     );

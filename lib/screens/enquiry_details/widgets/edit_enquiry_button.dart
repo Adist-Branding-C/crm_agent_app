@@ -23,7 +23,7 @@ class EditEnquiryButton extends StatelessWidget {
         extra: context.read<EnquiryDetailsBloc>(),
       ),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
         decoration: BoxDecoration(
           color: AppColors.primaryColorLight,
           borderRadius: BorderRadius.circular(8),
@@ -36,7 +36,7 @@ class EditEnquiryButton extends StatelessWidget {
               size: 14,
               color: AppColors.primaryColor,
             ),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             Text(
               'Edit',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(

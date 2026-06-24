@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'date_picker_field.dart';
 
 /// Row of date picker text fields displayed under Custom date range preset.
@@ -25,7 +26,7 @@ class TasksFilterCustomDateInputs extends StatelessWidget {
             onDatePicked: (date) => onCustomDatesChanged(date, customTo),
           ),
         ),
-        const SizedBox(width: 16),
+        AppSpacing.gapWLg,
         Expanded(
           child: DatePickerField(
             label: 'To',

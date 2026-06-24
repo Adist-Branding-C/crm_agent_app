@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_context_theme.dart';
+import '../../../theme/app_spacing.dart';
 
 /// Header widget displaying icon and guidance text for password setup.
 class NewPasswordHeaderWidget extends StatelessWidget {
@@ -11,9 +12,9 @@ class NewPasswordHeaderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.successBackground,
             borderRadius: BorderRadius.circular(16),
@@ -24,7 +25,7 @@ class NewPasswordHeaderWidget extends StatelessWidget {
             size: 32,
           ),
         ),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         Text(
           'Set new password',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -32,7 +33,7 @@ class NewPasswordHeaderWidget extends StatelessWidget {
             color: context.textDark,
           ),
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         Text(
           'Choose a strong password for your account.',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),

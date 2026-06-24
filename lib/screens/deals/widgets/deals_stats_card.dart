@@ -36,7 +36,7 @@ class DealsStatsCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 8),
+          AppSpacing.gapSm,
           Text(
             value,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(

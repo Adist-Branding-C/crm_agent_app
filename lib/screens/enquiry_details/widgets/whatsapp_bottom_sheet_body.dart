@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../utils/whatsapp_service.dart';
 import 'whatsapp_controller.dart';
@@ -32,11 +33,11 @@ class WhatsAppBottomSheetBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           WhatsAppSheetHeader(name: lead.name, phone: lead.phone),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           WhatsAppTemplatesList(controller: controller),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           WhatsAppMessageInput(controller: controller),
-          const SizedBox(height: 20),
+          AppSpacing.gapXl,
           WhatsAppSendButton(
             controller: controller,
             phone: lead.phone,

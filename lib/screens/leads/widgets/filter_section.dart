@@ -18,7 +18,7 @@ class FilterSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 8),
+          padding: EdgeInsets.only(bottom: AppSpacing.sm),
           child: Text(
             title,
             style: const TextStyle(
@@ -30,7 +30,7 @@ class FilterSection extends StatelessWidget {
           ),
         ),
         child,
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
       ],
     );
   }

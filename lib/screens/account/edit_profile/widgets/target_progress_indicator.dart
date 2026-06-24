@@ -44,7 +44,7 @@ class TargetProgressIndicator extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         ClipRRect(
           borderRadius: BorderRadius.circular(4),
           child: LinearProgressIndicator(

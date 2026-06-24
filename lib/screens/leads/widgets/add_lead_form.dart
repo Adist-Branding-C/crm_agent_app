@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/leads/add_lead/add_lead_bloc.dart';
 import '../../../widgets/custom_button.dart';
+import '../../../theme.dart';
 import 'add_lead_form_fields.dart';
 
 /// Form widget managing text inputs and selections for adding a lead.
@@ -59,7 +60,7 @@ class _AddLeadFormState extends State<AddLeadForm> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.all(AppSpacing.xxl),
             child: CustomButton(
               text: 'Save Lead',
               isLoading: state.isSubmitting,

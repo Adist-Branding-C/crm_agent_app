@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/selection_group.dart';
+import '../../../theme.dart';
 
 part 'source_purpose_fields.dart';
 part 'category_status_fields.dart';
@@ -47,7 +48,7 @@ class AddLeadSelectionFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -61,7 +62,7 @@ class AddLeadSelectionFields extends StatelessWidget {
             purpose: purpose,
             onPurposeChanged: onPurposeChanged,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           _CategoryStatusFields(
             category: category,
             onCategoryChanged: onCategoryChanged,

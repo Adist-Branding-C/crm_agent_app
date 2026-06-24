@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import 'filter_date_range_section.dart';
 import 'filter_chips_section.dart';
+import '../../../theme.dart';
 
 class AnalyticsFilterSections extends StatelessWidget {
   final String period; final DateTime? start, end;
@@ -24,11 +25,11 @@ class AnalyticsFilterSections extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(children: [
         FilterDateRangeSection(selectedPeriod: period, startDate: start, endDate: end, onPeriodChanged: onPeriodChanged, onStartDateChanged: onStartDateChanged, onEndDateChanged: onEndDateChanged),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         FilterChipsSection<LeadStatus>(title: 'Lead Status', options: LeadStatus.values, labelBuilder: (s) => s.label, selectedValues: statuses, onToggle: onStatusToggle),
-        const SizedBox(height: 20),
+        AppSpacing.gapXl,
         FilterChipsSection<LeadSource>(title: 'Source', options: LeadSource.values, labelBuilder: (s) => s.label, selectedValues: sources, onToggle: onSourceToggle),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
       ]),
     );
   }

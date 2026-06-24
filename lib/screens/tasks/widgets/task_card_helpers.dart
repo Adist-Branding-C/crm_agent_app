@@ -44,13 +44,13 @@ class TaskCardDetails extends StatelessWidget {
               ? Theme.of(context).textTheme.bodyMedium?.copyWith(decoration: TextDecoration.lineThrough)
               : Theme.of(context).textTheme.titleMedium),
         ),
-        const SizedBox(height: 6),
+        AppSpacing.gapXs,
         Row(
           children: [
             TaskTypeBadge(type: task.type),
-            const SizedBox(width: 8),
+            AppSpacing.gapWSm,
             Icon(Icons.access_time_rounded, size: 12, color: timeColor),
-            const SizedBox(width: 4),
+            AppSpacing.gapWXs,
             Expanded(
               child: Text(
                 task.time,

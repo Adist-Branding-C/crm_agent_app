@@ -9,10 +9,10 @@ class HistoryCalendarLegend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16),
+      padding: EdgeInsets.only(top: AppSpacing.lg),
       child: Wrap(
-        spacing: 12,
-        runSpacing: 8,
+        spacing: AppSpacing.md,
+        runSpacing: AppSpacing.sm,
         children: const [
           _LegendItem(label: 'Present', color: AppColors.success),
           _LegendItem(label: 'Late', color: AppColors.warning),
@@ -41,11 +41,11 @@ class _LegendItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: 8,
-          height: 8,
+          width: AppSpacing.sm,
+          height: AppSpacing.sm,
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
-        const SizedBox(width: 4),
+        AppSpacing.gapWXs,
         Text(
           label,
           style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),

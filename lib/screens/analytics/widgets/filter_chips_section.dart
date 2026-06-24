@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
 import '../../../utils/context_text_extension.dart';
+import '../../../theme.dart';
 
 class FilterChipsSection<T> extends StatelessWidget {
   final String title;
@@ -31,16 +31,16 @@ class FilterChipsSection<T> extends StatelessWidget {
             letterSpacing: 0.5,
           ),
         ),
-        const SizedBox(height: 10),
+        AppSpacing.gapSm,
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: AppSpacing.sm,
+          runSpacing: AppSpacing.sm,
           children: options.map((option) {
             final isSelected = selectedValues.contains(option);
             return GestureDetector(
               onTap: () => onToggle(option),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.primaryColor : Colors.white,
                   borderRadius: BorderRadius.circular(16),

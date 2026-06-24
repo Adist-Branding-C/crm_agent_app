@@ -18,11 +18,11 @@ class MyActivityTypeFilters extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Row(
         children: ActivityTypeFilter.values
             .map((t) => Padding(
-                  padding: const EdgeInsets.only(right: 8),
+                  padding: EdgeInsets.only(right: AppSpacing.sm),
                   child: _TypeChip(
                     label: t.label,
                     isSelected: t == selected,
@@ -51,7 +51,7 @@ class _TypeChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.textDark : Colors.white,
           borderRadius: BorderRadius.circular(20),

@@ -24,7 +24,7 @@ class WhatsAppMessageInput extends StatelessWidget {
             color: AppColors.textMuted,
           ),
         ),
-        const SizedBox(height: 8),
+        AppSpacing.gapSm,
         TextField(
           controller: controller.textController,
           maxLines: 4,
@@ -34,7 +34,7 @@ class WhatsAppMessageInput extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'Tap a quick message above, or type your own...',
             hintStyle: const TextStyle(color: AppColors.textMuted),
-            contentPadding: const EdgeInsets.all(12),
+            contentPadding: EdgeInsets.all(AppSpacing.md),
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(

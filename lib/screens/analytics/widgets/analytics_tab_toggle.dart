@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
-import '../../../theme/app_colors.dart';
 import '../../../utils/context_text_extension.dart';
+import '../../../theme.dart';
 
 class AnalyticsTabToggle extends StatelessWidget {
   final AnalyticsTab activeTab;
@@ -21,7 +21,7 @@ class AnalyticsTabToggle extends StatelessWidget {
         color: AppColors.slate100,
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: const EdgeInsets.all(4),
+      padding: EdgeInsets.all(AppSpacing.xs),
       child: Row(
         children: [
           Expanded(child: _TabButton(label: 'Leads', isSelected: activeTab == AnalyticsTab.leads, isDeals: false, onTap: () => onTabChanged(AnalyticsTab.leads))),

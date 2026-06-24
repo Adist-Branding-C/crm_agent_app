@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/custom_card.dart';
+import '../../../theme.dart';
 
 part 'name_phone_fields.dart';
 part 'email_location_fields.dart';
@@ -55,7 +56,7 @@ class AddLeadContactFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         children: [
           _NamePhoneFields(
@@ -63,7 +64,7 @@ class AddLeadContactFields extends StatelessWidget {
             nameError: nameError, phoneError: phoneError,
             onNameChanged: onNameChanged, onPhoneChanged: onPhoneChanged,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           _EmailLocationFields(
             emailController: emailController, locationController: locationController,
             emailError: emailError, onEmailChanged: onEmailChanged,

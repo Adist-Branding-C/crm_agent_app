@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/deals/deals_models.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../utils/context_text_extension.dart';
 import '../../deals/widgets/deals_presentation_extensions.dart';
 
@@ -20,13 +20,13 @@ class AddDealStageChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = stage.color;
     return Padding(
-      padding: const EdgeInsets.only(right: 8),
+      padding: EdgeInsets.only(right: AppSpacing.sm),
       child: ChoiceChip(
         label: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(width: 8, height: 8, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
-            const SizedBox(width: 6),
+            SizedBox(width: AppSpacing.xs2),
             Text(stage.label),
           ],
         ),

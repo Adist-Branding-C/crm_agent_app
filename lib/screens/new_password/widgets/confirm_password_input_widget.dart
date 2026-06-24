@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/new_password/new_password_bloc.dart';
 import '../../../theme/app_context_theme.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/custom_text_field.dart';
 import '../../../utils/context_text_extension.dart';
 
@@ -44,7 +45,7 @@ class ConfirmPasswordInputWidget extends StatelessWidget {
                 .add(NewConfirmPasswordChanged(val)),
           ),
           if (state.confirmPassword.value.isNotEmpty) ...[
-            const SizedBox(height: 8),
+            AppSpacing.gapSm,
             Text(
               state.confirmPassword.isValid
                   ? '✓ Passwords match'

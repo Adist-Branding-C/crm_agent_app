@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../theme.dart';
 import '../../../../widgets/custom_card.dart';
 import '../../../../widgets/custom_text_field.dart';
 import 'target_progress_indicator.dart';
@@ -23,9 +24,9 @@ class TargetDetailsSection extends StatelessWidget {
           'Monthly target',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+        AppSpacing.gapMd,
         CustomCard(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(AppSpacing.lg),
           child: Column(
             children: [
               CustomTextField(
@@ -44,7 +45,7 @@ class TargetDetailsSection extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              AppSpacing.gapLg,
               ValueListenableBuilder<TextEditingValue>(
                 valueListenable: targetController,
                 builder: (context, value, _) {

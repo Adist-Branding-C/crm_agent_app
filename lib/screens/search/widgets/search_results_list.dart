@@ -28,7 +28,7 @@ class SearchResultsList extends StatelessWidget {
     final totalCount = state.results.length;
 
     widgets.add(Padding(
-      padding: const EdgeInsets.only(left: 24, top: 12, bottom: 8),
+      padding: EdgeInsets.only(left: AppSpacing.xxl, top: AppSpacing.md, bottom: AppSpacing.sm),
       child: Text('$totalCount result${totalCount == 1 ? "" : "s"}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
     ));
@@ -38,7 +38,7 @@ class SearchResultsList extends StatelessWidget {
       if (items == null || items.isEmpty) continue;
 
       widgets.add(Padding(
-        padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
+        padding: EdgeInsets.only(left: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
         child: Text(category.toUpperCase(),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textMuted,
@@ -51,7 +51,7 @@ class SearchResultsList extends StatelessWidget {
 
     return ListView(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.only(bottom: 24),
+      padding: EdgeInsets.only(bottom: AppSpacing.xxl),
       children: widgets,
     );
   }

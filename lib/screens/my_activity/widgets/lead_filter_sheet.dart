@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../widgets/bottom_sheet_handle.dart';
 import 'filter_sheet_all_leads_row.dart';
 import 'filter_sheet_lead_row.dart';
@@ -21,11 +22,11 @@ class LeadFilterSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 12),
+            AppSpacing.gapMd,
             const BottomSheetHandle(),
-            const SizedBox(height: 16),
+            AppSpacing.gapLg,
             const FilterSheetTitle(),
-            const SizedBox(height: 8),
+            AppSpacing.gapSm,
             Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,

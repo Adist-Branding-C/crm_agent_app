@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
+import '../../../theme.dart';
 import 'history_log_blocks.dart';
 import 'history_log_item_details.dart';
 
@@ -14,17 +15,17 @@ class HistoryLogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(AppSpacing.md),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HistoryLogDateBlock(log: log),
-            const SizedBox(width: 12),
+            AppSpacing.gapWMd,
             Expanded(child: HistoryLogItemDetails(log: log)),
-            const SizedBox(width: 12),
+            AppSpacing.gapWMd,
             HistoryLogTimeBlock(log: log),
           ],
         ),

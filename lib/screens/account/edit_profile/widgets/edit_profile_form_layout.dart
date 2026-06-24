@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../theme.dart';
 import '../../../../bloc/account/account_models.dart';
 import '../../../../widgets/responsive_width_container.dart';
 import '../../../../widgets/screen_header.dart';
@@ -35,19 +36,19 @@ class EditProfileFormLayout extends StatelessWidget {
         const ScreenHeader(title: 'Edit Profile', subtitle: 'Your account details', showBackButton: true),
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+            padding: EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xxl),
             child: ResponsiveWidthContainer(
               maxWidth: 540,
               child: Column(
                 children: [
                   EditProfileAvatarCard(initials: profile.initials, joinedDate: profile.joinedDate),
-                  const SizedBox(height: 16),
+                  AppSpacing.gapLg,
                   PersonalDetailsSection(
                     nameController: nameController,
                     phoneController: phoneController,
                     emailController: emailController,
                   ),
-                  const SizedBox(height: 16),
+                  AppSpacing.gapLg,
                   WorkDetailsSection(
                     selectedRole: selectedRole,
                     selectedBranch: selectedBranch,
@@ -55,9 +56,9 @@ class EditProfileFormLayout extends StatelessWidget {
                     onRoleChanged: onRoleChanged,
                     onBranchChanged: onBranchChanged,
                   ),
-                  const SizedBox(height: 16),
+                  AppSpacing.gapLg,
                   TargetDetailsSection(targetController: targetController, achievedAmount: profile.achievedAmount),
-                  const SizedBox(height: 24),
+                  AppSpacing.gapXxl,
                   EditProfileActions(onCancel: () => context.pop(), onSave: onSave, isLoading: isSaving),
                 ],
               ),

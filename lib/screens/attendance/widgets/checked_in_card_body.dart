@@ -26,11 +26,11 @@ class CheckedInCardBody extends StatelessWidget {
             iconColor: AppColors.success,
             bgColor: AppColors.successIconBg,
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(
             child: CheckedInInfo(location: location, checkInTime: checkInTime),
           ),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
           const CheckOutButton(),
         ],
       ),

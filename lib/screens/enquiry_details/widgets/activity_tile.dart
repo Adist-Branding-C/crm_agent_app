@@ -26,7 +26,7 @@ class ActivityTile extends StatelessWidget {
       isLast: isLast,
       config: config,
       child: Padding(
-        padding: const EdgeInsets.only(top: 6, bottom: 20),
+        padding: EdgeInsets.only(top: AppSpacing.xs2, bottom: AppSpacing.xl),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,7 +37,7 @@ class ActivityTile extends StatelessWidget {
                 color: AppColors.textDark,
               ),
             ),
-            const SizedBox(height: 2),
+            AppSpacing.gapXxs,
             Text(
               activity.time,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(

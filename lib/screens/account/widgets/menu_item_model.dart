@@ -17,13 +17,13 @@ class MenuItemModel {
       title: Text(title, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark)),
       trailing: badge != null
           ? Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
               decoration: BoxDecoration(color: AppColors.primaryColorLight, borderRadius: BorderRadius.circular(10)),
               child: Text(badge!, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.primaryColor)),
             )
           : const Icon(Icons.chevron_right_rounded, size: 20, color: AppColors.slate400),
       onTap: route != null ? () => context.pushNamed(route!) : null,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       visualDensity: VisualDensity.compact,
     ),
   );

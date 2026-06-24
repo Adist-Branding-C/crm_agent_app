@@ -26,7 +26,7 @@ class ActivityTitleRow extends StatelessWidget {
             color: AppColors.textDark,
           ),
         ),
-        const SizedBox(width: 8),
+        AppSpacing.gapWSm,
         ActivityStatusBadge(status: status),
       ],
     );

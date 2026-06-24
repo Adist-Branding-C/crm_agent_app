@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 
 class AddDealFormFields extends StatelessWidget {
   final TextEditingController nameController;
@@ -17,16 +17,16 @@ class AddDealFormFields extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const _RequiredLabel(text: 'Deal name'),
-        const SizedBox(height: 6),
+        AppSpacing.gapXs,
         TextFormField(
           controller: nameController,
           decoration: const InputDecoration(
             hintText: 'Enter deal name',
           ),
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         const _RequiredLabel(text: 'Amount (₹)'),
-        const SizedBox(height: 6),
+        AppSpacing.gapXs,
         TextFormField(
           controller: amountController,
           keyboardType: const TextInputType.numberWithOptions(decimal: true),

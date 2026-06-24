@@ -73,3 +73,12 @@ style: remove all drop shadows for flat design
 - Strip boxShadow, elevation, and shadow fields from 18 widget and theme files
 - Delete AppShadows class and remove its import/export from AppTheme
 - Purge shadow guidelines from ARCHITECTURE.md, rules.md, and new_updates.md
+
+refactor: centralize all spacing into AppSpacing constants
+
+- Add missing constants: xxs=2, xs2=6, ten=10, fourteen=14, hundred=100
+- Add gap helpers: gapXxs, gapXxxl, gapWXxs, gapWXxl
+- Add fabBottomPadding convenience inset
+- Replace ~550 hardcoded spacing literals with AppSpacing.* references
+  across 110+ widget files (EdgeInsets, SizedBox, Wrap spacing, etc.)
+- Clean up unnecessary duplicate theme imports

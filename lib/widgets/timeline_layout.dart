@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import 'timeline_tile_marker.dart';
 import 'timeline_tile_config.dart';
 
@@ -36,7 +37,7 @@ class TimelineLayout extends StatelessWidget {
             isLast: isLast,
             config: config,
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(child: child),
         ],
       ),

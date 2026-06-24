@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/account/account_models.dart';
 import '../../../router/app_routes.dart';
 import '../../../widgets/custom_card.dart';
@@ -29,9 +30,9 @@ class MenuList extends StatelessWidget {
     const divider = MenuDivider();
     return Column(
       children: _sections(profile).map((items) => Padding(
-        padding: const EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.only(bottom: AppSpacing.lg),
         child: CustomCard(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
           child: Column(
             children: items
                 .expand((item) => [item.toListItem(context), divider])

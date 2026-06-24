@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 
 class QuickActionTile extends StatelessWidget {
   final IconData icon;
@@ -24,7 +25,7 @@ class QuickActionTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       child: Container(
         width: 76,
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -33,14 +34,14 @@ class QuickActionTile extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.08),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: color, size: 20),
             ),
-            const SizedBox(height: 6),
+            AppSpacing.gapXs,
             Text(
               label,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(

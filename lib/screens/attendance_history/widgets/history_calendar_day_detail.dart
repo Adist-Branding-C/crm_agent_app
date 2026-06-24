@@ -18,8 +18,8 @@ class HistoryCalendarDayDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final isOff = log.status == 'On Leave' || log.status == 'Week Off' || log.status == 'Holiday';
     return CustomCard(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +33,7 @@ class HistoryCalendarDayDetail extends StatelessWidget {
               _StatusBadge(status: log.status),
             ],
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           isOff
               ? HistoryCalendarOffDayDetail(log: log)
               : HistoryCalendarWorkingDayDetail(log: log),
@@ -58,7 +58,7 @@ class _StatusBadge extends StatelessWidget {
     else if (status == 'Week Off') { bg = AppColors.slate100; fg = AppColors.slate400; }
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
       decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(12)),
       child: Text(
         status,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/colored_dot.dart';
 import '../models/call_status_item.dart';
 
@@ -12,11 +13,11 @@ class CallStatusRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.ten),
       child: Row(
         children: [
           ColoredDot(color: item.color),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Expanded(
             child: Text(
               item.label,
@@ -32,7 +33,7 @@ class CallStatusRow extends StatelessWidget {
               color: AppColors.textDark,
             ),
           ),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
           SizedBox(
             width: 36,
             child: Text(

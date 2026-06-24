@@ -32,7 +32,7 @@ class ActionButtons extends StatelessWidget {
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,
         ),
-        const SizedBox(width: 16),
+        AppSpacing.gapWLg,
         QuickActionButton(
           onTap: () => WhatsAppBottomSheet.show(context, lead: lead),
           icon: const FaIcon(

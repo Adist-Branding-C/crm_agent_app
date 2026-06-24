@@ -29,7 +29,7 @@ class _NamePhoneFields extends StatelessWidget {
           errorText: nameError,
           onChanged: onNameChanged,
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         CustomTextField(
           label: 'Phone',
           isRequired: true,

@@ -33,13 +33,13 @@ class LeadsHeaderActions extends StatelessWidget {
               size: 38, borderRadius: 8, iconSize: 20,
               onTap: () => context.read<LeadsBloc>().add(const ToggleSpotlight()),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: AppSpacing.ten),
             CardIconButton(
               icon: Icons.tune_rounded, iconColor: AppColors.textDark,
               backgroundColor: Colors.white, size: 38, borderRadius: 8, iconSize: 20,
               onTap: () => _openFilterSheet(context, state),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: AppSpacing.ten),
             CardIconButton(
               icon: Icons.add_rounded, iconColor: AppColors.primaryColor,
               backgroundColor: Colors.white, size: 38, borderRadius: 8, iconSize: 20,

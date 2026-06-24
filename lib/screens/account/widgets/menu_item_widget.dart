@@ -25,18 +25,18 @@ class MenuItemWidget extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
           child: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
                   color: AppColors.slate100,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(icon, size: 20, color: AppColors.textMuted),
               ),
-              const SizedBox(width: 16),
+              AppSpacing.gapWLg,
               Expanded(
                 child: Text(
                   title,
@@ -54,7 +54,7 @@ class MenuItemWidget extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(width: 8),
+                AppSpacing.gapWSm,
               ],
               const Icon(Icons.chevron_right_rounded,
                   size: 20, color: AppColors.textMuted),

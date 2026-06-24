@@ -29,7 +29,7 @@ class DealPipelineStageHeader extends StatelessWidget {
     return Row(
       children: [
         Icon(Icons.circle, size: 8, color: stage.color),
-        const SizedBox(width: 6),
+        SizedBox(width: AppSpacing.xs2),
         Flexible(
           child: Text(
             stage.label,
@@ -41,7 +41,7 @@ class DealPipelineStageHeader extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 4),
+        AppSpacing.gapWXs,
         Text(
           '$dealsCount',
           style: theme.textTheme.bodyMedium?.copyWith(

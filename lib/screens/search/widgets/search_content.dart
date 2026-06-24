@@ -30,14 +30,14 @@ class SearchContent extends StatelessWidget {
         const ScreenHeader(
           title: 'Search',
           showBackButton: false,
-          padding: EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
+          padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
         ),
         SearchField(
           controller: controller,
           onChanged: (q) =>
               context.read<SearchBloc>().add(SearchQueryChanged(q)),
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
             buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType || (curr is SearchLoaded && (prev as SearchLoaded?)?.results != curr.results),

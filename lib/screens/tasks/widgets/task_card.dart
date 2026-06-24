@@ -28,11 +28,11 @@ class TaskCard extends StatelessWidget {
             isChecked: task.isCompleted,
             onTap: () => context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
           ),
-          const SizedBox(width: 16),
+          AppSpacing.gapWLg,
           Expanded(
             child: TaskCardDetails(task: task, timeColor: timeColor, timeStyle: timeStyle),
           ),
-          const SizedBox(width: 12),
+          AppSpacing.gapWMd,
           Container(
             width: 4, height: 32,
             decoration: BoxDecoration(

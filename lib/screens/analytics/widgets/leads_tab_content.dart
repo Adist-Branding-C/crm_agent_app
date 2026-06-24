@@ -3,6 +3,7 @@ import '../../../bloc/analytics/analytics_models.dart';
 import 'analytics_stats_grid_leads.dart';
 import 'lead_status_donut.dart';
 import 'lead_source_chart.dart';
+import '../../../theme.dart';
 
 class LeadsTabContent extends StatelessWidget {
   final LeadsSummary summary;
@@ -21,9 +22,9 @@ class LeadsTabContent extends StatelessWidget {
     return Column(
       children: [
         AnalyticsStatsGridLeads(summary: summary),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         LeadStatusDonut(summary: summary, statusMetrics: statusMetrics),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         LeadSourceChart(sourceMetrics: sourceMetrics),
       ],
     );

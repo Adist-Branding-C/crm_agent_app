@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_models.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import 'add_deal_controller.dart';
 import 'add_deal_lead_card.dart';
 import 'add_deal_form_fields.dart';
@@ -40,20 +40,20 @@ class AddDealBottomSheetContent extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           Text('New Deal', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           AddDealLeadCard(lead: lead),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           AddDealFormFields(nameController: controller.nameController, amountController: controller.amountController),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           AddDealStageSelector(selectedStage: controller.selectedStage, onStageSelected: controller.selectStage),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           AddDealDatePicker(selectedDate: controller.expectedClose, onDateSelected: controller.selectExpectedClose),
-          const SizedBox(height: 20),
+          AppSpacing.gapXl,
           if (controller.errorMessage != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: 8),
+              padding: EdgeInsets.only(bottom: AppSpacing.sm),
               child: Text(
                 controller.errorMessage!,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.errorColor),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../utils/context_text_extension.dart';
 
 class ToggleItem extends StatelessWidget {
@@ -20,7 +20,7 @@ class ToggleItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(value),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(20),

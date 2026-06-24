@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../theme.dart';
 import '../../../bloc/notifications/notifications_bloc.dart';
 import '../../../widgets/async_state_view.dart';
 import 'notification_item_widget.dart';
@@ -32,7 +33,7 @@ class NotificationsListBody extends StatelessWidget {
           errorMessage: state is NotificationsError ? _notificationsErrorString(state.failure) : 'Error',
           onRetry: () => context.read<NotificationsBloc>().add(const LoadNotifications()),
           child: ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
             itemCount: list.length,
             itemBuilder: (context, index) => NotificationItemWidget(item: list[index]),
           ),

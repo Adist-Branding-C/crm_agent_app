@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_models.dart';
-import '../../../theme/app_colors.dart';
 import '../../../widgets/colored_dot.dart';
 import 'task_priority_extensions.dart';
 
@@ -26,11 +26,11 @@ class PriorityChip extends StatelessWidget {
     };
 
     return Padding(
-      padding: const EdgeInsets.only(right: 12),
+      padding: EdgeInsets.only(right: AppSpacing.md),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
           decoration: BoxDecoration(
             color: isSelected ? activeBg : Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -43,7 +43,7 @@ class PriorityChip extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ColoredDot(color: dotColor, size: 8),
-              const SizedBox(width: 8),
+              AppSpacing.gapWSm,
               Text(priority.label, style: TextStyle(
                 color: isSelected ? priority.displayColor : AppColors.textMuted,
                 fontWeight: FontWeight.bold, fontSize: 13,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/custom_text_field.dart';
 
@@ -20,8 +21,8 @@ class EditEnquiryContactFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.all(AppSpacing.lg),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
       child: Column(
         children: [
           CustomTextField(
@@ -30,7 +31,7 @@ class EditEnquiryContactFields extends StatelessWidget {
             hintText: 'Full Name',
             controller: nameController,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           CustomTextField(
             label: 'Phone',
             isRequired: true,
@@ -38,14 +39,14 @@ class EditEnquiryContactFields extends StatelessWidget {
             controller: phoneController,
             keyboardType: TextInputType.phone,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           CustomTextField(
             label: 'Email',
             hintText: 'Email',
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
           ),
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           CustomTextField(
             label: 'Location',
             hintText: 'Location',

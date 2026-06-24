@@ -16,7 +16,7 @@ class InfoTabView extends StatelessWidget {
     const remarkFallback = 'Comparing with competitor. Needs pricing sheet.';
 
     return ListView(
-      padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 80),
+      padding: AppSpacing.fabBottomPadding,
       children: [
         InfoItemTile(
           label: 'Enquiry Source',
@@ -26,7 +26,7 @@ class InfoTabView extends StatelessWidget {
         InfoItemTile(
           label: 'Enquiry Status',
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
             decoration: BoxDecoration(
               color: AppColors.warningTextBackground,
               borderRadius: BorderRadius.circular(6),
@@ -49,7 +49,7 @@ class InfoTabView extends StatelessWidget {
           valueColor: AppColors.primaryColor,
         ),
         InfoItemTile(label: 'Remarks', value: lead.note ?? remarkFallback),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         OutlinedButton.icon(
           onPressed: () => showStatusSelector(context),
           icon: const Icon(Icons.sync, size: 18),
@@ -57,7 +57,7 @@ class InfoTabView extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.primaryColor,
             side: const BorderSide(color: AppColors.borderLight),
-            padding: const EdgeInsets.symmetric(vertical: 14),
+            padding: EdgeInsets.symmetric(vertical: AppSpacing.fourteen),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),

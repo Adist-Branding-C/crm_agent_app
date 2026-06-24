@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 
 /// A standard loading spinner for buttons.
 class ButtonLoading extends StatelessWidget {
@@ -40,7 +41,7 @@ class ButtonLabel extends StatelessWidget {
       children: [
         if (icon != null) ...[
           Icon(icon, size: 18),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
         ],
         Text(text),
       ],

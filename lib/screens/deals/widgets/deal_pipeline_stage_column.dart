@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
+import '../../../../theme.dart';
 import 'deal_pipeline_card.dart';
 import 'deal_pipeline_stage_header.dart';
 
@@ -26,7 +27,7 @@ class DealPipelineStageColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 260,
-      margin: const EdgeInsets.only(right: 16),
+      margin: EdgeInsets.only(right: AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import '../../../theme/app_spacing.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/donut_chart.dart';
 import '../../../widgets/donut_segment.dart';
@@ -24,8 +25,8 @@ class LeadStatusBreakdownCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.all(AppSpacing.xl),
+      margin: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,7 +37,7 @@ class LeadStatusBreakdownCard extends StatelessWidget {
               color: AppColors.textDark,
             ),
           ),
-          const SizedBox(height: 20),
+          AppSpacing.gapXl,
           Center(
             child: DonutChart(
               segments: _segments,
@@ -44,7 +45,7 @@ class LeadStatusBreakdownCard extends StatelessWidget {
               centerSubLabel: 'leads',
             ),
           ),
-          const SizedBox(height: 24),
+          AppSpacing.gapXxl,
           LeadStatusLegend(items: items),
         ],
       ),

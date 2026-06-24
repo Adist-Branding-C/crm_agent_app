@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
 import '../../../utils/context_text_extension.dart';
+import '../../../theme.dart';
 
 class DatePickerField extends StatelessWidget {
   final String label;
@@ -26,7 +26,7 @@ class DatePickerField extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 6),
+        AppSpacing.gapXs,
         GestureDetector(
           onTap: onTap,
           child: Container(
@@ -36,7 +36,7 @@ class DatePickerField extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: AppColors.borderLight),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

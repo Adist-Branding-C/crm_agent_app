@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../widgets/bottom_sheet_handle.dart';
 
 /// Renders the standardized handle and title for the Tasks filter sheet.
@@ -11,7 +12,7 @@ class TasksFilterHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const BottomSheetHandle(),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         Text(
           'Filter Tasks',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(

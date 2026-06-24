@@ -23,22 +23,22 @@ class HistoryStatsRow extends StatelessWidget {
 
     final isMobileSmall = ResponsiveHelper.isMobileSmall(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
       child: isMobileSmall
           ? Column(
               children: [
                 Row(
                   children: [
                     Expanded(child: items[0]),
-                    const SizedBox(width: 8),
+                    AppSpacing.gapWSm,
                     Expanded(child: items[1]),
                   ],
                 ),
-                const SizedBox(height: 8),
+                AppSpacing.gapSm,
                 Row(
                   children: [
                     Expanded(child: items[2]),
-                    const SizedBox(width: 8),
+                    AppSpacing.gapWSm,
                     Expanded(child: items[3]),
                   ],
                 ),
@@ -47,11 +47,11 @@ class HistoryStatsRow extends StatelessWidget {
           : Row(
               children: [
                 Expanded(child: items[0]),
-                const SizedBox(width: 8),
+                AppSpacing.gapWSm,
                 Expanded(child: items[1]),
-                const SizedBox(width: 8),
+                AppSpacing.gapWSm,
                 Expanded(child: items[2]),
-                const SizedBox(width: 8),
+                AppSpacing.gapWSm,
                 Expanded(child: items[3]),
               ],
             ),

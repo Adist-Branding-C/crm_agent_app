@@ -14,7 +14,7 @@ class TaskDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(AppSpacing.xxl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,31 +22,31 @@ class TaskDetailsBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
                 decoration: BoxDecoration(color: AppColors.slate100, borderRadius: BorderRadius.circular(8)),
                 child: Text(task.type.name.toUpperCase(), style: Theme.of(context).textTheme.labelSmall),
               ),
               if (task.isOverdue && !task.isCompleted)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
                   decoration: BoxDecoration(color: AppColors.errorBackground, borderRadius: BorderRadius.circular(8)),
                   child: Text('OVERDUE', style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold, color: AppColors.errorColor)),
                 ),
             ],
           ),
-          const SizedBox(height: 20),
+          AppSpacing.gapXl,
           Text(task.title, style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 12),
+          AppSpacing.gapMd,
           TaskMetaRow(label: 'Due Time', value: task.time, icon: Icons.access_time_rounded),
           TaskMetaRow(label: 'Priority', value: task.priority.name.toUpperCase(), icon: Icons.priority_high_rounded, color: task.priority.displayColor),
-          const SizedBox(height: 32),
+          AppSpacing.gapXxxl,
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 backgroundColor: task.isCompleted ? AppColors.slate300 : AppColors.primaryColor,
                 foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 14),
+                padding: EdgeInsets.symmetric(vertical: AppSpacing.fourteen),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
               onPressed: () => context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),

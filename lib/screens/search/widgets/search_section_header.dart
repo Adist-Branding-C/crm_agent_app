@@ -10,7 +10,7 @@ class SearchSectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 24, top: 16, bottom: 8),
+      padding: EdgeInsets.only(left: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
       child: Text(
         title.toUpperCase(),
         style: Theme.of(context).textTheme.bodySmall?.copyWith(

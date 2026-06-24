@@ -23,7 +23,7 @@ class FollowUpCard extends StatelessWidget {
     final tagText = isPriority ? AppColors.primaryColor : AppColors.warning;
 
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(AppSpacing.lg),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -32,11 +32,11 @@ class FollowUpCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                   decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(6)),
                   child: Text(call.tag.label, style: TextStyle(color: tagText, fontSize: 11, fontWeight: FontWeight.bold)),
                 ),
-                const SizedBox(height: 8),
+                AppSpacing.gapSm,
                 GestureDetector(
                   onTap: () async {
                     final clean = call.name.replaceAll('Call back ', '').trim().toLowerCase();
@@ -48,12 +48,12 @@ class FollowUpCard extends StatelessWidget {
                   },
                   child: Text(call.name, style: Theme.of(context).textTheme.titleMedium),
                 ),
-                const SizedBox(height: 3),
+                AppSpacing.gapXs,
                 Text(call.time, style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
           ),
-          const SizedBox(width: 8),
+          AppSpacing.gapWSm,
           CallButton(
             onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: call.name)),
           ),

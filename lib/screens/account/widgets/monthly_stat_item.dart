@@ -28,7 +28,7 @@ class MonthlyStatItem extends StatelessWidget {
             color: valueColor,
           ),
         ),
-        const SizedBox(height: 4),
+        AppSpacing.gapXs,
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(

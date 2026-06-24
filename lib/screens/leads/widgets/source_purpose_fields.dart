@@ -26,7 +26,7 @@ class _SourcePurposeFields extends StatelessWidget {
             LeadSource.values.firstWhere((e) => e.label == val),
           ),
         ),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         SelectionGroup(
           label: 'Purpose',
           options: LeadPurpose.values.map((e) => e.label).toList(),

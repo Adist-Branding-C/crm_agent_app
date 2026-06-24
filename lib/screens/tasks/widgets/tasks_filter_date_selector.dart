@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_filter_criteria.dart';
-import '../../../theme/app_colors.dart';
 import 'filter_date_chip.dart';
 import 'tasks_filter_custom_date_inputs.dart';
 
@@ -36,10 +36,10 @@ class TasksFilterDateSelector extends StatelessWidget {
             letterSpacing: 0.8,
           ),
         ),
-        const SizedBox(height: 10),
+        AppSpacing.gapSm,
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: AppSpacing.sm,
+          runSpacing: AppSpacing.sm,
           children: DateRangeType.values
               .where((r) => r != DateRangeType.none)
               .map((range) => FilterDateChip(
@@ -50,7 +50,7 @@ class TasksFilterDateSelector extends StatelessWidget {
               .toList(),
         ),
         if (active) ...[
-          const SizedBox(height: 16),
+          AppSpacing.gapLg,
           TasksFilterCustomDateInputs(
             customFrom: customFrom,
             customTo: customTo,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/account/account_bloc.dart';
 import '../../bloc/account/account_models.dart';
@@ -14,16 +15,16 @@ class AccountContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+    padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xxl),
     child: ResponsiveWidthContainer(
       maxWidth: 540,
       child: Column(children: [
         ProfileCard(profile: profile),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         MonthlyStats(profile: profile),
-        const SizedBox(height: 16),
+        AppSpacing.gapLg,
         MenuList(profile: profile),
-        const SizedBox(height: 24),
+        AppSpacing.gapXxl,
         LogoutButton(onTap: () => context.read<AccountBloc>().add(const LogoutRequested())),
       ]),
     ),

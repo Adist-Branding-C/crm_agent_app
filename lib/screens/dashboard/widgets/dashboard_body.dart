@@ -28,7 +28,7 @@ class DashboardBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(child: FollowUpsList(calls: state.followUps)),
-                    const SizedBox(width: 16),
+                    AppSpacing.gapWLg,
                     const Expanded(child: PendingTasksSection()),
                   ],
                 )

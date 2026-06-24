@@ -13,7 +13,7 @@ class ActivityStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = _getColors();
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
       decoration: BoxDecoration(
         color: colors.background,
         borderRadius: BorderRadius.circular(4),
