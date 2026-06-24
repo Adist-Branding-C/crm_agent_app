@@ -17,9 +17,15 @@ class FollowUpListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final overdue = calls.where((f) => f.urgency == FollowUpUrgency.overdue).toList();
-    final dueToday = calls.where((f) => f.urgency == FollowUpUrgency.dueToday).toList();
-    final upcoming = calls.where((f) => f.urgency == FollowUpUrgency.upcoming).toList();
+    final overdue = calls
+        .where((f) => f.urgency == FollowUpUrgency.overdue)
+        .toList();
+    final dueToday = calls
+        .where((f) => f.urgency == FollowUpUrgency.dueToday)
+        .toList();
+    final upcoming = calls
+        .where((f) => f.urgency == FollowUpUrgency.upcoming)
+        .toList();
 
     return ListView(
       physics: const BouncingScrollPhysics(),
@@ -32,12 +38,19 @@ class FollowUpListBody extends StatelessWidget {
             leadingIconColor: AppColors.errorColor,
             badgeBgColor: AppColors.primaryColorLight,
             badgeTextColor: AppColors.errorColor,
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.xxl,
+              vertical: AppSpacing.md,
+            ),
           ),
-          ...overdue.map((c) => FollowUpItemCard(
-                call: c,
-                onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
-              )),
+          ...overdue.map(
+            (c) => FollowUpItemCard(
+              call: c,
+              onCallTap: () => context.read<CallLogBloc>().add(
+                InitiateCallByName(name: c.name),
+              ),
+            ),
+          ),
           AppSpacing.gapSm,
         ],
         if (dueToday.isNotEmpty) ...[
@@ -48,12 +61,19 @@ class FollowUpListBody extends StatelessWidget {
             leadingIconColor: AppColors.errorColor,
             badgeBgColor: AppColors.primaryColorLight,
             badgeTextColor: AppColors.errorColor,
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.xxl,
+              vertical: AppSpacing.md,
+            ),
           ),
-          ...dueToday.map((c) => FollowUpItemCard(
-                call: c,
-                onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
-              )),
+          ...dueToday.map(
+            (c) => FollowUpItemCard(
+              call: c,
+              onCallTap: () => context.read<CallLogBloc>().add(
+                InitiateCallByName(name: c.name),
+              ),
+            ),
+          ),
           AppSpacing.gapSm,
         ],
         if (upcoming.isNotEmpty) ...[
@@ -64,12 +84,19 @@ class FollowUpListBody extends StatelessWidget {
             leadingIconColor: AppColors.info,
             badgeBgColor: AppColors.infoBackgroundLight,
             badgeTextColor: AppColors.infoText,
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.xxl,
+              vertical: AppSpacing.md,
+            ),
           ),
-          ...upcoming.map((c) => FollowUpItemCard(
-                call: c,
-                onCallTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: c.name)),
-              )),
+          ...upcoming.map(
+            (c) => FollowUpItemCard(
+              call: c,
+              onCallTap: () => context.read<CallLogBloc>().add(
+                InitiateCallByName(name: c.name),
+              ),
+            ),
+          ),
           AppSpacing.gapLg,
         ],
       ],

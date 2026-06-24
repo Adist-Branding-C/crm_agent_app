@@ -7,32 +7,29 @@ import 'forgot_password_form.dart';
 class ForgotPasswordBody extends StatelessWidget {
   final TextEditingController phoneController;
 
-  const ForgotPasswordBody({
-    super.key,
-    required this.phoneController,
-  });
+  const ForgotPasswordBody({super.key, required this.phoneController});
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const ScreenHeader(title: 'Forgot password', showBackButton: true),
-          Expanded(
-            child: SingleChildScrollView(
-              child: ResponsiveWidthContainer(
-                maxWidth: 480,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const ForgotPasswordHeader(),
-                    ForgotPasswordForm(phoneController: phoneController),
-                  ],
-                ),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const ScreenHeader(title: 'Forgot password', showBackButton: true),
+        Expanded(
+          child: SingleChildScrollView(
+            child: ResponsiveWidthContainer(
+              maxWidth: 480,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const ForgotPasswordHeader(),
+                  ForgotPasswordForm(phoneController: phoneController),
+                ],
               ),
             ),
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }

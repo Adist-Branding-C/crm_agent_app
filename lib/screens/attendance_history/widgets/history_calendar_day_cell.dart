@@ -40,7 +40,9 @@ class HistoryCalendarDayCell extends StatelessWidget {
       fg = theme.fg;
       dotColor = theme.fg;
     } else {
-      fg = day > 12 ? AppColors.textMuted.withValues(alpha: 0.5) : AppColors.textDark;
+      fg = day > 12
+          ? AppColors.textMuted.withValues(alpha: 0.5)
+          : AppColors.textDark;
     }
 
     return GestureDetector(
@@ -56,13 +58,23 @@ class HistoryCalendarDayCell extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('$day', style: TextStyle(color: fg, fontWeight: FontWeight.bold, fontSize: context.scaleFont(12))),
+            Text(
+              '$day',
+              style: TextStyle(
+                color: fg,
+                fontWeight: FontWeight.bold,
+                fontSize: context.scaleFont(12),
+              ),
+            ),
             if (dotColor != Colors.transparent)
               Container(
                 margin: EdgeInsets.only(top: AppSpacing.xxs),
                 width: AppSpacing.xs,
                 height: AppSpacing.xs,
-                decoration: BoxDecoration(color: dotColor, shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: dotColor,
+                  shape: BoxShape.circle,
+                ),
               ),
           ],
         ),

@@ -40,11 +40,11 @@ class NewPasswordState extends Equatable {
 
   @override
   List<Object?> get props => [
-        newPassword,
-        confirmPassword,
-        obscureNewPassword,
-        obscureConfirmPassword,
-        status,
-        errorMessage,
-      ];
+    newPassword,
+    confirmPassword,
+    obscureNewPassword,
+    obscureConfirmPassword,
+    status,
+    errorMessage,
+  ];
 }

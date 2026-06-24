@@ -21,14 +21,16 @@ class MyActivityTypeFilters extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Row(
         children: ActivityTypeFilter.values
-            .map((t) => Padding(
-                  padding: EdgeInsets.only(right: AppSpacing.sm),
-                  child: _TypeChip(
-                    label: t.label,
-                    isSelected: t == selected,
-                    onTap: () => onSelected(t.label),
-                  ),
-                ))
+            .map(
+              (t) => Padding(
+                padding: EdgeInsets.only(right: AppSpacing.sm),
+                child: _TypeChip(
+                  label: t.label,
+                  isSelected: t == selected,
+                  onTap: () => onSelected(t.label),
+                ),
+              ),
+            )
             .toList(),
       ),
     );
@@ -51,7 +53,10 @@ class _TypeChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.sm,
+        ),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.textDark : Colors.white,
           borderRadius: BorderRadius.circular(20),

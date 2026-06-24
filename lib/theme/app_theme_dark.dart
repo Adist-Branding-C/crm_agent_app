@@ -48,9 +48,15 @@ ThemeData getDarkAppTheme() {
     elevatedButtonTheme: AppButtonTheme.elevatedButtonTheme,
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppColors.darkSurface,
-      contentTextStyle: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+      contentTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
     ),
   );
 }

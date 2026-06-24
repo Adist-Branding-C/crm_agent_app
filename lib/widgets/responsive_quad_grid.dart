@@ -13,18 +13,45 @@ class ResponsiveQuadGrid extends StatelessWidget {
     if (isTablet) {
       return Row(
         children: [
-          Expanded(child: Padding(padding: EdgeInsets.only(right: AppSpacing.xs), child: children[0])),
-          Expanded(child: Padding(padding: EdgeInsets.only(right: AppSpacing.xs), child: children[1])),
-          Expanded(child: Padding(padding: EdgeInsets.only(right: AppSpacing.xs), child: children[2])),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: AppSpacing.xs),
+              child: children[0],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: AppSpacing.xs),
+              child: children[1],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: AppSpacing.xs),
+              child: children[2],
+            ),
+          ),
           Expanded(child: children[3]),
         ],
       );
     }
     return Column(
       children: [
-        Row(children: [Expanded(child: children[0]), SizedBox(width: AppSpacing.lg), Expanded(child: children[1])]),
+        Row(
+          children: [
+            Expanded(child: children[0]),
+            SizedBox(width: AppSpacing.lg),
+            Expanded(child: children[1]),
+          ],
+        ),
         SizedBox(height: AppSpacing.lg),
-        Row(children: [Expanded(child: children[2]), SizedBox(width: AppSpacing.lg), Expanded(child: children[3])]),
+        Row(
+          children: [
+            Expanded(child: children[2]),
+            SizedBox(width: AppSpacing.lg),
+            Expanded(child: children[3]),
+          ],
+        ),
       ],
     );
   }

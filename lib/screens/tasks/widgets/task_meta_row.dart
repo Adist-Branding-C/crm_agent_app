@@ -9,7 +9,13 @@ class TaskMetaRow extends StatelessWidget {
   final IconData icon;
   final Color? color;
 
-  const TaskMetaRow({super.key, required this.label, required this.value, required this.icon, this.color});
+  const TaskMetaRow({
+    super.key,
+    required this.label,
+    required this.value,
+    required this.icon,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +25,20 @@ class TaskMetaRow extends StatelessWidget {
         children: [
           Icon(icon, size: 18, color: AppColors.textMuted),
           AppSpacing.gapWSm,
-          Text('$label: ', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted)),
-          Text(value, style: TextStyle(fontSize: context.scaleFont(14), fontWeight: FontWeight.w600, color: color ?? AppColors.textDark)),
+          Text(
+            '$label: ',
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: context.scaleFont(14),
+              fontWeight: FontWeight.w600,
+              color: color ?? AppColors.textDark,
+            ),
+          ),
         ],
       ),
     );

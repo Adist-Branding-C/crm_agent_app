@@ -24,17 +24,17 @@ class HistoryStatCard extends StatelessWidget {
           Text(
             count,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                ),
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           AppSpacing.gapXs,
           Text(
             label,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.textMuted,
-                  fontWeight: FontWeight.w500,
-                ),
+              color: AppColors.textMuted,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),

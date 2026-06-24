@@ -32,5 +32,13 @@ class Deal extends Equatable {
   });
 
   @override
-  List<Object?> get props => [id, title, clientName, amount, stage, closeDate, ownerInitials];
+  List<Object?> get props => [
+    id,
+    title,
+    clientName,
+    amount,
+    stage,
+    closeDate,
+    ownerInitials,
+  ];
 }

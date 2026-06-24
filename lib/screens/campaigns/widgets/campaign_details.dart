@@ -25,9 +25,9 @@ class CampaignDetails extends StatelessWidget {
         AppSpacing.gapXxs,
         Text(
           '${campaign.type.label} · by ${campaign.creator}',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppColors.textMuted,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
         ),
       ],
     );

@@ -15,18 +15,28 @@ class AccountContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xxl),
+    padding: const EdgeInsets.fromLTRB(
+      AppSpacing.xxl,
+      0,
+      AppSpacing.xxl,
+      AppSpacing.xxl,
+    ),
     child: ResponsiveWidthContainer(
       maxWidth: 540,
-      child: Column(children: [
-        ProfileCard(profile: profile),
-        AppSpacing.gapLg,
-        MonthlyStats(profile: profile),
-        AppSpacing.gapLg,
-        MenuList(profile: profile),
-        AppSpacing.gapXxl,
-        LogoutButton(onTap: () => context.read<AccountBloc>().add(const LogoutRequested())),
-      ]),
+      child: Column(
+        children: [
+          ProfileCard(profile: profile),
+          AppSpacing.gapLg,
+          MonthlyStats(profile: profile),
+          AppSpacing.gapLg,
+          MenuList(profile: profile),
+          AppSpacing.gapXxl,
+          LogoutButton(
+            onTap: () =>
+                context.read<AccountBloc>().add(const LogoutRequested()),
+          ),
+        ],
+      ),
     ),
   );
 }

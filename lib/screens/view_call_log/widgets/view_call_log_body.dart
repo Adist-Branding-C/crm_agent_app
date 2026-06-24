@@ -10,7 +10,11 @@ class ViewCallLogBody extends StatelessWidget {
   final Lead lead;
   final EnquiryActivity activity;
 
-  const ViewCallLogBody({super.key, required this.lead, required this.activity});
+  const ViewCallLogBody({
+    super.key,
+    required this.lead,
+    required this.activity,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +26,9 @@ class ViewCallLogBody extends StatelessWidget {
           Text(
             'Lead: ${lead.name}',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: AppColors.textDark,
-                  fontWeight: FontWeight.w600,
-                ),
+              color: AppColors.textDark,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           AppSpacing.gapLg,
           CallSummaryCard(activity: activity),

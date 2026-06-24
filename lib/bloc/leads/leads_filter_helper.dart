@@ -37,10 +37,14 @@ List<Lead> applyLeadsFilteringAndSorting(
   // 5. Query Search
   if (query.isNotEmpty) {
     final q = query.toLowerCase();
-    filtered = filtered.where((l) =>
-        l.name.toLowerCase().contains(q) ||
-        l.phone.contains(q) ||
-        l.location.toLowerCase().contains(q)).toList();
+    filtered = filtered
+        .where(
+          (l) =>
+              l.name.toLowerCase().contains(q) ||
+              l.phone.contains(q) ||
+              l.location.toLowerCase().contains(q),
+        )
+        .toList();
   }
 
   // 6. Sorting

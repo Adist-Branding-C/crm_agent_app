@@ -11,7 +11,10 @@ class AppInputTheme {
   static InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
-    contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.lg),
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: AppSpacing.lg,
+      vertical: AppSpacing.lg,
+    ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(14),
       borderSide: const BorderSide(color: AppColors.borderLight, width: 1),
@@ -45,8 +48,7 @@ class AppInputTheme {
   );
 
   /// Returns an input theme with hint/label text size scaled to screen width.
-  static InputDecorationTheme scaledInputDecorationTheme(
-      BuildContext context) {
+  static InputDecorationTheme scaledInputDecorationTheme(BuildContext context) {
     final w = MediaQuery.sizeOf(context).width;
     return inputDecorationTheme.copyWith(
       hintStyle: TextStyle(

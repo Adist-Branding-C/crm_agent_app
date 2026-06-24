@@ -16,9 +16,9 @@ class ResendTimerWidget extends StatelessWidget {
         if (state.canResend) {
           return Center(
             child: TextButton(
-              onPressed: () => context
-                  .read<VerifyOtpBloc>()
-                  .add(const VerifyOtpResendRequested()),
+              onPressed: () => context.read<VerifyOtpBloc>().add(
+                const VerifyOtpResendRequested(),
+              ),
               child: Text(
                 'Resend OTP',
                 style: TextStyle(
@@ -34,7 +34,9 @@ class ResendTimerWidget extends StatelessWidget {
         return Center(
           child: Text(
             'Resend OTP in $min:$sec',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: context.textMuted),
           ),
         );
       },

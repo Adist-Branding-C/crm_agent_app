@@ -25,39 +25,63 @@ class AddLeadFormFields extends StatelessWidget {
 
   /// Creates a constant [AddLeadFormFields].
   const AddLeadFormFields({
-    super.key, required this.nameController, required this.phoneController,
-    required this.emailController, required this.locationController,
-    required this.followUpController, required this.noteController,
-    required this.source, required this.purpose, required this.category,
-    required this.status, required this.state, required this.onSourceChanged,
-    required this.onPurposeChanged, required this.onCategoryChanged,
+    super.key,
+    required this.nameController,
+    required this.phoneController,
+    required this.emailController,
+    required this.locationController,
+    required this.followUpController,
+    required this.noteController,
+    required this.source,
+    required this.purpose,
+    required this.category,
+    required this.status,
+    required this.state,
+    required this.onSourceChanged,
+    required this.onPurposeChanged,
+    required this.onCategoryChanged,
     required this.onStatusChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.lg,
+      ),
       child: Column(
         children: [
           AddLeadContactFields(
-            nameController: nameController, phoneController: phoneController,
-            emailController: emailController, locationController: locationController,
-            nameError: state.nameError, phoneError: state.phoneError, emailError: state.emailError,
-            onNameChanged: (v) => context.read<AddLeadBloc>().add(NameChanged(v)),
-            onPhoneChanged: (v) => context.read<AddLeadBloc>().add(PhoneChanged(v)),
-            onEmailChanged: (v) => context.read<AddLeadBloc>().add(EmailChanged(v)),
+            nameController: nameController,
+            phoneController: phoneController,
+            emailController: emailController,
+            locationController: locationController,
+            nameError: state.nameError,
+            phoneError: state.phoneError,
+            emailError: state.emailError,
+            onNameChanged: (v) =>
+                context.read<AddLeadBloc>().add(NameChanged(v)),
+            onPhoneChanged: (v) =>
+                context.read<AddLeadBloc>().add(PhoneChanged(v)),
+            onEmailChanged: (v) =>
+                context.read<AddLeadBloc>().add(EmailChanged(v)),
           ),
           AppSpacing.gapLg,
           AddLeadSelectionFields(
-            source: source, onSourceChanged: onSourceChanged,
-            purpose: purpose, onPurposeChanged: onPurposeChanged,
-            category: category, onCategoryChanged: onCategoryChanged,
-            status: status, onStatusChanged: onStatusChanged,
+            source: source,
+            onSourceChanged: onSourceChanged,
+            purpose: purpose,
+            onPurposeChanged: onPurposeChanged,
+            category: category,
+            onCategoryChanged: onCategoryChanged,
+            status: status,
+            onStatusChanged: onStatusChanged,
           ),
           AppSpacing.gapLg,
           AddLeadAdditionalFields(
-            followUpController: followUpController, noteController: noteController,
+            followUpController: followUpController,
+            noteController: noteController,
           ),
         ],
       ),

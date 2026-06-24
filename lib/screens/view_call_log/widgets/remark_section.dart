@@ -9,7 +9,8 @@ class RemarkSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final remarkText = activity.remark ?? 'No remark was provided for this call.';
+    final remarkText =
+        activity.remark ?? 'No remark was provided for this call.';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,9 +18,9 @@ class RemarkSection extends StatelessWidget {
         Text(
           'Remark',
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.bold,
-              ),
+            color: AppColors.textDark,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 12),
         Container(
@@ -33,9 +34,9 @@ class RemarkSection extends StatelessWidget {
           child: Text(
             remarkText,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textDark,
-                  height: 1.4,
-                ),
+              color: AppColors.textDark,
+              height: 1.4,
+            ),
           ),
         ),
       ],

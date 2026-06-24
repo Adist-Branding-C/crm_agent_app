@@ -18,8 +18,7 @@ class ForgotPasswordForm extends StatelessWidget {
       children: [
         AppSpacing.gapXxxl,
         BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
-          buildWhen: (p, c) =>
-              p.phone != c.phone || p.status != c.status,
+          buildWhen: (p, c) => p.phone != c.phone || p.status != c.status,
           builder: (context, state) => CustomTextField(
             label: 'Phone number',
             isRequired: true,
@@ -28,21 +27,22 @@ class ForgotPasswordForm extends StatelessWidget {
             keyboardType: TextInputType.phone,
             errorText: state.phoneError,
             semanticsLabel: 'Phone Number Input Field',
-            onChanged: (val) =>
-              context.read<ForgotPasswordBloc>().add(ForgotPasswordPhoneChanged(val)),
+            onChanged: (val) => context.read<ForgotPasswordBloc>().add(
+              ForgotPasswordPhoneChanged(val),
+            ),
           ),
         ),
         AppSpacing.gapXxl,
         BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
           buildWhen: (p, c) =>
-              p.phone.isValid != c.phone.isValid ||
-              p.status != c.status,
+              p.phone.isValid != c.phone.isValid || p.status != c.status,
           builder: (context, state) => CustomButton(
             text: 'Send OTP',
             icon: Icons.send_rounded,
             isLoading: state.status == FormzSubmissionStatus.inProgress,
-            onPressed: () =>
-              context.read<ForgotPasswordBloc>().add(const ForgotPasswordSubmitted()),
+            onPressed: () => context.read<ForgotPasswordBloc>().add(
+              const ForgotPasswordSubmitted(),
+            ),
           ),
         ),
       ],

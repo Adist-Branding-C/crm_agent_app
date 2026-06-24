@@ -9,6 +9,7 @@ class LoginState extends Equatable {
     this.isSubmitted = false,
     this.isSuccess = false,
     this.authFailure,
+    this.authErrorMessage,
   });
 
   final LoginPhone phone;
@@ -17,6 +18,7 @@ class LoginState extends Equatable {
   final bool isSubmitted;
   final bool isSuccess;
   final AuthFailure? authFailure;
+  final String? authErrorMessage;
 
   LoginState copyWith({
     LoginPhone? phone,
@@ -26,6 +28,7 @@ class LoginState extends Equatable {
     bool? isSuccess,
     AuthFailure? authFailure,
     bool? clearAuthFailure,
+    String? authErrorMessage,
   }) {
     return LoginState(
       phone: phone ?? this.phone,
@@ -33,11 +36,23 @@ class LoginState extends Equatable {
       obscurePassword: obscurePassword ?? this.obscurePassword,
       isSubmitted: isSubmitted ?? this.isSubmitted,
       isSuccess: isSuccess ?? this.isSuccess,
-      authFailure: clearAuthFailure == true ? null : (authFailure ?? this.authFailure),
+      authFailure: clearAuthFailure == true
+          ? null
+          : (authFailure ?? this.authFailure),
+      authErrorMessage: clearAuthFailure == true
+          ? null
+          : (authErrorMessage ?? this.authErrorMessage),
     );
   }
 
   @override
-  List<Object?> get props => [phone, password, obscurePassword, isSubmitted, isSuccess, authFailure];
+  List<Object?> get props => [
+    phone,
+    password,
+    obscurePassword,
+    isSubmitted,
+    isSuccess,
+    authFailure,
+    authErrorMessage,
+  ];
 }
-

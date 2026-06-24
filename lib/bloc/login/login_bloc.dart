@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/datasources/auth_remote_datasource.dart';
 import '../../data/repositories/session_repository.dart';
 import 'login_event.dart';
 import 'login_state.dart';
@@ -19,34 +20,36 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginSubmitted>(_onLoginSubmitted);
   }
 
-  void _onTogglePasswordVisibility(TogglePasswordVisibility event, Emitter<LoginState> emit) =>
-      emit(state.copyWith(obscurePassword: !state.obscurePassword));
+  void _onTogglePasswordVisibility(
+    TogglePasswordVisibility event,
+    Emitter<LoginState> emit,
+  ) => emit(state.copyWith(obscurePassword: !state.obscurePassword));
 
   void _onPhoneChanged(PhoneChanged event, Emitter<LoginState> emit) {
     final phone = LoginPhone.dirty(event.phone);
-    emit(state.copyWith(
-      phone: phone,
-      clearAuthFailure: true,
-    ));
+    emit(state.copyWith(phone: phone, clearAuthFailure: true));
   }
 
   void _onPasswordChanged(PasswordChanged event, Emitter<LoginState> emit) {
     final password = LoginPassword.dirty(event.password);
-    emit(state.copyWith(
-      password: password,
-    ));
+    emit(state.copyWith(password: password));
   }
 
-  Future<void> _onLoginSubmitted(LoginSubmitted event, Emitter<LoginState> emit) async {
+  Future<void> _onLoginSubmitted(
+    LoginSubmitted event,
+    Emitter<LoginState> emit,
+  ) async {
     final phone = LoginPhone.dirty(state.phone.value);
     final password = LoginPassword.dirty(state.password.value);
 
-    emit(state.copyWith(
-      phone: phone,
-      password: password,
-      isSubmitted: true,
-      clearAuthFailure: true,
-    ));
+    emit(
+      state.copyWith(
+        phone: phone,
+        password: password,
+        isSubmitted: true,
+        clearAuthFailure: true,
+      ),
+    );
 
     if (phone.isNotValid || password.isNotValid) {
       emit(state.copyWith(isSuccess: false));
@@ -56,8 +59,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       final ok = await authRepository.login(phone.value, password.value);
       emit(state.copyWith(isSuccess: ok));
+    } on NetworkException {
+      emit(state.copyWith(authFailure: AuthFailure.network, isSuccess: false));
+    } on InvalidCredentialsException catch (e) {
+      emit(
+        state.copyWith(
+          authFailure: AuthFailure.invalidCredentials,
+          authErrorMessage: e.message,
+          isSuccess: false,
+        ),
+      );
     } catch (_) {
-      emit(state.copyWith(authFailure: AuthFailure.invalidCredentials, isSuccess: false));
+      emit(state.copyWith(authFailure: AuthFailure.unknown, isSuccess: false));
     }
   }
 }

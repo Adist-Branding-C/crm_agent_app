@@ -14,7 +14,10 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Profile'), findsOneWidget);
-    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -400));
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -400),
+    );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Change Password'));
     await tester.pumpAndSettle();
@@ -30,11 +33,17 @@ void main() {
     await tester.enterText(currentF, 'current123');
     await tester.enterText(newF, '123');
     await tester.pumpAndSettle();
-    expect(find.text('Password must be at least 8 characters.'), findsOneWidget);
+    expect(
+      find.text('Password must be at least 8 characters.'),
+      findsOneWidget,
+    );
 
     await tester.enterText(newF, 'onlyletters');
     await tester.pumpAndSettle();
-    expect(find.text('Password must include uppercase, lowercase, and numbers.'), findsOneWidget);
+    expect(
+      find.text('Password must include uppercase, lowercase, and numbers.'),
+      findsOneWidget,
+    );
 
     await tester.enterText(newF, 'Password123');
     await tester.enterText(confirmF, 'Password124');
@@ -49,7 +58,10 @@ void main() {
     await tester.tap(find.widgetWithText(OutlinedButton, 'Cancel'));
     await tester.pumpAndSettle();
     expect(find.text('Profile'), findsOneWidget);
-    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -400));
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -400),
+    );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Change Password'));
     await tester.pumpAndSettle();

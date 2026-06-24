@@ -29,46 +29,46 @@ class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        padding: AppSpacing.screenPadding,
-        child: ResponsiveWidthContainer(
-          maxWidth: 480,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: AppSpacing.huge),
-              const LoginHeader(),
-              const SizedBox(height: AppSpacing.huge),
-              LoginForm(
-                phoneController: phoneController,
-                passwordController: passwordController,
-              ),
-              const SizedBox(height: AppSpacing.lg),
-              BlocBuilder<LoginBloc, LoginState>(
-                builder: (context, state) {
-                  final activeError = state.phoneError ?? state.passwordError;
-                  if (activeError != null) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: AppSpacing.lg),
-                      child: ErrorBanner(message: activeError),
-                    );
-                  }
-                  return const SizedBox.shrink();
-                },
-              ),
-              const ForgotPasswordLink(),
-              const SizedBox(height: AppSpacing.xxl + AppSpacing.xs),
-              CustomButton(
-                text: 'Sign In',
-                icon: Icons.login_rounded,
-                onPressed: () {
-                  context.read<LoginBloc>().add(const LoginSubmitted());
-                },
-              ),
-              const SizedBox(height: AppSpacing.massive),
-              const DisclaimerText(),
-            ],
-          ),
+      padding: AppSpacing.screenPadding,
+      child: ResponsiveWidthContainer(
+        maxWidth: 480,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: AppSpacing.huge),
+            const LoginHeader(),
+            const SizedBox(height: AppSpacing.huge),
+            LoginForm(
+              phoneController: phoneController,
+              passwordController: passwordController,
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            BlocBuilder<LoginBloc, LoginState>(
+              builder: (context, state) {
+                final activeError = state.phoneError ?? state.passwordError;
+                if (activeError != null) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: AppSpacing.lg),
+                    child: ErrorBanner(message: activeError),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+            const ForgotPasswordLink(),
+            const SizedBox(height: AppSpacing.xxl + AppSpacing.xs),
+            CustomButton(
+              text: 'Sign In',
+              icon: Icons.login_rounded,
+              onPressed: () {
+                context.read<LoginBloc>().add(const LoginSubmitted());
+              },
+            ),
+            const SizedBox(height: AppSpacing.massive),
+            const DisclaimerText(),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

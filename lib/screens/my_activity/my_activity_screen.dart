@@ -13,10 +13,10 @@ class MyActivityScreen extends StatelessWidget {
     final activityRepo = context.read<MyActivityRepository>();
     final leadsRepo = context.read<LeadsRepository>();
     return BlocProvider(
-      create: (_) => MyActivityBloc(repository: activityRepo, leadsRepository: leadsRepo)..add(const LoadMyActivity()),
+      create: (_) =>
+          MyActivityBloc(repository: activityRepo, leadsRepository: leadsRepo)
+            ..add(const LoadMyActivity()),
       child: const MyActivityBody(),
     );
   }
 }
-
-

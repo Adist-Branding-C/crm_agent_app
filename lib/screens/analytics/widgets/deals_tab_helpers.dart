@@ -16,13 +16,16 @@ double maxTypeValue(List<DealTypeMetric> metrics) =>
 List<MetricProgressRow> buildPipelineRows(
   List<PipelineValueStageMetric> metrics,
   double maxPipeline,
-) =>
-    metrics.map((e) => MetricProgressRow(
-      title: e.stage.label,
-      count: e.amount.toRupeeFormat(),
-      progressValue: maxPipeline > 0 ? e.amount / maxPipeline : 0.0,
-      barColor: e.stage.color,
-    )).toList();
+) => metrics
+    .map(
+      (e) => MetricProgressRow(
+        title: e.stage.label,
+        count: e.amount.toRupeeFormat(),
+        progressValue: maxPipeline > 0 ? e.amount / maxPipeline : 0.0,
+        barColor: e.stage.color,
+      ),
+    )
+    .toList();
 
 List<MetricProgressRow> buildTypeRows(
   List<DealTypeMetric> metrics,

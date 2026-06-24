@@ -13,7 +13,7 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
   final AttendanceRepository attendanceRepository;
 
   AttendanceBloc({required this.attendanceRepository})
-      : super(const AttendanceInitial()) {
+    : super(const AttendanceInitial()) {
     on<LoadAttendance>(_onLoadAttendance);
     on<CheckIn>(_onCheckIn);
     on<CheckOut>(_onCheckOut);

@@ -9,7 +9,11 @@ import 'edit_profile_form_layout.dart';
 class EditProfileForm extends StatefulWidget {
   final AccountProfile profile;
   final bool isSaving;
-  const EditProfileForm({super.key, required this.profile, required this.isSaving});
+  const EditProfileForm({
+    super.key,
+    required this.profile,
+    required this.isSaving,
+  });
   @override
   State<EditProfileForm> createState() => _EditProfileFormState();
 }
@@ -49,12 +53,21 @@ class _EditProfileFormState extends State<EditProfileForm> {
 
   void _onSave() {
     if (_formKey.currentState?.validate() ?? false) {
-      context.read<AccountBloc>().add(UpdateProfile(profile: widget.profile.copyWith(
-        name: _nameController.text, phone: _phoneController.text,
-        email: _emailController.text, baseLocation: _baseLocationController.text,
-        monthlyTarget: int.tryParse(_targetController.text) ?? widget.profile.monthlyTarget,
-        role: _selectedRole, branch: _selectedBranch,
-      )));
+      context.read<AccountBloc>().add(
+        UpdateProfile(
+          profile: widget.profile.copyWith(
+            name: _nameController.text,
+            phone: _phoneController.text,
+            email: _emailController.text,
+            baseLocation: _baseLocationController.text,
+            monthlyTarget:
+                int.tryParse(_targetController.text) ??
+                widget.profile.monthlyTarget,
+            role: _selectedRole,
+            branch: _selectedBranch,
+          ),
+        ),
+      );
     }
   }
 
@@ -64,10 +77,14 @@ class _EditProfileFormState extends State<EditProfileForm> {
       key: _formKey,
       child: EditProfileFormLayout(
         profile: widget.profile,
-        nameController: _nameController, phoneController: _phoneController,
-        emailController: _emailController, baseLocationController: _baseLocationController,
-        targetController: _targetController, selectedRole: _selectedRole,
-        selectedBranch: _selectedBranch, isSaving: widget.isSaving,
+        nameController: _nameController,
+        phoneController: _phoneController,
+        emailController: _emailController,
+        baseLocationController: _baseLocationController,
+        targetController: _targetController,
+        selectedRole: _selectedRole,
+        selectedBranch: _selectedBranch,
+        isSaving: widget.isSaving,
         onRoleChanged: (val) => setState(() => _selectedRole = val),
         onBranchChanged: (val) => setState(() => _selectedBranch = val),
         onSave: _onSave,

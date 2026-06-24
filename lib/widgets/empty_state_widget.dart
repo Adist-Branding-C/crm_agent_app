@@ -25,15 +25,20 @@ class EmptyStateWidget extends StatelessWidget {
           children: [
             Icon(icon, color: AppColors.slate300, size: 64),
             AppSpacing.gapLg,
-            Text(title, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+            ),
             if (subtitle != null) ...[
               AppSpacing.gapSm,
-              Text(subtitle!, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
+              Text(
+                subtitle!,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
             ],
-            if (action != null) ...[
-              AppSpacing.gapXl,
-              action!,
-            ],
+            if (action != null) ...[AppSpacing.gapXl, action!],
           ],
         ),
       ),

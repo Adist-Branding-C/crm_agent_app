@@ -25,7 +25,8 @@ class ChangePasswordSubmitBar extends StatelessWidget {
       builder: (context, state) => ChangePasswordButtons(
         onCancel: onCancel,
         onSubmit: onSubmit,
-        isValid: state.currentPassword.isValid &&
+        isValid:
+            state.currentPassword.isValid &&
             state.newPassword.isValid &&
             state.confirmPassword.isValid,
         isLoading: state.status == FormzSubmissionStatus.inProgress,

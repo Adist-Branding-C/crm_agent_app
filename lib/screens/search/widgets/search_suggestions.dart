@@ -30,17 +30,26 @@ class SearchSuggestions extends StatelessWidget {
   Widget build(BuildContext context) {
     final list = <Widget>[];
     if (recentQueries.isNotEmpty) {
-      list.add(Padding(
-        padding: EdgeInsets.only(top: AppSpacing.sm),
-        child: RecentSection(queries: recentQueries, onTap: onTapRecent),
-      ));
+      list.add(
+        Padding(
+          padding: EdgeInsets.only(top: AppSpacing.sm),
+          child: RecentSection(queries: recentQueries, onTap: onTapRecent),
+        ),
+      );
     }
     if (leads.isNotEmpty) {
       list.add(const SearchSectionHeader(title: 'SUGGESTED LEADS'));
-      list.addAll(leads.map((l) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
-        child: LeadCard(lead: l),
-      )));
+      list.addAll(
+        leads.map(
+          (l) => Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.xxl,
+              vertical: AppSpacing.xs2,
+            ),
+            child: LeadCard(lead: l),
+          ),
+        ),
+      );
     }
     if (tasks.isNotEmpty) {
       list.add(const SearchSectionHeader(title: 'SUGGESTED TASKS'));

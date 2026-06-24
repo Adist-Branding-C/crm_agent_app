@@ -33,6 +33,7 @@ extension LoginPasswordValidationErrorX on LoginPasswordValidationError {
 extension LoginStatePresentation on LoginState {
   /// Specific validation error text for the phone number field.
   String? get phoneError {
+    if (authErrorMessage != null) return authErrorMessage;
     if (authFailure != null) return authFailure!.message;
     if (phone.isPure) return null;
     if (phone.error == LoginPhoneValidationError.empty && !isSubmitted) {
@@ -56,6 +57,7 @@ extension AuthFailureMessage on AuthFailure {
   String get message {
     return switch (this) {
       AuthFailure.invalidCredentials => AppStrings.authFailed,
+      AuthFailure.network => 'Network error. Please check your connection.',
       AuthFailure.unknown => 'An unexpected error occurred.',
     };
   }

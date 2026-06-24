@@ -30,7 +30,9 @@ class SplashScreen extends StatelessWidget {
               ),
               const Center(child: SplashAnimator()),
               const Positioned(
-                bottom: 64, left: 0, right: 0,
+                bottom: 64,
+                left: 0,
+                right: 0,
                 child: Center(child: SplashLoader()),
               ),
             ],
@@ -53,5 +55,6 @@ void _navigateWhenReady(BuildContext context) {
     notifier.removeListener(listener);
     context.goNamed(AppRoutes.login);
   }
+
   notifier.addListener(listener);
 }

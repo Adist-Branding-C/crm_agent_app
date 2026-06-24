@@ -15,7 +15,10 @@ class HistorySummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       color: AppColors.checkedInCardBg,
-      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      margin: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         children: [

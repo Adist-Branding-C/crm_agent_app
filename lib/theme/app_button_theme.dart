@@ -14,21 +14,23 @@ class AppButtonTheme {
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
       );
 
   /// Returns a button theme with text size scaled to screen width.
   static ElevatedButtonThemeData scaledElevatedButtonTheme(
-      BuildContext context) {
+    BuildContext context,
+  ) {
     final w = MediaQuery.sizeOf(context).width;
     return ElevatedButtonThemeData(
       style: elevatedButtonTheme.style?.copyWith(
         textStyle: WidgetStatePropertyAll(
-          TextStyle(fontSize: AppTextScaler.scale(w, 16), fontWeight: FontWeight.bold),
+          TextStyle(
+            fontSize: AppTextScaler.scale(w, 16),
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

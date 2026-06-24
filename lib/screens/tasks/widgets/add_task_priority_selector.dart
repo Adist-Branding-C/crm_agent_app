@@ -38,9 +38,9 @@ class AddTaskPrioritySelector extends StatelessWidget {
                   return Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        context
-                            .read<AddTaskBloc>()
-                            .add(TaskPriorityChanged(priority));
+                        context.read<AddTaskBloc>().add(
+                          TaskPriorityChanged(priority),
+                        );
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),

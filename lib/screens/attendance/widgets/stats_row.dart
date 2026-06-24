@@ -19,11 +19,33 @@ class StatsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveQuadGrid(children: [
-      StatItem(value: '$callsCount', label: 'Calls', icon: Icons.phone_outlined, iconColor: AppColors.success),
-      StatItem(value: '$visitsCount', label: 'Visits', icon: Icons.alt_route_rounded, iconColor: AppColors.accent),
-      StatItem(value: '$notesCount', label: 'Notes', icon: Icons.description_outlined, iconColor: AppColors.info),
-      StatItem(value: '$hoursCount', label: 'Hours', icon: Icons.access_time_rounded, iconColor: AppColors.warning),
-    ]);
+    return ResponsiveQuadGrid(
+      children: [
+        StatItem(
+          value: '$callsCount',
+          label: 'Calls',
+          icon: Icons.phone_outlined,
+          iconColor: AppColors.success,
+        ),
+        StatItem(
+          value: '$visitsCount',
+          label: 'Visits',
+          icon: Icons.alt_route_rounded,
+          iconColor: AppColors.accent,
+        ),
+        StatItem(
+          value: '$notesCount',
+          label: 'Notes',
+          icon: Icons.description_outlined,
+          iconColor: AppColors.info,
+        ),
+        StatItem(
+          value: '$hoursCount',
+          label: 'Hours',
+          icon: Icons.access_time_rounded,
+          iconColor: AppColors.warning,
+        ),
+      ],
+    );
   }
 }

@@ -33,13 +33,7 @@ class DonutChartCard extends StatelessWidget {
     );
 
     final content = isMobileSmall
-        ? Column(
-            children: [
-              chart,
-              AppSpacing.gapLg,
-              ...legendItems,
-            ],
-          )
+        ? Column(children: [chart, AppSpacing.gapLg, ...legendItems])
         : Row(
             children: [
               chart,
@@ -58,13 +52,13 @@ class DonutChartCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: AppColors.textDark,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         AppSpacing.gapMd,
-        CustomCard(
-          padding: EdgeInsets.all(AppSpacing.xl),
-          child: content,
-        ),
+        CustomCard(padding: EdgeInsets.all(AppSpacing.xl), child: content),
       ],
     );
   }

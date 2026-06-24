@@ -32,8 +32,13 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
     emit(state.copyWith(title: TaskTitleInput.dirty(ev.title)));
   }
 
-  void _onDescriptionChanged(TaskDescriptionChanged ev, Emitter<AddTaskState> emit) {
-    emit(state.copyWith(description: TaskDescriptionInput.dirty(ev.description)));
+  void _onDescriptionChanged(
+    TaskDescriptionChanged ev,
+    Emitter<AddTaskState> emit,
+  ) {
+    emit(
+      state.copyWith(description: TaskDescriptionInput.dirty(ev.description)),
+    );
   }
 
   void _onTypeChanged(TaskTypeChanged ev, Emitter<AddTaskState> emit) {
@@ -48,13 +53,24 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
     emit(state.copyWith(priority: ev.priority));
   }
 
-  Future<void> _onSubmitAddTask(SubmitAddTask ev, Emitter<AddTaskState> emit) async {
+  Future<void> _onSubmitAddTask(
+    SubmitAddTask ev,
+    Emitter<AddTaskState> emit,
+  ) async {
     if (!state.isValid) return;
-    emit(state.copyWith(isSubmitting: true, isSuccess: false, errorMessage: () => null));
+    emit(
+      state.copyWith(
+        isSubmitting: true,
+        isSuccess: false,
+        errorMessage: () => null,
+      ),
+    );
     try {
       final task = Task(
         title: state.title.value.trim(),
-        description: state.description.value.isEmpty ? null : state.description.value.trim(),
+        description: state.description.value.isEmpty
+            ? null
+            : state.description.value.trim(),
         type: state.type,
         time: state.dueDate.trim(),
         isCompleted: false,
@@ -63,9 +79,17 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
         dueDate: state.dueDateTime ?? DateTime.now(),
       );
       final assignedTask = await tasksRepository.addTask(task);
-      emit(state.copyWith(isSubmitting: false, isSuccess: true, newTask: () => assignedTask));
+      emit(
+        state.copyWith(
+          isSubmitting: false,
+          isSuccess: true,
+          newTask: () => assignedTask,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(isSubmitting: false, errorMessage: () => e.toString()));
+      emit(
+        state.copyWith(isSubmitting: false, errorMessage: () => e.toString()),
+      );
     }
   }
 }

@@ -35,8 +35,19 @@ class AccountProfile extends Equatable {
 
   @override
   List<Object?> get props => [
-        initials, name, role, branch, email, phone, wonDeals, myLeads,
-        conversionRate, notificationCount, joinedDate, baseLocation,
-        monthlyTarget, achievedAmount,
-      ];
+    initials,
+    name,
+    role,
+    branch,
+    email,
+    phone,
+    wonDeals,
+    myLeads,
+    conversionRate,
+    notificationCount,
+    joinedDate,
+    baseLocation,
+    monthlyTarget,
+    achievedAmount,
+  ];
 }

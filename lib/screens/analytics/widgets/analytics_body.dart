@@ -16,16 +16,20 @@ class AnalyticsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<AnalyticsBloc>();
     return BlocBuilder<AnalyticsBloc, AnalyticsState>(
-      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType ||
-          (curr is AnalyticsLoaded && prev is AnalyticsLoaded &&
+      buildWhen: (prev, curr) =>
+          prev.runtimeType != curr.runtimeType ||
+          (curr is AnalyticsLoaded &&
+              prev is AnalyticsLoaded &&
               (prev.activeTab != curr.activeTab ||
-               prev.leadsData != curr.leadsData ||
-               prev.dealsData != curr.dealsData)),
+                  prev.leadsData != curr.leadsData ||
+                  prev.dealsData != curr.dealsData)),
       builder: (context, state) {
         return AsyncStateView(
           isLoading: state is AnalyticsLoading || state is AnalyticsInitial,
           hasError: state is AnalyticsError,
-          errorMessage: state is AnalyticsError ? state.failure.message : 'Error',
+          errorMessage: state is AnalyticsError
+              ? state.failure.message
+              : 'Error',
           onRetry: () => bloc.add(const LoadAnalytics()),
           child: state is AnalyticsLoaded
               ? SingleChildScrollView(
@@ -43,7 +47,8 @@ class AnalyticsBody extends StatelessWidget {
                         onPeriodChanged: (p) => bloc.add(ChangePeriod(p)),
                       ),
                       AppSpacing.gapXl,
-                      if (state.activeTab == AnalyticsTab.leads && state.leadsData != null)
+                      if (state.activeTab == AnalyticsTab.leads &&
+                          state.leadsData != null)
                         LeadsTabContent(
                           summary: state.leadsData!.summary,
                           statusMetrics: state.leadsData!.statusMetrics,

@@ -28,42 +28,45 @@ class ChangePasswordBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const ScreenHeader(
-            title: 'Change Password',
-            subtitle: 'Keep your account secure',
-            showBackButton: true,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: ResponsiveWidthContainer(
-                maxWidth: 480,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const ChangePasswordHeader(),
-                    AppSpacing.gapMd,
-                    CustomCard(
-                      padding: AppSpacing.cardPadding,
-                      child: Column(
-                        children: [
-                          CurrentPasswordInput(controller: currentController),
-                          AppSpacing.gapMd,
-                          NewPasswordInput(controller: newController),
-                          AppSpacing.gapMd,
-                          ConfirmPasswordInput(controller: confirmController),
-                        ],
-                      ),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const ScreenHeader(
+          title: 'Change Password',
+          subtitle: 'Keep your account secure',
+          showBackButton: true,
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: ResponsiveWidthContainer(
+              maxWidth: 480,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const ChangePasswordHeader(),
+                  AppSpacing.gapMd,
+                  CustomCard(
+                    padding: AppSpacing.cardPadding,
+                    child: Column(
+                      children: [
+                        CurrentPasswordInput(controller: currentController),
+                        AppSpacing.gapMd,
+                        NewPasswordInput(controller: newController),
+                        AppSpacing.gapMd,
+                        ConfirmPasswordInput(controller: confirmController),
+                      ],
                     ),
-                    AppSpacing.gapLg,
-                    ChangePasswordSubmitBar(onCancel: onCancel, onSubmit: onSubmit),
-                  ],
-                ),
+                  ),
+                  AppSpacing.gapLg,
+                  ChangePasswordSubmitBar(
+                    onCancel: onCancel,
+                    onSubmit: onSubmit,
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }

@@ -14,7 +14,8 @@ class EnquiryDetailsLoadedView extends StatefulWidget {
   const EnquiryDetailsLoadedView({super.key, required this.state});
 
   @override
-  State<EnquiryDetailsLoadedView> createState() => _EnquiryDetailsLoadedViewState();
+  State<EnquiryDetailsLoadedView> createState() =>
+      _EnquiryDetailsLoadedViewState();
 }
 
 class _EnquiryDetailsLoadedViewState extends State<EnquiryDetailsLoadedView> {

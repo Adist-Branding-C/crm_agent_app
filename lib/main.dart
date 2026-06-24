@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'data/datasources/auth_datasource.dart';
+import 'data/datasources/auth_remote_datasource.dart';
 import 'data/repositories/session_repository_impl.dart';
 
 export 'app.dart';
@@ -22,6 +23,7 @@ void main() async {
   await SharedPreferences.getInstance();
   final sessionRepo = SessionRepositoryImpl(
     authDataSource: AuthDataSourceImpl(),
+    authRemoteDataSource: AuthRemoteDataSourceImpl(),
   );
   await sessionRepo.init();
   runApp(MyApp(sessionRepository: sessionRepo));

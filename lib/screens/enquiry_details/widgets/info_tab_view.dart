@@ -26,7 +26,10 @@ class InfoTabView extends StatelessWidget {
         InfoItemTile(
           label: 'Enquiry Status',
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.ten,
+              vertical: AppSpacing.xs,
+            ),
             decoration: BoxDecoration(
               color: AppColors.warningTextBackground,
               borderRadius: BorderRadius.circular(6),
@@ -34,9 +37,9 @@ class InfoTabView extends StatelessWidget {
             child: Text(
               lead.status.label,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: AppColors.warningText,
-                    fontWeight: FontWeight.bold,
-                  ),
+                color: AppColors.warningText,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

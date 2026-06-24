@@ -26,10 +26,8 @@ class WhatsAppBottomSheet extends StatefulWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      builder: (context) => WhatsAppBottomSheet(
-        lead: lead,
-        whatsappService: whatsappService,
-      ),
+      builder: (context) =>
+          WhatsAppBottomSheet(lead: lead, whatsappService: whatsappService),
     );
   }
 
@@ -63,9 +61,16 @@ class _WhatsAppBottomSheetState extends State<WhatsAppBottomSheet> {
         builder: (context, val, child) => Transform.scale(
           scale: val,
           alignment: Alignment.bottomCenter,
-          child: Opacity(opacity: ((val - 0.8) / 0.2).clamp(0.0, 1.0), child: child),
+          child: Opacity(
+            opacity: ((val - 0.8) / 0.2).clamp(0.0, 1.0),
+            child: child,
+          ),
         ),
-        child: WhatsAppBottomSheetBody(lead: widget.lead, controller: _controller, whatsappService: widget.whatsappService),
+        child: WhatsAppBottomSheetBody(
+          lead: widget.lead,
+          controller: _controller,
+          whatsappService: widget.whatsappService,
+        ),
       ),
     );
   }

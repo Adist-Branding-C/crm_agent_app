@@ -23,15 +23,22 @@ extension AddLeadStateCopy on AddLeadState {
   }) {
     return AddLeadState(
       formInputs: formInputs.copyWith(
-        nameInput: nameInput, phoneInput: phoneInput,
-        emailInput: emailInput, source: source,
-        purpose: purpose, category: category,
-        status: status, location: location,
-        nextFollowUp: nextFollowUp, note: note,
+        nameInput: nameInput,
+        phoneInput: phoneInput,
+        emailInput: emailInput,
+        source: source,
+        purpose: purpose,
+        category: category,
+        status: status,
+        location: location,
+        nextFollowUp: nextFollowUp,
+        note: note,
       ),
       submission: submission.copyWith(
-        isSubmitting: isSubmitting, isSuccess: isSuccess,
-        error: error, lead: lead,
+        isSubmitting: isSubmitting,
+        isSuccess: isSuccess,
+        error: error,
+        lead: lead,
       ),
     );
   }

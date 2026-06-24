@@ -42,11 +42,13 @@ class TasksFilterDateSelector extends StatelessWidget {
           runSpacing: AppSpacing.sm,
           children: DateRangeType.values
               .where((r) => r != DateRangeType.none)
-              .map((range) => FilterDateChip(
-                range: range,
-                isSelected: selectedRange == range,
-                onTap: () => onRangeChanged(range),
-              ))
+              .map(
+                (range) => FilterDateChip(
+                  range: range,
+                  isSelected: selectedRange == range,
+                  onTap: () => onRangeChanged(range),
+                ),
+              )
               .toList(),
         ),
         if (active) ...[

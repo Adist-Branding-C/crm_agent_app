@@ -41,9 +41,9 @@ class ActivityTile extends StatelessWidget {
           AppSpacing.gapXxs,
           Text(
             activity.time,
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: AppColors.textMuted,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
           ),
         ],
       ),

@@ -32,7 +32,9 @@ class TaskRow extends StatelessWidget {
                 children: [
                   Text(
                     task.type.label,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   AppSpacing.gapXs,
                   Text(
@@ -40,10 +42,7 @@ class TaskRow extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   AppSpacing.gapXxs,
-                  Text(
-                    task.time,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  Text(task.time, style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
             ),
@@ -51,8 +50,8 @@ class TaskRow extends StatelessWidget {
               AppSpacing.gapWSm,
               CallButton(
                 onTap: () => context.read<CallLogBloc>().add(
-                      InitiateCallByName(name: task.title),
-                    ),
+                  InitiateCallByName(name: task.title),
+                ),
               ),
             ],
           ],

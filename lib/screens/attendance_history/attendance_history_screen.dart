@@ -16,8 +16,9 @@ class AttendanceHistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final repo = context.read<AttendanceRepository>();
     return BlocProvider(
-      create: (_) => AttendanceHistoryBloc(repository: repo)
-        ..add(const LoadAttendanceHistory()),
+      create: (_) =>
+          AttendanceHistoryBloc(repository: repo)
+            ..add(const LoadAttendanceHistory()),
       child: PageScaffold(
         padding: EdgeInsets.zero,
         child: Column(

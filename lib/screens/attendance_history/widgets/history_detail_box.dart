@@ -33,15 +33,15 @@ class HistoryDetailBox extends StatelessWidget {
             Text(
               val,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textDark,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: AppColors.textDark,
+              ),
             ),
             Text(
               label,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: AppColors.textMuted,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
             ),
           ],
         ),

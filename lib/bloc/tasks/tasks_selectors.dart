@@ -8,7 +8,8 @@ extension TasksSelectors on TasksLoaded {
     List<Task> tasks = allTasks;
 
     switch (filter) {
-      case TasksFilter.all: break;
+      case TasksFilter.all:
+        break;
       case TasksFilter.pending:
         tasks = tasks.where((t) => !t.isCompleted).toList();
         break;
@@ -21,26 +22,37 @@ extension TasksSelectors on TasksLoaded {
     }
 
     if (filterCriteria.types.isNotEmpty) {
-      tasks = tasks.where((t) => filterCriteria.types.contains(t.type)).toList();
+      tasks = tasks
+          .where((t) => filterCriteria.types.contains(t.type))
+          .toList();
     }
 
     if (filterCriteria.priorities.isNotEmpty) {
-      tasks = tasks.where((t) => filterCriteria.priorities.contains(t.priority)).toList();
+      tasks = tasks
+          .where((t) => filterCriteria.priorities.contains(t.priority))
+          .toList();
     }
 
     if (filterCriteria.dateRange != DateRangeType.none) {
       final today = DateTime(now.year, now.month, now.day);
       tasks = tasks.where((t) {
         if (t.dueDate == null) return false;
-        final tDate = DateTime(t.dueDate!.year, t.dueDate!.month, t.dueDate!.day);
+        final tDate = DateTime(
+          t.dueDate!.year,
+          t.dueDate!.month,
+          t.dueDate!.day,
+        );
 
         switch (filterCriteria.dateRange) {
-          case DateRangeType.today: return tDate == today;
+          case DateRangeType.today:
+            return tDate == today;
           case DateRangeType.tomorrow:
             return tDate == today.add(const Duration(days: 1));
           case DateRangeType.lastWeek:
             final sevenDaysAgo = today.subtract(const Duration(days: 7));
-            return tDate.isAfter(sevenDaysAgo.subtract(const Duration(seconds: 1))) &&
+            return tDate.isAfter(
+                  sevenDaysAgo.subtract(const Duration(seconds: 1)),
+                ) &&
                 tDate.isBefore(today.add(const Duration(days: 1)));
           case DateRangeType.custom:
             final from = filterCriteria.customFrom;
@@ -50,7 +62,8 @@ extension TasksSelectors on TasksLoaded {
             final oDate = DateTime(to.year, to.month, to.day);
             return tDate.isAfter(fDate.subtract(const Duration(seconds: 1))) &&
                 tDate.isBefore(oDate.add(const Duration(days: 1)));
-          default: return true;
+          default:
+            return true;
         }
       }).toList();
     }

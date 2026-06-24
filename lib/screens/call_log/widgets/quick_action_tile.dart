@@ -18,9 +18,9 @@ class QuickActionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Shortcut to $label tapped')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Shortcut to $label tapped')));
       },
       borderRadius: BorderRadius.circular(12),
       child: Container(

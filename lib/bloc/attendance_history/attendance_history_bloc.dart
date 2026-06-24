@@ -14,7 +14,7 @@ class AttendanceHistoryBloc
 
   /// Creates an [AttendanceHistoryBloc] with the initial state.
   AttendanceHistoryBloc({required this.repository})
-      : super(const AttendanceHistoryInitial()) {
+    : super(const AttendanceHistoryInitial()) {
     on<LoadAttendanceHistory>(_onLoadAttendanceHistory);
   }
 

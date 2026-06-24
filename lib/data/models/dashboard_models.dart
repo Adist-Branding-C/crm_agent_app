@@ -44,5 +44,10 @@ class DashboardStats extends Equatable {
   });
 
   @override
-  List<Object?> get props => [activeCampaigns, openDeals, analyticsConversionRate, attendanceStatus];
+  List<Object?> get props => [
+    activeCampaigns,
+    openDeals,
+    analyticsConversionRate,
+    attendanceStatus,
+  ];
 }

@@ -8,4 +8,3 @@ abstract class FollowUpsRepository {
   /// Adds a new follow-up.
   Future<void> addFollowUp(FollowUp followUp);
 }
-

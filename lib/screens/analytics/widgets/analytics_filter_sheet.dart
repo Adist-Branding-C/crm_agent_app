@@ -15,7 +15,9 @@ class AnalyticsFilterSheet extends StatefulWidget {
 }
 
 class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
-  String _period = 'This Month'; DateTime? _start; DateTime? _end;
+  String _period = 'This Month';
+  DateTime? _start;
+  DateTime? _end;
   Set<LeadStatus> _statuses = LeadStatus.values.toSet();
   Set<LeadSource> _sources = LeadSource.values.toSet();
 
@@ -33,37 +35,72 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
   }
 
   void _reset() => setState(() {
-    _period = 'This Month'; _start = null; _end = null;
+    _period = 'This Month';
+    _start = null;
+    _end = null;
     _statuses = LeadStatus.values.toSet();
     _sources = LeadSource.values.toSet();
   });
 
   void _apply() {
-    context.read<AnalyticsBloc>().add(ApplyFilters(period: _period, startDate: _start, endDate: _end, statuses: _statuses, sources: _sources));
+    context.read<AnalyticsBloc>().add(
+      ApplyFilters(
+        period: _period,
+        startDate: _start,
+        endDate: _end,
+        statuses: _statuses,
+        sources: _sources,
+      ),
+    );
     context.pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
-      padding: EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxl),
-      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Center(child: BottomSheetHandle()),
-        AppSpacing.gapLg,
-        const _FilterTitle(),
-        AppSpacing.gapXl,
-        Flexible(child: AnalyticsFilterSections(
-          period: _period, start: _start, end: _end,
-          onPeriodChanged: (p) => setState(() => _period = p),
-          onStartDateChanged: (d) => setState(() => _start = d),
-          onEndDateChanged: (d) => setState(() => _end = d),
-          statuses: _statuses, sources: _sources,
-          onStatusToggle: (st) => setState(() => _statuses.contains(st) ? _statuses.remove(st) : _statuses.add(st)),
-          onSourceToggle: (src) => setState(() => _sources.contains(src) ? _sources.remove(src) : _sources.add(src)),
-        )),
-        FilterActionButtons(onReset: _reset, onApply: _apply),
-      ]),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      padding: EdgeInsets.fromLTRB(
+        AppSpacing.xxl,
+        AppSpacing.sm,
+        AppSpacing.xxl,
+        AppSpacing.xxl,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Center(child: BottomSheetHandle()),
+          AppSpacing.gapLg,
+          const _FilterTitle(),
+          AppSpacing.gapXl,
+          Flexible(
+            child: AnalyticsFilterSections(
+              period: _period,
+              start: _start,
+              end: _end,
+              onPeriodChanged: (p) => setState(() => _period = p),
+              onStartDateChanged: (d) => setState(() => _start = d),
+              onEndDateChanged: (d) => setState(() => _end = d),
+              statuses: _statuses,
+              sources: _sources,
+              onStatusToggle: (st) => setState(
+                () => _statuses.contains(st)
+                    ? _statuses.remove(st)
+                    : _statuses.add(st),
+              ),
+              onSourceToggle: (src) => setState(
+                () => _sources.contains(src)
+                    ? _sources.remove(src)
+                    : _sources.add(src),
+              ),
+            ),
+          ),
+          FilterActionButtons(onReset: _reset, onApply: _apply),
+        ],
+      ),
     );
   }
 }
@@ -71,5 +108,10 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 class _FilterTitle extends StatelessWidget {
   const _FilterTitle();
   @override
-  Widget build(BuildContext context) => Text('Filter analytics', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold));
+  Widget build(BuildContext context) => Text(
+    'Filter analytics',
+    style: Theme.of(
+      context,
+    ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+  );
 }

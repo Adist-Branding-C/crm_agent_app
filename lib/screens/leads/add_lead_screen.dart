@@ -14,9 +14,8 @@ class AddLeadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddLeadBloc(
-        leadsRepository: context.read<LeadsRepository>(),
-      ),
+      create: (context) =>
+          AddLeadBloc(leadsRepository: context.read<LeadsRepository>()),
       child: const Scaffold(
         backgroundColor: AppTheme.backgroundColor,
         body: SafeArea(
@@ -25,7 +24,12 @@ class AddLeadScreen extends StatelessWidget {
               ScreenHeader(
                 title: 'Add Lead',
                 showBackButton: true,
-                padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
+                padding: EdgeInsets.only(
+                  left: AppSpacing.xxl,
+                  right: AppSpacing.xxl,
+                  top: AppSpacing.lg,
+                  bottom: AppSpacing.sm,
+                ),
               ),
               Expanded(child: AddLeadForm()),
             ],

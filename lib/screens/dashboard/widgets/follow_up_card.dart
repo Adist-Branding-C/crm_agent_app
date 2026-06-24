@@ -15,7 +15,9 @@ class FollowUpCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isPriority = call.tag == FollowUpTag.priority;
-    final tagBg = isPriority ? AppColors.primaryColorLight : AppColors.warningBackground;
+    final tagBg = isPriority
+        ? AppColors.primaryColorLight
+        : AppColors.warningBackground;
     final tagText = isPriority ? AppColors.primaryColor : AppColors.warning;
     final displayName = call.name.replaceAll('Call back ', '').trim();
 
@@ -31,24 +33,56 @@ class FollowUpCard extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
-                      decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(6)),
-                      child: Text(call.tag.label, style: TextStyle(color: tagText, fontSize: 11, fontWeight: FontWeight.bold)),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpacing.sm,
+                        vertical: AppSpacing.xs,
+                      ),
+                      decoration: BoxDecoration(
+                        color: tagBg,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        call.tag.label,
+                        style: TextStyle(
+                          color: tagText,
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     if (call.isOverdue) ...[
                       SizedBox(width: 6),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
-                        decoration: BoxDecoration(color: AppColors.errorBackground, borderRadius: BorderRadius.circular(6)),
-                        child: Text('Overdue', style: TextStyle(color: AppColors.errorColor, fontSize: 11, fontWeight: FontWeight.bold)),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: AppSpacing.sm,
+                          vertical: AppSpacing.xs,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.errorBackground,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          'Overdue',
+                          style: TextStyle(
+                            color: AppColors.errorColor,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ],
                   ],
                 ),
                 AppSpacing.gapSm,
                 GestureDetector(
-                  onTap: () => context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': call.id}),
-                  child: Text(displayName, style: Theme.of(context).textTheme.titleMedium),
+                  onTap: () => context.pushNamed(
+                    AppRoutes.enquiryDetails,
+                    pathParameters: {'id': call.id},
+                  ),
+                  child: Text(
+                    displayName,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 AppSpacing.gapXs,
                 Text(call.time, style: Theme.of(context).textTheme.bodySmall),
@@ -57,7 +91,9 @@ class FollowUpCard extends StatelessWidget {
           ),
           AppSpacing.gapWSm,
           CallButton(
-            onTap: () => context.read<CallLogBloc>().add(InitiateCallByName(name: displayName)),
+            onTap: () => context.read<CallLogBloc>().add(
+              InitiateCallByName(name: displayName),
+            ),
           ),
         ],
       ),

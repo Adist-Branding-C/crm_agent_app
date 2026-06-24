@@ -47,7 +47,9 @@ class LoginHeader extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             'Sign in to your agent account',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
           ),
         ],
       ),

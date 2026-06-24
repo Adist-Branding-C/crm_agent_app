@@ -21,9 +21,15 @@ class CallReportScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: AppSpacing.xxl),
               child: Column(
                 children: const [
-                  CallStatusList(items: CallReportData.callStatuses, totalCalls: CallReportData.totalCalls),
+                  CallStatusList(
+                    items: CallReportData.callStatuses,
+                    totalCalls: CallReportData.totalCalls,
+                  ),
                   SizedBox(height: 16),
-                  LeadStatusBreakdownCard(items: CallReportData.leadStatuses, totalLeads: CallReportData.totalLeads),
+                  LeadStatusBreakdownCard(
+                    items: CallReportData.leadStatuses,
+                    totalLeads: CallReportData.totalLeads,
+                  ),
                 ],
               ),
             ),

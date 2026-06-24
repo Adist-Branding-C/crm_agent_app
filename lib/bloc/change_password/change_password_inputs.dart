@@ -41,13 +41,16 @@ class ChangeConfirmPassword
   final String newPassword;
 
   const ChangeConfirmPassword.pure({this.newPassword = ''}) : super.pure('');
-  const ChangeConfirmPassword.dirty({required this.newPassword, String value = ''})
-      : super.dirty(value);
+  const ChangeConfirmPassword.dirty({
+    required this.newPassword,
+    String value = '',
+  }) : super.dirty(value);
 
   @override
   ChangeConfirmPasswordValidationError? validator(String value) {
     if (value.isEmpty) return ChangeConfirmPasswordValidationError.empty;
-    if (value != newPassword) return ChangeConfirmPasswordValidationError.mismatch;
+    if (value != newPassword)
+      return ChangeConfirmPasswordValidationError.mismatch;
     return null;
   }
 }

@@ -39,11 +39,15 @@ class SearchSessionData extends Equatable {
     final updated = List<String>.from(recentQueries)
       ..remove(query)
       ..insert(0, query);
-    return copyWith(
-      recentQueries: updated.take(3).toList(),
-    );
+    return copyWith(recentQueries: updated.take(3).toList());
   }
 
   @override
-  List<Object?> get props => [leads, tasks, spotlights, followUps, recentQueries];
+  List<Object?> get props => [
+    leads,
+    tasks,
+    spotlights,
+    followUps,
+    recentQueries,
+  ];
 }

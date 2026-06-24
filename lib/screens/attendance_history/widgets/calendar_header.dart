@@ -9,8 +9,19 @@ class CalendarHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('May 2026', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark)),
-        Text('Through 12 May', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
+        Text(
+          'May 2026',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: AppColors.textDark,
+          ),
+        ),
+        Text(
+          'Through 12 May',
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+        ),
       ],
     );
   }

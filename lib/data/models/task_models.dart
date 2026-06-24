@@ -36,13 +36,21 @@ class Task extends Equatable {
   });
 
   Task copyWith({
-    String? id, String? title, TaskType? type, String? time,
-    bool? isCompleted, bool? isOverdue, TaskPriority? priority,
-    String? description, DateTime? dueDate,
+    String? id,
+    String? title,
+    TaskType? type,
+    String? time,
+    bool? isCompleted,
+    bool? isOverdue,
+    TaskPriority? priority,
+    String? description,
+    DateTime? dueDate,
   }) {
     return Task(
-      id: id ?? this.id, title: title ?? this.title,
-      type: type ?? this.type, time: time ?? this.time,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      type: type ?? this.type,
+      time: time ?? this.time,
       isCompleted: isCompleted ?? this.isCompleted,
       isOverdue: isOverdue ?? this.isOverdue,
       priority: priority ?? this.priority,
@@ -52,5 +60,15 @@ class Task extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, title, type, time, isCompleted, isOverdue, priority, description, dueDate];
+  List<Object?> get props => [
+    id,
+    title,
+    type,
+    time,
+    isCompleted,
+    isOverdue,
+    priority,
+    description,
+    dueDate,
+  ];
 }

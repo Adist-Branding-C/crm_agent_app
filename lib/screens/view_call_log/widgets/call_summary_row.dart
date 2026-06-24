@@ -18,9 +18,9 @@ class CallSummaryRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.textDark,
-            ),
+        style: Theme.of(
+          context,
+        ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
         children: [
           TextSpan(text: label),
           TextSpan(

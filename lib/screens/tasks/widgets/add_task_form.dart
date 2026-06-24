@@ -17,12 +17,16 @@ class AddTaskForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddTaskBloc, AddTaskState>(
-      listenWhen: (prev, curr) => prev.isSuccess != curr.isSuccess || prev.errorMessage != curr.errorMessage,
+      listenWhen: (prev, curr) =>
+          prev.isSuccess != curr.isSuccess ||
+          prev.errorMessage != curr.errorMessage,
       listener: (context, state) {
         if (state.isSuccess) {
           context.pop(true);
         } else if (state.errorMessage != null) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
         }
       },
       builder: (context, state) {
@@ -37,15 +41,20 @@ class AddTaskForm extends StatelessWidget {
                   label: 'Task title',
                   hintText: 'What needs doing?',
                   isRequired: true,
-                  onChanged: (val) => context.read<AddTaskBloc>().add(TaskTitleChanged(val)),
-                  errorText: state.title.displayError != null ? 'Title cannot be empty' : null,
+                  onChanged: (val) =>
+                      context.read<AddTaskBloc>().add(TaskTitleChanged(val)),
+                  errorText: state.title.displayError != null
+                      ? 'Title cannot be empty'
+                      : null,
                 ),
                 AppSpacing.gapLg,
                 CustomTextField(
                   label: 'Description',
                   hintText: 'Add description (optional)',
                   maxLines: 3,
-                  onChanged: (val) => context.read<AddTaskBloc>().add(TaskDescriptionChanged(val)),
+                  onChanged: (val) => context.read<AddTaskBloc>().add(
+                    TaskDescriptionChanged(val),
+                  ),
                 ),
                 AppSpacing.gapLg,
                 const AddTaskTypeSelector(),
@@ -57,7 +66,11 @@ class AddTaskForm extends StatelessWidget {
                 CustomButton(
                   text: 'Add Task',
                   isLoading: state.isSubmitting,
-                  onPressed: state.isValid ? () => context.read<AddTaskBloc>().add(const SubmitAddTask()) : null,
+                  onPressed: state.isValid
+                      ? () => context.read<AddTaskBloc>().add(
+                          const SubmitAddTask(),
+                        )
+                      : null,
                 ),
               ],
             ),

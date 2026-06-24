@@ -5,7 +5,11 @@ class HistoryStatColumn extends StatelessWidget {
   final String value;
   final String label;
 
-  const HistoryStatColumn({super.key, required this.value, required this.label});
+  const HistoryStatColumn({
+    super.key,
+    required this.value,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +19,16 @@ class HistoryStatColumn extends StatelessWidget {
         Text(
           value,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Colors.white, fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        Text(label, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.slate400)),
+        Text(
+          label,
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: AppColors.slate400),
+        ),
       ],
     );
   }

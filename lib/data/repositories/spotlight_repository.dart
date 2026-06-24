@@ -24,4 +24,3 @@ abstract class SpotlightRepository {
   /// Fetches all spotlights/flagged items.
   Future<List<Spotlight>> getSpotlights();
 }
-

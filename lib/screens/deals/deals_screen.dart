@@ -14,8 +14,8 @@ class DealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => DealsBloc(dealsRepository: context.read())
-        ..add(const LoadDeals()),
+      create: (_) =>
+          DealsBloc(dealsRepository: context.read())..add(const LoadDeals()),
       child: ChangeNotifierProvider(
         create: (_) => DealsViewNotifier(0),
         child: PageScaffold(

@@ -22,9 +22,8 @@ class TasksHeaderActions extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => TasksFilterBottomSheet(
-        initialCriteria: state.filterCriteria,
-      ),
+      builder: (_) =>
+          TasksFilterBottomSheet(initialCriteria: state.filterCriteria),
     );
     if (res != null) {
       bloc.add(ApplyFilterCriteria(res));
@@ -38,9 +37,8 @@ class TasksHeaderActions extends StatelessWidget {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => BlocProvider(
-        create: (context) => AddTaskBloc(
-          tasksRepository: context.read<TasksRepository>(),
-        ),
+        create: (context) =>
+            AddTaskBloc(tasksRepository: context.read<TasksRepository>()),
         child: const AddTaskBottomSheet(),
       ),
     );
@@ -59,7 +57,10 @@ class TasksHeaderActions extends StatelessWidget {
           builder: (_, active) => CardIconButton(
             icon: Icons.filter_alt_outlined,
             iconColor: active ? AppColors.primaryColor : AppColors.textDark,
-            backgroundColor: Colors.white, size: 38, borderRadius: 10, iconSize: 20,
+            backgroundColor: Colors.white,
+            size: 38,
+            borderRadius: 10,
+            iconSize: 20,
             onTap: () => _openFilter(context),
           ),
         ),
@@ -67,7 +68,10 @@ class TasksHeaderActions extends StatelessWidget {
         CardIconButton(
           icon: Icons.add_rounded,
           iconColor: AppColors.primaryColor,
-          backgroundColor: Colors.white, size: 38, borderRadius: 10, iconSize: 20,
+          backgroundColor: Colors.white,
+          size: 38,
+          borderRadius: 10,
+          iconSize: 20,
           onTap: () => _openAddTask(context),
         ),
       ],

@@ -22,17 +22,33 @@ class NotificationItem extends Equatable {
   });
 
   NotificationItem copyWith({
-    String? id, String? title, String? subtitle, String? time,
-    NotificationType? type, bool? isRead, String? routePath,
+    String? id,
+    String? title,
+    String? subtitle,
+    String? time,
+    NotificationType? type,
+    bool? isRead,
+    String? routePath,
   }) {
     return NotificationItem(
-      id: id ?? this.id, title: title ?? this.title,
-      subtitle: subtitle ?? this.subtitle, time: time ?? this.time,
-      type: type ?? this.type, isRead: isRead ?? this.isRead,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      subtitle: subtitle ?? this.subtitle,
+      time: time ?? this.time,
+      type: type ?? this.type,
+      isRead: isRead ?? this.isRead,
       routePath: routePath ?? this.routePath,
     );
   }
 
   @override
-  List<Object?> get props => [id, title, subtitle, time, type, isRead, routePath];
+  List<Object?> get props => [
+    id,
+    title,
+    subtitle,
+    time,
+    type,
+    isRead,
+    routePath,
+  ];
 }

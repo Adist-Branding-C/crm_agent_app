@@ -58,11 +58,13 @@ class SelectionGroup extends StatelessWidget {
           spacing: AppSpacing.sm,
           runSpacing: AppSpacing.sm,
           children: options
-              .map((opt) => SelectionChip(
-                    option: opt,
-                    selectedOption: selectedOption,
-                    onSelected: onSelected,
-                  ))
+              .map(
+                (opt) => SelectionChip(
+                  option: opt,
+                  selectedOption: selectedOption,
+                  onSelected: onSelected,
+                ),
+              )
               .toList(),
         ),
       ],

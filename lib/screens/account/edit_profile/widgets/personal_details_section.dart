@@ -23,7 +23,9 @@ class PersonalDetailsSection extends StatelessWidget {
       children: [
         Text(
           'Personal details',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         AppSpacing.gapMd,
         CustomCard(
@@ -35,7 +37,8 @@ class PersonalDetailsSection extends StatelessWidget {
                 isRequired: true,
                 hintText: 'Enter full name',
                 controller: nameController,
-                validator: (val) => PersonalDetailsValidators.requiredField(val, 'Full Name'),
+                validator: (val) =>
+                    PersonalDetailsValidators.requiredField(val, 'Full Name'),
               ),
               AppSpacing.gapLg,
               CustomTextField(

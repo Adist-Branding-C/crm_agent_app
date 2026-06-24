@@ -27,13 +27,23 @@ class TimelineTileMarker extends StatelessWidget {
             const Positioned(
               top: 16,
               bottom: 0,
-              child: SizedBox(width: 1.5, child: DecoratedBox(decoration: BoxDecoration(color: lineColor))),
+              child: SizedBox(
+                width: 1.5,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(color: lineColor),
+                ),
+              ),
             ),
           if (!isFirst)
             const Positioned(
               top: 0,
               bottom: 16,
-              child: SizedBox(width: 1.5, child: DecoratedBox(decoration: BoxDecoration(color: lineColor))),
+              child: SizedBox(
+                width: 1.5,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(color: lineColor),
+                ),
+              ),
             ),
           Positioned(
             top: 0,

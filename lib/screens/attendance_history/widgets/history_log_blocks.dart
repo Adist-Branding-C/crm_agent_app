@@ -15,17 +15,28 @@ class HistoryLogDateBlock extends StatelessWidget {
     return Container(
       width: 48,
       height: 48,
-      decoration: BoxDecoration(color: statusTheme.bg, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+        color: statusTheme.bg,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             '${log.day}',
-            style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(16), fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: statusTheme.fg,
+              fontSize: context.scaleFont(16),
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Text(
             log.dayName,
-            style: TextStyle(color: statusTheme.fg, fontSize: context.scaleFont(9), fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: statusTheme.fg,
+              fontSize: context.scaleFont(9),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
@@ -43,7 +54,8 @@ class HistoryLogTimeBlock extends StatelessWidget {
     final timeStr = log.checkInTime != null
         ? '${log.checkInTime} – ${log.checkOutTime ?? "now"}'
         : '—';
-    final durationStr = log.hours ?? (log.status == 'On Leave' ? 'Casual leave' : '');
+    final durationStr =
+        log.hours ?? (log.status == 'On Leave' ? 'Casual leave' : '');
     final isOngoing = log.hours == 'Ongoing';
 
     return Column(
@@ -52,9 +64,9 @@ class HistoryLogTimeBlock extends StatelessWidget {
         Text(
           timeStr,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textDark,
-              ),
+            fontWeight: FontWeight.bold,
+            color: AppColors.textDark,
+          ),
         ),
         if (durationStr.isNotEmpty) ...[
           AppSpacing.gapXs,

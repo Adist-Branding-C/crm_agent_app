@@ -20,14 +20,9 @@ class ActionButtons extends StatelessWidget {
     return Row(
       children: [
         QuickActionButton(
-          onTap: () => context.read<CallLogBloc>().add(
-                InitiateCall(lead: lead),
-              ),
-          icon: const Icon(
-            Icons.phone_in_talk,
-            color: Colors.white,
-            size: 18,
-          ),
+          onTap: () =>
+              context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
+          icon: const Icon(Icons.phone_in_talk, color: Colors.white, size: 18),
           label: 'Call',
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,

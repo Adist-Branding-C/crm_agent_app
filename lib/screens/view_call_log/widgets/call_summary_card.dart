@@ -38,27 +38,38 @@ class CallSummaryCard extends StatelessWidget {
               Text(
                 'Call Summary',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppColors.textDark,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  color: AppColors.textDark,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
           const SizedBox(height: 16),
-          CallSummaryRow(label: 'Status: ', value: activity.callStatus ?? 'Connected', isGreen: true),
+          CallSummaryRow(
+            label: 'Status: ',
+            value: activity.callStatus ?? 'Connected',
+            isGreen: true,
+          ),
           const SizedBox(height: 8),
-          CallSummaryRow(label: 'Duration: ', value: activity.duration ?? '4:12 mins'),
+          CallSummaryRow(
+            label: 'Duration: ',
+            value: activity.duration ?? '4:12 mins',
+          ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 12),
             child: Divider(color: AppColors.borderLight, height: 1),
           ),
-          CallSummaryRow(label: 'Date: ', value: activity.date ?? 'Today, 22 June 2026'),
+          CallSummaryRow(
+            label: 'Date: ',
+            value: activity.date ?? 'Today, 22 June 2026',
+          ),
           const SizedBox(height: 8),
-          CallSummaryRow(label: 'Time: ', value: activity.timeOfDay ?? '9:30 AM'),
+          CallSummaryRow(
+            label: 'Time: ',
+            value: activity.timeOfDay ?? '9:30 AM',
+          ),
         ],
       ),
     );
   }
 }
-
-

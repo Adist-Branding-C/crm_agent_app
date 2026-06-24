@@ -13,7 +13,10 @@ class StatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final statusTheme = AttendanceStatusTheme.resolve(text);
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xxs,
+      ),
       decoration: BoxDecoration(
         color: statusTheme.bg,
         borderRadius: BorderRadius.circular(6),
@@ -23,18 +26,23 @@ class StatusBadge extends StatelessWidget {
         children: [
           if (showDot) ...[
             Container(
-              width: 6, height: 6,
+              width: 6,
+              height: 6,
               decoration: const BoxDecoration(
-                color: AppColors.success, shape: BoxShape.circle,
+                color: AppColors.success,
+                shape: BoxShape.circle,
               ),
             ),
             AppSpacing.gapWXs,
           ],
-          Text(text, style: TextStyle(
-            color: statusTheme.fg,
-            fontSize: context.scaleFont(9),
-            fontWeight: FontWeight.bold,
-          )),
+          Text(
+            text,
+            style: TextStyle(
+              color: statusTheme.fg,
+              fontSize: context.scaleFont(9),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );

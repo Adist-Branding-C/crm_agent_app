@@ -42,10 +42,7 @@ class AsyncStateView extends StatelessWidget {
     }
 
     if (hasError) {
-      return AppErrorWidget(
-        message: errorMessage,
-        onRetry: onRetry,
-      );
+      return AppErrorWidget(message: errorMessage, onRetry: onRetry);
     }
 
     return child;

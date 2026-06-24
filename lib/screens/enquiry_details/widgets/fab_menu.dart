@@ -39,4 +39,3 @@ class _FabMenuState extends State<FabMenu> {
     );
   }
 }
-

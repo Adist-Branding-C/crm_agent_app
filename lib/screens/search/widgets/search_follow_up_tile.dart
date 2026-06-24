@@ -18,17 +18,24 @@ class SearchFollowUpTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return FollowUpItemCard(
       call: followUp,
-      onCallTap: () =>
-          context.read<CallLogBloc>().add(InitiateCallByName(name: followUp.name)),
+      onCallTap: () => context.read<CallLogBloc>().add(
+        InitiateCallByName(name: followUp.name),
+      ),
       onCardTap: () async {
-        final clean = followUp.name.replaceAll('Call back ', '').trim().toLowerCase();
+        final clean = followUp.name
+            .replaceAll('Call back ', '')
+            .trim()
+            .toLowerCase();
         final leads = await context.read<LeadsRepository>().getLeads();
         final match = leads.cast<Lead?>().firstWhere(
           (l) => l?.name.toLowerCase() == clean,
           orElse: () => null,
         );
         if (match != null && context.mounted) {
-          context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': match.id});
+          context.pushNamed(
+            AppRoutes.enquiryDetails,
+            pathParameters: {'id': match.id},
+          );
         }
       },
     );

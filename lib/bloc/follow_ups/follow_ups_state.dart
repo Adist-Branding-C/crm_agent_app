@@ -31,10 +31,7 @@ class FollowUpsLoaded extends FollowUpsState {
   final String? callingName;
 
   /// Creates a constant [FollowUpsLoaded] state.
-  const FollowUpsLoaded({
-    required this.followUps,
-    this.callingName,
-  });
+  const FollowUpsLoaded({required this.followUps, this.callingName});
 
   @override
   List<Object?> get props => [followUps, callingName];

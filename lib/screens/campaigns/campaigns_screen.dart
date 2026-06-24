@@ -10,8 +10,10 @@ import 'widgets/campaigns_list.dart';
 
 String _campaignsErrorString(CampaignsFailure f) {
   switch (f) {
-    case CampaignsFailure.load: return 'Failed to fetch campaigns';
-    case CampaignsFailure.unknown: return 'An error occurred';
+    case CampaignsFailure.load:
+      return 'Failed to fetch campaigns';
+    case CampaignsFailure.unknown:
+      return 'An error occurred';
   }
 }
 
@@ -47,13 +49,16 @@ class _CampaignsBody extends StatelessWidget {
     return BlocBuilder<CampaignsBloc, CampaignsState>(
       buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
-        final campaigns =
-            state is CampaignsLoaded ? state.campaigns : const <Campaign>[];
+        final campaigns = state is CampaignsLoaded
+            ? state.campaigns
+            : const <Campaign>[];
 
         return AsyncStateView(
           isLoading: state is CampaignsLoading || state is CampaignsInitial,
           hasError: state is CampaignsError,
-          errorMessage: state is CampaignsError ? _campaignsErrorString(state.failure) : 'Error',
+          errorMessage: state is CampaignsError
+              ? _campaignsErrorString(state.failure)
+              : 'Error',
           onRetry: () =>
               context.read<CampaignsBloc>().add(const LoadCampaigns()),
           child: CampaignsList(campaigns: campaigns),

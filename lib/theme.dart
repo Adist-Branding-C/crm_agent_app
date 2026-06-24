@@ -28,5 +28,6 @@ class AppTheme {
   static ThemeData get darkTheme => getDarkAppTheme();
 
   /// Returns light [ThemeData] scaled to the screen width.
-  static ThemeData scaledLightTheme(BuildContext context) => getScaledLightTheme(context);
+  static ThemeData scaledLightTheme(BuildContext context) =>
+      getScaledLightTheme(context);
 }

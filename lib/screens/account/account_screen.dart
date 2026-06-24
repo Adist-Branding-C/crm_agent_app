@@ -26,14 +26,12 @@ class _AccountScreenState extends State<AccountScreen> {
       padding: EdgeInsets.zero,
       child: Column(
         children: [
-          const ScreenHeader(
-            title: 'Profile',
-            showBackButton: true,
-          ),
+          const ScreenHeader(title: 'Profile', showBackButton: true),
           Expanded(
             child: BlocListener<AccountBloc, AccountState>(
               listenWhen: (_, state) => state is AccountLoggedOut,
-              listener: (context, _) => context.read<AuthStateNotifier>().refresh(),
+              listener: (context, _) =>
+                  context.read<AuthStateNotifier>().refresh(),
               child: const AccountBody(),
             ),
           ),

@@ -61,15 +61,15 @@ class AddTaskState extends Equatable {
 
   @override
   List<Object?> get props => [
-        title,
-        description,
-        type,
-        dueDate,
-        dueDateTime,
-        priority,
-        isSubmitting,
-        isSuccess,
-        errorMessage,
-        newTask,
-      ];
+    title,
+    description,
+    type,
+    dueDate,
+    dueDateTime,
+    priority,
+    isSubmitting,
+    isSuccess,
+    errorMessage,
+    newTask,
+  ];
 }

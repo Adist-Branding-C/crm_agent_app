@@ -11,8 +11,10 @@ import 'widgets/follow_up_list_body.dart';
 
 String _followUpsErrorString(FollowUpsFailure f) {
   switch (f) {
-    case FollowUpsFailure.load: return 'Failed to load follow-ups';
-    case FollowUpsFailure.unknown: return 'An error occurred';
+    case FollowUpsFailure.load:
+      return 'Failed to load follow-ups';
+    case FollowUpsFailure.unknown:
+      return 'An error occurred';
   }
 }
 
@@ -59,13 +61,16 @@ class _FollowUpsBody extends StatelessWidget {
     return BlocBuilder<FollowUpsBloc, FollowUpsState>(
       buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
-        final followUps =
-            state is FollowUpsLoaded ? state.followUps : const <FollowUp>[];
+        final followUps = state is FollowUpsLoaded
+            ? state.followUps
+            : const <FollowUp>[];
 
         return AsyncStateView(
           isLoading: state is FollowUpsLoading || state is FollowUpsInitial,
           hasError: state is FollowUpsError,
-          errorMessage: state is FollowUpsError ? _followUpsErrorString(state.failure) : 'Error',
+          errorMessage: state is FollowUpsError
+              ? _followUpsErrorString(state.failure)
+              : 'Error',
           onRetry: () =>
               context.read<FollowUpsBloc>().add(const LoadFollowUps()),
           child: FollowUpListBody(calls: followUps),

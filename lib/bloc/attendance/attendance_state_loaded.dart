@@ -24,16 +24,25 @@ class AttendanceLoaded extends AttendanceState {
   });
 
   AttendanceData toData() => AttendanceData(
-    isCheckedIn: isCheckedIn, checkInTime: checkInTime,
-    location: location, callsCount: callsCount,
-    visitsCount: visitsCount, notesCount: notesCount,
-    hoursCount: hoursCount, timeline: timeline,
+    isCheckedIn: isCheckedIn,
+    checkInTime: checkInTime,
+    location: location,
+    callsCount: callsCount,
+    visitsCount: visitsCount,
+    notesCount: notesCount,
+    hoursCount: hoursCount,
+    timeline: timeline,
   );
 
   AttendanceLoaded copyWith({
-    bool? isCheckedIn, String? checkInTime, String? location,
-    int? callsCount, int? visitsCount, int? notesCount,
-    double? hoursCount, List<AttendanceTimelineItem>? timeline,
+    bool? isCheckedIn,
+    String? checkInTime,
+    String? location,
+    int? callsCount,
+    int? visitsCount,
+    int? notesCount,
+    double? hoursCount,
+    List<AttendanceTimelineItem>? timeline,
   }) => AttendanceLoaded(
     isCheckedIn: isCheckedIn ?? this.isCheckedIn,
     checkInTime: checkInTime ?? this.checkInTime,
@@ -47,7 +56,13 @@ class AttendanceLoaded extends AttendanceState {
 
   @override
   List<Object?> get props => [
-    isCheckedIn, checkInTime, location, callsCount,
-    visitsCount, notesCount, hoursCount, timeline,
+    isCheckedIn,
+    checkInTime,
+    location,
+    callsCount,
+    visitsCount,
+    notesCount,
+    hoursCount,
+    timeline,
   ];
 }

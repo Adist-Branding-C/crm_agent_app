@@ -6,11 +6,7 @@ class RecentSection extends StatelessWidget {
   final List<String> queries;
   final ValueChanged<String> onTap;
 
-  const RecentSection({
-    super.key,
-    required this.queries,
-    required this.onTap,
-  });
+  const RecentSection({super.key, required this.queries, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +42,8 @@ class RecentSection extends StatelessWidget {
                         ),
                         title: Text(
                           q,
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppColors.textDark,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: AppColors.textDark),
                         ),
                         trailing: const Icon(
                           Icons.chevron_right_rounded,

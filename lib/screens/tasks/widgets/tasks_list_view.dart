@@ -21,9 +21,9 @@ class TasksListView extends StatelessWidget {
           final msg = state.actionFailure == TasksFailure.toggle
               ? 'Failed to toggle task'
               : 'An error occurred';
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(msg)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(msg)));
           context.read<TasksBloc>().add(const ClearActionFailure());
         }
       },

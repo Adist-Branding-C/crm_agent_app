@@ -13,7 +13,12 @@ class CampaignsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxl),
+      padding: EdgeInsets.fromLTRB(
+        AppSpacing.xxl,
+        AppSpacing.sm,
+        AppSpacing.xxl,
+        AppSpacing.xxl,
+      ),
       physics: const BouncingScrollPhysics(),
       itemCount: campaigns.length,
       separatorBuilder: (context, index) => AppSpacing.gapLg,

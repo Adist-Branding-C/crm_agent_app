@@ -7,11 +7,7 @@ class TaskCheckbox extends StatelessWidget {
   final VoidCallback onTap;
 
   /// Creates a constant [TaskCheckbox].
-  const TaskCheckbox({
-    super.key,
-    required this.isChecked,
-    required this.onTap,
-  });
+  const TaskCheckbox({super.key, required this.isChecked, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +25,7 @@ class TaskCheckbox extends StatelessWidget {
           borderRadius: BorderRadius.circular(6),
         ),
         child: isChecked
-            ? const Icon(
-                Icons.check_rounded,
-                size: 14,
-                color: Colors.white,
-              )
+            ? const Icon(Icons.check_rounded, size: 14, color: Colors.white)
             : null,
       ),
     );

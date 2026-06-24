@@ -11,15 +11,20 @@ void showStatusSelector(BuildContext context) {
     builder: (c) => SafeArea(
       child: ListView(
         shrinkWrap: true,
-        children: LeadStatus.values.map((s) => ListTile(
-          title: Text(s.label),
-          onTap: () {
-            context.read<EnquiryDetailsBloc>().add(ChangeEnquiryStatus(s));
-            c.pop();
-          },
-        )).toList(),
+        children: LeadStatus.values
+            .map(
+              (s) => ListTile(
+                title: Text(s.label),
+                onTap: () {
+                  context.read<EnquiryDetailsBloc>().add(
+                    ChangeEnquiryStatus(s),
+                  );
+                  c.pop();
+                },
+              ),
+            )
+            .toList(),
       ),
     ),
   );
 }
-

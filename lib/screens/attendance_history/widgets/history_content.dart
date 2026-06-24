@@ -20,7 +20,8 @@ class _HistoryContentState extends State<HistoryContent> {
   Widget build(BuildContext context) {
     return BlocBuilder<AttendanceHistoryBloc, AttendanceHistoryState>(
       builder: (context, state) {
-        if (state is AttendanceHistoryLoading || state is AttendanceHistoryInitial) {
+        if (state is AttendanceHistoryLoading ||
+            state is AttendanceHistoryInitial) {
           return const Center(child: AppLoadingWidget());
         }
         if (state is AttendanceHistoryLoaded) {
@@ -35,9 +36,9 @@ class _HistoryContentState extends State<HistoryContent> {
         final msg = state is AttendanceHistoryError ? state.message : 'Error';
         return AppErrorWidget(
           message: msg,
-          onRetry: () => context
-              .read<AttendanceHistoryBloc>()
-              .add(const LoadAttendanceHistory()),
+          onRetry: () => context.read<AttendanceHistoryBloc>().add(
+            const LoadAttendanceHistory(),
+          ),
         );
       },
     );

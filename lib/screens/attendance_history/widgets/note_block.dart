@@ -12,7 +12,9 @@ class NoteBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     final isApproved = approvedBy != null;
     final text = approvedBy ?? note!;
-    final icon = isApproved ? Icons.check_circle_outline : Icons.error_outline_rounded;
+    final icon = isApproved
+        ? Icons.check_circle_outline
+        : Icons.error_outline_rounded;
     final color = isApproved ? AppColors.success : AppColors.warningText;
 
     return Row(
@@ -20,11 +22,14 @@ class NoteBlock extends StatelessWidget {
         Icon(icon, color: color, size: 12),
         AppSpacing.gapWXs,
         Expanded(
-          child: Text(text, style: TextStyle(
-            color: color,
-            fontSize: context.scaleFont(10),
-            fontWeight: FontWeight.w500,
-          )),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: color,
+              fontSize: context.scaleFont(10),
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ),
       ],
     );

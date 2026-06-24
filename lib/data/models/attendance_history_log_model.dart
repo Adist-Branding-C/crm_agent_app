@@ -31,16 +31,16 @@ class AttendanceHistoryLogModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        day,
-        dayName,
-        status,
-        isActive,
-        checkInTime,
-        checkOutTime,
-        hours,
-        location,
-        isGpsVerified,
-        note,
-        approvedBy,
-      ];
+    day,
+    dayName,
+    status,
+    isActive,
+    checkInTime,
+    checkOutTime,
+    hours,
+    location,
+    isGpsVerified,
+    note,
+    approvedBy,
+  ];
 }

@@ -18,8 +18,6 @@ class SuggestedTasksList extends StatelessWidget {
           : const {},
     );
     final resolved = tasks.map((t) => taskMap[t.id] ?? t).toList();
-    return Column(
-      children: resolved.map((t) => TaskCard(task: t)).toList(),
-    );
+    return Column(children: resolved.map((t) => TaskCard(task: t)).toList());
   }
 }

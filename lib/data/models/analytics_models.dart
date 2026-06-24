@@ -15,7 +15,12 @@ class LeadsSummary extends Equatable {
   });
 
   @override
-  List<Object?> get props => [totalLeads, conversionRate, interestedCount, lostCount];
+  List<Object?> get props => [
+    totalLeads,
+    conversionRate,
+    interestedCount,
+    lostCount,
+  ];
 }
 
 class StatusMetric extends Equatable {

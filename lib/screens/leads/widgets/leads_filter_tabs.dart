@@ -29,13 +29,20 @@ class LeadsFilterTabs extends StatelessWidget {
             FilterChipOption(
               label: 'All · ${all.length}',
               isSelected: state.selectedCategory == null,
-              onTap: () => context.read<LeadsBloc>().add(const FilterCategoryChanged(null)),
+              onTap: () => context.read<LeadsBloc>().add(
+                const FilterCategoryChanged(null),
+              ),
             ),
-            for (final cat in [LeadCategory.hot, LeadCategory.warm, LeadCategory.cold])
+            for (final cat in [
+              LeadCategory.hot,
+              LeadCategory.warm,
+              LeadCategory.cold,
+            ])
               FilterChipOption(
                 label: '${cat.label} · ${counts[cat]}',
                 isSelected: state.selectedCategory == cat,
-                onTap: () => context.read<LeadsBloc>().add(FilterCategoryChanged(cat)),
+                onTap: () =>
+                    context.read<LeadsBloc>().add(FilterCategoryChanged(cat)),
               ),
           ],
         );

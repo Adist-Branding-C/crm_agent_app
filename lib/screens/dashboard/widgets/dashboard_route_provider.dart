@@ -42,12 +42,14 @@ class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<DashboardBloc>(
-            create: (_) => DashboardBloc(dashboardRepository: context.read())
-              ..add(const FetchDashboardData()),
+            create: (_) =>
+                DashboardBloc(dashboardRepository: context.read())
+                  ..add(const FetchDashboardData()),
           ),
           BlocProvider<TasksBloc>(
-            create: (_) => TasksBloc(tasksRepository: context.read())
-              ..add(const LoadTasks()),
+            create: (_) =>
+                TasksBloc(tasksRepository: context.read())
+                  ..add(const LoadTasks()),
           ),
         ],
         child: DashboardScreen(

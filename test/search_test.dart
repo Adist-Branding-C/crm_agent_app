@@ -14,16 +14,21 @@ void main() {
 
     // Login
     await tester.enterText(
-        find.bySemanticsLabel('Phone Number Input Field'), '9876543210');
+      find.bySemanticsLabel('Phone Number Input Field'),
+      '9876543210',
+    );
     await tester.enterText(
-        find.bySemanticsLabel('Password Input Field'), 'secure123');
+      find.bySemanticsLabel('Password Input Field'),
+      'secure123',
+    );
     await tester.tap(find.text('Sign In'));
     await tester.pumpAndSettle();
 
     // Navigate to Search Tab
     final bottomNav = find.byType(BottomNavigationBar);
     await tester.tap(
-        find.descendant(of: bottomNav, matching: find.text('Search')));
+      find.descendant(of: bottomNav, matching: find.text('Search')),
+    );
     await tester.pumpAndSettle();
 
     expect(find.byType(SearchScreen), findsOneWidget);

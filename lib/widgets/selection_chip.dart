@@ -30,7 +30,10 @@ class SelectionChip extends StatelessWidget {
       child: GestureDetector(
         onTap: () => onSelected(option),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.sm,
+          ),
           decoration: BoxDecoration(
             color: isSelected ? AppColors.primaryColorLight : Colors.white,
             borderRadius: BorderRadius.circular(20),

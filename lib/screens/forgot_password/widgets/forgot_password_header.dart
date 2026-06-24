@@ -35,7 +35,9 @@ class ForgotPasswordHeader extends StatelessWidget {
         AppSpacing.gapSm,
         Text(
           "We'll send a 6-digit OTP to your registered mobile number.",
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: context.textMuted),
         ),
       ],
     );

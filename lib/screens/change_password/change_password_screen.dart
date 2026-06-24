@@ -31,9 +31,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (c) => ChangePasswordBloc(
-        authRepository: c.read<PasswordRepository>(),
-      ),
+      create: (c) =>
+          ChangePasswordBloc(authRepository: c.read<PasswordRepository>()),
       child: BlocListener<ChangePasswordBloc, ChangePasswordState>(
         listenWhen: (p, c) => p.status != c.status,
         listener: (context, state) {
@@ -44,9 +43,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             context.pop();
           } else if (state.status == FormzSubmissionStatus.failure &&
               state.errorMessage != null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.errorMessage!)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
           }
         },
         child: PageScaffold(
@@ -56,9 +55,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               newController: _newController,
               confirmController: _confirmController,
               onCancel: () => context.pop(),
-              onSubmit: () => context
-                  .read<ChangePasswordBloc>()
-                  .add(const ChangePasswordSubmitted()),
+              onSubmit: () => context.read<ChangePasswordBloc>().add(
+                const ChangePasswordSubmitted(),
+              ),
             ),
           ),
         ),

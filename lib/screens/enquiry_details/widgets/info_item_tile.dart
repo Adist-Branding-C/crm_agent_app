@@ -52,7 +52,11 @@ class InfoItemTile extends StatelessWidget {
               ),
             ),
           AppSpacing.gapSm,
-          const Divider(color: AppColors.borderLight, height: 1, thickness: 0.5),
+          const Divider(
+            color: AppColors.borderLight,
+            height: 1,
+            thickness: 0.5,
+          ),
         ],
       ),
     );

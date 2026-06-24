@@ -35,9 +35,8 @@ class LeadCard extends StatelessWidget {
             Expanded(child: LeadCardDetails(lead: lead)),
             CallButton(
               borderRadius: 8,
-              onTap: () => context.read<CallLogBloc>().add(
-                InitiateCall(lead: lead),
-              ),
+              onTap: () =>
+                  context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
             ),
           ],
         ),

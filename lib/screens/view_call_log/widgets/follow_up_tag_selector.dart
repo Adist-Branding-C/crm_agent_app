@@ -21,9 +21,9 @@ class FollowUpTagSelector extends StatelessWidget {
         Text(
           'Tag',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.bold,
-              ),
+            color: AppColors.textDark,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         AppSpacing.gapSm,
         Container(
@@ -48,8 +48,12 @@ class FollowUpTagSelector extends StatelessWidget {
                       tag.label,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: isSelected ? AppColors.textDark : AppColors.textMuted,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        color: isSelected
+                            ? AppColors.textDark
+                            : AppColors.textMuted,
+                        fontWeight: isSelected
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                         fontSize: context.scaleFont(13),
                       ),
                     ),

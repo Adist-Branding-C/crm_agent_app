@@ -10,8 +10,12 @@ class CallActionConfig {
   final VoidCallback onTap;
 
   const CallActionConfig({
-    required this.icon, required this.title, required this.subtitle,
-    required this.iconColor, required this.iconBgColor, required this.onTap,
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.iconColor,
+    required this.iconBgColor,
+    required this.onTap,
   });
 
   static const _success = AppColors.success;
@@ -21,23 +25,49 @@ class CallActionConfig {
   static const _neutral = AppColors.slate600;
   static const _neutralBg = AppColors.slate100;
 
-  factory CallActionConfig.callNow({required String phone, required VoidCallback onTap}) => CallActionConfig(
-    icon: Icons.call_rounded, title: 'Call now', subtitle: phone,
-    iconColor: _success, iconBgColor: _successBg, onTap: onTap,
+  factory CallActionConfig.callNow({
+    required String phone,
+    required VoidCallback onTap,
+  }) => CallActionConfig(
+    icon: Icons.call_rounded,
+    title: 'Call now',
+    subtitle: phone,
+    iconColor: _success,
+    iconBgColor: _successBg,
+    onTap: onTap,
   );
 
-  factory CallActionConfig.whatsApp({required VoidCallback onTap}) => CallActionConfig(
-    icon: Icons.chat_bubble_outline_rounded, title: 'WhatsApp', subtitle: 'Choose template',
-    iconColor: _success, iconBgColor: _successBg, onTap: onTap,
+  factory CallActionConfig.whatsApp({required VoidCallback onTap}) =>
+      CallActionConfig(
+        icon: Icons.chat_bubble_outline_rounded,
+        title: 'WhatsApp',
+        subtitle: 'Choose template',
+        iconColor: _success,
+        iconBgColor: _successBg,
+        onTap: onTap,
+      );
+
+  factory CallActionConfig.sendSms({
+    required String phone,
+    required VoidCallback onTap,
+  }) => CallActionConfig(
+    icon: Icons.sms_outlined,
+    title: 'Send SMS',
+    subtitle: phone,
+    iconColor: _info,
+    iconBgColor: _infoBg,
+    onTap: onTap,
   );
 
-  factory CallActionConfig.sendSms({required String phone, required VoidCallback onTap}) => CallActionConfig(
-    icon: Icons.sms_outlined, title: 'Send SMS', subtitle: phone,
-    iconColor: _info, iconBgColor: _infoBg, onTap: onTap,
-  );
-
-  factory CallActionConfig.copyNumber({required String phone, required VoidCallback onTap}) => CallActionConfig(
-    icon: Icons.file_copy_outlined, title: 'Copy number', subtitle: phone,
-    iconColor: _neutral, iconBgColor: _neutralBg, onTap: onTap,
+  factory CallActionConfig.copyNumber({
+    required String phone,
+    required VoidCallback onTap,
+  }) => CallActionConfig(
+    icon: Icons.file_copy_outlined,
+    title: 'Copy number',
+    subtitle: phone,
+    iconColor: _neutral,
+    iconBgColor: _neutralBg,
+    onTap: onTap,
   );
 }

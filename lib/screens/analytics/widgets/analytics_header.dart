@@ -14,9 +14,12 @@ class AnalyticsHeader extends StatelessWidget {
       buildWhen: (prev, curr) =>
           prev.runtimeType != curr.runtimeType ||
           (curr is AnalyticsLoaded &&
-              (prev as AnalyticsLoaded?)?.selectedPeriod != curr.selectedPeriod),
+              (prev as AnalyticsLoaded?)?.selectedPeriod !=
+                  curr.selectedPeriod),
       builder: (context, state) {
-        final period = state is AnalyticsLoaded ? state.selectedPeriod : 'This Month';
+        final period = state is AnalyticsLoaded
+            ? state.selectedPeriod
+            : 'This Month';
         return ScreenHeader(
           title: 'Analytics',
           subtitle: period,
@@ -55,7 +58,11 @@ class _FilterButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.filter_alt_outlined, size: 16, color: AppColors.surfaceWhite),
+            const Icon(
+              Icons.filter_alt_outlined,
+              size: 16,
+              color: AppColors.surfaceWhite,
+            ),
             AppSpacing.gapWSm,
             Text(
               'Filter',

@@ -25,7 +25,8 @@ class TasksFilterTabs extends StatelessWidget {
               FilterChipOption(
                 label: filter.label,
                 isSelected: selected == filter,
-                onTap: () => context.read<TasksBloc>().add(FilterChanged(filter)),
+                onTap: () =>
+                    context.read<TasksBloc>().add(FilterChanged(filter)),
               ),
           ],
         );

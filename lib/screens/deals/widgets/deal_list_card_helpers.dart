@@ -61,9 +61,9 @@ class DealCardMeta extends StatelessWidget {
             AppSpacing.gapWXs,
             Text(
               deal.closeDate,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
             ),
           ],
         ),

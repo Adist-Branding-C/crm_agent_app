@@ -25,14 +25,17 @@ class CalendarGrid extends StatelessWidget {
     for (var d = 1; d <= 31; d++) {
       final log = history.logs.firstWhere(
         (l) => l.day == d,
-        orElse: () => AttendanceHistoryLogModel(day: d, dayName: '', status: ''),
+        orElse: () =>
+            AttendanceHistoryLogModel(day: d, dayName: '', status: ''),
       );
-      list.add(HistoryCalendarDayCell(
-        day: d,
-        log: log,
-        isSelected: selectedDay == d,
-        onTap: log.dayName.isNotEmpty ? () => onDaySelected(d) : null,
-      ));
+      list.add(
+        HistoryCalendarDayCell(
+          day: d,
+          log: log,
+          isSelected: selectedDay == d,
+          onTap: log.dayName.isNotEmpty ? () => onDaySelected(d) : null,
+        ),
+      );
     }
     return GridView.count(
       crossAxisCount: 7,

@@ -16,15 +16,10 @@ class AppBuilderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inner = CallLogNavigationHandler(
-      child: CallLifecycleObserver(
-        child: child ?? const SizedBox.shrink(),
-      ),
+      child: CallLifecycleObserver(child: child ?? const SizedBox.shrink()),
     );
     if (scaleText) {
-      return Theme(
-        data: AppTheme.scaledLightTheme(context),
-        child: inner,
-      );
+      return Theme(data: AppTheme.scaledLightTheme(context), child: inner);
     }
     return inner;
   }

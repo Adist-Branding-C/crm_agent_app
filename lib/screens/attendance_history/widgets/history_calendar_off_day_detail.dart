@@ -15,14 +15,29 @@ class HistoryCalendarOffDayDetail extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(log.note ?? 'No activity recorded.', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
+        Text(
+          log.note ?? 'No activity recorded.',
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+        ),
         if (log.approvedBy != null) ...[
           AppSpacing.gapSm,
           Row(
             children: [
-              const Icon(Icons.check_circle_outline, color: AppColors.success, size: 16),
+              const Icon(
+                Icons.check_circle_outline,
+                color: AppColors.success,
+                size: 16,
+              ),
               AppSpacing.gapWXs,
-              Text(log.approvedBy!, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.success, fontWeight: FontWeight.w500)),
+              Text(
+                log.approvedBy!,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.success,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           ),
         ],

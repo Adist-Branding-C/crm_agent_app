@@ -31,7 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(authRepository: context.read<SessionRepository>()),
+      create: (_) =>
+          LoginBloc(authRepository: context.read<SessionRepository>()),
       child: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.isSuccess) {

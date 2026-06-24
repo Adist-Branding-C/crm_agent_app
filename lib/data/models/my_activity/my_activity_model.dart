@@ -25,15 +25,15 @@ class MyActivityItem extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        title,
-        description,
-        status,
-        entityType,
-        assignee,
-        time,
-        dateLabel,
-      ];
+    id,
+    title,
+    description,
+    status,
+    entityType,
+    assignee,
+    time,
+    dateLabel,
+  ];
 }
 
 /// Grouped activities under a date label.
@@ -41,10 +41,7 @@ class ActivityDateGroup extends Equatable {
   final String dateLabel;
   final List<MyActivityItem> items;
 
-  const ActivityDateGroup({
-    required this.dateLabel,
-    required this.items,
-  });
+  const ActivityDateGroup({required this.dateLabel, required this.items});
 
   @override
   List<Object?> get props => [dateLabel, items];

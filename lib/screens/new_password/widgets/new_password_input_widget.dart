@@ -33,13 +33,12 @@ class NewPasswordInputWidget extends StatelessWidget {
                 color: context.textMuted,
                 size: 20,
               ),
-              onPressed: () => context
-                  .read<NewPasswordBloc>()
-                  .add(const ToggleNewPasswordVisibility()),
+              onPressed: () => context.read<NewPasswordBloc>().add(
+                const ToggleNewPasswordVisibility(),
+              ),
             ),
-            onChanged: (val) => context
-                .read<NewPasswordBloc>()
-                .add(NewPasswordChanged(val)),
+            onChanged: (val) =>
+                context.read<NewPasswordBloc>().add(NewPasswordChanged(val)),
           ),
           PasswordStrengthMeter(password: state.newPassword.value),
         ],

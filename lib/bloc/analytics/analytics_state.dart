@@ -47,9 +47,15 @@ class AnalyticsLoaded extends AnalyticsState {
 
   @override
   List<Object?> get props => [
-        activeTab, selectedPeriod, customStartDate, customEndDate,
-        selectedStatuses, selectedSources, leadsData, dealsData,
-      ];
+    activeTab,
+    selectedPeriod,
+    customStartDate,
+    customEndDate,
+    selectedStatuses,
+    selectedSources,
+    leadsData,
+    dealsData,
+  ];
 }
 
 enum AnalyticsFailure { load, unknown }

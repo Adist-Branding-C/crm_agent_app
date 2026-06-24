@@ -28,10 +28,16 @@ class LeadsRepositoryImpl implements LeadsRepository {
     await Future.delayed(const Duration(milliseconds: 100));
     final leadWithId = Lead(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      name: lead.name, status: lead.status, source: lead.source,
-      category: lead.category, phone: lead.phone, location: lead.location,
-      email: lead.email, leadSource: lead.leadSource,
-      nextFollowUp: lead.nextFollowUp, note: lead.note,
+      name: lead.name,
+      status: lead.status,
+      source: lead.source,
+      category: lead.category,
+      phone: lead.phone,
+      location: lead.location,
+      email: lead.email,
+      leadSource: lead.leadSource,
+      nextFollowUp: lead.nextFollowUp,
+      note: lead.note,
     );
     await leadsDataSource.insertLead(leadWithId);
     return leadWithId;

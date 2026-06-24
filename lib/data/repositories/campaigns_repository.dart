@@ -5,4 +5,3 @@ abstract class CampaignsRepository {
   /// Fetches all active and completed campaigns.
   Future<List<Campaign>> getCampaigns();
 }
-

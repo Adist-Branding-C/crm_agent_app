@@ -30,10 +30,7 @@ class PageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final body = Padding(
-      padding: padding,
-      child: child,
-    );
+    final body = Padding(padding: padding, child: child);
 
     return Scaffold(
       backgroundColor: backgroundColor,

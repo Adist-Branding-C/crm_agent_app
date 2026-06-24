@@ -8,4 +8,3 @@ abstract class AccountRepository {
   /// Updates the profile details for the logged-in agent.
   Future<AccountProfile> updateProfile(AccountProfile profile);
 }
-

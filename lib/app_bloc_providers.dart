@@ -15,20 +15,19 @@ List<BlocProvider> buildBlocProviders() {
       ),
     ),
     BlocProvider<AttendanceBloc>(
-      create: (c) => AttendanceBloc(
-        attendanceRepository: c.read(),
-      )..add(const LoadAttendance()),
+      create: (c) =>
+          AttendanceBloc(attendanceRepository: c.read())
+            ..add(const LoadAttendance()),
     ),
     BlocProvider<AccountBloc>(
-      create: (c) => AccountBloc(
-        accountRepository: c.read(),
-        authRepository: c.read(),
-      )..add(const LoadAccount()),
+      create: (c) =>
+          AccountBloc(accountRepository: c.read(), authRepository: c.read())
+            ..add(const LoadAccount()),
     ),
     BlocProvider<NotificationsBloc>(
-      create: (c) => NotificationsBloc(
-        notificationsRepository: c.read(),
-      )..add(const LoadNotifications()),
+      create: (c) =>
+          NotificationsBloc(notificationsRepository: c.read())
+            ..add(const LoadNotifications()),
     ),
   ];
 }

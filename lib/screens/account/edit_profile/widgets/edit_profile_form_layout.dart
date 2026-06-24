@@ -21,11 +21,18 @@ class EditProfileFormLayout extends StatelessWidget {
   final VoidCallback onSave;
 
   const EditProfileFormLayout({
-    super.key, required this.profile,
-    required this.nameController, required this.phoneController, required this.emailController,
-    required this.baseLocationController, required this.targetController,
-    required this.selectedRole, required this.selectedBranch,
-    required this.isSaving, required this.onRoleChanged, required this.onBranchChanged,
+    super.key,
+    required this.profile,
+    required this.nameController,
+    required this.phoneController,
+    required this.emailController,
+    required this.baseLocationController,
+    required this.targetController,
+    required this.selectedRole,
+    required this.selectedBranch,
+    required this.isSaving,
+    required this.onRoleChanged,
+    required this.onBranchChanged,
     required this.onSave,
   });
 
@@ -33,15 +40,27 @@ class EditProfileFormLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const ScreenHeader(title: 'Edit Profile', subtitle: 'Your account details', showBackButton: true),
+        const ScreenHeader(
+          title: 'Edit Profile',
+          subtitle: 'Your account details',
+          showBackButton: true,
+        ),
         Expanded(
           child: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xxl),
+            padding: EdgeInsets.fromLTRB(
+              AppSpacing.xxl,
+              0,
+              AppSpacing.xxl,
+              AppSpacing.xxl,
+            ),
             child: ResponsiveWidthContainer(
               maxWidth: 540,
               child: Column(
                 children: [
-                  EditProfileAvatarCard(initials: profile.initials, joinedDate: profile.joinedDate),
+                  EditProfileAvatarCard(
+                    initials: profile.initials,
+                    joinedDate: profile.joinedDate,
+                  ),
                   AppSpacing.gapLg,
                   PersonalDetailsSection(
                     nameController: nameController,
@@ -57,9 +76,16 @@ class EditProfileFormLayout extends StatelessWidget {
                     onBranchChanged: onBranchChanged,
                   ),
                   AppSpacing.gapLg,
-                  TargetDetailsSection(targetController: targetController, achievedAmount: profile.achievedAmount),
+                  TargetDetailsSection(
+                    targetController: targetController,
+                    achievedAmount: profile.achievedAmount,
+                  ),
                   AppSpacing.gapXxl,
-                  EditProfileActions(onCancel: () => context.pop(), onSave: onSave, isLoading: isSaving),
+                  EditProfileActions(
+                    onCancel: () => context.pop(),
+                    onSave: onSave,
+                    isLoading: isSaving,
+                  ),
                 ],
               ),
             ),

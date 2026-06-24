@@ -19,7 +19,11 @@ class AddDealLeadCard extends StatelessWidget {
       child: Row(
         children: [
           UserAvatar(
-            initials: lead.name.split(' ').map((e) => e.isNotEmpty ? e[0] : '').take(2).join(),
+            initials: lead.name
+                .split(' ')
+                .map((e) => e.isNotEmpty ? e[0] : '')
+                .take(2)
+                .join(),
             size: 40,
           ),
           AppSpacing.gapWMd,
@@ -36,26 +40,29 @@ class AddDealLeadCard extends StatelessWidget {
                 ),
                 Text(
                   '${lead.source.label} · ${lead.phone}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.textMuted,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
                 ),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.xs,
+            ),
             decoration: BoxDecoration(
               color: AppColors.primaryColorLight,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
-                'Linked enquiry',
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
+              'Linked enquiry',
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
               ),
+            ),
           ),
         ],
       ),

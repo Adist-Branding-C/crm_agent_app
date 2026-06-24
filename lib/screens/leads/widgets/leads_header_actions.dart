@@ -29,20 +29,33 @@ class LeadsHeaderActions extends StatelessWidget {
             CardIconButton(
               icon: Icons.whatshot_rounded,
               iconColor: isSpotlight ? Colors.white : AppColors.primaryColor,
-              backgroundColor: isSpotlight ? AppColors.primaryColor : Colors.white,
-              size: 38, borderRadius: 8, iconSize: 20,
-              onTap: () => context.read<LeadsBloc>().add(const ToggleSpotlight()),
+              backgroundColor: isSpotlight
+                  ? AppColors.primaryColor
+                  : Colors.white,
+              size: 38,
+              borderRadius: 8,
+              iconSize: 20,
+              onTap: () =>
+                  context.read<LeadsBloc>().add(const ToggleSpotlight()),
             ),
             SizedBox(width: AppSpacing.ten),
             CardIconButton(
-              icon: Icons.tune_rounded, iconColor: AppColors.textDark,
-              backgroundColor: Colors.white, size: 38, borderRadius: 8, iconSize: 20,
+              icon: Icons.tune_rounded,
+              iconColor: AppColors.textDark,
+              backgroundColor: Colors.white,
+              size: 38,
+              borderRadius: 8,
+              iconSize: 20,
               onTap: () => _openFilterSheet(context, state),
             ),
             SizedBox(width: AppSpacing.ten),
             CardIconButton(
-              icon: Icons.add_rounded, iconColor: AppColors.primaryColor,
-              backgroundColor: Colors.white, size: 38, borderRadius: 8, iconSize: 20,
+              icon: Icons.add_rounded,
+              iconColor: AppColors.primaryColor,
+              backgroundColor: Colors.white,
+              size: 38,
+              borderRadius: 8,
+              iconSize: 20,
               onTap: () => _openAddScreen(context),
             ),
           ],
@@ -54,13 +67,23 @@ class LeadsHeaderActions extends StatelessWidget {
   Future<void> _openFilterSheet(BuildContext ctx, LeadsState s) async {
     if (s is! LeadsLoaded) return;
     final res = await showModalBottomSheet<FilterResult>(
-      context: ctx, isScrollControlled: true, backgroundColor: Colors.transparent,
+      context: ctx,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
       builder: (_) => FilterSheet(
-        initialSortBy: s.sortBy, initialStatus: s.selectedStatus, initialSource: s.selectedSource,
+        initialSortBy: s.sortBy,
+        initialStatus: s.selectedStatus,
+        initialSource: s.selectedSource,
       ),
     );
     if (res != null && ctx.mounted) {
-      ctx.read<LeadsBloc>().add(ApplyFilterOptions(sortBy: res.sortBy, status: res.status, source: res.source));
+      ctx.read<LeadsBloc>().add(
+        ApplyFilterOptions(
+          sortBy: res.sortBy,
+          status: res.status,
+          source: res.source,
+        ),
+      );
     }
   }
 

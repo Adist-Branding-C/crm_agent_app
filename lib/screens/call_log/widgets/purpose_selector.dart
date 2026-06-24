@@ -17,13 +17,19 @@ class PurposeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Purpose',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: AppColors.textDark,
+            ),
           ),
           AppSpacing.gapSm,
           Wrap(
@@ -45,7 +51,9 @@ class PurposeSelector extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                   side: BorderSide(
-                    color: isSel ? AppColors.primaryColor : AppColors.surfaceGrey200,
+                    color: isSel
+                        ? AppColors.primaryColor
+                        : AppColors.surfaceGrey200,
                     width: isSel ? 1.5 : 1,
                   ),
                 ),

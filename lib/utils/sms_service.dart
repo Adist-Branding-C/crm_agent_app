@@ -12,10 +12,7 @@ class SmsService {
 
     final Uri launchUri = Uri.parse('sms:$cleanNumber');
     try {
-      return await launchUrl(
-        launchUri,
-        mode: LaunchMode.externalApplication,
-      );
+      return await launchUrl(launchUri, mode: LaunchMode.externalApplication);
     } catch (_) {
       // Fallback/exception handling
     }

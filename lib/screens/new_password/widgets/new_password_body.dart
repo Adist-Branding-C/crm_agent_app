@@ -47,13 +47,19 @@ class NewPasswordBody extends StatelessWidget {
                     BlocBuilder<NewPasswordBloc, NewPasswordState>(
                       buildWhen: (p, c) =>
                           p.newPassword.isValid != c.newPassword.isValid ||
-                          p.confirmPassword.isValid != c.confirmPassword.isValid ||
+                          p.confirmPassword.isValid !=
+                              c.confirmPassword.isValid ||
                           p.status != c.status,
                       builder: (context, state) => CustomButton(
                         text: 'Update Password',
                         icon: Icons.check_rounded,
-                        isLoading: state.status == FormzSubmissionStatus.inProgress,
-                        onPressed: state.newPassword.isValid && state.confirmPassword.isValid ? onSubmit : null,
+                        isLoading:
+                            state.status == FormzSubmissionStatus.inProgress,
+                        onPressed:
+                            state.newPassword.isValid &&
+                                state.confirmPassword.isValid
+                            ? onSubmit
+                            : null,
                       ),
                     ),
                   ],

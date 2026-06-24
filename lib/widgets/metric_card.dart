@@ -29,8 +29,20 @@ class MetricCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final content = layout == MetricCardLayout.vertical
-        ? MetricCardVertical(icon: icon, iconColor: iconColor, iconBgColor: iconBgColor, primaryText: primaryText, secondaryText: secondaryText)
-        : MetricCardHorizontal(icon: icon, iconColor: iconColor, iconBgColor: iconBgColor, primaryText: primaryText, secondaryText: secondaryText);
+        ? MetricCardVertical(
+            icon: icon,
+            iconColor: iconColor,
+            iconBgColor: iconBgColor,
+            primaryText: primaryText,
+            secondaryText: secondaryText,
+          )
+        : MetricCardHorizontal(
+            icon: icon,
+            iconColor: iconColor,
+            iconBgColor: iconBgColor,
+            primaryText: primaryText,
+            secondaryText: secondaryText,
+          );
     return CustomCard(
       onTap: onTap,
       padding: AppSpacing.cardPadding,

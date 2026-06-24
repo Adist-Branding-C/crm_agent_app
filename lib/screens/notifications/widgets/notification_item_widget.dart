@@ -27,7 +27,10 @@ class NotificationItemWidget extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(AppSpacing.ten),
-            decoration: BoxDecoration(color: style.bgColor, shape: BoxShape.circle),
+            decoration: BoxDecoration(
+              color: style.bgColor,
+              shape: BoxShape.circle,
+            ),
             child: Icon(style.icon, color: style.iconColor, size: 20),
           ),
           AppSpacing.gapWLg,
@@ -37,17 +40,29 @@ class NotificationItemWidget extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Expanded(child: Text(item.title, style: Theme.of(context).textTheme.titleMedium)),
+                    Expanded(
+                      child: Text(
+                        item.title,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
                     if (!item.isRead)
                       Container(
                         margin: EdgeInsets.only(left: AppSpacing.xs2),
-                        width: 6, height: 6,
-                        decoration: const BoxDecoration(color: AppColors.primaryColor, shape: BoxShape.circle),
+                        width: 6,
+                        height: 6,
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryColor,
+                          shape: BoxShape.circle,
+                        ),
                       ),
                   ],
                 ),
                 AppSpacing.gapXs,
-                Text(item.subtitle, style: Theme.of(context).textTheme.bodySmall),
+                Text(
+                  item.subtitle,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
                 AppSpacing.gapXs,
                 Text(item.time, style: Theme.of(context).textTheme.labelSmall),
               ],

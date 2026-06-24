@@ -39,7 +39,9 @@ class _AddDealBottomSheetBodyState extends State<AddDealBottomSheetBody> {
       clientName: widget.lead.name,
       amount: double.parse(_controller.amountController.text.trim()),
       stage: _controller.selectedStage,
-      closeDate: AddDealDatePickerHelper.formatCloseDate(_controller.expectedClose!),
+      closeDate: AddDealDatePickerHelper.formatCloseDate(
+        _controller.expectedClose!,
+      ),
     );
     _controller.setLoading(true);
     _controller.setError(null);

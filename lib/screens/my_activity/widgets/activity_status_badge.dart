@@ -13,7 +13,10 @@ class ActivityStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = _getColors();
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xxs,
+      ),
       decoration: BoxDecoration(
         color: colors.background,
         borderRadius: BorderRadius.circular(4),
@@ -32,23 +35,44 @@ class ActivityStatusBadge extends StatelessWidget {
   ({Color background, Color text}) _getColors() {
     switch (status) {
       case ActivityStatus.done:
-        return (background: AppColors.successBackground, text: AppColors.success);
+        return (
+          background: AppColors.successBackground,
+          text: AppColors.success,
+        );
       case ActivityStatus.deleted:
-        return (background: AppColors.errorBackground, text: AppColors.errorColor);
+        return (
+          background: AppColors.errorBackground,
+          text: AppColors.errorColor,
+        );
       case ActivityStatus.edited:
-        return (background: AppColors.warningTextBackground, text: AppColors.warningText);
+        return (
+          background: AppColors.warningTextBackground,
+          text: AppColors.warningText,
+        );
       case ActivityStatus.assigned:
         return (background: AppColors.infoBackground, text: AppColors.infoText);
       case ActivityStatus.created:
-        return (background: AppColors.successBackground, text: AppColors.success);
+        return (
+          background: AppColors.successBackground,
+          text: AppColors.success,
+        );
       case ActivityStatus.call:
-        return (background: AppColors.successBackground, text: AppColors.success);
+        return (
+          background: AppColors.successBackground,
+          text: AppColors.success,
+        );
       case ActivityStatus.won:
-        return (background: AppColors.successBackground, text: AppColors.success);
+        return (
+          background: AppColors.successBackground,
+          text: AppColors.success,
+        );
       case ActivityStatus.statusChange:
         return (background: AppColors.infoBackground, text: AppColors.infoText);
       case ActivityStatus.note:
-        return (background: AppColors.warningTextBackground, text: AppColors.warningText);
+        return (
+          background: AppColors.warningTextBackground,
+          text: AppColors.warningText,
+        );
     }
   }
 }

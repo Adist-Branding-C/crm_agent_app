@@ -24,10 +24,7 @@ class DashboardLoaded extends DashboardState {
   final DashboardStats stats;
   final List<FollowUpCall> followUps;
 
-  const DashboardLoaded({
-    required this.stats,
-    required this.followUps,
-  });
+  const DashboardLoaded({required this.stats, required this.followUps});
 
   @override
   List<Object?> get props => [stats, followUps];

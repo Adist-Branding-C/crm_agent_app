@@ -41,8 +41,18 @@ class AddDealDatePickerHelper {
     if (compareDate == tomorrow) return 'Tomorrow, $timeStr';
 
     final m = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     return '${m[dt.month - 1]} ${dt.day}, ${dt.year}, $timeStr';
   }
@@ -50,8 +60,18 @@ class AddDealDatePickerHelper {
   /// Formats date for deal closeDate (e.g. "Close May 12").
   static String formatCloseDate(DateTime dt) {
     final m = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     return 'Close ${m[dt.month - 1]} ${dt.day}';
   }

@@ -11,11 +11,13 @@ void changePasswordCurrentPasswordChanged(
   Emitter<ChangePasswordState> emit,
 ) {
   final current = ChangeCurrentPassword.dirty(e.password);
-  emit(bloc.state.copyWith(
-    currentPassword: current,
-    status: FormzSubmissionStatus.initial,
-    errorMessage: null,
-  ));
+  emit(
+    bloc.state.copyWith(
+      currentPassword: current,
+      status: FormzSubmissionStatus.initial,
+      errorMessage: null,
+    ),
+  );
 }
 
 void changePasswordNewPasswordChanged(
@@ -28,12 +30,14 @@ void changePasswordNewPasswordChanged(
     newPassword: newPass.value,
     value: bloc.state.confirmPassword.value,
   );
-  emit(bloc.state.copyWith(
-    newPassword: newPass,
-    confirmPassword: confirm,
-    status: FormzSubmissionStatus.initial,
-    errorMessage: null,
-  ));
+  emit(
+    bloc.state.copyWith(
+      newPassword: newPass,
+      confirmPassword: confirm,
+      status: FormzSubmissionStatus.initial,
+      errorMessage: null,
+    ),
+  );
 }
 
 void changePasswordConfirmPasswordChanged(
@@ -45,9 +49,11 @@ void changePasswordConfirmPasswordChanged(
     newPassword: bloc.state.newPassword.value,
     value: e.password,
   );
-  emit(bloc.state.copyWith(
-    confirmPassword: confirm,
-    status: FormzSubmissionStatus.initial,
-    errorMessage: null,
-  ));
+  emit(
+    bloc.state.copyWith(
+      confirmPassword: confirm,
+      status: FormzSubmissionStatus.initial,
+      errorMessage: null,
+    ),
+  );
 }

@@ -27,26 +27,47 @@ class SearchResultsList extends StatelessWidget {
     final widgets = <Widget>[];
     final totalCount = state.results.length;
 
-    widgets.add(Padding(
-      padding: EdgeInsets.only(left: AppSpacing.xxl, top: AppSpacing.md, bottom: AppSpacing.sm),
-      child: Text('$totalCount result${totalCount == 1 ? "" : "s"}',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
-    ));
+    widgets.add(
+      Padding(
+        padding: EdgeInsets.only(
+          left: AppSpacing.xxl,
+          top: AppSpacing.md,
+          bottom: AppSpacing.sm,
+        ),
+        child: Text(
+          '$totalCount result${totalCount == 1 ? "" : "s"}',
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+        ),
+      ),
+    );
 
     for (final category in categoriesOrder) {
       final items = grouped[category];
       if (items == null || items.isEmpty) continue;
 
-      widgets.add(Padding(
-        padding: EdgeInsets.only(left: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
-        child: Text(category.toUpperCase(),
+      widgets.add(
+        Padding(
+          padding: EdgeInsets.only(
+            left: AppSpacing.xxl,
+            top: AppSpacing.lg,
+            bottom: AppSpacing.sm,
+          ),
+          child: Text(
+            category.toUpperCase(),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 0.8)),
-      ));
+              color: AppColors.textMuted,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.8,
+            ),
+          ),
+        ),
+      );
 
-      widgets.addAll(items.map((item) => SearchResultTile(item: item, taskMap: taskMap)));
+      widgets.addAll(
+        items.map((item) => SearchResultTile(item: item, taskMap: taskMap)),
+      );
     }
 
     return ListView(

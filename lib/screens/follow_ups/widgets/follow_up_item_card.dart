@@ -33,17 +33,19 @@ class FollowUpItemCard extends StatelessWidget {
       padding: AppSpacing.cardPadding,
       child: Row(
         children: [
-          UserAvatar(
-            initials: call.initials,
-            size: 44,
-          ),
+          UserAvatar(initials: call.initials, size: 44),
           AppSpacing.gapWMd,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: onCardTap ?? () => context.pushNamed(AppRoutes.enquiryDetails, pathParameters: {'id': call.id}),
+                  onTap:
+                      onCardTap ??
+                      () => context.pushNamed(
+                        AppRoutes.enquiryDetails,
+                        pathParameters: {'id': call.id},
+                      ),
                   child: Text(
                     call.name,
                     style: Theme.of(context).textTheme.titleMedium,

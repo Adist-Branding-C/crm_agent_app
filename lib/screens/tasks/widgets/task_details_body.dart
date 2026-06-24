@@ -22,36 +22,80 @@ class TaskDetailsBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
-                decoration: BoxDecoration(color: AppColors.slate100, borderRadius: BorderRadius.circular(8)),
-                child: Text(task.type.name.toUpperCase(), style: Theme.of(context).textTheme.labelSmall),
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.xs2,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.slate100,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  task.type.name.toUpperCase(),
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
               ),
               if (task.isOverdue && !task.isCompleted)
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
-                  decoration: BoxDecoration(color: AppColors.errorBackground, borderRadius: BorderRadius.circular(8)),
-                  child: Text('OVERDUE', style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold, color: AppColors.errorColor)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSpacing.ten,
+                    vertical: AppSpacing.xs,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.errorBackground,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    'OVERDUE',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.errorColor,
+                    ),
+                  ),
                 ),
             ],
           ),
           AppSpacing.gapXl,
           Text(task.title, style: Theme.of(context).textTheme.titleLarge),
           AppSpacing.gapMd,
-          TaskMetaRow(label: 'Due Time', value: task.time, icon: Icons.access_time_rounded),
-          TaskMetaRow(label: 'Priority', value: task.priority.name.toUpperCase(), icon: Icons.priority_high_rounded, color: task.priority.displayColor),
+          TaskMetaRow(
+            label: 'Due Time',
+            value: task.time,
+            icon: Icons.access_time_rounded,
+          ),
+          TaskMetaRow(
+            label: 'Priority',
+            value: task.priority.name.toUpperCase(),
+            icon: Icons.priority_high_rounded,
+            color: task.priority.displayColor,
+          ),
           AppSpacing.gapXxxl,
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: task.isCompleted ? AppColors.slate300 : AppColors.primaryColor,
+                backgroundColor: task.isCompleted
+                    ? AppColors.slate300
+                    : AppColors.primaryColor,
                 foregroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: AppSpacing.fourteen),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
-              onPressed: () => context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
-              icon: Icon(task.isCompleted ? Icons.check_circle_outline_rounded : Icons.check_circle_rounded),
-              label: Text(task.isCompleted ? 'Mark Incomplete' : 'Mark Completed', style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600)),
+              onPressed: () =>
+                  context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
+              icon: Icon(
+                task.isCompleted
+                    ? Icons.check_circle_outline_rounded
+                    : Icons.check_circle_rounded,
+              ),
+              label: Text(
+                task.isCompleted ? 'Mark Incomplete' : 'Mark Completed',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+              ),
             ),
           ),
         ],

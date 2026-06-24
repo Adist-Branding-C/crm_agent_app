@@ -58,16 +58,16 @@ class EnquiryActivity extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        title,
-        time,
-        type,
-        callStatus,
-        duration,
-        leadStatus,
-        purpose,
-        remark,
-        date,
-        timeOfDay,
-      ];
+    id,
+    title,
+    time,
+    type,
+    callStatus,
+    duration,
+    leadStatus,
+    purpose,
+    remark,
+    date,
+    timeOfDay,
+  ];
 }

@@ -47,7 +47,10 @@ class CampaignCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('${campaign.doneCount} of ${campaign.totalCount} done', style: captionStyle),
+              Text(
+                '${campaign.doneCount} of ${campaign.totalCount} done',
+                style: captionStyle,
+              ),
               Text('${campaign.remainingCount} remaining', style: captionStyle),
             ],
           ),

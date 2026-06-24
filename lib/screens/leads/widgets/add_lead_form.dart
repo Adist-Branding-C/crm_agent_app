@@ -36,7 +36,9 @@ class _AddLeadFormState extends State<AddLeadForm> {
   void _onState(BuildContext context, AddLeadState state) {
     if (state.isSuccess) context.pop(true);
     if (state.error != null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(state.error!)));
     }
   }
 
@@ -48,11 +50,17 @@ class _AddLeadFormState extends State<AddLeadForm> {
         children: [
           Expanded(
             child: AddLeadFormFields(
-              nameController: _name, phoneController: _phone,
-              emailController: _email, locationController: _loc,
-              followUpController: _follow, noteController: _note,
-              source: state.source, purpose: state.purpose,
-              category: state.category, status: state.status, state: state,
+              nameController: _name,
+              phoneController: _phone,
+              emailController: _email,
+              locationController: _loc,
+              followUpController: _follow,
+              noteController: _note,
+              source: state.source,
+              purpose: state.purpose,
+              category: state.category,
+              status: state.status,
+              state: state,
               onSourceChanged: (v) => _bloc.add(SourceChanged(v)),
               onPurposeChanged: (v) => _bloc.add(PurposeChanged(v)),
               onCategoryChanged: (v) => _bloc.add(CategoryChanged(v)),
@@ -64,7 +72,9 @@ class _AddLeadFormState extends State<AddLeadForm> {
             child: CustomButton(
               text: 'Save Lead',
               isLoading: state.isSubmitting,
-              onPressed: state.isValid ? () => _bloc.add(const SubmitForm()) : null,
+              onPressed: state.isValid
+                  ? () => _bloc.add(const SubmitForm())
+                  : null,
             ),
           ),
         ],

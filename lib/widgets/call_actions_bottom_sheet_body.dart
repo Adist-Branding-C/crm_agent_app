@@ -30,23 +30,44 @@ class CallActionsBottomSheetBody extends StatelessWidget {
           CallActionsSheetHeader(lead: lead),
           AppSpacing.gapSm,
           CallActionItem(
-            icon: Icons.call_rounded, title: 'Call now', subtitle: lead.phone,
-            iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
-            onTap: () { context.pop(); context.read<CallLogBloc>().add(LaunchDialer(lead: lead)); },
+            icon: Icons.call_rounded,
+            title: 'Call now',
+            subtitle: lead.phone,
+            iconColor: AppColors.success,
+            iconBgColor: AppColors.successBackground,
+            onTap: () {
+              context.pop();
+              context.read<CallLogBloc>().add(LaunchDialer(lead: lead));
+            },
           ),
           CallActionItem(
-            icon: Icons.chat_bubble_outline_rounded, title: 'WhatsApp', subtitle: 'Choose template',
-            iconColor: AppColors.success, iconBgColor: AppColors.successBackground,
-            onTap: () { context.pop(); WhatsAppBottomSheet.show(context, lead: lead); },
+            icon: Icons.chat_bubble_outline_rounded,
+            title: 'WhatsApp',
+            subtitle: 'Choose template',
+            iconColor: AppColors.success,
+            iconBgColor: AppColors.successBackground,
+            onTap: () {
+              context.pop();
+              WhatsAppBottomSheet.show(context, lead: lead);
+            },
           ),
           CallActionItem(
-            icon: Icons.sms_outlined, title: 'Send SMS', subtitle: lead.phone,
-            iconColor: AppColors.info, iconBgColor: AppColors.infoBackground,
-            onTap: () { context.pop(); smsService.launchSms(lead.phone); },
+            icon: Icons.sms_outlined,
+            title: 'Send SMS',
+            subtitle: lead.phone,
+            iconColor: AppColors.info,
+            iconBgColor: AppColors.infoBackground,
+            onTap: () {
+              context.pop();
+              smsService.launchSms(lead.phone);
+            },
           ),
           CallActionItem(
-            icon: Icons.file_copy_outlined, title: 'Copy number', subtitle: lead.phone,
-            iconColor: AppColors.slate600, iconBgColor: AppColors.slate100,
+            icon: Icons.file_copy_outlined,
+            title: 'Copy number',
+            subtitle: lead.phone,
+            iconColor: AppColors.slate600,
+            iconBgColor: AppColors.slate100,
             onTap: () => _handleCopy(context),
           ),
           AppSpacing.gapXxl,
@@ -60,7 +81,10 @@ class CallActionsBottomSheetBody extends StatelessWidget {
     await Clipboard.setData(ClipboardData(text: lead.phone));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Phone number copied to clipboard'), duration: Duration(seconds: 2)),
+        const SnackBar(
+          content: Text('Phone number copied to clipboard'),
+          duration: Duration(seconds: 2),
+        ),
       );
     }
   }

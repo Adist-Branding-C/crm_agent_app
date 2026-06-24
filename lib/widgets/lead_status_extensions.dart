@@ -23,13 +23,34 @@ extension LeadStatusColors on LeadStatus {
 
   ChipConfig get chipConfig {
     return switch (this) {
-      LeadStatus.newStatus => const ChipConfig(AppColors.infoBackground, AppColors.infoDark),
-      LeadStatus.interested => const ChipConfig(AppColors.successBackground, AppColors.success),
-      LeadStatus.qualified => const ChipConfig(AppColors.accentBackground, AppColors.accent),
-      LeadStatus.followUp => const ChipConfig(AppColors.warningLight, AppColors.warningDark),
-      LeadStatus.notInterested => const ChipConfig(AppColors.slate50, AppColors.slate500),
-      LeadStatus.converted => const ChipConfig(AppColors.successLight, AppColors.successDark),
-      LeadStatus.lost => const ChipConfig(AppColors.slate50, AppColors.slate600),
+      LeadStatus.newStatus => const ChipConfig(
+        AppColors.infoBackground,
+        AppColors.infoDark,
+      ),
+      LeadStatus.interested => const ChipConfig(
+        AppColors.successBackground,
+        AppColors.success,
+      ),
+      LeadStatus.qualified => const ChipConfig(
+        AppColors.accentBackground,
+        AppColors.accent,
+      ),
+      LeadStatus.followUp => const ChipConfig(
+        AppColors.warningLight,
+        AppColors.warningDark,
+      ),
+      LeadStatus.notInterested => const ChipConfig(
+        AppColors.slate50,
+        AppColors.slate500,
+      ),
+      LeadStatus.converted => const ChipConfig(
+        AppColors.successLight,
+        AppColors.successDark,
+      ),
+      LeadStatus.lost => const ChipConfig(
+        AppColors.slate50,
+        AppColors.slate600,
+      ),
     };
   }
 }

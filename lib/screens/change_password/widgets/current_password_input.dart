@@ -32,13 +32,12 @@ class CurrentPasswordInput extends StatelessWidget {
             color: context.textMuted,
             size: 20,
           ),
-          onPressed: () => context
-              .read<ChangePasswordBloc>()
-              .add(const ToggleCurrentPasswordVisibility()),
+          onPressed: () => context.read<ChangePasswordBloc>().add(
+            const ToggleCurrentPasswordVisibility(),
+          ),
         ),
-        onChanged: (val) => context
-            .read<ChangePasswordBloc>()
-            .add(CurrentPasswordChanged(val)),
+        onChanged: (val) =>
+            context.read<ChangePasswordBloc>().add(CurrentPasswordChanged(val)),
       ),
     );
   }

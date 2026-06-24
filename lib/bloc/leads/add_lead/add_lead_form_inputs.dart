@@ -56,5 +56,16 @@ class AddLeadFormInputs extends Equatable {
   }
 
   @override
-  List<Object?> get props => [nameInput, phoneInput, emailInput, source, purpose, category, status, location, nextFollowUp, note];
+  List<Object?> get props => [
+    nameInput,
+    phoneInput,
+    emailInput,
+    source,
+    purpose,
+    category,
+    status,
+    location,
+    nextFollowUp,
+    note,
+  ];
 }

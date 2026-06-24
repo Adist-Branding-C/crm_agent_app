@@ -18,10 +18,7 @@ class WhatsAppService {
     );
 
     try {
-      return await launchUrl(
-        uri,
-        mode: LaunchMode.externalApplication,
-      );
+      return await launchUrl(uri, mode: LaunchMode.externalApplication);
     } catch (_) {
       // Fallback or error logging
     }

@@ -26,10 +26,12 @@ class FilterChipBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Row(
         children: options
-            .map((opt) => Padding(
-                  padding: const EdgeInsets.only(right: AppSpacing.sm),
-                  child: _FilterChip(option: opt),
-                ))
+            .map(
+              (opt) => Padding(
+                padding: const EdgeInsets.only(right: AppSpacing.sm),
+                child: _FilterChip(option: opt),
+              ),
+            )
             .toList(),
       ),
     );
@@ -43,7 +45,9 @@ class _FilterChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeColor = option.isSelected ? AppColors.primaryColor : Colors.white;
+    final themeColor = option.isSelected
+        ? AppColors.primaryColor
+        : Colors.white;
     final textColor = option.isSelected ? Colors.white : AppColors.textMuted;
     final border = option.isSelected
         ? Border.all(color: AppColors.blackAlpha8, width: 1.5)
@@ -52,7 +56,10 @@ class _FilterChip extends StatelessWidget {
     return GestureDetector(
       onTap: option.onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.sm,
+        ),
         decoration: BoxDecoration(
           color: themeColor,
           borderRadius: BorderRadius.circular(20),

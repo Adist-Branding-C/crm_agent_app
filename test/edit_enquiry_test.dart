@@ -38,7 +38,10 @@ void main() {
       await tester.tap(find.text('Save Changes'), warnIfMissed: false);
       await tester.pumpAndSettle();
       // Should show a snackbar/validation warning
-      expect(find.text('Please fill all required fields'), findsAtLeastNWidgets(1));
+      expect(
+        find.text('Please fill all required fields'),
+        findsAtLeastNWidgets(1),
+      );
 
       // 6. Enter a valid name and save changes
       await tester.enterText(nameField, 'Rahul Menon Updated');

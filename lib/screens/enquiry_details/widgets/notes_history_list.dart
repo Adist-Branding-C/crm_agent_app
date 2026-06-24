@@ -43,9 +43,9 @@ class NotesHistoryList extends StatelessWidget {
               AppSpacing.gapXs,
               Text(
                 note.time,
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.textMuted,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
               ),
             ],
           ),

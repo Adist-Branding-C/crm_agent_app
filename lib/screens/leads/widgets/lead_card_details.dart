@@ -12,10 +12,7 @@ class LeadCardDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          lead.name,
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
+        Text(lead.name, style: Theme.of(context).textTheme.titleMedium),
         AppSpacing.gapXxs,
         Text(
           '${lead.source.label} · ${lead.status.label}',

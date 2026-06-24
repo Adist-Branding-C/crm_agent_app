@@ -4,7 +4,10 @@ extension CurrencyFormatter on double {
   ///
   /// Values >= 100000 are formatted as lakhs (e.g., ₹1.50L).
   /// Other values are formatted as thousands (e.g., ₹50K).
-  String toCurrencyFormat({String symbol = '₹', bool useIndianNotation = true}) {
+  String toCurrencyFormat({
+    String symbol = '₹',
+    bool useIndianNotation = true,
+  }) {
     if (useIndianNotation && this >= 100000) {
       final lakhs = this / 100000;
       if (lakhs == lakhs.toInt()) {

@@ -9,17 +9,19 @@ class WeekDaysHeader extends StatelessWidget {
     const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     return Row(
       children: days
-          .map((d) => Expanded(
-                child: Center(
-                  child: Text(
-                    d,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppColors.textMuted,
-                      fontWeight: FontWeight.w500,
-                    ),
+          .map(
+            (d) => Expanded(
+              child: Center(
+                child: Text(
+                  d,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppColors.textMuted,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-              ))
+              ),
+            ),
+          )
           .toList(),
     );
   }

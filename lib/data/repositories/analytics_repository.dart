@@ -9,6 +9,8 @@ abstract class AnalyticsRepository {
   Future<List<StatusMetric>> getLeadsByStatus(AnalyticsFilterParams params);
   Future<List<SourceMetric>> getLeadsBySource(AnalyticsFilterParams params);
   Future<List<DealStageMetric>> getDealsByStage(AnalyticsFilterParams params);
-  Future<List<PipelineValueStageMetric>> getPipelineValueByStage(AnalyticsFilterParams params);
+  Future<List<PipelineValueStageMetric>> getPipelineValueByStage(
+    AnalyticsFilterParams params,
+  );
   Future<List<DealTypeMetric>> getValueByDealType(AnalyticsFilterParams params);
 }

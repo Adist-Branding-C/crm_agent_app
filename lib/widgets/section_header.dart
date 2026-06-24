@@ -15,9 +15,16 @@ class SectionHeader extends StatelessWidget {
   final EdgeInsetsGeometry padding;
 
   const SectionHeader({
-    super.key, required this.title, this.leadingIcon, this.leadingIconColor,
-    this.countBadge, this.badgeBgColor, this.badgeTextColor, this.actionText,
-    this.onActionTap, this.padding = EdgeInsets.zero,
+    super.key,
+    required this.title,
+    this.leadingIcon,
+    this.leadingIconColor,
+    this.countBadge,
+    this.badgeBgColor,
+    this.badgeTextColor,
+    this.actionText,
+    this.onActionTap,
+    this.padding = EdgeInsets.zero,
   });
 
   @override
@@ -27,15 +34,26 @@ class SectionHeader extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: _SectionHeaderTitle(title: title, leadingIcon: leadingIcon, leadingIconColor: leadingIconColor),
+            child: _SectionHeaderTitle(
+              title: title,
+              leadingIcon: leadingIcon,
+              leadingIconColor: leadingIconColor,
+            ),
           ),
           if (countBadge != null) ...[
             AppSpacing.gapWSm,
-            CountBadge(count: countBadge!, bgColor: badgeBgColor, textColor: badgeTextColor),
+            CountBadge(
+              count: countBadge!,
+              bgColor: badgeBgColor,
+              textColor: badgeTextColor,
+            ),
           ],
           if (actionText != null && onActionTap != null) ...[
             AppSpacing.gapWLg,
-            SectionHeaderAction(actionText: actionText!, onActionTap: onActionTap!),
+            SectionHeaderAction(
+              actionText: actionText!,
+              onActionTap: onActionTap!,
+            ),
           ],
         ],
       ),
@@ -48,14 +66,22 @@ class _SectionHeaderTitle extends StatelessWidget {
   final IconData? leadingIcon;
   final Color? leadingIconColor;
 
-  const _SectionHeaderTitle({required this.title, this.leadingIcon, this.leadingIconColor});
+  const _SectionHeaderTitle({
+    required this.title,
+    this.leadingIcon,
+    this.leadingIconColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         if (leadingIcon != null) ...[
-          Icon(leadingIcon, color: leadingIconColor ?? AppColors.textDark, size: 16),
+          Icon(
+            leadingIcon,
+            color: leadingIconColor ?? AppColors.textDark,
+            size: 16,
+          ),
           AppSpacing.gapWSm,
         ],
         Expanded(

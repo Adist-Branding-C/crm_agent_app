@@ -19,7 +19,12 @@ class EditEnquiryForm extends StatefulWidget {
 }
 
 class _EditEnquiryFormState extends State<EditEnquiryForm> {
-  late final TextEditingController _name, _phone, _email, _loc, _follow, _remarks;
+  late final TextEditingController _name,
+      _phone,
+      _email,
+      _loc,
+      _follow,
+      _remarks;
   late String _src, _purp, _cat, _stat;
 
   @override
@@ -45,24 +50,28 @@ class _EditEnquiryFormState extends State<EditEnquiryForm> {
       );
       return;
     }
-    context.read<EnquiryDetailsBloc>().add(UpdateEnquiryDetails(
-      name: _name.text.trim(),
-      phone: _phone.text.trim(),
-      email: _email.text.trim().isEmpty ? null : _email.text.trim(),
-      location: _loc.text.trim(),
-      source: LeadSource.values.firstWhere((e) => e.label == _src),
-      purpose: LeadPurpose.values.firstWhere((e) => e.label == _purp),
-      category: LeadCategory.values.firstWhere((e) => e.label == _cat),
-      status: LeadStatus.values.firstWhere((e) => e.label == _stat),
-      nextFollowUp: _follow.text.trim().isEmpty ? null : _follow.text.trim(),
-      note: _remarks.text.trim().isEmpty ? null : _remarks.text.trim(),
-    ));
+    context.read<EnquiryDetailsBloc>().add(
+      UpdateEnquiryDetails(
+        name: _name.text.trim(),
+        phone: _phone.text.trim(),
+        email: _email.text.trim().isEmpty ? null : _email.text.trim(),
+        location: _loc.text.trim(),
+        source: LeadSource.values.firstWhere((e) => e.label == _src),
+        purpose: LeadPurpose.values.firstWhere((e) => e.label == _purp),
+        category: LeadCategory.values.firstWhere((e) => e.label == _cat),
+        status: LeadStatus.values.firstWhere((e) => e.label == _stat),
+        nextFollowUp: _follow.text.trim().isEmpty ? null : _follow.text.trim(),
+        note: _remarks.text.trim().isEmpty ? null : _remarks.text.trim(),
+      ),
+    );
     context.pop();
   }
 
   @override
   void dispose() {
-    for (final c in [_name, _phone, _email, _loc, _follow, _remarks]) { c.dispose(); }
+    for (final c in [_name, _phone, _email, _loc, _follow, _remarks]) {
+      c.dispose();
+    }
     super.dispose();
   }
 
@@ -70,19 +79,35 @@ class _EditEnquiryFormState extends State<EditEnquiryForm> {
   Widget build(BuildContext context) {
     return ResponsiveWidthContainer(
       maxWidth: 540,
-      child: Column(children: [
-        Expanded(child: ListView(children: [
-          EditEnquiryContactFields(nameController: _name, phoneController: _phone, emailController: _email, locationController: _loc),
-          EditEnquiryDetailsFields(
-            selectedSource: _src, onSourceChanged: (v) => setState(() => _src = v),
-            selectedPurpose: _purp, onPurposeChanged: (v) => setState(() => _purp = v),
-            selectedCategory: _cat, onCategoryChanged: (v) => setState(() => _cat = v),
-            selectedStatus: _stat, onStatusChanged: (v) => setState(() => _stat = v),
-            followUpController: _follow, remarksController: _remarks,
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                EditEnquiryContactFields(
+                  nameController: _name,
+                  phoneController: _phone,
+                  emailController: _email,
+                  locationController: _loc,
+                ),
+                EditEnquiryDetailsFields(
+                  selectedSource: _src,
+                  onSourceChanged: (v) => setState(() => _src = v),
+                  selectedPurpose: _purp,
+                  onPurposeChanged: (v) => setState(() => _purp = v),
+                  selectedCategory: _cat,
+                  onCategoryChanged: (v) => setState(() => _cat = v),
+                  selectedStatus: _stat,
+                  onStatusChanged: (v) => setState(() => _stat = v),
+                  followUpController: _follow,
+                  remarksController: _remarks,
+                ),
+              ],
+            ),
           ),
-        ])),
-        EditEnquiryButtons(onCancel: () => context.pop(), onSave: _onSave),
-      ]),
+          EditEnquiryButtons(onCancel: () => context.pop(), onSave: _onSave),
+        ],
+      ),
     );
   }
 }

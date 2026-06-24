@@ -19,8 +19,13 @@ class FilterSheetBody extends StatelessWidget {
   final ValueChanged<LeadSource?> onSourceChanged;
 
   const FilterSheetBody({
-    super.key, required this.sortBy, required this.status, required this.source,
-    required this.onSortChanged, required this.onStatusChanged, required this.onSourceChanged,
+    super.key,
+    required this.sortBy,
+    required this.status,
+    required this.source,
+    required this.onSortChanged,
+    required this.onStatusChanged,
+    required this.onSourceChanged,
   });
 
   @override
@@ -30,7 +35,10 @@ class FilterSheetBody extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.md,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,22 +47,31 @@ class FilterSheetBody extends StatelessWidget {
           AppSpacing.gapLg,
           Text(
             'Filter & Sort',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           AppSpacing.gapLg,
           FilterSection(
             title: 'SORT BY',
-            child: FilterSortBy(selectedSort: sortBy, onSelected: onSortChanged),
+            child: FilterSortBy(
+              selectedSort: sortBy,
+              onSelected: onSortChanged,
+            ),
           ),
           FilterSection(
             title: 'STATUS',
-            child: FilterStatus(selectedStatus: status, onSelected: onStatusChanged),
+            child: FilterStatus(
+              selectedStatus: status,
+              onSelected: onStatusChanged,
+            ),
           ),
           FilterSection(
             title: 'SOURCE',
-            child: FilterSource(selectedSource: source, onSelected: onSourceChanged),
+            child: FilterSource(
+              selectedSource: source,
+              onSelected: onSourceChanged,
+            ),
           ),
           AppSpacing.gapSm,
           CustomButton(

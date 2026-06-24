@@ -40,7 +40,9 @@ class TabSelector extends StatelessWidget {
                     child: Text(
                       tabs[index],
                       style: TextStyle(
-                        color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
+                        color: isSelected
+                            ? AppColors.primaryColor
+                            : AppColors.textMuted,
                         fontWeight: FontWeight.bold,
                         fontSize: context.scaleFont(14),
                       ),
@@ -48,7 +50,9 @@ class TabSelector extends StatelessWidget {
                   ),
                   Container(
                     height: 2,
-                    color: isSelected ? AppColors.primaryColor : Colors.transparent,
+                    color: isSelected
+                        ? AppColors.primaryColor
+                        : Colors.transparent,
                   ),
                 ],
               ),

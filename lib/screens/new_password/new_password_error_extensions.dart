@@ -16,7 +16,8 @@ extension NewPasswordValidationErrorX on NewPasswordValidationError {
 }
 
 /// Extension to map [NewConfirmPasswordValidationError] to localized messages.
-extension NewConfirmPasswordValidationErrorX on NewConfirmPasswordValidationError {
+extension NewConfirmPasswordValidationErrorX
+    on NewConfirmPasswordValidationError {
   /// User-facing error message.
   String get message {
     switch (this) {

@@ -11,13 +11,22 @@ class FilterDateRangeSection extends StatelessWidget {
   final ValueChanged<DateTime?> onStartDateChanged;
   final ValueChanged<DateTime?> onEndDateChanged;
 
-  const FilterDateRangeSection({super.key, required this.selectedPeriod, this.startDate, this.endDate,
-    required this.onPeriodChanged, required this.onStartDateChanged, required this.onEndDateChanged});
+  const FilterDateRangeSection({
+    super.key,
+    required this.selectedPeriod,
+    this.startDate,
+    this.endDate,
+    required this.onPeriodChanged,
+    required this.onStartDateChanged,
+    required this.onEndDateChanged,
+  });
 
   Future<void> _selectDate(BuildContext context, bool isStart) async {
     final picked = await showDatePicker(
-      context: context, initialDate: DateTime.now(),
-      firstDate: DateTime(2020), lastDate: DateTime(2030),
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2030),
     );
     if (picked != null) {
       (isStart ? onStartDateChanged : onEndDateChanged)(picked);
@@ -31,11 +40,24 @@ class FilterDateRangeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const periods = ['Today', 'This Week', 'This Month', 'This Quarter', 'Custom range'];
+    const periods = [
+      'Today',
+      'This Week',
+      'This Month',
+      'This Quarter',
+      'Custom range',
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('DATE RANGE', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
+        Text(
+          'DATE RANGE',
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            color: AppColors.textMuted,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
+        ),
         AppSpacing.gapSm,
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -48,13 +70,25 @@ class FilterDateRangeSection extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () => onPeriodChanged(period),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg,
+                      vertical: AppSpacing.sm,
+                    ),
                     decoration: BoxDecoration(
                       color: isSel ? AppColors.primaryColor : Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      border: isSel ? null : Border.all(color: AppColors.borderLight),
+                      border: isSel
+                          ? null
+                          : Border.all(color: AppColors.borderLight),
                     ),
-                    child: Text(period, style: TextStyle(color: isSel ? Colors.white : AppColors.textMuted, fontWeight: FontWeight.w600, fontSize: context.scaleFont(12))),
+                    child: Text(
+                      period,
+                      style: TextStyle(
+                        color: isSel ? Colors.white : AppColors.textMuted,
+                        fontWeight: FontWeight.w600,
+                        fontSize: context.scaleFont(12),
+                      ),
+                    ),
                   ),
                 ),
               );
@@ -65,9 +99,21 @@ class FilterDateRangeSection extends StatelessWidget {
           AppSpacing.gapLg,
           Row(
             children: [
-              Expanded(child: DatePickerField(label: 'From', dateStr: _formatDate(startDate), onTap: () => _selectDate(context, true))),
+              Expanded(
+                child: DatePickerField(
+                  label: 'From',
+                  dateStr: _formatDate(startDate),
+                  onTap: () => _selectDate(context, true),
+                ),
+              ),
               AppSpacing.gapWLg,
-              Expanded(child: DatePickerField(label: 'To', dateStr: _formatDate(endDate), onTap: () => _selectDate(context, false))),
+              Expanded(
+                child: DatePickerField(
+                  label: 'To',
+                  dateStr: _formatDate(endDate),
+                  onTap: () => _selectDate(context, false),
+                ),
+              ),
             ],
           ),
         ],

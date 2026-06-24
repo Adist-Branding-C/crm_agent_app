@@ -15,7 +15,10 @@ class ErrorBanner extends StatelessWidget {
       label: 'Error message: $message',
       liveRegion: true,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
+        ),
         decoration: BoxDecoration(
           color: AppTheme.errorBackground,
           borderRadius: BorderRadius.circular(12),

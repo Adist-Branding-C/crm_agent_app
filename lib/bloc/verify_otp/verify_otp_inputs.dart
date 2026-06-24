@@ -13,8 +13,7 @@ enum VerifyOtpCodeValidationError {
 }
 
 /// Represents the OTP code input field in the verification form.
-class VerifyOtpCode
-    extends FormzInput<String, VerifyOtpCodeValidationError> {
+class VerifyOtpCode extends FormzInput<String, VerifyOtpCodeValidationError> {
   const VerifyOtpCode.pure() : super.pure('');
   const VerifyOtpCode.dirty([super.value = '']) : super.dirty();
 

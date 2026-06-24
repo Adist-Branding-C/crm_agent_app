@@ -51,7 +51,7 @@ class AddTaskDatePickerHelper {
       'Sep',
       'Oct',
       'Nov',
-      'Dec'
+      'Dec',
     ];
     return '${m[dt.month - 1]} ${dt.day}, ${dt.year}, $timeStr';
   }

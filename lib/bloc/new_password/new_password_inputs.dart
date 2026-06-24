@@ -1,9 +1,6 @@
 import 'package:formz/formz.dart';
 
-enum NewPasswordValidationError {
-  empty,
-  tooShort,
-}
+enum NewPasswordValidationError { empty, tooShort }
 
 class NewPassword extends FormzInput<String, NewPasswordValidationError> {
   const NewPassword.pure() : super.pure('');
@@ -17,10 +14,7 @@ class NewPassword extends FormzInput<String, NewPasswordValidationError> {
   }
 }
 
-enum NewConfirmPasswordValidationError {
-  empty,
-  mismatch,
-}
+enum NewConfirmPasswordValidationError { empty, mismatch }
 
 class NewConfirmPassword
     extends FormzInput<String, NewConfirmPasswordValidationError> {
@@ -28,7 +22,7 @@ class NewConfirmPassword
 
   const NewConfirmPassword.pure({this.password = ''}) : super.pure('');
   const NewConfirmPassword.dirty({required this.password, String value = ''})
-      : super.dirty(value);
+    : super.dirty(value);
 
   @override
   NewConfirmPasswordValidationError? validator(String value) {

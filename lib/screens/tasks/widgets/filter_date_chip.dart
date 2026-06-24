@@ -20,7 +20,10 @@ class FilterDateChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.sm,
+        ),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.warningTextBackground : Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -30,16 +33,21 @@ class FilterDateChip extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (range == DateRangeType.custom) ...[
-              Icon(Icons.calendar_today_outlined,
+              Icon(
+                Icons.calendar_today_outlined,
                 size: 14,
                 color: isSelected ? AppColors.warningText : AppColors.textMuted,
               ),
               SizedBox(width: AppSpacing.xs2),
             ],
-            Text(range.label, style: TextStyle(
-              color: isSelected ? AppColors.warningText : AppColors.textMuted,
-              fontWeight: FontWeight.bold, fontSize: 13,
-            )),
+            Text(
+              range.label,
+              style: TextStyle(
+                color: isSelected ? AppColors.warningText : AppColors.textMuted,
+                fontWeight: FontWeight.bold,
+                fontSize: 13,
+              ),
+            ),
           ],
         ),
       ),

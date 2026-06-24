@@ -19,9 +19,7 @@ class EditEnquiryScreen extends StatelessWidget {
     return BlocBuilder<EnquiryDetailsBloc, EnquiryDetailsState>(
       builder: (context, state) {
         if (state is EnquiryDetailsLoading || state is EnquiryDetailsInitial) {
-          return const Scaffold(
-            body: Center(child: AppLoadingWidget()),
-          );
+          return const Scaffold(body: Center(child: AppLoadingWidget()));
         }
         if (state is EnquiryDetailsLoaded) {
           return PageScaffold(
@@ -39,9 +37,7 @@ class EditEnquiryScreen extends StatelessWidget {
                     bottom: 4,
                   ),
                 ),
-                Expanded(
-                  child: EditEnquiryForm(lead: state.lead),
-                ),
+                Expanded(child: EditEnquiryForm(lead: state.lead)),
               ],
             ),
           );

@@ -22,7 +22,9 @@ class TargetDetailsSection extends StatelessWidget {
       children: [
         Text(
           'Monthly target',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         AppSpacing.gapMd,
         CustomCard(

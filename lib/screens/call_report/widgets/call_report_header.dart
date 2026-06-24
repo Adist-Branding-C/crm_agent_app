@@ -6,16 +6,15 @@ class CallReportHeader extends StatelessWidget {
   final String title;
   final String? subtitle;
 
-  const CallReportHeader({
-    super.key,
-    required this.title,
-    this.subtitle,
-  });
+  const CallReportHeader({super.key, required this.title, this.subtitle});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.lg,
+      ),
       child: Row(
         children: [
           Expanded(

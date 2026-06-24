@@ -11,8 +11,10 @@ import 'timeline_list.dart';
 
 String _attendanceErrorString(AttendanceFailure f) {
   switch (f) {
-    case AttendanceFailure.load: return 'Failed to load attendance';
-    case AttendanceFailure.unknown: return 'An error occurred';
+    case AttendanceFailure.load:
+      return 'Failed to load attendance';
+    case AttendanceFailure.unknown:
+      return 'An error occurred';
   }
 }
 
@@ -67,7 +69,9 @@ class AttendanceContent extends StatelessWidget {
             ],
           );
         }
-        final msg = state is AttendanceError ? _attendanceErrorString(state.failure) : 'Error';
+        final msg = state is AttendanceError
+            ? _attendanceErrorString(state.failure)
+            : 'Error';
         return AppErrorWidget(
           message: msg,
           onRetry: () =>

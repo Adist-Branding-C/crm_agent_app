@@ -14,16 +14,21 @@ void main() {
 
     // Login
     await tester.enterText(
-        find.bySemanticsLabel('Phone Number Input Field'), '9876543210');
+      find.bySemanticsLabel('Phone Number Input Field'),
+      '9876543210',
+    );
     await tester.enterText(
-        find.bySemanticsLabel('Password Input Field'), 'secure123');
+      find.bySemanticsLabel('Password Input Field'),
+      'secure123',
+    );
     await tester.tap(find.text('Sign In'));
     await tester.pumpAndSettle();
 
     // 1. Navigate via bottom navigation bar
     final bottomNav = find.byType(BottomNavigationBar);
     await tester.tap(
-        find.descendant(of: bottomNav, matching: find.text('Tasks')));
+      find.descendant(of: bottomNav, matching: find.text('Tasks')),
+    );
     await tester.pumpAndSettle();
     await tester.pump(const Duration(milliseconds: 200));
 
@@ -45,12 +50,16 @@ void main() {
 
     // 4. Return to Dashboard and test "View all"
     await tester.tap(
-        find.descendant(of: bottomNav, matching: find.text('Dashboard')));
+      find.descendant(of: bottomNav, matching: find.text('Dashboard')),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(TasksScreen), findsNothing);
 
     // Scroll dashboard to bring TasksList's View all into view
-    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -400));
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -400),
+    );
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('View all').last);

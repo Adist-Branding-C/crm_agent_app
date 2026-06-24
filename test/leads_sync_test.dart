@@ -15,7 +15,11 @@ class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
   @override
   Future<List<Lead>> getLeads() async => List.from(leads);
   @override
-  Future<Lead> addLead(Lead lead) async { leads.add(lead); return lead; }
+  Future<Lead> addLead(Lead lead) async {
+    leads.add(lead);
+    return lead;
+  }
+
   @override
   Future<Lead?> getLeadById(String id) async {
     try {
@@ -25,6 +29,7 @@ class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
       return null;
     }
   }
+
   @override
   Future<void> updateLead(Lead lead) async {}
   @override
@@ -34,6 +39,7 @@ class FakeLeadsRepository implements LeadsRepository, ActivityRepository {
     leads.removeWhere((l) => l.id == id);
     _controller.add(id);
   }
+
   @override
   List<EnquiryActivity> getActivitiesForLead(String leadId) => [];
   @override
@@ -56,23 +62,36 @@ void main() {
     });
     tearDown(() => bloc.close());
 
-    test('LeadsBloc removes lead automatically on repository deletion', () async {
-      final lead = Lead(
-        id: '123', name: 'John Doe', status: LeadStatus.newStatus,
-        source: LeadPurpose.enquiry, category: LeadCategory.hot,
-        phone: '9876543210', location: 'Kochi',
-      );
-      await repository.addLead(lead);
+    test(
+      'LeadsBloc removes lead automatically on repository deletion',
+      () async {
+        final lead = Lead(
+          id: '123',
+          name: 'John Doe',
+          status: LeadStatus.newStatus,
+          source: LeadPurpose.enquiry,
+          category: LeadCategory.hot,
+          phone: '9876543210',
+          location: 'Kochi',
+        );
+        await repository.addLead(lead);
 
-      bloc.add(const FetchLeads());
-      await expectLater(bloc.stream, emitsInOrder([isA<LeadsLoading>(), isA<LeadsLoaded>()]));
+        bloc.add(const FetchLeads());
+        await expectLater(
+          bloc.stream,
+          emitsInOrder([isA<LeadsLoading>(), isA<LeadsLoaded>()]),
+        );
 
-      final stateBefore = bloc.state as LeadsLoaded;
-      expect(stateBefore.filteredLeads.length, 1);
-      expect(stateBefore.filteredLeads.first.id, '123');
+        final stateBefore = bloc.state as LeadsLoaded;
+        expect(stateBefore.filteredLeads.length, 1);
+        expect(stateBefore.filteredLeads.first.id, '123');
 
-      await repository.deleteLead('123');
-      await expectLater(bloc.stream, emits(predicate<LeadsLoaded>((s) => s.filteredLeads.isEmpty)));
-    });
+        await repository.deleteLead('123');
+        await expectLater(
+          bloc.stream,
+          emits(predicate<LeadsLoaded>((s) => s.filteredLeads.isEmpty)),
+        );
+      },
+    );
   });
 }

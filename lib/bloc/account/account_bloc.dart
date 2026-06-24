@@ -13,10 +13,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final SessionRepository authRepository;
 
   /// Initializes the AccountBloc with its repositories.
-  AccountBloc({
-    required this.accountRepository,
-    required this.authRepository,
-  }) : super(const AccountInitial()) {
+  AccountBloc({required this.accountRepository, required this.authRepository})
+    : super(const AccountInitial()) {
     on<LoadAccount>(_onLoadAccount);
     on<LogoutRequested>(_onLogoutRequested);
     on<UpdateProfile>(_onUpdateProfile);
@@ -58,10 +56,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         final updated = await accountRepository.updateProfile(event.profile);
         emit(AccountUpdateSuccess(profile: updated));
       } catch (_) {
-        emit(AccountUpdateFailure(
-          profile: currentState.profile,
-          error: 'Failed to update profile details.',
-        ));
+        emit(
+          AccountUpdateFailure(
+            profile: currentState.profile,
+            error: 'Failed to update profile details.',
+          ),
+        );
       }
     }
   }

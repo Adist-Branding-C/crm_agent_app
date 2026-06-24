@@ -30,9 +30,9 @@ class CheckedOutInfo extends StatelessWidget {
             Expanded(
               child: Text(
                 'Punch in to log attendance',
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.textMuted,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

@@ -47,7 +47,14 @@ class SaveCallLog extends CallLogEvent {
   });
 
   @override
-  List<Object?> get props => [lead, callStatus, leadStatus, purpose, remark, activityId];
+  List<Object?> get props => [
+    lead,
+    callStatus,
+    leadStatus,
+    purpose,
+    remark,
+    activityId,
+  ];
 }
 
 class ResetCallLog extends CallLogEvent {

@@ -20,18 +20,24 @@ class MonthlyStats extends StatelessWidget {
     );
 
     return CustomCard(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xl),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.xl,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: AppSpacing.sm, bottom: AppSpacing.lg),
+            padding: EdgeInsets.only(
+              left: AppSpacing.sm,
+              bottom: AppSpacing.lg,
+            ),
             child: Text(
               'This month',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textMuted,
-                  ),
+                fontWeight: FontWeight.w600,
+                color: AppColors.textMuted,
+              ),
             ),
           ),
           Row(

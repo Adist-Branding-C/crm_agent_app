@@ -27,9 +27,16 @@ class HistoryLogItemDetails extends StatelessWidget {
         const SizedBox(height: AppSpacing.xs2),
         Row(
           children: [
-            const Icon(Icons.location_on_outlined, color: AppColors.textMuted, size: 12),
+            const Icon(
+              Icons.location_on_outlined,
+              color: AppColors.textMuted,
+              size: 12,
+            ),
             AppSpacing.gapWXs,
-            Text(log.location ?? '—', style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
+            Text(
+              log.location ?? '—',
+              style: TextStyle(color: AppColors.textMuted, fontSize: 12),
+            ),
           ],
         ),
         if (log.note != null || log.approvedBy != null) ...[

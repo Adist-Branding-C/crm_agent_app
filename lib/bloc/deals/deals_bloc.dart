@@ -36,7 +36,8 @@ class DealsBloc extends Bloc<DealsEvent, DealsState> {
       await dealsRepository.addDeal(event.deal);
       emit(DealAdded(deal: event.deal));
       if (previousState is DealsLoaded) {
-        final updatedList = List<Deal>.from(previousState.deals)..add(event.deal);
+        final updatedList = List<Deal>.from(previousState.deals)
+          ..add(event.deal);
         emit(DealsLoaded(deals: updatedList));
       }
     } catch (_) {

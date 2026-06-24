@@ -25,7 +25,11 @@ class AddDealStageChip extends StatelessWidget {
         label: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(width: 8, height: 8, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+            Container(
+              width: 8,
+              height: 8,
+              decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+            ),
             SizedBox(width: AppSpacing.xs2),
             Text(stage.label),
           ],
@@ -36,7 +40,10 @@ class AddDealStageChip extends StatelessWidget {
         selectedColor: color.withValues(alpha: 0.1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: isSelected ? color : AppColors.borderLight, width: isSelected ? 1.5 : 1),
+          side: BorderSide(
+            color: isSelected ? color : AppColors.borderLight,
+            width: isSelected ? 1.5 : 1,
+          ),
         ),
         showCheckmark: false,
         labelStyle: TextStyle(

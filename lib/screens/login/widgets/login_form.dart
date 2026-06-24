@@ -54,8 +54,8 @@ class LoginForm extends StatelessWidget {
                 ),
                 onPressed: () {
                   context.read<LoginBloc>().add(
-                        const TogglePasswordVisibility(),
-                      );
+                    const TogglePasswordVisibility(),
+                  );
                 },
               ),
               onChanged: (value) =>

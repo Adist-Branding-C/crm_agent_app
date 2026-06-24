@@ -57,10 +57,8 @@ class _MyAppState extends State<MyApp> {
             darkTheme: AppTheme.darkTheme,
             themeMode: ThemeMode.light,
             routerConfig: _router,
-            builder: (context, child) => AppBuilderWidget(
-              scaleText: widget.scaleText,
-              child: child,
-            ),
+            builder: (context, child) =>
+                AppBuilderWidget(scaleText: widget.scaleText, child: child),
           ),
         ),
       ),

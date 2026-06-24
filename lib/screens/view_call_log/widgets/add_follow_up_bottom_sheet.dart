@@ -28,9 +28,9 @@ class AddFollowUpBottomSheet extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
             child: Text(
               'New Follow-up',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           Flexible(child: AddFollowUpForm(lead: lead)),

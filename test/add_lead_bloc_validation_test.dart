@@ -31,9 +31,15 @@ void main() {
       expectLater(
         bloc.stream,
         emitsInOrder([
-          predicate((AddLeadState s) => s.nameError == AppStrings.leadNameRequired),
-          predicate((AddLeadState s) => s.nameError == AppStrings.leadNameInvalid),
-          predicate((AddLeadState s) => s.nameError == AppStrings.leadNameInvalid),
+          predicate(
+            (AddLeadState s) => s.nameError == AppStrings.leadNameRequired,
+          ),
+          predicate(
+            (AddLeadState s) => s.nameError == AppStrings.leadNameInvalid,
+          ),
+          predicate(
+            (AddLeadState s) => s.nameError == AppStrings.leadNameInvalid,
+          ),
           predicate((AddLeadState s) => s.nameError == null),
         ]),
       );
@@ -47,8 +53,12 @@ void main() {
       expectLater(
         bloc.stream,
         emitsInOrder([
-          predicate((AddLeadState s) => s.phoneError == AppStrings.leadPhoneRequired),
-          predicate((AddLeadState s) => s.phoneError == AppStrings.leadPhoneInvalid),
+          predicate(
+            (AddLeadState s) => s.phoneError == AppStrings.leadPhoneRequired,
+          ),
+          predicate(
+            (AddLeadState s) => s.phoneError == AppStrings.leadPhoneInvalid,
+          ),
           predicate((AddLeadState s) => s.phoneError == null),
         ]),
       );
@@ -61,8 +71,12 @@ void main() {
       expectLater(
         bloc.stream,
         emitsInOrder([
-          predicate((AddLeadState s) => s.emailError == AppStrings.leadEmailRequired),
-          predicate((AddLeadState s) => s.emailError == AppStrings.leadEmailInvalid),
+          predicate(
+            (AddLeadState s) => s.emailError == AppStrings.leadEmailRequired,
+          ),
+          predicate(
+            (AddLeadState s) => s.emailError == AppStrings.leadEmailInvalid,
+          ),
           predicate((AddLeadState s) => s.emailError == null),
         ]),
       );

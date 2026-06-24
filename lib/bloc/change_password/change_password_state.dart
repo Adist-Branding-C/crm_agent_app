@@ -37,9 +37,11 @@ class ChangePasswordState extends Equatable {
       currentPassword: currentPassword ?? this.currentPassword,
       newPassword: newPassword ?? this.newPassword,
       confirmPassword: confirmPassword ?? this.confirmPassword,
-      obscureCurrentPassword: obscureCurrentPassword ?? this.obscureCurrentPassword,
+      obscureCurrentPassword:
+          obscureCurrentPassword ?? this.obscureCurrentPassword,
       obscureNewPassword: obscureNewPassword ?? this.obscureNewPassword,
-      obscureConfirmPassword: obscureConfirmPassword ?? this.obscureConfirmPassword,
+      obscureConfirmPassword:
+          obscureConfirmPassword ?? this.obscureConfirmPassword,
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
     );
@@ -47,13 +49,13 @@ class ChangePasswordState extends Equatable {
 
   @override
   List<Object?> get props => [
-        currentPassword,
-        newPassword,
-        confirmPassword,
-        obscureCurrentPassword,
-        obscureNewPassword,
-        obscureConfirmPassword,
-        status,
-        errorMessage,
-      ];
+    currentPassword,
+    newPassword,
+    confirmPassword,
+    obscureCurrentPassword,
+    obscureNewPassword,
+    obscureConfirmPassword,
+    status,
+    errorMessage,
+  ];
 }

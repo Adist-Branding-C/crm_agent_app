@@ -21,12 +21,29 @@ class AppSpacing {
 
   // Standard edge insets
   static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: xxl);
-  static const EdgeInsets screenPaddingV = EdgeInsets.symmetric(horizontal: xxl, vertical: lg);
+  static const EdgeInsets screenPaddingV = EdgeInsets.symmetric(
+    horizontal: xxl,
+    vertical: lg,
+  );
   static const EdgeInsets cardPadding = EdgeInsets.all(lg);
-  static const EdgeInsets cardPaddingCompact = EdgeInsets.symmetric(horizontal: lg, vertical: md);
-  static const EdgeInsets cardMarginList = EdgeInsets.symmetric(horizontal: xxl, vertical: xs2);
-  static const EdgeInsets headerPadding = EdgeInsets.symmetric(horizontal: xxl, vertical: lg);
-  static const EdgeInsets fabBottomPadding = EdgeInsets.only(left: xxl, right: xxl, top: lg, bottom: massive + xl);
+  static const EdgeInsets cardPaddingCompact = EdgeInsets.symmetric(
+    horizontal: lg,
+    vertical: md,
+  );
+  static const EdgeInsets cardMarginList = EdgeInsets.symmetric(
+    horizontal: xxl,
+    vertical: xs2,
+  );
+  static const EdgeInsets headerPadding = EdgeInsets.symmetric(
+    horizontal: xxl,
+    vertical: lg,
+  );
+  static const EdgeInsets fabBottomPadding = EdgeInsets.only(
+    left: xxl,
+    right: xxl,
+    top: lg,
+    bottom: massive + xl,
+  );
 
   // Standard gap helpers
   static const SizedBox gapXxs = SizedBox(height: xxs);

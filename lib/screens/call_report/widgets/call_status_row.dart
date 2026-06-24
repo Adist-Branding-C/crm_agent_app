@@ -21,9 +21,9 @@ class CallStatusRow extends StatelessWidget {
           Expanded(
             child: Text(
               item.label,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textDark,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
             ),
           ),
           Text(
@@ -38,9 +38,9 @@ class CallStatusRow extends StatelessWidget {
             width: 36,
             child: Text(
               '${item.percentage}%',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
             ),
           ),
         ],
@@ -48,5 +48,3 @@ class CallStatusRow extends StatelessWidget {
     );
   }
 }
-
-

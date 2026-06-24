@@ -18,8 +18,6 @@ class LeadsLoading extends LeadsState {
   const LeadsLoading();
 }
 
-
-
 /// State emitted on error occurrence.
 class LeadsError extends LeadsState {
   final String message;

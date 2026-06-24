@@ -13,9 +13,9 @@ class CampaignIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     IconData iconData = Icons.call_rounded;
     if (campaign.type == CampaignType.whatsApp) {
-       iconData = Icons.chat_bubble_rounded;
+      iconData = Icons.chat_bubble_rounded;
     } else if (campaign.type == CampaignType.email) {
-       iconData = Icons.mail_rounded;
+      iconData = Icons.mail_rounded;
     }
 
     return Container(

@@ -32,11 +32,7 @@ class TimelineLayout extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TimelineTileMarker(
-            isFirst: isFirst,
-            isLast: isLast,
-            config: config,
-          ),
+          TimelineTileMarker(isFirst: isFirst, isLast: isLast, config: config),
           AppSpacing.gapWMd,
           Expanded(child: child),
         ],

@@ -20,9 +20,7 @@ class AddDealFormFields extends StatelessWidget {
         AppSpacing.gapXs,
         TextFormField(
           controller: nameController,
-          decoration: const InputDecoration(
-            hintText: 'Enter deal name',
-          ),
+          decoration: const InputDecoration(hintText: 'Enter deal name'),
         ),
         AppSpacing.gapLg,
         const _RequiredLabel(text: 'Amount (₹)'),
@@ -30,9 +28,7 @@ class AddDealFormFields extends StatelessWidget {
         TextFormField(
           controller: amountController,
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
-          decoration: const InputDecoration(
-            hintText: 'Enter amount',
-          ),
+          decoration: const InputDecoration(hintText: 'Enter amount'),
         ),
       ],
     );

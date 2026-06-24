@@ -36,7 +36,9 @@ class NewPasswordHeaderWidget extends StatelessWidget {
         AppSpacing.gapSm,
         Text(
           'Choose a strong password for your account.',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: context.textMuted),
         ),
       ],
     );

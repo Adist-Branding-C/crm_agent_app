@@ -15,7 +15,7 @@ class CampaignsBloc extends Bloc<CampaignsEvent, CampaignsState> {
 
   /// Initializes the BLoC.
   CampaignsBloc({required this.campaignsRepository})
-      : super(const CampaignsInitial()) {
+    : super(const CampaignsInitial()) {
     on<LoadCampaigns>(_onLoadCampaigns);
   }
 

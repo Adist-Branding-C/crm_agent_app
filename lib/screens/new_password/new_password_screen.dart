@@ -51,7 +51,9 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               passwordController: _passwordController,
               confirmController: _confirmController,
               onSubmit: () {
-                context.read<NewPasswordBloc>().add(const NewPasswordSubmitted());
+                context.read<NewPasswordBloc>().add(
+                  const NewPasswordSubmitted(),
+                );
               },
             ),
           ),

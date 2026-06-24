@@ -9,7 +9,9 @@ class MyActivityEmptyState extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: AppSpacing.huge + AppSpacing.sm),
+        padding: EdgeInsets.symmetric(
+          vertical: AppSpacing.huge + AppSpacing.sm,
+        ),
         child: Text(
           'No activity found for the selected filters.',
           style: TextStyle(

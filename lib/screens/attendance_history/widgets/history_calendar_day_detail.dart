@@ -16,9 +16,15 @@ class HistoryCalendarDayDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isOff = log.status == 'On Leave' || log.status == 'Week Off' || log.status == 'Holiday';
+    final isOff =
+        log.status == 'On Leave' ||
+        log.status == 'Week Off' ||
+        log.status == 'Holiday';
     return CustomCard(
-      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+      margin: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.md,
+      ),
       padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +34,10 @@ class HistoryCalendarDayDetail extends StatelessWidget {
             children: [
               Text(
                 '${log.dayName}, ${log.day} May',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textDark,
+                ),
               ),
               _StatusBadge(status: log.status),
             ],
@@ -51,15 +60,32 @@ class _StatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     Color bg = AppColors.successBackground;
     Color fg = AppColors.success;
-    if (status == 'Late') { bg = AppColors.warningLight; fg = AppColors.warningText; }
-    else if (status == 'Half Day') { bg = AppColors.warningTextBackground; fg = AppColors.warningText; }
-    else if (status == 'On Leave') { bg = AppColors.infoBackground; fg = AppColors.info; }
-    else if (status == 'Holiday') { bg = AppColors.accentBackground; fg = AppColors.accent; }
-    else if (status == 'Week Off') { bg = AppColors.slate100; fg = AppColors.slate400; }
+    if (status == 'Late') {
+      bg = AppColors.warningLight;
+      fg = AppColors.warningText;
+    } else if (status == 'Half Day') {
+      bg = AppColors.warningTextBackground;
+      fg = AppColors.warningText;
+    } else if (status == 'On Leave') {
+      bg = AppColors.infoBackground;
+      fg = AppColors.info;
+    } else if (status == 'Holiday') {
+      bg = AppColors.accentBackground;
+      fg = AppColors.accent;
+    } else if (status == 'Week Off') {
+      bg = AppColors.slate100;
+      fg = AppColors.slate400;
+    }
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
-      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(12)),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.ten,
+        vertical: AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Text(
         status,
         style: TextStyle(

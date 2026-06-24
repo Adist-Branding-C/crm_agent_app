@@ -14,10 +14,18 @@ class DealStageDonut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final segments = stageMetrics
-        .map((e) => DonutSegment(value: e.count.toDouble(), color: e.stage.color))
+        .map(
+          (e) => DonutSegment(value: e.count.toDouble(), color: e.stage.color),
+        )
         .toList();
     final legends = stageMetrics
-        .map((e) => LegendRow(label: e.stage.label, count: e.count, color: e.stage.color))
+        .map(
+          (e) => LegendRow(
+            label: e.stage.label,
+            count: e.count,
+            color: e.stage.color,
+          ),
+        )
         .toList();
     return DonutChartCard(
       title: 'Deals by stage',

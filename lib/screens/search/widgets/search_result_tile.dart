@@ -12,23 +12,36 @@ class SearchResultTile extends StatelessWidget {
   final SearchResult item;
   final Map<String, Task> taskMap;
 
-  const SearchResultTile({super.key, required this.item, required this.taskMap});
+  const SearchResultTile({
+    super.key,
+    required this.item,
+    required this.taskMap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return switch (item) {
       LeadSearchResult(lead: final l) => Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
-          child: LeadCard(lead: l),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.xxl,
+          vertical: AppSpacing.xs2,
         ),
-      TaskSearchResult(task: final t) =>
-        SearchResultTaskTile(task: t, taskMap: taskMap),
+        child: LeadCard(lead: l),
+      ),
+      TaskSearchResult(task: final t) => SearchResultTaskTile(
+        task: t,
+        taskMap: taskMap,
+      ),
       SpotlightSearchResult(spotlight: final s) => Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs2),
-          child: SpotlightCard(spotlight: s),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.xxl,
+          vertical: AppSpacing.xs2,
         ),
-      FollowUpSearchResult(followUp: final f) =>
-        SearchFollowUpTile(followUp: f),
+        child: SpotlightCard(spotlight: s),
+      ),
+      FollowUpSearchResult(followUp: final f) => SearchFollowUpTile(
+        followUp: f,
+      ),
       _ => const SizedBox.shrink(),
     };
   }
@@ -39,7 +52,11 @@ class SearchResultTaskTile extends StatelessWidget {
   final Task task;
   final Map<String, Task> taskMap;
 
-  const SearchResultTaskTile({super.key, required this.task, required this.taskMap});
+  const SearchResultTaskTile({
+    super.key,
+    required this.task,
+    required this.taskMap,
+  });
 
   @override
   Widget build(BuildContext context) {

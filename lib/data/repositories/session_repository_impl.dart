@@ -1,10 +1,15 @@
 import '../datasources/auth_datasource.dart';
+import '../datasources/auth_remote_datasource.dart';
 import 'session_repository.dart';
 
 class SessionRepositoryImpl implements SessionRepository {
-  SessionRepositoryImpl({required this.authDataSource});
+  SessionRepositoryImpl({
+    required this.authDataSource,
+    required this.authRemoteDataSource,
+  });
 
   final AuthDataSource authDataSource;
+  final AuthRemoteDataSource authRemoteDataSource;
   bool _isAuthenticated = false;
   bool _isInitialized = false;
 
@@ -27,11 +32,13 @@ class SessionRepositoryImpl implements SessionRepository {
 
   @override
   Future<bool> login(String phone, String password) async {
-    await Future.delayed(const Duration(milliseconds: 300));
-    final token = 'mock_token_${DateTime.now().millisecondsSinceEpoch}';
-    await authDataSource.saveToken(token);
-    _isAuthenticated = true;
-    return true;
+    final response = await authRemoteDataSource.login(phone, password);
+    if (response.token.isNotEmpty) {
+      await authDataSource.saveToken(response.token);
+      _isAuthenticated = true;
+      return true;
+    }
+    throw const InvalidCredentialsException();
   }
 
   @override

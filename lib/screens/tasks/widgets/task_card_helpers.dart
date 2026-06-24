@@ -41,7 +41,9 @@ class TaskCardDetails extends StatelessWidget {
         Text(
           task.title,
           style: (task.isCompleted
-              ? Theme.of(context).textTheme.bodyMedium?.copyWith(decoration: TextDecoration.lineThrough)
+              ? Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  decoration: TextDecoration.lineThrough,
+                )
               : Theme.of(context).textTheme.titleMedium),
         ),
         AppSpacing.gapXs,

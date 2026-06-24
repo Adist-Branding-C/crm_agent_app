@@ -33,8 +33,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     emit(const SearchLoading());
     try {
       final session = await loadSearchSession(
-        leadsRepo: leadsRepo, tasksRepo: tasksRepo,
-        spotlightRepo: spotlightRepo, followUpsRepo: followUpsRepo,
+        leadsRepo: leadsRepo,
+        tasksRepo: tasksRepo,
+        spotlightRepo: spotlightRepo,
+        followUpsRepo: followUpsRepo,
       );
       emit(SearchInitial(session: session));
     } catch (e) {
@@ -42,7 +44,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     }
   }
 
-  Future<void> _onChange(SearchQueryChanged event, Emitter<SearchState> emit) async {
+  Future<void> _onChange(
+    SearchQueryChanged event,
+    Emitter<SearchState> emit,
+  ) async {
     final q = event.query.trim();
     if (q.isEmpty) return _loadAllData(emit);
     final cur = state;
@@ -50,8 +55,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     if (cur is! SearchInitial || cur.session.leads.isEmpty) {
       emit(const SearchLoading());
       session = await loadSearchSession(
-        leadsRepo: leadsRepo, tasksRepo: tasksRepo,
-        spotlightRepo: spotlightRepo, followUpsRepo: followUpsRepo,
+        leadsRepo: leadsRepo,
+        tasksRepo: tasksRepo,
+        spotlightRepo: spotlightRepo,
+        followUpsRepo: followUpsRepo,
       );
     } else {
       session = cur.session;
@@ -59,11 +66,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     emit(const SearchLoading());
     try {
       final results = searchEntities(session, q.toLowerCase());
-      emit(SearchLoaded(
-        query: event.query,
-        results: results,
-        groupedResults: groupResults(results),
-      ));
+      emit(
+        SearchLoaded(
+          query: event.query,
+          results: results,
+          groupedResults: groupResults(results),
+        ),
+      );
     } catch (e) {
       emit(const SearchError(SearchFailure.query));
     }

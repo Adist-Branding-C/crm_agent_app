@@ -43,7 +43,9 @@ class EnquiryDetailsScreen extends StatelessWidget {
           BlocListener<CallLogBloc, CallLogState>(
             listener: (context, state) {
               if (state is CallLogSaveSuccess) {
-                context.read<EnquiryDetailsBloc>().add(LoadEnquiryDetails(leadId));
+                context.read<EnquiryDetailsBloc>().add(
+                  LoadEnquiryDetails(leadId),
+                );
               }
             },
           ),

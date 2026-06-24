@@ -18,7 +18,9 @@ class PriorityChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dotColor = priority == TaskPriority.low ? AppColors.slate400 : priority.displayColor;
+    final dotColor = priority == TaskPriority.low
+        ? AppColors.slate400
+        : priority.displayColor;
     final activeBg = switch (priority) {
       TaskPriority.high => AppColors.errorBackground,
       TaskPriority.medium => AppColors.warningTextBackground,
@@ -30,7 +32,10 @@ class PriorityChip extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.sm,
+          ),
           decoration: BoxDecoration(
             color: isSelected ? activeBg : Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -44,10 +49,16 @@ class PriorityChip extends StatelessWidget {
             children: [
               ColoredDot(color: dotColor, size: 8),
               AppSpacing.gapWSm,
-              Text(priority.label, style: TextStyle(
-                color: isSelected ? priority.displayColor : AppColors.textMuted,
-                fontWeight: FontWeight.bold, fontSize: 13,
-              )),
+              Text(
+                priority.label,
+                style: TextStyle(
+                  color: isSelected
+                      ? priority.displayColor
+                      : AppColors.textMuted,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
+              ),
             ],
           ),
         ),

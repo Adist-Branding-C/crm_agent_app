@@ -35,6 +35,11 @@ class TaskFilterCriteria extends Equatable {
       types.isEmpty && dateRange == DateRangeType.none && priorities.isEmpty;
 
   @override
-  List<Object?> get props =>
-      [types, dateRange, customFrom, customTo, priorities];
+  List<Object?> get props => [
+    types,
+    dateRange,
+    customFrom,
+    customTo,
+    priorities,
+  ];
 }

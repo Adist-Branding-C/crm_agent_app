@@ -15,7 +15,10 @@ class DealStageBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color baseColor = stage.color;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.ten, vertical: AppSpacing.xs),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.ten,
+        vertical: AppSpacing.xs,
+      ),
       decoration: BoxDecoration(
         color: baseColor.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),

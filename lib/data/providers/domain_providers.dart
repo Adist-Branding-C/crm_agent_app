@@ -29,12 +29,24 @@ List<RepositoryProvider> buildDomainProviders() => [
       dealsRepository: context.read<DealsRepository>(),
     ),
   ),
-  RepositoryProvider<AttendanceRepository>(create: (_) => AttendanceRepositoryImpl()),
-  RepositoryProvider<CampaignsRepository>(create: (_) => CampaignsRepositoryImpl()),
-  RepositoryProvider<DashboardRepository>(create: (_) => DashboardRepositoryImpl()),
+  RepositoryProvider<AttendanceRepository>(
+    create: (_) => AttendanceRepositoryImpl(),
+  ),
+  RepositoryProvider<CampaignsRepository>(
+    create: (_) => CampaignsRepositoryImpl(),
+  ),
+  RepositoryProvider<DashboardRepository>(
+    create: (_) => DashboardRepositoryImpl(),
+  ),
   RepositoryProvider<TasksRepository>(create: (_) => TasksRepositoryImpl()),
-  RepositoryProvider<SpotlightRepository>(create: (_) => SpotlightRepositoryImpl()),
-  RepositoryProvider<FollowUpsRepository>(create: (_) => FollowUpsRepositoryImpl()),
+  RepositoryProvider<SpotlightRepository>(
+    create: (_) => SpotlightRepositoryImpl(),
+  ),
+  RepositoryProvider<FollowUpsRepository>(
+    create: (_) => FollowUpsRepositoryImpl(),
+  ),
   RepositoryProvider<AccountRepository>(create: (_) => AccountRepositoryImpl()),
-  RepositoryProvider<NotificationsRepository>(create: (_) => NotificationsRepositoryImpl()),
+  RepositoryProvider<NotificationsRepository>(
+    create: (_) => NotificationsRepositoryImpl(),
+  ),
 ];

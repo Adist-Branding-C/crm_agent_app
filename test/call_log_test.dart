@@ -32,17 +32,15 @@ void main() {
     test('Initial state', () => expect(bloc.state, const CallLogInitial()));
 
     test('InitiateCall triggers bottom sheet state', () async {
-      expectLater(bloc.stream, emitsInOrder([CallLogBottomSheetTriggered(lead: lead)]));
+      expectLater(
+        bloc.stream,
+        emitsInOrder([CallLogBottomSheetTriggered(lead: lead)]),
+      );
       bloc.add(InitiateCall(lead: lead));
     });
 
     test('LaunchDialer triggers state change & dialer', () async {
-      expectLater(
-        bloc.stream,
-        emitsInOrder([
-          CallInProgress(lead: lead),
-        ]),
-      );
+      expectLater(bloc.stream, emitsInOrder([CallInProgress(lead: lead)]));
       bloc.add(LaunchDialer(lead: lead));
       await Future.delayed(const Duration(milliseconds: 10));
       expect(dialer.called, lead.phone);
@@ -50,7 +48,10 @@ void main() {
 
     test('AppReturnedFromCall navigation', () async {
       bloc.emit(CallInProgress(lead: lead));
-      expectLater(bloc.stream, emitsInOrder([CallLogNavigationPending(lead: lead)]));
+      expectLater(
+        bloc.stream,
+        emitsInOrder([CallLogNavigationPending(lead: lead)]),
+      );
       bloc.add(const AppReturnedFromCall());
     });
 
@@ -59,16 +60,22 @@ void main() {
         bloc.stream,
         emitsInOrder([
           const CallLogSaving(),
-          isA<CallLogSaveSuccess>().having((s) => s.lead.status, 'status', LeadStatus.interested),
+          isA<CallLogSaveSuccess>().having(
+            (s) => s.lead.status,
+            'status',
+            LeadStatus.interested,
+          ),
         ]),
       );
-      bloc.add(SaveCallLog(
-        lead: lead,
-        callStatus: 'Connected',
-        leadStatus: LeadStatus.interested,
-        purpose: LeadPurpose.newAdmission,
-        remark: 'ok',
-      ));
+      bloc.add(
+        SaveCallLog(
+          lead: lead,
+          callStatus: 'Connected',
+          leadStatus: LeadStatus.interested,
+          purpose: LeadPurpose.newAdmission,
+          remark: 'ok',
+        ),
+      );
       await Future.delayed(const Duration(milliseconds: 10));
       expect(repo.leads.first.status, LeadStatus.interested);
     });

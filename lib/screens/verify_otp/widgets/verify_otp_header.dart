@@ -37,7 +37,9 @@ class VerifyOtpHeader extends StatelessWidget {
         AppSpacing.gapSm,
         Text(
           'We sent a 6-digit code to\n$phone',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: context.textMuted),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: context.textMuted),
         ),
       ],
     );

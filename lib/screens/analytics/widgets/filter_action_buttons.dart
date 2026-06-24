@@ -21,9 +21,17 @@ class FilterActionButtons extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
               side: const BorderSide(color: AppColors.borderLight),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-            child: Text('Reset', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold)),
+            child: Text(
+              'Reset',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: AppColors.textDark,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ),
         AppSpacing.gapWLg,
@@ -33,9 +41,17 @@ class FilterActionButtons extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
               padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-            child: Text('Apply Filters', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: Text(
+              'Apply Filters',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ),
       ],

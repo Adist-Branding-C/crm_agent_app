@@ -14,7 +14,10 @@ class ViewCallLogButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.lg,
+      ),
       child: Row(
         children: [
           Expanded(
@@ -30,9 +33,9 @@ class ViewCallLogButtons extends StatelessWidget {
                     child: Text(
                       'Edit Log',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppColors.slate600,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        color: AppColors.slate600,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -53,9 +56,9 @@ class ViewCallLogButtons extends StatelessWidget {
                     child: Text(
                       'Create Follow-up',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

@@ -30,10 +30,7 @@ class _LegendItem extends StatelessWidget {
   final String label;
   final Color color;
 
-  const _LegendItem({
-    required this.label,
-    required this.color,
-  });
+  const _LegendItem({required this.label, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,9 @@ class _LegendItem extends StatelessWidget {
         AppSpacing.gapWXs,
         Text(
           label,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
+          style: Theme.of(
+            context,
+          ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
         ),
       ],
     );

@@ -43,7 +43,9 @@ class DatePickerField extends StatelessWidget {
                 Text(
                   dateStr,
                   style: TextStyle(
-                    color: dateStr == 'dd-mm-yyyy' ? AppColors.textMuted : AppColors.textDark,
+                    color: dateStr == 'dd-mm-yyyy'
+                        ? AppColors.textMuted
+                        : AppColors.textDark,
                     fontSize: context.scaleFont(13),
                     fontWeight: FontWeight.w500,
                   ),

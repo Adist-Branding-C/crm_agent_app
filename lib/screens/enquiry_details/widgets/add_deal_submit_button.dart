@@ -24,9 +24,7 @@ class AddDealSubmitButton extends StatelessWidget {
         foregroundColor: Colors.white,
         disabledForegroundColor: Colors.white,
         minimumSize: const Size.fromHeight(52),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       child: isLoading
           ? const SizedBox(
@@ -44,9 +42,9 @@ class AddDealSubmitButton extends StatelessWidget {
                 SizedBox(width: AppSpacing.xs2),
                 Text(
                   'Add Deal',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ],
             ),

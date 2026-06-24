@@ -19,7 +19,13 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
   Future<LeadsSummary> getLeadsSummary(AnalyticsFilterParams p) async {
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculateLeadsSummary(
-        AnalyticsCalculationHelper.filterLeads(leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterLeads(
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 
   @override
@@ -27,21 +33,40 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     final deals = await dealsRepository.getDeals();
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculateDealsSummary(
-        AnalyticsCalculationHelper.filterDeals(deals, leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterDeals(
+        deals,
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 
   @override
   Future<List<StatusMetric>> getLeadsByStatus(AnalyticsFilterParams p) async {
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculateStatusMetrics(
-        AnalyticsCalculationHelper.filterLeads(leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterLeads(
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 
   @override
   Future<List<SourceMetric>> getLeadsBySource(AnalyticsFilterParams p) async {
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculateSourceMetrics(
-        AnalyticsCalculationHelper.filterLeads(leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterLeads(
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 
   @override
@@ -49,22 +74,47 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     final deals = await dealsRepository.getDeals();
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculateDealStageMetrics(
-        AnalyticsCalculationHelper.filterDeals(deals, leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterDeals(
+        deals,
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 
   @override
-  Future<List<PipelineValueStageMetric>> getPipelineValueByStage(AnalyticsFilterParams p) async {
+  Future<List<PipelineValueStageMetric>> getPipelineValueByStage(
+    AnalyticsFilterParams p,
+  ) async {
     final deals = await dealsRepository.getDeals();
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculatePipelineValueStageMetrics(
-        AnalyticsCalculationHelper.filterDeals(deals, leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterDeals(
+        deals,
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 
   @override
-  Future<List<DealTypeMetric>> getValueByDealType(AnalyticsFilterParams p) async {
+  Future<List<DealTypeMetric>> getValueByDealType(
+    AnalyticsFilterParams p,
+  ) async {
     final deals = await dealsRepository.getDeals();
     final leads = await leadsRepository.getLeads();
     return AnalyticsCalculationHelper.calculateDealTypeMetrics(
-        AnalyticsCalculationHelper.filterDeals(deals, leads, p.statuses, p.sources, p.period));
+      AnalyticsCalculationHelper.filterDeals(
+        deals,
+        leads,
+        p.statuses,
+        p.sources,
+        p.period,
+      ),
+    );
   }
 }

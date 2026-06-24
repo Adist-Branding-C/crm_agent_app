@@ -13,14 +13,18 @@ class NewPasswordBloc extends Bloc<NewPasswordEvent, NewPasswordState> {
   final PasswordRepository authRepository;
   final String phone;
 
-  NewPasswordBloc({
-    required this.authRepository,
-    required this.phone,
-  }) : super(const NewPasswordState()) {
+  NewPasswordBloc({required this.authRepository, required this.phone})
+    : super(const NewPasswordState()) {
     on<NewPasswordChanged>((e, emit) => newPasswordChanged(this, e, emit));
-    on<NewConfirmPasswordChanged>((e, emit) => newConfirmPasswordChanged(this, e, emit));
-    on<ToggleNewPasswordVisibility>((e, emit) => newToggleNewPasswordVisibility(this, emit));
-    on<ToggleConfirmPasswordVisibility>((e, emit) => newToggleConfirmPasswordVisibility(this, emit));
+    on<NewConfirmPasswordChanged>(
+      (e, emit) => newConfirmPasswordChanged(this, e, emit),
+    );
+    on<ToggleNewPasswordVisibility>(
+      (e, emit) => newToggleNewPasswordVisibility(this, emit),
+    );
+    on<ToggleConfirmPasswordVisibility>(
+      (e, emit) => newToggleConfirmPasswordVisibility(this, emit),
+    );
     on<NewPasswordSubmitted>((e, emit) => newPasswordSubmitted(this, e, emit));
   }
 }

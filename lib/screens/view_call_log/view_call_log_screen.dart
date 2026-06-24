@@ -59,7 +59,9 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
     );
     if (success == true && context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Follow-up call scheduled for ${widget.lead!.name}')),
+        SnackBar(
+          content: Text('Follow-up call scheduled for ${widget.lead!.name}'),
+        ),
       );
     }
   }
@@ -75,7 +77,9 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
         child: Column(
           children: [
             const ScreenHeader(title: 'View Call Log'),
-            Expanded(child: ViewCallLogBody(lead: widget.lead!, activity: _activity)),
+            Expanded(
+              child: ViewCallLogBody(lead: widget.lead!, activity: _activity),
+            ),
             ViewCallLogButtons(
               onEditTap: _editCallLog,
               onCreateFollowUpTap: _createFollowUp,

@@ -40,10 +40,7 @@ class EditEnquiryButtons extends StatelessWidget {
           ),
           AppSpacing.gapWLg,
           Expanded(
-            child: CustomButton(
-              text: 'Save Changes',
-              onPressed: onSave,
-            ),
+            child: CustomButton(text: 'Save Changes', onPressed: onSave),
           ),
         ],
       ),

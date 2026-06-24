@@ -27,8 +27,14 @@ class _CallLogScreenState extends State<CallLogScreen> {
     _remarkController.text = widget.activity?.remark ?? '';
     _formState = CallLogFormState(
       callStatus: widget.activity?.callStatus ?? 'Connected',
-      leadStatus: widget.activity?.leadStatus ?? widget.lead?.status ?? LeadStatus.interested,
-      purpose: widget.activity?.purpose ?? widget.lead?.source ?? LeadPurpose.newAdmission,
+      leadStatus:
+          widget.activity?.leadStatus ??
+          widget.lead?.status ??
+          LeadStatus.interested,
+      purpose:
+          widget.activity?.purpose ??
+          widget.lead?.source ??
+          LeadPurpose.newAdmission,
     );
   }
 
@@ -52,13 +58,15 @@ class _CallLogScreenState extends State<CallLogScreen> {
           lead: lead,
           activity: widget.activity,
           formState: _formState,
-          onCallStatusChanged: (val) => setState(() => _formState = _formState.copyWith(callStatus: val)),
-          onLeadStatusChanged: (val) => setState(() => _formState = _formState.copyWith(leadStatus: val)),
-          onPurposeChanged: (val) => setState(() => _formState = _formState.copyWith(purpose: val)),
+          onCallStatusChanged: (val) =>
+              setState(() => _formState = _formState.copyWith(callStatus: val)),
+          onLeadStatusChanged: (val) =>
+              setState(() => _formState = _formState.copyWith(leadStatus: val)),
+          onPurposeChanged: (val) =>
+              setState(() => _formState = _formState.copyWith(purpose: val)),
           remarkController: _remarkController,
         ),
       ),
     );
   }
 }
-

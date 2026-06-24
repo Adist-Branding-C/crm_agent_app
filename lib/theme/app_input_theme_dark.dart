@@ -5,7 +5,10 @@ import 'app_spacing.dart';
 InputDecorationTheme get darkInputDecorationTheme => InputDecorationTheme(
   filled: true,
   fillColor: AppColors.darkCard,
-  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.lg),
+  contentPadding: const EdgeInsets.symmetric(
+    horizontal: AppSpacing.lg,
+    vertical: AppSpacing.lg,
+  ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(14),
     borderSide: const BorderSide(color: AppColors.darkBorder, width: 1),
@@ -27,5 +30,9 @@ InputDecorationTheme get darkInputDecorationTheme => InputDecorationTheme(
     borderSide: const BorderSide(color: AppColors.primaryColor, width: 1.5),
   ),
   hintStyle: const TextStyle(color: AppColors.darkTextMuted, fontSize: 14),
-  labelStyle: const TextStyle(color: AppColors.darkTextMuted, fontSize: 14, fontWeight: FontWeight.w500),
+  labelStyle: const TextStyle(
+    color: AppColors.darkTextMuted,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  ),
 );

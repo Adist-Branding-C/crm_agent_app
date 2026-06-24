@@ -35,10 +35,7 @@ class HistoryLoadedBody extends StatelessWidget {
           HistoryStatsRow(history: history),
           HistoryLeavesCard(history: history),
           const SizedBox(height: 8),
-          HistoryToggleBar(
-            selected: selectedTab,
-            onChanged: onTabChanged,
-          ),
+          HistoryToggleBar(selected: selectedTab, onChanged: onTabChanged),
           if (selectedTab == 'Calendar') ...[
             HistoryCalendarView(
               history: history,

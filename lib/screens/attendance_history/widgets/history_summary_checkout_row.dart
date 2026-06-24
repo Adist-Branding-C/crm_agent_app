@@ -42,7 +42,9 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
               ),
               Text(
                 '$checkInLocation · GPS verified',
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.slate400),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelSmall?.copyWith(color: AppColors.slate400),
               ),
             ],
           ),
@@ -52,14 +54,19 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.slate600,
             foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.lg,
+              vertical: AppSpacing.sm,
+            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
           ),
           child: Text(
             'Check out',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
       ],

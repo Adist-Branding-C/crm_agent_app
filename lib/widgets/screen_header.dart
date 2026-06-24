@@ -20,16 +20,25 @@ class ScreenHeader extends StatelessWidget {
     this.subtitleWidget,
     this.showBackButton = true,
     this.actions,
-    this.padding = const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
+    this.padding = const EdgeInsets.symmetric(
+      horizontal: AppSpacing.xxl,
+      vertical: AppSpacing.lg,
+    ),
   });
 
   @override
   Widget build(BuildContext context) {
     final titleStyle = Theme.of(context).textTheme.headlineSmall;
 
-    final sub = subtitleWidget ??
+    final sub =
+        subtitleWidget ??
         (subtitle != null
-            ? Text(subtitle!, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500))
+            ? Text(
+                subtitle!,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+              )
             : null);
 
     return Padding(
@@ -50,17 +59,11 @@ class ScreenHeader extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(title, style: titleStyle),
-                if (sub != null) ...[
-                  AppSpacing.gapXxs,
-                  sub,
-                ],
+                if (sub != null) ...[AppSpacing.gapXxs, sub],
               ],
             ),
           ),
-          if (actions != null) ...[
-            AppSpacing.gapWLg,
-            actions!,
-          ],
+          if (actions != null) ...[AppSpacing.gapWLg, actions!],
         ],
       ),
     );

@@ -31,7 +31,12 @@ class EnquiryDetailsHeader extends StatelessWidget {
               title: 'Enquiry Details',
               showBackButton: true,
               actions: EditEnquiryButton(lead: lead),
-              padding: EdgeInsets.only(left: AppSpacing.lg, right: AppSpacing.lg, top: AppSpacing.md, bottom: AppSpacing.xs),
+              padding: EdgeInsets.only(
+                left: AppSpacing.lg,
+                right: AppSpacing.lg,
+                top: AppSpacing.md,
+                bottom: AppSpacing.xs,
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),

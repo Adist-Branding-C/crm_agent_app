@@ -22,21 +22,37 @@ class MyActivityLeadSelector extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           onTap: onTap,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.lg,
+              vertical: AppSpacing.md,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: AppColors.borderLight),
             ),
             child: Row(
               children: [
-                const Icon(Icons.person_outline_rounded, size: 20, color: AppColors.textMuted),
+                const Icon(
+                  Icons.person_outline_rounded,
+                  size: 20,
+                  color: AppColors.textMuted,
+                ),
                 AppSpacing.gapWMd,
                 Expanded(
-                  child: Text(selectedLead,
-                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textDark),
+                  child: Text(
+                    selectedLead,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textDark,
+                    ),
                   ),
                 ),
-                const Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.textMuted, size: 20),
+                const Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  color: AppColors.textMuted,
+                  size: 20,
+                ),
               ],
             ),
           ),

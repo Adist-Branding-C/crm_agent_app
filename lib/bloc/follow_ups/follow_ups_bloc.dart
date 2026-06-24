@@ -13,7 +13,7 @@ class FollowUpsBloc extends Bloc<FollowUpsEvent, FollowUpsState> {
   final FollowUpsRepository _followUpsRepository;
 
   FollowUpsBloc({required this._followUpsRepository})
-      : super(const FollowUpsInitial()) {
+    : super(const FollowUpsInitial()) {
     on<LoadFollowUps>(_onLoadFollowUps);
     on<TriggerCall>(_onTriggerCall);
   }

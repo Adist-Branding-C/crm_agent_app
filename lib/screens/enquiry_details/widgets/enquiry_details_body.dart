@@ -31,8 +31,8 @@ class EnquiryDetailsBody extends StatelessWidget {
             child: AppErrorWidget(
               message: state.failureCode.message,
               onRetry: () => context.read<EnquiryDetailsBloc>().add(
-                    LoadEnquiryDetails(leadId),
-                  ),
+                LoadEnquiryDetails(leadId),
+              ),
             ),
           );
         }

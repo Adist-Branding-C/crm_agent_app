@@ -16,7 +16,12 @@ class FabExpandedMenu extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         for (final action in actions) ...[
-          FabMenuItem(text: action.label, icon: action.icon, color: action.color, onTap: action.onTap),
+          FabMenuItem(
+            text: action.label,
+            icon: action.icon,
+            color: action.color,
+            onTap: action.onTap,
+          ),
           AppSpacing.gapMd,
         ],
         AppSpacing.gapLg,

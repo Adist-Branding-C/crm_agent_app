@@ -28,7 +28,9 @@ class WorkDetailsSection extends StatelessWidget {
       children: [
         Text(
           'Work details',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         AppSpacing.gapMd,
         CustomCard(

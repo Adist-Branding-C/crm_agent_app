@@ -14,7 +14,8 @@ class EditProfileScreen extends StatelessWidget {
     return PageScaffold(
       padding: EdgeInsets.zero,
       child: BlocConsumer<AccountBloc, AccountState>(
-        listenWhen: (p, c) => c is AccountUpdateSuccess || c is AccountUpdateFailure,
+        listenWhen: (p, c) =>
+            c is AccountUpdateSuccess || c is AccountUpdateFailure,
         listener: (context, state) {
           if (state is AccountUpdateSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -22,9 +23,9 @@ class EditProfileScreen extends StatelessWidget {
             );
             context.pop();
           } else if (state is AccountUpdateFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.error)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.error)));
           }
         },
         builder: (context, state) {

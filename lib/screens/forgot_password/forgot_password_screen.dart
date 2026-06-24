@@ -28,9 +28,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (c) => ForgotPasswordBloc(
-        authRepository: c.read<OtpRepository>(),
-      ),
+      create: (c) =>
+          ForgotPasswordBloc(authRepository: c.read<OtpRepository>()),
       child: BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
@@ -38,9 +37,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           }
         },
         child: PageScaffold(
-          child: ForgotPasswordBody(
-            phoneController: _phoneController,
-          ),
+          child: ForgotPasswordBody(phoneController: _phoneController),
         ),
       ),
     );

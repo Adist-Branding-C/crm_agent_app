@@ -40,11 +40,16 @@ class FilterChipsSection<T> extends StatelessWidget {
             return GestureDetector(
               onTap: () => onToggle(option),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.lg,
+                  vertical: AppSpacing.sm,
+                ),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.primaryColor : Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  border: isSelected ? null : Border.all(color: AppColors.borderLight),
+                  border: isSelected
+                      ? null
+                      : Border.all(color: AppColors.borderLight),
                 ),
                 child: Text(
                   labelBuilder(option),

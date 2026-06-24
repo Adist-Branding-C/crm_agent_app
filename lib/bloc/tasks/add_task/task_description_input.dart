@@ -4,7 +4,8 @@ import 'package:formz/formz.dart';
 enum TaskDescriptionValidationError { tooLong }
 
 /// Represents the Task Description input field.
-class TaskDescriptionInput extends FormzInput<String, TaskDescriptionValidationError> {
+class TaskDescriptionInput
+    extends FormzInput<String, TaskDescriptionValidationError> {
   const TaskDescriptionInput.pure() : super.pure('');
   const TaskDescriptionInput.dirty([super.value = '']) : super.dirty();
 

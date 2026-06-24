@@ -27,13 +27,11 @@ class LeadStatusLegendItem extends StatelessWidget {
         AppSpacing.gapXxs,
         Text(
           item.label,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: AppColors.textMuted,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
         ),
       ],
     );
   }
 }
-
-

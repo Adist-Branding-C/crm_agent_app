@@ -12,7 +12,10 @@ class DealsToggle extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedIndex = context.watch<DealsViewNotifier>().value;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.md),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.md,
+      ),
       child: Container(
         height: 44,
         padding: EdgeInsets.all(AppSpacing.xs),
@@ -22,8 +25,22 @@ class DealsToggle extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Expanded(child: DealsToggleItem(index: 0, label: 'Pipeline', isSelected: selectedIndex == 0, onTap: () => context.read<DealsViewNotifier>().toggle(0))),
-            Expanded(child: DealsToggleItem(index: 1, label: 'List', isSelected: selectedIndex == 1, onTap: () => context.read<DealsViewNotifier>().toggle(1))),
+            Expanded(
+              child: DealsToggleItem(
+                index: 0,
+                label: 'Pipeline',
+                isSelected: selectedIndex == 0,
+                onTap: () => context.read<DealsViewNotifier>().toggle(0),
+              ),
+            ),
+            Expanded(
+              child: DealsToggleItem(
+                index: 1,
+                label: 'List',
+                isSelected: selectedIndex == 1,
+                onTap: () => context.read<DealsViewNotifier>().toggle(1),
+              ),
+            ),
           ],
         ),
       ),
@@ -36,7 +53,13 @@ class DealsToggleItem extends StatelessWidget {
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
-  const DealsToggleItem({super.key, required this.index, required this.label, required this.isSelected, required this.onTap});
+  const DealsToggleItem({
+    super.key,
+    required this.index,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -29,7 +29,10 @@ class StatusChip extends StatelessWidget {
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: BorderSide(color: isSelected ? AppColors.success : Colors.grey.shade200, width: isSelected ? 1.5 : 1),
+        side: BorderSide(
+          color: isSelected ? AppColors.success : Colors.grey.shade200,
+          width: isSelected ? 1.5 : 1,
+        ),
       ),
       showCheckmark: false,
     );

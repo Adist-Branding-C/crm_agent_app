@@ -11,10 +11,7 @@ class ButtonLoading extends StatelessWidget {
     return const SizedBox(
       width: 20,
       height: 20,
-      child: CircularProgressIndicator(
-        color: Colors.white,
-        strokeWidth: 2,
-      ),
+      child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
     );
   }
 }
@@ -28,21 +25,14 @@ class ButtonLabel extends StatelessWidget {
   final IconData? icon;
 
   /// Creates a [ButtonLabel].
-  const ButtonLabel({
-    super.key,
-    required this.text,
-    this.icon,
-  });
+  const ButtonLabel({super.key, required this.text, this.icon});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (icon != null) ...[
-          Icon(icon, size: 18),
-          AppSpacing.gapWSm,
-        ],
+        if (icon != null) ...[Icon(icon, size: 18), AppSpacing.gapWSm],
         Text(text),
       ],
     );

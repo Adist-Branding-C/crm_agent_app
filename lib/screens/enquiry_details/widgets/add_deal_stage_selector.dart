@@ -18,16 +18,26 @@ class AddDealStageSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Stage', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.slate600, fontWeight: FontWeight.w500)),
+        Text(
+          'Stage',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: AppColors.slate600,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         AppSpacing.gapSm,
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: DealStage.values.map((stage) => AddDealStageChip(
-              stage: stage,
-              isSelected: selectedStage == stage,
-              onTap: () => onStageSelected(stage),
-            )).toList(),
+            children: DealStage.values
+                .map(
+                  (stage) => AddDealStageChip(
+                    stage: stage,
+                    isSelected: selectedStage == stage,
+                    onTap: () => onStageSelected(stage),
+                  ),
+                )
+                .toList(),
           ),
         ),
       ],

@@ -15,12 +15,14 @@ void newPasswordChanged(
     password: password.value,
     value: bloc.state.confirmPassword.value,
   );
-  emit(bloc.state.copyWith(
-    newPassword: password,
-    confirmPassword: confirm,
-    status: FormzSubmissionStatus.initial,
-    errorMessage: null,
-  ));
+  emit(
+    bloc.state.copyWith(
+      newPassword: password,
+      confirmPassword: confirm,
+      status: FormzSubmissionStatus.initial,
+      errorMessage: null,
+    ),
+  );
 }
 
 void newConfirmPasswordChanged(
@@ -32,22 +34,30 @@ void newConfirmPasswordChanged(
     password: bloc.state.newPassword.value,
     value: e.confirmPassword,
   );
-  emit(bloc.state.copyWith(
-    confirmPassword: confirm,
-    status: FormzSubmissionStatus.initial,
-    errorMessage: null,
-  ));
+  emit(
+    bloc.state.copyWith(
+      confirmPassword: confirm,
+      status: FormzSubmissionStatus.initial,
+      errorMessage: null,
+    ),
+  );
 }
 
 void newToggleNewPasswordVisibility(
   NewPasswordBloc bloc,
   Emitter<NewPasswordState> emit,
-) => emit(bloc.state.copyWith(obscureNewPassword: !bloc.state.obscureNewPassword));
+) => emit(
+  bloc.state.copyWith(obscureNewPassword: !bloc.state.obscureNewPassword),
+);
 
 void newToggleConfirmPasswordVisibility(
   NewPasswordBloc bloc,
   Emitter<NewPasswordState> emit,
-) => emit(bloc.state.copyWith(obscureConfirmPassword: !bloc.state.obscureConfirmPassword));
+) => emit(
+  bloc.state.copyWith(
+    obscureConfirmPassword: !bloc.state.obscureConfirmPassword,
+  ),
+);
 
 Future<void> newPasswordSubmitted(
   NewPasswordBloc bloc,
@@ -59,26 +69,36 @@ Future<void> newPasswordSubmitted(
     password: password.value,
     value: bloc.state.confirmPassword.value,
   );
-  emit(bloc.state.copyWith(
-    newPassword: password,
-    confirmPassword: confirm,
-    status: FormzSubmissionStatus.inProgress,
-  ));
+  emit(
+    bloc.state.copyWith(
+      newPassword: password,
+      confirmPassword: confirm,
+      status: FormzSubmissionStatus.inProgress,
+    ),
+  );
   if (password.isNotValid || confirm.isNotValid) {
     emit(bloc.state.copyWith(status: FormzSubmissionStatus.failure));
     return;
   }
   try {
-    final ok = await bloc.authRepository.updatePassword(bloc.phone, password.value);
-    emit(bloc.state.copyWith(
-      status:
-          ok ? FormzSubmissionStatus.success : FormzSubmissionStatus.failure,
-      errorMessage: ok ? null : 'Failed to update password.',
-    ));
+    final ok = await bloc.authRepository.updatePassword(
+      bloc.phone,
+      password.value,
+    );
+    emit(
+      bloc.state.copyWith(
+        status: ok
+            ? FormzSubmissionStatus.success
+            : FormzSubmissionStatus.failure,
+        errorMessage: ok ? null : 'Failed to update password.',
+      ),
+    );
   } catch (_) {
-    emit(bloc.state.copyWith(
-      status: FormzSubmissionStatus.failure,
-      errorMessage: 'An error occurred.',
-    ));
+    emit(
+      bloc.state.copyWith(
+        status: FormzSubmissionStatus.failure,
+        errorMessage: 'An error occurred.',
+      ),
+    );
   }
 }

@@ -41,7 +41,10 @@ class AddDealDatePicker extends StatelessWidget {
           onTap: () => _pickDate(context),
           borderRadius: BorderRadius.circular(14),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.lg),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.lg,
+              vertical: AppSpacing.lg,
+            ),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.borderLight),
               borderRadius: BorderRadius.circular(14),
@@ -53,7 +56,9 @@ class AddDealDatePicker extends StatelessWidget {
                 Text(
                   displayText,
                   style: TextStyle(
-                    color: selectedDate != null ? AppColors.textDark : AppColors.textMuted,
+                    color: selectedDate != null
+                        ? AppColors.textDark
+                        : AppColors.textMuted,
                     fontSize: context.scaleFont(14),
                   ),
                 ),

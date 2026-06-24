@@ -5,14 +5,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'helpers/test_auth_helpers.dart';
 
 void main() {
-  testWidgets('Analytics Screen navigation and metrics test', (WidgetTester tester) async {
+  testWidgets('Analytics Screen navigation and metrics test', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(createTestApp());
     await tester.pump(const Duration(seconds: 3));
     await tester.pumpAndSettle();
 
     // Login
-    await tester.enterText(find.bySemanticsLabel('Phone Number Input Field'), '9876543210');
-    await tester.enterText(find.bySemanticsLabel('Password Input Field'), 'secure123');
+    await tester.enterText(
+      find.bySemanticsLabel('Phone Number Input Field'),
+      '9876543210',
+    );
+    await tester.enterText(
+      find.bySemanticsLabel('Password Input Field'),
+      'secure123',
+    );
     await tester.tap(find.text('Sign In'));
     await tester.pumpAndSettle();
 

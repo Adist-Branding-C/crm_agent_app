@@ -32,7 +32,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _items = widget.navigationItems ?? DashboardNavigationConfig.items;
     if (widget.initialFilter == 'overdue') {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) context.read<TasksBloc>().add(const FilterChanged(TasksFilter.overdue));
+        if (mounted)
+          context.read<TasksBloc>().add(
+            const FilterChanged(TasksFilter.overdue),
+          );
       });
     }
   }

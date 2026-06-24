@@ -43,8 +43,11 @@ class AppRoutes {
   static const viewCallLogPath = '/view-call-log';
 
   static const _authPaths = <String>{
-    loginPath, splashPath, forgotPasswordPath,
-    verifyOtpPath, newPasswordPath,
+    loginPath,
+    splashPath,
+    forgotPasswordPath,
+    verifyOtpPath,
+    newPasswordPath,
   };
 
   static bool isAuthRoute(String path) => _authPaths.contains(path);

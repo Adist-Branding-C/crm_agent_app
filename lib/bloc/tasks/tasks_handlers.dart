@@ -5,10 +5,7 @@ import 'tasks_bloc.dart';
 /// Extension containing event handlers for [TasksBloc].
 extension TasksHandlers on TasksBloc {
   /// Handler for [LoadTasks] event.
-  Future<void> onLoadTasks(
-    LoadTasks event,
-    Emitter<TasksState> emit,
-  ) async {
+  Future<void> onLoadTasks(LoadTasks event, Emitter<TasksState> emit) async {
     emit(const TasksLoading());
     try {
       final list = await tasksRepository.getTasks();
@@ -26,9 +23,12 @@ extension TasksHandlers on TasksBloc {
     final currState = state;
     if (currState is TasksLoaded) {
       try {
-        final updatedList =
-            await tasksRepository.toggleTaskCompletion(event.taskId);
-        emit(currState.copyWith(allTasks: updatedList, actionFailure: () => null));
+        final updatedList = await tasksRepository.toggleTaskCompletion(
+          event.taskId,
+        );
+        emit(
+          currState.copyWith(allTasks: updatedList, actionFailure: () => null),
+        );
       } catch (e, stackTrace) {
         developer.log(
           'Failed to toggle task completion for taskId: ${event.taskId}',
@@ -42,10 +42,7 @@ extension TasksHandlers on TasksBloc {
   }
 
   /// Handler for [FilterChanged] event.
-  void onFilterChanged(
-    FilterChanged event,
-    Emitter<TasksState> emit,
-  ) {
+  void onFilterChanged(FilterChanged event, Emitter<TasksState> emit) {
     final currState = state;
     if (currState is TasksLoaded) {
       emit(currState.copyWith(filter: event.filter));

@@ -14,7 +14,10 @@ class HistoryLeavesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      margin: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       padding: EdgeInsets.all(AppSpacing.md),
       child: Row(
         children: [
@@ -44,9 +47,9 @@ class HistoryLeavesCard extends StatelessWidget {
                 ),
                 Text(
                   'Avg check-in ${history.avgCheckInTime} · checkout ${history.avgCheckOutTime}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.textMuted,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
                 ),
               ],
             ),
@@ -59,11 +62,16 @@ class HistoryLeavesCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSpacing.lg,
+                vertical: AppSpacing.sm,
+              ),
             ),
             child: Text(
               'Apply',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
         ],

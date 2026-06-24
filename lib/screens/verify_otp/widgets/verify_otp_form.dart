@@ -21,7 +21,7 @@ class VerifyOtpForm extends StatelessWidget {
         OtpInputWidget(
           controller: otpController,
           onChanged: (val) =>
-            context.read<VerifyOtpBloc>().add(VerifyOtpCodeChanged(val)),
+              context.read<VerifyOtpBloc>().add(VerifyOtpCodeChanged(val)),
         ),
         AppSpacing.gapXxl,
         BlocBuilder<VerifyOtpBloc, VerifyOtpState>(
@@ -43,14 +43,13 @@ class VerifyOtpForm extends StatelessWidget {
         ),
         BlocBuilder<VerifyOtpBloc, VerifyOtpState>(
           buildWhen: (p, c) =>
-              p.code.isValid != c.code.isValid ||
-              p.status != c.status,
+              p.code.isValid != c.code.isValid || p.status != c.status,
           builder: (context, state) => CustomButton(
             text: 'Verify OTP',
             icon: Icons.check_rounded,
             isLoading: state.status == FormzSubmissionStatus.inProgress,
             onPressed: () =>
-              context.read<VerifyOtpBloc>().add(const VerifyOtpSubmitted()),
+                context.read<VerifyOtpBloc>().add(const VerifyOtpSubmitted()),
           ),
         ),
         AppSpacing.gapXxl,

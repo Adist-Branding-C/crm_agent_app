@@ -6,6 +6,7 @@ import '../../../theme.dart';
 class WhatsAppSheetHeader extends StatelessWidget {
   /// Name of the recipient contact.
   final String name;
+
   /// Phone number of the recipient.
   final String phone;
 
@@ -62,9 +63,9 @@ class WhatsAppSheetHeader extends StatelessWidget {
                   AppSpacing.gapXxs,
                   Text(
                     'To $name · $phone',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppColors.textMuted,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
                   ),
                 ],
               ),

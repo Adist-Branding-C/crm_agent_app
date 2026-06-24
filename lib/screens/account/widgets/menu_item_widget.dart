@@ -25,7 +25,10 @@ class MenuItemWidget extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.md,
+          ),
           child: Row(
             children: [
               Container(
@@ -56,8 +59,11 @@ class MenuItemWidget extends StatelessWidget {
                 ),
                 AppSpacing.gapWSm,
               ],
-              const Icon(Icons.chevron_right_rounded,
-                  size: 20, color: AppColors.textMuted),
+              const Icon(
+                Icons.chevron_right_rounded,
+                size: 20,
+                color: AppColors.textMuted,
+              ),
             ],
           ),
         ),

@@ -46,15 +46,24 @@ class _ErrorView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.error_outline_rounded, color: AppColors.errorColor, size: 48),
+            Icon(
+              Icons.error_outline_rounded,
+              color: AppColors.errorColor,
+              size: 48,
+            ),
             AppSpacing.gapLg,
-            Text(msg, style: Theme.of(context).textTheme.titleMedium, textAlign: TextAlign.center),
+            Text(
+              msg,
+              style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            ),
             AppSpacing.gapXxl,
             SizedBox(
               width: 140,
               child: CustomButton(
                 text: 'Retry',
-                onPressed: () => context.read<AccountBloc>().add(const LoadAccount()),
+                onPressed: () =>
+                    context.read<AccountBloc>().add(const LoadAccount()),
                 icon: Icons.refresh_rounded,
               ),
             ),

@@ -7,8 +7,10 @@ import 'notification_item_widget.dart';
 
 String _notificationsErrorString(NotificationsFailure f) {
   switch (f) {
-    case NotificationsFailure.load: return 'Failed to load notifications';
-    case NotificationsFailure.unknown: return 'An error occurred';
+    case NotificationsFailure.load:
+      return 'Failed to load notifications';
+    case NotificationsFailure.unknown:
+      return 'An error occurred';
   }
 }
 
@@ -26,16 +28,23 @@ class NotificationsListBody extends StatelessWidget {
         return prev.runtimeType != curr.runtimeType;
       },
       builder: (context, state) {
-        final list = state is NotificationsLoaded ? state.notifications : const [];
+        final list = state is NotificationsLoaded
+            ? state.notifications
+            : const [];
         return AsyncStateView(
-          isLoading: state is NotificationsLoading || state is NotificationsInitial,
+          isLoading:
+              state is NotificationsLoading || state is NotificationsInitial,
           hasError: state is NotificationsError,
-          errorMessage: state is NotificationsError ? _notificationsErrorString(state.failure) : 'Error',
-          onRetry: () => context.read<NotificationsBloc>().add(const LoadNotifications()),
+          errorMessage: state is NotificationsError
+              ? _notificationsErrorString(state.failure)
+              : 'Error',
+          onRetry: () =>
+              context.read<NotificationsBloc>().add(const LoadNotifications()),
           child: ListView.builder(
             padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
             itemCount: list.length,
-            itemBuilder: (context, index) => NotificationItemWidget(item: list[index]),
+            itemBuilder: (context, index) =>
+                NotificationItemWidget(item: list[index]),
           ),
         );
       },

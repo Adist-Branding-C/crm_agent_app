@@ -17,23 +17,31 @@ class FakeDealsRepository implements DealsRepository {
 }
 
 void main() {
-  testWidgets('Add Deal Bottom Sheet validation and submission test', (tester) async {
+  testWidgets('Add Deal Bottom Sheet validation and submission test', (
+    tester,
+  ) async {
     final repo = FakeDealsRepository();
     final bloc = DealsBloc(dealsRepository: repo)..add(const LoadDeals());
     const lead = Lead(
-      id: '1', name: 'Rahul Menon', status: LeadStatus.interested,
-      source: LeadPurpose.newAdmission, category: LeadCategory.hot,
-      phone: '9876543210', location: 'Kochi',
+      id: '1',
+      name: 'Rahul Menon',
+      status: LeadStatus.interested,
+      source: LeadPurpose.newAdmission,
+      category: LeadCategory.hot,
+      phone: '9876543210',
+      location: 'Kochi',
     );
 
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        body: BlocProvider<DealsBloc>.value(
-          value: bloc,
-          child: AddDealBottomSheet(lead: lead),
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BlocProvider<DealsBloc>.value(
+            value: bloc,
+            child: AddDealBottomSheet(lead: lead),
+          ),
         ),
       ),
-    ));
+    );
     await tester.pumpAndSettle();
 
     expect(find.text('New Deal'), findsOneWidget);
@@ -45,7 +53,10 @@ void main() {
     final submitButton = find.byType(ElevatedButton);
 
     // Initial state
-    expect(tester.widget<TextFormField>(nameField).controller?.text, 'New Admission — Rahul');
+    expect(
+      tester.widget<TextFormField>(nameField).controller?.text,
+      'New Admission — Rahul',
+    );
     expect(tester.widget<ElevatedButton>(submitButton).enabled, isFalse);
 
     // Enter valid amount

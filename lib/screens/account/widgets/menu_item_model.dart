@@ -8,20 +8,45 @@ class MenuItemModel {
   final String? route;
   final String? badge;
 
-  const MenuItemModel({required this.icon, required this.title, this.route, this.badge});
+  const MenuItemModel({
+    required this.icon,
+    required this.title,
+    this.route,
+    this.badge,
+  });
 
   Widget toListItem(BuildContext context) => Material(
     type: MaterialType.transparency,
     child: ListTile(
       leading: Icon(icon, size: 22, color: AppColors.textMuted),
-      title: Text(title, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark)),
+      title: Text(
+        title,
+        style: Theme.of(
+          context,
+        ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
+      ),
       trailing: badge != null
           ? Container(
-              padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xxs),
-              decoration: BoxDecoration(color: AppColors.primaryColorLight, borderRadius: BorderRadius.circular(10)),
-              child: Text(badge!, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.primaryColor)),
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSpacing.sm,
+                vertical: AppSpacing.xxs,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.primaryColorLight,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                badge!,
+                style: Theme.of(
+                  context,
+                ).textTheme.labelSmall?.copyWith(color: AppColors.primaryColor),
+              ),
             )
-          : const Icon(Icons.chevron_right_rounded, size: 20, color: AppColors.slate400),
+          : const Icon(
+              Icons.chevron_right_rounded,
+              size: 20,
+              color: AppColors.slate400,
+            ),
       onTap: route != null ? () => context.pushNamed(route!) : null,
       contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       visualDensity: VisualDensity.compact,

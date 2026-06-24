@@ -40,16 +40,30 @@ List<SearchResult> searchEntities(
   SearchSessionData session,
   String queryLower,
 ) {
-  final ml = session.leads.where((l) =>
-      l.name.toLowerCase().contains(queryLower) || l.phone.contains(queryLower) ||
-      l.location.toLowerCase().contains(queryLower)).map(LeadSearchResult.new);
-  final mt = session.tasks.where((t) =>
-      t.title.toLowerCase().contains(queryLower) ||
-      (t.description?.toLowerCase().contains(queryLower) ?? false)).map(TaskSearchResult.new);
-  final ms = session.spotlights.where((s) =>
-      s.title.toLowerCase().contains(queryLower) ||
-      s.description.toLowerCase().contains(queryLower)).map(SpotlightSearchResult.new);
+  final ml = session.leads
+      .where(
+        (l) =>
+            l.name.toLowerCase().contains(queryLower) ||
+            l.phone.contains(queryLower) ||
+            l.location.toLowerCase().contains(queryLower),
+      )
+      .map(LeadSearchResult.new);
+  final mt = session.tasks
+      .where(
+        (t) =>
+            t.title.toLowerCase().contains(queryLower) ||
+            (t.description?.toLowerCase().contains(queryLower) ?? false),
+      )
+      .map(TaskSearchResult.new);
+  final ms = session.spotlights
+      .where(
+        (s) =>
+            s.title.toLowerCase().contains(queryLower) ||
+            s.description.toLowerCase().contains(queryLower),
+      )
+      .map(SpotlightSearchResult.new);
   final mf = session.followUps
-      .where((f) => f.name.toLowerCase().contains(queryLower)).map(FollowUpSearchResult.new);
+      .where((f) => f.name.toLowerCase().contains(queryLower))
+      .map(FollowUpSearchResult.new);
   return [...ml, ...mt, ...ms, ...mf];
 }

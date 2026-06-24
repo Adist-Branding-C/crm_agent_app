@@ -4,14 +4,14 @@ import '../../../theme/app_colors.dart';
 
 extension TaskPriorityExtension on TaskPriority {
   String get label => switch (this) {
-        TaskPriority.high => 'High',
-        TaskPriority.medium => 'Medium',
-        TaskPriority.low => 'Low',
-      };
+    TaskPriority.high => 'High',
+    TaskPriority.medium => 'Medium',
+    TaskPriority.low => 'Low',
+  };
 
   Color get displayColor => switch (this) {
-        TaskPriority.high => AppColors.errorColor,
-        TaskPriority.medium => AppColors.warningText,
-        TaskPriority.low => AppColors.success,
-      };
+    TaskPriority.high => AppColors.errorColor,
+    TaskPriority.medium => AppColors.warningText,
+    TaskPriority.low => AppColors.success,
+  };
 }

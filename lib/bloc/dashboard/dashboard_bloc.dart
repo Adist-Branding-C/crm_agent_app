@@ -17,11 +17,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   /// Initializes the BLoC with [DashboardInitial].
   DashboardBloc({required this.dashboardRepository})
-      : super(const DashboardInitial()) {
+    : super(const DashboardInitial()) {
     on<FetchDashboardData>(_onFetchDashboardData);
     on<UpdateDashboardFollowUps>(_onUpdateDashboardFollowUps);
 
-    _followUpsSubscription = dashboardRepository.followUpsStream.listen((calls) {
+    _followUpsSubscription = dashboardRepository.followUpsStream.listen((
+      calls,
+    ) {
       add(UpdateDashboardFollowUps(calls));
     });
   }
@@ -42,9 +44,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       final followUps = await dashboardRepository.getFollowUps();
       emit(DashboardLoaded(stats: stats, followUps: followUps));
     } catch (e) {
-      emit(
-        const DashboardError(failure: DashboardFailure.load),
-      );
+      emit(const DashboardError(failure: DashboardFailure.load));
     }
   }
 

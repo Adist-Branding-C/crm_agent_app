@@ -8,7 +8,10 @@ class PasswordRepositoryImpl implements PasswordRepository {
   }
 
   @override
-  Future<bool> changePassword(String currentPassword, String newPassword) async {
+  Future<bool> changePassword(
+    String currentPassword,
+    String newPassword,
+  ) async {
     await Future.delayed(const Duration(milliseconds: 300));
     return true;
   }

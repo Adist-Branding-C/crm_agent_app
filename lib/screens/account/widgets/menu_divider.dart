@@ -6,7 +6,9 @@ class MenuDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Divider(
-    height: 1, indent: 16, endIndent: 16,
+    height: 1,
+    indent: 16,
+    endIndent: 16,
     color: AppColors.borderLight,
   );
 }

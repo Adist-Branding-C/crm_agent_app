@@ -30,7 +30,10 @@ class AttendanceTimelineTile extends StatelessWidget {
       isLast: isLast,
       config: config,
       child: Padding(
-        padding: const EdgeInsets.only(top: AppSpacing.xxs, bottom: AppSpacing.xl),
+        padding: const EdgeInsets.only(
+          top: AppSpacing.xxs,
+          bottom: AppSpacing.xl,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,9 +42,13 @@ class AttendanceTimelineTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(item.title, style: textTheme.titleMedium?.copyWith(
-                    color: AppColors.textDark, fontWeight: FontWeight.bold,
-                  )),
+                  Text(
+                    item.title,
+                    style: textTheme.titleMedium?.copyWith(
+                      color: AppColors.textDark,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   AppSpacing.gapXs,
                   Text(item.subtitle, style: captionStyle),
                 ],
@@ -55,5 +62,3 @@ class AttendanceTimelineTile extends StatelessWidget {
     );
   }
 }
-
-

@@ -19,7 +19,8 @@ extension CallLogHandlers on CallLogBloc {
           final match = list.where((a) => a.id == ev.activityId).firstOrNull;
           final updated = EnquiryActivity(
             id: ev.activityId!,
-            title: '@You logged a call (${ev.callStatus}) - Purpose: ${ev.purpose.label}',
+            title:
+                '@You logged a call (${ev.callStatus}) - Purpose: ${ev.purpose.label}',
             time: match?.time ?? 'Just now',
             type: EnquiryActivityType.call,
             callStatus: ev.callStatus,

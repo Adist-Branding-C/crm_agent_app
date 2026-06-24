@@ -22,7 +22,10 @@ class EditEnquiryContactFields extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       padding: EdgeInsets.all(AppSpacing.lg),
-      margin: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+      margin: EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.sm,
+      ),
       child: Column(
         children: [
           CustomTextField(

@@ -1,7 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 enum AttendanceActivityType {
-  checkIn, call, note, lead, lunchBreak, statusChange, dealWon,
+  checkIn,
+  call,
+  note,
+  lead,
+  lunchBreak,
+  statusChange,
+  dealWon,
 }
 
 class AttendanceTimelineItem extends Equatable {

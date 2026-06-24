@@ -16,12 +16,14 @@ Future<void> changePasswordSubmitted(
     newPassword: newPass.value,
     value: bloc.state.confirmPassword.value,
   );
-  emit(bloc.state.copyWith(
-    currentPassword: current,
-    newPassword: newPass,
-    confirmPassword: confirm,
-    status: FormzSubmissionStatus.inProgress,
-  ));
+  emit(
+    bloc.state.copyWith(
+      currentPassword: current,
+      newPassword: newPass,
+      confirmPassword: confirm,
+      status: FormzSubmissionStatus.inProgress,
+    ),
+  );
   if (current.isNotValid || newPass.isNotValid || confirm.isNotValid) {
     emit(bloc.state.copyWith(status: FormzSubmissionStatus.failure));
     return;
@@ -31,15 +33,20 @@ Future<void> changePasswordSubmitted(
       current.value,
       newPass.value,
     );
-    emit(bloc.state.copyWith(
-      status: success ?
-          FormzSubmissionStatus.success : FormzSubmissionStatus.failure,
-      errorMessage: success ? null : 'Failed to update password.',
-    ));
+    emit(
+      bloc.state.copyWith(
+        status: success
+            ? FormzSubmissionStatus.success
+            : FormzSubmissionStatus.failure,
+        errorMessage: success ? null : 'Failed to update password.',
+      ),
+    );
   } catch (_) {
-    emit(bloc.state.copyWith(
-      status: FormzSubmissionStatus.failure,
-      errorMessage: 'An error occurred.',
-    ));
+    emit(
+      bloc.state.copyWith(
+        status: FormzSubmissionStatus.failure,
+        errorMessage: 'An error occurred.',
+      ),
+    );
   }
 }

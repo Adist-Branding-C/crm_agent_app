@@ -14,9 +14,8 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddTaskBloc(
-        tasksRepository: context.read<TasksRepository>(),
-      ),
+      create: (context) =>
+          AddTaskBloc(tasksRepository: context.read<TasksRepository>()),
       child: const PageScaffold(
         padding: EdgeInsets.zero,
         child: Column(
@@ -24,11 +23,14 @@ class AddTaskScreen extends StatelessWidget {
             ScreenHeader(
               title: 'Add Task',
               showBackButton: true,
-              padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
+              padding: EdgeInsets.only(
+                left: AppSpacing.xxl,
+                right: AppSpacing.xxl,
+                top: AppSpacing.lg,
+                bottom: AppSpacing.sm,
+              ),
             ),
-            Expanded(
-              child: AddTaskForm(),
-            ),
+            Expanded(child: AddTaskForm()),
           ],
         ),
       ),

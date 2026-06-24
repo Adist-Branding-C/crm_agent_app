@@ -23,8 +23,9 @@ class FakeWhatsAppService extends WhatsAppService {
 }
 
 void main() {
-  testWidgets('WhatsApp bottom sheet opening and interaction test',
-      (WidgetTester tester) async {
+  testWidgets('WhatsApp bottom sheet opening and interaction test', (
+    WidgetTester tester,
+  ) async {
     final fakeService = FakeWhatsAppService();
     const lead = Lead(
       id: '1',
@@ -36,11 +37,13 @@ void main() {
       location: 'Kochi',
     );
 
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        body: WhatsAppBottomSheet(lead: lead, whatsappService: fakeService),
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: WhatsAppBottomSheet(lead: lead, whatsappService: fakeService),
+        ),
       ),
-    ));
+    );
     await tester.pumpAndSettle();
 
     expect(find.byType(WhatsAppBottomSheet), findsOneWidget);

@@ -16,7 +16,9 @@ class TargetProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final percentage = target > 0 ? (achieved / target * 100).round() : 0;
-    final progressValue = target > 0 ? (achieved / target).clamp(0.0, 1.0) : 0.0;
+    final progressValue = target > 0
+        ? (achieved / target).clamp(0.0, 1.0)
+        : 0.0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +28,9 @@ class TargetProgressIndicator extends StatelessWidget {
           children: [
             Text(
               'Achieved ${achieved.toDouble().toRupeeFormat()} of ${target.toDouble().toRupeeFormat()}',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
             ),
             Text(
               '$percentage%',
@@ -43,7 +47,9 @@ class TargetProgressIndicator extends StatelessWidget {
           child: LinearProgressIndicator(
             value: progressValue,
             backgroundColor: AppColors.slate100,
-            valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
+            valueColor: const AlwaysStoppedAnimation<Color>(
+              AppColors.primaryColor,
+            ),
             minHeight: 6,
           ),
         ),
@@ -51,4 +57,3 @@ class TargetProgressIndicator extends StatelessWidget {
     );
   }
 }
-

@@ -22,11 +22,15 @@ class DealsPipelineView extends StatelessWidget {
       padding: AppSpacing.screenPadding,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: grouped.entries.map((e) => DealPipelineStageColumn(
-          stage: e.key,
-          stageDeals: e.value,
-          totalAmount: totals[e.key] ?? 0,
-        )).toList(),
+        children: grouped.entries
+            .map(
+              (e) => DealPipelineStageColumn(
+                stage: e.key,
+                stageDeals: e.value,
+                totalAmount: totals[e.key] ?? 0,
+              ),
+            )
+            .toList(),
       ),
     );
   }

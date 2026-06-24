@@ -69,7 +69,15 @@ class UpdateEnquiryDetails extends EnquiryDetailsEvent {
 
   @override
   List<Object?> get props => [
-        name, phone, email, location, source,
-        purpose, category, status, nextFollowUp, note,
-      ];
+    name,
+    phone,
+    email,
+    location,
+    source,
+    purpose,
+    category,
+    status,
+    nextFollowUp,
+    note,
+  ];
 }

@@ -20,7 +20,9 @@ class FilterStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final statuses = LeadStatus.values.where((e) => e != LeadStatus.lost).toList();
+    final statuses = LeadStatus.values
+        .where((e) => e != LeadStatus.lost)
+        .toList();
     return Wrap(
       spacing: AppSpacing.sm,
       runSpacing: AppSpacing.sm,
@@ -30,7 +32,10 @@ class FilterStatus extends StatelessWidget {
         return GestureDetector(
           onTap: () => onSelected(isSel ? null : status),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs2),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+              vertical: AppSpacing.xs2,
+            ),
             decoration: BoxDecoration(
               color: cfg.bgColor,
               borderRadius: BorderRadius.circular(10),

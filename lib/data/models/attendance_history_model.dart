@@ -46,9 +46,23 @@ class AttendanceHistoryModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        month, branch, presentDays, totalWorkingDays, attendanceRate,
-        avgHoursPerDay, onTimeRate, totalLoggedHours, checkedInSince,
-        checkInLocation, gpsVerified, lateCount, halfDayCount, leaveCount,
-        casualLeavesLeft, avgCheckInTime, avgCheckOutTime, logs,
-      ];
+    month,
+    branch,
+    presentDays,
+    totalWorkingDays,
+    attendanceRate,
+    avgHoursPerDay,
+    onTimeRate,
+    totalLoggedHours,
+    checkedInSince,
+    checkInLocation,
+    gpsVerified,
+    lateCount,
+    halfDayCount,
+    leaveCount,
+    casualLeavesLeft,
+    avgCheckInTime,
+    avgCheckOutTime,
+    logs,
+  ];
 }

@@ -15,7 +15,12 @@ class DealsSummary extends Equatable {
   });
 
   @override
-  List<Object?> get props => [openPipelineAmount, wonDealsCount, winRate, avgDealAmount];
+  List<Object?> get props => [
+    openPipelineAmount,
+    wonDealsCount,
+    winRate,
+    avgDealAmount,
+  ];
 }
 
 class DealStageMetric extends Equatable {

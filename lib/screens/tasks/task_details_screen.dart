@@ -39,23 +39,26 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               onRetry: () => context.read<TasksBloc>().add(const LoadTasks()),
             );
           }
-          if (state is TasksInitial || state is TasksLoading || state is! TasksLoaded) {
+          if (state is TasksInitial ||
+              state is TasksLoading ||
+              state is! TasksLoaded) {
             return const AppLoadingWidget();
           }
           final task = state.allTasks.firstWhere(
             (t) => t.id == widget.taskId,
             orElse: () => Task(
-              id: widget.taskId, title: 'Task Not Found', type: TaskType.task,
-              time: 'Unknown', isCompleted: false, isOverdue: false,
+              id: widget.taskId,
+              title: 'Task Not Found',
+              type: TaskType.task,
+              time: 'Unknown',
+              isCompleted: false,
+              isOverdue: false,
               priority: TaskPriority.low,
             ),
           );
           return Column(
             children: [
-              const ScreenHeader(
-                title: 'Task Details',
-                showBackButton: true,
-              ),
+              const ScreenHeader(title: 'Task Details', showBackButton: true),
               Expanded(
                 child: SingleChildScrollView(
                   padding: AppSpacing.screenPaddingV,

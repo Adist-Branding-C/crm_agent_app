@@ -38,7 +38,8 @@ class _SearchFieldState extends State<SearchField> {
 
   void _onTextChanged() {
     final text = widget.controller.text;
-    if (_showClear != text.isNotEmpty) setState(() => _showClear = text.isNotEmpty);
+    if (_showClear != text.isNotEmpty)
+      setState(() => _showClear = text.isNotEmpty);
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 300), () {
       if (mounted) widget.onChanged(text);
@@ -53,11 +54,19 @@ class _SearchFieldState extends State<SearchField> {
         borderRadius: 16,
         child: TextField(
           controller: widget.controller,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
           decoration: InputDecoration(
             hintText: 'Search enquiries, phone, location...',
-            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
-            prefixIcon: const Icon(Icons.search_rounded, color: AppColors.textMuted, size: 20),
+            hintStyle: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
+            prefixIcon: const Icon(
+              Icons.search_rounded,
+              color: AppColors.textMuted,
+              size: 20,
+            ),
             suffixIcon: _showClear
                 ? IconButton(
                     icon: const Icon(Icons.close_rounded, size: 18),
@@ -69,7 +78,10 @@ class _SearchFieldState extends State<SearchField> {
                   )
                 : null,
             border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.lg,
+              vertical: AppSpacing.md,
+            ),
           ),
         ),
       ),

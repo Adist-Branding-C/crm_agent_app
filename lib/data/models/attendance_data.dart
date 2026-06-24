@@ -12,9 +12,13 @@ class AttendanceData extends Equatable {
   final List<AttendanceTimelineItem> timeline;
 
   static const initial = AttendanceData(
-    isCheckedIn: false, checkInTime: null,
-    location: 'Calicut Branch', callsCount: 22,
-    visitsCount: 3, notesCount: 8, hoursCount: 5.4,
+    isCheckedIn: false,
+    checkInTime: null,
+    location: 'Calicut Branch',
+    callsCount: 22,
+    visitsCount: 3,
+    notesCount: 8,
+    hoursCount: 5.4,
     timeline: [],
   );
 
@@ -53,13 +57,13 @@ class AttendanceData extends Equatable {
 
   @override
   List<Object?> get props => [
-        isCheckedIn,
-        checkInTime,
-        location,
-        callsCount,
-        visitsCount,
-        notesCount,
-        hoursCount,
-        timeline,
-      ];
+    isCheckedIn,
+    checkInTime,
+    location,
+    callsCount,
+    visitsCount,
+    notesCount,
+    hoursCount,
+    timeline,
+  ];
 }

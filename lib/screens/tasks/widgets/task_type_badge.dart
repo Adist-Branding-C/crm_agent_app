@@ -17,7 +17,10 @@ class TaskTypeBadge extends StatelessWidget {
     final bg = type.activeBg;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(6),
@@ -29,7 +32,11 @@ class TaskTypeBadge extends StatelessWidget {
           AppSpacing.gapWXs,
           Text(
             type.label,
-            style: TextStyle(color: color, fontSize: context.scaleFont(11), fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: color,
+              fontSize: context.scaleFont(11),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

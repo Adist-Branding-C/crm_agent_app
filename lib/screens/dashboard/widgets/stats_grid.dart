@@ -15,33 +15,84 @@ class StatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final isTablet = ResponsiveHelper.isTablet(context);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       child: isTablet ? _horizontalRow(context) : _verticalGrid(context),
     );
   }
 
   Widget _horizontalRow(BuildContext context) {
-    return Row(children: _allCards(context).map((c) => Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(right: AppSpacing.lg),
-        child: c,
-      ),
-    )).toList());
+    return Row(
+      children: _allCards(context)
+          .map(
+            (c) => Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(right: AppSpacing.lg),
+                child: c,
+              ),
+            ),
+          )
+          .toList(),
+    );
   }
 
   Widget _verticalGrid(BuildContext context) {
     final cards = _allCards(context);
-    return Column(children: [
-      Row(children: [Expanded(child: cards[0]), AppSpacing.gapWLg, Expanded(child: cards[1])]),
-      AppSpacing.gapLg,
-      Row(children: [Expanded(child: cards[2]), AppSpacing.gapWLg, Expanded(child: cards[3])]),
-    ]);
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(child: cards[0]),
+            AppSpacing.gapWLg,
+            Expanded(child: cards[1]),
+          ],
+        ),
+        AppSpacing.gapLg,
+        Row(
+          children: [
+            Expanded(child: cards[2]),
+            AppSpacing.gapWLg,
+            Expanded(child: cards[3]),
+          ],
+        ),
+      ],
+    );
   }
 
   List<StatsCard> _allCards(BuildContext context) => [
-    StatsCard(icon: Icons.campaign_outlined, iconColor: AppColors.accent, iconBgColor: AppColors.accentBackground, title: 'Campaign', subtitle: '${stats.activeCampaigns} active', onTap: () => context.pushNamed(AppRoutes.campaigns)),
-    StatsCard(icon: Icons.business_center_outlined, iconColor: AppColors.warning, iconBgColor: AppColors.warningBackground, title: 'Deals', subtitle: '${stats.openDeals} open', onTap: () => context.pushNamed(AppRoutes.deals)),
-    StatsCard(icon: Icons.donut_large_rounded, iconColor: AppColors.info, iconBgColor: AppColors.infoBackground, title: 'Analytics', subtitle: '${stats.analyticsConversionRate.toInt()}% conv.', onTap: () => context.pushNamed(AppRoutes.analytics)),
-    StatsCard(icon: Icons.fingerprint_rounded, iconColor: AppColors.success, iconBgColor: AppColors.successBackground, title: 'Attendance', subtitle: stats.attendanceStatus, onTap: () => context.pushNamed(AppRoutes.attendance)),
+    StatsCard(
+      icon: Icons.campaign_outlined,
+      iconColor: AppColors.accent,
+      iconBgColor: AppColors.accentBackground,
+      title: 'Campaign',
+      subtitle: '${stats.activeCampaigns} active',
+      onTap: () => context.pushNamed(AppRoutes.campaigns),
+    ),
+    StatsCard(
+      icon: Icons.business_center_outlined,
+      iconColor: AppColors.warning,
+      iconBgColor: AppColors.warningBackground,
+      title: 'Deals',
+      subtitle: '${stats.openDeals} open',
+      onTap: () => context.pushNamed(AppRoutes.deals),
+    ),
+    StatsCard(
+      icon: Icons.donut_large_rounded,
+      iconColor: AppColors.info,
+      iconBgColor: AppColors.infoBackground,
+      title: 'Analytics',
+      subtitle: '${stats.analyticsConversionRate.toInt()}% conv.',
+      onTap: () => context.pushNamed(AppRoutes.analytics),
+    ),
+    StatsCard(
+      icon: Icons.fingerprint_rounded,
+      iconColor: AppColors.success,
+      iconBgColor: AppColors.successBackground,
+      title: 'Attendance',
+      subtitle: stats.attendanceStatus,
+      onTap: () => context.pushNamed(AppRoutes.attendance),
+    ),
   ];
 }

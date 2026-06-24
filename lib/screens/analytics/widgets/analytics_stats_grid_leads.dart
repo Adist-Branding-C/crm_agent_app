@@ -14,24 +14,32 @@ class AnalyticsStatsGridLeads extends StatelessWidget {
     return ResponsiveQuadGrid(
       children: [
         AnalyticsStatsCard(
-          icon: Icons.people_outline_rounded, iconColor: AppColors.errorColor,
+          icon: Icons.people_outline_rounded,
+          iconColor: AppColors.errorColor,
           iconBgColor: AppColors.primaryColorLight,
-          value: summary.totalLeads.toString(), label: 'Total leads',
+          value: summary.totalLeads.toString(),
+          label: 'Total leads',
         ),
         AnalyticsStatsCard(
-          icon: Icons.adjust_rounded, iconColor: AppColors.accent,
+          icon: Icons.adjust_rounded,
+          iconColor: AppColors.accent,
           iconBgColor: AppColors.accentBackground,
-          value: '${summary.conversionRate.toInt()}%', label: 'Conversion',
+          value: '${summary.conversionRate.toInt()}%',
+          label: 'Conversion',
         ),
         AnalyticsStatsCard(
-          icon: Icons.gesture_rounded, iconColor: AppColors.success,
+          icon: Icons.gesture_rounded,
+          iconColor: AppColors.success,
           iconBgColor: AppColors.successBackground,
-          value: summary.interestedCount.toString(), label: 'Interested',
+          value: summary.interestedCount.toString(),
+          label: 'Interested',
         ),
         AnalyticsStatsCard(
-          icon: Icons.trending_down_rounded, iconColor: AppColors.errorColor,
+          icon: Icons.trending_down_rounded,
+          iconColor: AppColors.errorColor,
           iconBgColor: AppColors.errorBackground,
-          value: summary.lostCount.toString(), label: 'Lost',
+          value: summary.lostCount.toString(),
+          label: 'Lost',
         ),
       ],
     );

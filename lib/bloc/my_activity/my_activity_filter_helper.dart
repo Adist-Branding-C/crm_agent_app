@@ -10,14 +10,10 @@ List<MyActivityItem> applyActivityFilters(
 }) {
   var filtered = items;
   if (typeFilter != ActivityTypeFilter.all) {
-    filtered = filtered
-        .where((i) => i.entityType == typeFilter)
-        .toList();
+    filtered = filtered.where((i) => i.entityType == typeFilter).toList();
   }
   if (leadFilter != 'All leads') {
-    filtered = filtered
-        .where((i) => i.assignee == leadFilter)
-        .toList();
+    filtered = filtered.where((i) => i.assignee == leadFilter).toList();
   }
   filtered = _applyTimeFilter(filtered, timeFilter);
   return filtered;
@@ -43,9 +39,18 @@ List<MyActivityItem> _applyTimeFilter(
 
 DateTime? _parseDate(String label) {
   final months = {
-    'January': 1, 'February': 2, 'March': 3, 'April': 4,
-    'May': 5, 'June': 6, 'July': 7, 'August': 8,
-    'September': 9, 'October': 10, 'November': 11, 'December': 12,
+    'January': 1,
+    'February': 2,
+    'March': 3,
+    'April': 4,
+    'May': 5,
+    'June': 6,
+    'July': 7,
+    'August': 8,
+    'September': 9,
+    'October': 10,
+    'November': 11,
+    'December': 12,
   };
   final parts = label.split(' ');
   if (parts.length != 3) return null;

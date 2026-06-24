@@ -17,7 +17,10 @@ class HistoryToggleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      margin: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       padding: EdgeInsets.all(AppSpacing.xs),
       decoration: BoxDecoration(
         color: AppColors.slate100,
@@ -25,14 +28,20 @@ class HistoryToggleBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(child: ToggleItem(
-            value: 'Log', selected: selected,
-            onChanged: onChanged,
-          )),
-          Expanded(child: ToggleItem(
-            value: 'Calendar', selected: selected,
-            onChanged: onChanged,
-          )),
+          Expanded(
+            child: ToggleItem(
+              value: 'Log',
+              selected: selected,
+              onChanged: onChanged,
+            ),
+          ),
+          Expanded(
+            child: ToggleItem(
+              value: 'Calendar',
+              selected: selected,
+              onChanged: onChanged,
+            ),
+          ),
         ],
       ),
     );

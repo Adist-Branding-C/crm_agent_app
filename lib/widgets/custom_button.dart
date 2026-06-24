@@ -12,8 +12,14 @@ class CustomButton extends StatelessWidget {
   final String? semanticsLabel;
 
   const CustomButton({
-    super.key, required this.text, this.onPressed, this.isLoading = false,
-    this.width, this.buttonStyle, this.icon, this.semanticsLabel,
+    super.key,
+    required this.text,
+    this.onPressed,
+    this.isLoading = false,
+    this.width,
+    this.buttonStyle,
+    this.icon,
+    this.semanticsLabel,
   });
 
   @override
@@ -27,14 +33,18 @@ class CustomButton extends StatelessWidget {
       child: SizedBox(
         width: width,
         child: ElevatedButton(
-          style: (buttonStyle ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
-            backgroundColor: WidgetStateProperty.resolveWith((states) {
-              if (states.contains(WidgetState.disabled)) return AppColors.slate300;
-              return null;
-            }),
-          ),
+          style: (buttonStyle ?? Theme.of(context).elevatedButtonTheme.style)
+              ?.copyWith(
+                backgroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.disabled))
+                    return AppColors.slate300;
+                  return null;
+                }),
+              ),
           onPressed: active ? onPressed : null,
-          child: isLoading ? const ButtonLoading() : ButtonLabel(text: text, icon: icon),
+          child: isLoading
+              ? const ButtonLoading()
+              : ButtonLabel(text: text, icon: icon),
         ),
       ),
     );

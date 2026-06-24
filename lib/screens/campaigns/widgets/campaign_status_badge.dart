@@ -15,7 +15,10 @@ class CampaignStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     if (campaign.isCompleted) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.sm,
+          vertical: AppSpacing.xs,
+        ),
         decoration: BoxDecoration(
           color: AppColors.successBackground,
           borderRadius: BorderRadius.circular(8),

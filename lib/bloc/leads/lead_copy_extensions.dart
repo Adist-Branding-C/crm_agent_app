@@ -7,10 +7,15 @@ extension LeadCopyWithCallLog on Lead {
     required LeadPurpose newPurpose,
     String? remark,
   }) => Lead(
-    id: id, name: name, status: newStatus,
-    source: newPurpose, category: category,
-    phone: phone, location: location,
-    email: email, leadSource: leadSource,
+    id: id,
+    name: name,
+    status: newStatus,
+    source: newPurpose,
+    category: category,
+    phone: phone,
+    location: location,
+    email: email,
+    leadSource: leadSource,
     nextFollowUp: nextFollowUp,
     note: (remark != null && remark.isNotEmpty) ? remark : note,
   );
@@ -18,10 +23,16 @@ extension LeadCopyWithCallLog on Lead {
 
 extension LeadCopyWithStatus on Lead {
   Lead copyWithStatus(LeadStatus newStatus) => Lead(
-    id: id, name: name, status: newStatus,
-    source: source, category: category,
-    phone: phone, location: location,
-    email: email, leadSource: leadSource,
-    nextFollowUp: nextFollowUp, note: note,
+    id: id,
+    name: name,
+    status: newStatus,
+    source: source,
+    category: category,
+    phone: phone,
+    location: location,
+    email: email,
+    leadSource: leadSource,
+    nextFollowUp: nextFollowUp,
+    note: note,
   );
 }

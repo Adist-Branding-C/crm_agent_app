@@ -15,7 +15,7 @@ class ForgotPasswordBloc
   final OtpRepository authRepository;
 
   ForgotPasswordBloc({required this.authRepository})
-      : super(const ForgotPasswordState()) {
+    : super(const ForgotPasswordState()) {
     on<ForgotPasswordPhoneChanged>(_onPhoneChanged);
     on<ForgotPasswordSubmitted>(_onSubmitted);
   }
@@ -25,11 +25,13 @@ class ForgotPasswordBloc
     Emitter<ForgotPasswordState> emit,
   ) {
     final phone = ForgotPasswordPhone.dirty(event.phone);
-    emit(state.copyWith(
-      phone: phone,
-      status: FormzSubmissionStatus.initial,
-      errorMessage: null,
-    ));
+    emit(
+      state.copyWith(
+        phone: phone,
+        status: FormzSubmissionStatus.initial,
+        errorMessage: null,
+      ),
+    );
   }
 
   Future<void> _onSubmitted(
@@ -37,10 +39,9 @@ class ForgotPasswordBloc
     Emitter<ForgotPasswordState> emit,
   ) async {
     final phone = ForgotPasswordPhone.dirty(state.phone.value);
-    emit(state.copyWith(
-      phone: phone,
-      status: FormzSubmissionStatus.inProgress,
-    ));
+    emit(
+      state.copyWith(phone: phone, status: FormzSubmissionStatus.inProgress),
+    );
 
     if (phone.isNotValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));
@@ -51,10 +52,12 @@ class ForgotPasswordBloc
       await authRepository.sendOtp(phone.value);
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } catch (_) {
-      emit(state.copyWith(
-        status: FormzSubmissionStatus.failure,
-        errorMessage: 'Failed to send OTP. Please try again.',
-      ));
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          errorMessage: 'Failed to send OTP. Please try again.',
+        ),
+      );
     }
   }
 }

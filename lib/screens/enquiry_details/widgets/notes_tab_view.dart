@@ -13,9 +13,7 @@ class NotesTabView extends StatelessWidget {
     return Column(
       children: [
         const NotesInputField(),
-        Expanded(
-          child: NotesHistoryList(notes: notes),
-        ),
+        Expanded(child: NotesHistoryList(notes: notes)),
       ],
     );
   }

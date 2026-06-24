@@ -51,10 +51,7 @@ class DealPipelineCard extends StatelessWidget {
                 ),
               ),
               AppSpacing.gapWSm,
-              UserAvatar(
-                initials: deal.ownerInitials,
-                size: 28,
-              ),
+              UserAvatar(initials: deal.ownerInitials, size: 28),
             ],
           ),
         ),

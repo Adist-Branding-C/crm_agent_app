@@ -36,10 +36,20 @@ class _AddFollowUpFormState extends State<AddFollowUpForm> {
     final dashRepo = context.read<DashboardRepository>();
     final followUpRepo = context.read<FollowUpsRepository>();
     setState(() => _isSubmitting = true);
-    final fc = FollowUpCall(id: widget.lead.id, tag: _selectedTag, name: 'Call back ${widget.lead.name}', time: _whenController.text);
+    final fc = FollowUpCall(
+      id: widget.lead.id,
+      tag: _selectedTag,
+      name: 'Call back ${widget.lead.name}',
+      time: _whenController.text,
+    );
     final f = FollowUp(
-      id: DateTime.now().toString(), name: widget.lead.name, category: widget.lead.source, status: widget.lead.status,
-      urgency: _selectedTag == FollowUpTag.priority ? FollowUpUrgency.dueToday : FollowUpUrgency.upcoming,
+      id: DateTime.now().toString(),
+      name: widget.lead.name,
+      category: widget.lead.source,
+      status: widget.lead.status,
+      urgency: _selectedTag == FollowUpTag.priority
+          ? FollowUpUrgency.dueToday
+          : FollowUpUrgency.upcoming,
     );
     await dashRepo.addFollowUp(fc);
     await followUpRepo.addFollowUp(f);
@@ -53,21 +63,42 @@ class _AddFollowUpFormState extends State<AddFollowUpForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          CustomTextField(label: 'Lead Name', hintText: '', controller: TextEditingController(text: widget.lead.name)),
+          CustomTextField(
+            label: 'Lead Name',
+            hintText: '',
+            controller: TextEditingController(text: widget.lead.name),
+          ),
           AppSpacing.gapLg,
           GestureDetector(
             onTap: () async {
               final dt = await AddTaskDatePickerHelper.pickDateTime(context);
               if (dt != null && context.mounted) {
-                setState(() { _selectedDateTime = dt; _whenController.text = AddTaskDatePickerHelper.format(dt); });
+                setState(() {
+                  _selectedDateTime = dt;
+                  _whenController.text = AddTaskDatePickerHelper.format(dt);
+                });
               }
             },
-            child: AbsorbPointer(child: CustomTextField(label: 'When', hintText: 'Select date and time', controller: _whenController, isRequired: true)),
+            child: AbsorbPointer(
+              child: CustomTextField(
+                label: 'When',
+                hintText: 'Select date and time',
+                controller: _whenController,
+                isRequired: true,
+              ),
+            ),
           ),
           AppSpacing.gapLg,
-          FollowUpTagSelector(selectedTag: _selectedTag, onChanged: (tag) => setState(() => _selectedTag = tag)),
+          FollowUpTagSelector(
+            selectedTag: _selectedTag,
+            onChanged: (tag) => setState(() => _selectedTag = tag),
+          ),
           AppSpacing.gapXxl,
-          CustomButton(text: 'Create Follow-up', isLoading: _isSubmitting, onPressed: _selectedDateTime != null ? _submit : null),
+          CustomButton(
+            text: 'Create Follow-up',
+            isLoading: _isSubmitting,
+            onPressed: _selectedDateTime != null ? _submit : null,
+          ),
         ],
       ),
     );

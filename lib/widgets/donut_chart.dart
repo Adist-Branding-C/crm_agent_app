@@ -55,10 +55,7 @@ class _CenterLabel extends StatelessWidget {
             color: AppColors.textDark,
           ),
         ),
-        Text(
-          subLabel,
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
+        Text(subLabel, style: Theme.of(context).textTheme.bodySmall),
       ],
     );
   }

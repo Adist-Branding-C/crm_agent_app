@@ -20,10 +20,7 @@ class ProfileCard extends StatelessWidget {
         children: [
           UserAvatar(initials: profile.initials, size: 80, fontSize: 28),
           AppSpacing.gapLg,
-          Text(
-            profile.name,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
+          Text(profile.name, style: Theme.of(context).textTheme.titleLarge),
           AppSpacing.gapSm,
           Text(
             '${profile.role} · ${profile.branch}',

@@ -32,13 +32,12 @@ class ConfirmPasswordInput extends StatelessWidget {
             color: context.textMuted,
             size: 20,
           ),
-          onPressed: () => context
-              .read<ChangePasswordBloc>()
-              .add(const ToggleConfirmPasswordVisibility()),
+          onPressed: () => context.read<ChangePasswordBloc>().add(
+            const ToggleConfirmPasswordVisibility(),
+          ),
         ),
-        onChanged: (val) => context
-            .read<ChangePasswordBloc>()
-            .add(ConfirmPasswordChanged(val)),
+        onChanged: (val) =>
+            context.read<ChangePasswordBloc>().add(ConfirmPasswordChanged(val)),
       ),
     );
   }

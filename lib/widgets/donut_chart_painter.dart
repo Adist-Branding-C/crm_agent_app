@@ -7,10 +7,7 @@ class DonutChartPainter extends CustomPainter {
   final List<DonutSegment> segments;
   final double strokeWidth;
 
-  const DonutChartPainter({
-    required this.segments,
-    this.strokeWidth = 22,
-  });
+  const DonutChartPainter({required this.segments, this.strokeWidth = 22});
 
   @override
   void paint(Canvas canvas, Size size) {

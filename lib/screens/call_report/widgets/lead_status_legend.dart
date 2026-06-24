@@ -15,9 +15,7 @@ class LeadStatusLegend extends StatelessWidget {
       alignment: WrapAlignment.center,
       spacing: 28,
       runSpacing: AppSpacing.lg,
-      children: items
-          .map((item) => LeadStatusLegendItem(item: item))
-          .toList(),
+      children: items.map((item) => LeadStatusLegendItem(item: item)).toList(),
     );
   }
 }

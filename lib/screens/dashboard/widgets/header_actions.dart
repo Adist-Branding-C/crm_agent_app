@@ -17,7 +17,9 @@ class HeaderActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final initials = context.select<AccountBloc, String>(
-      (b) => b.state is AccountLoaded ? (b.state as AccountLoaded).profile.initials : 'AN',
+      (b) => b.state is AccountLoaded
+          ? (b.state as AccountLoaded).profile.initials
+          : 'AN',
     );
     final notifCount = context.select<NotificationsBloc, int>(
       (b) => b.state is NotificationsLoaded

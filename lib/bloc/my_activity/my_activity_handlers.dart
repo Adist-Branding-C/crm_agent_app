@@ -23,14 +23,16 @@ Future<void> myActivityLoad(
       leadFilter: 'All leads',
     );
     final grouped = groupByDate(filtered);
-    emit(MyActivityLoaded(
-      groupedActivities: grouped,
-      totalCount: _countItems(grouped),
-      selectedTimeFilter: ActivityTimeFilter.all,
-      selectedTypeFilter: ActivityTypeFilter.all,
-      selectedLead: 'All leads',
-      availableLeads: leads,
-    ));
+    emit(
+      MyActivityLoaded(
+        groupedActivities: grouped,
+        totalCount: _countItems(grouped),
+        selectedTimeFilter: ActivityTimeFilter.all,
+        selectedTypeFilter: ActivityTypeFilter.all,
+        selectedLead: 'All leads',
+        availableLeads: leads,
+      ),
+    );
   } catch (e) {
     emit(MyActivityError(e.toString()));
   }
@@ -79,10 +81,12 @@ void _emitFiltered(
     leadFilter: current.selectedLead,
   );
   final grouped = groupByDate(filtered);
-  emit(current.copyWith(
-    groupedActivities: grouped,
-    totalCount: _countItems(grouped),
-  ));
+  emit(
+    current.copyWith(
+      groupedActivities: grouped,
+      totalCount: _countItems(grouped),
+    ),
+  );
 }
 
 int _countItems(List<ActivityDateGroup> groups) =>

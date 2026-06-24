@@ -24,8 +24,22 @@ class AnalyticsTabToggle extends StatelessWidget {
       padding: EdgeInsets.all(AppSpacing.xs),
       child: Row(
         children: [
-          Expanded(child: _TabButton(label: 'Leads', isSelected: activeTab == AnalyticsTab.leads, isDeals: false, onTap: () => onTabChanged(AnalyticsTab.leads))),
-          Expanded(child: _TabButton(label: 'Deals', isSelected: activeTab == AnalyticsTab.deals, isDeals: true, onTap: () => onTabChanged(AnalyticsTab.deals))),
+          Expanded(
+            child: _TabButton(
+              label: 'Leads',
+              isSelected: activeTab == AnalyticsTab.leads,
+              isDeals: false,
+              onTap: () => onTabChanged(AnalyticsTab.leads),
+            ),
+          ),
+          Expanded(
+            child: _TabButton(
+              label: 'Deals',
+              isSelected: activeTab == AnalyticsTab.deals,
+              isDeals: true,
+              onTap: () => onTabChanged(AnalyticsTab.deals),
+            ),
+          ),
         ],
       ),
     );
@@ -52,13 +66,13 @@ class _TabButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: isSelected ? Colors.white : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
-            border: isSelected && isDeals
-                ? Border.all(color: AppColors.warningDark, width: 1.5)
-                : null,
-          ),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.white : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+          border: isSelected && isDeals
+              ? Border.all(color: AppColors.warningDark, width: 1.5)
+              : null,
+        ),
         child: Text(
           label,
           style: TextStyle(

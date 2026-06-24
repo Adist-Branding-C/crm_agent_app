@@ -16,7 +16,10 @@ void main() {
     expect(find.text('Profile'), findsOneWidget);
 
     // 2. Navigate to Attendance History
-    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -300));
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -300),
+    );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Attendance History'));
     await tester.pumpAndSettle();
@@ -49,7 +52,10 @@ void main() {
     expect(find.text('TUE, 12 May'), findsOneWidget); // selected default
 
     // Scroll calendar grid into view
-    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -300));
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -300),
+    );
     await tester.pumpAndSettle();
 
     // Tap day 11 cell

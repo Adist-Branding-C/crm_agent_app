@@ -13,11 +13,7 @@ class FilterResult extends Equatable {
   final LeadSource? source;
 
   /// Creates a constant [FilterResult].
-  const FilterResult({
-    required this.sortBy,
-    this.status,
-    this.source,
-  });
+  const FilterResult({required this.sortBy, this.status, this.source});
 
   @override
   List<Object?> get props => [sortBy, status, source];

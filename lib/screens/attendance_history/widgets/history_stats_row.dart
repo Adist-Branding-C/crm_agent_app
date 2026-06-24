@@ -15,15 +15,34 @@ class HistoryStatsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      HistoryStatCard(count: '${history.presentDays}', label: 'Present', color: AppColors.success),
-      HistoryStatCard(count: '${history.lateCount}', label: 'Late', color: AppColors.warning),
-      HistoryStatCard(count: '${history.halfDayCount}', label: 'Half Day', color: AppColors.warningText),
-      HistoryStatCard(count: '${history.leaveCount}', label: 'Leave', color: AppColors.info),
+      HistoryStatCard(
+        count: '${history.presentDays}',
+        label: 'Present',
+        color: AppColors.success,
+      ),
+      HistoryStatCard(
+        count: '${history.lateCount}',
+        label: 'Late',
+        color: AppColors.warning,
+      ),
+      HistoryStatCard(
+        count: '${history.halfDayCount}',
+        label: 'Half Day',
+        color: AppColors.warningText,
+      ),
+      HistoryStatCard(
+        count: '${history.leaveCount}',
+        label: 'Leave',
+        color: AppColors.info,
+      ),
     ];
 
     final isMobileSmall = ResponsiveHelper.isMobileSmall(context);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       child: isMobileSmall
           ? Column(
               children: [

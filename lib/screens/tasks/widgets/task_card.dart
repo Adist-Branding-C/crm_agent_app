@@ -16,7 +16,8 @@ class TaskCard extends StatelessWidget {
     final showOverdue = task.isOverdue && !task.isCompleted;
     final timeColor = showOverdue ? AppColors.errorColor : AppColors.textMuted;
     final timeStyle = TextStyle(
-      color: timeColor, fontSize: 12,
+      color: timeColor,
+      fontSize: 12,
       fontWeight: showOverdue ? FontWeight.bold : FontWeight.normal,
     );
     return CustomCard(
@@ -26,15 +27,21 @@ class TaskCard extends StatelessWidget {
         children: [
           TaskCheckbox(
             isChecked: task.isCompleted,
-            onTap: () => context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
+            onTap: () =>
+                context.read<TasksBloc>().add(ToggleTaskCompletion(task.id)),
           ),
           AppSpacing.gapWLg,
           Expanded(
-            child: TaskCardDetails(task: task, timeColor: timeColor, timeStyle: timeStyle),
+            child: TaskCardDetails(
+              task: task,
+              timeColor: timeColor,
+              timeStyle: timeStyle,
+            ),
           ),
           AppSpacing.gapWMd,
           Container(
-            width: 4, height: 32,
+            width: 4,
+            height: 32,
             decoration: BoxDecoration(
               color: task.getIndicatorColor(),
               borderRadius: BorderRadius.circular(2),

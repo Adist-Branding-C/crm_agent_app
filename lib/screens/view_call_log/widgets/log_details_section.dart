@@ -14,33 +14,73 @@ class LogDetailsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Log Details', style: Theme.of(context).textTheme.titleSmall?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold)),
+        Text(
+          'Log Details',
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+            color: AppColors.textDark,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const SizedBox(height: 12),
-        _LogDetailsRow(label: 'Lead Status', value: status.label, colors: _getStatusColors(status)),
+        _LogDetailsRow(
+          label: 'Lead Status',
+          value: status.label,
+          colors: _getStatusColors(status),
+        ),
         const SizedBox(height: 12),
-        _LogDetailsRow(label: 'Purpose', value: purpose.label, colors: _getPurposeColors(purpose)),
+        _LogDetailsRow(
+          label: 'Purpose',
+          value: purpose.label,
+          colors: _getPurposeColors(purpose),
+        ),
       ],
     );
   }
 
   List<Color> _getStatusColors(LeadStatus status) {
-    if (status == LeadStatus.interested || status == LeadStatus.converted || status == LeadStatus.qualified) {
-      return [AppColors.success, AppColors.successBackground, AppColors.successAlpha15];
+    if (status == LeadStatus.interested ||
+        status == LeadStatus.converted ||
+        status == LeadStatus.qualified) {
+      return [
+        AppColors.success,
+        AppColors.successBackground,
+        AppColors.successAlpha15,
+      ];
     }
     if (status == LeadStatus.notInterested || status == LeadStatus.lost) {
-      return [AppColors.errorColor, AppColors.errorBackground, AppColors.errorBorder];
+      return [
+        AppColors.errorColor,
+        AppColors.errorBackground,
+        AppColors.errorBorder,
+      ];
     }
-    return [AppColors.infoText, AppColors.infoBackgroundLight, AppColors.infoAlpha15];
+    return [
+      AppColors.infoText,
+      AppColors.infoBackgroundLight,
+      AppColors.infoAlpha15,
+    ];
   }
 
   List<Color> _getPurposeColors(LeadPurpose purpose) {
     if (purpose == LeadPurpose.newAdmission) {
-      return [AppColors.primaryColor, AppColors.primaryColorLight, AppColors.primaryAlpha30];
+      return [
+        AppColors.primaryColor,
+        AppColors.primaryColorLight,
+        AppColors.primaryAlpha30,
+      ];
     }
     if (purpose == LeadPurpose.enquiry) {
-      return [AppColors.infoText, AppColors.infoBackgroundLight, AppColors.infoAlpha15];
+      return [
+        AppColors.infoText,
+        AppColors.infoBackgroundLight,
+        AppColors.infoAlpha15,
+      ];
     }
-    return [AppColors.warningText, AppColors.warningTextBackground, AppColors.warningAlpha15];
+    return [
+      AppColors.warningText,
+      AppColors.warningTextBackground,
+      AppColors.warningAlpha15,
+    ];
   }
 }
 
@@ -59,15 +99,35 @@ class _LogDetailsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: AppColors.borderLight)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.borderLight),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.w500)),
+          Text(
+            label,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AppColors.textDark,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(color: colors[1], borderRadius: BorderRadius.circular(8), border: Border.all(color: colors[2])),
-            child: Text(value, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: colors[0], fontWeight: FontWeight.bold)),
+            decoration: BoxDecoration(
+              color: colors[1],
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: colors[2]),
+            ),
+            child: Text(
+              value,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: colors[0],
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),

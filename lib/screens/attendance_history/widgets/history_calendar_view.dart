@@ -22,7 +22,10 @@ class HistoryCalendarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
+      margin: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +34,11 @@ class HistoryCalendarView extends StatelessWidget {
           AppSpacing.gapLg,
           const WeekDaysHeader(),
           AppSpacing.gapSm,
-          CalendarGrid(history: history, selectedDay: selectedDay, onDaySelected: onDaySelected),
+          CalendarGrid(
+            history: history,
+            selectedDay: selectedDay,
+            onDaySelected: onDaySelected,
+          ),
           const HistoryCalendarLegend(),
         ],
       ),

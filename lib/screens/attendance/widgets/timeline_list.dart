@@ -30,9 +30,9 @@ class TimelineList extends StatelessWidget {
             child: Center(
               child: Text(
                 'No activities logged today.',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.textMuted,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
               ),
             ),
           )

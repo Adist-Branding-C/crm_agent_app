@@ -40,8 +40,12 @@ class TasksHeader extends StatelessWidget {
           ),
           showBackButton: false,
           actions: const TasksHeaderActions(),
-          padding:
-              EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
+          padding: EdgeInsets.only(
+            left: AppSpacing.xxl,
+            right: AppSpacing.xxl,
+            top: AppSpacing.lg,
+            bottom: AppSpacing.sm,
+          ),
         );
       },
     );

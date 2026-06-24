@@ -25,7 +25,13 @@ class LeadsLoaded extends LeadsState {
 
   @override
   List<Object?> get props => [
-    allLeads, filteredLeads, searchQuery, selectedCategory,
-    isSpotlightOnly, sortBy, selectedStatus, selectedSource,
+    allLeads,
+    filteredLeads,
+    searchQuery,
+    selectedCategory,
+    isSpotlightOnly,
+    sortBy,
+    selectedStatus,
+    selectedSource,
   ];
 }

@@ -23,13 +23,28 @@ class NotificationsHeader extends StatelessWidget {
           showBackButton: true,
           subtitleWidget: Text(
             '$count unread',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted, fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AppColors.textMuted,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           actions: TextButton(
-            onPressed: () => context.read<NotificationsBloc>().add(const MarkAllAsRead()),
-            child: const Text('Mark all', style: TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.bold)),
+            onPressed: () =>
+                context.read<NotificationsBloc>().add(const MarkAllAsRead()),
+            child: const Text(
+              'Mark all',
+              style: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
+          padding: EdgeInsets.only(
+            left: AppSpacing.xxl,
+            right: AppSpacing.xxl,
+            top: AppSpacing.lg,
+            bottom: AppSpacing.sm,
+          ),
         );
       },
     );

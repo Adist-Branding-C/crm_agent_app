@@ -30,7 +30,16 @@ class Lead extends Equatable {
 
   @override
   List<Object?> get props => [
-        id, name, status, source, category, phone, location,
-        email, leadSource, nextFollowUp, note,
-      ];
+    id,
+    name,
+    status,
+    source,
+    category,
+    phone,
+    location,
+    email,
+    leadSource,
+    nextFollowUp,
+    note,
+  ];
 }

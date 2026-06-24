@@ -31,5 +31,10 @@ class DealsTabData extends Equatable {
   });
 
   @override
-  List<Object?> get props => [summary, stageMetrics, pipelineMetrics, typeMetrics];
+  List<Object?> get props => [
+    summary,
+    stageMetrics,
+    pipelineMetrics,
+    typeMetrics,
+  ];
 }

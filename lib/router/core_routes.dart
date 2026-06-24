@@ -23,7 +23,10 @@ List<RouteBase> buildCoreRoutes() {
       path: AppRoutes.dashboardPath,
       builder: (context, state) => DashboardRouteProvider(
         initialIndex:
-            DashboardNavigationConfig.tabRegistry[state.uri.queryParameters['tab']] ?? 0,
+            DashboardNavigationConfig.tabRegistry[state
+                .uri
+                .queryParameters['tab']] ??
+            0,
         initialFilter: state.uri.queryParameters['filter'],
       ),
     ),

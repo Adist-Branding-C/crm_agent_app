@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/data/datasources/auth_datasource.dart';
+import 'package:crm_agent_app/data/datasources/auth_remote_datasource.dart';
+import 'package:crm_agent_app/data/models/login_response_model.dart';
 import 'package:crm_agent_app/data/repositories/session_repository_impl.dart';
 import 'package:crm_agent_app/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
+  @override
+  Future<LoginResponse> login(String phone, String password) async {
+    return const LoginResponse(
+      success: true,
+      message: 'Login successful',
+      token: 'fake_jwt_token',
+      user: LoginUser(phone: '1234567890', name: 'John Doe'),
+    );
+  }
+}
+
 Widget createTestApp() {
   SharedPreferences.setMockInitialValues({});
   final dataSource = AuthDataSourceImpl();
-  final repo = SessionRepositoryImpl(authDataSource: dataSource);
+  final remoteDataSource = FakeAuthRemoteDataSource();
+  final repo = SessionRepositoryImpl(
+    authDataSource: dataSource,
+    authRemoteDataSource: remoteDataSource,
+  );
   repo.init();
   return MyApp(sessionRepository: repo, scaleText: false);
 }

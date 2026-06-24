@@ -54,13 +54,13 @@ class MyActivityLoaded extends MyActivityState {
 
   @override
   List<Object?> get props => [
-        groupedActivities,
-        totalCount,
-        selectedTimeFilter,
-        selectedTypeFilter,
-        selectedLead,
-        availableLeads,
-      ];
+    groupedActivities,
+    totalCount,
+    selectedTimeFilter,
+    selectedTypeFilter,
+    selectedLead,
+    availableLeads,
+  ];
 }
 
 class MyActivityError extends MyActivityState {

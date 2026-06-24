@@ -11,14 +11,19 @@ class LeadSourceChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final maxSource = sourceMetrics.fold<int>(1, (max, e) => e.count > max ? e.count : max);
+    final maxSource = sourceMetrics.fold<int>(
+      1,
+      (max, e) => e.count > max ? e.count : max,
+    );
     final rows = sourceMetrics
-        .map((e) => MetricProgressRow(
-              title: e.source.label,
-              count: e.count.toString(),
-              progressValue: maxSource > 0 ? e.count / maxSource : 0.0,
-              barColor: e.source.barColor,
-            ))
+        .map(
+          (e) => MetricProgressRow(
+            title: e.source.label,
+            count: e.count.toString(),
+            progressValue: maxSource > 0 ? e.count / maxSource : 0.0,
+            barColor: e.source.barColor,
+          ),
+        )
         .toList();
     return BarChartCard(title: 'Leads by source', progressRows: rows);
   }

@@ -9,9 +9,12 @@ import 'search_suggestions.dart';
 
 String _searchErrorString(SearchFailure f) {
   switch (f) {
-    case SearchFailure.load: return 'Failed to load search data';
-    case SearchFailure.query: return 'Search failed';
-    case SearchFailure.unknown: return 'An error occurred';
+    case SearchFailure.load:
+      return 'Failed to load search data';
+    case SearchFailure.query:
+      return 'Search failed';
+    case SearchFailure.unknown:
+      return 'An error occurred';
   }
 }
 
@@ -30,7 +33,12 @@ class SearchContent extends StatelessWidget {
         const ScreenHeader(
           title: 'Search',
           showBackButton: false,
-          padding: EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
+          padding: EdgeInsets.only(
+            left: AppSpacing.xxl,
+            right: AppSpacing.xxl,
+            top: AppSpacing.lg,
+            bottom: AppSpacing.sm,
+          ),
         ),
         SearchField(
           controller: controller,
@@ -40,7 +48,10 @@ class SearchContent extends StatelessWidget {
         AppSpacing.gapLg,
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
-            buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType || (curr is SearchLoaded && (prev as SearchLoaded?)?.results != curr.results),
+            buildWhen: (prev, curr) =>
+                prev.runtimeType != curr.runtimeType ||
+                (curr is SearchLoaded &&
+                    (prev as SearchLoaded?)?.results != curr.results),
             builder: (context, state) {
               if (state is SearchLoading) {
                 return const Center(child: CircularProgressIndicator());

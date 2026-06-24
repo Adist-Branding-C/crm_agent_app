@@ -24,7 +24,9 @@ class AddDealBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: 20, right: 20, top: 12,
+        left: 20,
+        right: 20,
+        top: 12,
         bottom: MediaQuery.of(context).viewInsets.bottom + 20,
       ),
       child: Column(
@@ -33,7 +35,8 @@ class AddDealBottomSheetContent extends StatelessWidget {
         children: [
           Center(
             child: Container(
-              width: 40, height: 4,
+              width: 40,
+              height: 4,
               decoration: const BoxDecoration(
                 color: AppColors.slate300,
                 borderRadius: BorderRadius.all(Radius.circular(2)),
@@ -41,22 +44,39 @@ class AddDealBottomSheetContent extends StatelessWidget {
             ),
           ),
           AppSpacing.gapLg,
-          Text('New Deal', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.textDark, fontWeight: FontWeight.bold)),
+          Text(
+            'New Deal',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: AppColors.textDark,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           AppSpacing.gapLg,
           AddDealLeadCard(lead: lead),
           AppSpacing.gapLg,
-          AddDealFormFields(nameController: controller.nameController, amountController: controller.amountController),
+          AddDealFormFields(
+            nameController: controller.nameController,
+            amountController: controller.amountController,
+          ),
           AppSpacing.gapLg,
-          AddDealStageSelector(selectedStage: controller.selectedStage, onStageSelected: controller.selectStage),
+          AddDealStageSelector(
+            selectedStage: controller.selectedStage,
+            onStageSelected: controller.selectStage,
+          ),
           AppSpacing.gapLg,
-          AddDealDatePicker(selectedDate: controller.expectedClose, onDateSelected: controller.selectExpectedClose),
+          AddDealDatePicker(
+            selectedDate: controller.expectedClose,
+            onDateSelected: controller.selectExpectedClose,
+          ),
           AppSpacing.gapXl,
           if (controller.errorMessage != null)
             Padding(
               padding: EdgeInsets.only(bottom: AppSpacing.sm),
               child: Text(
                 controller.errorMessage!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.errorColor),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: AppColors.errorColor),
                 textAlign: TextAlign.center,
               ),
             ),

@@ -12,7 +12,10 @@ void main() {
     setUp(() {
       accountRepo = MockAccountRepository();
       authRepo = MockAuthRepository();
-      bloc = AccountBloc(accountRepository: accountRepo, authRepository: authRepo);
+      bloc = AccountBloc(
+        accountRepository: accountRepo,
+        authRepository: authRepo,
+      );
     });
 
     tearDown(() => bloc.close());
@@ -26,38 +29,44 @@ void main() {
         bloc.stream,
         emitsInOrder([
           const AccountLoading(),
-          isA<AccountLoaded>().having((s) => s.profile.name, 'name', 'Arjun Nair'),
+          isA<AccountLoaded>().having(
+            (s) => s.profile.name,
+            'name',
+            'Arjun Nair',
+          ),
         ]),
       );
       bloc.add(const LoadAccount());
     });
 
     test('LogoutRequested calls logout and emits AccountLoggedOut', () {
-      expectLater(
-        bloc.stream,
-        emitsInOrder([
-          const AccountLoggedOut(),
-        ]),
-      );
+      expectLater(bloc.stream, emitsInOrder([const AccountLoggedOut()]));
       bloc.add(const LogoutRequested());
     });
 
-    test('UpdateProfile emits AccountUpdating and AccountUpdateSuccess', () async {
-      bloc.add(const LoadAccount());
-      await bloc.stream.firstWhere((s) => s is AccountLoaded);
+    test(
+      'UpdateProfile emits AccountUpdating and AccountUpdateSuccess',
+      () async {
+        bloc.add(const LoadAccount());
+        await bloc.stream.firstWhere((s) => s is AccountLoaded);
 
-      final p = (bloc.state as AccountLoaded).profile;
-      final updated = p.copyWith(name: 'Updated Name');
+        final p = (bloc.state as AccountLoaded).profile;
+        final updated = p.copyWith(name: 'Updated Name');
 
-      expectLater(
-        bloc.stream,
-        emitsInOrder([
-          isA<AccountUpdating>(),
-          isA<AccountUpdateSuccess>().having((s) => s.profile.name, 'name', 'Updated Name'),
-        ]),
-      );
+        expectLater(
+          bloc.stream,
+          emitsInOrder([
+            isA<AccountUpdating>(),
+            isA<AccountUpdateSuccess>().having(
+              (s) => s.profile.name,
+              'name',
+              'Updated Name',
+            ),
+          ]),
+        );
 
-      bloc.add(UpdateProfile(profile: updated));
-    });
+        bloc.add(UpdateProfile(profile: updated));
+      },
+    );
   });
 }

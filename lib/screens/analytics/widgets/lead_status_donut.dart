@@ -9,15 +9,28 @@ class LeadStatusDonut extends StatelessWidget {
   final LeadsSummary summary;
   final List<StatusMetric> statusMetrics;
 
-  const LeadStatusDonut({super.key, required this.summary, required this.statusMetrics});
+  const LeadStatusDonut({
+    super.key,
+    required this.summary,
+    required this.statusMetrics,
+  });
 
   @override
   Widget build(BuildContext context) {
     final segments = statusMetrics
-        .map((e) => DonutSegment(value: e.count.toDouble(), color: e.status.barColor))
+        .map(
+          (e) =>
+              DonutSegment(value: e.count.toDouble(), color: e.status.barColor),
+        )
         .toList();
     final legends = statusMetrics
-        .map((e) => LegendRow(label: e.status.label, count: e.count, color: e.status.barColor))
+        .map(
+          (e) => LegendRow(
+            label: e.status.label,
+            count: e.count,
+            color: e.status.barColor,
+          ),
+        )
         .toList();
     return DonutChartCard(
       title: 'Leads by status',

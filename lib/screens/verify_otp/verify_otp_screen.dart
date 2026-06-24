@@ -38,9 +38,19 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('OTP Verified successfully!', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white))),
+              SnackBar(
+                content: Text(
+                  'OTP Verified successfully!',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                ),
+              ),
             );
-            context.pushReplacementNamed(AppRoutes.newPassword, extra: widget.phone);
+            context.pushReplacementNamed(
+              AppRoutes.newPassword,
+              extra: widget.phone,
+            );
           }
         },
         child: Scaffold(
