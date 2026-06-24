@@ -11,7 +11,7 @@ class CheckedOutCardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+      padding: AppSpacing.cardPaddingCompact,
       child: Row(
         children: [
           const FingerprintIcon(

@@ -3,6 +3,8 @@ import '../../theme.dart';
 import 'widgets/attendance_content.dart';
 import 'widgets/attendance_header.dart';
 
+
+
 class AttendanceScreen extends StatelessWidget {
   const AttendanceScreen({super.key});
 
@@ -14,11 +16,11 @@ class AttendanceScreen extends StatelessWidget {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            padding: AppSpacing.screenPaddingV,
             child: Column(
               children: [
                 AttendanceHeader(),
-                SizedBox(height: 24),
+                SizedBox(height: AppSpacing.xxl),
                 AttendanceContent(),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../theme.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/tasks_header.dart';
 import 'widgets/tasks_filter_tabs.dart';
@@ -14,9 +15,9 @@ class TasksScreen extends StatelessWidget {
       child: Column(
         children: [
           TasksHeader(),
-          SizedBox(height: 12),
+          SizedBox(height: AppSpacing.md),
           TasksFilterTabs(),
-          SizedBox(height: 16),
+          SizedBox(height: AppSpacing.lg),
           Expanded(child: TasksListView()),
         ],
       ),

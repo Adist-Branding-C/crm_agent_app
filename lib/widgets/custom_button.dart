@@ -2,33 +2,16 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'custom_button_helpers.dart';
 
-/// A reusable elevated custom action button.
 class CustomButton extends StatelessWidget {
-  /// The text label of the button.
   final String text;
-
-  /// The action callback, disabled when null.
   final VoidCallback? onPressed;
-
-  /// Displays a loading progress indicator when true.
   final bool isLoading;
-
-  /// Optional width to constrain the button size.
   final double? width;
-
-  /// Optional custom style override for the button.
   final ButtonStyle? buttonStyle;
-
-  /// Optional icon to render inside the button.
   final IconData? icon;
-
-  /// Semantics label for accessibility.
   final String? semanticsLabel;
-
-  /// Optional shadow override.
   final List<BoxShadow>? shadow;
 
-  /// Creates a [CustomButton].
   const CustomButton({
     super.key, required this.text, this.onPressed, this.isLoading = false,
     this.width, this.buttonStyle, this.icon, this.semanticsLabel, this.shadow,
@@ -47,9 +30,11 @@ class CustomButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(boxShadow: resolvedShadow),
         child: ElevatedButton(
-          style: buttonStyle ?? ElevatedButton.styleFrom(
-            backgroundColor: active ? AppColors.primaryColor : AppColors.slate300,
-            foregroundColor: Colors.white,
+          style: (buttonStyle ?? Theme.of(context).elevatedButtonTheme.style)?.copyWith(
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.disabled)) return AppColors.slate300;
+              return null;
+            }),
           ),
           onPressed: active ? onPressed : null,
           child: isLoading ? const ButtonLoading() : ButtonLabel(text: text, icon: icon),

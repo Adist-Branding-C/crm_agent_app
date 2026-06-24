@@ -20,13 +20,7 @@ class LoginHeader extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.primaryColor,
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.primaryAlpha30,
-                    blurRadius: 20,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
+                boxShadow: AppTheme.buttonShadow,
               ),
               child: const Icon(
                 Icons.people_rounded,
@@ -35,15 +29,12 @@ class LoginHeader extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.xl),
           RichText(
             text: TextSpan(
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.w900,
-                letterSpacing: -0.5,
-              ),
+              style: Theme.of(context).textTheme.headlineMedium,
               children: [
-                TextSpan(
+                const TextSpan(
                   text: 'CRM ',
                   style: TextStyle(color: AppTheme.textDark),
                 ),
@@ -54,13 +45,10 @@ class LoginHeader extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             'Sign in to your agent account',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppTheme.textMuted,
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
           ),
         ],
       ),

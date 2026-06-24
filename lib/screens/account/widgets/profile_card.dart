@@ -15,24 +15,19 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      padding: const EdgeInsets.all(24),
+      padding: AppSpacing.cardPadding,
       child: Column(
         children: [
           UserAvatar(initials: profile.initials, size: 80, fontSize: 28),
           const SizedBox(height: 16),
           Text(
             profile.name,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textDark,
-                ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 6),
           Text(
             '${profile.role} · ${profile.branch}',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textMuted,
-                ),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 16),
           Row(

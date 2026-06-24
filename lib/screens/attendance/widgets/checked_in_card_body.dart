@@ -19,7 +19,7 @@ class CheckedInCardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       color: AppColors.checkedInCardBg,
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+      padding: AppSpacing.cardPaddingCompact,
       child: Row(
         children: [
           const FingerprintIcon(

@@ -23,7 +23,7 @@ class PageScaffold extends StatelessWidget {
     super.key,
     required this.child,
     this.backgroundColor = AppTheme.backgroundColor,
-    this.padding = const EdgeInsets.symmetric(horizontal: 24),
+    this.padding = AppSpacing.screenPadding,
     this.floatingActionButton,
     this.safeArea = true,
   });

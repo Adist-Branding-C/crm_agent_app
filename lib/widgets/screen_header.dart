@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../theme.dart';
 import 'card_icon_button.dart';
 
 /// Standardized header widget for screens featuring optional back-navigation.
@@ -25,20 +24,11 @@ class ScreenHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: AppColors.textDark,
-          fontWeight: FontWeight.bold,
-        );
+    final titleStyle = Theme.of(context).textTheme.headlineSmall;
 
     final sub = subtitleWidget ??
         (subtitle != null
-            ? Text(
-                subtitle!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textMuted,
-                  fontWeight: FontWeight.w500,
-                ),
-              )
+            ? Text(subtitle!, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500))
             : null);
 
     return Padding(

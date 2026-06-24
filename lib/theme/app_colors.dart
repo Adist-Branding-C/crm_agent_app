@@ -57,4 +57,18 @@ class AppColors {
   static const Color whiteAlpha60 = Color(0x99FFFFFF);
   static const Color greyAlpha8 = Color(0x149E9E9E);
   static const Color borderLightAlpha50 = Color(0x80E2E8F0);
+
+  // Pre-computed 15% alpha for semantic colors (used in stat_item, etc.)
+  static const Color successAlpha15 = Color(0x2610B981);
+  static const Color accentAlpha15 = Color(0x268B5CF6);
+  static const Color infoAlpha15 = Color(0x263B82F6);
+  static const Color warningAlpha15 = Color(0x26F59E0B);
+
+  // Dark theme surface colors
+  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkSurface = Color(0xFF1E1E1E);
+  static const Color darkCard = Color(0xFF2C2C2C);
+  static const Color darkText = Color(0xFFE0E0E0);
+  static const Color darkTextMuted = Color(0xFF9E9E9E);
+  static const Color darkBorder = Color(0xFF383838);
 }

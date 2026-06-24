@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/dashboard/dashboard_models.dart';
 import '../../../router/app_routes.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import '../../../utils/responsive_helper.dart';
 import 'stats_card.dart';
 
@@ -15,7 +15,7 @@ class StatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final isTablet = ResponsiveHelper.isTablet(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: 8),
       child: isTablet ? _horizontalRow(context) : _verticalGrid(context),
     );
   }

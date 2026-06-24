@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'custom_button.dart';
 
+
+
 /// A reusable error display widget with retry callback.
 class AppErrorWidget extends StatelessWidget {
   /// The error message.
@@ -21,7 +23,7 @@ class AppErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: AppSpacing.screenPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -30,16 +32,13 @@ class AppErrorWidget extends StatelessWidget {
               color: AppColors.errorColor,
               size: 48,
             ),
-            const SizedBox(height: 16),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 24),
+        const SizedBox(height: AppSpacing.lg),
+        Text(
+          message,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(height: AppSpacing.xxl),
             SizedBox(
               width: 140,
               child: CustomButton(

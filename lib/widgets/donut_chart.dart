@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_colors.dart';
+import '../theme.dart';
 import 'donut_segment.dart';
 import 'donut_chart_painter.dart';
 
@@ -50,16 +50,14 @@ class _CenterLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),
         ),
         Text(
           subLabel,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppColors.textMuted,
-          ),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

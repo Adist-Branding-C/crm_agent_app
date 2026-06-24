@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
-import '../../../../widgets/custom_card.dart';
 import '../../../../theme.dart';
+import '../../../../widgets/custom_card.dart';
 import 'deal_list_card_helpers.dart';
 import 'deals_presentation_extensions.dart';
 
@@ -17,7 +17,7 @@ class DealListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      padding: AppSpacing.cardPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

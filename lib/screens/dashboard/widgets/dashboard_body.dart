@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
+import '../../../theme.dart';
 import '../../../utils/responsive_helper.dart';
 import '../../error_messages.dart';
 import '../../../widgets/app_error_widget.dart';
@@ -45,7 +46,7 @@ class DashboardBody extends StatelessWidget {
                 const DashboardHeader(),
                 StatsGrid(stats: state.stats),
                 lists,
-                const SizedBox(height: 24),
+                const SizedBox(height: AppSpacing.xxl),
               ],
             ),
           );

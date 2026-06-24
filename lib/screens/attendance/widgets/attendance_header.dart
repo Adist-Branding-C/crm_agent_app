@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/screen_header.dart';
 
-/// The top header for the Attendance screen, containing back action and date.
 class AttendanceHeader extends StatelessWidget {
-  /// Creates a constant [AttendanceHeader].
   const AttendanceHeader({super.key});
 
   @override

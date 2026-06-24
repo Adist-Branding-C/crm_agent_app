@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme.dart';
 import 'custom_card.dart';
 import 'metric_card_vertical.dart';
 import 'metric_card_horizontal.dart';
@@ -32,7 +33,7 @@ class MetricCard extends StatelessWidget {
         : MetricCardHorizontal(icon: icon, iconColor: iconColor, iconBgColor: iconBgColor, primaryText: primaryText, secondaryText: secondaryText);
     return CustomCard(
       onTap: onTap,
-      padding: layout == MetricCardLayout.vertical ? const EdgeInsets.all(16) : const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+      padding: AppSpacing.cardPadding,
       child: content,
     );
   }

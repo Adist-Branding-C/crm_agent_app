@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_models.dart';
-import '../../../theme.dart';
 
 class LeadCardDetails extends StatelessWidget {
   final Lead lead;
@@ -14,17 +13,12 @@ class LeadCardDetails extends StatelessWidget {
       children: [
         Text(
           lead.name,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textDark,
-              ),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 2),
         Text(
           '${lead.source.label} · ${lead.status.label}',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textMuted,
-              ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
     );

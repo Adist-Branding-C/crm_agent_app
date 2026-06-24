@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/tasks/tasks_models.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme.dart';
 import 'task_type_badge.dart';
 
 /// Extension on [Task] to retrieve its priority/status indicator color.
@@ -40,12 +40,9 @@ class TaskCardDetails extends StatelessWidget {
       children: [
         Text(
           task.title,
-          style: TextStyle(
-            color: task.isCompleted ? AppColors.textMuted : AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-            decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-          ),
+          style: (task.isCompleted
+              ? Theme.of(context).textTheme.bodyMedium?.copyWith(decoration: TextDecoration.lineThrough)
+              : Theme.of(context).textTheme.titleMedium),
         ),
         const SizedBox(height: 6),
         Row(

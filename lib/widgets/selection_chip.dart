@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
-import '../utils/context_text_extension.dart';
 
 class SelectionChip extends StatelessWidget {
   final String option;
@@ -21,7 +20,7 @@ class SelectionChip extends StatelessWidget {
     final textStyle = TextStyle(
       color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
       fontWeight: FontWeight.w600,
-      fontSize: context.scaleFont(13),
+      fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
     );
 
     return GestureDetector(

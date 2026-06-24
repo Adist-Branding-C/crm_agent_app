@@ -58,6 +58,8 @@ class _MyAppState extends State<MyApp> {
             title: 'CRM Agent App',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.light,
             routerConfig: _router,
             builder: (context, child) => AppBuilderWidget(
               scaleText: widget.scaleText,

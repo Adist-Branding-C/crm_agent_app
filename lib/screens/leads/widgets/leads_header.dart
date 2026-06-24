@@ -6,6 +6,8 @@ import '../../../theme.dart';
 import '../../../widgets/screen_header.dart';
 import 'leads_header_actions.dart';
 
+
+
 class LeadsHeader extends StatelessWidget {
   const LeadsHeader({super.key});
 
@@ -26,7 +28,7 @@ class LeadsHeader extends StatelessWidget {
       ),
       showBackButton: false,
       actions: const LeadsHeaderActions(),
-      padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
+      padding: const EdgeInsets.only(left: AppSpacing.xxl, right: AppSpacing.xxl, top: AppSpacing.lg, bottom: AppSpacing.sm),
     );
   }
 }

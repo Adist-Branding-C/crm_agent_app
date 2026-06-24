@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/leads/leads_bloc.dart';
 import '../../data/repositories/leads_repository.dart';
+import '../../theme.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/leads_filter_tabs.dart';
 import 'widgets/leads_header.dart';
@@ -26,9 +27,9 @@ class LeadsScreen extends StatelessWidget {
           children: [
             LeadsHeader(),
             LeadsSearchBar(),
-            SizedBox(height: 12),
+            SizedBox(height: AppSpacing.md),
             LeadsFilterTabs(),
-            SizedBox(height: 16),
+            SizedBox(height: AppSpacing.lg),
             Expanded(child: LeadsList()),
           ],
         ),

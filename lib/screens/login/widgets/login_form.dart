@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/login/login_bloc.dart';
-import '../../../widgets/custom_text_field.dart';
 import '../../../theme.dart';
+import '../../../widgets/custom_text_field.dart';
 
 /// Form input fields for credential entry.
 class LoginForm extends StatelessWidget {
@@ -33,7 +33,7 @@ class LoginForm extends StatelessWidget {
           onChanged: (value) =>
               context.read<LoginBloc>().add(PhoneChanged(value)),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: AppSpacing.xl),
         BlocBuilder<LoginBloc, LoginState>(
           buildWhen: (prev, curr) =>
               prev.obscurePassword != curr.obscurePassword,

@@ -16,8 +16,8 @@ class NotificationItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = item.type.style;
     return CustomCard(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      margin: AppSpacing.cardMarginList,
+      padding: AppSpacing.cardPadding,
       onTap: () {
         context.read<NotificationsBloc>().add(MarkAsRead(item.id));
         if (item.routePath != null) context.push(item.routePath!);
@@ -37,7 +37,7 @@ class NotificationItemWidget extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Expanded(child: Text(item.title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textDark))),
+                    Expanded(child: Text(item.title, style: Theme.of(context).textTheme.titleMedium)),
                     if (!item.isRead)
                       Container(
                         margin: const EdgeInsets.only(left: 6),
@@ -47,9 +47,9 @@ class NotificationItemWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 4),
-                Text(item.subtitle, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
+                Text(item.subtitle, style: Theme.of(context).textTheme.bodySmall),
                 const SizedBox(height: 6),
-                Text(item.time, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textMuted)),
+                Text(item.time, style: Theme.of(context).textTheme.labelSmall),
               ],
             ),
           ),

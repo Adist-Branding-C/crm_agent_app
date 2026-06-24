@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/follow_ups/follow_ups_models.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
 import '../../../widgets/call_button.dart';
-import '../../../theme.dart';
 
 /// Renders a single contact row card with initials avatar and a call button.
 class FollowUpItemCard extends StatelessWidget {
@@ -27,8 +27,8 @@ class FollowUpItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      margin: AppSpacing.cardMarginList,
+      padding: AppSpacing.cardPadding,
       child: Row(
         children: [
           UserAvatar(
@@ -44,18 +44,13 @@ class FollowUpItemCard extends StatelessWidget {
                   onTap: onCardTap,
                     child: Text(
                       call.name,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppColors.textDark,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   '${call.category} · ${call.status}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.textMuted,
-                  ),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
             ),

@@ -20,8 +20,8 @@ class TaskCard extends StatelessWidget {
       fontWeight: showOverdue ? FontWeight.bold : FontWeight.normal,
     );
     return CustomCard(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      margin: AppSpacing.cardMarginList,
+      padding: AppSpacing.cardPadding,
       child: Row(
         children: [
           TaskCheckbox(

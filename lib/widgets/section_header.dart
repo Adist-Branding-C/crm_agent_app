@@ -63,9 +63,7 @@ class _SectionHeaderTitle extends StatelessWidget {
             title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold, color: AppColors.textDark,
-                ),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
       ],

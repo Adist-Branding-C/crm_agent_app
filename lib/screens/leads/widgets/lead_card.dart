@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../router/app_routes.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../bloc/call_log/call_log_bloc.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/user_avatar.dart';
 import '../../../widgets/call_button.dart';
@@ -26,7 +27,7 @@ class LeadCard extends StatelessWidget {
         pathParameters: {'id': lead.id},
       ),
       child: CustomCard(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: AppSpacing.cardPaddingCompact,
         child: Row(
           children: [
             UserAvatar(initials: lead.initials, size: 42),
