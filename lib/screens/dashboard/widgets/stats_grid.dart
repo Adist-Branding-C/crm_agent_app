@@ -21,9 +21,11 @@ class StatsGrid extends StatelessWidget {
   }
 
   Widget _horizontalRow(BuildContext context) {
-    return Row(children: _allCards(context).map((c) => Padding(
-      padding: EdgeInsets.only(right: AppSpacing.lg),
-      child: Expanded(child: c),
+    return Row(children: _allCards(context).map((c) => Expanded(
+      child: Padding(
+        padding: EdgeInsets.only(right: AppSpacing.lg),
+        child: c,
+      ),
     )).toList());
   }
 

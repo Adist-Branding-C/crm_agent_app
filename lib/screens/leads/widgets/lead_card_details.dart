@@ -18,7 +18,7 @@ class LeadCardDetails extends StatelessWidget {
         ),
         AppSpacing.gapXxs,
         Text(
-          '\${lead.source.label} · \${lead.status.label}',
+          '${lead.source.label} · ${lead.status.label}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

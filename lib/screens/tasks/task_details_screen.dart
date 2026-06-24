@@ -33,14 +33,14 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
       padding: EdgeInsets.zero,
       child: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {
-          if (state is TasksInitial || state is TasksLoading || state is! TasksLoaded) {
-            return const AppLoadingWidget();
-          }
           if (state is TasksError) {
             return AppErrorWidget(
               message: 'Error loading task details',
               onRetry: () => context.read<TasksBloc>().add(const LoadTasks()),
             );
+          }
+          if (state is TasksInitial || state is TasksLoading || state is! TasksLoaded) {
+            return const AppLoadingWidget();
           }
           final task = state.allTasks.firstWhere(
             (t) => t.id == widget.taskId,

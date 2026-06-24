@@ -5,17 +5,19 @@ extension ThemeColors on BuildContext {
   Color get primaryColor => Theme.of(this).primaryColor;
   Color get scaffoldBg => Theme.of(this).scaffoldBackgroundColor;
   Color get surfaceColor => Theme.of(this).colorScheme.surface;
-  Color get textDark => AppColors.textDark;
-  Color get textMuted => AppColors.textMuted;
-  Color get primary => AppColors.primaryColor;
-  Color get success => AppColors.success;
-  Color get warning => AppColors.warning;
-  Color get error => AppColors.errorColor;
-  Color get border => AppColors.borderLight;
+  bool get _isDark => Theme.of(this).brightness == Brightness.dark;
+
+  Color get textDark => _isDark ? AppColors.darkText : AppColors.textDark;
+  Color get textMuted => _isDark ? AppColors.darkTextMuted : AppColors.textMuted;
+  Color get primary => Theme.of(this).colorScheme.primary;
+  Color get success => _isDark ? AppColors.successDark : AppColors.success;
+  Color get warning => _isDark ? AppColors.warningDark : AppColors.warning;
+  Color get error => Theme.of(this).colorScheme.error;
+  Color get border => _isDark ? AppColors.darkBorder : AppColors.borderLight;
   Color get accent => AppColors.accent;
-  Color get successBg => AppColors.successBackground;
-  Color get warningBg => AppColors.warningBackground;
-  Color get errorBg => AppColors.errorBackground;
+  Color get successBg => _isDark ? AppColors.successIconBg : AppColors.successBackground;
+  Color get warningBg => _isDark ? AppColors.warningTextBackground : AppColors.warningBackground;
+  Color get errorBg => _isDark ? AppColors.darkSurface : AppColors.errorBackground;
   Color get info => AppColors.info;
-  Color get infoBg => AppColors.infoBackground;
+  Color get infoBg => _isDark ? AppColors.infoBackground : AppColors.infoBackground;
 }
