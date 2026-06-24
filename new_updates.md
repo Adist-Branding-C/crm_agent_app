@@ -1,137 +1,58 @@
-﻿feat: comprehensive UI/UX design system overhaul
+# CRM Agent App - Recent Updates
 
-- Complete AppTextTheme with all 15 Material text style slots
-  (added displayMedium, headlineLarge, headlineSmall, titleLarge,
-  titleSmall, bodySmall, labelMedium, labelSmall)
-- Add AppSpacing constants class with standardized spacing scale
-  and EdgeInsets presets (xs=4 through massive=60)
-- Add dark mode support (AppTheme.darkTheme) with full dark palette
-- Add SnackBarTheme (floating, branded) to both light and dark themes
-- Wire darkTheme + themeMode into MaterialApp.router
+Here is a summary of the features, improvements, and refactoring changes recently brought into the project.
 
-Unify card padding across all list-item cards to AppSpacing constants
-(lead_card, task_card, task_row, follow_up_card, follow_up_item_card,
-notification_item_widget, deal_list_card, profile_card,
-checked_in_card_body, checked_out_card_body)
+### 🎥 Video Demonstration
+* [Watch the Walkthrough Video](https://drive.google.com/file/d/1KPKHWem_5gPCJgHcNCHGBVIOjEXeCL7j/view?usp=sharing)
 
-Fix visual/style bugs:
-- DonutChart: displayLarge(32px) → headlineSmall(20px) to prevent overflow
-- ScreenHeader: titleLarge(undefined) → headlineSmall(now defined)
-- MetricCardVertical: headlineMedium(24px) → titleLarge(18px) for proportion
-- CustomButton: hardcoded styleFrom → consume elevatedButtonTheme
-- StatItem: runtime withValues(alpha:) → pre-computed alpha constants
-- SelectionChip/FilterChipBar: direct scaleFont → theme-aware fontSize
-- DashboardHeader: remove corrupted duplicate Text widgets
+### ✨ Features Implemented
 
-Remove redundant copyWith overrides: 10+ widgets now use theme styles
-directly instead of re-declaring colors/weights already in the theme.
+* **Dark Mode Support**: Added full support for dark mode with customized color schemes and inputs.
+* **Centralized Spacing System**: Built a standard spacing scale and unified padding values across all cards and lists.
+* **Branded SnackBars**: Implemented custom floating notification banners for both light and dark themes.
+* **Reusable UI Components**: Added helper widgets including `EmptyStateWidget` and `ResponsiveQuadGrid`.
+* **Call Log Details**: Created a dedicated, interactive view screen for call log activities with edit and update capabilities.
+* **Follow-Up Creation**: Added a bottom sheet dialog to easily schedule follow-up actions with custom dates and priority tags.
+* **Reactive Updates**: Tied follow-up additions directly to the dashboard call log list and repositories via broadcast streams.
 
-Add reusable EmptyStateWidget with icon, title, subtitle, and action.
+### 🛠️ Improvements & Bug Fixes
 
-Clean up imports: remove unused directives, fix duplicate imports,
-reorder per convention.
+* **UI Cleanup & Flat Design**: Removed all drop shadows and visual elevations to create a flat, modern design layout.
+* **Consistent Buttons**: Unified all application buttons to a consistent 8px soft-square corner radius.
+* **Code File Length Limits**: Decomposed and split large files to strictly enforce the maximum 80-line limit.
+* **Clean Architecture (DIP)**: Moved data models out of BLoC directories into dedicated data folders, decoupling domain definitions from state management.
+* **Granular UI Rebuilds**: Switched wide `BlocBuilder` components to targeted `BlocSelector` controls to improve rendering performance.
+* **Navigation & Routing Consistency**: Migrated native navigation calls to `context.pop()` and structured router paths with named routing.
+* **Safe Error Handling**: Wrapped key callback processes in try-catch blocks and re-ordered BLoC states to prevent screen freezes.
+* **Layout Fixes**: Corrected layout assertions on grid alignments, label overlaps, and chart overflows.
+* **Semantic Labels**: Added accessibility semantic tags to all clickable cards, buttons, and chips.
+* **Data IDs Correction**: Synchronized IDs between mock leads and mock follow-up records to fix detail loading.
 
-style: unify button border radius to professional soft squares (8px)
+### 📁 Files Modified
 
-Updates all primary, secondary, cancel, and action buttons in the CRM application from heavily curved/pill shapes (ranging from 10px to 20px) to a consistent and subtle border radius of 8px. This alignment establishes a more modern, human-designed aesthetic across the entire application interface.
-
-Modified Components:
-- Global Theme:
-  - Elevated button theme default in app_button_theme.dart (14px -> 8px)
-- Custom Buttons:
-  - CardIconButton default shape (12px -> 8px)
-  - ProfileActionButton shape (12px -> 8px)
-  - CheckInButton & CheckOutButton shape (10px -> 8px)
-  - SaveButton shape (16px -> 8px)
-  - AddDealSubmitButton & EditEnquiryButton shape (16px -> 8px)
-  - QuickActionButton & WhatsAppSendButton shape (12px -> 8px)
-  - TaskTypeButton shape (10px -> 8px)
-- Inline Screen Overrides:
-  - Analytics FilterActionButtons shape (16px -> 8px)
-  - EditProfileActions & ChangePasswordButtons shape (12px -> 8px)
-  - EditEnquiryButtons cancel button & InfoTabView status button (12px -> 8px)
-  - TaskDetailsBody toggle button & TasksFilterActions reset button (12px -> 8px)
-  - HistorySummaryCheckoutRow & HistoryLeavesCard buttons (20px -> 8px)
-
-  design: comprehensive UI/UX audit fixes across all screens
-
-- Migrate Login, Attendance, ChangePassword, ForgotPassword to
-  PageScaffold for consistent screen layout
-- Replace all hardcoded EdgeInsets/SizedBox with AppSpacing constants
-- Normalize ScreenHeader padding (remove inline overrides)
-- Replace raw CircularProgressIndicator/ElevatedButton with
-  AppLoadingWidget/AppErrorWidget/CustomButton
-- Convert inline fontSize:13 styles to text theme tokens
-- Increase bottom nav label from 11px to 12px for accessibility
-- Fix calendar selection border to use primaryColor
-- Add Semantics labels to tappable cards, buttons, chips
-- Migrate DealsStatsCard from raw Container to CustomCard
-- Remove unused imports; flutter analyze passes with 0 issues
-
-style: remove all drop shadows for flat design
-
-- Strip boxShadow, elevation, and shadow fields from 18 widget and theme files
-- Delete AppShadows class and remove its import/export from AppTheme
-- Purge shadow guidelines from ARCHITECTURE.md, rules.md, and new_updates.md
-
-refactor: centralize all spacing into AppSpacing constants
-
-- Add missing constants: xxs=2, xs2=6, ten=10, fourteen=14, hundred=100
-- Add gap helpers: gapXxs, gapXxxl, gapWXxs, gapWXxl
-- Add fabBottomPadding convenience inset
-- Replace ~550 hardcoded spacing literals with AppSpacing.* references
-  across 110+ widget files (EdgeInsets, SizedBox, Wrap spacing, etc.)
-- Clean up unnecessary duplicate theme imports
-
-refactor: centralize all spacing into AppSpacing constants
-
-Add missing constants: xxs, xs2, ten, fourteen, hundred
-Add gap helpers: gapXxs, gapXxxl, gapWXxs, gapWXxl
-Add fabBottomPadding convenience inset
-Replace ~550 hardcoded spacing literals with AppSpacing references across 110+ widget files
-Clean up unnecessary duplicate theme imports
-
-refactor(theme): split ThemeData and fix layout & dynamic theming bugs
-
-- Decomposed `lib/theme.dart` into `app_theme_light.dart` and `app_theme_dark.dart` to strictly meet the under-80-line constraint.
-- Updated `ThemeColors` BuildContext extension in `app_context_theme.dart` to fetch color values dynamically depending on theme brightness instead of using static light-theme constants.
-- Reordered state checks in `TaskDetailsScreen` to check for error states first, fixing an infinite loading spinner when `TasksError` occurs.
-- Fixed `ParentDataWidget` assertion failure in `StatsGrid` by placing `Expanded` outside the `Padding` widget inside the horizontal row.
-- Corrected string interpolation in `LeadCardDetails` by removing backslash escapes (`\$` changed to `$`), restoring correct rendering of the lead source and status labels.
-
-refactor: resolve architectural violations from code review
-
-- Fix DIP layer violation: move all domain models from bloc/ to data/models/,
-  update 24 data layer imports to remove bloc dependency, remove redundant
-  TaskType enum declaration
-- Replace Navigator.pop() with GoRouter context.pop() in call actions sheet
-- Remove dead AuthRepository abstraction and orphan authDataSource wiring
-- Remove business-logic getters from AnalyticsLoaded state
-- Registry-drive auth route detection via AppRoutes.isAuthRoute set
-- Eliminate duplicated responsive grids via shared ResponsiveQuadGrid
-- Replace inline Colors.white/grey literals with AppColors tokens across 7 files
-- Shrink app_theme_dark.dart below 80-line limit (extract dark input theme)
-
-
-feat: implement call log details view, edit flow, and follow-up creation bottom sheet
-
-- Created dedicated shadowless 'View Call Log' screen and sub-widgets (CallSummaryCard, LogDetailsSection, RemarkSection, ViewCallLogButtons).
-- Integrated call log timeline tiles under Enquiry Details to navigate to the new view call log screen.
-- Expanded EnquiryActivity model to include detailed call properties (status, duration, lead status, purpose, remark, date, time).
-- Refactored CallLogScreen and CallLogView to support editing call logs, pre-populating inputs, and saving changes in-place.
-- Split CallLogBloc handlers to ensure all files remain strictly under the 80-line limit.
-- Implemented 'Create Follow-up' modal bottom sheet mimicking the task creation sheet layout.
-- Added input fields to capture follow-up details (date-time picker, priority tag selector).
-- Updated DashboardRepository with a broadcast stream and DashboardBloc to reactively update the dashboard calls list when follow-ups are added.
-- Integrated follow-up creation into both DashboardRepository and FollowUpsRepository, ensuring items appear on the dashboard and global follow-ups list.
-- Updated mock repositories in tests and fixed BuildContext async gap warnings.
-
-fix: align follow-up IDs and clean description layout
-
-- Removed the description subtitle and unnecessary vertical padding from the dashboard's follow-up cards.
-- Corrected the follow-up data model IDs in `mock_follow_ups` to match their actual corresponding `Lead` IDs.
-- Assigned unique IDs (11, 12, 13) to follow-up entries not present in `mockLeads` and updated `LeadsDataSourceImpl.getLeadById` to fallback to `mockFollowUps` and dynamically construct a `Lead` object.
-- Replaced raw enum strings (e.g. `LeadPurpose.enquiry` and `LeadStatus.followUp`) with user-friendly `.label` values on the View All Follow-ups card screen.
-- Configured default onCardTap navigation in `FollowUpItemCard` to push details page route with the correct `call.id`.
-- Updated test finders and count assertions to conform to the layout improvements and ID structures.
-- created view call log page
+* **Theme & Design Systems**:
+  * [app_theme_light.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/theme/app_theme_light.dart)
+  * [app_theme_dark.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/theme/app_theme_dark.dart)
+  * [app_colors.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/theme/app_colors.dart)
+  * [app_spacing.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/theme/app_spacing.dart)
+  * [app_button_theme.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/theme/app_button_theme.dart)
+* **Data Models & Mock Sources**:
+  * [activity_models.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/data/models/activity_models.dart)
+  * [task_models.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/data/models/task_models.dart)
+  * [lead_models.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/data/models/lead_models.dart)
+  * [mock_follow_ups.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/data/models/mock_follow_ups.dart)
+  * [mock_leads.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/data/models/mock_leads.dart)
+* **State Management (BLoCs)**:
+  * [call_log_bloc.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/bloc/call_log/call_log_bloc.dart) (and handlers)
+  * [dashboard_bloc.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/bloc/dashboard/dashboard_bloc.dart) (and handlers)
+  * [search_bloc.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/bloc/search/search_bloc.dart) (and session helpers)
+  * [analytics_bloc.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/bloc/analytics/analytics_bloc.dart)
+* **Screens & Widgets**:
+  * [view_call_log_screen.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/screens/view_call_log/view_call_log_screen.dart) (and widgets)
+  * [call_log_screen.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/screens/call_log/call_log_screen.dart) (and widgets)
+  * [my_activity_screen.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/screens/my_activity/my_activity_screen.dart) (and widgets)
+  * [edit_enquiry_form.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/screens/enquiry_details/widgets/edit_enquiry_form.dart)
+  * [tasks_header_actions.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/screens/tasks/widgets/tasks_header_actions.dart)
+* **Routing & Layout Grid**:
+  * [router.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/router.dart) & [app_routes.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/router/app_routes.dart)
+  * [responsive_quad_grid.dart](file:///c:/Users/ashwin/Projects/adist_project/crm_agent_app/lib/widgets/responsive_quad_grid.dart)
