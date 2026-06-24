@@ -13,17 +13,13 @@ import '../../../widgets/custom_button.dart';
 
 /// The main content area of the Login Screen.
 class LoginBody extends StatelessWidget {
-  /// Creates a constant [LoginBody] widget.
   const LoginBody({
     super.key,
     required this.phoneController,
     required this.passwordController,
   });
 
-  /// The phone controller.
   final TextEditingController phoneController;
-
-  /// The password controller.
   final TextEditingController passwordController;
 
   @override
@@ -45,24 +41,27 @@ class LoginBody extends StatelessWidget {
             const SizedBox(height: AppSpacing.lg),
             BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
-                final activeError = state.phoneError ?? state.passwordError;
-                if (activeError != null) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: AppSpacing.lg),
-                    child: ErrorBanner(message: activeError),
-                  );
-                }
-                return const SizedBox.shrink();
+                final err = state.phoneError ?? state.passwordError;
+                if (err == null) return const SizedBox.shrink();
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpacing.lg),
+                  child: ErrorBanner(message: err),
+                );
               },
             ),
             const ForgotPasswordLink(),
             const SizedBox(height: AppSpacing.xxl + AppSpacing.xs),
-            CustomButton(
-              text: 'Sign In',
-              icon: Icons.login_rounded,
-              onPressed: () {
-                context.read<LoginBloc>().add(const LoginSubmitted());
-              },
+            BlocBuilder<LoginBloc, LoginState>(
+              buildWhen: (prev, curr) => prev.isLoading != curr.isLoading,
+              builder: (context, state) => state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : CustomButton(
+                      text: 'Sign In',
+                      icon: Icons.login_rounded,
+                      onPressed: () => context
+                          .read<LoginBloc>()
+                          .add(const LoginSubmitted()),
+                    ),
             ),
             const SizedBox(height: AppSpacing.massive),
             const DisclaimerText(),

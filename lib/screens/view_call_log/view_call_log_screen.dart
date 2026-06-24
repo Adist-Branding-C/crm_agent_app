@@ -22,12 +22,14 @@ class ViewCallLogScreen extends StatefulWidget {
 }
 
 class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
-  late EnquiryActivity _activity;
+  EnquiryActivity? _activity;
 
   @override
   void initState() {
     super.initState();
-    _activity = widget.activity!;
+    if (widget.activity != null) {
+      _activity = widget.activity;
+    }
   }
 
   void refreshState(EnquiryActivity match) {
@@ -35,13 +37,15 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
   }
 
   void _refresh() {
+    if (widget.lead == null || _activity == null) return;
     final repo = context.read<ActivityRepository>();
     final list = repo.getActivitiesForLead(widget.lead!.id);
-    final match = list.where((a) => a.id == _activity.id).firstOrNull;
+    final match = list.where((a) => a.id == _activity!.id).firstOrNull;
     if (match != null) refreshState(match);
   }
 
   Future<void> _editCallLog() async {
+    if (_activity == null) return;
     await context.pushNamed(
       AppRoutes.callLog,
       extra: {'lead': widget.lead, 'activity': _activity},
@@ -68,7 +72,7 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.lead == null || widget.activity == null) {
+    if (widget.lead == null || widget.activity == null || _activity == null) {
       return const InvalidCallLogFallback();
     }
     return Scaffold(
@@ -78,7 +82,7 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
           children: [
             const ScreenHeader(title: 'View Call Log'),
             Expanded(
-              child: ViewCallLogBody(lead: widget.lead!, activity: _activity),
+              child: ViewCallLogBody(lead: widget.lead!, activity: _activity!),
             ),
             ViewCallLogButtons(
               onEditTap: _editCallLog,

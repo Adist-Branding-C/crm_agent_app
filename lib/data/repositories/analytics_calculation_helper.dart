@@ -3,7 +3,8 @@ import '../models/analytics_deal_models.dart';
 import '../models/lead_enums.dart';
 import '../models/lead_models.dart';
 import '../models/deal_models.dart';
-import 'deal_type_calculator.dart';
+import 'leads_analytics_calculator.dart';
+import 'deals_analytics_calculator.dart';
 
 class AnalyticsCalculationHelper {
   AnalyticsCalculationHelper._();
@@ -48,105 +49,29 @@ class AnalyticsCalculationHelper {
   }
 
   static List<T> _applyPeriod<T>(List<T> list, String period) {
-    // Period filtering is a pass-through here; implement date-based
-    // filtering at the data source level when timestamps are available.
     return list;
   }
 
-  static LeadsSummary calculateLeadsSummary(List<Lead> leads) {
-    final active = leads
-        .where(
-          (l) =>
-              l.status == LeadStatus.converted ||
-              l.status == LeadStatus.qualified ||
-              l.status == LeadStatus.interested,
-        )
-        .length;
-    return LeadsSummary(
-      totalLeads: leads.length,
-      conversionRate: leads.isNotEmpty ? (active / leads.length) * 100 : 0.0,
-      interestedCount: leads
-          .where((l) => l.status == LeadStatus.interested)
-          .length,
-      lostCount: leads.where((l) => l.status == LeadStatus.lost).length,
-    );
-  }
+  static LeadsSummary calculateLeadsSummary(List<Lead> leads) =>
+      LeadsAnalyticsCalculator.calculateLeadsSummary(leads);
 
-  static List<StatusMetric> calculateStatusMetrics(List<Lead> leads) {
-    const sts = [
-      LeadStatus.newStatus,
-      LeadStatus.interested,
-      LeadStatus.qualified,
-      LeadStatus.followUp,
-      LeadStatus.lost,
-    ];
-    return sts
-        .map(
-          (s) => StatusMetric(
-            status: s,
-            count: leads.where((l) => l.status == s).length,
-          ),
-        )
-        .toList();
-  }
+  static List<StatusMetric> calculateStatusMetrics(List<Lead> leads) =>
+      LeadsAnalyticsCalculator.calculateStatusMetrics(leads);
 
-  static List<SourceMetric> calculateSourceMetrics(List<Lead> leads) {
-    const srcs = [
-      LeadSource.facebook,
-      LeadSource.website,
-      LeadSource.referral,
-      LeadSource.instagram,
-      LeadSource.walkIn,
-    ];
-    return srcs
-        .map(
-          (s) => SourceMetric(
-            source: s,
-            count: leads.where((l) => l.leadSource == s).length,
-          ),
-        )
-        .toList();
-  }
+  static List<SourceMetric> calculateSourceMetrics(List<Lead> leads) =>
+      LeadsAnalyticsCalculator.calculateSourceMetrics(leads);
 
-  static DealsSummary calculateDealsSummary(List<Deal> deals) {
-    final won = deals.where((d) => d.stage == DealStage.won).length;
-    final totalAmt = deals.fold(0.0, (s, d) => s + d.amount);
-    return DealsSummary(
-      openPipelineAmount: deals
-          .where((d) => d.stage != DealStage.won)
-          .fold(0.0, (s, d) => s + d.amount),
-      wonDealsCount: won,
-      winRate: deals.isNotEmpty ? (won / deals.length) * 100 : 0.0,
-      avgDealAmount: deals.isNotEmpty ? totalAmt / deals.length : 0.0,
-    );
-  }
+  static DealsSummary calculateDealsSummary(List<Deal> deals) =>
+      DealsAnalyticsCalculator.calculateDealsSummary(deals);
 
-  static List<DealStageMetric> calculateDealStageMetrics(List<Deal> deals) {
-    return DealStage.values
-        .map(
-          (s) => DealStageMetric(
-            stage: s,
-            count: deals.where((d) => d.stage == s).length,
-          ),
-        )
-        .toList();
-  }
+  static List<DealStageMetric> calculateDealStageMetrics(List<Deal> deals) =>
+      DealsAnalyticsCalculator.calculateDealStageMetrics(deals);
 
   static List<PipelineValueStageMetric> calculatePipelineValueStageMetrics(
     List<Deal> deals,
-  ) {
-    return DealStage.values
-        .map(
-          (s) => PipelineValueStageMetric(
-            stage: s,
-            amount: deals
-                .where((d) => d.stage == s)
-                .fold(0.0, (sum, d) => sum + d.amount),
-          ),
-        )
-        .toList();
-  }
+  ) =>
+      DealsAnalyticsCalculator.calculatePipelineValueStageMetrics(deals);
 
   static List<DealTypeMetric> calculateDealTypeMetrics(List<Deal> deals) =>
-      computeDealTypeMetrics(deals);
+      DealsAnalyticsCalculator.calculateDealTypeMetrics(deals);
 }

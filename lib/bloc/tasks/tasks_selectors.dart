@@ -1,5 +1,6 @@
 import 'tasks_bloc.dart';
 import 'tasks_models.dart';
+import 'tasks_date_filter.dart';
 
 /// Presentation selectors and filters for the [TasksLoaded] state.
 extension TasksSelectors on TasksLoaded {
@@ -43,28 +44,12 @@ extension TasksSelectors on TasksLoaded {
           t.dueDate!.day,
         );
 
-        switch (filterCriteria.dateRange) {
-          case DateRangeType.today:
-            return tDate == today;
-          case DateRangeType.tomorrow:
-            return tDate == today.add(const Duration(days: 1));
-          case DateRangeType.lastWeek:
-            final sevenDaysAgo = today.subtract(const Duration(days: 7));
-            return tDate.isAfter(
-                  sevenDaysAgo.subtract(const Duration(seconds: 1)),
-                ) &&
-                tDate.isBefore(today.add(const Duration(days: 1)));
-          case DateRangeType.custom:
-            final from = filterCriteria.customFrom;
-            final to = filterCriteria.customTo;
-            if (from == null || to == null) return true;
-            final fDate = DateTime(from.year, from.month, from.day);
-            final oDate = DateTime(to.year, to.month, to.day);
-            return tDate.isAfter(fDate.subtract(const Duration(seconds: 1))) &&
-                tDate.isBefore(oDate.add(const Duration(days: 1)));
-          default:
-            return true;
-        }
+        return filterCriteria.dateRange.matches(
+          tDate,
+          today,
+          from: filterCriteria.customFrom,
+          to: filterCriteria.customTo,
+        );
       }).toList();
     }
 

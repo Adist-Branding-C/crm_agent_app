@@ -15,7 +15,7 @@ class DealsContent extends StatelessWidget {
     return BlocBuilder<DealsBloc, DealsState>(
       buildWhen: (prev, curr) =>
           prev.runtimeType != curr.runtimeType ||
-          (curr is DealsLoaded && (prev as DealsLoaded?)?.deals != curr.deals),
+          (prev is DealsLoaded && curr is DealsLoaded && prev.deals != curr.deals),
       builder: (context, state) {
         final deals = state is DealsLoaded ? state.deals : const <Deal>[];
         final viewIndex = context.watch<DealsViewNotifier>().value;

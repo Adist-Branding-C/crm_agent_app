@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../theme.dart';
 import '../../../utils/whatsapp_service.dart';
 import 'whatsapp_controller.dart';
@@ -38,7 +37,7 @@ class WhatsAppSendButton extends StatelessWidget {
                   message: message,
                 );
                 if (context.mounted) {
-                  context.pop();
+                  Navigator.of(context).pop();
                 }
               }
             : null,

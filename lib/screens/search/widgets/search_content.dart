@@ -50,8 +50,9 @@ class SearchContent extends StatelessWidget {
           child: BlocBuilder<SearchBloc, SearchState>(
             buildWhen: (prev, curr) =>
                 prev.runtimeType != curr.runtimeType ||
-                (curr is SearchLoaded &&
-                    (prev as SearchLoaded?)?.results != curr.results),
+                (prev is SearchLoaded &&
+                    curr is SearchLoaded &&
+                    prev.results != curr.results),
             builder: (context, state) {
               if (state is SearchLoading) {
                 return const Center(child: CircularProgressIndicator());

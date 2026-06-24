@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_log_model.dart';
 import '../../../theme.dart';
-import '../../../utils/context_text_extension.dart';
 import '../../../widgets/custom_card.dart';
 import 'history_calendar_off_day_detail.dart';
 import 'history_calendar_working_day_detail.dart';
+import 'history_status_badge.dart';
 
 /// Card widget rendering selected calendar day header and detailed contents.
 class HistoryCalendarDayDetail extends StatelessWidget {
@@ -39,7 +39,7 @@ class HistoryCalendarDayDetail extends StatelessWidget {
                   color: AppColors.textDark,
                 ),
               ),
-              _StatusBadge(status: log.status),
+              HistoryStatusBadge(status: log.status),
             ],
           ),
           AppSpacing.gapLg,
@@ -47,52 +47,6 @@ class HistoryCalendarDayDetail extends StatelessWidget {
               ? HistoryCalendarOffDayDetail(log: log)
               : HistoryCalendarWorkingDayDetail(log: log),
         ],
-      ),
-    );
-  }
-}
-
-class _StatusBadge extends StatelessWidget {
-  final String status;
-  const _StatusBadge({required this.status});
-
-  @override
-  Widget build(BuildContext context) {
-    Color bg = AppColors.successBackground;
-    Color fg = AppColors.success;
-    if (status == 'Late') {
-      bg = AppColors.warningLight;
-      fg = AppColors.warningText;
-    } else if (status == 'Half Day') {
-      bg = AppColors.warningTextBackground;
-      fg = AppColors.warningText;
-    } else if (status == 'On Leave') {
-      bg = AppColors.infoBackground;
-      fg = AppColors.info;
-    } else if (status == 'Holiday') {
-      bg = AppColors.accentBackground;
-      fg = AppColors.accent;
-    } else if (status == 'Week Off') {
-      bg = AppColors.slate100;
-      fg = AppColors.slate400;
-    }
-
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.ten,
-        vertical: AppSpacing.xs,
-      ),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        status,
-        style: TextStyle(
-          color: fg,
-          fontSize: context.scaleFont(11),
-          fontWeight: FontWeight.bold,
-        ),
       ),
     );
   }

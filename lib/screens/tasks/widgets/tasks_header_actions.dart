@@ -19,32 +19,22 @@ class TasksHeaderActions extends StatelessWidget {
     if (state is! TasksLoaded) return;
 
     final res = await showModalBottomSheet<TaskFilterCriteria>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) =>
-          TasksFilterBottomSheet(initialCriteria: state.filterCriteria),
+      context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
+      builder: (_) => TasksFilterBottomSheet(initialCriteria: state.filterCriteria),
     );
-    if (res != null) {
-      bloc.add(ApplyFilterCriteria(res));
-    }
+    if (res != null) bloc.add(ApplyFilterCriteria(res));
   }
 
   Future<void> _openAddTask(BuildContext context) async {
     final bloc = context.read<TasksBloc>();
     final isAdded = await showModalBottomSheet<bool>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
+      context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
       builder: (_) => BlocProvider(
-        create: (context) =>
-            AddTaskBloc(tasksRepository: context.read<TasksRepository>()),
+        create: (context) => AddTaskBloc(tasksRepository: context.read()),
         child: const AddTaskBottomSheet(),
       ),
     );
-    if (isAdded == true) {
-      bloc.add(const LoadTasks());
-    }
+    if (isAdded == true) bloc.add(const LoadTasks());
   }
 
   @override
@@ -58,9 +48,7 @@ class TasksHeaderActions extends StatelessWidget {
             icon: Icons.filter_alt_outlined,
             iconColor: active ? AppColors.primaryColor : AppColors.textDark,
             backgroundColor: Colors.white,
-            size: 38,
-            borderRadius: 10,
-            iconSize: 20,
+            size: 38, borderRadius: 10, iconSize: 20,
             onTap: () => _openFilter(context),
           ),
         ),
@@ -69,9 +57,7 @@ class TasksHeaderActions extends StatelessWidget {
           icon: Icons.add_rounded,
           iconColor: AppColors.primaryColor,
           backgroundColor: Colors.white,
-          size: 38,
-          borderRadius: 10,
-          iconSize: 20,
+          size: 38, borderRadius: 10, iconSize: 20,
           onTap: () => _openAddTask(context),
         ),
       ],

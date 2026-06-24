@@ -12,7 +12,6 @@ export 'login_inputs.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final SessionRepository authRepository;
 
-  /// Initializes the BLoC with the initial [LoginState].
   LoginBloc({required this.authRepository}) : super(const LoginState()) {
     on<TogglePasswordVisibility>(_onTogglePasswordVisibility);
     on<PhoneChanged>(_onPhoneChanged);
@@ -41,36 +40,41 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     final phone = LoginPhone.dirty(state.phone.value);
     final password = LoginPassword.dirty(state.password.value);
-
-    emit(
-      state.copyWith(
-        phone: phone,
-        password: password,
-        isSubmitted: true,
-        clearAuthFailure: true,
-      ),
-    );
+    emit(state.copyWith(
+      phone: phone,
+      password: password,
+      isSubmitted: true,
+      clearAuthFailure: true,
+    ));
 
     if (phone.isNotValid || password.isNotValid) {
       emit(state.copyWith(isSuccess: false));
       return;
     }
 
+    emit(state.copyWith(isLoading: true));
     try {
       final ok = await authRepository.login(phone.value, password.value);
-      emit(state.copyWith(isSuccess: ok));
+      emit(state.copyWith(isSuccess: ok, isLoading: false));
     } on NetworkException {
-      emit(state.copyWith(authFailure: AuthFailure.network, isSuccess: false));
+      emit(state.copyWith(
+        authFailure: AuthFailure.network,
+        isSuccess: false,
+        isLoading: false,
+      ));
     } on InvalidCredentialsException catch (e) {
-      emit(
-        state.copyWith(
-          authFailure: AuthFailure.invalidCredentials,
-          authErrorMessage: e.message,
-          isSuccess: false,
-        ),
-      );
+      emit(state.copyWith(
+        authFailure: AuthFailure.invalidCredentials,
+        authErrorMessage: e.message,
+        isSuccess: false,
+        isLoading: false,
+      ));
     } catch (_) {
-      emit(state.copyWith(authFailure: AuthFailure.unknown, isSuccess: false));
+      emit(state.copyWith(
+        authFailure: AuthFailure.unknown,
+        isSuccess: false,
+        isLoading: false,
+      ));
     }
   }
 }

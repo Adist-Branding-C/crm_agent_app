@@ -13,9 +13,9 @@ class AnalyticsHeader extends StatelessWidget {
     return BlocBuilder<AnalyticsBloc, AnalyticsState>(
       buildWhen: (prev, curr) =>
           prev.runtimeType != curr.runtimeType ||
-          (curr is AnalyticsLoaded &&
-              (prev as AnalyticsLoaded?)?.selectedPeriod !=
-                  curr.selectedPeriod),
+          (prev is AnalyticsLoaded &&
+              curr is AnalyticsLoaded &&
+              prev.selectedPeriod != curr.selectedPeriod),
       builder: (context, state) {
         final period = state is AnalyticsLoaded
             ? state.selectedPeriod

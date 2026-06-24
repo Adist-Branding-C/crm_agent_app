@@ -16,8 +16,9 @@ class LeadsList extends StatelessWidget {
     return BlocBuilder<LeadsBloc, LeadsState>(
       buildWhen: (prev, curr) =>
           prev.runtimeType != curr.runtimeType ||
-          (curr is LeadsLoaded &&
-              (prev as LeadsLoaded?)?.filteredLeads != curr.filteredLeads),
+          (prev is LeadsLoaded &&
+              curr is LeadsLoaded &&
+              prev.filteredLeads != curr.filteredLeads),
       builder: (context, state) {
         if (state is LeadsLoading || state is LeadsInitial) {
           return ListView.builder(
