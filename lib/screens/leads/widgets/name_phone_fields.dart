@@ -1,6 +1,8 @@
-part of 'add_lead_contact_fields.dart';
+import 'package:flutter/material.dart';
+import '../../../../widgets/custom_text_field.dart';
+import '../../../../theme.dart';
 
-class _NamePhoneFields extends StatelessWidget {
+class NamePhoneFields extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController phoneController;
   final String? nameError;
@@ -8,7 +10,8 @@ class _NamePhoneFields extends StatelessWidget {
   final ValueChanged<String> onNameChanged;
   final ValueChanged<String> onPhoneChanged;
 
-  const _NamePhoneFields({
+  const NamePhoneFields({
+    super.key,
     required this.nameController,
     required this.phoneController,
     this.nameError,

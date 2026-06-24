@@ -1,4 +1,6 @@
-part of 'analytics_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../leads/leads_enums.dart';
+import 'analytics_state.dart';
 
 /// Base class for all events handled by the [AnalyticsBloc].
 abstract class AnalyticsEvent extends Equatable {

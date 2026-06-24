@@ -1,8 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'splash_event.dart';
-part 'splash_state.dart';
+export 'splash_event.dart';
+export 'splash_state.dart';
+import 'splash_event.dart';
+import 'splash_state.dart';
 
 /// BLoC that manages the state transitions of the Splash Screen.
 ///

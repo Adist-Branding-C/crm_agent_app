@@ -1,4 +1,4 @@
-part of 'add_task_bloc.dart';
+import 'package:formz/formz.dart';
 
 /// Validation errors for the [TaskTitleInput] input.
 enum TaskTitleValidationError { empty }

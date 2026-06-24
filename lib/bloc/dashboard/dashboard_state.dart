@@ -1,4 +1,5 @@
-part of 'dashboard_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'dashboard_models.dart';
 
 /// Base class for all states of the Dashboard.
 abstract class DashboardState extends Equatable {

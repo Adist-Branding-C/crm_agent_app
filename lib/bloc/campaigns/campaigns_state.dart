@@ -1,4 +1,5 @@
-part of 'campaigns_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'campaigns_models.dart';
 
 /// Base class for all states of the Campaigns BLoC.
 abstract class CampaignsState extends Equatable {

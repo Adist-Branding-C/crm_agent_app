@@ -1,12 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import '../../data/repositories/password_repository.dart';
 
-part 'new_password_event.dart';
-part 'new_password_state.dart';
-part 'new_password_inputs.dart';
-part 'new_password_handlers.dart';
+export 'new_password_event.dart';
+export 'new_password_state.dart';
+export 'new_password_inputs.dart';
+import 'new_password_event.dart';
+import 'new_password_state.dart';
+import 'new_password_inputs.dart';
+import 'new_password_handlers.dart';
 
 class NewPasswordBloc extends Bloc<NewPasswordEvent, NewPasswordState> {
   final PasswordRepository authRepository;
@@ -16,10 +17,10 @@ class NewPasswordBloc extends Bloc<NewPasswordEvent, NewPasswordState> {
     required this.authRepository,
     required this.phone,
   }) : super(const NewPasswordState()) {
-    on<NewPasswordChanged>(_onPasswordChanged);
-    on<NewConfirmPasswordChanged>(_onConfirmPasswordChanged);
-    on<ToggleNewPasswordVisibility>(_onToggleNewPasswordVisibility);
-    on<ToggleConfirmPasswordVisibility>(_onToggleConfirmPasswordVisibility);
-    on<NewPasswordSubmitted>(_onSubmitted);
+    on<NewPasswordChanged>((e, emit) => newPasswordChanged(this, e, emit));
+    on<NewConfirmPasswordChanged>((e, emit) => newConfirmPasswordChanged(this, e, emit));
+    on<ToggleNewPasswordVisibility>((e, emit) => newToggleNewPasswordVisibility(this, emit));
+    on<ToggleConfirmPasswordVisibility>((e, emit) => newToggleConfirmPasswordVisibility(this, emit));
+    on<NewPasswordSubmitted>((e, emit) => newPasswordSubmitted(this, e, emit));
   }
 }

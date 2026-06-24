@@ -1,4 +1,5 @@
-part of 'deals_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'deals_models.dart';
 
 /// Base class for all Deals BLoC events.
 abstract class DealsEvent extends Equatable {

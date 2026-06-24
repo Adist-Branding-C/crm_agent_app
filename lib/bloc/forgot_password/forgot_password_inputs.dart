@@ -1,4 +1,4 @@
-part of 'forgot_password_bloc.dart';
+import 'package:formz/formz.dart';
 
 /// Validation errors for the [ForgotPasswordPhone] input.
 enum ForgotPasswordPhoneValidationError {

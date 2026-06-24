@@ -1,11 +1,14 @@
-import 'package:equatable/equatable.dart';
+export 'forgot_password_event.dart';
+export 'forgot_password_state.dart';
+export 'forgot_password_inputs.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../data/repositories/otp_repository.dart';
 
-part 'forgot_password_event.dart';
-part 'forgot_password_state.dart';
-part 'forgot_password_inputs.dart';
+import 'forgot_password_event.dart';
+import 'forgot_password_state.dart';
+import 'forgot_password_inputs.dart';
 
 class ForgotPasswordBloc
     extends Bloc<ForgotPasswordEvent, ForgotPasswordState> {

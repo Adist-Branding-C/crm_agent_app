@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../theme.dart';
 import '../../../bloc/tasks/tasks_filter_criteria.dart';
 import '../../../bloc/tasks/tasks_models.dart';
@@ -57,5 +58,5 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
 
   void _reset() => setState(() { _types.clear(); _dateRange = DateRangeType.none; _customFrom = null; _customTo = null; _priorities.clear(); });
 
-  void _apply() => Navigator.pop(context, TaskFilterCriteria(types: _types, dateRange: _dateRange, customFrom: _customFrom, customTo: _customTo, priorities: _priorities));
+  void _apply() => context.pop(TaskFilterCriteria(types: _types, dateRange: _dateRange, customFrom: _customFrom, customTo: _customTo, priorities: _priorities));
 }

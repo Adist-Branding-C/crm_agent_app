@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../theme.dart';
 import '../../../bloc/my_activity/my_activity_bloc.dart';
 import '../../../data/models/my_activity/my_activity_enums.dart';
@@ -27,7 +28,7 @@ class MyActivityBody extends StatelessWidget {
         selectedLead: loaded?.selectedLead ?? 'All leads',
         availableLeads: loaded?.availableLeads ?? [],
         onSelected: (name) {
-          Navigator.pop(ctx);
+          ctx.pop();
           if (name != null) ctx.read<MyActivityBloc>().add(LeadFilterChanged(name));
         },
       ),

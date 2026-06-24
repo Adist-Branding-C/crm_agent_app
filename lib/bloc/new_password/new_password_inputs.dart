@@ -1,15 +1,10 @@
-part of 'new_password_bloc.dart';
+import 'package:formz/formz.dart';
 
-/// Validation errors for the [NewPassword] input.
 enum NewPasswordValidationError {
-  /// Returned when the input is empty.
   empty,
-
-  /// Returned when the length is less than 6 characters.
   tooShort,
 }
 
-/// Represents the New Password input field.
 class NewPassword extends FormzInput<String, NewPasswordValidationError> {
   const NewPassword.pure() : super.pure('');
   const NewPassword.dirty([super.value = '']) : super.dirty();
@@ -22,16 +17,11 @@ class NewPassword extends FormzInput<String, NewPasswordValidationError> {
   }
 }
 
-/// Validation errors for the [NewConfirmPassword] input.
 enum NewConfirmPasswordValidationError {
-  /// Returned when the input is empty.
   empty,
-
-  /// Returned when the input does not match the password.
   mismatch,
 }
 
-/// Represents the Confirm Password input field.
 class NewConfirmPassword
     extends FormzInput<String, NewConfirmPasswordValidationError> {
   final String password;

@@ -1,10 +1,12 @@
-import 'package:equatable/equatable.dart';
+export 'campaigns_event.dart';
+export 'campaigns_state.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/campaigns_repository.dart';
 import 'campaigns_models.dart';
 
-part 'campaigns_event.dart';
-part 'campaigns_state.dart';
+import 'campaigns_event.dart';
+import 'campaigns_state.dart';
 
 /// BLoC managing states and events for Campaigns.
 class CampaignsBloc extends Bloc<CampaignsEvent, CampaignsState> {

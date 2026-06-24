@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../data/models/dashboard_models.dart';
 import '../../../data/models/follow_up_models.dart';
@@ -42,7 +43,7 @@ class _AddFollowUpFormState extends State<AddFollowUpForm> {
     );
     await dashRepo.addFollowUp(fc);
     await followUpRepo.addFollowUp(f);
-    if (mounted) Navigator.of(context).pop(true);
+    if (mounted) context.pop(true);
   }
 
   @override

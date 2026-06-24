@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/bloc/search/search_bloc.dart';
-import 'package:crm_agent_app/bloc/search/search_cache.dart';
 import 'package:crm_agent_app/data/repositories/leads_repository_impl.dart';
 import 'package:crm_agent_app/data/repositories/tasks_repository_impl.dart';
 import 'package:crm_agent_app/data/repositories/spotlight_repository_impl.dart';
@@ -11,12 +10,10 @@ void main() {
   group('SearchBloc Unit Tests', () {
     late SearchBloc bloc;
     setUp(() => bloc = SearchBloc(
-      cache: SearchCache(
-        leadsRepo: LeadsRepositoryImpl(leadsDataSource: LeadsDataSourceImpl()),
-        tasksRepo: TasksRepositoryImpl(),
-        spotlightRepo: SpotlightRepositoryImpl(),
-        followUpsRepo: FollowUpsRepositoryImpl(),
-      ),
+      leadsRepo: LeadsRepositoryImpl(leadsDataSource: LeadsDataSourceImpl()),
+      tasksRepo: TasksRepositoryImpl(),
+      spotlightRepo: SpotlightRepositoryImpl(),
+      followUpsRepo: FollowUpsRepositoryImpl(),
     ));
     tearDown(() => bloc.close());
 

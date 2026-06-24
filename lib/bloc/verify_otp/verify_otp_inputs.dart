@@ -1,4 +1,4 @@
-part of 'verify_otp_bloc.dart';
+import 'package:formz/formz.dart';
 
 /// Validation errors for the [VerifyOtpCode] input.
 enum VerifyOtpCodeValidationError {

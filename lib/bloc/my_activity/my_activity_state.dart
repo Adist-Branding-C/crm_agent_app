@@ -1,6 +1,7 @@
-part of 'my_activity_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../../data/models/my_activity/my_activity_model.dart';
+import '../../data/models/my_activity/my_activity_enums.dart';
 
-/// Base class for all My Activity states.
 abstract class MyActivityState extends Equatable {
   const MyActivityState();
 
@@ -8,17 +9,14 @@ abstract class MyActivityState extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Initial state before data loads.
 class MyActivityInitial extends MyActivityState {
   const MyActivityInitial();
 }
 
-/// State while activities are loading.
 class MyActivityLoading extends MyActivityState {
   const MyActivityLoading();
 }
 
-/// State when activities are loaded and filters are active.
 class MyActivityLoaded extends MyActivityState {
   final List<ActivityDateGroup> groupedActivities;
   final int totalCount;
@@ -65,7 +63,6 @@ class MyActivityLoaded extends MyActivityState {
       ];
 }
 
-/// State emitted on error.
 class MyActivityError extends MyActivityState {
   final String message;
 

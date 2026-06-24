@@ -1,4 +1,4 @@
-part of 'verify_otp_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base event class for [VerifyOtpBloc].
 abstract class VerifyOtpEvent extends Equatable {

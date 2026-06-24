@@ -1,18 +1,19 @@
-part of 'change_password_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'change_password_bloc.dart';
+import 'change_password_event.dart';
+import 'change_password_state.dart';
 
-extension ChangePasswordToggleHandlers on ChangePasswordBloc {
-  void _onToggleCurrentPasswordVisibility(
-    ToggleCurrentPasswordVisibility e,
-    Emitter<ChangePasswordState> emit,
-  ) => emit(state.copyWith(obscureCurrentPassword: !state.obscureCurrentPassword));
+void changePasswordToggleCurrentVisibility(
+  ChangePasswordBloc bloc,
+  Emitter<ChangePasswordState> emit,
+) => emit(bloc.state.copyWith(obscureCurrentPassword: !bloc.state.obscureCurrentPassword));
 
-  void _onToggleNewPasswordVisibility(
-    ToggleNewPasswordVisibility e,
-    Emitter<ChangePasswordState> emit,
-  ) => emit(state.copyWith(obscureNewPassword: !state.obscureNewPassword));
+void changePasswordToggleNewVisibility(
+  ChangePasswordBloc bloc,
+  Emitter<ChangePasswordState> emit,
+) => emit(bloc.state.copyWith(obscureNewPassword: !bloc.state.obscureNewPassword));
 
-  void _onToggleConfirmPasswordVisibility(
-    ToggleConfirmPasswordVisibility e,
-    Emitter<ChangePasswordState> emit,
-  ) => emit(state.copyWith(obscureConfirmPassword: !state.obscureConfirmPassword));
-}
+void changePasswordToggleConfirmVisibility(
+  ChangePasswordBloc bloc,
+  Emitter<ChangePasswordState> emit,
+) => emit(bloc.state.copyWith(obscureConfirmPassword: !bloc.state.obscureConfirmPassword));

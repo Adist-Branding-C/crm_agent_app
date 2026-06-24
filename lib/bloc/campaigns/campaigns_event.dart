@@ -1,4 +1,4 @@
-part of 'campaigns_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base class for all Campaigns BLoC events.
 abstract class CampaignsEvent extends Equatable {

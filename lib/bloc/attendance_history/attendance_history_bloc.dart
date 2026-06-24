@@ -1,10 +1,11 @@
-import 'package:equatable/equatable.dart';
+export 'attendance_history_event.dart';
+export 'attendance_history_state.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/attendance_history_model.dart';
 import '../../data/repositories/attendance_repository.dart';
 
-part 'attendance_history_event.dart';
-part 'attendance_history_state.dart';
+import 'attendance_history_event.dart';
+import 'attendance_history_state.dart';
 
 /// BLoC that manages states and business logic of the Attendance History Screen.
 class AttendanceHistoryBloc

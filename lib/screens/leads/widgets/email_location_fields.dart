@@ -1,12 +1,15 @@
-part of 'add_lead_contact_fields.dart';
+import 'package:flutter/material.dart';
+import '../../../../widgets/custom_text_field.dart';
+import '../../../../theme.dart';
 
-class _EmailLocationFields extends StatelessWidget {
+class EmailLocationFields extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController locationController;
   final String? emailError;
   final ValueChanged<String> onEmailChanged;
 
-  const _EmailLocationFields({
+  const EmailLocationFields({
+    super.key,
     required this.emailController,
     required this.locationController,
     this.emailError,

@@ -1,13 +1,17 @@
-import 'package:equatable/equatable.dart';
+export 'add_task_event.dart';
+export 'add_task_state.dart';
+export 'task_title_input.dart';
+export 'task_description_input.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../data/repositories/tasks_repository.dart';
 import '../tasks_models.dart';
 
-part 'add_task_event.dart';
-part 'add_task_state.dart';
-part 'task_title_input.dart';
-part 'task_description_input.dart';
+import 'add_task_event.dart';
+import 'add_task_state.dart';
+import 'task_title_input.dart';
+import 'task_description_input.dart';
 
 /// BLoC managing the state transitions and form validation of the Add Task form.
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {

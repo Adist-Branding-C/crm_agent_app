@@ -1,4 +1,5 @@
-part of 'follow_ups_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'follow_ups_models.dart';
 
 /// Base class for all states emitted by the [FollowUpsBloc].
 abstract class FollowUpsState extends Equatable {

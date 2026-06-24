@@ -1,4 +1,4 @@
-part of 'attendance_history_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base event class for the Attendance History BLoC.
 abstract class AttendanceHistoryEvent extends Equatable {

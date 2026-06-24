@@ -1,4 +1,6 @@
-part of 'forgot_password_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
+import 'forgot_password_inputs.dart';
 
 /// State representation of the Forgot Password flow.
 class ForgotPasswordState extends Equatable {

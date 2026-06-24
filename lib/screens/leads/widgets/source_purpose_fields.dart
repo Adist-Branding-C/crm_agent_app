@@ -1,12 +1,16 @@
-part of 'add_lead_selection_fields.dart';
+import 'package:flutter/material.dart';
+import '../../../../bloc/leads/leads_enums.dart';
+import '../../../../widgets/selection_group.dart';
+import '../../../../theme.dart';
 
-class _SourcePurposeFields extends StatelessWidget {
+class SourcePurposeFields extends StatelessWidget {
   final LeadSource source;
   final ValueChanged<LeadSource> onSourceChanged;
   final LeadPurpose purpose;
   final ValueChanged<LeadPurpose> onPurposeChanged;
 
-  const _SourcePurposeFields({
+  const SourcePurposeFields({
+    super.key,
     required this.source,
     required this.onSourceChanged,
     required this.purpose,

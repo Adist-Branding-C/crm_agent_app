@@ -1,4 +1,5 @@
-import '../../bloc/new_password/new_password_bloc.dart';
+import '../../bloc/new_password/new_password_inputs.dart';
+import '../../bloc/new_password/new_password_state.dart';
 import '../app_strings.dart';
 
 /// Extension to map [NewPasswordValidationError] to localized messages.

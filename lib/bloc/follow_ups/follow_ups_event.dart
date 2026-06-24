@@ -1,4 +1,4 @@
-part of 'follow_ups_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base class for all events handled by the [FollowUpsBloc].
 abstract class FollowUpsEvent extends Equatable {

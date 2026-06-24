@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../bloc/leads/leads_models.dart';
@@ -7,8 +8,6 @@ import '../../../widgets/responsive_width_container.dart';
 import 'edit_enquiry_buttons.dart';
 import 'edit_enquiry_contact_fields.dart';
 import 'edit_enquiry_details_fields.dart';
-
-part 'edit_enquiry_form_handlers.dart';
 
 /// Form managing editing inputs and event dispatching.
 class EditEnquiryForm extends StatefulWidget {
@@ -39,6 +38,28 @@ class _EditEnquiryFormState extends State<EditEnquiryForm> {
     _stat = l.status.label;
   }
 
+  void _onSave() {
+    if (_name.text.trim().isEmpty || _phone.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill all required fields')),
+      );
+      return;
+    }
+    context.read<EnquiryDetailsBloc>().add(UpdateEnquiryDetails(
+      name: _name.text.trim(),
+      phone: _phone.text.trim(),
+      email: _email.text.trim().isEmpty ? null : _email.text.trim(),
+      location: _loc.text.trim(),
+      source: LeadSource.values.firstWhere((e) => e.label == _src),
+      purpose: LeadPurpose.values.firstWhere((e) => e.label == _purp),
+      category: LeadCategory.values.firstWhere((e) => e.label == _cat),
+      status: LeadStatus.values.firstWhere((e) => e.label == _stat),
+      nextFollowUp: _follow.text.trim().isEmpty ? null : _follow.text.trim(),
+      note: _remarks.text.trim().isEmpty ? null : _remarks.text.trim(),
+    ));
+    context.pop();
+  }
+
   @override
   void dispose() {
     for (final c in [_name, _phone, _email, _loc, _follow, _remarks]) { c.dispose(); }
@@ -60,7 +81,7 @@ class _EditEnquiryFormState extends State<EditEnquiryForm> {
             followUpController: _follow, remarksController: _remarks,
           ),
         ])),
-        EditEnquiryButtons(onCancel: () => Navigator.pop(context), onSave: _onSave),
+        EditEnquiryButtons(onCancel: () => context.pop(), onSave: _onSave),
       ]),
     );
   }

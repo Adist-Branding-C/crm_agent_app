@@ -1,12 +1,13 @@
-import 'package:equatable/equatable.dart';
+export 'deals_event.dart';
+export 'deals_state.dart';
+export 'deals_selectors.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/deals_repository.dart';
 import 'deals_models.dart';
 
-export 'deals_selectors.dart';
-
-part 'deals_event.dart';
-part 'deals_state.dart';
+import 'deals_event.dart';
+import 'deals_state.dart';
 
 /// BLoC managing states and events for Deals.
 class DealsBloc extends Bloc<DealsEvent, DealsState> {

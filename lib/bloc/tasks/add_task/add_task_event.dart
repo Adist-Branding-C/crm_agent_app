@@ -1,4 +1,5 @@
-part of 'add_task_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../tasks_models.dart';
 
 /// Base event class for the [AddTaskBloc].
 abstract class AddTaskEvent extends Equatable {

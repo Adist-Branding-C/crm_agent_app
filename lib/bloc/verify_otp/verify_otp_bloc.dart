@@ -1,13 +1,16 @@
-import 'package:equatable/equatable.dart';
+export 'verify_otp_event.dart';
+export 'verify_otp_state.dart';
+export 'verify_otp_inputs.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../data/repositories/otp_repository.dart';
 import 'otp_timer_service.dart';
 import 'verify_otp_failure.dart';
 
-part 'verify_otp_event.dart';
-part 'verify_otp_state.dart';
-part 'verify_otp_inputs.dart';
+import 'verify_otp_event.dart';
+import 'verify_otp_state.dart';
+import 'verify_otp_inputs.dart';
 
 class VerifyOtpBloc extends Bloc<VerifyOtpEvent, VerifyOtpState> {
   final OtpRepository authRepository;

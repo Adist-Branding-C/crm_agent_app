@@ -1,6 +1,6 @@
-part of 'my_activity_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../../data/models/my_activity/my_activity_enums.dart';
 
-/// Base class for all My Activity events.
 abstract class MyActivityEvent extends Equatable {
   const MyActivityEvent();
 
@@ -8,12 +8,10 @@ abstract class MyActivityEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Event dispatched to load initial activity data.
 class LoadMyActivity extends MyActivityEvent {
   const LoadMyActivity();
 }
 
-/// Event dispatched when a time filter chip is tapped.
 class TimeFilterChanged extends MyActivityEvent {
   final ActivityTimeFilter filter;
 
@@ -23,7 +21,6 @@ class TimeFilterChanged extends MyActivityEvent {
   List<Object?> get props => [filter];
 }
 
-/// Event dispatched when a type filter chip is tapped.
 class TypeFilterChanged extends MyActivityEvent {
   final ActivityTypeFilter type;
 
@@ -33,7 +30,6 @@ class TypeFilterChanged extends MyActivityEvent {
   List<Object?> get props => [type];
 }
 
-/// Event dispatched when the lead dropdown selection changes.
 class LeadFilterChanged extends MyActivityEvent {
   final String leadName;
 

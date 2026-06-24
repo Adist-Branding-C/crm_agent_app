@@ -1,11 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/analytics_repository.dart';
+import '../../data/repositories/analytics_filter_params.dart';
 import '../leads/leads_enums.dart';
 import 'analytics_tab_data.dart';
 
-part 'analytics_event.dart';
-part 'analytics_state.dart';
+export 'analytics_event.dart';
+export 'analytics_state.dart';
+import 'analytics_event.dart';
+import 'analytics_state.dart';
 
 class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
   final AnalyticsRepository analyticsRepository;
@@ -17,9 +19,18 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
     on<ApplyFilters>(_onApplyFilters);
   }
 
+  AnalyticsFilterParams _params({
+    String period = 'This Month', DateTime? start, DateTime? end,
+    Set<LeadStatus>? statuses, Set<LeadSource>? sources,
+  }) => AnalyticsFilterParams(
+    period: period, startDate: start, endDate: end,
+    statuses: statuses ?? LeadStatus.values.toSet(),
+    sources: sources ?? LeadSource.values.toSet(),
+  );
+
   Future<void> _onLoad(LoadAnalytics event, Emitter<AnalyticsState> emit) async {
     emit(const AnalyticsLoading());
-    await _fetch(AnalyticsTab.leads, 'This Month', null, null, LeadStatus.values.toSet(), LeadSource.values.toSet(), emit);
+    await _fetch(AnalyticsTab.leads, _params(), emit);
   }
 
   void _onChangeTab(ChangeTab event, Emitter<AnalyticsState> emit) {
@@ -38,7 +49,7 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
     if (state is AnalyticsLoaded) {
       final s = state as AnalyticsLoaded;
       emit(const AnalyticsLoading());
-      await _fetch(s.activeTab, event.period, null, null, s.selectedStatuses, s.selectedSources, emit);
+      await _fetch(s.activeTab, _params(period: event.period, statuses: s.selectedStatuses, sources: s.selectedSources), emit);
     }
   }
 
@@ -46,22 +57,22 @@ class AnalyticsBloc extends Bloc<AnalyticsEvent, AnalyticsState> {
     if (state is AnalyticsLoaded) {
       final s = state as AnalyticsLoaded;
       emit(const AnalyticsLoading());
-      await _fetch(s.activeTab, event.period, event.startDate, event.endDate, event.statuses, event.sources, emit);
+      await _fetch(s.activeTab, _params(period: event.period, start: event.startDate, end: event.endDate, statuses: event.statuses, sources: event.sources), emit);
     }
   }
 
-  Future<void> _fetch(AnalyticsTab tab, String period, DateTime? start, DateTime? end, Set<LeadStatus> statuses, Set<LeadSource> sources, Emitter<AnalyticsState> emit) async {
+  Future<void> _fetch(AnalyticsTab tab, AnalyticsFilterParams p, Emitter<AnalyticsState> emit) async {
     try {
-      final leads = await analyticsRepository.getLeadsSummary(statuses, sources, period, start, end);
-      final deals = await analyticsRepository.getDealsSummary(statuses, sources, period, start, end);
-      final status = await analyticsRepository.getLeadsByStatus(statuses, sources, period, start, end);
-      final source = await analyticsRepository.getLeadsBySource(statuses, sources, period, start, end);
-      final stages = await analyticsRepository.getDealsByStage(statuses, sources, period, start, end);
-      final pStages = await analyticsRepository.getPipelineValueByStage(statuses, sources, period, start, end);
-      final dTypes = await analyticsRepository.getValueByDealType(statuses, sources, period, start, end);
+      final leads = await analyticsRepository.getLeadsSummary(p);
+      final deals = await analyticsRepository.getDealsSummary(p);
+      final status = await analyticsRepository.getLeadsByStatus(p);
+      final source = await analyticsRepository.getLeadsBySource(p);
+      final stages = await analyticsRepository.getDealsByStage(p);
+      final pStages = await analyticsRepository.getPipelineValueByStage(p);
+      final dTypes = await analyticsRepository.getValueByDealType(p);
       emit(AnalyticsLoaded(
-        activeTab: tab, selectedPeriod: period, customStartDate: start, customEndDate: end,
-        selectedStatuses: statuses, selectedSources: sources,
+        activeTab: tab, selectedPeriod: p.period, customStartDate: p.startDate, customEndDate: p.endDate,
+        selectedStatuses: p.statuses, selectedSources: p.sources,
         leadsData: LeadsTabData(summary: leads, statusMetrics: status, sourceMetrics: source),
         dealsData: DealsTabData(summary: deals, stageMetrics: stages, pipelineMetrics: pStages, typeMetrics: dTypes),
       ));

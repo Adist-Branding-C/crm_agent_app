@@ -3,6 +3,7 @@ import '../leads/leads_models.dart';
 import '../tasks/tasks_models.dart';
 import '../follow_ups/follow_ups_models.dart';
 import 'search_result.dart';
+import 'search_session_data.dart';
 
 /// Base class for all states emitted by the [SearchBloc].
 abstract class SearchState extends Equatable {
@@ -14,26 +15,17 @@ abstract class SearchState extends Equatable {
 
 /// State representing search page with no search query typed yet.
 class SearchInitial extends SearchState {
-  final List<String> recentQueries;
-  final List<Lead> suggestedLeads;
-  final List<Task> suggestedTasks;
-  final List<FollowUp> suggestedFollowUps;
+  final SearchSessionData session;
 
-  /// Creates a constant [SearchInitial] state.
-  const SearchInitial({
-    this.recentQueries = const [],
-    this.suggestedLeads = const [],
-    this.suggestedTasks = const [],
-    this.suggestedFollowUps = const [],
-  });
+  const SearchInitial({this.session = const SearchSessionData()});
+
+  List<String> get recentQueries => session.recentQueries;
+  List<Lead> get suggestedLeads => session.leads.take(2).toList();
+  List<Task> get suggestedTasks => session.tasks.take(2).toList();
+  List<FollowUp> get suggestedFollowUps => session.followUps.take(2).toList();
 
   @override
-  List<Object?> get props => [
-        recentQueries,
-        suggestedLeads,
-        suggestedTasks,
-        suggestedFollowUps,
-      ];
+  List<Object?> get props => [session];
 }
 
 /// State representing active search execution.

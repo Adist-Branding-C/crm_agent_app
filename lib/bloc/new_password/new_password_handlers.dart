@@ -1,78 +1,84 @@
-part of 'new_password_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'new_password_bloc.dart';
+import 'new_password_event.dart';
+import 'new_password_state.dart';
+import 'new_password_inputs.dart';
 
-extension NewPasswordHandlers on NewPasswordBloc {
-  void _onPasswordChanged(
-    NewPasswordChanged e,
-    Emitter<NewPasswordState> emit,
-  ) {
-    final password = NewPassword.dirty(e.password);
-    final confirm = NewConfirmPassword.dirty(
-      password: password.value,
-      value: state.confirmPassword.value,
-    );
-    emit(state.copyWith(
-      newPassword: password,
-      confirmPassword: confirm,
-      status: FormzSubmissionStatus.initial,
-      errorMessage: null,
-    ));
+void newPasswordChanged(
+  NewPasswordBloc bloc,
+  NewPasswordChanged e,
+  Emitter<NewPasswordState> emit,
+) {
+  final password = NewPassword.dirty(e.password);
+  final confirm = NewConfirmPassword.dirty(
+    password: password.value,
+    value: bloc.state.confirmPassword.value,
+  );
+  emit(bloc.state.copyWith(
+    newPassword: password,
+    confirmPassword: confirm,
+    status: FormzSubmissionStatus.initial,
+    errorMessage: null,
+  ));
+}
+
+void newConfirmPasswordChanged(
+  NewPasswordBloc bloc,
+  NewConfirmPasswordChanged e,
+  Emitter<NewPasswordState> emit,
+) {
+  final confirm = NewConfirmPassword.dirty(
+    password: bloc.state.newPassword.value,
+    value: e.confirmPassword,
+  );
+  emit(bloc.state.copyWith(
+    confirmPassword: confirm,
+    status: FormzSubmissionStatus.initial,
+    errorMessage: null,
+  ));
+}
+
+void newToggleNewPasswordVisibility(
+  NewPasswordBloc bloc,
+  Emitter<NewPasswordState> emit,
+) => emit(bloc.state.copyWith(obscureNewPassword: !bloc.state.obscureNewPassword));
+
+void newToggleConfirmPasswordVisibility(
+  NewPasswordBloc bloc,
+  Emitter<NewPasswordState> emit,
+) => emit(bloc.state.copyWith(obscureConfirmPassword: !bloc.state.obscureConfirmPassword));
+
+Future<void> newPasswordSubmitted(
+  NewPasswordBloc bloc,
+  NewPasswordSubmitted e,
+  Emitter<NewPasswordState> emit,
+) async {
+  final password = NewPassword.dirty(bloc.state.newPassword.value);
+  final confirm = NewConfirmPassword.dirty(
+    password: password.value,
+    value: bloc.state.confirmPassword.value,
+  );
+  emit(bloc.state.copyWith(
+    newPassword: password,
+    confirmPassword: confirm,
+    status: FormzSubmissionStatus.inProgress,
+  ));
+  if (password.isNotValid || confirm.isNotValid) {
+    emit(bloc.state.copyWith(status: FormzSubmissionStatus.failure));
+    return;
   }
-
-  void _onConfirmPasswordChanged(
-    NewConfirmPasswordChanged e,
-    Emitter<NewPasswordState> emit,
-  ) {
-    final confirm = NewConfirmPassword.dirty(
-      password: state.newPassword.value,
-      value: e.confirmPassword,
-    );
-    emit(state.copyWith(
-      confirmPassword: confirm,
-      status: FormzSubmissionStatus.initial,
-      errorMessage: null,
+  try {
+    final ok = await bloc.authRepository.updatePassword(bloc.phone, password.value);
+    emit(bloc.state.copyWith(
+      status:
+          ok ? FormzSubmissionStatus.success : FormzSubmissionStatus.failure,
+      errorMessage: ok ? null : 'Failed to update password.',
     ));
-  }
-
-  void _onToggleNewPasswordVisibility(
-    ToggleNewPasswordVisibility e,
-    Emitter<NewPasswordState> emit,
-  ) => emit(state.copyWith(obscureNewPassword: !state.obscureNewPassword));
-
-  void _onToggleConfirmPasswordVisibility(
-    ToggleConfirmPasswordVisibility e,
-    Emitter<NewPasswordState> emit,
-  ) => emit(state.copyWith(obscureConfirmPassword: !state.obscureConfirmPassword));
-
-  Future<void> _onSubmitted(
-    NewPasswordSubmitted e,
-    Emitter<NewPasswordState> emit,
-  ) async {
-    final password = NewPassword.dirty(state.newPassword.value);
-    final confirm = NewConfirmPassword.dirty(
-      password: password.value,
-      value: state.confirmPassword.value,
-    );
-    emit(state.copyWith(
-      newPassword: password,
-      confirmPassword: confirm,
-      status: FormzSubmissionStatus.inProgress,
+  } catch (_) {
+    emit(bloc.state.copyWith(
+      status: FormzSubmissionStatus.failure,
+      errorMessage: 'An error occurred.',
     ));
-    if (password.isNotValid || confirm.isNotValid) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
-      return;
-    }
-    try {
-      final ok = await authRepository.updatePassword(phone, password.value);
-      emit(state.copyWith(
-        status:
-            ok ? FormzSubmissionStatus.success : FormzSubmissionStatus.failure,
-        errorMessage: ok ? null : 'Failed to update password.',
-      ));
-    } catch (_) {
-      emit(state.copyWith(
-        status: FormzSubmissionStatus.failure,
-        errorMessage: 'An error occurred.',
-      ));
-    }
   }
 }

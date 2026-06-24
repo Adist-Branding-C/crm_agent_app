@@ -1,9 +1,7 @@
-part of 'change_password_bloc.dart';
+import 'package:formz/formz.dart';
 
-/// Validation errors for the [ChangeCurrentPassword] input.
 enum ChangeCurrentPasswordValidationError { empty }
 
-/// Represents the Current Password input field.
 class ChangeCurrentPassword
     extends FormzInput<String, ChangeCurrentPasswordValidationError> {
   const ChangeCurrentPassword.pure() : super.pure('');
@@ -15,10 +13,8 @@ class ChangeCurrentPassword
   }
 }
 
-/// Validation errors for the [ChangeNewPassword] input.
 enum ChangeNewPasswordValidationError { empty, tooShort, invalid }
 
-/// Represents the New Password input field.
 class ChangeNewPassword
     extends FormzInput<String, ChangeNewPasswordValidationError> {
   const ChangeNewPassword.pure() : super.pure('');
@@ -38,10 +34,8 @@ class ChangeNewPassword
   }
 }
 
-/// Validation errors for the [ChangeConfirmPassword] input.
 enum ChangeConfirmPasswordValidationError { empty, mismatch }
 
-/// Represents the Confirm Password input field.
 class ChangeConfirmPassword
     extends FormzInput<String, ChangeConfirmPasswordValidationError> {
   final String newPassword;

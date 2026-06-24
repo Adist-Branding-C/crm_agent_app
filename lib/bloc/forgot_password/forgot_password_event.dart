@@ -1,4 +1,4 @@
-part of 'forgot_password_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base event class for [ForgotPasswordBloc].
 abstract class ForgotPasswordEvent extends Equatable {

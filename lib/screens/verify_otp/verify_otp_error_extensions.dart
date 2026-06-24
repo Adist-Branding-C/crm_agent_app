@@ -1,5 +1,6 @@
-import '../../bloc/verify_otp/verify_otp_bloc.dart';
 import '../../bloc/verify_otp/verify_otp_failure.dart';
+import '../../bloc/verify_otp/verify_otp_inputs.dart';
+import '../../bloc/verify_otp/verify_otp_state.dart';
 
 /// Extension to map [VerifyOtpCodeValidationError] to localized messages.
 extension VerifyOtpCodeValidationErrorX on VerifyOtpCodeValidationError {

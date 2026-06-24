@@ -12,8 +12,6 @@ import 'widgets/view_call_log_body.dart';
 import 'widgets/view_call_log_buttons.dart';
 import 'widgets/invalid_call_log_fallback.dart';
 
-part 'widgets/view_call_log_actions.dart';
-
 class ViewCallLogScreen extends StatefulWidget {
   final Lead? lead;
   final EnquiryActivity? activity;
@@ -36,6 +34,36 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
     setState(() => _activity = match);
   }
 
+  void _refresh() {
+    final repo = context.read<ActivityRepository>();
+    final list = repo.getActivitiesForLead(widget.lead!.id);
+    final match = list.where((a) => a.id == _activity.id).firstOrNull;
+    if (match != null) refreshState(match);
+  }
+
+  Future<void> _editCallLog() async {
+    await context.pushNamed(
+      AppRoutes.callLog,
+      extra: {'lead': widget.lead, 'activity': _activity},
+    );
+    if (!context.mounted) return;
+    _refresh();
+  }
+
+  Future<void> _createFollowUp() async {
+    final success = await showModalBottomSheet<bool>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => AddFollowUpBottomSheet(lead: widget.lead!),
+    );
+    if (success == true && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Follow-up call scheduled for ${widget.lead!.name}')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.lead == null || widget.activity == null) {
@@ -49,8 +77,8 @@ class _ViewCallLogScreenState extends State<ViewCallLogScreen> {
             const ScreenHeader(title: 'View Call Log'),
             Expanded(child: ViewCallLogBody(lead: widget.lead!, activity: _activity)),
             ViewCallLogButtons(
-              onEditTap: () => _editCallLog(context),
-              onCreateFollowUpTap: () => _createFollowUp(context),
+              onEditTap: _editCallLog,
+              onCreateFollowUpTap: _createFollowUp,
             ),
           ],
         ),

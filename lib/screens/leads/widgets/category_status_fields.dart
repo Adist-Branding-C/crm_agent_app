@@ -1,12 +1,16 @@
-part of 'add_lead_selection_fields.dart';
+import 'package:flutter/material.dart';
+import '../../../../bloc/leads/leads_enums.dart';
+import '../../../../widgets/selection_group.dart';
+import '../../../../theme.dart';
 
-class _CategoryStatusFields extends StatelessWidget {
+class CategoryStatusFields extends StatelessWidget {
   final LeadCategory category;
   final ValueChanged<LeadCategory> onCategoryChanged;
   final LeadStatus status;
   final ValueChanged<LeadStatus> onStatusChanged;
 
-  const _CategoryStatusFields({
+  const CategoryStatusFields({
+    super.key,
     required this.category,
     required this.onCategoryChanged,
     required this.status,

@@ -3,8 +3,8 @@ import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 
-part 'name_phone_fields.dart';
-part 'email_location_fields.dart';
+import 'name_phone_fields.dart';
+import 'email_location_fields.dart';
 
 /// Contact information input fields section with real-time validation error texts.
 class AddLeadContactFields extends StatelessWidget {
@@ -59,13 +59,13 @@ class AddLeadContactFields extends StatelessWidget {
       padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         children: [
-          _NamePhoneFields(
+          NamePhoneFields(
             nameController: nameController, phoneController: phoneController,
             nameError: nameError, phoneError: phoneError,
             onNameChanged: onNameChanged, onPhoneChanged: onPhoneChanged,
           ),
           AppSpacing.gapLg,
-          _EmailLocationFields(
+          EmailLocationFields(
             emailController: emailController, locationController: locationController,
             emailError: emailError, onEmailChanged: onEmailChanged,
           ),

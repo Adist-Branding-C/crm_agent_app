@@ -1,4 +1,6 @@
-part of 'analytics_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../leads/leads_enums.dart';
+import 'analytics_tab_data.dart';
 
 /// The active tab on the Analytics screen.
 enum AnalyticsTab { leads, deals }

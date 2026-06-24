@@ -1,4 +1,4 @@
-part of 'splash_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 /// Base class for all states of the Splash Screen.
 ///

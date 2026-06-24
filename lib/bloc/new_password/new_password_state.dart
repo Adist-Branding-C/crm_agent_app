@@ -1,6 +1,7 @@
-part of 'new_password_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
+import 'new_password_inputs.dart';
 
-/// State representation of the New Password flow.
 class NewPasswordState extends Equatable {
   final NewPassword newPassword;
   final NewConfirmPassword confirmPassword;
@@ -18,7 +19,6 @@ class NewPasswordState extends Equatable {
     this.errorMessage,
   });
 
-  /// Factory method to copy state with modified fields.
   NewPasswordState copyWith({
     NewPassword? newPassword,
     NewConfirmPassword? confirmPassword,

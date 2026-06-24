@@ -1,4 +1,7 @@
-part of 'verify_otp_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
+import 'verify_otp_failure.dart';
+import 'verify_otp_inputs.dart';
 
 class VerifyOtpState extends Equatable {
   final VerifyOtpCode code;

@@ -3,8 +3,8 @@ import '../../../bloc/leads/leads_enums.dart';
 import '../../../widgets/selection_group.dart';
 import '../../../theme.dart';
 
-part 'source_purpose_fields.dart';
-part 'category_status_fields.dart';
+import 'source_purpose_fields.dart';
+import 'category_status_fields.dart';
 
 /// Selection options (Source, Purpose, Type, Status) fields section.
 class AddLeadSelectionFields extends StatelessWidget {
@@ -56,14 +56,14 @@ class AddLeadSelectionFields extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _SourcePurposeFields(
+          SourcePurposeFields(
             source: source,
             onSourceChanged: onSourceChanged,
             purpose: purpose,
             onPurposeChanged: onPurposeChanged,
           ),
           AppSpacing.gapLg,
-          _CategoryStatusFields(
+          CategoryStatusFields(
             category: category,
             onCategoryChanged: onCategoryChanged,
             status: status,

@@ -1,4 +1,5 @@
-part of 'attendance_history_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../../data/models/attendance_history_model.dart';
 
 /// Base state class for the Attendance History BLoC.
 abstract class AttendanceHistoryState extends Equatable {

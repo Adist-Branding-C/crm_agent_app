@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/search/search_bloc.dart';
-import '../../bloc/search/search_cache.dart';
 import '../../data/repositories/leads_repository.dart';
 import '../../data/repositories/tasks_repository.dart';
 import '../../data/repositories/spotlight_repository.dart';
@@ -28,12 +27,10 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (c) => SearchBloc(
-        cache: SearchCache(
-          leadsRepo: c.read<LeadsRepository>(),
-          tasksRepo: c.read<TasksRepository>(),
-          spotlightRepo: c.read<SpotlightRepository>(),
-          followUpsRepo: c.read<FollowUpsRepository>(),
-        ),
+        leadsRepo: c.read<LeadsRepository>(),
+        tasksRepo: c.read<TasksRepository>(),
+        spotlightRepo: c.read<SpotlightRepository>(),
+        followUpsRepo: c.read<FollowUpsRepository>(),
       )..add(const InitializeSearch()),
       child: PageScaffold(
         padding: EdgeInsets.zero,

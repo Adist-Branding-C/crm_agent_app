@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme.dart';
@@ -39,7 +40,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 
   void _apply() {
     context.read<AnalyticsBloc>().add(ApplyFilters(period: _period, startDate: _start, endDate: _end, statuses: _statuses, sources: _sources));
-    Navigator.pop(context);
+    context.pop();
   }
 
   @override

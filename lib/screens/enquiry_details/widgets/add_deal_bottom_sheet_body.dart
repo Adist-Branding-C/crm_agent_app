@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../bloc/deals/deals_bloc.dart';
 import '../../../bloc/deals/deals_models.dart';
 import '../../../bloc/leads/leads_models.dart';
@@ -55,7 +56,7 @@ class _AddDealBottomSheetBodyState extends State<AddDealBottomSheetBody> {
         _controller.setError(added.error);
         _controller.setLoading(false);
       } else {
-        Navigator.pop(context, true);
+        context.pop(true);
       }
     } catch (_) {
       if (!mounted) return;

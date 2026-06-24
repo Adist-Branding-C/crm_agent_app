@@ -1,10 +1,12 @@
-import 'package:equatable/equatable.dart';
+export 'follow_ups_event.dart';
+export 'follow_ups_state.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/follow_ups_repository.dart';
 import 'follow_ups_models.dart';
 
-part 'follow_ups_event.dart';
-part 'follow_ups_state.dart';
+import 'follow_ups_event.dart';
+import 'follow_ups_state.dart';
 
 /// Business logic component managing follow-up call data.
 class FollowUpsBloc extends Bloc<FollowUpsEvent, FollowUpsState> {

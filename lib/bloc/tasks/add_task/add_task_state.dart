@@ -1,4 +1,7 @@
-part of 'add_task_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../tasks_models.dart';
+import 'task_title_input.dart';
+import 'task_description_input.dart';
 
 /// Represents the state of the [AddTaskBloc] form.
 class AddTaskState extends Equatable {

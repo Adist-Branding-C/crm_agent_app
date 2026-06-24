@@ -1,6 +1,7 @@
-part of 'change_password_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
+import 'change_password_inputs.dart';
 
-/// State representation of the Change Password flow.
 class ChangePasswordState extends Equatable {
   final ChangeCurrentPassword currentPassword;
   final ChangeNewPassword newPassword;
@@ -22,7 +23,6 @@ class ChangePasswordState extends Equatable {
     this.errorMessage,
   });
 
-  /// Factory method to copy state with modified fields.
   ChangePasswordState copyWith({
     ChangeCurrentPassword? currentPassword,
     ChangeNewPassword? newPassword,
