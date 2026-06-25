@@ -16,15 +16,29 @@ class FollowUp extends Equatable {
   final String name;
   final LeadPurpose category;
   final LeadStatus status;
-  final FollowUpUrgency urgency;
+  final DateTime scheduledTime;
 
   const FollowUp({
     required this.id,
     required this.name,
     required this.category,
     required this.status,
-    required this.urgency,
+    required this.scheduledTime,
   });
+
+  FollowUpUrgency get urgency {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final targetDate = DateTime(scheduledTime.year, scheduledTime.month, scheduledTime.day);
+
+    if (targetDate == today) {
+      return FollowUpUrgency.dueToday;
+    } else if (scheduledTime.isBefore(now)) {
+      return FollowUpUrgency.overdue;
+    } else {
+      return FollowUpUrgency.upcoming;
+    }
+  }
 
   String get initials {
     if (name.trim().isEmpty) return '';
@@ -36,5 +50,5 @@ class FollowUp extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, name, category, status, urgency];
+  List<Object?> get props => [id, name, category, status, scheduledTime];
 }

@@ -41,15 +41,14 @@ class _AddFollowUpFormState extends State<AddFollowUpForm> {
       tag: _selectedTag,
       name: 'Call back ${widget.lead.name}',
       time: _whenController.text,
+      scheduledTime: _selectedDateTime!,
     );
     final f = FollowUp(
       id: DateTime.now().toString(),
       name: widget.lead.name,
       category: widget.lead.source,
       status: widget.lead.status,
-      urgency: _selectedTag == FollowUpTag.priority
-          ? FollowUpUrgency.dueToday
-          : FollowUpUrgency.upcoming,
+      scheduledTime: _selectedDateTime!,
     );
     await dashRepo.addFollowUp(fc);
     await followUpRepo.addFollowUp(f);

@@ -15,19 +15,21 @@ class FollowUpCall extends Equatable {
   final String name;
   final String time;
   final String description;
-  final bool isOverdue;
+  final DateTime scheduledTime;
 
   const FollowUpCall({
     required this.id,
     required this.tag,
     required this.name,
     required this.time,
+    required this.scheduledTime,
     this.description = '',
-    this.isOverdue = false,
   });
 
+  bool get isOverdue => scheduledTime.isBefore(DateTime.now());
+
   @override
-  List<Object?> get props => [id, tag, name, time, description, isOverdue];
+  List<Object?> get props => [id, tag, name, time, description, scheduledTime];
 }
 
 class DashboardStats extends Equatable {

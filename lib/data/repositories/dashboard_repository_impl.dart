@@ -7,27 +7,29 @@ class DashboardRepositoryImpl implements DashboardRepository {
   final _followUpsController = StreamController<List<FollowUpCall>>.broadcast();
 
   final List<FollowUpCall> _followUps = [
-    const FollowUpCall(
+    FollowUpCall(
       id: '1',
       tag: FollowUpTag.priority,
       name: 'Call back Rahul Menon',
       time: 'Today, 4:00 PM',
       description: 'Follow up on admission inquiry',
-      isOverdue: true,
+      scheduledTime: DateTime.now().subtract(const Duration(hours: 1)),
     ),
-    const FollowUpCall(
+    FollowUpCall(
       id: '2',
       tag: FollowUpTag.followUp,
       name: 'Call back Sneha Pillai',
       time: 'Today, 5:30 PM',
       description: 'Share course details',
+      scheduledTime: DateTime.now().add(const Duration(minutes: 30)),
     ),
-    const FollowUpCall(
+    FollowUpCall(
       id: '3',
       tag: FollowUpTag.priority,
       name: 'Call back Aravind Krishnan',
       time: 'Today, 6:00 PM',
       description: 'Confirm demo slot',
+      scheduledTime: DateTime.now().add(const Duration(hours: 1)),
     ),
   ];
 
