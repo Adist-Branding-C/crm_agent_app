@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import '../../../bloc/deals/deals_bloc.dart';
 import '../../../bloc/deals/deals_models.dart';
 import '../../../bloc/leads/leads_models.dart';
@@ -39,9 +38,7 @@ class _AddDealBottomSheetBodyState extends State<AddDealBottomSheetBody> {
       clientName: widget.lead.name,
       amount: double.parse(_controller.amountController.text.trim()),
       stage: _controller.selectedStage,
-      closeDate: AddDealDatePickerHelper.formatCloseDate(
-        _controller.expectedClose!,
-      ),
+      closeDate: AddDealDatePickerHelper.formatCloseDate(_controller.expectedClose!),
     );
     _controller.setLoading(true);
     _controller.setError(null);
@@ -58,7 +55,7 @@ class _AddDealBottomSheetBodyState extends State<AddDealBottomSheetBody> {
         _controller.setError(added.error);
         _controller.setLoading(false);
       } else {
-        context.pop(true);
+        Navigator.of(context).pop(true);
       }
     } catch (_) {
       if (!mounted) return;

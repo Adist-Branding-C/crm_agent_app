@@ -38,13 +38,14 @@ class AddDealSubmitButton extends StatelessWidget {
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.add, size: 18),
+                const Icon(Icons.add, size: 18, color: Colors.white),
                 SizedBox(width: AppSpacing.xs2),
                 Text(
                   'Add Deal',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),

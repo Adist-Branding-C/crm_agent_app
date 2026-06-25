@@ -23,3 +23,10 @@ Changes:
 - Add 'Clear' button to the Filter & Sort bottom sheet, visible only when a filter is applied.
 - Tapping 'Clear' instantly resets the applied filters and updates the state.
 - Add widget tests verifying both the active filter button visual states and the 'Clear' button functionality.
+
+feat(tasks): implement consistent task details bottom sheet
+
+- Create TaskDetailsBottomSheet and TaskDetailsActionBtn/TaskDetailsInfoRow widgets conforming to layout designs.
+- Wire card/row tap gestures on dashboard and task screen to trigger bottom sheet details.
+- Update mock tasks data to match user request references (e.g. Follow-up call, Send pricing sheet) along with realistic descriptions.
+- Ensure all modified and new files strictly adhere to the under-80-lines file constraint.

@@ -13,20 +13,16 @@ class DealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) =>
-          DealsBloc(dealsRepository: context.read())..add(const LoadDeals()),
-      child: ChangeNotifierProvider(
-        create: (_) => DealsViewNotifier(0),
-        child: PageScaffold(
-          padding: EdgeInsets.zero,
-          child: const Column(
-            children: [
-              DealsAsyncHandler(),
-              DealsToggle(),
-              Expanded(child: DealsContent()),
-            ],
-          ),
+    return ChangeNotifierProvider(
+      create: (_) => DealsViewNotifier(0),
+      child: PageScaffold(
+        padding: EdgeInsets.zero,
+        child: const Column(
+          children: [
+            DealsAsyncHandler(),
+            DealsToggle(),
+            Expanded(child: DealsContent()),
+          ],
         ),
       ),
     );
