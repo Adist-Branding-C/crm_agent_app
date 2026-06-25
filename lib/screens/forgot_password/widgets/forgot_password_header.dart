@@ -11,33 +11,31 @@ class ForgotPasswordHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppSpacing.gapMd,
+        AppSpacing.gapXl,
         Container(
           padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.primaryColorLight,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: Icon(
-            Icons.phone_android_rounded,
-            color: context.primary,
-            size: 32,
-          ),
+          child: Icon(Icons.call_rounded, color: context.primary, size: 32),
         ),
-        AppSpacing.gapMd,
+        AppSpacing.gapXl,
         Text(
           'Enter your phone',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w800,
             color: context.textDark,
           ),
         ),
-        AppSpacing.gapSm,
+        AppSpacing.gapXl,
         Text(
           "We'll send a 6-digit OTP to your registered mobile number.",
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: context.textMuted),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: context.textMuted,
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ],
     );

@@ -11,7 +11,7 @@ class SaveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 52,
+      height: 50,
       margin: EdgeInsets.all(AppSpacing.xxl),
       decoration: BoxDecoration(
         color: AppColors.primaryColor,

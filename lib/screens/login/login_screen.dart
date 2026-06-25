@@ -5,6 +5,7 @@ import '../../bloc/login/login_bloc.dart';
 import '../../bloc/notifications/notifications_bloc.dart';
 import '../../data/auth_state_notifier.dart';
 import '../../data/repositories/session_repository.dart';
+import '../../theme/app_spacing.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/login_body.dart';
 
@@ -42,6 +43,11 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
         child: PageScaffold(
+          padding: EdgeInsets.only(
+           left: AppSpacing.xl-2,
+           right: AppSpacing.xl-2,
+           top: AppSpacing.massive,
+          ),
           child: LoginBody(
             phoneController: _phoneController,
             passwordController: _passwordController,

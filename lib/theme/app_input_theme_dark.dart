@@ -7,7 +7,7 @@ InputDecorationTheme get darkInputDecorationTheme => InputDecorationTheme(
   fillColor: AppColors.darkCard,
   contentPadding: const EdgeInsets.symmetric(
     horizontal: AppSpacing.lg,
-    vertical: AppSpacing.lg,
+    vertical: 12,
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(14),

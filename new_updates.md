@@ -45,3 +45,40 @@ feat(enquiry_details): implement empty states for Activities and Notes tabs
 - Implement scrollable empty state view in ActivitiesTabView when the activities list is empty.
 - Implement "No notes yet" empty state matching the design mockup in NotesHistoryList when the notes list is empty.
 - Add widget tests under test/enquiry_details_activities_empty_test.dart and test/enquiry_details_notes_empty_test.dart to verify correct empty state rendering and behavior.
+
+style: update design system spacing, typography, and component dimensions
+
+Aligns the CRM application's spacing, paddings, typography scale, icon sizes,
+and key UI components with the updated design system specifications.
+
+Spacing and Insets:
+- Updated odd-step px rhythm values (xs2=3, md=9, lg=13, xl=17) in `AppSpacing`.
+- Explicitly set FAB bottom padding bottom inset to 74.
+
+Typography:
+- Configured fine-grained half-point font sizes and weights in `baseTextTheme`.
+- Set input text size to 14.5 and button text size to 15.
+
+Component Sizing and Styles:
+- Avatar: Default size updated to 44; initials font size set to `size * 0.36`.
+- Badge: Applied pill radius (999) and updated padding (default 4x10, small 2x8).
+- KPI Cards: Set padding (compact 13, big 16) and icon chips (compact 30, big 38).
+- Header Buttons: Sized `CardIconButton` to 36x36 with a border radius of 11.
+- Icon Chips: Rounded action-row and feature tile icon containers (radius 11-12).
+- Segmented Controls: Applied container padding 3, outer radius 12, button radius 9, and button padding 7x13.
+- Chips: Set selection, date, and priority chips to 7x13 padding and pill radius.
+- Bottom Sheets: Configured top/horizontal/bottom padding (11 / 17 / 29), top radius 24, and grab-handle dimensions to 38x5.
+- Progress Bars: Updated standalone progress bar height to 7 and list bar height to 6.
+- Screen Header: Sized header padding (54 top, 17 horizontal, bottom 7 large / 13 standard) and title text (27 large / 18 standard).
+- Search Fields: Updated text font sizes to 14.5 and search icon sizes to 19.
+- Empty State: Updated hero icon size to 28.
+
+style: reduce button and text/search input heights by 2px
+
+Decreases the heights of interactive components by 2px to align with design adjustments:
+- Standard primary buttons padding reduced from 13px (AppSpacing.lg) to 12px.
+- Save, Add Deal, Edit, and Create Follow-up buttons adjusted from 52px to 50px.
+- Standard input text fields vertical padding reduced from 13px (AppSpacing.lg) to 12px.
+- Search input field vertical padding reduced from 9px (AppSpacing.md) to 8px.
+- Date picker field height reduced from 44px to 42px.
+- Cleaned up unused AppSpacing import in app_button_theme.dart.

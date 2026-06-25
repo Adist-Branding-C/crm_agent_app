@@ -35,12 +35,15 @@ class CustomButton extends StatelessWidget {
         child: ElevatedButton(
           style: (buttonStyle ?? Theme.of(context).elevatedButtonTheme.style)
               ?.copyWith(
-                backgroundColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.disabled))
-                    return AppColors.slate300;
-                  return null;
-                }),
-              ),
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return AppColors.slate300;
+              }
+              final baseStyle =
+                  buttonStyle ?? Theme.of(context).elevatedButtonTheme.style;
+              return baseStyle?.backgroundColor?.resolve(states);
+            }),
+          ),
           onPressed: active ? onPressed : null,
           child: isLoading
               ? const ButtonLoading()

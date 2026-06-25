@@ -28,7 +28,7 @@ class ViewCallLogButtons extends StatelessWidget {
                 onTap: onEditTap,
                 borderRadius: BorderRadius.circular(8),
                 child: SizedBox(
-                  height: 52,
+                  height: 50,
                   child: Center(
                     child: Text(
                       'Edit Log',
@@ -51,7 +51,7 @@ class ViewCallLogButtons extends StatelessWidget {
                 onTap: onCreateFollowUpTap,
                 borderRadius: BorderRadius.circular(8),
                 child: SizedBox(
-                  height: 52,
+                  height: 50,
                   child: Center(
                     child: Text(
                       'Create Follow-up',

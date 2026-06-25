@@ -4,10 +4,10 @@ class AppSpacing {
   AppSpacing._();
 
   // Base unit: 4px
-  static const double xxs = 0;
-  static const double xs = 1;
-  static const double xs2 = 3;
-  static const double sm = 5;
+  static const double xxs = 1;
+  static const double xs = 2;
+  static const double xs2 = 4;
+  static const double sm = 6;
   static const double md = 9;
   static const double lg = 13;
   static const double xl = 17;

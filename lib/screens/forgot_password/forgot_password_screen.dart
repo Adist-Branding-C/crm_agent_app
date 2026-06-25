@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../bloc/forgot_password/forgot_password_bloc.dart';
 import '../../data/repositories/otp_repository.dart';
 import '../../router/app_routes.dart';
+import '../../theme/app_spacing.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/forgot_password_body.dart';
 
@@ -37,7 +38,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           }
         },
         child: PageScaffold(
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.only(
+           left: AppSpacing.xs,
+           right: AppSpacing.xs,
+          ),
           child: ForgotPasswordBody(phoneController: _phoneController),
         ),
       ),

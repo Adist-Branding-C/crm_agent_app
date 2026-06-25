@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/text_scaler.dart';
 import 'app_colors.dart';
-import 'app_spacing.dart';
 
 /// Global theme configurations for button elements.
 class AppButtonTheme {
@@ -13,7 +12,7 @@ class AppButtonTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+          padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),

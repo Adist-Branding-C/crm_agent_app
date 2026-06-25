@@ -15,23 +15,25 @@ class LoginHeader extends StatelessWidget {
             label: 'CRM Agent Logo',
             image: true,
             child: Container(
-              width: 80,
-              height: 80,
+              width: 64,
+              height: 64,
               decoration: BoxDecoration(
                 color: AppTheme.primaryColor,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(16),
               ),
               child: const Icon(
                 Icons.people_rounded,
                 color: Colors.white,
-                size: 40,
+                size: 32,
               ),
             ),
           ),
           const SizedBox(height: AppSpacing.xl),
           RichText(
             text: TextSpan(
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
               children: [
                 const TextSpan(
                   text: 'CRM ',

@@ -30,7 +30,7 @@ class DatePickerField extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Container(
-            height: 44,
+            height: 42,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),

@@ -25,7 +25,7 @@ class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: AppSpacing.screenPadding,
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: ResponsiveWidthContainer(
         maxWidth: 480,
         child: Column(
@@ -58,6 +58,14 @@ class LoginBody extends StatelessWidget {
                   : CustomButton(
                       text: 'Sign In',
                       icon: Icons.login_rounded,
+                      buttonStyle: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(
+                            backgroundColor: const WidgetStatePropertyAll(
+                              Color(0xFFCE4F4B),
+                            ),
+                          ),
                       onPressed: () => context
                           .read<LoginBloc>()
                           .add(const LoginSubmitted()),

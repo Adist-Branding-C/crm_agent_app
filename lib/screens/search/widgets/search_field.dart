@@ -80,7 +80,7 @@ class _SearchFieldState extends State<SearchField> {
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(
               horizontal: AppSpacing.lg,
-              vertical: AppSpacing.md,
+              vertical: 8,
             ),
           ),
         ),
