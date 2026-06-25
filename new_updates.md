@@ -30,3 +30,12 @@ feat(tasks): implement consistent task details bottom sheet
 - Wire card/row tap gestures on dashboard and task screen to trigger bottom sheet details.
 - Update mock tasks data to match user request references (e.g. Follow-up call, Send pricing sheet) along with realistic descriptions.
 - Ensure all modified and new files strictly adhere to the under-80-lines file constraint.
+
+feat(deals): implement Add Deal flow from Enquiry Details screen
+
+- Register `DealsBloc` in the global `buildBlocProviders` list to sync state across views.
+- Update `DealsScreen` to consume the globally provided `DealsBloc` instance.
+- Modify `AddDealBottomSheetBody` to use `Navigator.pop(true)` instead of GoRouter's `context.pop(true)`.
+- Capture `GoRouter` in `fab_actions.dart` before unmounting the FAB menu to enable proper screen redirection.
+- Explicitly style the `AddDealSubmitButton` text and icon white for readability in both active and disabled states.
+- Add `enquiry_details_add_deal_test.dart` integration test verifying the complete user flow from Enquiry Details to Deals.
