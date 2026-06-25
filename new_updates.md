@@ -16,3 +16,10 @@ Changes:
   - Updates mock records in `mock_follow_ups.dart` and `dashboard_repository_impl.dart` to define dynamic scheduled times relative to `DateTime.now()`.
 - test/follow_up_logic_test.dart:
   - Introduces a new unit test suite validating the edge cases of time-based urgency categorization logic.
+
+  feat(leads): add active visual indicator and clear option to filtering system
+
+- Update Filter button on My Leads page to show a primary red background and white icon when any status or source filter is active.
+- Add 'Clear' button to the Filter & Sort bottom sheet, visible only when a filter is applied.
+- Tapping 'Clear' instantly resets the applied filters and updates the state.
+- Add widget tests verifying both the active filter button visual states and the 'Clear' button functionality.

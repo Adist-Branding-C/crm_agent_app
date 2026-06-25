@@ -6,6 +6,7 @@ import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'task_checkbox.dart';
 import 'task_card_helpers.dart';
+import 'task_details_bottom_sheet.dart';
 
 class TaskCard extends StatelessWidget {
   final Task task;
@@ -23,6 +24,7 @@ class TaskCard extends StatelessWidget {
     return CustomCard(
       margin: AppSpacing.cardMarginList,
       padding: AppSpacing.cardPadding,
+      onTap: () => TaskDetailsBottomSheet.show(context, task),
       child: Row(
         children: [
           TaskCheckbox(

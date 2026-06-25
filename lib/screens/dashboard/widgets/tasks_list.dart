@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/section_header.dart';
 import '../../dashboard/dashboard_tab_notifier.dart';
 import '../../../theme.dart';
+import '../../tasks/widgets/task_details_bottom_sheet.dart';
 import 'task_row.dart';
 
 /// Renders the entire Tasks list container with headers.
@@ -46,12 +46,7 @@ class TasksList extends StatelessWidget {
               itemBuilder: (context, index) {
                 return TaskRow(
                   task: tasks[index],
-                  onTap: () {
-                    context.read<DashboardTabNotifier>().setIndex(2);
-                    context.read<TasksBloc>().add(
-                      const FilterChanged(TasksFilter.pending),
-                    );
-                  },
+                  onTap: () => TaskDetailsBottomSheet.show(context, tasks[index]),
                 );
               },
             ),
