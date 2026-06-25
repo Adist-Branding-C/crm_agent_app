@@ -12,24 +12,28 @@ class CountBadge extends StatelessWidget {
   /// Text color of the count badge.
   final Color? textColor;
 
+  /// Whether the badge is the small variant.
+  final bool isSmall;
+
   /// Creates a [CountBadge].
   const CountBadge({
     super.key,
     required this.count,
     this.bgColor,
     this.textColor,
+    this.isSmall = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: AppSpacing.xxs,
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 8.0 : 10.0,
+        vertical: isSmall ? 2.0 : 4.0,
       ),
       decoration: BoxDecoration(
         color: bgColor ?? AppColors.slate100,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
         '$count',

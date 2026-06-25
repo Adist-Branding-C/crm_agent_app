@@ -37,6 +37,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           }
         },
         child: PageScaffold(
+          padding: EdgeInsets.zero,
           child: ForgotPasswordBody(phoneController: _phoneController),
         ),
       ),

@@ -12,7 +12,7 @@ class NewPasswordHeaderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppSpacing.gapXxl,
+        AppSpacing.gapMd,
         Container(
           padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
@@ -25,7 +25,7 @@ class NewPasswordHeaderWidget extends StatelessWidget {
             size: 32,
           ),
         ),
-        AppSpacing.gapXxl,
+        AppSpacing.gapMd,
         Text(
           'Set new password',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(

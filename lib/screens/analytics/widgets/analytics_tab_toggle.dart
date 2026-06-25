@@ -16,12 +16,12 @@ class AnalyticsTabToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
+      height: 38,
       decoration: BoxDecoration(
         color: AppColors.slate100,
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: EdgeInsets.all(AppSpacing.xs),
+      padding: const EdgeInsets.all(3.0),
       child: Row(
         children: [
           Expanded(
@@ -66,9 +66,10 @@ class _TabButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 13.0),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(9),
           border: isSelected && isDeals
               ? Border.all(color: AppColors.warningDark, width: 1.5)
               : null,

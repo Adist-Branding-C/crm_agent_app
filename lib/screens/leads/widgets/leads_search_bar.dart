@@ -23,11 +23,11 @@ class LeadsSearchBar extends StatelessWidget {
           },
           decoration: const InputDecoration(
             hintText: 'Search name, phone, location...',
-            hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 14),
-            prefixIcon: Icon(
+            hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14.5),
+            prefixIcon: const Icon(
               Icons.search_rounded,
               color: AppColors.textMuted,
-              size: 20,
+              size: 19,
             ),
             border: InputBorder.none,
             enabledBorder: InputBorder.none,
@@ -37,7 +37,7 @@ class LeadsSearchBar extends StatelessWidget {
               vertical: AppSpacing.md,
             ),
           ),
-          style: const TextStyle(color: AppColors.textDark, fontSize: 14),
+          style: const TextStyle(color: AppColors.textDark, fontSize: 14.5),
         ),
       ),
     );

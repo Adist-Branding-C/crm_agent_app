@@ -25,10 +25,10 @@ class AddDealBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: 20,
-        right: 20,
-        top: 12,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+        left: 17.0,
+        right: 17.0,
+        top: 11.0,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 29.0,
       ),
       child: SingleChildScrollView(
         child: Column(

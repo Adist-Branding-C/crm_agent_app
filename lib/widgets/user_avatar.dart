@@ -26,7 +26,7 @@ class UserAvatar extends StatelessWidget {
   const UserAvatar({
     super.key,
     required this.initials,
-    this.size = 40,
+    this.size = 44,
     this.backgroundColor,
     this.textColor,
     this.fontSize,
@@ -47,7 +47,7 @@ class UserAvatar extends StatelessWidget {
         style: TextStyle(
           color: textColor ?? AppColors.primaryColor,
           fontWeight: FontWeight.bold,
-          fontSize: fontSize ?? (size * 0.35),
+          fontSize: fontSize ?? (size * 0.36),
         ),
       ),
     );

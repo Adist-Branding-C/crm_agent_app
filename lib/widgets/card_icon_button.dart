@@ -17,9 +17,9 @@ class CardIconButton extends StatelessWidget {
     required this.onTap,
     this.iconColor,
     this.backgroundColor,
-    this.size = 40,
-    this.iconSize = 24,
-    this.borderRadius = 8,
+    this.size = 36,
+    this.iconSize = 19,
+    this.borderRadius = 11,
   });
 
   @override

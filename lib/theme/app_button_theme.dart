@@ -15,7 +15,7 @@ class AppButtonTheme {
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
       );
 
@@ -28,7 +28,7 @@ class AppButtonTheme {
       style: elevatedButtonTheme.style?.copyWith(
         textStyle: WidgetStatePropertyAll(
           TextStyle(
-            fontSize: AppTextScaler.scale(w, 16),
+            fontSize: AppTextScaler.scale(w, 15),
             fontWeight: FontWeight.bold,
           ),
         ),

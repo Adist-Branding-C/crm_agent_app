@@ -23,7 +23,7 @@ class EmptyStateWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: AppColors.slate300, size: 64),
+            Icon(icon, color: AppColors.slate300, size: 28),
             AppSpacing.gapLg,
             Text(
               title,

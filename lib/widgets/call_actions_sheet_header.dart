@@ -17,7 +17,6 @@ class CallActionsSheetHeader extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppSpacing.gapSm,
         const BottomSheetHandle(),
         AppSpacing.gapXl,
         Row(

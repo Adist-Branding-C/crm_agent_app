@@ -65,7 +65,7 @@ class _SearchFieldState extends State<SearchField> {
             prefixIcon: const Icon(
               Icons.search_rounded,
               color: AppColors.textMuted,
-              size: 20,
+              size: 19,
             ),
             suffixIcon: _showClear
                 ? IconButton(

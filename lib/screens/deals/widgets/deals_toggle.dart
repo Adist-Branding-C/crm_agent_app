@@ -17,8 +17,8 @@ class DealsToggle extends StatelessWidget {
         vertical: AppSpacing.md,
       ),
       child: Container(
-        height: 44,
-        padding: EdgeInsets.all(AppSpacing.xs),
+        height: 38,
+        padding: const EdgeInsets.all(3.0),
         decoration: BoxDecoration(
           color: AppColors.borderLightAlpha50,
           borderRadius: BorderRadius.circular(12),
@@ -67,9 +67,10 @@ class DealsToggleItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 13.0),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.surfaceWhite : AppColors.transparent,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(9),
         ),
         child: Text(
           label,

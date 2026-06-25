@@ -29,7 +29,16 @@ class NewPasswordBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const ScreenHeader(title: 'New password', showBackButton: true),
+          const ScreenHeader(
+            title: 'New password',
+            showBackButton: true,
+            padding: EdgeInsets.only(
+              left: AppSpacing.xxl,
+              right: AppSpacing.xxl,
+              top: AppSpacing.md,
+              bottom: AppSpacing.sm,
+            ),
+          ),
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
@@ -39,7 +48,7 @@ class NewPasswordBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const NewPasswordHeaderWidget(),
-                    AppSpacing.gapXxxl,
+                    AppSpacing.gapXl,
                     NewPasswordInputWidget(controller: passwordController),
                     AppSpacing.gapXl,
                     ConfirmPasswordInputWidget(controller: confirmController),

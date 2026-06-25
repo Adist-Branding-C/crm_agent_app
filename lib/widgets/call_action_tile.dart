@@ -35,7 +35,7 @@ class CallActionTile extends StatelessWidget {
               height: 40,
               decoration: BoxDecoration(
                 color: iconBgColor,
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, color: iconColor, size: 20),
             ),

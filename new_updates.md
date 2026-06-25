@@ -39,3 +39,9 @@ feat(deals): implement Add Deal flow from Enquiry Details screen
 - Capture `GoRouter` in `fab_actions.dart` before unmounting the FAB menu to enable proper screen redirection.
 - Explicitly style the `AddDealSubmitButton` text and icon white for readability in both active and disabled states.
 - Add `enquiry_details_add_deal_test.dart` integration test verifying the complete user flow from Enquiry Details to Deals.
+
+feat(enquiry_details): implement empty states for Activities and Notes tabs
+
+- Implement scrollable empty state view in ActivitiesTabView when the activities list is empty.
+- Implement "No notes yet" empty state matching the design mockup in NotesHistoryList when the notes list is empty.
+- Add widget tests under test/enquiry_details_activities_empty_test.dart and test/enquiry_details_notes_empty_test.dart to verify correct empty state rendering and behavior.

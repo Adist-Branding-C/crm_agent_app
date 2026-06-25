@@ -17,7 +17,7 @@ class VerifyOtpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppSpacing.gapXxxl,
+        AppSpacing.gapXl,
         OtpInputWidget(
           controller: otpController,
           onChanged: (val) =>

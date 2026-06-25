@@ -32,13 +32,13 @@ class PriorityChip extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.sm,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 13.0,
+            vertical: 7.0,
           ),
           decoration: BoxDecoration(
             color: isSelected ? activeBg : Colors.white,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(999),
             border: Border.all(
               color: isSelected ? priority.displayColor : AppColors.slate300,
               width: isSelected ? 1.5 : 1,

@@ -7,6 +7,8 @@ import '../../../bloc/tasks/tasks_models.dart';
 import 'task_type_badge.dart';
 import 'task_priority_extensions.dart';
 
+import '../../../widgets/bottom_sheet_handle.dart';
+
 class TaskDetailsBottomSheet extends StatelessWidget {
   final Task task;
   const TaskDetailsBottomSheet({super.key, required this.task});
@@ -36,17 +38,12 @@ class TaskDetailsBottomSheet extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
+      padding: const EdgeInsets.fromLTRB(17.0, 11.0, 17.0, 29.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: Container(
-              width: 40, height: 4,
-              decoration: BoxDecoration(color: AppColors.slate300, borderRadius: BorderRadius.circular(2)),
-            ),
-          ),
+          const Center(child: BottomSheetHandle()),
           AppSpacing.gapLg,
           Row(
             children: [

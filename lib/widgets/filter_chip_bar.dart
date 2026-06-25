@@ -57,12 +57,12 @@ class _FilterChip extends StatelessWidget {
       onTap: option.onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.lg,
-          vertical: AppSpacing.sm,
+          horizontal: 13.0,
+          vertical: 7.0,
         ),
         decoration: BoxDecoration(
           color: themeColor,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(999),
           border: border,
         ),
         child: Text(

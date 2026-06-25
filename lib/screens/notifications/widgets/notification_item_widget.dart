@@ -26,11 +26,13 @@ class NotificationItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(AppSpacing.ten),
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
               color: style.bgColor,
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(12),
             ),
+            alignment: Alignment.center,
             child: Icon(style.icon, color: style.iconColor, size: 20),
           ),
           AppSpacing.gapWLg,

@@ -34,11 +34,13 @@ class QuickActionTile extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(AppSpacing.sm),
+              width: 38,
+              height: 38,
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.08),
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(11),
               ),
+              alignment: Alignment.center,
               child: Icon(icon, color: color, size: 20),
             ),
             AppSpacing.gapXs,

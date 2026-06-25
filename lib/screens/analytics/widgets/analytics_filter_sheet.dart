@@ -62,12 +62,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      padding: EdgeInsets.fromLTRB(
-        AppSpacing.xxl,
-        AppSpacing.sm,
-        AppSpacing.xxl,
-        AppSpacing.xxl,
-      ),
+      padding: const EdgeInsets.fromLTRB(17.0, 11.0, 17.0, 29.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

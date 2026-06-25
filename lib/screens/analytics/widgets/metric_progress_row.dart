@@ -55,7 +55,7 @@ class MetricProgressRow extends StatelessWidget {
             value: progressValue,
             backgroundColor: AppColors.slate100,
             valueColor: AlwaysStoppedAnimation<Color>(barColor),
-            minHeight: 5,
+            minHeight: 6,
           ),
         ),
       ],

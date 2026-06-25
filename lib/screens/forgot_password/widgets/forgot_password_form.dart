@@ -16,7 +16,7 @@ class ForgotPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppSpacing.gapXxxl,
+        AppSpacing.gapXl,
         BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
           buildWhen: (p, c) => p.phone != c.phone || p.status != c.status,
           builder: (context, state) => CustomTextField(

@@ -18,11 +18,13 @@ class SpotlightCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(AppSpacing.sm),
-            decoration: const BoxDecoration(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
               color: AppColors.warningTextBackground,
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(12),
             ),
+            alignment: Alignment.center,
             child: const Icon(
               Icons.star_rounded,
               color: AppColors.warning,

@@ -31,12 +31,12 @@ class SelectionChip extends StatelessWidget {
         onTap: () => onSelected(option),
         child: Container(
           padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.sm,
+            horizontal: 13.0,
+            vertical: 7.0,
           ),
           decoration: BoxDecoration(
             color: isSelected ? AppColors.primaryColorLight : Colors.white,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(999),
             border: Border.all(color: color, width: isSelected ? 1.5 : 1),
           ),
           child: Text(option, style: textStyle),

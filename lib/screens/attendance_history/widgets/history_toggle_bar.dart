@@ -21,10 +21,10 @@ class HistoryToggleBar extends StatelessWidget {
         horizontal: AppSpacing.xxl,
         vertical: AppSpacing.sm,
       ),
-      padding: EdgeInsets.all(AppSpacing.xs),
+      padding: const EdgeInsets.all(3.0),
       decoration: BoxDecoration(
         color: AppColors.slate100,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../../../widgets/bottom_sheet_handle.dart';
 
 /// Renders the top handle and header title for the Add Deal bottom sheet.
 class AddDealHeader extends StatelessWidget {
@@ -10,16 +11,7 @@ class AddDealHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Center(
-          child: Container(
-            width: 40,
-            height: 4,
-            decoration: const BoxDecoration(
-              color: AppColors.slate300,
-              borderRadius: BorderRadius.all(Radius.circular(2)),
-            ),
-          ),
-        ),
+        const Center(child: BottomSheetHandle()),
         AppSpacing.gapLg,
         Text(
           'New Deal',

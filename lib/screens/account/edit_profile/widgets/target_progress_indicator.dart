@@ -50,7 +50,7 @@ class TargetProgressIndicator extends StatelessWidget {
             valueColor: const AlwaysStoppedAnimation<Color>(
               AppColors.primaryColor,
             ),
-            minHeight: 6,
+            minHeight: 7,
           ),
         ),
       ],

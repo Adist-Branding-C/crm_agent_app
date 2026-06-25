@@ -55,7 +55,7 @@ ThemeData getDarkAppTheme() {
       ),
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: BorderRadius.all(Radius.circular(14)),
       ),
     ),
   );

@@ -21,7 +21,16 @@ class VerifyOtpBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const ScreenHeader(title: 'Verify OTP', showBackButton: true),
+          const ScreenHeader(
+            title: 'Verify OTP',
+            showBackButton: true,
+            padding: EdgeInsets.only(
+              left: AppSpacing.xxl,
+              right: AppSpacing.xxl,
+              top: AppSpacing.md,
+              bottom: AppSpacing.sm,
+            ),
+          ),
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),

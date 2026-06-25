@@ -37,12 +37,12 @@ class AppInputTheme {
     ),
     hintStyle: const TextStyle(
       color: AppColors.textMuted,
-      fontSize: 14,
+      fontSize: 14.5,
       fontWeight: FontWeight.normal,
     ),
     labelStyle: const TextStyle(
       color: AppColors.textMuted,
-      fontSize: 14,
+      fontSize: 14.5,
       fontWeight: FontWeight.w500,
     ),
   );
@@ -53,12 +53,12 @@ class AppInputTheme {
     return inputDecorationTheme.copyWith(
       hintStyle: TextStyle(
         color: AppColors.textMuted,
-        fontSize: AppTextScaler.scale(w, 14),
+        fontSize: AppTextScaler.scale(w, 14.5),
         fontWeight: FontWeight.normal,
       ),
       labelStyle: TextStyle(
         color: AppColors.textMuted,
-        fontSize: AppTextScaler.scale(w, 14),
+        fontSize: AppTextScaler.scale(w, 14.5),
         fontWeight: FontWeight.w500,
       ),
     );

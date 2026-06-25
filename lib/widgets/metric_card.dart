@@ -28,7 +28,8 @@ class MetricCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final content = layout == MetricCardLayout.vertical
+    final isVertical = layout == MetricCardLayout.vertical;
+    final content = isVertical
         ? MetricCardVertical(
             icon: icon,
             iconColor: iconColor,
@@ -45,7 +46,7 @@ class MetricCard extends StatelessWidget {
           );
     return CustomCard(
       onTap: onTap,
-      padding: AppSpacing.cardPadding,
+      padding: EdgeInsets.all(isVertical ? 13.0 : 16.0),
       child: content,
     );
   }

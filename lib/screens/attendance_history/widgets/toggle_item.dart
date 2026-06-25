@@ -20,10 +20,10 @@ class ToggleItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(value),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
+        padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 13.0),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(9),
           border: isSelected
               ? Border.all(color: AppColors.warningDark, width: 1.5)
               : null,

@@ -13,7 +13,7 @@ class VerifyOtpHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppSpacing.gapXxl,
+        AppSpacing.gapMd,
         Container(
           padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
@@ -26,7 +26,7 @@ class VerifyOtpHeader extends StatelessWidget {
             size: 32,
           ),
         ),
-        AppSpacing.gapXxl,
+        AppSpacing.gapMd,
         Text(
           'Enter OTP',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(

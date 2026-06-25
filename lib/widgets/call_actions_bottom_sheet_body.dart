@@ -23,7 +23,7 @@ class CallActionsBottomSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+      padding: const EdgeInsets.fromLTRB(17.0, 11.0, 17.0, 29.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
