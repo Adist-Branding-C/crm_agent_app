@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../bloc/leads/filter_result.dart';
 import '../../../../bloc/leads/leads_enums.dart';
 import 'filter_sheet_body.dart';
 
@@ -47,6 +48,19 @@ class _FilterSheetState extends State<FilterSheet> {
       onSortChanged: (val) => setState(() => _sortBy = val),
       onStatusChanged: (val) => setState(() => _status = val),
       onSourceChanged: (val) => setState(() => _source = val),
+      onClear: () {
+        setState(() {
+          _status = null;
+          _source = null;
+        });
+        Navigator.of(context).pop(
+          FilterResult(
+            sortBy: _sortBy,
+            status: null,
+            source: null,
+          ),
+        );
+      },
     );
   }
 }

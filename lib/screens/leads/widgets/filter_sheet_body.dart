@@ -17,6 +17,7 @@ class FilterSheetBody extends StatelessWidget {
   final ValueChanged<SortLeadsBy> onSortChanged;
   final ValueChanged<LeadStatus?> onStatusChanged;
   final ValueChanged<LeadSource?> onSourceChanged;
+  final VoidCallback? onClear;
 
   const FilterSheetBody({
     super.key,
@@ -26,6 +27,7 @@ class FilterSheetBody extends StatelessWidget {
     required this.onSortChanged,
     required this.onStatusChanged,
     required this.onSourceChanged,
+    this.onClear,
   });
 
   @override
@@ -45,11 +47,33 @@ class FilterSheetBody extends StatelessWidget {
         children: [
           const BottomSheetHandle(),
           AppSpacing.gapLg,
-          Text(
-            'Filter & Sort',
-            style: Theme.of(
-              context,
-            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Filter & Sort',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              if (status != null || source != null)
+                TextButton(
+                  onPressed: onClear,
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  child: const Text(
+                    'Clear',
+                    style: TextStyle(
+                      color: AppColors.primaryColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+            ],
           ),
           AppSpacing.gapLg,
           FilterSection(

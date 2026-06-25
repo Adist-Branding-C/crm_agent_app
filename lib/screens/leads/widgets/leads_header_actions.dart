@@ -18,12 +18,16 @@ class LeadsHeaderActions extends StatelessWidget {
     return BlocBuilder<LeadsBloc, LeadsState>(
       buildWhen: (prev, curr) {
         if (prev is LeadsLoaded && curr is LeadsLoaded) {
-          return prev.isSpotlightOnly != curr.isSpotlightOnly;
+          return prev.isSpotlightOnly != curr.isSpotlightOnly ||
+              prev.selectedStatus != curr.selectedStatus ||
+              prev.selectedSource != curr.selectedSource;
         }
         return prev.runtimeType != curr.runtimeType;
       },
       builder: (context, state) {
         final isSpotlight = state is LeadsLoaded && state.isSpotlightOnly;
+        final isFilterActive = state is LeadsLoaded &&
+            (state.selectedStatus != null || state.selectedSource != null);
         return Row(
           children: [
             CardIconButton(
@@ -41,8 +45,10 @@ class LeadsHeaderActions extends StatelessWidget {
             SizedBox(width: AppSpacing.ten),
             CardIconButton(
               icon: Icons.tune_rounded,
-              iconColor: AppColors.textDark,
-              backgroundColor: Colors.white,
+              iconColor: isFilterActive ? Colors.white : AppColors.textDark,
+              backgroundColor: isFilterActive
+                  ? AppColors.primaryColor
+                  : Colors.white,
               size: 38,
               borderRadius: 8,
               iconSize: 20,
