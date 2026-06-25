@@ -30,8 +30,9 @@ class MyActivityBody extends StatelessWidget {
         availableLeads: loaded?.availableLeads ?? [],
         onSelected: (name) {
           ctx.pop();
-          if (name != null)
+          if (name != null) {
             ctx.read<MyActivityBloc>().add(LeadFilterChanged(name));
+          }
         },
       ),
     );

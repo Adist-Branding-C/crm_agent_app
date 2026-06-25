@@ -38,23 +38,51 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextFieldLabel(label: label, isRequired: isRequired),
+        TextFieldLabel(label: label, isRequired: isRequired,),
         AppSpacing.gapSm,
         Semantics(
           label: semanticsLabel ?? '$label Input Field',
           textField: true,
-          child: TextFormField(
-            controller: controller,
-            keyboardType: keyboardType,
-            maxLines: maxLines,
-            obscureText: obscureText,
-            decoration: InputDecoration(
-              hintText: hintText,
-              errorText: errorText,
-              suffixIcon: suffixIcon,
+          child: SizedBox(
+            height: 80.h,
+            
+            child: TextFormField(
+              controller: controller,
+              keyboardType: keyboardType,
+              maxLines: maxLines,
+              obscureText: obscureText,
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 13.s ),
+                errorText: errorText,
+                suffixIcon: suffixIcon,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9.r),
+                  borderSide: const BorderSide(color: AppColors.slate300),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9.r),
+                  borderSide:  BorderSide(color: AppColors.primaryColor),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9.r),
+                  borderSide: const BorderSide(color: AppColors.slate300),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9.r),
+                  borderSide: const BorderSide(color: AppColors.errorColor),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9.r),
+                  borderSide: const BorderSide(color: AppColors.errorColor),
+                ),disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9.r),
+                  borderSide: const BorderSide(color: AppColors.slate300),
+                ),
+              ),
+              validator: validator,
+              onChanged: onChanged,
             ),
-            validator: validator,
-            onChanged: onChanged,
           ),
         ),
       ],

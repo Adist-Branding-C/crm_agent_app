@@ -21,23 +21,23 @@ class ErrorBanner extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: AppTheme.errorBackground,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.errorBorder, width: 1),
+          borderRadius: BorderRadius.circular(12.r),
+          border: Border.all(color: AppColors.errorBorder, width: 1.w),
         ),
         child: Row(
           children: [
-            const Icon(
+             Icon(
               Icons.warning_amber_rounded,
               color: AppTheme.errorColor,
-              size: 20,
+              size: 20.s,
             ),
             AppSpacing.gapWSm,
             Expanded(
               child: Text(
                 message,
-                style: const TextStyle(
+                style:  TextStyle(
                   color: AppTheme.errorColor,
-                  fontSize: 13,
+                  fontSize: 13.s,
                   fontWeight: FontWeight.w500,
                 ),
               ),

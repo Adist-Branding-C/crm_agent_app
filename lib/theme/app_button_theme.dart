@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/text_scaler.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import 'app_colors.dart';
 
 /// Global theme configurations for button elements.
@@ -12,9 +12,9 @@ class AppButtonTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          padding: EdgeInsets.symmetric(vertical: 12.h),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          textStyle: TextStyle(fontSize: 15.s, fontWeight: FontWeight.bold),
         ),
       );
 
@@ -22,12 +22,11 @@ class AppButtonTheme {
   static ElevatedButtonThemeData scaledElevatedButtonTheme(
     BuildContext context,
   ) {
-    final w = MediaQuery.sizeOf(context).width;
     return ElevatedButtonThemeData(
       style: elevatedButtonTheme.style?.copyWith(
         textStyle: WidgetStatePropertyAll(
           TextStyle(
-            fontSize: AppTextScaler.scale(w, 15),
+            fontSize: 15.s,
             fontWeight: FontWeight.bold,
           ),
         ),

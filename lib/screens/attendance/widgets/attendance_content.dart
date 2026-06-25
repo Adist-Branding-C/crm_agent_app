@@ -29,9 +29,9 @@ class AttendanceContent extends StatelessWidget {
       buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         if (state is AttendanceLoading || state is AttendanceInitial) {
-          return const Padding(
+          return Padding(
             padding: EdgeInsets.only(top: AppSpacing.hundred),
-            child: AppLoadingWidget(),
+            child:  AppLoadingWidget(),
           );
         }
         if (state is AttendanceLoaded) {

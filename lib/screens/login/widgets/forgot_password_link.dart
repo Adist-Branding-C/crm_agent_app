@@ -26,6 +26,7 @@ class ForgotPasswordLink extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppTheme.primaryColor,
             fontWeight: FontWeight.bold,
+            fontSize: 14.s,
           ),
         ),
       ),

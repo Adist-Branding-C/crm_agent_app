@@ -15,7 +15,7 @@ class AccountBody extends StatelessWidget {
     return BlocBuilder<AccountBloc, AccountState>(
       builder: (context, state) {
         if (state is AccountInitial || state is AccountLoading) {
-          return const AppLoadingWidget();
+          return  AppLoadingWidget();
         }
         if (state is AccountError) {
           return _ErrorView(state: state);

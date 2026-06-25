@@ -24,7 +24,7 @@ class HistoryLogItemDetails extends StatelessWidget {
             ],
           ],
         ),
-        const SizedBox(height: AppSpacing.xs2),
+        SizedBox(height: AppSpacing.xs2),
         Row(
           children: [
             const Icon(

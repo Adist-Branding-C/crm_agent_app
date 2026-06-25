@@ -10,15 +10,15 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PageScaffold(
+    return PageScaffold(
       padding: EdgeInsets.zero,
       child: Column(
         children: [
-          TasksHeader(),
+          const TasksHeader(),
           SizedBox(height: AppSpacing.md),
-          TasksFilterTabs(),
+          const TasksFilterTabs(),
           SizedBox(height: AppSpacing.lg),
-          Expanded(child: TasksListView()),
+          const Expanded(child: TasksListView()),
         ],
       ),
     );

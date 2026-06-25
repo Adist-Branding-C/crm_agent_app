@@ -30,13 +30,13 @@ class AppErrorWidget extends StatelessWidget {
               color: AppColors.errorColor,
               size: 48,
             ),
-            const SizedBox(height: AppSpacing.lg),
+            SizedBox(height: AppSpacing.lg),
             Text(
               message,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            const SizedBox(height: AppSpacing.xxl),
+            SizedBox(height: AppSpacing.xxl),
             SizedBox(
               width: 140,
               child: CustomButton(

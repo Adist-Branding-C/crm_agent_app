@@ -13,7 +13,7 @@ class CheckOutButton extends StatelessWidget {
         foregroundColor: Colors.white,
         side: const BorderSide(color: Colors.white, width: 1.2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding: const EdgeInsets.symmetric(
+        padding:  EdgeInsets.symmetric(
           horizontal: AppSpacing.md,
           vertical: AppSpacing.sm,
         ),

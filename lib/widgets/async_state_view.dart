@@ -38,7 +38,7 @@ class AsyncStateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return loadingWidget ?? const AppLoadingWidget();
+      return loadingWidget ??  AppLoadingWidget();
     }
 
     if (hasError) {

@@ -18,7 +18,7 @@ class DashboardShimmerHeader extends StatelessWidget {
             const AppShimmerWidget(width: 100, height: 14, borderRadius: 4),
           ],
         ),
-        const Row(
+         Row(
           children: [
             AppShimmerWidget(width: 40, height: 40, borderRadius: 12),
             AppSpacing.gapWMd,

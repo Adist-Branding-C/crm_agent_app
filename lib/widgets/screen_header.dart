@@ -30,16 +30,16 @@ class ScreenHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final large = isLarge ?? !showBackButton;
     final resolvedPadding = padding ?? EdgeInsets.fromLTRB(
-      17.0,
-      54.0,
-      17.0,
-      large ? 7.0 : 13.0,
+      17.0.w,
+      90.0.h,
+      17.0.w,
+      large ? 7.0.h : 13.0.h,
     );
 
     final titleStyle = (Theme.of(context).textTheme.headlineSmall ?? const TextStyle()).copyWith(
-      fontSize: context.scaleFont(large ? 27.0 : 18.0),
+      fontSize: 16.s,
       fontWeight: FontWeight.bold,
-      letterSpacing: large ? -0.55 : -0.2,
+      letterSpacing: 0.2.w,
       color: AppColors.textDark,
     );
 
@@ -62,6 +62,7 @@ class ScreenHeader extends StatelessWidget {
           if (showBackButton) ...[
             CardIconButton(
               icon: Icons.chevron_left_rounded,
+              size: 26.s,
               onTap: () => context.pop(),
             ),
             AppSpacing.gapWLg,
@@ -70,7 +71,9 @@ class ScreenHeader extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                
                 Text(title, style: titleStyle),
                 if (sub != null) ...[AppSpacing.gapXxs, sub],
               ],

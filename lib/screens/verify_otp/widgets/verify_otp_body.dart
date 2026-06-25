@@ -21,7 +21,7 @@ class VerifyOtpBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const ScreenHeader(
+          ScreenHeader(
             title: 'Verify OTP',
             showBackButton: true,
             padding: EdgeInsets.only(

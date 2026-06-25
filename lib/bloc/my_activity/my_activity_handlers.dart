@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'my_activity_bloc.dart';
-import 'my_activity_event.dart';
-import 'my_activity_state.dart';
 import 'my_activity_filter_helper.dart';
 import '../../data/models/my_activity/my_activity_enums.dart';
 import '../../data/models/my_activity/my_activity_model.dart';

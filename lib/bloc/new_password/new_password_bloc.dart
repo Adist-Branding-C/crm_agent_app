@@ -6,7 +6,6 @@ export 'new_password_state.dart';
 export 'new_password_inputs.dart';
 import 'new_password_event.dart';
 import 'new_password_state.dart';
-import 'new_password_inputs.dart';
 import 'new_password_handlers.dart';
 
 class NewPasswordBloc extends Bloc<NewPasswordEvent, NewPasswordState> {

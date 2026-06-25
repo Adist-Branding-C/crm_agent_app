@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'leads_bloc.dart';
 import 'leads_enums.dart';
-import 'leads_models.dart';
 
 /// Extension defining query and search handlers for [LeadsBloc].
 extension LeadsQueryHandlers on LeadsBloc {

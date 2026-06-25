@@ -16,7 +16,7 @@ class AddTaskScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           AddTaskBloc(tasksRepository: context.read<TasksRepository>()),
-      child: const PageScaffold(
+      child: PageScaffold(
         padding: EdgeInsets.zero,
         child: Column(
           children: [
@@ -30,7 +30,7 @@ class AddTaskScreen extends StatelessWidget {
                 bottom: AppSpacing.sm,
               ),
             ),
-            Expanded(child: AddTaskForm()),
+            const Expanded(child: AddTaskForm()),
           ],
         ),
       ),

@@ -50,15 +50,24 @@ class _MyAppState extends State<MyApp> {
         value: _authStateNotifier,
         child: MultiBlocProvider(
           providers: buildBlocProviders(),
-          child: MaterialApp.router(
-            title: 'CRM Agent App',
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.light,
-            routerConfig: _router,
-            builder: (context, child) =>
-                AppBuilderWidget(scaleText: widget.scaleText, child: child),
+          child: SfsInitBuilder(
+            mobileSize: const Size(360, 690),
+            tabletSize: const Size(481, 890),
+            desktopSize: const Size(1420, 820),
+            respectSystemTextScale: true,
+            orientationAware: true,
+            builder: (context, child) {
+              return MaterialApp.router(
+                title: 'CRM Agent App',
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: ThemeMode.light,
+                routerConfig: _router,
+                builder: (context, child) =>
+                    AppBuilderWidget(scaleText: widget.scaleText, child: child),
+              );
+            },
           ),
         ),
       ),

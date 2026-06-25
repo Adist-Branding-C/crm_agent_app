@@ -42,7 +42,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw const NetworkException('Empty response from login server.');
       }
       developer.log('Login API Response: $data');
-      print('Login API Response: ${response.statusCode}');
+    
 
       final loginResponse = LoginResponse.fromJson(data);
       if (!loginResponse.success) {
@@ -53,14 +53,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         );
       }
       if (response.statusCode != 200) {
-        print('Login failed: ${loginResponse.message}');
+      
         throw InvalidCredentialsException(loginResponse.message);
       }
       developer.log('returning login response: $loginResponse');
       return loginResponse;
     } on DioException catch (e) {
       final status = e.response?.statusCode;
-      print('DioException caught: ${e.message}, Status code: $status');
+     
       if (status == 400) {
         final body = e.response?.data;
         final msg = (body is Map) ? body['message'] as String? : null;

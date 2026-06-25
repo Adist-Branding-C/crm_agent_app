@@ -9,14 +9,14 @@ class AttendanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PageScaffold(
+    return PageScaffold(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            AttendanceHeader(),
+            const AttendanceHeader(),
             SizedBox(height: AppSpacing.xxl),
-            AttendanceContent(),
+            const AttendanceContent(),
           ],
         ),
       ),

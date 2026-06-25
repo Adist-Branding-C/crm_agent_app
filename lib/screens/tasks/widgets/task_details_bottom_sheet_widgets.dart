@@ -19,7 +19,7 @@ class TaskDetailsInfoRow extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, size: 16, color: AppColors.textMuted),
-        const SizedBox(width: AppSpacing.sm),
+        SizedBox(width: AppSpacing.sm),
         Text(
           text,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -66,7 +66,7 @@ class TaskDetailsActionBtn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(Icons.check, size: 20),
-            const SizedBox(width: AppSpacing.sm),
+            SizedBox(width: AppSpacing.sm),
             Text(
               isCompleted ? 'Completed' : 'Mark complete',
               style: const TextStyle(

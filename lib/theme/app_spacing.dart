@@ -1,65 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 
 class AppSpacing {
   AppSpacing._();
 
   // Base unit: 4px
-  static const double xxs = 1;
-  static const double xs = 2;
-  static const double xs2 = 4;
-  static const double sm = 6;
-  static const double md = 9;
-  static const double lg = 13;
-  static const double xl = 17;
-  static const double xxl = 21;
-  static const double xxxl = 29;
-  static const double huge = 37;
-  static const double massive = 57;
-  static const double ten = 7;
-  static const double fourteen = 11;
-  static const double hundred = 97;
+  static double get xxs => 1.w;
+  static double get xs => 2.w;
+  static double get xs2 => 4.w;
+  static double get sm => 6.w;
+  static double get md => 9.w;
+  static double get lg => 13.w;
+  static double get xl => 17.w;
+  static double get xxl => 21.w;
+  static double get xxxl => 29.w;
+  static double get huge => 37.w;
+  static double get massive => 57.w;
+  static double get ten => 7.w;
+  static double get fourteen => 11.w;
+  static double get hundred => 97.w;
 
   // Standard edge insets
-  static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: xl);
-  static const EdgeInsets screenPaddingV = EdgeInsets.symmetric(
+  static EdgeInsets get screenPadding => xl.ph;
+  static EdgeInsets get screenPaddingV => EdgeInsets.symmetric(
     horizontal: xl,
     vertical: lg,
   );
-  static const EdgeInsets cardPadding = EdgeInsets.all(lg);
-  static const EdgeInsets cardPaddingCompact = EdgeInsets.symmetric(
+  static EdgeInsets get cardPadding => lg.p;
+  static EdgeInsets get cardPaddingCompact => EdgeInsets.symmetric(
     horizontal: lg,
     vertical: md,
   );
-  static const EdgeInsets cardMarginList = EdgeInsets.symmetric(
+  static EdgeInsets get cardMarginList => EdgeInsets.symmetric(
     horizontal: xl,
     vertical: xs2,
   );
-  static const EdgeInsets headerPadding = EdgeInsets.symmetric(
+  static EdgeInsets get headerPadding => EdgeInsets.symmetric(
     horizontal: xl,
     vertical: lg,
   );
-  static const EdgeInsets fabBottomPadding = EdgeInsets.only(
+  static EdgeInsets get fabBottomPadding => EdgeInsets.only(
     left: xl,
     right: xl,
     top: lg,
-    bottom: 74,
+    bottom: 74.h,
   );
 
   // Standard gap helpers
-  static const SizedBox gapXxs = SizedBox(height: xxs);
-  static const SizedBox gapXs = SizedBox(height: xs);
-  static const SizedBox gapSm = SizedBox(height: sm);
-  static const SizedBox gapMd = SizedBox(height: md);
-  static const SizedBox gapLg = SizedBox(height: lg);
-  static const SizedBox gapXl = SizedBox(height: xl);
-  static const SizedBox gapXxl = SizedBox(height: xxl);
-  static const SizedBox gapXxxl = SizedBox(height: xxxl);
+  static SizedBox get gapXxs => SizedBox(height: 1.h);
+  static SizedBox get gapXs => SizedBox(height: 2.h);
+  static SizedBox get gapSm => SizedBox(height: 6.h);
+  static SizedBox get gapMd => SizedBox(height: 9.h);
+  static SizedBox get gapLg => SizedBox(height: 13.h);
+  static SizedBox get gapXl => SizedBox(height: 17.h);
+  static SizedBox get gapXxl => SizedBox(height: 21.h);
+  static SizedBox get gapXxxl => SizedBox(height: 29.h);
 
-  static const SizedBox gapWXxs = SizedBox(width: xxs);
-  static const SizedBox gapWXs = SizedBox(width: xs);
-  static const SizedBox gapWSm = SizedBox(width: sm);
-  static const SizedBox gapWMd = SizedBox(width: md);
-  static const SizedBox gapWLg = SizedBox(width: lg);
-  static const SizedBox gapWXl = SizedBox(width: xl);
-  static const SizedBox gapWXxl = SizedBox(width: xxl);
+  static SizedBox get gapWXxs => SizedBox(width: 1.w);
+  static SizedBox get gapWXs => SizedBox(width: 2.w);
+  static SizedBox get gapWSm => SizedBox(width: 6.w);
+  static SizedBox get gapWMd => SizedBox(width: 9.w);
+  static SizedBox get gapWLg => SizedBox(width: 13.w);
+  static SizedBox get gapWXl => SizedBox(width: 17.w);
+  static SizedBox get gapWXxl => SizedBox(width: 21.w);
 }

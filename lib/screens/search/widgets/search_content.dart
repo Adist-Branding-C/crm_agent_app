@@ -30,7 +30,7 @@ class SearchContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const ScreenHeader(
+        ScreenHeader(
           title: 'Search',
           showBackButton: false,
           padding: EdgeInsets.only(

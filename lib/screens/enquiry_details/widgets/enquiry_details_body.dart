@@ -21,7 +21,7 @@ class EnquiryDetailsBody extends StatelessWidget {
           previous.runtimeType != current.runtimeType,
       builder: (context, state) {
         if (state is EnquiryDetailsLoading || state is EnquiryDetailsInitial) {
-          return const Center(child: AppLoadingWidget());
+          return  Center(child: AppLoadingWidget());
         }
         if (state is EnquiryDetailsLoaded) {
           return EnquiryDetailsLoadedView(state: state);

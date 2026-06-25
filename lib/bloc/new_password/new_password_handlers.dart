@@ -1,9 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'new_password_bloc.dart';
-import 'new_password_event.dart';
-import 'new_password_state.dart';
-import 'new_password_inputs.dart';
 
 void newPasswordChanged(
   NewPasswordBloc bloc,

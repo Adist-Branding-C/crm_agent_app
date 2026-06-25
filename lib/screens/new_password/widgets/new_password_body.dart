@@ -29,7 +29,7 @@ class NewPasswordBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const ScreenHeader(
+          ScreenHeader(
             title: 'New password',
             showBackButton: true,
             padding: EdgeInsets.only(

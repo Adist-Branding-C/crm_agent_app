@@ -20,6 +20,7 @@ class TextFieldLabel extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
+            fontSize: 11.s
           ),
         ),
         if (isRequired)
@@ -28,6 +29,7 @@ class TextFieldLabel extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.primaryColor,
               fontWeight: FontWeight.bold,
+              fontSize: 12.s
             ),
           ),
       ],

@@ -1,3 +1,4 @@
+import 'package:crm_agent_app/widgets/app_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/login/login_bloc.dart';
@@ -25,36 +26,37 @@ class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+      padding:  EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: ResponsiveWidthContainer(
-        maxWidth: 480,
+        maxWidth: 480.w,
+      
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: AppSpacing.huge),
+             SizedBox(height: AppSpacing.huge),
             const LoginHeader(),
-            const SizedBox(height: AppSpacing.huge),
+             SizedBox(height: AppSpacing.huge),
             LoginForm(
               phoneController: phoneController,
               passwordController: passwordController,
             ),
-            const SizedBox(height: AppSpacing.lg),
+            SizedBox(height: AppSpacing.lg),
             BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
                 final err = state.phoneError ?? state.passwordError;
                 if (err == null) return const SizedBox.shrink();
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: AppSpacing.lg),
+                  padding: EdgeInsets.only(bottom: AppSpacing.lg),
                   child: ErrorBanner(message: err),
                 );
               },
             ),
             const ForgotPasswordLink(),
-            const SizedBox(height: AppSpacing.xxl + AppSpacing.xs),
+            SizedBox(height: AppSpacing.xxl + AppSpacing.xs),
             BlocBuilder<LoginBloc, LoginState>(
               buildWhen: (prev, curr) => prev.isLoading != curr.isLoading,
               builder: (context, state) => state.isLoading
-                  ? const Center(child: CircularProgressIndicator())
+                  ? AppLoadingWidget()
                   : CustomButton(
                       text: 'Sign In',
                       icon: Icons.login_rounded,
@@ -63,7 +65,7 @@ class LoginBody extends StatelessWidget {
                           .style
                           ?.copyWith(
                             backgroundColor: const WidgetStatePropertyAll(
-                              Color(0xFFCE4F4B),
+                               AppColors.primaryColor,
                             ),
                           ),
                       onPressed: () => context
@@ -71,7 +73,8 @@ class LoginBody extends StatelessWidget {
                           .add(const LoginSubmitted()),
                     ),
             ),
-            const SizedBox(height: AppSpacing.massive),
+            SizedBox(height: AppSpacing.huge),
+            
             const DisclaimerText(),
           ],
         ),

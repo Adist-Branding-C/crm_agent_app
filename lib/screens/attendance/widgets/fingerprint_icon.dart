@@ -19,7 +19,7 @@ class FingerprintIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppSpacing.ten),
+      padding:  EdgeInsets.all(AppSpacing.ten),
       decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
       child: Icon(Icons.fingerprint_rounded, color: iconColor, size: 26),
     );

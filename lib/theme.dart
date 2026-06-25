@@ -6,6 +6,7 @@ import 'theme/app_theme_dark.dart';
 
 export 'theme/app_colors.dart';
 export 'theme/app_spacing.dart';
+export 'package:flutter_sfs/flutter_sfs.dart';
 
 /// Centralized manager for application Light and Dark themes.
 class AppTheme {

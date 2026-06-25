@@ -23,12 +23,12 @@ class FilterChipBar extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding:  EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Row(
         children: options
             .map(
               (opt) => Padding(
-                padding: const EdgeInsets.only(right: AppSpacing.sm),
+                padding:  EdgeInsets.only(right: AppSpacing.sm),
                 child: _FilterChip(option: opt),
               ),
             )

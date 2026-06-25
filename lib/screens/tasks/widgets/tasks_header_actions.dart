@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/tasks/add_task/add_task_bloc.dart';
 import '../../../bloc/tasks/tasks_bloc.dart';
-import '../../../data/repositories/tasks_repository.dart';
 import '../../../theme.dart';
 import '../../../widgets/card_icon_button.dart';
 import 'add_task_bottom_sheet.dart';

@@ -22,7 +22,7 @@ class _HistoryContentState extends State<HistoryContent> {
       builder: (context, state) {
         if (state is AttendanceHistoryLoading ||
             state is AttendanceHistoryInitial) {
-          return const Center(child: AppLoadingWidget());
+          return  Center(child: AppLoadingWidget());
         }
         if (state is AttendanceHistoryLoaded) {
           return HistoryLoadedBody(

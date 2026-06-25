@@ -49,8 +49,9 @@ class ChangeConfirmPassword
   @override
   ChangeConfirmPasswordValidationError? validator(String value) {
     if (value.isEmpty) return ChangeConfirmPasswordValidationError.empty;
-    if (value != newPassword)
+    if (value != newPassword) {
       return ChangeConfirmPasswordValidationError.mismatch;
+    }
     return null;
   }
 }

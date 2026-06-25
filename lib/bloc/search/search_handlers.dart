@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'search_bloc.dart';
-import 'search_event.dart';
-import 'search_state.dart';
 import 'search_session_data.dart';
 import 'search_helpers.dart';
 

@@ -3,7 +3,6 @@ export 'campaigns_state.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/campaigns_repository.dart';
-import 'campaigns_models.dart';
 
 import 'campaigns_event.dart';
 import 'campaigns_state.dart';

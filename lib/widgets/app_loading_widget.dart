@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 
 /// A reusable loading spinner widget aligned with the app theme.
 class AppLoadingWidget extends StatelessWidget {
   /// Optional custom size for the spinner.
-  final double size;
+    double? size;
 
   /// Creates an [AppLoadingWidget].
-  const AppLoadingWidget({super.key, this.size = 36});
+    AppLoadingWidget({super.key, this.size});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: size,
-        height: size,
-        child: const CircularProgressIndicator(
+        width: size?? 25.s,
+        height: size?? 25.s,
+        child:  CircularProgressIndicator(
           color: AppColors.primaryColor,
-          strokeWidth: 3,
+          strokeWidth: 3.w,
         ),
       ),
     );

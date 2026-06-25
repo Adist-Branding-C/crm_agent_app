@@ -33,7 +33,7 @@ class LoginForm extends StatelessWidget {
           onChanged: (value) =>
               context.read<LoginBloc>().add(PhoneChanged(value)),
         ),
-        const SizedBox(height: AppSpacing.xl),
+        SizedBox(height: AppSpacing.xl),
         BlocBuilder<LoginBloc, LoginState>(
           buildWhen: (prev, curr) =>
               prev.obscurePassword != curr.obscurePassword,
@@ -50,7 +50,7 @@ class LoginForm extends StatelessWidget {
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined,
                   color: AppColors.textMuted,
-                  size: 20,
+                  size: 19.s,
                 ),
                 onPressed: () {
                   context.read<LoginBloc>().add(

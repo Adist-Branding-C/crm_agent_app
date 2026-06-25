@@ -14,7 +14,7 @@ class ViewCallLogButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: AppSpacing.xxl,
         vertical: AppSpacing.lg,
       ),

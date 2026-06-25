@@ -11,7 +11,7 @@ class DashboardShimmerStatsGrid extends StatelessWidget {
       children: List.generate(
         2,
         (_) => Padding(
-          padding: const EdgeInsets.only(bottom: AppSpacing.lg),
+          padding:  EdgeInsets.only(bottom: AppSpacing.lg),
           child: Row(
             children: [
               Expanded(child: AppShimmerWidget.card(height: 72)),

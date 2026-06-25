@@ -16,7 +16,7 @@ class AddLeadScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           AddLeadBloc(leadsRepository: context.read<LeadsRepository>()),
-      child: const Scaffold(
+      child:  Scaffold(
         backgroundColor: AppTheme.backgroundColor,
         body: SafeArea(
           child: Column(

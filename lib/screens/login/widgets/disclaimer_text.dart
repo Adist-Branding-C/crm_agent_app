@@ -13,9 +13,9 @@ class DisclaimerText extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         color: AppTheme.textMuted.withValues(alpha: 0.6),
-        fontSize: 12,
-        height: 1.5,
-        fontWeight: FontWeight.w500,
+        fontSize: 12.s,
+       
+        fontWeight: FontWeight.w400,
       ),
     );
   }

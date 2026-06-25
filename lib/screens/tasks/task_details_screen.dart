@@ -42,7 +42,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
           if (state is TasksInitial ||
               state is TasksLoading ||
               state is! TasksLoaded) {
-            return const AppLoadingWidget();
+            return  AppLoadingWidget();
           }
           final task = state.allTasks.firstWhere(
             (t) => t.id == widget.taskId,

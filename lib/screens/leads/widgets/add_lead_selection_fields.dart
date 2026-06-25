@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
-import '../../../widgets/selection_group.dart';
 import '../../../theme.dart';
 
 import 'source_purpose_fields.dart';

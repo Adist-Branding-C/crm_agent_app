@@ -24,7 +24,7 @@ class CallActionTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           vertical: AppSpacing.md,
           horizontal: AppSpacing.xs,
         ),

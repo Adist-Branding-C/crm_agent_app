@@ -23,7 +23,7 @@ class LeadsScreen extends StatelessWidget {
           LeadsBloc(leadsRepository: repo)..add(const FetchLeads()),
       child: PageScaffold(
         padding: EdgeInsets.zero,
-        child: const Column(
+        child:  Column(
           children: [
             LeadsHeader(),
             LeadsSearchBar(),

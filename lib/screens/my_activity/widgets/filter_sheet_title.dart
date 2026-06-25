@@ -5,12 +5,12 @@ class FilterSheetTitle extends StatelessWidget {
   const FilterSheetTitle({super.key});
 
   @override
-  Widget build(BuildContext context) => const Padding(
+  Widget build(BuildContext context) => Padding(
     padding: EdgeInsets.symmetric(
       horizontal: AppSpacing.xl,
       vertical: AppSpacing.sm,
     ),
-    child: Text(
+    child: const Text(
       'Filter by lead',
       style: TextStyle(
         fontSize: 16,

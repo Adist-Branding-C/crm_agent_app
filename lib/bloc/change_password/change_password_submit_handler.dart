@@ -1,9 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'change_password_bloc.dart';
-import 'change_password_event.dart';
-import 'change_password_state.dart';
-import 'change_password_inputs.dart';
 
 Future<void> changePasswordSubmitted(
   ChangePasswordBloc bloc,

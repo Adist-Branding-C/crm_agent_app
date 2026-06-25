@@ -32,6 +32,7 @@ class CustomButton extends StatelessWidget {
       label: semanticsLabel ?? text,
       child: SizedBox(
         width: width,
+        height: 65.h,
         child: ElevatedButton(
           style: (buttonStyle ?? Theme.of(context).elevatedButtonTheme.style)
               ?.copyWith(

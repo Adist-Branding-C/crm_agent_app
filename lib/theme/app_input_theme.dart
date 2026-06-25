@@ -11,7 +11,7 @@ class AppInputTheme {
   static InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
-    contentPadding: const EdgeInsets.symmetric(
+    contentPadding: EdgeInsets.symmetric(
       horizontal: AppSpacing.lg,
       vertical: 12,
     ),

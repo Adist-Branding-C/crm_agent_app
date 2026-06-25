@@ -1,11 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/repositories/analytics_repository.dart';
 import '../../data/repositories/analytics_filter_params.dart';
 import '../leads/leads_enums.dart';
 import 'analytics_tab_data.dart';
 import 'analytics_bloc.dart';
-import 'analytics_event.dart';
-import 'analytics_state.dart';
 
 /// Extension for core query and fetching operations on [AnalyticsBloc].
 extension AnalyticsQueryHandlers on AnalyticsBloc {

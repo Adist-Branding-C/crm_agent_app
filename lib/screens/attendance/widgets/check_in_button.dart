@@ -13,7 +13,7 @@ class CheckInButton extends StatelessWidget {
         backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding: const EdgeInsets.symmetric(
+        padding:  EdgeInsets.symmetric(
           horizontal: AppSpacing.fourteen,
           vertical: AppSpacing.ten,
         ),

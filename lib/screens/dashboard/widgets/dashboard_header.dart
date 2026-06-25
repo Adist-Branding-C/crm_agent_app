@@ -30,16 +30,16 @@ class DashboardHeader extends StatelessWidget {
             children: [
               Icon(
                 Icons.circle,
-                size: 8,
+                size: 8.s,
                 color: isCheckedIn ? AppColors.success : AppColors.textMuted,
               ),
-              const SizedBox(width: AppSpacing.xs2),
+               SizedBox(width: AppSpacing.xs2),
               Expanded(
                 child: Text(
                   statusText,
                   style: Theme.of(
                     context,
-                  ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                  ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600,fontSize: 12.s),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

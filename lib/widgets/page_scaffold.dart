@@ -10,7 +10,7 @@ class PageScaffold extends StatelessWidget {
   final Color backgroundColor;
 
   /// Padding applied around [child].
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Optional floating action button.
   final Widget? floatingActionButton;
@@ -23,14 +23,17 @@ class PageScaffold extends StatelessWidget {
     super.key,
     required this.child,
     this.backgroundColor = AppTheme.backgroundColor,
-    this.padding = AppSpacing.screenPadding,
+    this.padding,
     this.floatingActionButton,
     this.safeArea = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    final body = Padding(padding: padding, child: child);
+    final body = Padding(
+      padding: padding ?? AppSpacing.screenPadding,
+      child: child,
+    );
 
     return Scaffold(
       backgroundColor: backgroundColor,

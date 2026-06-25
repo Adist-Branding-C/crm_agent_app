@@ -1,13 +1,9 @@
 export 'my_activity_event.dart';
 export 'my_activity_state.dart';
 
-import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/leads_repository.dart';
 import '../../data/repositories/my_activity_repository.dart';
-import '../../data/models/my_activity/my_activity_model.dart';
-import '../../data/models/my_activity/my_activity_enums.dart';
-import 'my_activity_filter_helper.dart';
 
 import 'my_activity_event.dart';
 import 'my_activity_state.dart';

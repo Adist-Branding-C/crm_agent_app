@@ -26,7 +26,7 @@ class ActivitiesTabView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(AppSpacing.lg),
+                padding:  EdgeInsets.all(AppSpacing.lg),
                 decoration: const BoxDecoration(
                   color: AppColors.slate100,
                   shape: BoxShape.circle,
@@ -48,7 +48,7 @@ class ActivitiesTabView extends StatelessWidget {
               ),
               AppSpacing.gapSm,
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+                padding:  EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
                 child: Text(
                   'Activities related to this enquiry will show up here.',
                   textAlign: TextAlign.center,

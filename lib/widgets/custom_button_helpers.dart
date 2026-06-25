@@ -32,8 +32,12 @@ class ButtonLabel extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (icon != null) ...[Icon(icon, size: 18), AppSpacing.gapWSm],
-        Text(text),
+        if (icon != null) ...[Icon(icon, size: 18.s), AppSpacing.gapWSm],
+        Text(text, style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 15.s
+        )),
       ],
     );
   }

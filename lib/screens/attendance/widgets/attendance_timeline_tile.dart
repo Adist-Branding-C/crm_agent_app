@@ -30,7 +30,7 @@ class AttendanceTimelineTile extends StatelessWidget {
       isLast: isLast,
       config: config,
       child: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           top: AppSpacing.xxs,
           bottom: AppSpacing.xl,
         ),

@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'change_password_bloc.dart';
-import 'change_password_event.dart';
-import 'change_password_state.dart';
 
 void changePasswordToggleCurrentVisibility(
   ChangePasswordBloc bloc,

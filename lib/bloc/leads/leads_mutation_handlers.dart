@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'leads_bloc.dart';
-import 'leads_models.dart';
 
 /// Extension defining mutation and update handlers for [LeadsBloc].
 extension LeadsMutationHandlers on LeadsBloc {

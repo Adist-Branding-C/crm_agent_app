@@ -44,6 +44,7 @@ dependencies:
   shared_preferences: ^2.2.2
   font_awesome_flutter: ^11.0.0
   dio: ^5.9.2
+  flutter_sfs: ^1.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -21,10 +21,10 @@ class LeadsSearchBar extends StatelessWidget {
           onChanged: (val) {
             context.read<LeadsBloc>().add(SearchLeadsChanged(val));
           },
-          decoration: const InputDecoration(
+          decoration:  InputDecoration(
             hintText: 'Search name, phone, location...',
             hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14.5),
-            prefixIcon: const Icon(
+            prefixIcon:  Icon(
               Icons.search_rounded,
               color: AppColors.textMuted,
               size: 19,

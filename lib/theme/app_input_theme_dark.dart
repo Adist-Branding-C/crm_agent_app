@@ -5,7 +5,7 @@ import 'app_spacing.dart';
 InputDecorationTheme get darkInputDecorationTheme => InputDecorationTheme(
   filled: true,
   fillColor: AppColors.darkCard,
-  contentPadding: const EdgeInsets.symmetric(
+  contentPadding: EdgeInsets.symmetric(
     horizontal: AppSpacing.lg,
     vertical: 12,
   ),

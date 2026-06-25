@@ -15,7 +15,7 @@ class AccountContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: const EdgeInsets.fromLTRB(
+    padding: EdgeInsets.fromLTRB(
       AppSpacing.xxl,
       0,
       AppSpacing.xxl,

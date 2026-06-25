@@ -46,7 +46,7 @@ class DashboardBody extends StatelessWidget {
                 const DashboardHeader(),
                 StatsGrid(stats: state.stats),
                 lists,
-                const SizedBox(height: AppSpacing.xxl),
+                 SizedBox(height: AppSpacing.xxl),
               ],
             ),
           );

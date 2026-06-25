@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'analytics_bloc.dart';
-import 'analytics_event.dart';
-import 'analytics_state.dart';
 import 'analytics_query_handlers.dart';
 
 /// Extension defining tab and filter change handlers for [AnalyticsBloc].

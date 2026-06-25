@@ -22,7 +22,7 @@ class CallButton extends StatelessWidget {
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(borderRadius),
-            child: const Padding(
+            child:  Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: AppSpacing.fourteen,
                 vertical: AppSpacing.sm,

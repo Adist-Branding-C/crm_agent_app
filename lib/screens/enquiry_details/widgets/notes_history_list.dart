@@ -21,7 +21,7 @@ class NotesHistoryList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(AppSpacing.lg),
+                padding:  EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   color: AppColors.slate100,
                   borderRadius: BorderRadius.circular(16),

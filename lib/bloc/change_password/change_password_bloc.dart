@@ -6,7 +6,6 @@ export 'change_password_state.dart';
 export 'change_password_inputs.dart';
 import 'change_password_event.dart';
 import 'change_password_state.dart';
-import 'change_password_inputs.dart';
 import 'change_password_handlers.dart';
 import 'change_password_submit_handler.dart';
 import 'change_password_toggle_handlers.dart';
