@@ -3,16 +3,16 @@ import '../theme.dart';
 
 class CallButton extends StatelessWidget {
   final VoidCallback? onTap;
-  final double borderRadius;
+   double? borderRadius;
 
-  const CallButton({super.key, this.onTap, this.borderRadius = 8});
+   CallButton({super.key, this.onTap, this.borderRadius });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
       ),
       child: Semantics(
         button: true,
@@ -21,19 +21,19 @@ class CallButton extends StatelessWidget {
           color: AppColors.transparent,
           child: InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(borderRadius),
-            child:  Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppSpacing.fourteen,
-                vertical: AppSpacing.sm,
-              ),
+            borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
+            child:  Container(
+              height: 50.h,
+              width: 55.w,
+              alignment: Alignment.center,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.call_rounded,
                     color: AppColors.surfaceWhite,
-                    size: 14,
+                    size: 14.s,
                   ),
                   SizedBox(width: AppSpacing.xs2),
                   Text(
@@ -41,7 +41,7 @@ class CallButton extends StatelessWidget {
                     style: TextStyle(
                       color: AppColors.surfaceWhite,
                       fontWeight: FontWeight.w600,
-                      fontSize: 12,
+                      fontSize: 12.s,
                     ),
                   ),
                 ],

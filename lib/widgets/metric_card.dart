@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import 'custom_card.dart';
 import 'metric_card_vertical.dart';
 import 'metric_card_horizontal.dart';
@@ -45,7 +46,7 @@ class MetricCard extends StatelessWidget {
           );
     return CustomCard(
       onTap: onTap,
-      padding: EdgeInsets.all(isVertical ? 13.0 : 16.0),
+      padding: EdgeInsets.all(isVertical ? 13.0.s : 16.0.s),
       child: content,
     );
   }

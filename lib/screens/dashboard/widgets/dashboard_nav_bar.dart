@@ -32,8 +32,8 @@ class DashboardNavBar extends StatelessWidget {
         backgroundColor: AppColors.surfaceWhite,
         selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.textMuted,
-        selectedFontSize: AppTextScaler.scale(w, 12),
-        unselectedFontSize: AppTextScaler.scale(w, 12),
+        selectedFontSize: 13.s,
+        unselectedFontSize: 12.s,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         items: items

@@ -29,7 +29,7 @@ class FollowUpsList extends StatelessWidget {
             actionText: 'View all',
             onActionTap: () => context.pushNamed(AppRoutes.followUps),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 8.h),
           CustomCard(
             child: ListView.separated(
               shrinkWrap: true,

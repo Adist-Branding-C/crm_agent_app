@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../theme/app_colors.dart';
 import '../utils/context_text_extension.dart';
 
@@ -26,7 +27,7 @@ class SectionHeaderAction extends StatelessWidget {
         style: TextStyle(
           color: AppColors.primaryColor,
           fontWeight: FontWeight.bold,
-          fontSize: context.scaleFont(13),
+          fontSize: 13.s,
         ),
       ),
     );

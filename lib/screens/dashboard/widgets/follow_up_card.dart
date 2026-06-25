@@ -39,19 +39,19 @@ class FollowUpCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: tagBg,
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(6.r),
                       ),
                       child: Text(
                         call.tag.label,
                         style: TextStyle(
                           color: tagText,
-                          fontSize: 11,
+                          fontSize: 10.s,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     if (call.isOverdue) ...[
-                      SizedBox(width: 6),
+                      SizedBox(width: 6.w),
                       Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: AppSpacing.sm,
@@ -59,13 +59,13 @@ class FollowUpCard extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: AppColors.errorBackground,
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(6.r),
                         ),
                         child: Text(
                           'Overdue',
                           style: TextStyle(
                             color: AppColors.errorColor,
-                            fontSize: 11,
+                            fontSize: 10.s,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -81,11 +81,18 @@ class FollowUpCard extends StatelessWidget {
                   ),
                   child: Text(
                     displayName,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textDark,
+                          fontSize: 15.s,
+                        ),
                   ),
                 ),
-                AppSpacing.gapXs,
-                Text(call.time, style: Theme.of(context).textTheme.bodySmall),
+                AppSpacing.gapSm,
+                Text(call.time, style: TextStyle(
+                      color: AppColors.textMuted,
+                      fontSize: 11.s,
+                    )),
               ],
             ),
           ),

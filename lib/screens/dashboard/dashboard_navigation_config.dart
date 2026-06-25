@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../leads/leads_screen.dart';
 import '../tasks/tasks_screen.dart';
 import '../search/search_screen.dart';
@@ -19,27 +20,27 @@ class DashboardNavigationConfig {
   }
 
   static final List<DashboardNavigationItem> items = [
-    const DashboardNavigationItem(
+     DashboardNavigationItem(
       label: 'Dashboard',
-      icon: Icon(Icons.home_outlined, size: 22),
-      activeIcon: Icon(Icons.home_rounded, size: 22),
+      icon: Icon(Icons.home_outlined, size: 22.s),
+      activeIcon: Icon(Icons.home_rounded, size: 22.s),
       body: DashboardBody(),
     ),
-    const DashboardNavigationItem(
+     DashboardNavigationItem(
       label: 'Leads',
-      icon: Icon(Icons.people_outline_rounded, size: 22),
-      activeIcon: Icon(Icons.people_rounded, size: 22),
+      icon: Icon(Icons.people_outline_rounded, size: 22.s),
+      activeIcon: Icon(Icons.people_rounded, size: 22.s),
       body: LeadsScreen(),
     ),
-    const DashboardNavigationItem(
+     DashboardNavigationItem(
       label: 'Tasks',
-      icon: Icon(Icons.check_box_outlined, size: 22),
-      activeIcon: Icon(Icons.check_box_rounded, size: 22),
+      icon: Icon(Icons.check_box_outlined, size: 22.s),
+      activeIcon: Icon(Icons.check_box_rounded, size: 22.s  ),
       body: TasksScreen(),
     ),
-    const DashboardNavigationItem(
+     DashboardNavigationItem(
       label: 'Search',
-      icon: Icon(Icons.search_rounded, size: 22),
+      icon: Icon(Icons.search_rounded, size: 22.s ),
       body: SearchScreen(),
     ),
   ];

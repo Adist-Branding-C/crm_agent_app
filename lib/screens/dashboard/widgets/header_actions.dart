@@ -48,7 +48,7 @@ class _AvatarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushNamed(AppRoutes.account),
-      child: UserAvatar(initials: initials, size: 40),
+      child: UserAvatar(initials: initials, size: 40.s),
     );
   }
 }

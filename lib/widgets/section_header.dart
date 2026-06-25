@@ -80,7 +80,7 @@ class _SectionHeaderTitle extends StatelessWidget {
           Icon(
             leadingIcon,
             color: leadingIconColor ?? AppColors.textDark,
-            size: 16,
+            size: 16.s,
           ),
           AppSpacing.gapWSm,
         ],
@@ -89,7 +89,11 @@ class _SectionHeaderTitle extends StatelessWidget {
             title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: TextStyle(
+              fontSize: 16.5.s,
+              color: AppColors.textDark,
+              fontWeight: FontWeight.w700,
+            )
           ),
         ),
       ],

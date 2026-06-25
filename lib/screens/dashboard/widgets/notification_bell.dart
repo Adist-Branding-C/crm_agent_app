@@ -16,12 +16,12 @@ class NotificationBell extends StatelessWidget {
           padding: EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
             color: AppColors.surfaceWhite,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12.r),
           ),
-          child: const Icon(
+          child:  Icon(
             Icons.notifications_none_rounded,
             color: AppColors.textDark,
-            size: 24,
+            size: 24.s,
           ),
         ),
         if (count > 0)
@@ -29,7 +29,7 @@ class NotificationBell extends StatelessWidget {
             top: -2,
             right: -2,
             child: Container(
-              padding: EdgeInsets.all(AppSpacing.xs),
+              padding: EdgeInsets.all(AppSpacing.xs+1),
               decoration: const BoxDecoration(
                 color: AppColors.errorColor,
                 shape: BoxShape.circle,
@@ -38,7 +38,7 @@ class NotificationBell extends StatelessWidget {
                 count.toString(),
                 style: TextStyle(
                   color: AppColors.surfaceWhite,
-                  fontSize: context.scaleFont(9),
+                  fontSize: 8.s,
                   fontWeight: FontWeight.bold,
                 ),
               ),
