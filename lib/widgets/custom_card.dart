@@ -28,6 +28,7 @@ class CustomCard extends StatelessWidget {
     final card = Container(
       margin: margin,
       padding: padding,
+      
       decoration: BoxDecoration(
         color: color ?? Colors.white,
         borderRadius: BorderRadius.circular(effectiveBorderRadius),

@@ -33,6 +33,12 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _router = createRouter(widget.sessionRepository, _authStateNotifier);
   }
+  double _getSuitableTextScaleFactor(BuildContext context) {
+  double width = MediaQuery.of(context).size.width;
+  double baseWidth = 450.0; 
+  double scaleFactor = width / baseWidth;
+  return scaleFactor.clamp(0.2, 1.0);
+}
 
   @override
   void dispose() {
@@ -42,6 +48,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+  
+    
     return MultiProvider(
       providers: buildRepositoryProviders(
         sessionRepository: widget.sessionRepository,
@@ -58,14 +66,21 @@ class _MyAppState extends State<MyApp> {
             orientationAware: true,
             builder: (context, child) {
               return MaterialApp.router(
-                title: 'CRM Agent App',
+                title: 'CRM Agent App ',
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: ThemeMode.light,
                 routerConfig: _router,
-                builder: (context, child) =>
-                    AppBuilderWidget(scaleText: widget.scaleText, child: child),
+                builder: (context, child) => MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaler:TextScaler.linear(_getSuitableTextScaleFactor(context)),
+                    ),
+                  child: AppBuilderWidget(
+                    scaleText: widget.scaleText,
+                    child: child,
+                  ),
+                ),
               );
             },
           ),

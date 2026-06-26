@@ -37,15 +37,18 @@ class SearchContent extends StatelessWidget {
             left: AppSpacing.xxl,
             right: AppSpacing.xxl,
             top: AppSpacing.lg,
-            bottom: AppSpacing.sm,
+            bottom: AppSpacing.xxs,
           ),
         ),
-        SearchField(
-          controller: controller,
-          onChanged: (q) =>
-              context.read<SearchBloc>().add(SearchQueryChanged(q)),
+        SizedBox(
+          height: 120.h,
+          child: SearchField(
+            controller: controller,
+            onChanged: (q) =>
+                context.read<SearchBloc>().add(SearchQueryChanged(q)),
+          ),
         ),
-        AppSpacing.gapLg,
+        AppSpacing.gapXxs,
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
             buildWhen: (prev, curr) =>

@@ -11,9 +11,9 @@ class NoResultsView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
+           Icon(
             Icons.search_off_rounded,
-            size: 48,
+            size: 40.s,
             color: AppColors.textMuted,
           ),
           AppSpacing.gapMd,
@@ -21,7 +21,7 @@ class NoResultsView extends StatelessWidget {
             'No results found',
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted,fontSize: 13.s),
           ),
         ],
       ),

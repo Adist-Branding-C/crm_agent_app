@@ -50,9 +50,12 @@ class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.xxl,
+        vertical: AppSpacing.sm,
+      ),
       child: CustomCard(
-        borderRadius: 16,
+        borderRadius: 8.r,
         child: TextField(
           controller: widget.controller,
           style: Theme.of(
@@ -60,17 +63,18 @@ class _SearchFieldState extends State<SearchField> {
           ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
           decoration: InputDecoration(
             hintText: 'Search enquiries, phone, location...',
+          
             hintStyle: Theme.of(
               context,
-            ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted),
-            prefixIcon: const Icon(
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted,),
+            prefixIcon:  Icon(
               Icons.search_rounded,
               color: AppColors.textMuted,
-              size: 19,
+              size: 19.s,
             ),
             suffixIcon: _showClear
                 ? IconButton(
-                    icon: const Icon(Icons.close_rounded, size: 18),
+                    icon: Icon(Icons.close_rounded, size: 18.s),
                     color: AppColors.textMuted,
                     onPressed: () {
                       widget.controller.clear();
@@ -79,10 +83,9 @@ class _SearchFieldState extends State<SearchField> {
                   )
                 : null,
             border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: AppSpacing.lg,
-              vertical: 8,
-            ),
+            focusedBorder: InputBorder.none,
+          
+            
           ),
         ),
       ),

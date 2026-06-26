@@ -59,7 +59,7 @@ class SearchResultsList extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
               fontWeight: FontWeight.bold,
-              letterSpacing: 0.8,
+              letterSpacing: 0.8.w,
             ),
           ),
         ),
