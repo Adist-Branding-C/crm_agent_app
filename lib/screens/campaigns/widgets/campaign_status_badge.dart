@@ -13,39 +13,13 @@ class CampaignStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (campaign.isCompleted) {
-      return Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSpacing.sm,
-          vertical: AppSpacing.xs,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.successBackground,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.check_rounded, color: AppColors.success, size: 12),
-            AppSpacing.gapWXs,
-            Text(
-              'Done',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: AppColors.success,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
+    
     return Text(
       '${campaign.progressPercent}%',
       style: TextStyle(
-        color: campaign.themeColor,
+        color: AppColors.primaryLightColor,
         fontWeight: FontWeight.bold,
-        fontSize: context.scaleFont(14),
+        fontSize: 12.s,
       ),
     );
   }

@@ -5,7 +5,8 @@ class AppColors {
   AppColors._();
 
   // Brand Colors
-  static const Color primaryColor = Color(0xFFE53935);
+  static const Color primaryColor = Color.fromARGB(255, 225, 79, 77);
+  static const Color primaryLightColor = Color.fromARGB(255, 223, 107, 105);
   static const Color primaryColorLight = Color(0xFFFEE2E2);
   static const Color backgroundColor = Color(0xFFF7F8FA);
   static const Color textDark = Color(0xFF1E293B);

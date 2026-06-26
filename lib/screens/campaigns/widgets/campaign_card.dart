@@ -18,7 +18,7 @@ class CampaignCard extends StatelessWidget {
     final double progress = campaign.totalCount == 0
         ? 0
         : campaign.doneCount / campaign.totalCount;
-    final captionStyle = Theme.of(context).textTheme.bodyMedium;
+    final captionStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 10.s);
 
     return CustomCard(
       padding: EdgeInsets.all(AppSpacing.lg),
@@ -35,10 +35,10 @@ class CampaignCard extends StatelessWidget {
           ),
           AppSpacing.gapLg,
           ClipRRect(
-            borderRadius: BorderRadius.circular(3),
+            borderRadius: BorderRadius.circular(3.r),
             child: LinearProgressIndicator(
               value: progress,
-              color: campaign.themeColor,
+              color: AppColors.primaryLightColor,
               backgroundColor: AppColors.slate100,
               minHeight: 6,
             ),

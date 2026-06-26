@@ -9,9 +9,9 @@ extension CampaignPresentationExtensions on Campaign {
     if (isCompleted) return AppColors.success;
     switch (type) {
       case CampaignType.call:
-        return AppColors.errorColor;
+        return AppColors.primaryColor;
       case CampaignType.whatsApp:
-        return AppColors.accent;
+        return AppColors.errorColor;
       case CampaignType.email:
         return AppColors.info;
     }
