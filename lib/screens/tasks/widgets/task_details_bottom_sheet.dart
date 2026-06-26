@@ -48,7 +48,7 @@ class TaskDetailsBottomSheet extends StatelessWidget {
           AppSpacing.gapLg,
           Row(
             children: [
-              TaskTypeBadge(type: task.type),
+              TaskTypeBadge(task: task),
               AppSpacing.gapWSm,
               Container(
                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 10.0.h),

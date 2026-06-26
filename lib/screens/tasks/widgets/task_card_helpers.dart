@@ -43,20 +43,36 @@ class TaskCardDetails extends StatelessWidget {
           style: (task.isCompleted
               ? Theme.of(context).textTheme.bodyMedium?.copyWith(
                   decoration: TextDecoration.lineThrough,
+                  fontSize: 14.s
                 )
-              : Theme.of(context).textTheme.titleMedium),
+              : TextStyle(
+                  fontSize: 14.s,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textDark,
+                  letterSpacing: 0.4.w
+                )),
         ),
         AppSpacing.gapXs,
         Row(
           children: [
-            TaskTypeBadge(type: task.type),
+            TaskTypeBadge(task: task),
             AppSpacing.gapWSm,
-            Icon(Icons.access_time_rounded, size: 12, color: timeColor),
+            Icon(Icons.access_time_rounded, size: 12.s, color: timeColor),
             AppSpacing.gapWXs,
             Expanded(
               child: Text(
                 task.time,
-                style: timeStyle,
+                style: (task.isCompleted
+              ? Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  decoration: TextDecoration.lineThrough,
+                  fontSize: 10.s
+                )
+              : TextStyle(
+                  fontSize: 10.s,
+                  fontWeight: FontWeight.bold,
+                  color: timeColor,
+                  letterSpacing: 0.4.w
+                )),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

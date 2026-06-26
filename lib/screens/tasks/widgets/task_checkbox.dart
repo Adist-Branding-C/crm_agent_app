@@ -1,3 +1,5 @@
+import 'package:flutter_sfs/flutter_sfs.dart';
+
 import '../../../theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -14,18 +16,18 @@ class TaskCheckbox extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 22,
-        height: 22,
+        width: 18.w,
+        height: 35.h,
         decoration: BoxDecoration(
           color: isChecked ? AppColors.success : Colors.white,
           border: Border.all(
             color: isChecked ? Colors.transparent : AppColors.slate300,
-            width: 1.5,
+            width: 1.w,
           ),
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(6.r),
         ),
         child: isChecked
-            ? const Icon(Icons.check_rounded, size: 14, color: Colors.white)
+            ?  Icon(Icons.check_rounded, size: 14.s, color: Colors.white)
             : null,
       ),
     );

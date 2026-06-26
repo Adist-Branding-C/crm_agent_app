@@ -39,10 +39,10 @@ class TasksListView extends StatelessWidget {
             errorMessage: state is TasksError ? state.failure.message : '',
             onRetry: () => context.read<TasksBloc>().add(const LoadTasks()),
             child: tasks.isEmpty
-                ? const Center(
+                ?  Center(
                     child: Text(
                       'No tasks found',
-                      style: TextStyle(color: AppColors.surfaceGrey),
+                      style: TextStyle(color: AppColors.textMuted, fontSize: 14.s),
                     ),
                   )
                 : ListView.builder(

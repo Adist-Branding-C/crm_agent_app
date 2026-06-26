@@ -18,11 +18,12 @@ class TaskCard extends StatelessWidget {
     final timeColor = showOverdue ? AppColors.errorColor : AppColors.textMuted;
     final timeStyle = TextStyle(
       color: timeColor,
-      fontSize: 12,
+      fontSize: 12.s,
       fontWeight: showOverdue ? FontWeight.bold : FontWeight.normal,
     );
     return CustomCard(
       margin: AppSpacing.cardMarginList,
+      borderRadius: 11.r,
       padding: AppSpacing.cardPadding,
       onTap: () => TaskDetailsBottomSheet.show(context, task),
       child: Row(
@@ -38,15 +39,16 @@ class TaskCard extends StatelessWidget {
               task: task,
               timeColor: timeColor,
               timeStyle: timeStyle,
+            
             ),
           ),
           AppSpacing.gapWMd,
           Container(
-            width: 4,
-            height: 32,
+            width: 3.w,
+            height: 60.h,
             decoration: BoxDecoration(
               color: task.getIndicatorColor(),
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(2.r),
             ),
           ),
         ],

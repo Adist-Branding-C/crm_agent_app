@@ -32,9 +32,9 @@ class TasksHeader extends StatelessWidget {
           title: 'Tasks',
           subtitleWidget: Text(
             '$pending pending · $overdue overdue',
-            style: const TextStyle(
+            style:  TextStyle(
               color: AppColors.textMuted,
-              fontSize: 13,
+              fontSize: 11.s,
               fontWeight: FontWeight.w600,
             ),
           ),
