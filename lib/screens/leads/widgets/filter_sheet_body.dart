@@ -33,9 +33,10 @@ class FilterSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      
+      decoration:  BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       padding: EdgeInsets.symmetric(
         horizontal: AppSpacing.xxl,
@@ -54,7 +55,7 @@ class FilterSheetBody extends StatelessWidget {
                 'Filter & Sort',
                 style: Theme.of(
                   context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, fontSize: 16.s),
               ),
               if (status != null || source != null)
                 TextButton(
@@ -64,12 +65,12 @@ class FilterSheetBody extends StatelessWidget {
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: const Text(
+                  child:  Text(
                     'Clear',
                     style: TextStyle(
                       color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.s,
                     ),
                   ),
                 ),
@@ -83,6 +84,7 @@ class FilterSheetBody extends StatelessWidget {
               onSelected: onSortChanged,
             ),
           ),
+          AppSpacing.gapLg,
           FilterSection(
             title: 'STATUS',
             child: FilterStatus(
@@ -90,6 +92,7 @@ class FilterSheetBody extends StatelessWidget {
               onSelected: onStatusChanged,
             ),
           ),
+          AppSpacing.gapLg,
           FilterSection(
             title: 'SOURCE',
             child: FilterSource(
@@ -97,7 +100,7 @@ class FilterSheetBody extends StatelessWidget {
               onSelected: onSourceChanged,
             ),
           ),
-          AppSpacing.gapSm,
+          AppSpacing.gapLg,
           CustomButton(
             text: 'Apply Filters',
             onPressed: () => context.pop(

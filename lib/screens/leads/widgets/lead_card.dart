@@ -30,11 +30,11 @@ class LeadCard extends StatelessWidget {
         padding: AppSpacing.cardPaddingCompact,
         child: Row(
           children: [
-            UserAvatar(initials: lead.initials, size: 42),
+            UserAvatar(initials: lead.initials, size: 45.s,fontSize: 15.s,),
             AppSpacing.gapWMd,
             Expanded(child: LeadCardDetails(lead: lead)),
             CallButton(
-              borderRadius: 8,
+            
               onTap: () =>
                   context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
             ),

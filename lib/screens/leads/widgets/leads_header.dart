@@ -31,7 +31,7 @@ class LeadsHeader extends StatelessWidget {
         '${headerState.total} total · ${headerState.hot} hot',
         style: Theme.of(
           context,
-        ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
+        ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 10.s),
       ),
       showBackButton: false,
       actions: const LeadsHeaderActions(),

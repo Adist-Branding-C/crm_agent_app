@@ -32,7 +32,7 @@ class TasksList extends StatelessWidget {
             actionText: 'View all',
             onActionTap: () => context.read<DashboardTabNotifier>().setIndex(2),
           ),
-          const SizedBox(height: 12),
+           SizedBox(height: AppSpacing.md),
           CustomCard(
             child: ListView.separated(
               shrinkWrap: true,

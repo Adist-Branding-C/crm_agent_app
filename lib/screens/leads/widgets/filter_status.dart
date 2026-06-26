@@ -38,7 +38,7 @@ class FilterStatus extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: cfg.bgColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(8.r),
               border: Border.all(
                 color: isSel ? cfg.textColor : Colors.transparent,
                 width: 1.5,
@@ -48,7 +48,7 @@ class FilterStatus extends StatelessWidget {
               status.label,
               style: TextStyle(
                 color: cfg.textColor,
-                fontSize: 13,
+                fontSize: 10.s,
                 fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
               ),
             ),

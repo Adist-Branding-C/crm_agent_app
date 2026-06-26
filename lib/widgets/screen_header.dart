@@ -36,10 +36,10 @@ class ScreenHeader extends StatelessWidget {
       large ? 7.0.h : 13.0.h,
     );
 
-    final titleStyle = (Theme.of(context).textTheme.headlineSmall ?? const TextStyle()).copyWith(
-      fontSize: 16.s,
-      fontWeight: FontWeight.bold,
-      letterSpacing: 0.2.w,
+    final titleStyle = (Theme.of(context).textTheme.headlineSmall ??  TextStyle()).copyWith(
+      fontSize: 18.s,
+      fontWeight: FontWeight.w900,
+      letterSpacing: 0.7.w,
       color: AppColors.textDark,
     );
 
@@ -50,7 +50,7 @@ class ScreenHeader extends StatelessWidget {
                 subtitle!,
                 style: Theme.of(
                   context,
-                ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 12.s),
               )
             : null);
 

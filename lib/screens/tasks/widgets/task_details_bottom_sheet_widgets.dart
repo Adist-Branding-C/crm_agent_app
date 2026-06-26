@@ -18,12 +18,14 @@ class TaskDetailsInfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 16, color: AppColors.textMuted),
+        Icon(icon, size: 16.s, color: AppColors.textMuted),
         SizedBox(width: AppSpacing.sm),
         Text(
           text,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.textDark,
+                fontWeight: FontWeight.w500,
+                fontSize: 13.s,
               ),
         ),
       ],
@@ -45,14 +47,14 @@ class TaskDetailsActionBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      height: 75.0.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: isCompleted ? AppColors.slate300 : AppColors.success,
           foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 14),
+          padding:  EdgeInsets.symmetric(vertical: 14.0.h),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(8.0.r),
           ),
           elevation: 0,
         ),
@@ -65,13 +67,13 @@ class TaskDetailsActionBtn extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.check, size: 20),
+             Icon(Icons.check, size:   20.s),
             SizedBox(width: AppSpacing.sm),
             Text(
               isCompleted ? 'Completed' : 'Mark complete',
-              style: const TextStyle(
+              style:  TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 16.s,
               ),
             ),
           ],

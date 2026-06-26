@@ -25,10 +25,11 @@ class FilterChipBar extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       padding:  EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Row(
+      
         children: options
             .map(
               (opt) => Padding(
-                padding:  EdgeInsets.only(right: AppSpacing.sm),
+                padding:  EdgeInsets.only(right: AppSpacing.sm+10.w),
                 child: _FilterChip(option: opt),
               ),
             )
@@ -50,19 +51,19 @@ class _FilterChip extends StatelessWidget {
         : Colors.white;
     final textColor = option.isSelected ? Colors.white : AppColors.textMuted;
     final border = option.isSelected
-        ? Border.all(color: AppColors.blackAlpha8, width: 1.5)
+        ? Border.all(color: AppColors.blackAlpha8, width: 1.w)
         : Border.all(color: AppColors.borderLight);
 
     return GestureDetector(
       onTap: option.onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 13.0,
-          vertical: 7.0,
+        padding:  EdgeInsets.symmetric(
+          horizontal: 9.0.w,
+          vertical: 7.0.h,
         ),
         decoration: BoxDecoration(
           color: themeColor,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(40.r),
           border: border,
         ),
         child: Text(
@@ -70,7 +71,7 @@ class _FilterChip extends StatelessWidget {
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.bold,
-            fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
+            fontSize: 12.s,
           ),
         ),
       ),

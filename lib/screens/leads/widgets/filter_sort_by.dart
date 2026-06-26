@@ -20,11 +20,11 @@ class FilterSortBy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 38,
+      height: 50.h,
       padding: EdgeInsets.all(AppSpacing.xs),
       decoration: BoxDecoration(
         color: AppColors.slate100,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(6.r),
       ),
       child: Row(
         children: SortLeadsBy.values.map((opt) {
@@ -38,12 +38,12 @@ class FilterSortBy extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: isSel ? Colors.white : Colors.transparent,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Text(
                   opt.label,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 12.s,
                     fontWeight: isSel ? FontWeight.w600 : FontWeight.w500,
                     color: isSel ? AppColors.textDark : AppColors.textMuted,
                   ),

@@ -24,6 +24,7 @@ class LeadsScreen extends StatelessWidget {
       child: PageScaffold(
         padding: EdgeInsets.zero,
         child:  Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             LeadsHeader(),
             LeadsSearchBar(),

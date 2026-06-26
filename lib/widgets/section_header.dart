@@ -90,7 +90,7 @@ class _SectionHeaderTitle extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: 16.5.s,
+              fontSize: 15.5.s,
               color: AppColors.textDark,
               fontWeight: FontWeight.w700,
             )

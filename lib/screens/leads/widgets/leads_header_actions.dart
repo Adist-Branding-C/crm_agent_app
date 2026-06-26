@@ -36,9 +36,9 @@ class LeadsHeaderActions extends StatelessWidget {
               backgroundColor: isSpotlight
                   ? AppColors.primaryColor
                   : Colors.white,
-              size: 38,
-              borderRadius: 8,
-              iconSize: 20,
+              size: 38.s,
+              borderRadius: 8.r,
+              iconSize: 18.s,
               onTap: () =>
                   context.read<LeadsBloc>().add(const ToggleSpotlight()),
             ),
@@ -49,9 +49,9 @@ class LeadsHeaderActions extends StatelessWidget {
               backgroundColor: isFilterActive
                   ? AppColors.primaryColor
                   : Colors.white,
-              size: 38,
-              borderRadius: 8,
-              iconSize: 20,
+              size: 38.s,
+              borderRadius: 8.r,
+              iconSize: 18.s,
               onTap: () => _openFilterSheet(context, state),
             ),
             SizedBox(width: AppSpacing.ten),
@@ -59,9 +59,9 @@ class LeadsHeaderActions extends StatelessWidget {
               icon: Icons.add_rounded,
               iconColor: AppColors.primaryColor,
               backgroundColor: Colors.white,
-              size: 38,
-              borderRadius: 8,
-              iconSize: 20,
+              size: 38.s,
+              borderRadius: 8.r,
+              iconSize: 18.s,
               onTap: () => _openAddScreen(context),
             ),
           ],

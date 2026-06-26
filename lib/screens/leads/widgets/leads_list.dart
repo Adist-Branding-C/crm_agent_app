@@ -22,11 +22,11 @@ class LeadsList extends StatelessWidget {
       builder: (context, state) {
         if (state is LeadsLoading || state is LeadsInitial) {
           return ListView.builder(
-            padding: const EdgeInsets.only(
-              left: 24,
-              right: 24,
-              top: 4,
-              bottom: 24,
+            padding:  EdgeInsets.only(
+              left: 24.w,
+              right: 24.w,
+              top: 4.h,
+              bottom: 24.h,
             ),
             itemCount: 5,
             physics: const NeverScrollableScrollPhysics(),
@@ -39,19 +39,19 @@ class LeadsList extends StatelessWidget {
         if (state is LeadsLoaded) {
           final list = state.filteredLeads;
           if (list.isEmpty) {
-            return const Center(
+            return  Center(
               child: Text(
                 'No leads found',
-                style: TextStyle(color: AppColors.textMuted, fontSize: 14),
+                style: TextStyle(color: AppColors.textMuted, fontSize: 14.s),
               ),
             );
           }
           return ListView.builder(
-            padding: const EdgeInsets.only(
-              left: 24,
-              right: 24,
-              top: 4,
-              bottom: 24,
+            padding: EdgeInsets.only(
+              left: AppSpacing.xxl,
+              right: AppSpacing.xxl,
+              top: 2.h,
+              bottom: 4.h,
             ),
             itemCount: list.length,
             physics: const BouncingScrollPhysics(),

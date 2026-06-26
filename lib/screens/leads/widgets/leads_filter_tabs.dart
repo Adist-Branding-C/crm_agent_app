@@ -25,6 +25,7 @@ class LeadsFilterTabs extends StatelessWidget {
             cat: all.where((l) => l.category == cat).length,
         };
         return FilterChipBar(
+          
           options: [
             FilterChipOption(
               label: 'All · ${all.length}',

@@ -21,9 +21,9 @@ class FilterSection extends StatelessWidget {
           padding: EdgeInsets.only(bottom: AppSpacing.sm),
           child: Text(
             title,
-            style: const TextStyle(
+            style:  TextStyle(
               color: AppColors.textMuted,
-              fontSize: 11,
+              fontSize: 10.s,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.5,
             ),

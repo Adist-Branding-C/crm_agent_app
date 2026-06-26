@@ -31,18 +31,18 @@ class FilterSource extends StatelessWidget {
           onTap: () => onSelected(isSel ? null : src),
           child: Container(
             padding: EdgeInsets.symmetric(
-              horizontal: AppSpacing.md,
+              horizontal: AppSpacing.lg,
               vertical: AppSpacing.xs2,
             ),
             decoration: BoxDecoration(
               color: isSel ? AppColors.primaryColor : AppColors.slate100,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Text(
               src.label,
               style: TextStyle(
                 color: isSel ? Colors.white : AppColors.slate600,
-                fontSize: 13,
+                fontSize: 12.s,
                 fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
               ),
             ),

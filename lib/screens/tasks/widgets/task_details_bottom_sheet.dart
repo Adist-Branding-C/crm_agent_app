@@ -34,11 +34,12 @@ class TaskDetailsBottomSheet extends StatelessWidget {
       TaskPriority.low => AppColors.slate100,
     };
     return Container(
-      decoration: const BoxDecoration(
+      
+      decoration:  BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0.w)),
       ),
-      padding: const EdgeInsets.fromLTRB(17.0, 11.0, 17.0, 29.0),
+      padding:  EdgeInsets.fromLTRB(17.0.w, 20.0.h, 17.0.w, 40.0.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,25 +51,25 @@ class TaskDetailsBottomSheet extends StatelessWidget {
               TaskTypeBadge(type: task.type),
               AppSpacing.gapWSm,
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding:  EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 10.0.h),
                 decoration: BoxDecoration(color: priorityBg, borderRadius: BorderRadius.circular(6)),
-                child: Text(task.priority.label, style: TextStyle(color: task.priority.displayColor, fontSize: 11, fontWeight: FontWeight.bold)),
+                child: Text(task.priority.label, style: TextStyle(color: task.priority.displayColor, fontSize: 11.s, fontWeight: FontWeight.bold)),
               ),
             ],
           ),
-          AppSpacing.gapMd,
-          Text(task.title, style: Theme.of(context).textTheme.headlineSmall),
+          AppSpacing.gapXl,
+          Text(task.title, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, fontSize: 17.s)),
           if (task.description != null && task.description!.isNotEmpty) ...[
-            AppSpacing.gapSm,
-            Text(task.description!, style: Theme.of(context).textTheme.bodyMedium),
+            AppSpacing.gapXs,
+            Text(task.description!, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 14.s)),
           ],
-          AppSpacing.gapLg,
+          AppSpacing.gapXl,
           TaskDetailsInfoRow(icon: Icons.access_time_rounded, text: task.time),
           if (contactName != null) ...[
             AppSpacing.gapSm,
             TaskDetailsInfoRow(icon: Icons.person_outline_rounded, text: contactName),
           ],
-          AppSpacing.gapXl,
+          AppSpacing.gapXxxl,
           TaskDetailsActionBtn(taskId: task.id, isCompleted: task.isCompleted),
         ],
       ),
