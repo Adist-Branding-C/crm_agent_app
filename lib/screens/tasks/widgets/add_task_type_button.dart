@@ -20,12 +20,12 @@ class TaskTypeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(8.r),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: AppSpacing.ten),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
         decoration: BoxDecoration(
           color: isSelected ? type.activeBg : Colors.white,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
           border: Border.all(
             color: isSelected ? type.activeColor : AppColors.slate300,
             width: 1.5,
@@ -36,7 +36,7 @@ class TaskTypeButton extends StatelessWidget {
           children: [
             Icon(
               type.icon,
-              size: 16,
+              size: 14.s,
               color: isSelected ? type.activeColor : AppColors.textMuted,
             ),
             SizedBox(width: AppSpacing.xs2),
@@ -44,7 +44,7 @@ class TaskTypeButton extends StatelessWidget {
               type.label,
               style: TextStyle(
                 color: isSelected ? type.activeColor : AppColors.textMuted,
-                fontSize: 13,
+                fontSize: 10.s,
                 fontWeight: FontWeight.bold,
               ),
             ),

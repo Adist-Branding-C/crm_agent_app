@@ -8,11 +8,11 @@ class BottomSheetHandle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 38,
-        height: 5,
+        width: 38.w,
+        height: 6.h,
         decoration: BoxDecoration(
           color: AppColors.borderLight,
-          borderRadius: BorderRadius.circular(2.5),
+          borderRadius: BorderRadius.circular(2.5.r),
         ),
       ),
     );

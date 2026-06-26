@@ -19,13 +19,13 @@ class TasksFilterPrioritySelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+         Text(
           'PRIORITY',
           style: TextStyle(
             color: AppColors.textMuted,
-            fontSize: 11,
+            fontSize: 11.s,
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.8,
+            letterSpacing: 0.8.w,
           ),
         ),
         AppSpacing.gapSm,

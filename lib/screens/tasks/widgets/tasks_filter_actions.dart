@@ -17,21 +17,23 @@ class TasksFilterActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.symmetric(vertical: AppSpacing.fourteen),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              side: const BorderSide(color: Colors.grey),
+        GestureDetector(
+          onTap: onReset,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(7.r),
+              border: Border.all(color: AppColors.darkBackground),
             ),
-            onPressed: onReset,
-            child: const Text(
-              'Reset',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            width: 70.w,
+            height: 65.h,
+            child: Center(
+              child: Text(
+                'Reset',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 13.s,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -41,6 +43,7 @@ class TasksFilterActions extends StatelessWidget {
           flex: 2,
           child: CustomButton(
             text: 'Apply Filter',
+
             icon: Icons.filter_alt_outlined,
             onPressed: onApply,
           ),

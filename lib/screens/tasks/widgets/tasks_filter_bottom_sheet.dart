@@ -34,9 +34,9 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(22.r)),
       ),
       padding: EdgeInsets.symmetric(
         horizontal: AppSpacing.xxl,
@@ -61,7 +61,7 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
               }),
               onPrioritiesChanged: (val) => setState(() => _priorities = val),
             ),
-            AppSpacing.gapXxl,
+            AppSpacing.gapXxxl,
             TasksFilterActions(onReset: _reset, onApply: _apply),
           ],
         ),

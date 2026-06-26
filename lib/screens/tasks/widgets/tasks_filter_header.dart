@@ -15,9 +15,10 @@ class TasksFilterHeader extends StatelessWidget {
         AppSpacing.gapLg,
         Text(
           'Filter Tasks',
-          style: Theme.of(
-            context,
-          ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5.w,
+          ),
         ),
       ],
     );

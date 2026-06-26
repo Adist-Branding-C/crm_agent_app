@@ -35,11 +35,13 @@ class DatePickerField extends StatelessWidget {
       child: AbsorbPointer(
         child: CustomTextField(
           label: label,
+          height: 55.h,
+         
           hintText: 'dd-mm-yyyy',
           controller: TextEditingController(text: formatted),
-          suffixIcon: const Icon(
+          suffixIcon:  Icon(
             Icons.calendar_today_rounded,
-            size: 18,
+            size: 15.s,
             color: AppColors.textMuted,
           ),
         ),

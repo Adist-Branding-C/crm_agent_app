@@ -19,22 +19,24 @@ class TasksFilterTypeSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+         Text(
           'TASK TYPE',
           style: TextStyle(
             color: AppColors.textMuted,
-            fontSize: 11,
+            fontSize: 11.s,
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.8,
+            letterSpacing: 0.8.w,
           ),
         ),
-        const SizedBox(height: 10),
+         SizedBox(height: 10.h),
         Row(
+          
           children: TaskType.values.map((type) {
             final active = selectedTypes.contains(type);
             return Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+              child: Container(
+                height: 45.h,
+                padding: EdgeInsets.only(right: AppSpacing.md+2.w),
                 child: TaskTypeButton(
                   type: type,
                   isSelected: active,

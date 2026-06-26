@@ -16,6 +16,8 @@ class CustomTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final bool obscureText;
   final Widget? suffixIcon;
+  final double? height;
+  final double? width;
 
   const CustomTextField({
     super.key,
@@ -29,6 +31,8 @@ class CustomTextField extends StatelessWidget {
     this.semanticsLabel,
     this.maxLines = 1,
     this.onChanged,
+    this.height,
+    this.width,
     this.obscureText = false,
     this.suffixIcon,
   });
@@ -44,8 +48,8 @@ class CustomTextField extends StatelessWidget {
           label: semanticsLabel ?? '$label Input Field',
           textField: true,
           child: SizedBox(
-            height: 80.h,
-            
+            height: height??80.h,
+            width: width,
             child: TextFormField(
               controller: controller,
               keyboardType: keyboardType,

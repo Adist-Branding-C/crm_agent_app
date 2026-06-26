@@ -38,12 +38,12 @@ class TasksFilterForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const TasksFilterHeader(),
-        AppSpacing.gapXl,
+        AppSpacing.gapXxxl,
         TasksFilterTypeSelector(
           selectedTypes: types,
           onChanged: onTypesChanged,
         ),
-        AppSpacing.gapXl,
+         AppSpacing.gapXxxl,
         TasksFilterDateSelector(
           selectedRange: dateRange,
           customFrom: customFrom,
@@ -51,7 +51,7 @@ class TasksFilterForm extends StatelessWidget {
           onRangeChanged: onDateRangeChanged,
           onCustomDatesChanged: onCustomDatesChanged,
         ),
-        AppSpacing.gapXl,
+          AppSpacing.gapXxxl,
         TasksFilterPrioritySelector(
           selectedPriorities: priorities,
           onChanged: onPrioritiesChanged,
