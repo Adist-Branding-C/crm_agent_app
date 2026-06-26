@@ -16,24 +16,27 @@ class DatePickerField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+
         Text(
           label,
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.bold,
+            fontSize: 11.s
           ),
         ),
-        AppSpacing.gapXs,
+        AppSpacing.gapWSm,
         GestureDetector(
           onTap: onTap,
           child: Container(
-            height: 42,
+            height: 55.h,
+            width: 100.w,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(6.r),
               border: Border.all(color: AppColors.borderLight),
             ),
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -46,19 +49,20 @@ class DatePickerField extends StatelessWidget {
                     color: dateStr == 'dd-mm-yyyy'
                         ? AppColors.textMuted
                         : AppColors.textDark,
-                    fontSize: context.scaleFont(13),
+                    fontSize: 12.s,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const Icon(
+                 Icon(
                   Icons.calendar_today_outlined,
-                  size: 16,
+                  size: 12.s,
                   color: AppColors.textMuted,
                 ),
               ],
             ),
           ),
         ),
+        AppSpacing.gapLg
       ],
     );
   }

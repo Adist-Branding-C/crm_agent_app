@@ -24,28 +24,23 @@ class DonutChartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobileSmall = ResponsiveHelper.isMobileSmall(context);
+    
     final chart = DonutChart(
       segments: segments,
       centerLabel: centerLabel,
       centerSubLabel: centerSubLabel,
-      size: 130,
+      size: 140.w,
     );
 
-    final content = isMobileSmall
-        ? Column(children: [chart, AppSpacing.gapLg, ...legendItems])
-        : Row(
-            children: [
-              chart,
-              AppSpacing.gapWXl,
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: legendItems,
-                ),
-              ),
-            ],
-          );
+    final content = Row(
+      children: [
+        chart,
+        AppSpacing.gapWXl,
+        Expanded(
+          child: Column(mainAxisSize: MainAxisSize.min, children: legendItems),
+        ),
+      ],
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,10 +50,17 @@ class DonutChartCard extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
+            fontSize: 16.s,
           ),
         ),
         AppSpacing.gapMd,
-        CustomCard(padding: EdgeInsets.all(AppSpacing.xl), child: content),
+        CustomCard(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.sm,
+            vertical: AppSpacing.lg,
+          ),
+          child: content,
+        ),
       ],
     );
   }

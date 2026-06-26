@@ -14,41 +14,48 @@ class FilterActionButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          child: OutlinedButton(
-            onPressed: onReset,
-            style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
-              side: const BorderSide(color: AppColors.borderLight),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            child: Text(
-              'Reset',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.bold,
+        Container(
+          height: 60.h,
+          width: 90.w,
+          decoration: BoxDecoration(
+          
+            border: Border.all(color: AppColors.textMuted),
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          child: GestureDetector(
+            onTap: onReset,
+            child: Center(
+              child: Text(
+                'Reset',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textDark,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.s,
+                ),
               ),
             ),
           ),
         ),
-        AppSpacing.gapWLg,
-        Expanded(
+
+        SizedBox(
+          height: 55.h,
+          width: 220.w,
           child: ElevatedButton(
             onPressed: onApply,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
-              padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
+
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(6.r),
               ),
             ),
             child: Text(
               'Apply Filters',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Colors.white,
+                fontSize: 15.s,
                 fontWeight: FontWeight.bold,
               ),
             ),

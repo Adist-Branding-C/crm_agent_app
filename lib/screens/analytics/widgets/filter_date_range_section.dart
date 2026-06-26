@@ -25,8 +25,8 @@ class FilterDateRangeSection extends StatelessWidget {
     final picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2030),
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now().add(Duration(days: 50000)),
     );
     if (picked != null) {
       (isStart ? onStartDateChanged : onEndDateChanged)(picked);
@@ -55,7 +55,8 @@ class FilterDateRangeSection extends StatelessWidget {
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.5,
+            letterSpacing: 0.3.w,
+            fontSize: 12.s
           ),
         ),
         AppSpacing.gapSm,
@@ -66,7 +67,7 @@ class FilterDateRangeSection extends StatelessWidget {
             children: periods.map((period) {
               final isSel = selectedPeriod == period;
               return Padding(
-                padding: EdgeInsets.only(right: AppSpacing.sm),
+                padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                 child: GestureDetector(
                   onTap: () => onPeriodChanged(period),
                   child: Container(
@@ -76,7 +77,7 @@ class FilterDateRangeSection extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: isSel ? AppColors.primaryColor : Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(8.r),
                       border: isSel
                           ? null
                           : Border.all(color: AppColors.borderLight),
@@ -86,7 +87,7 @@ class FilterDateRangeSection extends StatelessWidget {
                       style: TextStyle(
                         color: isSel ? Colors.white : AppColors.textMuted,
                         fontWeight: FontWeight.w600,
-                        fontSize: context.scaleFont(12),
+                        fontSize: 11.s,
                       ),
                     ),
                   ),
@@ -96,12 +97,12 @@ class FilterDateRangeSection extends StatelessWidget {
           ),
         ),
         if (selectedPeriod == 'Custom range') ...[
-          AppSpacing.gapLg,
+          AppSpacing.gapXl,
           Row(
             children: [
               Expanded(
                 child: DatePickerField(
-                  label: 'From',
+                  label: 'From :',
                   dateStr: _formatDate(startDate),
                   onTap: () => _selectDate(context, true),
                 ),
@@ -109,7 +110,7 @@ class FilterDateRangeSection extends StatelessWidget {
               AppSpacing.gapWLg,
               Expanded(
                 child: DatePickerField(
-                  label: 'To',
+                  label: 'To :',
                   dateStr: _formatDate(endDate),
                   onTap: () => _selectDate(context, false),
                 ),

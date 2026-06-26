@@ -16,12 +16,12 @@ class AnalyticsTabToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 38,
+      height: 70.h,
       decoration: BoxDecoration(
         color: AppColors.slate100,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8.r),
       ),
-      padding: const EdgeInsets.all(3.0),
+      padding:  EdgeInsets.symmetric(vertical: 10.h,horizontal: 8.w),
       child: Row(
         children: [
           Expanded(
@@ -63,23 +63,20 @@ class _TabButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
+      child: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 13.0),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(9),
-          border: isSelected && isDeals
-              ? Border.all(color: AppColors.warningDark, width: 1.5)
-              : null,
+          borderRadius: BorderRadius.circular(8.r),
+          
         ),
         child: Text(
           label,
           style: TextStyle(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
-            fontSize: context.scaleFont(14),
+            fontSize: 14.s,
+            letterSpacing: 0.5.w
           ),
         ),
       ),

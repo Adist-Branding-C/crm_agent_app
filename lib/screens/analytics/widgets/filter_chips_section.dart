@@ -28,6 +28,7 @@ class FilterChipsSection<T> extends StatelessWidget {
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.bold,
+            fontSize: 12.s,
             letterSpacing: 0.5,
           ),
         ),
@@ -46,7 +47,7 @@ class FilterChipsSection<T> extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.primaryColor : Colors.white,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(6.r),
                   border: isSelected
                       ? null
                       : Border.all(color: AppColors.borderLight),
@@ -56,13 +57,14 @@ class FilterChipsSection<T> extends StatelessWidget {
                   style: TextStyle(
                     color: isSelected ? Colors.white : AppColors.textMuted,
                     fontWeight: FontWeight.w600,
-                    fontSize: context.scaleFont(12),
+                    fontSize: 11.s,
                   ),
                 ),
               ),
             );
           }).toList(),
         ),
+         AppSpacing.gapSm,
       ],
     );
   }

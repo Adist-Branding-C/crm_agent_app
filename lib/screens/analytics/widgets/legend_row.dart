@@ -16,12 +16,14 @@ class LegendRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: AppSpacing.xs),
+      padding: EdgeInsets.fromLTRB(
+        AppSpacing.xl,AppSpacing.sm,AppSpacing.xl,AppSpacing.sm,
+      ),
       child: Row(
         children: [
           Container(
-            width: 10,
-            height: 10,
+            width: 8.w,
+            height: 8.w,
             decoration: BoxDecoration(color: color, shape: BoxShape.circle),
           ),
           AppSpacing.gapWSm,
@@ -31,6 +33,7 @@ class LegendRow extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
                 fontWeight: FontWeight.w500,
+                fontSize: 13.5.s,
               ),
             ),
           ),
@@ -39,6 +42,7 @@ class LegendRow extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textDark,
               fontWeight: FontWeight.bold,
+              fontSize: 13.s,
             ),
           ),
         ],

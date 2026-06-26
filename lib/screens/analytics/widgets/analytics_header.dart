@@ -22,6 +22,7 @@ class AnalyticsHeader extends StatelessWidget {
             : 'This Month';
         return ScreenHeader(
           title: 'Analytics',
+          padding: EdgeInsets.fromLTRB(17.0.w, 40.0.h, 17.0.w, 13.0.h),
           subtitle: period,
           showBackButton: true,
           actions: const _FilterButton(),
@@ -38,29 +39,21 @@ class _FilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          backgroundColor: AppColors.transparent,
-          builder: (_) => BlocProvider.value(
-            value: context.read<AnalyticsBloc>(),
-            child: const AnalyticsFilterSheet(),
-          ),
-        );
+        openAnalyticsFilter(context: context);
       },
       child: Container(
-        height: 38,
+        height: 50.h,
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+             Icon(
               Icons.filter_alt_outlined,
-              size: 16,
+              size: 14.s,
               color: AppColors.surfaceWhite,
             ),
             AppSpacing.gapWSm,
@@ -69,6 +62,7 @@ class _FilterButton extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.surfaceWhite,
                 fontWeight: FontWeight.bold,
+                fontSize: 13.s
               ),
             ),
           ],
@@ -76,4 +70,17 @@ class _FilterButton extends StatelessWidget {
       ),
     );
   }
+}
+
+
+void openAnalyticsFilter({required BuildContext context}){
+  showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: AppColors.transparent,
+          builder: (_) => BlocProvider.value(
+            value: context.read<AnalyticsBloc>(),
+            child: const AnalyticsFilterSheet(),
+          ),
+        );
 }

@@ -37,6 +37,7 @@ class MetricProgressRow extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
                 fontWeight: FontWeight.w600,
+                fontSize: 14.s
               ),
             ),
             Text(
@@ -44,18 +45,19 @@ class MetricProgressRow extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textMuted,
                 fontWeight: FontWeight.bold,
+                fontSize: 14.s
               ),
             ),
           ],
         ),
-        AppSpacing.gapXs,
+        AppSpacing.gapXl,
         ClipRRect(
           borderRadius: BorderRadius.circular(4),
           child: LinearProgressIndicator(
             value: progressValue,
             backgroundColor: AppColors.slate100,
             valueColor: AlwaysStoppedAnimation<Color>(barColor),
-            minHeight: 6,
+            minHeight: 6.w,
           ),
         ),
       ],

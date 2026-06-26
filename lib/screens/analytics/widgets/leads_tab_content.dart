@@ -22,9 +22,9 @@ class LeadsTabContent extends StatelessWidget {
     return Column(
       children: [
         AnalyticsStatsGridLeads(summary: summary),
-        AppSpacing.gapXxl,
+        AppSpacing.gapXl,
         LeadStatusDonut(summary: summary, statusMetrics: statusMetrics),
-        AppSpacing.gapXxl,
+        AppSpacing.gapXl,
         LeadSourceChart(sourceMetrics: sourceMetrics),
       ],
     );

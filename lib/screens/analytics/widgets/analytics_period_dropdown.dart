@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import 'analytics_header.dart';
 
 class AnalyticsPeriodDropdown extends StatelessWidget {
   final String selectedPeriod;
@@ -13,22 +14,18 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        height: 38,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.borderLight),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+    return GestureDetector(
+      onTap: () {
+        openAnalyticsFilter(context: context);
+      },
+      child: Align(
+        alignment: Alignment.centerLeft,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+             Icon(
               Icons.calendar_today_outlined,
-              size: 16,
+              size: 11.s,
               color: AppColors.errorColor,
             ),
             AppSpacing.gapWSm,
@@ -36,13 +33,14 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
               selectedPeriod,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
+                fontSize: 13.s,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            AppSpacing.gapWXs,
-            const Icon(
+             AppSpacing.gapSm,
+             Icon(
               Icons.keyboard_arrow_down_rounded,
-              size: 18,
+              size: 14.s,
               color: AppColors.textMuted,
             ),
           ],
