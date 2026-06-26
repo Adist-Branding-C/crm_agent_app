@@ -26,7 +26,7 @@ class DealPipelineStageColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 260,
+      width: 150.w,
       margin: EdgeInsets.only(right: AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class DealPipelineStageColumn extends StatelessWidget {
             dealsCount: stageDeals.length,
             totalAmount: totalAmount,
           ),
-          const SizedBox(height: 12),
+          AppSpacing.gapXl,
           Expanded(
             child: stageDeals.isEmpty
                 ? Center(

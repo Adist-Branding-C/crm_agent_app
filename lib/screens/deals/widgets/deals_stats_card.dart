@@ -33,7 +33,7 @@ class DealsStatsCard extends StatelessWidget {
             title,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.whiteAlpha60,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
             ),
           ),
           AppSpacing.gapSm,
@@ -42,6 +42,7 @@ class DealsStatsCard extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.bold,
+              fontSize: 16.s
             ),
           ),
         ],

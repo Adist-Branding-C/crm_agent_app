@@ -17,11 +17,11 @@ class DealsToggle extends StatelessWidget {
         vertical: AppSpacing.md,
       ),
       child: Container(
-        height: 38,
-        padding: const EdgeInsets.all(3.0),
+        height: 55.h,
+        padding:  EdgeInsets.all(3.w),
         decoration: BoxDecoration(
           color: AppColors.borderLightAlpha50,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(4.r),
         ),
         child: Row(
           children: [
@@ -67,17 +67,17 @@ class DealsToggleItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 13.0),
+        padding:  EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 13.0.w),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.surfaceWhite : AppColors.transparent,
-          borderRadius: BorderRadius.circular(9),
+          borderRadius: BorderRadius.circular(4.r),
         ),
         child: Text(
           label,
           style: TextStyle(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
-            fontSize: context.scaleFont(14),
+            fontSize:12.s,
           ),
         ),
       ),

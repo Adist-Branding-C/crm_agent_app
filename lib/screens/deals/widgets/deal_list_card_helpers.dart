@@ -17,13 +17,12 @@ class DealCardHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          child: Text(
-            '${deal.title} — ${deal.clientName}',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.textDark,
-              fontWeight: FontWeight.bold,
-            ),
+        Text(
+          '${deal.title} — ${deal.clientName}',
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: AppColors.textDark,
+            fontWeight: FontWeight.bold,
+            fontSize: 13.s,
           ),
         ),
         Text(
@@ -31,6 +30,7 @@ class DealCardHeader extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.w800,
+            fontSize: 13.s,
           ),
         ),
       ],
@@ -53,17 +53,18 @@ class DealCardMeta extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.calendar_today_outlined,
-              size: 13,
+              size: 8.s,
               color: AppColors.textMuted,
             ),
             AppSpacing.gapWXs,
             Text(
               deal.closeDate,
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: AppColors.textMuted,
+                fontSize: 9.s,
+              ),
             ),
           ],
         ),

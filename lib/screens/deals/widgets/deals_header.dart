@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../../bloc/deals/deals_bloc.dart';
 import '../../../../utils/currency_formatter.dart';
 import '../../../../widgets/screen_header.dart';
@@ -23,6 +24,9 @@ class DealsHeader extends StatelessWidget {
 
     return ScreenHeader(
       title: 'Deals',
+      padding: EdgeInsets.fromLTRB( 17.0.w,
+      35.0.h,
+      17.0.w,10.h),
       subtitle: '$count active · $pipeline pipeline',
       showBackButton: true,
     );

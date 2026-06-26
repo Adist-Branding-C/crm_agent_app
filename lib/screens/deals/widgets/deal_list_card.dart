@@ -16,8 +16,8 @@ class DealListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      margin: EdgeInsets.only(bottom: AppSpacing.lg),
-      padding: AppSpacing.cardPadding,
+      margin: EdgeInsets.only(bottom: AppSpacing.md),
+      padding: EdgeInsets.symmetric(horizontal: 13.w,vertical: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,11 +29,11 @@ class DealListCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(3),
             child: LinearProgressIndicator(
               value: deal.stage.progress,
-              color: deal.stage.color,
+              color: AppColors.primaryLightColor,
               backgroundColor: AppColors.slate100,
-              minHeight: 6,
+              minHeight: 7.h,
             ),
-          ),
+          ),AppSpacing.gapSm,
         ],
       ),
     );

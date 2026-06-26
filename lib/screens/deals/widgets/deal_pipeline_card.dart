@@ -17,13 +17,14 @@ class DealPipelineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       margin: EdgeInsets.only(bottom: AppSpacing.md),
-      borderRadius: 16,
+      
+      borderRadius: 8.w,
       padding: EdgeInsets.zero,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(8.r),
         child: Container(
           decoration: BoxDecoration(
-            border: Border(left: BorderSide(color: deal.stage.color, width: 4)),
+            border: Border(left: BorderSide(color: deal.stage.color, width: 3.w)),
           ),
           padding: EdgeInsets.all(AppSpacing.lg),
           child: Row(
@@ -37,21 +38,22 @@ class DealPipelineCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.bold,
+                        fontSize: 12.s
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    AppSpacing.gapSm,
                     Text(
                       deal.amount.toRupeeFormat(),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.w800,
+                        fontSize: 11.s
                       ),
                     ),
                   ],
                 ),
               ),
-              AppSpacing.gapWSm,
-              UserAvatar(initials: deal.ownerInitials, size: 28),
+              
             ],
           ),
         ),
