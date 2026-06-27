@@ -56,4 +56,9 @@ class DashboardRepositoryImpl implements DashboardRepository {
 
   @override
   Stream<List<FollowUpCall>> get followUpsStream => _followUpsController.stream;
+
+  @override
+  void dispose() {
+    _followUpsController.close();
+  }
 }

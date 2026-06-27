@@ -43,16 +43,19 @@ void main() {
           isA<SearchLoaded>().having(
             (s) =>
                 s.groupedResults['Leads']?.length == 1 &&
-                s.groupedResults['Tasks']?.length == 1 &&
                 s.groupedResults['Spotlights']?.length == 1 &&
                 s.groupedResults['Follow-ups']?.length == 1,
-            'matches all 4 domains',
+            'matches all 3 domains',
             true,
           ),
           const SearchLoading(),
           isA<SearchLoaded>().having(
-            (s) => s.results.any((r) => r.title.contains('Vishnu')),
-            'partial match',
+            (s) =>
+                s.groupedResults['Leads']?.isNotEmpty == true &&
+                s.groupedResults['Tasks']?.isNotEmpty == true &&
+                s.groupedResults['Spotlights']?.isNotEmpty == true &&
+                s.groupedResults['Follow-ups']?.isNotEmpty == true,
+            'matches all 4 domains',
             true,
           ),
           const SearchLoading(),

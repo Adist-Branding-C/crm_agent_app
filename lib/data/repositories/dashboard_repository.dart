@@ -13,4 +13,7 @@ abstract class DashboardRepository {
 
   /// A stream of follow-up call list updates.
   Stream<List<FollowUpCall>> get followUpsStream;
+
+  /// Disposes of active stream controllers and timers.
+  void dispose();
 }

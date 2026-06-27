@@ -34,9 +34,11 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double scaledSize = size.w;
+    final double scaledFontSize = fontSize?.s ?? (scaledSize * 0.36);
     return Container(
-      width: size,
-      height: size,
+      width: scaledSize,
+      height: scaledSize,
       decoration: BoxDecoration(
         color: backgroundColor ?? AppColors.primaryColorLight,
         shape: BoxShape.circle,
@@ -47,7 +49,7 @@ class UserAvatar extends StatelessWidget {
         style: TextStyle(
           color: textColor ?? AppColors.primaryColor,
           fontWeight: FontWeight.bold,
-          fontSize: fontSize ?? (size * 0.36),
+          fontSize: scaledFontSize,
         ),
       ),
     );

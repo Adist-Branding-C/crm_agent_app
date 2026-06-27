@@ -12,17 +12,19 @@ GoRoute buildEditEnquiryRoute() {
     path: AppRoutes.editEnquiryPath,
     pageBuilder: (context, state) {
       final leadId = state.pathParameters['id'] ?? '';
-      final child = BlocProvider(
-        create: (c) {
-          final extraBloc = state.extra as EnquiryDetailsBloc?;
-          if (extraBloc != null) return extraBloc;
-          return EnquiryDetailsBloc(
-            leadsRepository: c.read(),
-            activityRepository: c.read(),
-          )..add(LoadEnquiryDetails(leadId));
-        },
-        child: EditEnquiryScreen(leadId: leadId),
-      );
+      final extraBloc = state.extra as EnquiryDetailsBloc?;
+      final child = extraBloc != null
+          ? BlocProvider.value(
+              value: extraBloc,
+              child: EditEnquiryScreen(leadId: leadId),
+            )
+          : BlocProvider(
+              create: (c) => EnquiryDetailsBloc(
+                leadsRepository: c.read(),
+                activityRepository: c.read(),
+              )..add(LoadEnquiryDetails(leadId)),
+              child: EditEnquiryScreen(leadId: leadId),
+            );
       return CustomTransitionPage<void>(
         key: state.pageKey,
         child: child,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../bloc/account/account_bloc.dart';
 import '../../data/auth_state_notifier.dart';
 import '../../widgets/page_scaffold.dart';
@@ -26,7 +27,11 @@ class _AccountScreenState extends State<AccountScreen> {
       padding: EdgeInsets.zero,
       child: Column(
         children: [
-          const ScreenHeader(title: 'Profile', showBackButton: true),
+          ScreenHeader(
+            title: 'Profile',
+            showBackButton: true,
+            padding: EdgeInsets.fromLTRB(12.0.w, 25.0.h, 12.0.w, 13.0.h),
+          ),
           Expanded(
             child: BlocListener<AccountBloc, AccountState>(
               listenWhen: (_, state) => state is AccountLoggedOut,

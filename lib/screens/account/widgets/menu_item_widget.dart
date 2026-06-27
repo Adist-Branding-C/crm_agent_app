@@ -35,9 +35,9 @@ class MenuItemWidget extends StatelessWidget {
                 padding: EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
                   color: AppColors.slate100,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                 ),
-                child: Icon(icon, size: 20, color: AppColors.textMuted),
+                child: Icon(icon, size: 20.s, color: AppColors.textMuted),
               ),
               AppSpacing.gapWLg,
               Expanded(
@@ -59,9 +59,9 @@ class MenuItemWidget extends StatelessWidget {
                 ),
                 AppSpacing.gapWSm,
               ],
-              const Icon(
+              Icon(
                 Icons.chevron_right_rounded,
-                size: 20,
+                size: 20.s,
                 color: AppColors.textMuted,
               ),
             ],

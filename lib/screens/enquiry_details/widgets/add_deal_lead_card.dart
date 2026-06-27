@@ -25,8 +25,8 @@ class AddDealLeadCard extends StatelessWidget {
                 .map((e) => e.isNotEmpty ? e[0] : '')
                 .take(2)
                 .join(),
-            size: 40.s,
-            fontSize: 15.s,
+            size: 40,
+            fontSize: 15,
           ),
           AppSpacing.gapWMd,
           Expanded(

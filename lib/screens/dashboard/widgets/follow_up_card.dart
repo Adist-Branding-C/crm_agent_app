@@ -7,6 +7,8 @@ import '../../../router/app_routes.dart';
 import '../../../theme.dart';
 import '../../../widgets/call_button.dart';
 
+import 'follow_up_card_badges.dart';
+
 class FollowUpCard extends StatelessWidget {
   final FollowUpCall call;
 
@@ -30,48 +32,10 @@ class FollowUpCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: AppSpacing.sm,
-                        vertical: AppSpacing.xs,
-                      ),
-                      decoration: BoxDecoration(
-                        color: tagBg,
-                        borderRadius: BorderRadius.circular(6.r),
-                      ),
-                      child: Text(
-                        call.tag.label,
-                        style: TextStyle(
-                          color: tagText,
-                          fontSize: 10.s,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    if (call.isOverdue) ...[
-                      SizedBox(width: 6.w),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: AppSpacing.sm,
-                          vertical: AppSpacing.xs,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.errorBackground,
-                          borderRadius: BorderRadius.circular(6.r),
-                        ),
-                        child: Text(
-                          'Overdue',
-                          style: TextStyle(
-                            color: AppColors.errorColor,
-                            fontSize: 10.s,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ],
+                FollowUpCardBadges(
+                  call: call,
+                  tagBg: tagBg,
+                  tagText: tagText,
                 ),
                 AppSpacing.gapSm,
                 GestureDetector(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crm_agent_app/bloc/deals/deals_bloc.dart';
@@ -33,11 +34,18 @@ void main() {
     );
 
     await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: BlocProvider<DealsBloc>.value(
-            value: bloc,
-            child: AddDealBottomSheet(lead: lead),
+      SfsInitBuilder(
+        mobileSize: const Size(360, 690),
+        tabletSize: const Size(481, 890),
+        desktopSize: const Size(1420, 820),
+        respectSystemTextScale: true,
+        orientationAware: true,
+        builder: (context, child) => MaterialApp(
+          home: Scaffold(
+            body: BlocProvider<DealsBloc>.value(
+              value: bloc,
+              child: AddDealBottomSheet(lead: lead),
+            ),
           ),
         ),
       ),

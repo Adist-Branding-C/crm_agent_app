@@ -44,6 +44,8 @@ Future<void> signInMockUser(WidgetTester tester) async {
     find.bySemanticsLabel('Password Input Field'),
     'secure123',
   );
-  await tester.tap(find.text('Sign In'));
+  final buttonFinder = find.text('Sign In');
+  await tester.ensureVisible(buttonFinder);
+  await tester.tap(buttonFinder);
   await tester.pumpAndSettle();
 }

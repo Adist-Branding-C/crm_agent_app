@@ -13,10 +13,10 @@ class MonthlyStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const divider = SizedBox(
-      height: 32,
-      width: 1,
-      child: ColoredBox(color: AppColors.borderLight),
+    final divider = SizedBox(
+      height: 32.h,
+      width: 1.w,
+      child: const ColoredBox(color: AppColors.borderLight),
     );
 
     return CustomCard(
@@ -37,6 +37,7 @@ class MonthlyStats extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w600,
                 color: AppColors.textMuted,
+                fontSize: 14.s
               ),
             ),
           ),

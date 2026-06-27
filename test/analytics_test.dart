@@ -48,7 +48,10 @@ void main() {
     expect(find.text('DATE RANGE'), findsOneWidget);
 
     // Apply "This Quarter" filter
-    await tester.tap(find.text('This Quarter'));
+    final thisQuarter = find.text('This Quarter');
+    await tester.ensureVisible(thisQuarter);
+    await tester.pumpAndSettle();
+    await tester.tap(thisQuarter);
     await tester.pumpAndSettle();
     await tester.tap(find.text('Apply Filters'));
     await tester.pumpAndSettle();

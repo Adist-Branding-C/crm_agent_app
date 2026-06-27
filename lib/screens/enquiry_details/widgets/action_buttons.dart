@@ -20,35 +20,38 @@ class ActionButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(
-          height: 55.h,
-          width: 140.w,
-          child: QuickActionButton(
-            onTap: () =>
-                context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
-            icon:  Icon(Icons.phone_in_talk, color: Colors.white, size: 18.s),
-            label: 'Call',
-            backgroundColor: AppColors.primaryColor,
-            foregroundColor: Colors.white,
-            
+        Expanded(
+          child: SizedBox(
+            height: 55.h,
+            child: QuickActionButton(
+              onTap: () =>
+                  context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
+              icon:  Icon(Icons.phone_in_talk, color: Colors.white, size: 18.s),
+              label: 'Call',
+              backgroundColor: AppColors.primaryColor,
+              foregroundColor: Colors.white,
+              
+            ),
           ),
         ),
      
-         SizedBox(
-          height: 60.h,
-          width: 140.w,
-          child: QuickActionButton(
-            onTap: () => WhatsAppBottomSheet.show(context, lead: lead),
-            icon:  FaIcon(
-              FontAwesomeIcons.whatsapp,
-              color: AppColors.success,
-              size: 18.s,
+         Expanded(
+           child: SizedBox(
+            height: 55.h,
+           
+            child: QuickActionButton(
+              onTap: () => WhatsAppBottomSheet.show(context, lead: lead),
+              icon:  FaIcon(
+                FontAwesomeIcons.whatsapp,
+                color: AppColors.success,
+                size: 18.s,
+              ),
+              label: 'WhatsApp',
+              backgroundColor: AppColors.successBackground,
+              foregroundColor: AppColors.success,
             ),
-            label: 'WhatsApp',
-            backgroundColor: AppColors.successBackground,
-            foregroundColor: AppColors.success,
-          ),
-        ),
+                   ),
+         ),
       ],
     );
   }

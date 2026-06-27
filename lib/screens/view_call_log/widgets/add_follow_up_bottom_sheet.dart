@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/follow_ups/add_follow_up_cubit.dart';
 import '../../../bloc/leads/leads_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/bottom_sheet_handle.dart';
@@ -33,7 +35,15 @@ class AddFollowUpBottomSheet extends StatelessWidget {
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
-          Flexible(child: AddFollowUpForm(lead: lead)),
+          Flexible(
+            child: BlocProvider(
+              create: (context) => AddFollowUpCubit(
+                dashboardRepository: context.read(),
+                followUpsRepository: context.read(),
+              ),
+              child: AddFollowUpForm(lead: lead),
+            ),
+          ),
         ],
       ),
     );

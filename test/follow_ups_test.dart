@@ -30,7 +30,7 @@ void main() {
     expect(find.text('Vishnu Prasad'), findsOneWidget);
 
     // Scroll down to make upcoming items visible
-    await tester.drag(find.byType(ListView), const Offset(0, -500));
+    await tester.drag(find.byType(ListView), const Offset(0, -1200));
     await tester.pumpAndSettle();
 
     expect(find.text('Upcoming'), findsOneWidget);

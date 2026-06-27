@@ -137,7 +137,7 @@ void main() {
 
     // Verify filter button background is primary color (brand red)
     container = tester.widget<Container>(containerFinder.first);
-    expect((container.decoration as BoxDecoration).color, const Color(0xFFE53935));
+    expect((container.decoration as BoxDecoration).color, const Color(0xFFE14F4D));
 
     // 6. Open Filter Sheet, click "Clear" to clear active filter
     await tester.tap(find.byIcon(Icons.tune_rounded));

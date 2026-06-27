@@ -49,7 +49,7 @@ class _ErrorView extends StatelessWidget {
             Icon(
               Icons.error_outline_rounded,
               color: AppColors.errorColor,
-              size: 48,
+              size: 48.s,
             ),
             AppSpacing.gapLg,
             Text(
@@ -59,7 +59,7 @@ class _ErrorView extends StatelessWidget {
             ),
             AppSpacing.gapXxl,
             SizedBox(
-              width: 140,
+              width: 140.w,
               child: CustomButton(
                 text: 'Retry',
                 onPressed: () =>

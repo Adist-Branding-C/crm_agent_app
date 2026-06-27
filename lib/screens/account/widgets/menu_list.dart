@@ -60,7 +60,7 @@ class MenuList extends StatelessWidget {
       children: _sections(profile)
           .map(
             (items) => Padding(
-              padding: EdgeInsets.only(bottom: AppSpacing.lg),
+              padding: EdgeInsets.only(bottom: AppSpacing.md),
               child: CustomCard(
                 padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
                 child: Column(

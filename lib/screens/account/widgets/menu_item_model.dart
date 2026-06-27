@@ -18,12 +18,12 @@ class MenuItemModel {
   Widget toListItem(BuildContext context) => Material(
     type: MaterialType.transparency,
     child: ListTile(
-      leading: Icon(icon, size: 22, color: AppColors.textMuted),
+      leading: Icon(icon, size: 20.s, color: AppColors.textMuted),
       title: Text(
         title,
         style: Theme.of(
           context,
-        ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark),
+        ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark,fontSize: 15.s),
       ),
       trailing: badge != null
           ? Container(
@@ -33,7 +33,7 @@ class MenuItemModel {
               ),
               decoration: BoxDecoration(
                 color: AppColors.primaryColorLight,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
               ),
               child: Text(
                 badge!,
@@ -42,9 +42,9 @@ class MenuItemModel {
                 ).textTheme.labelSmall?.copyWith(color: AppColors.primaryColor),
               ),
             )
-          : const Icon(
+          : Icon(
               Icons.chevron_right_rounded,
-              size: 20,
+              size: 18.s,
               color: AppColors.slate400,
             ),
       onTap: route != null ? () => context.pushNamed(route!) : null,

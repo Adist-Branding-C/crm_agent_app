@@ -77,7 +77,9 @@ class _MyAppState extends State<MyApp> {
                     textScaler:TextScaler.linear(_getSuitableTextScaleFactor(context)),
                     ),
                   child: SafeArea(
+                    top: false,maintainBottomViewPadding: true,
                     child: AppBuilderWidget(
+                      
                       scaleText: widget.scaleText,
                       child: child,
                     ),

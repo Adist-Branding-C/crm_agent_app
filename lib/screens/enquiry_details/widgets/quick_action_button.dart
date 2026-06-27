@@ -21,30 +21,28 @@ class QuickActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8.r),
-        child: Container(
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              icon,
-              AppSpacing.gapWSm,
-              Text(
-                label,
-                style: TextStyle(
-                  color: foregroundColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.s,
-                ),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8.r),
+      child: Container(
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon,
+            AppSpacing.gapWSm,
+            Text(
+              label,
+              style: TextStyle(
+                color: foregroundColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 16.s,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

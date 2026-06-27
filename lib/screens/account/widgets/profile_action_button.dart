@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
-import '../../../utils/context_text_extension.dart';
 
 /// A button representing a profile action (like Call or Email).
 class ProfileActionButton extends StatelessWidget {
@@ -27,19 +26,19 @@ class ProfileActionButton extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: textColor, size: 16),
+          Icon(icon, color: textColor, size: 15.s),
           AppSpacing.gapWSm,
           Text(
             label,
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
-              fontSize: context.scaleFont(14),
+              fontSize: 14.s,
             ),
           ),
         ],

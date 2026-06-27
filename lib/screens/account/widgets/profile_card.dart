@@ -18,13 +18,22 @@ class ProfileCard extends StatelessWidget {
       padding: AppSpacing.cardPadding,
       child: Column(
         children: [
-          UserAvatar(initials: profile.initials, size: 80, fontSize: 28),
+          UserAvatar(initials: profile.initials, size: 65.r, fontSize: 30.s),
           AppSpacing.gapLg,
-          Text(profile.name, style: Theme.of(context).textTheme.titleLarge),
+          Text(
+            profile.name,
+            style: TextStyle(
+              color: AppColors.textDark,
+              fontSize: 16.5.s,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           AppSpacing.gapSm,
           Text(
             '${profile.role} · ${profile.branch}',
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontSize: 13.5.s),
           ),
           AppSpacing.gapLg,
           Row(

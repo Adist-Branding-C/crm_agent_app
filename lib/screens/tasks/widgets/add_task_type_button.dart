@@ -23,7 +23,7 @@ class TaskTypeButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(8.r),
       child: Container(
         padding: EdgeInsets.symmetric(
-          vertical: AppSpacing.sm,
+          vertical: AppSpacing.xs2,
          
         ),
         decoration: BoxDecoration(

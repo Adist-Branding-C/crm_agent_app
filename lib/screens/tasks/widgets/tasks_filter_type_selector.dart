@@ -35,7 +35,7 @@ class TasksFilterTypeSelector extends StatelessWidget {
             final active = selectedTypes.contains(type);
             return Expanded(
               child: Container(
-                height: 45.h,
+                
                 padding: EdgeInsets.only(right: AppSpacing.md+2.w),
                 child: TaskTypeButton(
                   type: type,

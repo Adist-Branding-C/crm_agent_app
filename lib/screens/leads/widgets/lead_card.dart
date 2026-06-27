@@ -30,7 +30,7 @@ class LeadCard extends StatelessWidget {
         padding: AppSpacing.cardPaddingCompact,
         child: Row(
           children: [
-            UserAvatar(initials: lead.initials, size: 45.s,fontSize: 15.s,),
+            UserAvatar(initials: lead.initials, size: 45, fontSize: 15),
             AppSpacing.gapWMd,
             Expanded(child: LeadCardDetails(lead: lead)),
             CallButton(

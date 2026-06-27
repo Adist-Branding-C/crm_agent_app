@@ -28,22 +28,24 @@ class WhatsAppBottomSheetBody extends StatelessWidget {
         right: 20.w,
         bottom:  30.h,
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          WhatsAppSheetHeader(name: lead.name, phone: lead.phone),
-          AppSpacing.gapXxl,
-          WhatsAppTemplatesList(controller: controller),
-          AppSpacing.gapLg,
-          WhatsAppMessageInput(controller: controller),
-          AppSpacing.gapXl,
-          WhatsAppSendButton(
-            controller: controller,
-            phone: lead.phone,
-            whatsappService: whatsappService,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            WhatsAppSheetHeader(name: lead.name, phone: lead.phone),
+            AppSpacing.gapXxl,
+            WhatsAppTemplatesList(controller: controller),
+            AppSpacing.gapLg,
+            WhatsAppMessageInput(controller: controller),
+            AppSpacing.gapXl,
+            WhatsAppSendButton(
+              controller: controller,
+              phone: lead.phone,
+              whatsappService: whatsappService,
+            ),
+          ],
+        ),
       ),
     );
   }

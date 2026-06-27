@@ -32,28 +32,30 @@ class MetricCardVertical extends StatelessWidget {
           child: Icon(icon, color: iconColor, size: 15.s),
         ),
         AppSpacing.gapWMd,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              primaryText,
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontSize: 15.s),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            AppSpacing.gapSm,
-            Text(
-              secondaryText,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.w500,
-                fontSize: 12.5.s,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                primaryText,
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontSize: 15.s),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+              AppSpacing.gapSm,
+              Text(
+                secondaryText,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12.5.s,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ],
     );

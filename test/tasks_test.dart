@@ -33,14 +33,14 @@ void main() {
     await tester.pump(const Duration(milliseconds: 200));
 
     expect(find.byType(TasksScreen), findsOneWidget);
-    expect(find.text('6 pending · 2 overdue'), findsOneWidget);
-    expect(find.text('Prepare project proposal'), findsOneWidget);
+    expect(find.text('7 pending · 2 overdue'), findsOneWidget);
+    expect(find.text('Follow-up call — Rahul Menon'), findsOneWidget);
 
     // 2. Toggle Task Completion
     final firstCheckbox = find.byType(TaskCheckbox).first;
     await tester.tap(firstCheckbox);
     await tester.pumpAndSettle();
-    expect(find.text('5 pending · 2 overdue'), findsOneWidget);
+    expect(find.text('6 pending · 2 overdue'), findsOneWidget);
 
     // 3. Filter tabs
     await tester.tap(find.text('Completed'));

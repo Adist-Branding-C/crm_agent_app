@@ -48,14 +48,17 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
               size: 14,
             ),
             AppSpacing.gapWXs,
-            Text(
-              log.location ?? '—',
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+            Expanded(
+              child: Text(
+                log.location ?? '—',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            const Spacer(),
             if (log.isGpsVerified) ...[
+              AppSpacing.gapWMd,
               const Icon(
                 Icons.verified_user_outlined,
                 color: AppColors.success,

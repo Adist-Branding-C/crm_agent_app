@@ -5,6 +5,7 @@ import '../../../bloc/tasks/tasks_bloc.dart';
 import '../../../bloc/tasks/tasks_models.dart';
 import '../../../theme.dart';
 import 'no_results_view.dart';
+import 'search_category_header.dart';
 import 'search_result_tile.dart';
 
 /// Renders the list of search results categorized by Leads, Tasks, and Spotlights.
@@ -20,12 +21,22 @@ class SearchResultsList extends StatelessWidget {
           ? {for (final t in (b.state as TasksLoaded).allTasks) t.id: t}
           : const {},
     );
-    final grouped = state.groupedResults;
-    if (grouped.isEmpty) return const NoResultsView();
+    final grouped = Map<String, List<SearchResult>>.from(state.groupedResults);
+    if (grouped.containsKey('Tasks')) {
+      grouped['Tasks'] = grouped['Tasks']!
+          .where((item) {
+            final t = taskMap[item.id] ?? (item as TaskSearchResult).task;
+            return !t.isCompleted;
+          })
+          .toList();
+    }
+
+    final hasActiveResults = grouped.values.any((list) => list.isNotEmpty);
+    if (!hasActiveResults) return const NoResultsView();
 
     final categoriesOrder = ['Leads', 'Tasks', 'Spotlights', 'Follow-ups'];
     final widgets = <Widget>[];
-    final totalCount = state.results.length;
+    final totalCount = grouped.values.fold<int>(0, (sum, list) => sum + list.length);
 
     widgets.add(
       Padding(
@@ -47,23 +58,7 @@ class SearchResultsList extends StatelessWidget {
       final items = grouped[category];
       if (items == null || items.isEmpty) continue;
 
-      widgets.add(
-        Padding(
-          padding: EdgeInsets.only(
-            left: AppSpacing.xxl,
-            top: AppSpacing.lg,
-            bottom: AppSpacing.sm,
-          ),
-          child: Text(
-            category.toUpperCase(),
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: AppColors.textMuted,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.8.w,
-            ),
-          ),
-        ),
-      );
+      widgets.add(SearchCategoryHeader(title: category));
 
       widgets.addAll(
         items.map((item) => SearchResultTile(item: item, taskMap: taskMap)),

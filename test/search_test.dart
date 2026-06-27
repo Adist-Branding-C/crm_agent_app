@@ -46,7 +46,6 @@ void main() {
     await tester.pump(const Duration(milliseconds: 400));
     await tester.pumpAndSettle();
 
-    // Verify search results
     expect(find.text('3 results'), findsOneWidget);
     expect(find.text('LEADS'), findsOneWidget);
     expect(find.text('SPOTLIGHTS'), findsOneWidget);

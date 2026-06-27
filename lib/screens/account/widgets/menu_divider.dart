@@ -5,10 +5,10 @@ class MenuDivider extends StatelessWidget {
   const MenuDivider({super.key});
 
   @override
-  Widget build(BuildContext context) => const Divider(
-    height: 1,
-    indent: 16,
-    endIndent: 16,
+  Widget build(BuildContext context) => Divider(
+    height: 1.h,
+    indent: 16.w,
+    endIndent: 16.w,
     color: AppColors.borderLight,
   );
 }

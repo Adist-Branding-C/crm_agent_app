@@ -15,13 +15,13 @@ class HistoryLogItemDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
+        Wrap(
+          spacing: AppSpacing.xs,
+          runSpacing: AppSpacing.xs,
           children: [
             StatusBadge(text: log.status),
-            if (log.isActive) ...[
-              AppSpacing.gapWXs,
+            if (log.isActive)
               StatusBadge(text: 'ACTIVE', showDot: true),
-            ],
           ],
         ),
         SizedBox(height: AppSpacing.xs2),
@@ -33,9 +33,12 @@ class HistoryLogItemDetails extends StatelessWidget {
               size: 12,
             ),
             AppSpacing.gapWXs,
-            Text(
-              log.location ?? '—',
-              style: TextStyle(color: AppColors.textMuted, fontSize: 12),
+            Expanded(
+              child: Text(
+                log.location ?? '—',
+                style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

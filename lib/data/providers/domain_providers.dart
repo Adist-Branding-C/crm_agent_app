@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import '../repositories/analytics_repository.dart';
 import '../repositories/analytics_repository_impl.dart';
 import '../repositories/attendance_repository.dart';
@@ -21,7 +23,7 @@ import '../repositories/account_repository.dart';
 import '../repositories/account_repository_impl.dart';
 import '../repositories/leads_repository.dart';
 
-List<RepositoryProvider> buildDomainProviders() => [
+List<SingleChildWidget> buildDomainProviders() => [
   RepositoryProvider<DealsRepository>(create: (_) => DealsRepositoryImpl()),
   RepositoryProvider<AnalyticsRepository>(
     create: (context) => AnalyticsRepositoryImpl(
@@ -35,8 +37,9 @@ List<RepositoryProvider> buildDomainProviders() => [
   RepositoryProvider<CampaignsRepository>(
     create: (_) => CampaignsRepositoryImpl(),
   ),
-  RepositoryProvider<DashboardRepository>(
+  Provider<DashboardRepository>(
     create: (_) => DashboardRepositoryImpl(),
+    dispose: (_, repo) => repo.dispose(),
   ),
   RepositoryProvider<TasksRepository>(create: (_) => TasksRepositoryImpl()),
   RepositoryProvider<SpotlightRepository>(

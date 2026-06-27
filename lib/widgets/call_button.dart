@@ -24,7 +24,7 @@ class CallButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
             child:  Container(
               height: 50.h,
-              width: 55.w,
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
               alignment: Alignment.center,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
