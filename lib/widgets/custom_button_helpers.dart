@@ -36,7 +36,7 @@ class ButtonLabel extends StatelessWidget {
         Text(text, style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: 15.s
+          fontSize: 14.s
         )),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../app.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 
@@ -37,7 +38,7 @@ class LogoutButton extends StatelessWidget {
         ),
         AppSpacing.gapLg,
         Text(
-          'CRM Agent · v1.0.0',
+          'CRM Agent · v1.0.0 \n$textFactor',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.w500,

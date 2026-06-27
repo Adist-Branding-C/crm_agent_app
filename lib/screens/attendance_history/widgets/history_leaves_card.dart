@@ -1,3 +1,4 @@
+import 'package:crm_agent_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../../data/models/attendance_history_model.dart';
 import '../../../theme.dart';
@@ -20,17 +21,18 @@ class HistoryLeavesCard extends StatelessWidget {
       ),
       padding: EdgeInsets.all(AppSpacing.md),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             padding: EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
               color: AppColors.infoBackground,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.calendar_today_rounded,
               color: AppColors.info,
-              size: 20,
+              size: 18.s,
             ),
           ),
           AppSpacing.gapWMd,
@@ -43,35 +45,38 @@ class HistoryLeavesCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.textDark,
                     fontWeight: FontWeight.bold,
+                    fontSize: 13.s,
                   ),
                 ),
                 Text(
                   'Avg check-in ${history.avgCheckInTime} · checkout ${history.avgCheckOutTime}',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppColors.textMuted,
+                    fontSize: 10.s,
+                  ),
                 ),
               ],
             ),
           ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              backgroundColor: AppColors.primaryColorLight,
-              foregroundColor: AppColors.primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6.w),
+                color: AppColors.primaryColorLight.withAlpha(200),
               ),
-              padding: EdgeInsets.symmetric(
-                horizontal: AppSpacing.lg,
-                vertical: AppSpacing.sm,
+              height: 60.h,
+
+              child: Center(
+                child: Text(
+                  "Apply",
+                  style: TextStyle(
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
-            ),
-            child: Text(
-              'Apply',
-              style: Theme.of(
-                context,
-              ).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
         ],

@@ -23,7 +23,7 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-
+double textFactor=0;
 class _MyAppState extends State<MyApp> {
   late final GoRouter _router;
   final _authStateNotifier = AuthStateNotifier();
@@ -35,9 +35,10 @@ class _MyAppState extends State<MyApp> {
   }
   double _getSuitableTextScaleFactor(BuildContext context) {
   double width = MediaQuery.of(context).size.width;
-  double baseWidth = 450.0; 
+  double baseWidth = 360.0; 
   double scaleFactor = width / baseWidth;
-  return scaleFactor.clamp(0.2, 1.0);
+  textFactor=scaleFactor.clamp(0.2, 1.5);
+  return textFactor;
 }
 
   @override

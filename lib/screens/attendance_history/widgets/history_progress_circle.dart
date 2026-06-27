@@ -9,21 +9,27 @@ class HistoryProgressCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 70,
-      height: 70,
+      width: 70.w,
+      height: 70.w,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          CircularProgressIndicator(
-            value: attendanceRate / 100,
-            strokeWidth: 6,
-            color: AppColors.success,
-            backgroundColor: AppColors.slate600,
+          SizedBox(
+            width: 65.w,
+            height: 65.w,
+            child: CircularProgressIndicator(
+              value: attendanceRate / 100,
+              strokeWidth: 8.w,
+              color: AppColors.success,
+
+              backgroundColor: AppColors.slate600,
+            ),
           ),
           Text(
             '${attendanceRate.toInt()}%',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Colors.white,
+              fontSize: 16.s,
               fontWeight: FontWeight.bold,
             ),
           ),

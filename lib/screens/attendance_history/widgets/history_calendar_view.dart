@@ -39,6 +39,7 @@ class HistoryCalendarView extends StatelessWidget {
             selectedDay: selectedDay,
             onDaySelected: onDaySelected,
           ),
+           Divider(height: 0.7.h,color: Colors.grey.shade300,),
           const HistoryCalendarLegend(),
         ],
       ),

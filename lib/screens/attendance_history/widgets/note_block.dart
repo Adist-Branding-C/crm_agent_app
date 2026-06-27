@@ -18,15 +18,15 @@ class NoteBlock extends StatelessWidget {
     final color = isApproved ? AppColors.success : AppColors.warningText;
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: color, size: 12),
-        AppSpacing.gapWXs,
+       
         Expanded(
           child: Text(
             text,
             style: TextStyle(
               color: color,
-              fontSize: context.scaleFont(10),
+              fontSize: 10.s,
               fontWeight: FontWeight.w500,
             ),
           ),

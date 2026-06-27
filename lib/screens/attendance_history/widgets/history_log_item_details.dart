@@ -27,16 +27,16 @@ class HistoryLogItemDetails extends StatelessWidget {
         SizedBox(height: AppSpacing.xs2),
         Row(
           children: [
-            const Icon(
+             Icon(
               Icons.location_on_outlined,
               color: AppColors.textMuted,
-              size: 12,
+              size: 11.s,
             ),
             AppSpacing.gapWXs,
             Expanded(
               child: Text(
                 log.location ?? '—',
-                style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
+                style:  TextStyle(color: AppColors.textMuted, fontSize: 10.s),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

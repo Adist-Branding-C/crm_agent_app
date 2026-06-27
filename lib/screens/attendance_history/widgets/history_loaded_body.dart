@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../data/models/attendance_history_model.dart';
 import 'history_calendar_day_detail.dart';
 import 'history_calendar_view.dart';
@@ -34,7 +35,7 @@ class HistoryLoadedBody extends StatelessWidget {
           HistorySummaryCard(history: history),
           HistoryStatsRow(history: history),
           HistoryLeavesCard(history: history),
-          const SizedBox(height: 8),
+           SizedBox(height: 8.h),
           HistoryToggleBar(selected: selectedTab, onChanged: onTabChanged),
           if (selectedTab == 'Calendar') ...[
             HistoryCalendarView(
@@ -42,10 +43,11 @@ class HistoryLoadedBody extends StatelessWidget {
               selectedDay: selectedDay,
               onDaySelected: onDayChanged,
             ),
+           
             HistoryCalendarDayDetail(log: selectedLog),
           ] else
             HistoryLogView(history: history),
-          const SizedBox(height: 24),
+           SizedBox(height: 24.h),
         ],
       ),
     );

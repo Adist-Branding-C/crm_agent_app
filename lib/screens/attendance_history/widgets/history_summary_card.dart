@@ -29,9 +29,9 @@ class HistorySummaryCard extends StatelessWidget {
               Expanded(child: HistoryStatsText(history: history)),
             ],
           ),
-          AppSpacing.gapLg,
+         AppSpacing.gapXxl,
           const Divider(color: AppColors.slate600, height: 1),
-          AppSpacing.gapMd,
+          AppSpacing.gapXxl,
           HistorySummaryCheckoutRow(
             checkedInSince: history.checkedInSince,
             checkInLocation: history.checkInLocation,

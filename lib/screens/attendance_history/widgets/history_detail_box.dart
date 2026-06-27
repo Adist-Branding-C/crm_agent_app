@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_spacing.dart';
 
@@ -24,24 +25,25 @@ class HistoryDetailBox extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: AppColors.slate50,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(
           children: [
-            Icon(icon, color: color, size: 18),
+            Icon(icon, color: color, size: 18.s),
             AppSpacing.gapXs,
             Text(
               val,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppColors.textDark,
+                fontSize: 12.s
               ),
             ),
             Text(
               label,
               style: Theme.of(
                 context,
-              ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
+              ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted,fontSize: 10.s),
             ),
           ],
         ),

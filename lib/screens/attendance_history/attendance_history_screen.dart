@@ -1,5 +1,7 @@
+import 'package:crm_agent_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../bloc/attendance_history/attendance_history_bloc.dart';
 import '../../data/repositories/attendance_repository.dart';
 import '../../widgets/card_icon_button.dart';
@@ -29,10 +31,12 @@ class AttendanceHistoryScreen extends StatelessWidget {
               actions: CardIconButton(
                 icon: Icons.calendar_today_outlined,
                 onTap: () {},
-                size: 40,
-                iconSize: 20,
+                size: 30.s,
+                iconSize: 16.s,
               ),
+              padding: EdgeInsets.fromLTRB(17.0.w, 30.0.h, 17.0.w, 13.0.h),
             ),
+            AppSpacing.gapMd,
             const Expanded(child: HistoryContent()),
           ],
         ),

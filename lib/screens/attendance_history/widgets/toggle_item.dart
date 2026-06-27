@@ -20,13 +20,11 @@ class ToggleItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(value),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 13.0),
+        padding:  EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 13.0.w),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(9),
-          border: isSelected
-              ? Border.all(color: AppColors.warningDark, width: 1.5)
-              : null,
+          borderRadius: BorderRadius.circular(9.w),
+          
         ),
         alignment: Alignment.center,
         child: Text(
@@ -34,7 +32,7 @@ class ToggleItem extends StatelessWidget {
           style: TextStyle(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            fontSize: context.scaleFont(13),
+            fontSize: 13.s,
           ),
         ),
       ),

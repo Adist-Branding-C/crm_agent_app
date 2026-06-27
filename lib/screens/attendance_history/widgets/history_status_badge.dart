@@ -44,7 +44,7 @@ class HistoryStatusBadge extends StatelessWidget {
         status,
         style: TextStyle(
           color: fg,
-          fontSize: context.scaleFont(11),
+          fontSize: 10.s,
           fontWeight: FontWeight.bold,
         ),
       ),

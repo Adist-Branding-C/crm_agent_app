@@ -33,6 +33,7 @@ class HistoryStatCard extends StatelessWidget {
             label,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
+              fontSize: 9.s,
               fontWeight: FontWeight.w500,
             ),
           ),

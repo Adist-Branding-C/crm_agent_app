@@ -16,26 +16,23 @@ class CheckedOutInfo extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
-            fontSize: 15.s,
+            fontSize: 14.s,
           ),
         ),
         AppSpacing.gapXs,
         Row(
           children: [
-            Icon(
-              Icons.location_on_outlined,
-              color: AppColors.textMuted,
-              size: 13.s,
-            ),
+            
             AppSpacing.gapWXs,
             Expanded(
               child: Text(
                 'Punch in to log attendance',
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 12.s,
+                  fontSize: 11.s,
+
                 ),
-                maxLines: 1,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
             ),

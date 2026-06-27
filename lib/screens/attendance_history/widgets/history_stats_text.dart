@@ -15,29 +15,38 @@ class HistoryStatsText extends StatelessWidget {
       children: [
         Text(
           'Attendance this month',
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall?.copyWith(color: AppColors.slate400),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: AppColors.slate400,
+            fontSize: 10.s,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         Text(
           '${history.presentDays} of ${history.totalWorkingDays} working days',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Colors.white,
+            fontSize: 15.s,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             HistoryStatColumn(
               value: history.avgHoursPerDay,
               label: 'Avg / day',
             ),
+            AppSpacing.gapWLg,
+           Container(width: 1.h,height: 60.h,color: Colors.grey,),
+           AppSpacing.gapWLg,
             HistoryStatColumn(
               value: '${history.onTimeRate.toInt()}%',
               label: 'On time',
             ),
+            AppSpacing.gapWLg,
+            Container(width: 1.h,height: 60.h,color: Colors.grey,),
+            AppSpacing.gapWLg,
             HistoryStatColumn(value: history.totalLoggedHours, label: 'Logged'),
           ],
         ),

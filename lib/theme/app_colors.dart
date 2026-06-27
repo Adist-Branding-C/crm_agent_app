@@ -41,6 +41,7 @@ class AppColors {
 
   static const Color slate100 = Color(0xFFF1F5F9);
   static const Color slate300 = Color(0xFFCBD5E1);
+  static const Color slate200 = Color.fromARGB(255, 227, 231, 235);
   static const Color slate400 = Color(0xFF94A3B8);
   static const Color slate50 = Color(0xFFF3F4F6);
   static const Color slate500 = Color(0xFF4B5563);

@@ -42,10 +42,10 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
         AppSpacing.gapMd,
         Row(
           children: [
-            const Icon(
+             Icon(
               Icons.location_on_outlined,
               color: AppColors.textMuted,
-              size: 14,
+              size: 12.s,
             ),
             AppSpacing.gapWXs,
             Expanded(
@@ -53,16 +53,16 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
                 log.location ?? '—',
                 style: Theme.of(
                   context,
-                ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted,fontSize: 10.s),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             if (log.isGpsVerified) ...[
               AppSpacing.gapWMd,
-              const Icon(
+               Icon(
                 Icons.verified_user_outlined,
                 color: AppColors.success,
-                size: 14,
+                size: 12.s,
               ),
               AppSpacing.gapWXs,
               Text(
@@ -70,6 +70,7 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.success,
                   fontWeight: FontWeight.w500,
+                  fontSize: 10.s
                 ),
               ),
             ],

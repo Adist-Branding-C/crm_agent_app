@@ -42,12 +42,12 @@ class _LegendItem extends StatelessWidget {
           height: AppSpacing.sm,
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
-        AppSpacing.gapWXs,
+        AppSpacing.gapWMd,
         Text(
           label,
           style: Theme.of(
             context,
-          ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
+          ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted,fontSize: 10.s),
         ),
       ],
     );

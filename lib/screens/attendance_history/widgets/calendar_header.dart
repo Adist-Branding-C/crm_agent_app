@@ -14,13 +14,14 @@ class CalendarHeader extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
+            fontSize: 14.s
           ),
         ),
         Text(
           'Through 12 May',
           style: Theme.of(
             context,
-          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted,fontSize: 13),
         ),
       ],
     );

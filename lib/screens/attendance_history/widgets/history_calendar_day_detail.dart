@@ -37,6 +37,7 @@ class HistoryCalendarDayDetail extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: AppColors.textDark,
+                  fontSize: 12.s
                 ),
               ),
               HistoryStatusBadge(status: log.status),

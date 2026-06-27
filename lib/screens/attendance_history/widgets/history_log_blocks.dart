@@ -13,11 +13,11 @@ class HistoryLogDateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     final statusTheme = AttendanceStatusTheme.resolve(log.status);
     return Container(
-      width: 48,
-      height: 48,
+      width: 48.w,
+      height: 48.w,
       decoration: BoxDecoration(
         color: statusTheme.bg,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +26,7 @@ class HistoryLogDateBlock extends StatelessWidget {
             '${log.day}',
             style: TextStyle(
               color: statusTheme.fg,
-              fontSize: context.scaleFont(16),
+              fontSize: 15.s,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -34,7 +34,7 @@ class HistoryLogDateBlock extends StatelessWidget {
             log.dayName,
             style: TextStyle(
               color: statusTheme.fg,
-              fontSize: context.scaleFont(9),
+              fontSize: 9.s,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -66,6 +66,8 @@ class HistoryLogTimeBlock extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
+            fontSize: 9.s
+            
           ),
         ),
         if (durationStr.isNotEmpty) ...[
@@ -73,7 +75,7 @@ class HistoryLogTimeBlock extends StatelessWidget {
           Text(
             durationStr,
             style: TextStyle(
-              fontSize: context.scaleFont(10),
+              fontSize: 9.s,
               color: isOngoing ? AppColors.success : AppColors.textMuted,
               fontWeight: isOngoing ? FontWeight.bold : FontWeight.normal,
             ),

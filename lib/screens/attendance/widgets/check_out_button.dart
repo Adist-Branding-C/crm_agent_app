@@ -27,7 +27,7 @@ class CheckOutButton extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 13.s
+            fontSize: 9.s
           ),
         ),
       ),

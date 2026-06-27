@@ -26,8 +26,8 @@ class StatusBadge extends StatelessWidget {
         children: [
           if (showDot) ...[
             Container(
-              width: 6,
-              height: 6,
+              width: 6.w,
+              height: 6.w,
               decoration: const BoxDecoration(
                 color: AppColors.success,
                 shape: BoxShape.circle,
@@ -39,7 +39,7 @@ class StatusBadge extends StatelessWidget {
             text,
             style: TextStyle(
               color: statusTheme.fg,
-              fontSize: context.scaleFont(9),
+              fontSize: 8.s,
               fontWeight: FontWeight.bold,
             ),
           ),

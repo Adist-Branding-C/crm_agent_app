@@ -50,9 +50,9 @@ class HistoryCalendarDayCell extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: bg,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(6.w),
           border: isSelected
-              ? Border.all(color: AppColors.primaryColor, width: 1.5)
+              ? Border.all(color: AppColors.primaryColor, width: 1.5.w)
               : null,
         ),
         child: Column(
@@ -63,7 +63,7 @@ class HistoryCalendarDayCell extends StatelessWidget {
               style: TextStyle(
                 color: fg,
                 fontWeight: FontWeight.bold,
-                fontSize: context.scaleFont(12),
+                fontSize:12.s,
               ),
             ),
             if (dotColor != Colors.transparent)

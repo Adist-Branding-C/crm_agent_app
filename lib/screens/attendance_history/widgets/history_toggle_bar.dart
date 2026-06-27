@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_spacing.dart';
 import 'toggle_item.dart';
@@ -21,10 +22,10 @@ class HistoryToggleBar extends StatelessWidget {
         horizontal: AppSpacing.xxl,
         vertical: AppSpacing.sm,
       ),
-      padding: const EdgeInsets.all(3.0),
+      padding:  EdgeInsets.all(4.0.w),
       decoration: BoxDecoration(
-        color: AppColors.slate100,
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.slate200,
+        borderRadius: BorderRadius.circular(8.w),
       ),
       child: Row(
         children: [

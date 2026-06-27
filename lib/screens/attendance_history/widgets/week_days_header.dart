@@ -16,7 +16,8 @@ class WeekDaysHeader extends StatelessWidget {
                   d,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: AppColors.textMuted,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 10.s
                   ),
                 ),
               ),

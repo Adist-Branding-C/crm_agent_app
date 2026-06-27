@@ -1,3 +1,4 @@
+import 'package:crm_agent_app/screens/attendance/widgets/check_out_button.dart';
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
 
@@ -44,31 +45,12 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
                 '$checkInLocation · GPS verified',
                 style: Theme.of(
                   context,
-                ).textTheme.labelSmall?.copyWith(color: AppColors.slate400),
+                ).textTheme.labelSmall?.copyWith(color: AppColors.slate400,fontSize: 10.s),
               ),
             ],
           ),
         ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.slate600,
-            foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSpacing.lg,
-              vertical: AppSpacing.sm,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-          child: Text(
-            'Check out',
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
-          ),
-        ),
+        CheckOutButton()
       ],
     );
   }

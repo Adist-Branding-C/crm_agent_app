@@ -19,7 +19,8 @@ class HistoryLogItem extends StatelessWidget {
         horizontal: AppSpacing.xxl,
         vertical: AppSpacing.xs2,
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.r)),
+      shadowColor: Colors.white,
       child: Padding(
         padding: EdgeInsets.all(AppSpacing.md),
         child: Row(
