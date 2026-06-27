@@ -23,14 +23,15 @@ class AddTaskPrioritySelector extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
                 fontWeight: FontWeight.bold,
+                fontSize: 12.s
               ),
             ),
             AppSpacing.gapSm,
             Container(
-              padding: EdgeInsets.all(AppSpacing.xs),
+              padding: EdgeInsets.all(AppSpacing.xs2),
               decoration: BoxDecoration(
                 color: AppColors.slate100,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(8.r),
               ),
               child: Row(
                 children: TaskPriority.values.map((priority) {
@@ -58,7 +59,7 @@ class AddTaskPrioritySelector extends StatelessWidget {
                             fontWeight: isSelected
                                 ? FontWeight.bold
                                 : FontWeight.normal,
-                            fontSize: context.scaleFont(13),
+                            fontSize: 13.s,
                           ),
                         ),
                       ),

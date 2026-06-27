@@ -20,7 +20,7 @@ class SelectionChip extends StatelessWidget {
     final textStyle = TextStyle(
       color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
       fontWeight: FontWeight.w600,
-      fontSize: Theme.of(context).textTheme.labelLarge?.fontSize,
+      fontSize: 11.s,
     );
 
     return Semantics(
@@ -30,14 +30,14 @@ class SelectionChip extends StatelessWidget {
       child: GestureDetector(
         onTap: () => onSelected(option),
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 13.0,
-            vertical: 7.0,
+          padding:  EdgeInsets.symmetric(
+            horizontal: 13.0.w,
+            vertical: 7.0.h,
           ),
           decoration: BoxDecoration(
             color: isSelected ? AppColors.primaryColorLight : Colors.white,
-            borderRadius: BorderRadius.circular(999),
-            border: Border.all(color: color, width: isSelected ? 1.5 : 1),
+            borderRadius: BorderRadius.circular(6.r),
+            border: Border.all(color: color, width: isSelected ? 1.5.w : 1.w),
           ),
           child: Text(option, style: textStyle),
         ),

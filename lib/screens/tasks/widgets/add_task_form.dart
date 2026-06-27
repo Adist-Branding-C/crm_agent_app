@@ -31,9 +31,12 @@ class AddTaskForm extends StatelessWidget {
       },
       builder: (context, state) {
         return SingleChildScrollView(
-          padding: EdgeInsets.all(AppSpacing.xxl),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.xxl,
+            vertical: AppSpacing.sm,
+          ),
           child: ResponsiveWidthContainer(
-            maxWidth: 480,
+            maxWidth: 480.w,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -41,6 +44,7 @@ class AddTaskForm extends StatelessWidget {
                   label: 'Task title',
                   hintText: 'What needs doing?',
                   isRequired: true,
+                  height: 70.h,
                   onChanged: (val) =>
                       context.read<AddTaskBloc>().add(TaskTitleChanged(val)),
                   errorText: state.title.displayError != null

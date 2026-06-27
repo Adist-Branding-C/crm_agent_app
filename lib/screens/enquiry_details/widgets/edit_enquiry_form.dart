@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/enquiry_details/enquiry_details_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
@@ -78,7 +79,7 @@ class _EditEnquiryFormState extends State<EditEnquiryForm> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidthContainer(
-      maxWidth: 540,
+      maxWidth: 540.w,
       child: Column(
         children: [
           Expanded(

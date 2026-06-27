@@ -36,7 +36,7 @@ class EditEnquiryDetailsFields extends StatelessWidget {
       padding: EdgeInsets.all(AppSpacing.lg),
       margin: EdgeInsets.symmetric(
         horizontal: AppSpacing.lg,
-        vertical: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,12 +73,14 @@ class EditEnquiryDetailsFields extends StatelessWidget {
             label: 'Next Follow-up',
             hintText: 'e.g. Today, 4:00 PM',
             controller: followUpController,
+            height: 70.h,
           ),
           AppSpacing.gapLg,
           CustomTextField(
             label: 'Remarks',
             hintText: 'Add remarks...',
             controller: remarksController,
+            height: 70.h,
             maxLines: 3,
           ),
         ],

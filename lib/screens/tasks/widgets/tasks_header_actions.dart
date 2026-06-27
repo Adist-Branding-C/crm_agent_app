@@ -24,7 +24,7 @@ class TasksHeaderActions extends StatelessWidget {
     if (res != null) bloc.add(ApplyFilterCriteria(res));
   }
 
-  Future<void> _openAddTask(BuildContext context) async {
+  Future<void> openAddTask(BuildContext context) async {
     final bloc = context.read<TasksBloc>();
     final isAdded = await showModalBottomSheet<bool>(
       context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
@@ -57,7 +57,7 @@ class TasksHeaderActions extends StatelessWidget {
           iconColor: AppColors.primaryColor,
           backgroundColor: Colors.white,
           size: 38, borderRadius: 10, iconSize: 20,
-          onTap: () => _openAddTask(context),
+          onTap: () => openAddTask(context),
         ),
       ],
     );

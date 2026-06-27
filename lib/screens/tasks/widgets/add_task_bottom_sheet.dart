@@ -25,9 +25,10 @@ class AddTaskBottomSheet extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
             child: Text(
               'New Task',
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.s,
+              ),
             ),
           ),
           const Flexible(child: AddTaskForm()),

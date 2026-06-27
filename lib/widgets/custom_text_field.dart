@@ -48,7 +48,7 @@ class CustomTextField extends StatelessWidget {
           label: semanticsLabel ?? '$label Input Field',
           textField: true,
           child: SizedBox(
-            height: height??80.h,
+            height: height??70.h,
             width: width,
             child: TextFormField(
               controller: controller,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
-import '../../../utils/context_text_extension.dart';
+
 
 /// A reusable action button for details screens.
 class QuickActionButton extends StatelessWidget {

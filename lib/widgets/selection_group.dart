@@ -41,6 +41,7 @@ class SelectionGroup extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
                 fontWeight: FontWeight.bold,
+                fontSize: 12.s
               ),
             ),
             if (isRequired)
@@ -67,6 +68,7 @@ class SelectionGroup extends StatelessWidget {
               )
               .toList(),
         ),
+        AppSpacing.gapMd,
       ],
     );
   }

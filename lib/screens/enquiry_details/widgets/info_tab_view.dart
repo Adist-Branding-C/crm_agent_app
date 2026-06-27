@@ -53,7 +53,7 @@ class InfoTabView extends StatelessWidget {
           valueColor: AppColors.primaryColor,
         ),
         InfoItemTile(label: 'Remarks', value: lead.note ?? remarkFallback),
-        AppSpacing.gapLg,
+        AppSpacing.gapXxl,
         OutlinedButton.icon(
           onPressed: () => showStatusSelector(context),
           icon:  Icon(Icons.sync, size: 17.s),

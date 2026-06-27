@@ -16,24 +16,24 @@ class EditEnquiryButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(AppSpacing.lg),
+      padding: EdgeInsets.symmetric(horizontal:AppSpacing.lg,vertical: AppSpacing.md),
       child: Row(
         children: [
           Expanded(
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
                 side: const BorderSide(color: AppColors.borderLight),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
               ),
               onPressed: onCancel,
-              child: const Text(
+              child:  Text(
                 'Cancel',
                 style: TextStyle(
                   color: AppColors.textDark,
                   fontWeight: FontWeight.bold,
+                  fontSize: 14.s
                 ),
               ),
             ),
