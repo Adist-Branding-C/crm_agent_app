@@ -28,9 +28,10 @@ class TargetProgressIndicator extends StatelessWidget {
           children: [
             Text(
               'Achieved ${achieved.toDouble().toRupeeFormat()} of ${target.toDouble().toRupeeFormat()}',
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: AppColors.textMuted,
+                fontSize: 12.s,
+              ),
             ),
             Text(
               '$percentage%',
@@ -43,14 +44,14 @@ class TargetProgressIndicator extends StatelessWidget {
         ),
         AppSpacing.gapSm,
         ClipRRect(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(4.r),
           child: LinearProgressIndicator(
             value: progressValue,
             backgroundColor: AppColors.slate100,
             valueColor: const AlwaysStoppedAnimation<Color>(
               AppColors.primaryColor,
             ),
-            minHeight: 7,
+            minHeight: 9.h,
           ),
         ),
       ],

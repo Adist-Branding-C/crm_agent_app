@@ -25,7 +25,7 @@ class PersonalDetailsSection extends StatelessWidget {
           'Personal details',
           style: Theme.of(
             context,
-          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold,fontSize: 15.s),
         ),
         AppSpacing.gapMd,
         CustomCard(
@@ -35,6 +35,7 @@ class PersonalDetailsSection extends StatelessWidget {
               CustomTextField(
                 label: 'Full Name',
                 isRequired: true,
+                height: 60.h,
                 hintText: 'Enter full name',
                 controller: nameController,
                 validator: (val) =>
@@ -43,6 +44,7 @@ class PersonalDetailsSection extends StatelessWidget {
               AppSpacing.gapLg,
               CustomTextField(
                 label: 'Phone',
+                height: 60.h,
                 isRequired: true,
                 hintText: 'Enter phone number',
                 controller: phoneController,
@@ -52,6 +54,7 @@ class PersonalDetailsSection extends StatelessWidget {
               AppSpacing.gapLg,
               CustomTextField(
                 label: 'Email',
+                height: 60.h,
                 hintText: 'Enter email address',
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,

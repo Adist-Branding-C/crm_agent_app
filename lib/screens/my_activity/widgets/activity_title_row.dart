@@ -20,8 +20,8 @@ class ActivityTitleRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 14,
+          style:  TextStyle(
+            fontSize: 14.s,
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),

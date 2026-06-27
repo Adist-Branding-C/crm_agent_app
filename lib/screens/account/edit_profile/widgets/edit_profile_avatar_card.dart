@@ -21,7 +21,7 @@ class EditProfileAvatarCard extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            UserAvatar(initials: initials, size: 90, fontSize: 32),
+            UserAvatar(initials: initials, size: 40.r, fontSize: 18.s),
             AppSpacing.gapMd,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

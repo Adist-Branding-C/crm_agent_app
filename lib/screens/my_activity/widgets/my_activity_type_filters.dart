@@ -54,12 +54,12 @@ class _TypeChip extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: AppSpacing.lg,
-          vertical: AppSpacing.sm,
+          horizontal: AppSpacing.xl,
+          vertical: AppSpacing.xs2,
         ),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.textDark : Colors.white,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16.w),
           border: Border.all(
             color: isSelected ? AppColors.textDark : AppColors.borderLight,
           ),

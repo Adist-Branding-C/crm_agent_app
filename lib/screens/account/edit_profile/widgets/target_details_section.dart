@@ -24,7 +24,7 @@ class TargetDetailsSection extends StatelessWidget {
           'Monthly target',
           style: Theme.of(
             context,
-          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold,fontSize: 15.s),
         ),
         AppSpacing.gapMd,
         CustomCard(
@@ -34,7 +34,7 @@ class TargetDetailsSection extends StatelessWidget {
               CustomTextField(
                 label: 'Target (₹)',
                 hintText: 'Enter monthly target',
-                controller: targetController,
+                controller: targetController,height: 60.h,
                 keyboardType: TextInputType.number,
                 validator: (val) {
                   if (val == null || val.trim().isEmpty) {

@@ -42,7 +42,7 @@ class MyActivityItemWidget extends StatelessWidget {
               item.description,
               style: Theme.of(
                 context,
-              ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500),
+              ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400,fontSize: 13.5.s),
             ),
             AppSpacing.gapXs,
             ActivityMetadataRow(assignee: item.assignee, time: item.time),

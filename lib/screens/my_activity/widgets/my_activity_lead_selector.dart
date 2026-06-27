@@ -17,9 +17,9 @@ class MyActivityLeadSelector extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
       child: Material(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(6.w),
         child: InkWell(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(6.w),
           onTap: onTap,
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -27,31 +27,31 @@ class MyActivityLeadSelector extends StatelessWidget {
               vertical: AppSpacing.md,
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(8.w),
               border: Border.all(color: AppColors.borderLight),
             ),
             child: Row(
               children: [
-                const Icon(
+                 Icon(
                   Icons.person_outline_rounded,
-                  size: 20,
+                  size: 20.s,
                   color: AppColors.textMuted,
                 ),
                 AppSpacing.gapWMd,
                 Expanded(
                   child: Text(
                     selectedLead,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style:  TextStyle(
+                      fontSize: 15.s,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textDark,
                     ),
                   ),
                 ),
-                const Icon(
+                 Icon(
                   Icons.keyboard_arrow_down_rounded,
                   color: AppColors.textMuted,
-                  size: 20,
+                  size: 20.s,
                 ),
               ],
             ),

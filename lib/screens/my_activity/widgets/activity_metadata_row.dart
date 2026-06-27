@@ -16,18 +16,18 @@ class ActivityMetadataRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(
+         Icon(
           Icons.person_outline_rounded,
-          size: 14,
+          size: 14.s,
           color: AppColors.textMuted,
         ),
         AppSpacing.gapWXs,
         Text(
           assignee,
-          style: const TextStyle(
-            fontSize: 12,
+          style:  TextStyle(
+            fontSize: 14.s,
             color: AppColors.textMuted,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
         ),
         AppSpacing.gapWSm,
@@ -36,18 +36,18 @@ class ActivityMetadataRow extends StatelessWidget {
           style: TextStyle(color: AppColors.textMuted, fontSize: 12),
         ),
         AppSpacing.gapWSm,
-        const Icon(
+         Icon(
           Icons.access_time_rounded,
-          size: 14,
+          size: 12.s,
           color: AppColors.textMuted,
         ),
         AppSpacing.gapWXs,
         Text(
           time,
-          style: const TextStyle(
-            fontSize: 12,
+          style:  TextStyle(
+            fontSize: 14.s,
             color: AppColors.textMuted,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ],

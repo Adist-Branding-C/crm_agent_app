@@ -40,10 +40,10 @@ class EditProfileFormLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const ScreenHeader(
+        ScreenHeader(
           title: 'Edit Profile',
-          subtitle: 'Your account details',
           showBackButton: true,
+          padding: EdgeInsets.fromLTRB(17.0.w, 30.0.h, 17.0.w, 13.0.h),
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -54,13 +54,13 @@ class EditProfileFormLayout extends StatelessWidget {
               AppSpacing.xxl,
             ),
             child: ResponsiveWidthContainer(
-              maxWidth: 540,
+              maxWidth: 540.w,
               child: Column(
                 children: [
-                  EditProfileAvatarCard(
-                    initials: profile.initials,
-                    joinedDate: profile.joinedDate,
-                  ),
+                  // EditProfileAvatarCard(
+                  //   initials: profile.initials,
+                  //   joinedDate: profile.joinedDate,
+                  // ),
                   AppSpacing.gapLg,
                   PersonalDetailsSection(
                     nameController: nameController,

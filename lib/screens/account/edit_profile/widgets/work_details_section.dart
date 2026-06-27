@@ -30,7 +30,7 @@ class WorkDetailsSection extends StatelessWidget {
           'Work details',
           style: Theme.of(
             context,
-          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold,fontSize: 15.s),
         ),
         AppSpacing.gapMd,
         CustomCard(
@@ -54,6 +54,7 @@ class WorkDetailsSection extends StatelessWidget {
               AppSpacing.gapLg,
               CustomTextField(
                 label: 'Base location',
+                height: 60.h,
                 hintText: 'Enter base location',
                 controller: baseLocationController,
               ),

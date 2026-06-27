@@ -57,7 +57,7 @@ class ScreenHeader extends StatelessWidget {
     return Padding(
       padding: resolvedPadding,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (showBackButton) ...[
             CardIconButton(

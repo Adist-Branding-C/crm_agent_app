@@ -43,6 +43,7 @@ class MyActivityBody extends StatelessWidget {
     return PageScaffold(
       padding: EdgeInsets.zero,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const MyActivityHeader(),
           AppSpacing.gapXs,
@@ -71,7 +72,7 @@ class MyActivityBody extends StatelessWidget {
               },
             ),
           ),
-          AppSpacing.gapMd,
+          AppSpacing.gapXl,
           BlocSelector<MyActivityBloc, MyActivityState, String>(
             selector: (s) =>
                 s is MyActivityLoaded ? s.selectedLead : 'All leads',

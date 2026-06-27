@@ -19,12 +19,12 @@ class ActivityStatusBadge extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: colors.background,
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(4.r),
       ),
       child: Text(
         status.label,
         style: TextStyle(
-          fontSize: context.scaleFont(11),
+          fontSize: 13.s,
           fontWeight: FontWeight.w600,
           color: colors.text,
         ),
