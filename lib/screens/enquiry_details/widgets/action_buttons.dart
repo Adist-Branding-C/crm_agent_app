@@ -18,26 +18,36 @@ class ActionButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        QuickActionButton(
-          onTap: () =>
-              context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
-          icon: const Icon(Icons.phone_in_talk, color: Colors.white, size: 18),
-          label: 'Call',
-          backgroundColor: AppColors.primaryColor,
-          foregroundColor: Colors.white,
-        ),
-        AppSpacing.gapWLg,
-        QuickActionButton(
-          onTap: () => WhatsAppBottomSheet.show(context, lead: lead),
-          icon: const FaIcon(
-            FontAwesomeIcons.whatsapp,
-            color: AppColors.success,
-            size: 18,
+        SizedBox(
+          height: 55.h,
+          width: 140.w,
+          child: QuickActionButton(
+            onTap: () =>
+                context.read<CallLogBloc>().add(InitiateCall(lead: lead)),
+            icon:  Icon(Icons.phone_in_talk, color: Colors.white, size: 18.s),
+            label: 'Call',
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: Colors.white,
+            
           ),
-          label: 'WhatsApp',
-          backgroundColor: AppColors.successBackground,
-          foregroundColor: AppColors.success,
+        ),
+     
+         SizedBox(
+          height: 60.h,
+          width: 140.w,
+          child: QuickActionButton(
+            onTap: () => WhatsAppBottomSheet.show(context, lead: lead),
+            icon:  FaIcon(
+              FontAwesomeIcons.whatsapp,
+              color: AppColors.success,
+              size: 18.s,
+            ),
+            label: 'WhatsApp',
+            backgroundColor: AppColors.successBackground,
+            foregroundColor: AppColors.success,
+          ),
         ),
       ],
     );

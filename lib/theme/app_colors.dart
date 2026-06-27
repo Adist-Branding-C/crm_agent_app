@@ -10,6 +10,7 @@ class AppColors {
   static const Color primaryColorLight = Color(0xFFFEE2E2);
   static const Color backgroundColor = Color(0xFFF7F8FA);
   static const Color textDark = Color(0xFF1E293B);
+  static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color textMuted = Color(0xFF64748B);
   static const Color borderLight = Color(0xFFE2E8F0);
   static const Color errorColor = Color(0xFFEF4444);

@@ -29,14 +29,14 @@ class EditEnquiryButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: AppColors.primaryColorLight,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+             Icon(
               Icons.edit_outlined,
-              size: 14,
+              size: 13.s,
               color: AppColors.primaryColor,
             ),
             AppSpacing.gapWXs,
@@ -45,6 +45,7 @@ class EditEnquiryButton extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
+                fontSize: 12.s
               ),
             ),
           ],

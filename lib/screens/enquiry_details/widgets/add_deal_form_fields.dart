@@ -18,18 +18,30 @@ class AddDealFormFields extends StatelessWidget {
       children: [
         const _RequiredLabel(text: 'Deal name'),
         AppSpacing.gapXs,
-        TextFormField(
-          controller: nameController,
-          decoration: const InputDecoration(hintText: 'Enter deal name'),
+        SizedBox(
+          height: 65.h,
+          child: TextFormField(
+            controller: nameController,
+            decoration: InputDecoration(hintText: 'Enter deal name'),
+          ),
         ),
-        AppSpacing.gapLg,
+        AppSpacing.gapXxl,
         const _RequiredLabel(text: 'Amount (₹)'),
         AppSpacing.gapXs,
-        TextFormField(
-          controller: amountController,
-          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-          decoration: const InputDecoration(hintText: 'Enter amount'),
+        SizedBox(
+          height: 65.h,
+          child: TextFormField(
+            controller: amountController,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: InputDecoration(
+              hintText: 'Enter amount',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(1.w),
+              ),
+            ),
+          ),
         ),
+        AppSpacing.gapXxl,
       ],
     );
   }
@@ -47,11 +59,12 @@ class _RequiredLabel extends StatelessWidget {
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
           color: AppColors.slate600,
           fontWeight: FontWeight.w500,
+          fontSize: 12.s,
         ),
-        children: const [
+        children: [
           TextSpan(
             text: ' *',
-            style: TextStyle(color: AppColors.errorColor),
+            style: TextStyle(color: AppColors.errorColor, fontSize: 12.5.s),
           ),
         ],
       ),

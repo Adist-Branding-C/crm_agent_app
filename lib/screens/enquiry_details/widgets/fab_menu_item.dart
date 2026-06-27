@@ -38,7 +38,7 @@ class FabMenuItem extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               border: Border.all(color: AppColors.borderLight),
             ),
             child: Text(
@@ -46,19 +46,20 @@ class FabMenuItem extends StatelessWidget {
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppColors.textDark,
+                fontSize: 12.s
               ),
             ),
           ),
-          AppSpacing.gapWMd,
+          AppSpacing.gapWSm,
           Container(
-            width: 40,
-            height: 40,
+            width: 40.w,
+            height: 40.w,
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
               border: Border.all(color: AppColors.borderLight),
             ),
-            child: Icon(icon, color: color, size: 20),
+            child: Icon(icon, color: color, size: 20.s),
           ),
         ],
       ),

@@ -26,16 +26,16 @@ class WhatsAppTemplateCard extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8.r),
           border: Border.all(
             color: isSelected ? AppColors.success : AppColors.borderLight,
-            width: isSelected ? 2 : 1,
+            width: isSelected ? 2.w : 1.w,
           ),
         ),
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(right: isSelected ? 24.0 : 0.0),
+              padding: EdgeInsets.only(right: isSelected ? 24.0.w : 0.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -44,29 +44,31 @@ class WhatsAppTemplateCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.textDark,
+                      fontSize: 13.5.s
                     ),
                   ),
                   AppSpacing.gapXs,
                   Text(
                     template.contentTemplate,
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textMuted,
-                      height: 1.4,
+                      fontSize: 12.s
+                      
                     ),
                   ),
                 ],
               ),
             ),
             if (isSelected)
-              const Positioned(
+               Positioned(
                 top: 0,
                 right: 0,
                 child: Icon(
                   Icons.check_circle,
                   color: AppColors.success,
-                  size: 20,
+                  size: 20.s,
                 ),
               ),
           ],

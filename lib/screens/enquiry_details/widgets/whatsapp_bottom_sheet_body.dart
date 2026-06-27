@@ -24,16 +24,16 @@ class WhatsAppBottomSheetBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: 20,
-        right: 20,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+        left: 20.w,
+        right: 20.w,
+        bottom:  30.h,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           WhatsAppSheetHeader(name: lead.name, phone: lead.phone),
-          AppSpacing.gapLg,
+          AppSpacing.gapXxl,
           WhatsAppTemplatesList(controller: controller),
           AppSpacing.gapLg,
           WhatsAppMessageInput(controller: controller),

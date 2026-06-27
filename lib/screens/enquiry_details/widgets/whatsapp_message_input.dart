@@ -20,8 +20,9 @@ class WhatsAppMessageInput extends StatelessWidget {
           'MESSAGE',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.8,
+            letterSpacing: 0.6.w,
             color: AppColors.textMuted,
+            fontSize: 13.s
           ),
         ),
         AppSpacing.gapSm,
@@ -38,15 +39,15 @@ class WhatsAppMessageInput extends StatelessWidget {
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide(
                 color: hasSelected ? AppColors.success : AppColors.borderLight,
-                width: hasSelected ? 2 : 1,
+                width: hasSelected ? 2.w : 1.w,
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.success, width: 2),
+              borderRadius: BorderRadius.circular(8.r),
+              borderSide:  BorderSide(color: AppColors.success, width: 2.w),
             ),
           ),
         ),

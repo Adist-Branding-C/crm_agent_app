@@ -29,11 +29,13 @@ class AddDealDatePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        AppSpacing.gapSm,
         Text(
           'Expected close',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.slate600,
             fontWeight: FontWeight.w500,
+            fontSize: 12.s
           ),
         ),
         AppSpacing.gapXs,
@@ -41,13 +43,14 @@ class AddDealDatePicker extends StatelessWidget {
           onTap: () => _pickDate(context),
           borderRadius: BorderRadius.circular(14),
           child: Container(
+            height: 66.h,
             padding: EdgeInsets.symmetric(
               horizontal: AppSpacing.lg,
-              vertical: AppSpacing.lg,
+              
             ),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.borderLight),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(8.r),
               color: Colors.white,
             ),
             child: Row(
@@ -59,12 +62,12 @@ class AddDealDatePicker extends StatelessWidget {
                     color: selectedDate != null
                         ? AppColors.textDark
                         : AppColors.textMuted,
-                    fontSize: context.scaleFont(14),
+                    fontSize: 14.s,
                   ),
                 ),
-                const Icon(
+                 Icon(
                   Icons.calendar_today_outlined,
-                  size: 18,
+                  size: 16.s,
                   color: AppColors.textMuted,
                 ),
               ],

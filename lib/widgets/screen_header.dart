@@ -37,8 +37,8 @@ class ScreenHeader extends StatelessWidget {
     );
 
     final titleStyle = (Theme.of(context).textTheme.headlineSmall ??  TextStyle()).copyWith(
-      fontSize: 22.s,
-      fontWeight: FontWeight.w900,
+      fontSize: 16.s,
+      fontWeight: FontWeight.bold,
       letterSpacing: 0.7.w,
       color: AppColors.textDark,
     );
@@ -65,7 +65,7 @@ class ScreenHeader extends StatelessWidget {
               size: 26.s,
               onTap: () => context.pop(),
             ),
-            AppSpacing.gapWLg,
+            AppSpacing.gapWMd,
           ],
           Expanded(
             child: Column(

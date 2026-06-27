@@ -32,7 +32,7 @@ class _FabMenuState extends State<FabMenu> {
             onPressed: () => setState(() => _isOpen = !_isOpen),
             backgroundColor: AppColors.primaryColor,
             shape: const CircleBorder(),
-            child: Icon(_isOpen ? Icons.close : Icons.add, color: Colors.white),
+            child: Icon(_isOpen ? Icons.close : Icons.add, color: Colors.white,size: 25.s,),
           ),
         ],
       ),

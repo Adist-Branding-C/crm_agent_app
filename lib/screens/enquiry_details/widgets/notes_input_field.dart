@@ -23,21 +23,26 @@ class _NotesInputFieldState extends State<NotesInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(AppSpacing.lg),
+    return Container(
+      height: 80.h,
+      margin: EdgeInsets.symmetric(vertical: AppSpacing.lg),
+      padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: 'Add your notes here...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                hint: Text(
+                  'Add your notes here...',
+                  style: TextStyle(color: AppColors.textMuted, fontSize: 14.s),
                 ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6.r),
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 16.w,
+                  vertical: 10.h,
                 ),
               ),
             ),
@@ -45,10 +50,10 @@ class _NotesInputFieldState extends State<NotesInputField> {
           AppSpacing.gapWSm,
           IconButton(
             onPressed: _submitNote,
-            icon: const Icon(Icons.send, color: Colors.white),
+            icon: Icon(Icons.send, color: Colors.white, size: 18.s),
             style: IconButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
-              padding: EdgeInsets.all(AppSpacing.md),
+              padding: EdgeInsets.all(AppSpacing.xxs),
             ),
           ),
         ],

@@ -11,10 +11,11 @@ class AddDealLeadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 97.h,
       padding: EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.slate50,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
         children: [
@@ -24,7 +25,8 @@ class AddDealLeadCard extends StatelessWidget {
                 .map((e) => e.isNotEmpty ? e[0] : '')
                 .take(2)
                 .join(),
-            size: 40,
+            size: 40.s,
+            fontSize: 15.s,
           ),
           AppSpacing.gapWMd,
           Expanded(
@@ -36,13 +38,15 @@ class AddDealLeadCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.textDark,
                     fontWeight: FontWeight.bold,
+                    fontSize: 13.5.s,
                   ),
                 ),
                 Text(
                   '${lead.source.label} · ${lead.phone}',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppColors.textMuted,
+                    fontSize: 10.s,
+                  ),
                 ),
               ],
             ),
@@ -54,13 +58,14 @@ class AddDealLeadCard extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: AppColors.primaryColorLight,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(4.r),
             ),
             child: Text(
               'Linked enquiry',
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
+                fontSize: 9.s
               ),
             ),
           ),

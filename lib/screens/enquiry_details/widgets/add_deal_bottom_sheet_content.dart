@@ -25,30 +25,33 @@ class AddDealBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: 17.0,
-        right: 17.0,
-        top: 11.0,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 29.0,
+        left: 17.0.w,
+        right: 17.0.w,
+        top: 5.h,
+        bottom: 25.h,
       ),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const AddDealHeader(),
-            AppSpacing.gapLg,
+            
+             const AddDealHeader(),
+           
+             AppSpacing.gapXxxl,
+            
             AddDealLeadCard(lead: lead),
-            AppSpacing.gapLg,
+            AppSpacing.gapXxxl,
             AddDealFormFields(
               nameController: controller.nameController,
               amountController: controller.amountController,
             ),
-            AppSpacing.gapLg,
+            
             AddDealStageSelector(
               selectedStage: controller.selectedStage,
               onStageSelected: controller.selectStage,
             ),
-            AppSpacing.gapLg,
+            AppSpacing.gapXxl,
             AddDealDatePicker(
               selectedDate: controller.expectedClose,
               onDateSelected: controller.selectExpectedClose,
@@ -66,6 +69,7 @@ class AddDealBottomSheetContent extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
+              AppSpacing.gapXxl,
             AddDealSubmitButton(
               isValid: controller.isValid,
               isLoading: controller.isLoading,

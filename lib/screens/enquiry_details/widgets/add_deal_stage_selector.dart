@@ -23,6 +23,7 @@ class AddDealStageSelector extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.slate600,
             fontWeight: FontWeight.w500,
+            fontSize: 12.s
           ),
         ),
         AppSpacing.gapSm,

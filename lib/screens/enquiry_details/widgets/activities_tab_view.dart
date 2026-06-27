@@ -25,23 +25,16 @@ class ActivitiesTabView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                padding:  EdgeInsets.all(AppSpacing.lg),
-                decoration: const BoxDecoration(
-                  color: AppColors.slate100,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.history,
-                  size: 40,
-                  color: AppColors.slate400,
-                ),
+              Icon(
+                Icons.history,
+                size: 34.s,
+                color: AppColors.slate400,
               ),
-              AppSpacing.gapLg,
+            AppSpacing.gapMd,
               Text(
                 'No Activities Yet',
                 style: TextStyle(
-                  fontSize: context.scaleFont(16),
+                  fontSize: 14.s,
                   color: AppColors.textDark,
                   fontWeight: FontWeight.bold,
                 ),
@@ -53,7 +46,7 @@ class ActivitiesTabView extends StatelessWidget {
                   'Activities related to this enquiry will show up here.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: context.scaleFont(14),
+                    fontSize: 11.s,
                     color: AppColors.textMuted,
                   ),
                 ),

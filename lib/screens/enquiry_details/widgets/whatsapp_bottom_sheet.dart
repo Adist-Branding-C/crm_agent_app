@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart' show CardSizeExtension;
 import '../../../bloc/leads/leads_models.dart';
 import '../../../utils/whatsapp_service.dart';
 import 'whatsapp_controller.dart';
@@ -23,8 +24,8 @@ class WhatsAppBottomSheet extends StatefulWidget {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      shape:  RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(18.r)),
       ),
       builder: (context) =>
           WhatsAppBottomSheet(lead: lead, whatsappService: whatsappService),

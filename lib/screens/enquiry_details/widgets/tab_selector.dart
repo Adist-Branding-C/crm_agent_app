@@ -21,9 +21,9 @@ class TabSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final tabs = ['Info', 'Activities', 'Notes'];
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: AppColors.borderLight, width: 1),
+          bottom: BorderSide(color: AppColors.borderLight, width: 1.w),
         ),
       ),
       child: Row(
@@ -44,12 +44,12 @@ class TabSelector extends StatelessWidget {
                             ? AppColors.primaryColor
                             : AppColors.textMuted,
                         fontWeight: FontWeight.bold,
-                        fontSize: context.scaleFont(14),
+                        fontSize: 14.s,
                       ),
                     ),
                   ),
                   Container(
-                    height: 2,
+                    height: 4.h,
                     color: isSelected
                         ? AppColors.primaryColor
                         : Colors.transparent,

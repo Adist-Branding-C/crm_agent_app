@@ -49,12 +49,12 @@ class WhatsAppSendButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
-        icon: const Icon(Icons.send_rounded, size: 18),
+        icon:  Icon(Icons.send_rounded, size: 18.s),
         label: Text(
           'Send on WhatsApp',
           style: Theme.of(
             context,
-          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold,fontSize: 15.s,color: AppColors.white),
         ),
       ),
     );

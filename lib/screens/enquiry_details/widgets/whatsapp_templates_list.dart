@@ -25,7 +25,8 @@ class WhatsAppTemplatesList extends StatelessWidget {
               'QUICK MESSAGES',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                letterSpacing: 0.8,
+                letterSpacing: 0.5.w,
+                fontSize: 13.s,
                 color: AppColors.textMuted,
               ),
             ),
@@ -33,13 +34,14 @@ class WhatsAppTemplatesList extends StatelessWidget {
               onTap: () => controller.selectCustomWrite(),
               child: Row(
                 children: [
-                  const Icon(Icons.edit, size: 14, color: AppColors.textMuted),
+                   Icon(Icons.edit, size: 14.s, color: AppColors.textMuted),
                   AppSpacing.gapWXs,
                   Text(
                     'Write your own',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.textMuted,
+                      fontSize: 12.s
                     ),
                   ),
                 ],
@@ -47,9 +49,9 @@ class WhatsAppTemplatesList extends StatelessWidget {
             ),
           ],
         ),
-        AppSpacing.gapSm,
+        AppSpacing.gapXl,
         SizedBox(
-          height: 230,
+          height: 460.h,
           child: ListView.builder(
             itemCount: templates.length,
             physics: const AlwaysScrollableScrollPhysics(),

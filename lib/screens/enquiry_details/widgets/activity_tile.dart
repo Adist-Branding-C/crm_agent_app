@@ -36,14 +36,16 @@ class ActivityTile extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               fontWeight: FontWeight.bold,
               color: AppColors.textDark,
+              fontSize: 11.s
             ),
           ),
           AppSpacing.gapXxs,
           Text(
             activity.time,
-            style: Theme.of(
-              context,
-            ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: AppColors.textMuted,
+              fontSize: 10.s,
+            ),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../bloc/enquiry_details/enquiry_details_state.dart';
 import '../../../widgets/responsive_width_container.dart';
 import 'enquiry_details_header.dart';
@@ -24,7 +25,7 @@ class _EnquiryDetailsLoadedViewState extends State<EnquiryDetailsLoadedView> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidthContainer(
-      maxWidth: 800,
+      maxWidth: 800.w,
       child: Stack(
         children: [
           Column(

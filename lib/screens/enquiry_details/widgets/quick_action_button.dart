@@ -24,12 +24,11 @@ class QuickActionButton extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
           decoration: BoxDecoration(
             color: backgroundColor,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +40,7 @@ class QuickActionButton extends StatelessWidget {
                 style: TextStyle(
                   color: foregroundColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: context.scaleFont(16),
+                  fontSize: 16.s,
                 ),
               ),
             ],

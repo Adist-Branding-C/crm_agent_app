@@ -32,13 +32,14 @@ class InfoTabView extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: AppColors.warningTextBackground,
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(6.w),
             ),
             child: Text(
               lead.status.label,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: AppColors.warningText,
                 fontWeight: FontWeight.bold,
+                fontSize: 10.s
               ),
             ),
           ),
@@ -55,14 +56,14 @@ class InfoTabView extends StatelessWidget {
         AppSpacing.gapLg,
         OutlinedButton.icon(
           onPressed: () => showStatusSelector(context),
-          icon: const Icon(Icons.sync, size: 18),
-          label: const Text('Change Status'),
+          icon:  Icon(Icons.sync, size: 17.s),
+          label:  Text('Change Status',style: TextStyle(fontSize: 14.s),),
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.primaryColor,
             side: const BorderSide(color: AppColors.borderLight),
             padding: EdgeInsets.symmetric(vertical: AppSpacing.fourteen),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(6.r),
             ),
           ),
         ),

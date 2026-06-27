@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../bloc/deals/deals_bloc.dart';
 import '../../../bloc/leads/leads_models.dart';
 import 'add_deal_bottom_sheet_body.dart';
@@ -14,8 +15,8 @@ class AddDealBottomSheet extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      shape:  RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
       ),
       builder: (ctx) => BlocProvider.value(
         value: dealsBloc,
