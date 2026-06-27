@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../widgets/screen_header.dart';
 
 class AttendanceHeader extends StatelessWidget {
@@ -6,10 +7,16 @@ class AttendanceHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScreenHeader(
+    return  ScreenHeader(
       title: 'Daily Activity',
       subtitle: 'Tuesday, 12 May',
       showBackButton: true,
+      padding:EdgeInsets.fromLTRB(
+      0,
+      35.0.h,
+      17.0.w,
+      0
+    )
     );
   }
 }

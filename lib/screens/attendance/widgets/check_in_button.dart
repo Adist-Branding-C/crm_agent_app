@@ -8,22 +8,27 @@ class CheckInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding:  EdgeInsets.symmetric(
-          horizontal: AppSpacing.fourteen,
-          vertical: AppSpacing.ten,
+    return SizedBox(
+      height: 60.h,
+      width: 70.w,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryColor,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          padding:  EdgeInsets.symmetric(
+            horizontal: AppSpacing.fourteen,
+            vertical: AppSpacing.ten,
+          ),
         ),
-      ),
-      onPressed: () => context.read<AttendanceBloc>().add(const CheckIn()),
-      child: Text(
-        'Check in',
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+        onPressed: () => context.read<AttendanceBloc>().add(const CheckIn()),
+        child: Text(
+          'Check in',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 13.s
+          ),
         ),
       ),
     );

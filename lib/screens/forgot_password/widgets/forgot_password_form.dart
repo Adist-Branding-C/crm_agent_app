@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import 'package:formz/formz.dart';
 import '../../../bloc/forgot_password/forgot_password_bloc.dart';
 import '../../../theme/app_spacing.dart';
@@ -25,6 +26,7 @@ class ForgotPasswordForm extends StatelessWidget {
             hintText: '+91 98470 ...',
             controller: phoneController,
             keyboardType: TextInputType.phone,
+            height: 100.h,
             errorText: state.phoneError,
             semanticsLabel: 'Phone Number Input Field',
             onChanged: (val) => context.read<ForgotPasswordBloc>().add(
@@ -32,7 +34,7 @@ class ForgotPasswordForm extends StatelessWidget {
             ),
           ),
         ),
-        AppSpacing.gapXxl,
+        AppSpacing.gapXl,
         BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
           buildWhen: (p, c) =>
               p.phone.isValid != c.phone.isValid || p.status != c.status,

@@ -21,6 +21,7 @@ class TimelineList extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
+            fontSize: 16.s
           ),
         ),
         AppSpacing.gapLg,

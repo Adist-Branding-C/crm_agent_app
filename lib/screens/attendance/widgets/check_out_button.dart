@@ -8,22 +8,27 @@ class CheckOutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        foregroundColor: Colors.white,
-        side: const BorderSide(color: Colors.white, width: 1.2),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding:  EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.sm,
+    return SizedBox(
+      height: 60.h,
+      width: 70.w,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Colors.white,
+          side:  BorderSide(color: Colors.white, width: 1.2.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          padding:  EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
+          ),
         ),
-      ),
-      onPressed: () => context.read<AttendanceBloc>().add(const CheckOut()),
-      child: Text(
-        'Check out',
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+        onPressed: () => context.read<AttendanceBloc>().add(const CheckOut()),
+        child: Text(
+          'Check out',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 13.s
+          ),
         ),
       ),
     );

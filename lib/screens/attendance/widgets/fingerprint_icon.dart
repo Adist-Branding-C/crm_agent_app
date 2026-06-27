@@ -21,7 +21,7 @@ class FingerprintIcon extends StatelessWidget {
     return Container(
       padding:  EdgeInsets.all(AppSpacing.ten),
       decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
-      child: Icon(Icons.fingerprint_rounded, color: iconColor, size: 26),
+      child: Icon(Icons.fingerprint_rounded, color: iconColor, size: 26.s),
     );
   }
 }

@@ -23,6 +23,7 @@ class AttendanceTimelineTile extends StatelessWidget {
     final captionStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.textMuted,
       fontWeight: FontWeight.w500,
+      fontSize: 10.s
     );
 
     return TimelineLayout(
@@ -47,6 +48,7 @@ class AttendanceTimelineTile extends StatelessWidget {
                     style: textTheme.titleMedium?.copyWith(
                       color: AppColors.textDark,
                       fontWeight: FontWeight.bold,
+                      fontSize: 13.s
                     ),
                   ),
                   AppSpacing.gapXs,

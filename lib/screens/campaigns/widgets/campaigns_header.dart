@@ -13,6 +13,12 @@ class CampaignsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenHeader(
       title: 'Campaigns',
+      padding: EdgeInsets.fromLTRB(
+      17.0.w,
+      20.0.h,
+      17.0.w,
+      13.0.h,
+    ),
       subtitleWidget: BlocBuilder<CampaignsBloc, CampaignsState>(
         buildWhen: (prev, curr) => curr is CampaignsLoaded,
         builder: (context, state) {

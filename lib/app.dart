@@ -76,9 +76,11 @@ class _MyAppState extends State<MyApp> {
                   data: MediaQuery.of(context).copyWith(
                     textScaler:TextScaler.linear(_getSuitableTextScaleFactor(context)),
                     ),
-                  child: AppBuilderWidget(
-                    scaleText: widget.scaleText,
-                    child: child,
+                  child: SafeArea(
+                    child: AppBuilderWidget(
+                      scaleText: widget.scaleText,
+                      child: child,
+                    ),
                   ),
                 ),
               );
