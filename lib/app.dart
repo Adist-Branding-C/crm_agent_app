@@ -6,6 +6,7 @@ import 'app_providers.dart';
 import 'app_bloc_providers.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/repositories/session_repository.dart';
+import 'data/settings_notifier.dart';
 import 'router.dart';
 import 'theme.dart';
 import 'widgets/app_builder.dart';
@@ -35,7 +36,8 @@ class _MyAppState extends State<MyApp> {
   }
   double _getSuitableTextScaleFactor(BuildContext context) {
   double width = MediaQuery.of(context).size.width;
-  double baseWidth = 360.0; 
+  final settings = Provider.of<SettingsNotifier>(context, listen: false);
+  double baseWidth = settings.baseWidth; 
   double scaleFactor = width / baseWidth;
   textFactor=scaleFactor.clamp(0.2, 1.5);
   return textFactor;
@@ -52,9 +54,14 @@ class _MyAppState extends State<MyApp> {
   
     
     return MultiProvider(
-      providers: buildRepositoryProviders(
-        sessionRepository: widget.sessionRepository,
-      ),
+      providers: [
+        ChangeNotifierProvider<SettingsNotifier>(
+          create: (_) => SettingsNotifier()..loadSettings(),
+        ),
+        ...buildRepositoryProviders(
+          sessionRepository: widget.sessionRepository,
+        ),
+      ],
       child: ChangeNotifierProvider<AuthStateNotifier>.value(
         value: _authStateNotifier,
         child: MultiBlocProvider(
@@ -66,11 +73,12 @@ class _MyAppState extends State<MyApp> {
             respectSystemTextScale: true,
             orientationAware: true,
             builder: (context, child) {
+              final settings = context.watch<SettingsNotifier>();
               return MaterialApp.router(
                 title: 'CRM Agent App ',
                 debugShowCheckedModeBanner: false,
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
+                theme: AppTheme.lightTheme(fontStyle: settings.fontStyle),
+                darkTheme: AppTheme.darkTheme(fontStyle: settings.fontStyle),
                 themeMode: ThemeMode.light,
                 routerConfig: _router,
                 builder: (context, child) => MediaQuery(

@@ -29,6 +29,11 @@ class MenuList extends StatelessWidget {
         route: AppRoutes.callReport,
       ),
       const MenuItemModel(
+        icon: Icons.settings_outlined,
+        title: 'Settings',
+        route: AppRoutes.settings,
+      ),
+      const MenuItemModel(
         icon: Icons.fingerprint_rounded,
         title: 'Attendance History',
         route: AppRoutes.attendanceHistory,

@@ -21,6 +21,8 @@ class AppRoutes {
   static const callReport = 'callReport';
   static const myActivity = 'myActivity';
   static const viewCallLog = 'viewCallLog';
+  static const settings = 'settings';
+  static const fontSettings = 'fontSettings';
 
   static const splashPath = '/splash';
   static const loginPath = '/login';
@@ -41,6 +43,8 @@ class AppRoutes {
   static const callReportPath = '/call-report';
   static const myActivityPath = '/my-activity';
   static const viewCallLogPath = '/view-call-log';
+  static const settingsPath = '/settings';
+  static const fontSettingsPath = '/settings/font-settings';
 
   static const _authPaths = <String>{
     loginPath,

@@ -3,8 +3,8 @@ import 'package:flutter_sfs/flutter_sfs.dart';
 import 'app_text_theme.dart';
 
 /// Returns a [TextTheme] with all font sizes scaled dynamically.
-TextTheme getScaledTextTheme(BuildContext context) {
-  final textTheme = AppTextTheme.textTheme;
+TextTheme getScaledTextTheme(BuildContext context, {String fontStyle = 'Default'}) {
+  final textTheme = AppTextTheme.getTheme(fontStyle: fontStyle);
   return textTheme.copyWith(
     displayLarge: textTheme.displayLarge?.copyWith(
       fontSize: 32.s,

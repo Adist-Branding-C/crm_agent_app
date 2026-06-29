@@ -23,10 +23,12 @@ class AppTheme {
   static const Color errorBackground = AppColors.errorBackground;
 
   /// Returns light [ThemeData].
-  static ThemeData get lightTheme => getLightAppTheme();
+  static ThemeData lightTheme({String fontStyle = 'Default'}) =>
+      getLightAppTheme(fontStyle: fontStyle);
 
   /// Returns dark [ThemeData].
-  static ThemeData get darkTheme => getDarkAppTheme();
+  static ThemeData darkTheme({String fontStyle = 'Default'}) =>
+      getDarkAppTheme(fontStyle: fontStyle);
 
   /// Returns light [ThemeData] scaled to the screen width.
   static ThemeData scaledLightTheme(BuildContext context) =>

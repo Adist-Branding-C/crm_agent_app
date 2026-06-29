@@ -9,6 +9,8 @@ import '../screens/enquiry_details/enquiry_details_screen.dart';
 import '../screens/follow_ups/follow_ups_screen.dart';
 import '../screens/my_activity/my_activity_screen.dart';
 import '../screens/tasks/task_details_screen.dart';
+import '../screens/settings/settings_screen.dart';
+import '../screens/settings/font_settings_screen.dart';
 import 'app_routes.dart';
 
 /// Builds the routes relating to the user account, tasks, logs, and activity.
@@ -65,6 +67,16 @@ List<RouteBase> buildUserRoutes() {
       name: AppRoutes.editProfile,
       path: AppRoutes.editProfilePath,
       builder: (c, s) => const EditProfileScreen(),
+    ),
+    GoRoute(
+      name: AppRoutes.settings,
+      path: AppRoutes.settingsPath,
+      builder: (c, s) => const SettingsScreen(),
+    ),
+    GoRoute(
+      name: AppRoutes.fontSettings,
+      path: AppRoutes.fontSettingsPath,
+      builder: (c, s) => const FontSettingsScreen(),
     ),
   ];
 }

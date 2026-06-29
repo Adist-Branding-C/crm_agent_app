@@ -5,7 +5,7 @@ import 'app_input_theme.dart';
 import 'app_button_theme.dart';
 
 /// Configures and returns the light [ThemeData] for the application.
-ThemeData getLightAppTheme() {
+ThemeData getLightAppTheme({String fontStyle = 'Default'}) {
   return ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.backgroundColor,
@@ -27,7 +27,9 @@ ThemeData getLightAppTheme() {
         fontWeight: FontWeight.bold,
       ),
     ),
-    textTheme: AppTextTheme.textTheme,
+    textTheme: (fontStyle == 'Default' || fontStyle == 'System')
+        ? AppTextTheme.textTheme
+        : AppTextTheme.getTheme(fontStyle: fontStyle),
     inputDecorationTheme: AppInputTheme.inputDecorationTheme,
     elevatedButtonTheme: AppButtonTheme.elevatedButtonTheme,
     snackBarTheme: const SnackBarThemeData(

@@ -5,7 +5,10 @@ import 'app_button_theme.dart';
 import 'app_input_theme_dark.dart';
 
 /// Configures and returns the dark [ThemeData] for the application.
-ThemeData getDarkAppTheme() {
+ThemeData getDarkAppTheme({String fontStyle = 'Default'}) {
+  final customTextTheme = (fontStyle == 'Default' || fontStyle == 'System')
+      ? AppTextTheme.textTheme
+      : AppTextTheme.getTheme(fontStyle: fontStyle);
   return ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
@@ -28,7 +31,7 @@ ThemeData getDarkAppTheme() {
         fontWeight: FontWeight.bold,
       ),
     ),
-    textTheme: AppTextTheme.textTheme.copyWith(
+    textTheme: customTextTheme.copyWith(
       displayLarge: const TextStyle(color: AppColors.darkText),
       displayMedium: const TextStyle(color: AppColors.darkText),
       headlineLarge: const TextStyle(color: AppColors.darkText),
