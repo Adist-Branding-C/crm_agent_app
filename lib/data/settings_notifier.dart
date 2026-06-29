@@ -10,10 +10,12 @@ class SettingsNotifier extends ChangeNotifier {
   String _fontSize = 'Default';
   String _fontStyle = 'Default';
   bool _isLoaded = false;
+  bool _hasSavedSettings = false;
 
   String get fontSize => _fontSize;
   String get fontStyle => _fontStyle;
   bool get isLoaded => _isLoaded;
+  bool get hasSavedSettings => _hasSavedSettings;
 
   /// Returns the corresponding base width for dynamic scaling.
   ///
@@ -44,14 +46,13 @@ class SettingsNotifier extends ChangeNotifier {
   Future<void> loadSettings() async {
     try {
       final prefs = await SharedPreferences.getInstance();
+      _hasSavedSettings = prefs.containsKey(_fontSizeKey) || prefs.containsKey(_fontStyleKey);
       var size = prefs.getString(_fontSizeKey) ?? 'Default';
       if (size == 'Medium') size = 'Default';
       final style = prefs.getString(_fontStyleKey) ?? 'Default';
-      if (_fontSize != size || _fontStyle != style) {
-        _fontSize = size;
-        _fontStyle = style;
-        notifyListeners();
-      }
+      _fontSize = size;
+      _fontStyle = style;
+      notifyListeners();
     } catch (_) {
       // Keep fallbacks
     } finally {
@@ -61,8 +62,8 @@ class SettingsNotifier extends ChangeNotifier {
 
   /// Sets and persists the font size.
   Future<void> setFontSize(String size) async {
-    if (_fontSize == size) return;
     _fontSize = size;
+    _hasSavedSettings = true;
     notifyListeners();
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -72,8 +73,8 @@ class SettingsNotifier extends ChangeNotifier {
 
   /// Sets and persists the font style.
   Future<void> setFontStyle(String style) async {
-    if (_fontStyle == style) return;
     _fontStyle = style;
+    _hasSavedSettings = true;
     notifyListeners();
     try {
       final prefs = await SharedPreferences.getInstance();

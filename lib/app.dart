@@ -28,11 +28,12 @@ double textFactor=0;
 class _MyAppState extends State<MyApp> {
   late final GoRouter _router;
   final _authStateNotifier = AuthStateNotifier();
+  final _settingsNotifier = SettingsNotifier()..loadSettings();
 
   @override
   void initState() {
     super.initState();
-    _router = createRouter(widget.sessionRepository, _authStateNotifier);
+    _router = createRouter(widget.sessionRepository, _authStateNotifier, _settingsNotifier);
   }
   double _getSuitableTextScaleFactor(BuildContext context) {
   double width = MediaQuery.of(context).size.width;
@@ -46,6 +47,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     _authStateNotifier.dispose();
+    _settingsNotifier.dispose();
     super.dispose();
   }
 
@@ -55,8 +57,8 @@ class _MyAppState extends State<MyApp> {
     
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<SettingsNotifier>(
-          create: (_) => SettingsNotifier()..loadSettings(),
+        ChangeNotifierProvider<SettingsNotifier>.value(
+          value: _settingsNotifier,
         ),
         ...buildRepositoryProviders(
           sessionRepository: widget.sessionRepository,

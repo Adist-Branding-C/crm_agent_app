@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 import '../../theme.dart';
 import '../../theme/app_text_theme.dart';
 import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';
 import '../../widgets/custom_card.dart';
+import '../../widgets/custom_button.dart';
 import '../../data/settings_notifier.dart';
+import '../../router/app_routes.dart';
 
 /// Screen widget displaying global font configurations (size, style) with live CRM preview.
-class FontSettingsScreen extends StatelessWidget {
+class FontSettingsScreen extends StatefulWidget {
   const FontSettingsScreen({super.key});
+
+  @override
+  State<FontSettingsScreen> createState() => _FontSettingsScreenState();
+}
+
+class _FontSettingsScreenState extends State<FontSettingsScreen> {
+  bool _isFirstTimeSetup = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final settings = Provider.of<SettingsNotifier>(context, listen: false);
+    _isFirstTimeSetup = !settings.hasSavedSettings;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +46,7 @@ class FontSettingsScreen extends StatelessWidget {
                 fontSize: 12.s,
               ),
             ),
-            showBackButton: true,
+            showBackButton: !_isFirstTimeSetup,
           ),
           Expanded(
             child: ListView(
@@ -165,6 +182,17 @@ class FontSettingsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (_isFirstTimeSetup) ...[
+                  AppSpacing.gapLg,
+                  CustomButton(
+                    text: 'Proceed to Dashboard',
+                    onPressed: settings.hasSavedSettings
+                        ? () {
+                            context.go(AppRoutes.dashboardPath);
+                          }
+                        : null,
+                  ),
+                ],
                 AppSpacing.gapXl,
               ],
             ),

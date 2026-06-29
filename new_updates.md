@@ -82,3 +82,41 @@ Decreases the heights of interactive components by 2px to align with design adju
 - Search input field vertical padding reduced from 9px (AppSpacing.md) to 8px.
 - Date picker field height reduced from 44px to 42px.
 - Cleaned up unused AppSpacing import in app_button_theme.dart.
+
+refactor: comprehensive architectural & performance audit fixes
+
+C1 (Lifecycle Leaks): Add dispose() contract to SessionRepository;
+move DataSource instantiation inside provider create: closures
+
+C2 (Oversized Files): Split font_settings_screen.dart 608→72 lines;
+extract 5 widgets + font_styles_data.dart
+
+C3 (Tab State): Convert analytics_body to StatefulWidget with
+IndexedStack + cached tab data
+
+C4 (UI Domain Leakage): Move callLogFailureMessage to error_messages.dart;
+delete dead enquiry_details_mock_helper.dart from BLoC layer
+
+M1 (State Bloat): Split analytics_state.dart into 7 files (states/);
+split search_state.dart into 6 files (states/)
+
+M2 (State Logic): Move .take(2) filtering from SearchInitial state
+to search_content.dart presentation layer
+
+M3 (Bypassing BLoC): Add SendWhatsApp event/handler to EnquiryDetailsBloc;
+WhatsApp button dispatches BLoC event instead of direct service call
+
+M4 (Design Tokens): Add primaryRed/primaryRedLight to AppColors;
+replace all 16 inline Color(0xFF...) in font settings widgets
+
+M5 (DI Nesting): Flatten provider tree 5→4 levels by merging
+AuthStateNotifier into top-level MultiProvider
+
+M6 (Regex Constants): Create validation_patterns.dart with 8 shared
+RegExp constants; update 5 Formz input files
+
+M7 (Polymorphic Switches): Make analytics_tab_toggle data-driven via
+AnalyticsTab.values.map(); extract static const _tabs in tab_selector
+
+Mi1 (Route Security): Replace context.push(item.routePath!) with
+exhaustive switch on NotificationType mapping to AppRoutes.*Path

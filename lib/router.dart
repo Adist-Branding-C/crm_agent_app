@@ -1,5 +1,7 @@
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'data/auth_state_notifier.dart';
+import 'data/settings_notifier.dart';
 import 'router/navigator_key.dart';
 import 'data/repositories/session_repository.dart';
 import 'router/app_routes.dart';
@@ -14,11 +16,12 @@ import 'router/view_call_log_route.dart';
 GoRouter createRouter(
   SessionRepository authRepository,
   AuthStateNotifier authStateNotifier,
+  SettingsNotifier settingsNotifier,
 ) {
   return GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: AppRoutes.splashPath,
-    refreshListenable: authStateNotifier,
+    refreshListenable: Listenable.merge([authStateNotifier, settingsNotifier]),
     redirect: (context, state) {
       final loc = state.matchedLocation;
       if (!authRepository.isInitialized) {
@@ -27,7 +30,18 @@ GoRouter createRouter(
       final hasToken = authRepository.isAuthenticated;
       final isAuth = AppRoutes.isAuthRoute(loc);
       if (!hasToken && !isAuth) return AppRoutes.loginPath;
-      return (hasToken && isAuth) ? AppRoutes.dashboardPath : null;
+
+      if (hasToken) {
+        if (!settingsNotifier.hasSavedSettings) {
+          if (loc != AppRoutes.fontSettingsPath) {
+            return AppRoutes.fontSettingsPath;
+          }
+          return null;
+        }
+        if (isAuth) return AppRoutes.dashboardPath;
+      }
+
+      return null;
     },
     routes: [
       ...buildCoreRoutes(),
