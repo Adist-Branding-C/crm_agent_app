@@ -33,7 +33,11 @@ class _FontSettingsScreenState extends State<FontSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsNotifier>();
-    final headerStyle = TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold, fontSize: 16.s);
+    final headerStyle = TextStyle(
+      color: AppColors.textDark,
+      fontWeight: FontWeight.bold,
+      fontSize: 16.s,
+    );
 
     return PageScaffold(
       padding: EdgeInsets.zero,
@@ -41,15 +45,23 @@ class _FontSettingsScreenState extends State<FontSettingsScreen> {
         children: [
           ScreenHeader(
             title: 'Font Settings',
+            padding: EdgeInsets.fromLTRB(17.0.w, 20.0.h, 17.0.w, 13.0.h),
             subtitleWidget: Text(
               'Text size & typeface',
-              style: TextStyle(color: AppColors.textMuted, fontWeight: FontWeight.w500, fontSize: 12.s),
+              style: TextStyle(
+                color: AppColors.textMuted,
+                fontWeight: FontWeight.w500,
+                fontSize: 12.s,
+              ),
             ),
             showBackButton: !_isFirstSetup,
           ),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.0.w,
+                vertical: 8.0.h,
+              ),
               children: [
                 const LivePreviewCard(),
                 AppSpacing.gapLg,
@@ -67,7 +79,9 @@ class _FontSettingsScreenState extends State<FontSettingsScreen> {
                   child: Text('Typeface', style: headerStyle),
                 ),
                 ...typefacePresets.map((preset) {
-                  final isSelected = (preset.styleValue == 'System' && settings.fontStyle == 'Default') ||
+                  final isSelected =
+                      (preset.styleValue == 'System' &&
+                          settings.fontStyle == 'Default') ||
                       settings.fontStyle == preset.styleValue;
                   return TypefaceCard(
                     title: preset.title,
@@ -82,7 +96,9 @@ class _FontSettingsScreenState extends State<FontSettingsScreen> {
                   AppSpacing.gapLg,
                   CustomButton(
                     text: 'Proceed to Dashboard',
-                    onPressed: settings.hasSavedSettings ? () => context.go(AppRoutes.dashboardPath) : null,
+                    onPressed: settings.hasSavedSettings
+                        ? () => context.go(AppRoutes.dashboardPath)
+                        : null,
                   ),
                 ],
                 AppSpacing.gapXl,

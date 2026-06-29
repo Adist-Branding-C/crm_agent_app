@@ -37,7 +37,7 @@ class InfoItemTile extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: AppColors.textMuted,
               fontWeight: FontWeight.w500,
-              fontSize: 10.s
+              fontSize: 12.s
             ),
           ),
           AppSpacing.gapXs,
@@ -47,7 +47,7 @@ class InfoItemTile extends StatelessWidget {
             Text(
               value ?? '',
               style: TextStyle(
-                fontSize: 11.s,
+                fontSize: 13.5.s,
                 fontWeight: FontWeight.w600,
                 color: valueColor ?? AppColors.textDark,
               ),

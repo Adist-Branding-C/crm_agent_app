@@ -120,3 +120,24 @@ AnalyticsTab.values.map(); extract static const _tabs in tab_selector
 
 Mi1 (Route Security): Replace context.push(item.routePath!) with
 exhaustive switch on NotificationType mapping to AppRoutes.*Path
+
+refactor: address 12 architectural review findings — P0 bugs, P1 line-limit, P2 SOLID fixes
+
+P0 — Critical:
+- Add `buildWhen` to edit enquiry BlocBuilder to prevent full-form repaint
+- Remove ChangeNotifier.addListener from splash screen (fixes memory leak)
+- Remove mock follow-up fallback in leads_datasource (SRP violation)
+
+P1 — 80-line compliance:
+- Decompose font_settings_screen.dart from 636→112 lines (extract 4 widgets)
+- Split analytics_repository_impl.dart from 120→54 lines (extract 2 services)
+- Extract SectionTitle widget from _buildSectionHeader helper
+
+P2 — Design principles:
+- Introduce abstract HttpClient interface (DIP: auth_remote_datasource depends on abstraction, not Dio)
+- Expand AppStrings from 14→50+ entries; update screens to use centralized strings
+- Replace Colors.white with AppColors.surfaceWhite across theme + shared widgets
+
+P3 — Performance:
+- Parallelize DashboardBloc fetch with Future.wait
+- Memoize DashboardScreen IndexedStack children list

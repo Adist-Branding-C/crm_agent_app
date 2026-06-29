@@ -38,7 +38,7 @@ class LogoutButton extends StatelessWidget {
         ),
         AppSpacing.gapLg,
         Text(
-          'CRM Agent · v1.0.0 \n$textFactor',
+          'CRM Agent · v1.0.0',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.w500,

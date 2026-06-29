@@ -34,10 +34,17 @@ class SettingsScreen extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Column(
         children: [
-          const ScreenHeader(title: 'Settings', showBackButton: true),
+          ScreenHeader(
+            title: 'Settings',
+            showBackButton: true,
+            padding: EdgeInsets.fromLTRB(17.0.w, 20.0.h, 17.0.w, 13.0.h),
+          ),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.0.w,
+                vertical: 8.0.h,
+              ),
               children: [
                 _buildSectionHeader(context, 'App Customization'),
                 AppCustomizationCard(settings: settings),

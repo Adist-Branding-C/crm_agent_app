@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/models/task_models.dart';
 import 'tasks_bloc.dart';
 
 /// Extension containing load and mutation handlers for [TasksBloc].
