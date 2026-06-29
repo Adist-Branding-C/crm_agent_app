@@ -141,3 +141,38 @@ P2 — Design principles:
 P3 — Performance:
 - Parallelize DashboardBloc fetch with Future.wait
 - Memoize DashboardScreen IndexedStack children list
+
+refactor: comprehensive architectural cleanup (SOLID, 80-line limit, BLoC optimization)
+
+- Fix hardcoded date (May 12, 2026 → DateTime.now()) in my_activity_filter_helper.dart
+- Delete duplicate verify_otp_failure.dart; consolidate into verify_otp_error_extensions.dart
+- Consolidate 37+ hardcoded UI strings from 16 BLoC files into error_messages.dart
+- Register missing addTask GoRoute in feature_routes.dart
+- Remove Future.delayed() from production repository implementations
+- Extract FollowUpSection widget (105→56 lines in follow_up_list_body.dart)
+- Deduplicate FabActions: 4 private methods → single data-driven list (95→67 lines)
+- Extract ViewCallLogCubit; remove setState + direct repo access from view_call_log_screen
+- Split filter_date_range_section.dart under 80 lines (extract 3 private widgets)
+- Deduplicate analytics_repository_impl.dart via _filteredLeads/_filteredDeals helpers (111→65 lines)
+- Remove business logic from state classes (suggested getters, unreadCount, withRecentQuery)
+- Update test/search_bloc_test.dart for renamed state getters
+- Fix analyzer issues: missing imports, unused imports, missing closing brace
+
+
+refactor: comprehensive architectural cleanup — DIP, SRP, OCP, and <80 line compliance
+
+- Fix DIP violation: replace direct ActivityRepository access in ViewCallLogScreen
+  with dedicated ViewCallLogCubit
+- Fix DIP violation: make OtpTimerService injectable in VerifyOtpBloc
+- Fix SRP violation: split FabActions static utility class into 4 standalone widgets
+- Fix OCP violation: data-driven FollowUpListBody replacing 3× hardcoded blocks
+- Fix DRY violation: generic _leadQuery/_dealQuery dispatchers in AnalyticsRepositoryImpl
+
+Split 14 files exceeding 80 lines:
+- Extract PeriodChipRow, DateRangeRow from filter_date_range_section.dart
+- Extract EditEnquiryFormController from edit_enquiry_form.dart
+- Extract SectionHeaderTitle widget, EmptyStateWidget reuse
+- Extract buildInputDecoration() helper, FilterFormData model, FilterTitle widget
+- Tighten formatting in font_settings_screen, filter_sheet_body, analytics_filter_sheet
+
+Replace magic string 'tab' query param with AppRoutes.tabQueryParam constant.
