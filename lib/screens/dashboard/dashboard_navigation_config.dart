@@ -19,29 +19,29 @@ class DashboardNavigationConfig {
     return map;
   }
 
-  static final List<DashboardNavigationItem> items = [
+  static List<DashboardNavigationItem> get items => [
      DashboardNavigationItem(
       label: 'Dashboard',
       icon: Icon(Icons.home_outlined, size: 22.s),
       activeIcon: Icon(Icons.home_rounded, size: 22.s),
-      body: DashboardBody(),
+      body: const DashboardBody(),
     ),
      DashboardNavigationItem(
       label: 'Leads',
       icon: Icon(Icons.people_outline_rounded, size: 22.s),
       activeIcon: Icon(Icons.people_rounded, size: 22.s),
-      body: LeadsScreen(),
+      body: const LeadsScreen(),
     ),
      DashboardNavigationItem(
       label: 'Tasks',
       icon: Icon(Icons.check_box_outlined, size: 22.s),
-      activeIcon: Icon(Icons.check_box_rounded, size: 22.s  ),
-      body: TasksScreen(),
+      activeIcon: Icon(Icons.check_box_rounded, size: 22.s),
+      body: const TasksScreen(),
     ),
      DashboardNavigationItem(
       label: 'Search',
-      icon: Icon(Icons.search_rounded, size: 22.s ),
-      body: SearchScreen(),
+      icon: Icon(Icons.search_rounded, size: 22.s),
+      body: const SearchScreen(),
     ),
   ];
 }

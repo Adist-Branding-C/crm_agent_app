@@ -17,8 +17,6 @@ class EnquiryDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EnquiryDetailsBloc, EnquiryDetailsState>(
-      buildWhen: (previous, current) =>
-          previous.runtimeType != current.runtimeType,
       builder: (context, state) {
         if (state is EnquiryDetailsLoading || state is EnquiryDetailsInitial) {
           return  Center(child: AppLoadingWidget());

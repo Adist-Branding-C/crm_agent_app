@@ -1,60 +1,47 @@
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'repositories/settings_repository.dart';
 
 /// Manages settings state, including font size and style configurations,
-/// and persists choices to device preferences.
+/// and delegates choice persistence to a [SettingsRepository].
 class SettingsNotifier extends ChangeNotifier {
-  static const String _fontSizeKey = 'settings_font_size';
-  static const String _fontStyleKey = 'settings_font_style';
+  final SettingsRepository _repository;
 
   String _fontSize = 'Default';
   String _fontStyle = 'Default';
   bool _isLoaded = false;
   bool _hasSavedSettings = false;
 
+  SettingsNotifier(this._repository);
+
   String get fontSize => _fontSize;
   String get fontStyle => _fontStyle;
   bool get isLoaded => _isLoaded;
   bool get hasSavedSettings => _hasSavedSettings;
 
-  /// Returns the corresponding base width for dynamic scaling.
-  ///
-  /// A larger base width scales down text size, while a smaller base width
-  /// scales up text size.
   double get baseWidth {
     switch (_fontSize) {
-      case 'Tiny':
-        return 514.0;
-      case 'Extra Small':
-        return 450.0;
-      case 'Small':
-        return 400.0;
-      case 'Large':
-        return 313.0;
-      case 'Extra Large':
-        return 277.0;
-      case 'Huge':
-        return 240.0;
-      case 'Default':
-      case 'Medium':
-      default:
-        return 360.0;
+      case 'Tiny': return 514.0;
+      case 'Extra Small': return 450.0;
+      case 'Small': return 400.0;
+      case 'Large': return 313.0;
+      case 'Extra Large': return 277.0;
+      case 'Huge': return 240.0;
+      default: return 360.0;
     }
   }
 
-  /// Loads persisted settings from preferences.
+  /// Loads persisted settings from repository.
   Future<void> loadSettings() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      _hasSavedSettings = prefs.containsKey(_fontSizeKey) || prefs.containsKey(_fontStyleKey);
-      var size = prefs.getString(_fontSizeKey) ?? 'Default';
-      if (size == 'Medium') size = 'Default';
-      final style = prefs.getString(_fontStyleKey) ?? 'Default';
-      _fontSize = size;
-      _fontStyle = style;
+      final data = await _repository.loadSettings();
+      _fontSize = data['fontSize'] ?? 'Default';
+      if (_fontSize == 'Medium') _fontSize = 'Default';
+      _fontStyle = data['fontStyle'] ?? 'Default';
+      _hasSavedSettings = _fontSize != 'Default' || _fontStyle != 'Default';
       notifyListeners();
-    } catch (_) {
-      // Keep fallbacks
+    } catch (e, s) {
+      developer.log('Failed to load settings', error: e, stackTrace: s, name: 'SettingsNotifier');
     } finally {
       _isLoaded = true;
     }
@@ -66,9 +53,10 @@ class SettingsNotifier extends ChangeNotifier {
     _hasSavedSettings = true;
     notifyListeners();
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString(_fontSizeKey, size);
-    } catch (_) {}
+      await _repository.saveFontSize(size);
+    } catch (e, s) {
+      developer.log('Failed to save font size', error: e, stackTrace: s, name: 'SettingsNotifier');
+    }
   }
 
   /// Sets and persists the font style.
@@ -77,8 +65,9 @@ class SettingsNotifier extends ChangeNotifier {
     _hasSavedSettings = true;
     notifyListeners();
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString(_fontStyleKey, style);
-    } catch (_) {}
+      await _repository.saveFontStyle(style);
+    } catch (e, s) {
+      developer.log('Failed to save font style', error: e, stackTrace: s, name: 'SettingsNotifier');
+    }
   }
 }

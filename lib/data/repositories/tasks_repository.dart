@@ -10,4 +10,10 @@ abstract class TasksRepository {
 
   /// Adds a new task.
   Future<Task> addTask(Task task);
+
+  /// Stream of added tasks.
+  Stream<Task> get taskAddedStream;
+
+  /// Closes internal controllers.
+  void dispose();
 }

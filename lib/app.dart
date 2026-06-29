@@ -6,10 +6,11 @@ import 'app_providers.dart';
 import 'app_bloc_providers.dart';
 import 'data/auth_state_notifier.dart';
 import 'data/repositories/session_repository.dart';
+import 'data/repositories/settings_repository_impl.dart';
 import 'data/settings_notifier.dart';
 import 'router.dart';
 import 'theme.dart';
-import 'widgets/app_builder.dart';
+import 'widgets/text_scale_builder.dart';
 
 class MyApp extends StatefulWidget {
   final SessionRepository sessionRepository;
@@ -24,25 +25,21 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-double textFactor=0;
+
 class _MyAppState extends State<MyApp> {
   late final GoRouter _router;
   final _authStateNotifier = AuthStateNotifier();
-  final _settingsNotifier = SettingsNotifier()..loadSettings();
+  final _settingsNotifier = SettingsNotifier(SettingsRepositoryImpl())..loadSettings();
 
   @override
   void initState() {
     super.initState();
-    _router = createRouter(widget.sessionRepository, _authStateNotifier, _settingsNotifier);
+    _router = createRouter(
+      widget.sessionRepository,
+      _authStateNotifier,
+      _settingsNotifier,
+    );
   }
-  double _getSuitableTextScaleFactor(BuildContext context) {
-  double width = MediaQuery.of(context).size.width;
-  final settings = Provider.of<SettingsNotifier>(context, listen: false);
-  double baseWidth = settings.baseWidth; 
-  double scaleFactor = width / baseWidth;
-  textFactor=scaleFactor.clamp(0.2, 1.5);
-  return textFactor;
-}
 
   @override
   void dispose() {
@@ -53,16 +50,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-  
-    
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<SettingsNotifier>.value(
-          value: _settingsNotifier,
-        ),
-        ...buildRepositoryProviders(
-          sessionRepository: widget.sessionRepository,
-        ),
+        ChangeNotifierProvider<SettingsNotifier>.value(value: _settingsNotifier),
+        ...buildRepositoryProviders(sessionRepository: widget.sessionRepository),
       ],
       child: ChangeNotifierProvider<AuthStateNotifier>.value(
         value: _authStateNotifier,
@@ -83,18 +74,9 @@ class _MyAppState extends State<MyApp> {
                 darkTheme: AppTheme.darkTheme(fontStyle: settings.fontStyle),
                 themeMode: ThemeMode.light,
                 routerConfig: _router,
-                builder: (context, child) => MediaQuery(
-                  data: MediaQuery.of(context).copyWith(
-                    textScaler:TextScaler.linear(_getSuitableTextScaleFactor(context)),
-                    ),
-                  child: SafeArea(
-                    top: false,maintainBottomViewPadding: true,
-                    child: AppBuilderWidget(
-                      
-                      scaleText: widget.scaleText,
-                      child: child,
-                    ),
-                  ),
+                builder: (context, child) => TextScaleBuilder(
+                  scaleText: widget.scaleText,
+                  child: child,
                 ),
               );
             },

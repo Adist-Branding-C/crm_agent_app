@@ -41,7 +41,10 @@ List<SingleChildWidget> buildDomainProviders() => [
     create: (_) => DashboardRepositoryImpl(),
     dispose: (_, repo) => repo.dispose(),
   ),
-  RepositoryProvider<TasksRepository>(create: (_) => TasksRepositoryImpl()),
+  Provider<TasksRepository>(
+    create: (_) => TasksRepositoryImpl(),
+    dispose: (_, repo) => repo.dispose(),
+  ),
   RepositoryProvider<SpotlightRepository>(
     create: (_) => SpotlightRepositoryImpl(),
   ),

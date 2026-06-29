@@ -31,7 +31,7 @@ class TasksListView extends StatelessWidget {
         buildWhen: (prev, curr) => prev != curr,
         builder: (context, state) {
           final tasks = state is TasksLoaded
-              ? state.getFilteredTasks(DateTime.now())
+              ? state.filteredTasks
               : const [];
           return AsyncStateView(
             isLoading: state is TasksLoading || state is TasksInitial,

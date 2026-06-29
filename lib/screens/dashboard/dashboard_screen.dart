@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/tasks/tasks_bloc.dart';
+import '../../bloc/account/account_bloc.dart';
+import '../../bloc/attendance/attendance_bloc.dart';
+import '../../bloc/notifications/notifications_bloc.dart';
 import '../../theme.dart';
 import 'dashboard_navigation_config.dart';
 import 'dashboard_tab_notifier.dart';
@@ -29,6 +32,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
+    
+    // Eagerly trigger global loads once authenticated dashboard is entered
+    context.read<AccountBloc>().add(const LoadAccount());
+    context.read<AttendanceBloc>().add(const LoadAttendance());
+    context.read<NotificationsBloc>().add(const LoadNotifications());
+
     _items = widget.navigationItems ?? DashboardNavigationConfig.items;
     if (widget.initialFilter == 'overdue') {
       WidgetsBinding.instance.addPostFrameCallback((_) {

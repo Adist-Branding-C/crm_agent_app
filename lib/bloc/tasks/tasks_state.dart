@@ -34,6 +34,7 @@ class TasksLoading extends TasksState {
 /// Loaded state containing tasks list and current filter.
 class TasksLoaded extends TasksState {
   final List<Task> allTasks;
+  final List<Task> filteredTasks;
   final TasksFilter filter;
   final TaskFilterCriteria filterCriteria;
   final TasksFailure? actionFailure;
@@ -41,6 +42,7 @@ class TasksLoaded extends TasksState {
   /// Creates a constant [TasksLoaded] state.
   const TasksLoaded({
     required this.allTasks,
+    required this.filteredTasks,
     this.filter = TasksFilter.all,
     this.filterCriteria = const TaskFilterCriteria(),
     this.actionFailure,
@@ -49,18 +51,20 @@ class TasksLoaded extends TasksState {
   /// Copy constructor.
   TasksLoaded copyWith({
     List<Task>? allTasks,
+    List<Task>? filteredTasks,
     TasksFilter? filter,
     TaskFilterCriteria? filterCriteria,
     TasksFailure? Function()? actionFailure,
   }) => TasksLoaded(
     allTasks: allTasks ?? this.allTasks,
+    filteredTasks: filteredTasks ?? this.filteredTasks,
     filter: filter ?? this.filter,
     filterCriteria: filterCriteria ?? this.filterCriteria,
     actionFailure: actionFailure != null ? actionFailure() : this.actionFailure,
   );
 
   @override
-  List<Object?> get props => [allTasks, filter, filterCriteria, actionFailure];
+  List<Object?> get props => [allTasks, filteredTasks, filter, filterCriteria, actionFailure];
 }
 
 enum TasksFailure { load, toggle, unknown }

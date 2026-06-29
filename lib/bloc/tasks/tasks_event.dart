@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'tasks_filter_criteria.dart';
 import 'tasks_state.dart';
+import 'tasks_models.dart';
 
 /// Base class for all Tasks events.
 abstract class TasksEvent extends Equatable {
@@ -48,7 +49,18 @@ class ApplyFilterCriteria extends TasksEvent {
   List<Object?> get props => [criteria];
 }
 
+
+
 /// Event to clear active action failures.
 class ClearActionFailure extends TasksEvent {
   const ClearActionFailure();
+}
+
+/// Event to notify bloc of a newly added task.
+class TaskAdded extends TasksEvent {
+  final Task task;
+  const TaskAdded(this.task);
+
+  @override
+  List<Object?> get props => [task];
 }

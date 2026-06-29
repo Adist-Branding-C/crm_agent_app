@@ -8,7 +8,6 @@ import '../../widgets/async_state_view.dart';
 import '../../widgets/page_scaffold.dart';
 import 'widgets/follow_up_header.dart';
 import 'widgets/follow_up_list_body.dart';
-
 String _followUpsErrorString(FollowUpsFailure f) {
   switch (f) {
     case FollowUpsFailure.load:
@@ -59,7 +58,6 @@ class _FollowUpsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FollowUpsBloc, FollowUpsState>(
-      buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
       builder: (context, state) {
         final followUps = state is FollowUpsLoaded
             ? state.followUps

@@ -1,3 +1,4 @@
+import 'dart:async';
 import '../models/task_models.dart';
 import 'mock_tasks_data.dart';
 import 'tasks_repository.dart';
@@ -5,6 +6,10 @@ import 'tasks_repository.dart';
 /// Concrete implementation of [TasksRepository] with mock data.
 class TasksRepositoryImpl implements TasksRepository {
   late final List<Task> _mockTasks = createMockTasks();
+  final _addedController = StreamController<Task>.broadcast();
+
+  @override
+  Stream<Task> get taskAddedStream => _addedController.stream;
 
   @override
   Future<List<Task>> getTasks() async {
@@ -27,6 +32,12 @@ class TasksRepositoryImpl implements TasksRepository {
       id: DateTime.now().millisecondsSinceEpoch.toString(),
     );
     _mockTasks.insert(0, taskWithId);
+    _addedController.add(taskWithId);
     return taskWithId;
+  }
+
+  @override
+  void dispose() {
+    _addedController.close();
   }
 }

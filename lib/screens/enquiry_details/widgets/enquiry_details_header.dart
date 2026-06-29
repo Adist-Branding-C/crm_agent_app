@@ -30,7 +30,6 @@ class EnquiryDetailsHeader extends StatelessWidget {
             ScreenHeader(
               title: 'Enquiry Details',
               showBackButton: true,
-             
               actions: EditEnquiryButton(lead: lead),
               padding: EdgeInsets.only(
                 left: AppSpacing.lg,
@@ -48,25 +47,21 @@ class EnquiryDetailsHeader extends StatelessWidget {
                   Text(
                     lead.name,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
-                      fontSize: 17.s
+                      fontWeight: FontWeight.bold, color: AppColors.textDark, fontSize: 17.s,
                     ),
                   ),
                   AppSpacing.gapXs,
                   Text(
                     lead.email ?? 'No email provided',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textMuted,
-                      fontSize: 12.s
+                      color: AppColors.textMuted, fontSize: 12.s,
                     ),
                   ),
                   AppSpacing.gapXxs,
                   Text(
                     lead.phone,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textMuted,
-                      fontSize: 12.s
+                      color: AppColors.textMuted, fontSize: 12.s,
                     ),
                   ),
                   AppSpacing.gapXl,

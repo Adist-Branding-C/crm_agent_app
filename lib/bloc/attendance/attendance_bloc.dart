@@ -35,7 +35,6 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
   Future<void> _onCheckIn(CheckIn event, Emitter<AttendanceState> emit) async {
     if (state is AttendanceLoaded) {
       final current = state as AttendanceLoaded;
-      emit(const AttendanceLoading());
       try {
         final data = await attendanceRepository.checkIn(current.toData());
         emit(data.toState());
@@ -51,7 +50,6 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
   ) async {
     if (state is AttendanceLoaded) {
       final current = state as AttendanceLoaded;
-      emit(const AttendanceLoading());
       try {
         final data = await attendanceRepository.checkOut(current.toData());
         emit(data.toState());
