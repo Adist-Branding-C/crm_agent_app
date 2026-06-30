@@ -23,6 +23,7 @@ class AppRoutes {
   static const viewCallLog = 'viewCallLog';
   static const settings = 'settings';
   static const fontSettings = 'fontSettings';
+  static const privacyPolicy = 'privacyPolicy';
 
   static const splashPath = '/splash';
   static const loginPath = '/login';
@@ -45,6 +46,7 @@ class AppRoutes {
   static const viewCallLogPath = '/view-call-log';
   static const settingsPath = '/settings';
   static const fontSettingsPath = '/settings/font-settings';
+  static const privacyPolicyPath = '/privacy-policy';
 
   static const _authPaths = <String>{
     loginPath,
