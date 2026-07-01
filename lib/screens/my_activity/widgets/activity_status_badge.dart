@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/my_activity/my_activity_enums.dart';
 import '../../../theme.dart';
-import '../../../utils/context_text_extension.dart';
 
 /// Colored badge displaying the activity status label.
 class ActivityStatusBadge extends StatelessWidget {
@@ -23,10 +22,9 @@ class ActivityStatusBadge extends StatelessWidget {
       ),
       child: Text(
         status.label,
-        style: TextStyle(
-          fontSize: 13.s,
-          fontWeight: FontWeight.w600,
+        style: Theme.of(context).textTheme.labelMedium?.copyWith(
           color: colors.text,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );

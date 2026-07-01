@@ -31,11 +31,10 @@ class AnalyticsPeriodDropdown extends StatelessWidget {
             AppSpacing.gapWSm,
             Text(
               selectedPeriod,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textDark,
-                fontSize: 13.s,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: AppColors.textDark,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
              AppSpacing.gapSm,
              Icon(

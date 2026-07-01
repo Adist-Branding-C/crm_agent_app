@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 
 /// Additional information input fields section.
@@ -19,12 +20,8 @@ class AddLeadAdditionalFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       padding: EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
       child: Column(
         children: [
           CustomTextField(

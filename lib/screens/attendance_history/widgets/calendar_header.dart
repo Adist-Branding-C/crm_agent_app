@@ -11,17 +11,16 @@ class CalendarHeader extends StatelessWidget {
       children: [
         Text(
           'May 2026',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
-            fontSize: 14.s
           ),
         ),
         Text(
           'Through 12 May',
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted,fontSize: 13),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: AppColors.textMuted,
+          ),
         ),
       ],
     );

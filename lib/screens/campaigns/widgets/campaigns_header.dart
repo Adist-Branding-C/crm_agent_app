@@ -11,26 +11,19 @@ class CampaignsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final count = context.select((CampaignsBloc b) {
+      final s = b.state;
+      return s is CampaignsLoaded ? s.campaigns.length : 0;
+    });
+
     return ScreenHeader(
       title: 'Campaigns',
+      subtitle: '$count active',
       padding: EdgeInsets.fromLTRB(
-      17.0.w,
-      20.0.h,
-      17.0.w,
-      13.0.h,
-    ),
-      subtitleWidget: BlocBuilder<CampaignsBloc, CampaignsState>(
-        buildWhen: (prev, curr) => curr is CampaignsLoaded,
-        builder: (context, state) {
-          final count = state is CampaignsLoaded ? state.campaigns.length : 0;
-          return Text(
-            '$count active',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: AppColors.textMuted,
-              fontWeight: FontWeight.w500,
-            ),
-          );
-        },
+        17.0.w,
+        20.0.h,
+        17.0.w,
+        13.0.h,
       ),
       showBackButton: true,
     );

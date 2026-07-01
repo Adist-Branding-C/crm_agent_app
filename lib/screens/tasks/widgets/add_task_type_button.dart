@@ -45,9 +45,8 @@ class TaskTypeButton extends StatelessWidget {
             SizedBox(width: AppSpacing.xs2),
             Text(
               type.label,
-              style: TextStyle(
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: isSelected ? type.activeColor : AppColors.textMuted,
-                fontSize: 11.s,
                 fontWeight: FontWeight.bold,
               ),
             ),

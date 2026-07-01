@@ -29,18 +29,18 @@ class NotificationBell extends StatelessWidget {
             top: -2,
             right: -2,
             child: Container(
-              padding: EdgeInsets.all(AppSpacing.xs+1),
+              padding: EdgeInsets.all(3.w),
               decoration: const BoxDecoration(
                 color: AppColors.errorColor,
                 shape: BoxShape.circle,
               ),
               child: Text(
                 count.toString(),
-                style: TextStyle(
-                  color: AppColors.surfaceWhite,
-                  fontSize: 8.s,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: AppColors.surfaceWhite,
+                      fontSize: 8.s,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ),
           ),

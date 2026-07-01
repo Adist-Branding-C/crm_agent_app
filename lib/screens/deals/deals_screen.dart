@@ -8,7 +8,6 @@ import 'widgets/deals_toggle.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/deals/deals_bloc.dart';
-import '../../data/repositories/deals_repository.dart';
 
 class DealsScreen extends StatelessWidget {
   const DealsScreen({super.key});

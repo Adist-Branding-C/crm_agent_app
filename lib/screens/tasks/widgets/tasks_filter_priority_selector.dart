@@ -21,12 +21,10 @@ class TasksFilterPrioritySelector extends StatelessWidget {
       children: [
          Text(
           'PRIORITY',
-          style: TextStyle(
-            color: AppColors.textMuted,
-            fontSize: 11.s,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 0.8.w,
-          ),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.8,
+              ),
         ),
         AppSpacing.gapSm,
         Row(

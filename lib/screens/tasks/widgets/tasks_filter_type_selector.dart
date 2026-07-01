@@ -21,12 +21,10 @@ class TasksFilterTypeSelector extends StatelessWidget {
       children: [
          Text(
           'TASK TYPE',
-          style: TextStyle(
-            color: AppColors.textMuted,
-            fontSize: 11.s,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 0.8.w,
-          ),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.8,
+              ),
         ),
          SizedBox(height: 10.h),
         Row(

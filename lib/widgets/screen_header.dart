@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../theme.dart';
-import '../utils/context_text_extension.dart';
 import 'card_icon_button.dart';
 import 'screen_header_title.dart';
 
@@ -30,15 +29,10 @@ class ScreenHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final large = isLarge ?? !showBackButton;
-    final resolvedPadding = padding ?? EdgeInsets.fromLTRB(
-      17.0.w,
-      90.0.h,
-      17.0.w,
-      large ? 7.0.h : 13.0.h,
-    );
+    final resolvedPadding = EdgeInsets.fromLTRB(12.0.w, 25.0.h, 12.0.w, 13.0.h);
 
     final titleStyle = (Theme.of(context).textTheme.headlineSmall ?? const TextStyle()).copyWith(
-      fontSize: 16.s,
+      fontSize: large ? 20.s : 18.s,
       fontWeight: FontWeight.bold,
       letterSpacing: 0.7.w,
       color: AppColors.textDark,

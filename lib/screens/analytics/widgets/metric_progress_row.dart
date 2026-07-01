@@ -34,19 +34,16 @@ class MetricProgressRow extends StatelessWidget {
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.w600,
-                fontSize: 14.s
-              ),
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: AppColors.textDark,
+                  ),
             ),
             Text(
               count,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-                fontWeight: FontWeight.bold,
-                fontSize: 14.s
-              ),
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: AppColors.textMuted,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),

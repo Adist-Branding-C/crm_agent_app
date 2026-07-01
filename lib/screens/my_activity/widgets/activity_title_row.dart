@@ -20,8 +20,7 @@ class ActivityTitleRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style:  TextStyle(
-            fontSize: 14.s,
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),

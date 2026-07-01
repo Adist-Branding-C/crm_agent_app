@@ -24,14 +24,12 @@ class AppCustomizationCard extends StatelessWidget {
                 'Font Settings',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textDark,
-                  fontSize: 15.s,
                 ),
               ),
               subtitle: Text(
                 '${settings.fontSize} size · ${settings.fontStyle} style',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 12.s,
                 ),
               ),
               trailing: Icon(

@@ -21,7 +21,6 @@ class SecurityCard extends StatelessWidget {
                 'Change Password',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textDark,
-                  fontSize: 15.s,
                 ),
               ),
               trailing: Icon(

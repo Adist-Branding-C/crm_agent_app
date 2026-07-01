@@ -51,9 +51,9 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
             Expanded(
               child: Text(
                 log.location ?? '—',
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted,fontSize: 10.s),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.textMuted,
+                ),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -67,10 +67,9 @@ class HistoryCalendarWorkingDayDetail extends StatelessWidget {
               AppSpacing.gapWXs,
               Text(
                 'GPS verified',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: AppColors.success,
                   fontWeight: FontWeight.w500,
-                  fontSize: 10.s
                 ),
               ),
             ],

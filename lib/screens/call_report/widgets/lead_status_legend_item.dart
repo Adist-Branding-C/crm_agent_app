@@ -19,7 +19,7 @@ class LeadStatusLegendItem extends StatelessWidget {
         AppSpacing.gapXs,
         Text(
           '${item.count}',
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
           ),
@@ -29,7 +29,7 @@ class LeadStatusLegendItem extends StatelessWidget {
           item.label,
           style: Theme.of(
             context,
-          ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted),
+          ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
         ),
       ],
     );

@@ -36,14 +36,13 @@ class HistoryDetailBox extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppColors.textDark,
-                fontSize: 12.s
               ),
             ),
             Text(
               label,
-              style: Theme.of(
-                context,
-              ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted,fontSize: 10.s),
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: AppColors.textMuted,
+              ),
             ),
           ],
         ),

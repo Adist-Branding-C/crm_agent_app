@@ -23,21 +23,24 @@ class ChangePasswordButtons extends StatelessWidget {
       children: [
         Expanded(
           flex: 1,
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
-              side: const BorderSide(color: AppColors.borderLight),
-              backgroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+          child: SizedBox(
+            height: 65.h,
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: AppColors.borderLight),
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
               ),
-            ),
-            onPressed: onCancel,
-            child: const Text(
-              'Cancel',
-              style: TextStyle(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.bold,
+              onPressed: isLoading ? null : onCancel,
+              child: Text(
+                'Cancel',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textDark,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.s,
+                ),
               ),
             ),
           ),

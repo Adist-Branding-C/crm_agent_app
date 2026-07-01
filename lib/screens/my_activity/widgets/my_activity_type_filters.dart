@@ -66,10 +66,9 @@ class _TypeChip extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyle(
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             color: isSelected ? Colors.white : AppColors.textMuted,
             fontWeight: FontWeight.w600,
-            fontSize: 13,
           ),
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../bloc/leads/leads_enums.dart';
 import '../../../theme.dart';
+import '../../../widgets/custom_card.dart';
 
 import 'source_purpose_fields.dart';
 import 'category_status_fields.dart';
@@ -46,12 +47,8 @@ class AddLeadSelectionFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomCard(
       padding: EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

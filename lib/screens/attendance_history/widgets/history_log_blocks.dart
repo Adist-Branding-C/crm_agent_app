@@ -24,17 +24,15 @@ class HistoryLogDateBlock extends StatelessWidget {
         children: [
           Text(
             '${log.day}',
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: statusTheme.fg,
-              fontSize: 15.s,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             log.dayName,
-            style: TextStyle(
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: statusTheme.fg,
-              fontSize: 9.s,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -63,19 +61,16 @@ class HistoryLogTimeBlock extends StatelessWidget {
       children: [
         Text(
           timeStr,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
-            fontSize: 9.s
-            
           ),
         ),
         if (durationStr.isNotEmpty) ...[
           AppSpacing.gapXs,
           Text(
             durationStr,
-            style: TextStyle(
-              fontSize: 9.s,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: isOngoing ? AppColors.success : AppColors.textMuted,
               fontWeight: isOngoing ? FontWeight.bold : FontWeight.normal,
             ),

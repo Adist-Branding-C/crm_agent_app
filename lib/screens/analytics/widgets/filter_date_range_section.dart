@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../utils/context_text_extension.dart';
 import '../../../theme.dart';
-import 'date_picker_field.dart';
+import 'custom_date_range_picker.dart';
 
 class FilterDateRangeSection extends StatelessWidget {
   final String selectedPeriod;
@@ -21,23 +20,6 @@ class FilterDateRangeSection extends StatelessWidget {
     required this.onEndDateChanged,
   });
 
-  Future<void> _selectDate(BuildContext context, bool isStart) async {
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime.now().add(Duration(days: 50000)),
-    );
-    if (picked != null) {
-      (isStart ? onStartDateChanged : onEndDateChanged)(picked);
-    }
-  }
-
-  String _formatDate(DateTime? date) {
-    if (date == null) return 'dd-mm-yyyy';
-    return '${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year}';
-  }
-
   @override
   Widget build(BuildContext context) {
     const periods = [
@@ -53,11 +35,9 @@ class FilterDateRangeSection extends StatelessWidget {
         Text(
           'DATE RANGE',
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: AppColors.textMuted,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 0.3.w,
-            fontSize: 12.s
-          ),
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5.w,
+              ),
         ),
         AppSpacing.gapSm,
         SingleChildScrollView(
@@ -84,11 +64,10 @@ class FilterDateRangeSection extends StatelessWidget {
                     ),
                     child: Text(
                       period,
-                      style: TextStyle(
-                        color: isSel ? Colors.white : AppColors.textMuted,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 11.s,
-                      ),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: isSel ? Colors.white : AppColors.textMuted,
+                            fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
+                          ),
                     ),
                   ),
                 ),
@@ -98,24 +77,11 @@ class FilterDateRangeSection extends StatelessWidget {
         ),
         if (selectedPeriod == 'Custom range') ...[
           AppSpacing.gapXl,
-          Row(
-            children: [
-              Expanded(
-                child: DatePickerField(
-                  label: 'From :',
-                  dateStr: _formatDate(startDate),
-                  onTap: () => _selectDate(context, true),
-                ),
-              ),
-              AppSpacing.gapWLg,
-              Expanded(
-                child: DatePickerField(
-                  label: 'To :',
-                  dateStr: _formatDate(endDate),
-                  onTap: () => _selectDate(context, false),
-                ),
-              ),
-            ],
+          CustomDateRangePicker(
+            startDate: startDate,
+            endDate: endDate,
+            onStartDateChanged: onStartDateChanged,
+            onEndDateChanged: onEndDateChanged,
           ),
         ],
       ],

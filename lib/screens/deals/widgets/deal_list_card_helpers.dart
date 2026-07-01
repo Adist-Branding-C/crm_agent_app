@@ -22,7 +22,7 @@ class DealCardHeader extends StatelessWidget {
             '${deal.title} — ${deal.clientName}',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: AppColors.textDark,
               fontWeight: FontWeight.bold,
               fontSize: 13.s,
@@ -32,7 +32,7 @@ class DealCardHeader extends StatelessWidget {
         AppSpacing.gapWMd,
         Text(
           deal.amount.toRupeeFormat(),
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.w800,
             fontSize: 13.s,
@@ -60,15 +60,15 @@ class DealCardMeta extends StatelessWidget {
           children: [
             Icon(
               Icons.calendar_today_outlined,
-              size: 8.s,
+              size: 12.s,
               color: AppColors.textMuted,
             ),
             AppSpacing.gapWXs,
             Text(
               deal.closeDate,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: AppColors.textMuted,
-                fontSize: 9.s,
+                fontSize: 11.s,
               ),
             ),
           ],

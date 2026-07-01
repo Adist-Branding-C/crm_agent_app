@@ -29,11 +29,11 @@ class TasksFilterActions extends StatelessWidget {
             child: Center(
               child: Text(
                 'Reset',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 13.s,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13.s,
+                    ),
               ),
             ),
           ),

@@ -17,7 +17,6 @@ class TasksFilterHeader extends StatelessWidget {
           'Filter Tasks',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.5.w,
           ),
         ),
       ],

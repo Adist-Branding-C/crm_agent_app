@@ -17,23 +17,23 @@ class FilterActionButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: Container(
-            height: 60.h,
-            decoration: BoxDecoration(
-              border: Border.all(color: AppColors.textMuted),
-              borderRadius: BorderRadius.circular(6.r),
-            ),
-            child: GestureDetector(
-              onTap: onReset,
-              child: Center(
-                child: Text(
-                  'Reset',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textDark,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.s,
-                  ),
+          child: SizedBox(
+            height: 55.h,
+            child: OutlinedButton(
+              onPressed: onReset,
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: AppColors.textMuted),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
+              ),
+              child: Text(
+                'Reset',
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: AppColors.textDark,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.s,
+                    ),
               ),
             ),
           ),
@@ -48,16 +48,16 @@ class FilterActionButtons extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.r),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
               ),
               child: Text(
                 'Apply Filters',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                  fontSize: 15.s,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.s,
+                    ),
               ),
             ),
           ),

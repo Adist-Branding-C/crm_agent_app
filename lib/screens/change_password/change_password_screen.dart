@@ -49,6 +49,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           }
         },
         child: PageScaffold(
+          padding: EdgeInsets.zero,
           child: Builder(
             builder: (context) => ChangePasswordBody(
               currentController: _currentController,

@@ -12,11 +12,18 @@ class LeadCardDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(lead.name, style:TextStyle(fontSize: 14.s, fontWeight: FontWeight.bold,color: AppColors.textDark),),
+        Text(
+          lead.name,
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         AppSpacing.gapXxs,
         Text(
           '${lead.source.label} · ${lead.status.label}',
-          style: TextStyle(fontSize: 10.s, color: AppColors.textMuted,letterSpacing: 0.3.w,),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            letterSpacing: 0.3.w,
+          ),
         ),
       ],
     );

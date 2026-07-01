@@ -27,7 +27,6 @@ class HistoryLogView extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
               color: AppColors.textDark,
-              fontSize: 15.s
             ),
           ),
         ),

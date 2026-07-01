@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfs/flutter_sfs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/change_password/change_password_bloc.dart';
 import '../../../theme/app_context_theme.dart';
@@ -30,7 +31,7 @@ class NewPasswordInput extends StatelessWidget {
                 ? Icons.visibility_outlined
                 : Icons.visibility_off_outlined,
             color: context.textMuted,
-            size: 20,
+            size: 20.s,
           ),
           onPressed: () => context.read<ChangePasswordBloc>().add(
             const ToggleNewPasswordVisibility(),

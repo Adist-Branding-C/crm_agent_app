@@ -19,7 +19,6 @@ class CheckedInInfo extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 15.s,
           ),
         ),
         AppSpacing.gapXs,
@@ -31,25 +30,29 @@ class CheckedInInfo extends StatelessWidget {
               size: 14.s,
             ),
             AppSpacing.gapWXs,
-            Text(
-              '$location ',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: AppColors.slate400,
-                fontSize: 13.s,
+            Expanded(
+              child: Text(
+                location,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.slate400,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
-        Text(
-          '· since $checkInTime',
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: AppColors.slate400,
-            fontSize: 13.s,
+        AppSpacing.gapXs,
+        Padding(
+          padding: EdgeInsets.only(left: 16.w),
+          child: Text(
+            'since $checkInTime',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: AppColors.slate400,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

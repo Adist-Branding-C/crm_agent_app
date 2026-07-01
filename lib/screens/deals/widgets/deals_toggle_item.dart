@@ -29,7 +29,7 @@ class DealsToggleItem extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyle(
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
             fontSize: 12.s,

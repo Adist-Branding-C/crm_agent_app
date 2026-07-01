@@ -21,11 +21,9 @@ class FilterSection extends StatelessWidget {
           padding: EdgeInsets.only(bottom: AppSpacing.sm),
           child: Text(
             title,
-            style:  TextStyle(
-              color: AppColors.textMuted,
-              fontSize: 10.s,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              letterSpacing: 0.5,
+              letterSpacing: 0.5.w,
             ),
           ),
         ),

@@ -30,7 +30,7 @@ class WorkDetailsSection extends StatelessWidget {
           'Work details',
           style: Theme.of(
             context,
-          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold,fontSize: 15.s),
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         AppSpacing.gapMd,
         CustomCard(

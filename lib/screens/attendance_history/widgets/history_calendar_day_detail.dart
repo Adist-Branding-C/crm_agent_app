@@ -34,10 +34,9 @@ class HistoryCalendarDayDetail extends StatelessWidget {
             children: [
               Text(
                 '${log.dayName}, ${log.day} May',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: AppColors.textDark,
-                  fontSize: 12.s
                 ),
               ),
               HistoryStatusBadge(status: log.status),

@@ -4,7 +4,6 @@ import '../../../widgets/custom_card.dart';
 import '../../../theme.dart';
 import 'campaign_icon.dart';
 import 'campaign_status_badge.dart';
-import 'campaign_presentation_extensions.dart';
 import 'campaign_details.dart';
 
 /// Card component that displays details and progress for a single campaign.
@@ -18,7 +17,7 @@ class CampaignCard extends StatelessWidget {
     final double progress = campaign.totalCount == 0
         ? 0
         : campaign.doneCount / campaign.totalCount;
-    final captionStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 10.s);
+    final captionStyle = Theme.of(context).textTheme.labelSmall;
 
     return CustomCard(
       padding: EdgeInsets.all(AppSpacing.lg),

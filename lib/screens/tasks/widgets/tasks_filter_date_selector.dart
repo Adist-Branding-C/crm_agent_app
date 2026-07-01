@@ -29,12 +29,10 @@ class TasksFilterDateSelector extends StatelessWidget {
       children: [
          Text(
           'DATE RANGE',
-          style: TextStyle(
-            color: AppColors.textMuted,
-            fontSize: 11.s,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 0.5.w,
-          ),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.8,
+              ),
         ),
         AppSpacing.gapSm,
         Wrap(

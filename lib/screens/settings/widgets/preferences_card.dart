@@ -16,7 +16,6 @@ class _PreferencesCardState extends State<PreferencesCard> {
   Widget build(BuildContext context) {
     final titleStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
       color: AppColors.textDark,
-      fontSize: 15.s,
     );
 
     return CustomCard(
@@ -45,7 +44,6 @@ class _PreferencesCardState extends State<PreferencesCard> {
                 'Light (Default)',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 12.s,
                 ),
               ),
             ),

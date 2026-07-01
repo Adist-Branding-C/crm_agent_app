@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../theme.dart';
-import '../../../../utils/context_text_extension.dart';
 import '../models/deals_view_notifier.dart';
 import 'deals_toggle_item.dart';
 

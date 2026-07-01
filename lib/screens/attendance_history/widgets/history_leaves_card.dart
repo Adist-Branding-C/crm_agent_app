@@ -45,14 +45,12 @@ class HistoryLeavesCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.textDark,
                     fontWeight: FontWeight.bold,
-                    fontSize: 13.s,
                   ),
                 ),
                 Text(
                   'Avg check-in ${history.avgCheckInTime} · checkout ${history.avgCheckOutTime}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     color: AppColors.textMuted,
-                    fontSize: 10.s,
                   ),
                 ),
               ],
@@ -67,11 +65,10 @@ class HistoryLeavesCard extends StatelessWidget {
                 color: AppColors.primaryColorLight.withAlpha(200),
               ),
               height: 60.h,
-
               child: Center(
                 child: Text(
                   "Apply",
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     color: AppColors.primaryColor,
                     fontWeight: FontWeight.w700,
                   ),

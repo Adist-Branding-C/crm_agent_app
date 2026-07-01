@@ -43,9 +43,9 @@ class HistorySummaryCheckoutRow extends StatelessWidget {
               ),
               Text(
                 '$checkInLocation · GPS verified',
-                style: Theme.of(
-                  context,
-                ).textTheme.labelSmall?.copyWith(color: AppColors.slate400,fontSize: 10.s),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.slate400,
+                ),
               ),
             ],
           ),

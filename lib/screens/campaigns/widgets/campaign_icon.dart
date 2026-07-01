@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sfs/flutter_sfs.dart';
 import '../../../bloc/campaigns/campaigns_models.dart';
-import '../../../theme/app_colors.dart';
 import 'campaign_presentation_extensions.dart';
 
 /// Renders the styled channel icon for a campaign.
@@ -21,13 +20,13 @@ class CampaignIcon extends StatelessWidget {
     }
 
     return Container(
-      width: 40.w,
-      height: 70.h,
+      width: 40.r,
+      height: 40.r,
       decoration: BoxDecoration(
-        color: AppColors.primaryColor,
+        color: campaign.themeColor,
         borderRadius: BorderRadius.circular(8.r),
       ),
-      child: Icon(iconData, color: Colors.white, size: 20),
+      child: Icon(iconData, color: Colors.white, size: 20.s),
     );
   }
 }

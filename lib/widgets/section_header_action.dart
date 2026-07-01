@@ -24,11 +24,10 @@ class SectionHeaderAction extends StatelessWidget {
       onTap: onActionTap,
       child: Text(
         actionText,
-        style: TextStyle(
-          color: AppColors.primaryColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 13.s,
-        ),
+        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              color: AppColors.primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }

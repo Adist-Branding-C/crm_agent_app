@@ -58,11 +58,11 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
-      padding: EdgeInsets.fromLTRB(17.0.w, 20.0.h, 17.0.w, 20.0.h),
+      padding: EdgeInsets.fromLTRB(AppSpacing.xl, 20.0.h, AppSpacing.xl, 20.0.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

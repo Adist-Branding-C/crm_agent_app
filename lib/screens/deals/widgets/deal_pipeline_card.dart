@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../bloc/deals/deals_models.dart';
 import '../../../../widgets/custom_card.dart';
-import '../../../../widgets/user_avatar.dart';
 import '../../../../theme.dart';
 import '../../../../utils/currency_formatter.dart';
 import 'deals_presentation_extensions.dart';
@@ -35,19 +34,19 @@ class DealPipelineCard extends StatelessWidget {
                   children: [
                     Text(
                       '${deal.title} — ${deal.clientName}',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.bold,
-                        fontSize: 12.s
+                        fontSize: 13.s,
                       ),
                     ),
                     AppSpacing.gapSm,
                     Text(
                       deal.amount.toRupeeFormat(),
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: AppColors.textDark,
                         fontWeight: FontWeight.w800,
-                        fontSize: 11.s
+                        fontSize: 12.s,
                       ),
                     ),
                   ],

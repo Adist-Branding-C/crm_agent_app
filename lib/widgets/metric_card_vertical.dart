@@ -38,9 +38,10 @@ class MetricCardVertical extends StatelessWidget {
             children: [
               Text(
                 primaryText,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleLarge?.copyWith(fontSize: 15.s),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(fontWeight: FontWeight.bold),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -48,9 +49,8 @@ class MetricCardVertical extends StatelessWidget {
               Text(
                 secondaryText,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12.5.s,
-                ),
+                      fontWeight: FontWeight.w500,
+                    ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

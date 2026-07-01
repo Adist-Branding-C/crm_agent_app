@@ -31,9 +31,8 @@ class HistoryStatCard extends StatelessWidget {
           AppSpacing.gapXs,
           Text(
             label,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: AppColors.textMuted,
-              fontSize: 9.s,
               fontWeight: FontWeight.w500,
             ),
           ),

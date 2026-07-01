@@ -53,9 +53,9 @@ class FilterSheetBody extends StatelessWidget {
             children: [
               Text(
                 'Filter & Sort',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, fontSize: 16.s),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               if (status != null || source != null)
                 TextButton(
@@ -65,12 +65,11 @@ class FilterSheetBody extends StatelessWidget {
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child:  Text(
+                  child: Text(
                     'Clear',
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 12.s,
                     ),
                   ),
                 ),

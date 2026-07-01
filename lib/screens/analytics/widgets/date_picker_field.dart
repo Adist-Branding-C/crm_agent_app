@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/context_text_extension.dart';
 import '../../../theme.dart';
 
 class DatePickerField extends StatelessWidget {
@@ -19,50 +18,51 @@ class DatePickerField extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-
         Text(
           label,
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: AppColors.textMuted,
-            fontWeight: FontWeight.bold,
-            fontSize: 11.s
-          ),
+                color: AppColors.textMuted,
+                fontWeight: FontWeight.bold,
+              ),
         ),
         AppSpacing.gapWSm,
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            height: 55.h,
-            width: 100.w,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(6.r),
-              border: Border.all(color: AppColors.borderLight),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  dateStr,
-                  style: TextStyle(
-                    color: dateStr == 'dd-mm-yyyy'
-                        ? AppColors.textMuted
-                        : AppColors.textDark,
-                    fontSize: 12.s,
-                    fontWeight: FontWeight.w500,
+        Expanded(
+          child: GestureDetector(
+            onTap: onTap,
+            child: Container(
+              height: 55.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.r),
+                border: Border.all(color: AppColors.borderLight),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      dateStr,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: dateStr == 'dd-mm-yyyy'
+                                ? AppColors.textMuted
+                                : AppColors.textDark,
+                            fontWeight: FontWeight.w500,
+                          ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-                 Icon(
-                  Icons.calendar_today_outlined,
-                  size: 12.s,
-                  color: AppColors.textMuted,
-                ),
-              ],
+                  AppSpacing.gapWSm,
+                  Icon(
+                    Icons.calendar_today_outlined,
+                    size: 12.s,
+                    color: AppColors.textMuted,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-        AppSpacing.gapLg
       ],
     );
   }

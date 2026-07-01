@@ -15,9 +15,8 @@ class HistoryStatsText extends StatelessWidget {
       children: [
         Text(
           'Attendance this month',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: AppColors.slate400,
-            fontSize: 10.s,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -25,7 +24,6 @@ class HistoryStatsText extends StatelessWidget {
           '${history.presentDays} of ${history.totalWorkingDays} working days',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Colors.white,
-            fontSize: 15.s,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -28,10 +28,10 @@ class PrivacyPolicyBody extends StatelessWidget {
                 );
               }),
               AppSpacing.gapLg,
-               Center(
+              Center(
                 child: Text(
                   'Last Updated: June 30, 2026',
-                  style: TextStyle(color: AppColors.textMuted, fontSize: 9.s),
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
             ],

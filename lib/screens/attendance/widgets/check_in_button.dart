@@ -10,24 +10,23 @@ class CheckInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60.h,
-      width: 70.w,
+      width: 80.w,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-          padding:  EdgeInsets.symmetric(
-            horizontal: AppSpacing.fourteen,
-            vertical: AppSpacing.ten,
+          padding: EdgeInsets.symmetric(
+            horizontal: 4.w,
+            vertical: 4.h,
           ),
         ),
         onPressed: () => context.read<AttendanceBloc>().add(const CheckIn()),
         child: Text(
           'Check in',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 10.s
           ),
         ),
       ),

@@ -29,9 +29,8 @@ class TargetProgressIndicator extends StatelessWidget {
             Text(
               'Achieved ${achieved.toDouble().toRupeeFormat()} of ${target.toDouble().toRupeeFormat()}',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-                fontSize: 12.s,
-              ),
+                    color: AppColors.textMuted,
+                  ),
             ),
             Text(
               '$percentage%',

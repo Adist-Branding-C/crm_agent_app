@@ -35,11 +35,11 @@ class FollowUpCardBadges extends StatelessWidget {
           ),
           child: Text(
             call.tag.label,
-            style: TextStyle(
-              color: tagText,
-              fontSize: 10.s,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: tagText,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.s,
+                ),
           ),
         ),
         if (call.isOverdue)
@@ -54,11 +54,11 @@ class FollowUpCardBadges extends StatelessWidget {
             ),
             child: Text(
               'Overdue',
-              style: TextStyle(
-                color: AppColors.errorColor,
-                fontSize: 10.s,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: AppColors.errorColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10.s,
+                  ),
             ),
           ),
       ],

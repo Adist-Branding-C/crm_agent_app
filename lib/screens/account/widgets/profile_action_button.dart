@@ -35,11 +35,10 @@ class ProfileActionButton extends StatelessWidget {
           AppSpacing.gapWSm,
           Text(
             label,
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 14.s,
-            ),
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
         ],
       ),

@@ -42,8 +42,7 @@ class FilterSortBy extends StatelessWidget {
                 ),
                 child: Text(
                   opt.label,
-                  style: TextStyle(
-                    fontSize: 12.s,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     fontWeight: isSel ? FontWeight.w600 : FontWeight.w500,
                     color: isSel ? AppColors.textDark : AppColors.textMuted,
                   ),

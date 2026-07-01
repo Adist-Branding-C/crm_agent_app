@@ -53,15 +53,29 @@ class TaskDetailsBottomSheet extends StatelessWidget {
               Container(
                 padding:  EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 10.0.h),
                 decoration: BoxDecoration(color: priorityBg, borderRadius: BorderRadius.circular(6)),
-                child: Text(task.priority.label, style: TextStyle(color: task.priority.displayColor, fontSize: 11.s, fontWeight: FontWeight.bold)),
+                child: Text(
+                  task.priority.label,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: task.priority.displayColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
               ),
             ],
           ),
           AppSpacing.gapXl,
-          Text(task.title, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, fontSize: 17.s)),
+          Text(
+            task.title,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
           if (task.description != null && task.description!.isNotEmpty) ...[
             AppSpacing.gapXs,
-            Text(task.description!, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 14.s)),
+            Text(
+              task.description!,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ],
           AppSpacing.gapXl,
           TaskDetailsInfoRow(icon: Icons.access_time_rounded, text: task.time),

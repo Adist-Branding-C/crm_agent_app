@@ -41,8 +41,7 @@ class MyActivityLeadSelector extends StatelessWidget {
                 Expanded(
                   child: Text(
                     selectedLead,
-                    style:  TextStyle(
-                      fontSize: 15.s,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: AppColors.textDark,
                     ),

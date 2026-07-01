@@ -34,11 +34,9 @@ class MonthlyStats extends StatelessWidget {
             ),
             child: Text(
               'This month',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.textMuted,
-                fontSize: 14.s
-              ),
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: AppColors.textMuted,
+                  ),
             ),
           ),
           Row(

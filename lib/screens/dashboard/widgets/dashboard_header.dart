@@ -37,9 +37,8 @@ class DashboardHeader extends StatelessWidget {
               Expanded(
                 child: Text(
                   statusText,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     fontWeight: FontWeight.w600,
-                    fontSize: 10.s,
                     color: isCheckedIn
                         ? AppColors.success
                         : AppColors.textMuted,

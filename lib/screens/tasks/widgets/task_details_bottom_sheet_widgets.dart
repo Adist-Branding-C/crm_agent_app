@@ -25,7 +25,6 @@ class TaskDetailsInfoRow extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.textDark,
                 fontWeight: FontWeight.w500,
-                fontSize: 13.s,
               ),
         ),
       ],
@@ -71,10 +70,9 @@ class TaskDetailsActionBtn extends StatelessWidget {
             SizedBox(width: AppSpacing.sm),
             Text(
               isCompleted ? 'Completed' : 'Mark complete',
-              style:  TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.s,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),

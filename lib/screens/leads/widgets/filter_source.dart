@@ -40,11 +40,10 @@ class FilterSource extends StatelessWidget {
             ),
             child: Text(
               src.label,
-              style: TextStyle(
-                color: isSel ? Colors.white : AppColors.slate600,
-                fontSize: 12.s,
-                fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
-              ),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: isSel ? Colors.white : AppColors.slate600,
+              fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
+            ),
             ),
           ),
         );

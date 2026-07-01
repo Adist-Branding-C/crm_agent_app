@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_spacing.dart';
+import '../../theme.dart';
 import '../../widgets/page_scaffold.dart';
 import '../../widgets/screen_header.dart';
 import 'models/call_report_data.dart';
@@ -15,7 +15,11 @@ class CallReportScreen extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Column(
         children: [
-          const ScreenHeader(title: 'Call Report', subtitle: 'This month'),
+          ScreenHeader(
+            title: 'Call Report',
+            subtitle: 'This month',
+            padding: EdgeInsets.fromLTRB(17.0.w, 20.0.h, 17.0.w, 13.0.h),
+          ),
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.only(bottom: AppSpacing.xxl),

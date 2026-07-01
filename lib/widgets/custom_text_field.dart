@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = 9.r;
+    final radius = 6.r;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -49,29 +49,31 @@ class CustomTextField extends StatelessWidget {
         Semantics(
           label: semanticsLabel ?? '$label Input Field',
           textField: true,
-          child: SizedBox(
-            height: height ?? 70.h,
-            width: width,
-            child: TextFormField(
-              controller: controller,
-              keyboardType: keyboardType,
-              maxLines: maxLines,
-              obscureText: obscureText,
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 13.s),
-                errorText: errorText,
-                suffixIcon: suffixIcon,
-                border: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
-                focusedBorder: CustomTextFieldBorders.buildBorder(color: AppColors.primaryColor, radius: radius),
-                enabledBorder: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
-                errorBorder: CustomTextFieldBorders.buildBorder(color: AppColors.errorColor, radius: radius),
-                focusedErrorBorder: CustomTextFieldBorders.buildBorder(color: AppColors.errorColor, radius: radius),
-                disabledBorder: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
-              ),
-              validator: validator,
-              onChanged: onChanged,
+          child: TextFormField(
+            controller: controller,
+            keyboardType: keyboardType,
+            maxLines: maxLines,
+            obscureText: obscureText,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontSize: 14.s,
+              color: AppColors.textDark,
             ),
+            decoration: InputDecoration(
+              hintText: hintText,
+              isDense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+              hintStyle: Theme.of(context).textTheme.bodySmall,
+              errorText: errorText,
+              suffixIcon: suffixIcon,
+              border: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
+              focusedBorder: CustomTextFieldBorders.buildBorder(color: AppColors.primaryColor, radius: radius),
+              enabledBorder: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
+              errorBorder: CustomTextFieldBorders.buildBorder(color: AppColors.errorColor, radius: radius),
+              focusedErrorBorder: CustomTextFieldBorders.buildBorder(color: AppColors.errorColor, radius: radius),
+              disabledBorder: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
+            ),
+            validator: validator,
+            onChanged: onChanged,
           ),
         ),
       ],

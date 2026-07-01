@@ -10,10 +10,9 @@ class FilterSheetTitle extends StatelessWidget {
       horizontal: AppSpacing.xl,
       vertical: AppSpacing.sm,
     ),
-    child: const Text(
+    child: Text(
       'Filter by lead',
-      style: TextStyle(
-        fontSize: 16,
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
         fontWeight: FontWeight.w700,
         color: AppColors.textDark,
       ),

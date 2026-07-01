@@ -21,11 +21,10 @@ class MonthlyStatItem extends StatelessWidget {
       children: [
         Text(
           value,
-          style: TextStyle(
-            fontSize: 22.s,
-            fontWeight: FontWeight.bold,
-            color: valueColor,
-          ),
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: valueColor,
+              ),
         ),
         AppSpacing.gapXs,
         Text(

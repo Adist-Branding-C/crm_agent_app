@@ -16,12 +16,12 @@ class PrivacyPolicyCard extends StatelessWidget {
     final titleStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.bold,
       color: AppColors.textDark,
-      fontSize: 12.s
     );
 
-    final bodyStyle = Theme.of(
-      context,
-    ).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted, height: 1.4,fontSize: 12.s,);
+    final bodyStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: AppColors.textMuted,
+          height: 1.4,
+        );
 
     return CustomCard(
       padding: EdgeInsets.all(AppSpacing.lg),
@@ -39,12 +39,12 @@ class PrivacyPolicyCard extends StatelessWidget {
                 children: [
                   if (isBullet) ...[
                     Padding(
-                      padding: EdgeInsets.only(top: 14.h, right: 8.w),
+                      padding: EdgeInsets.only(top: 8.h, right: 8.w),
                       child: Container(
                         width: 4.w,
                         height: 4.w,
                         decoration: const BoxDecoration(
-                          color: Colors.black,
+                          color: AppColors.textDark,
                           shape: BoxShape.circle,
                         ),
                       ),

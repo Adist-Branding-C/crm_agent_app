@@ -18,10 +18,9 @@ class TimelineList extends StatelessWidget {
       children: [
         Text(
           "Today's Timeline",
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: AppColors.textDark,
-            fontSize: 16.s
           ),
         ),
         AppSpacing.gapLg,

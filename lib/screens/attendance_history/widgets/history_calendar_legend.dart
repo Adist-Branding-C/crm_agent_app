@@ -45,9 +45,9 @@ class _LegendItem extends StatelessWidget {
         AppSpacing.gapWMd,
         Text(
           label,
-          style: Theme.of(
-            context,
-          ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted,fontSize: 10.s),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            color: AppColors.textMuted,
+          ),
         ),
       ],
     );

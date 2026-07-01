@@ -40,17 +40,11 @@ class TaskCardDetails extends StatelessWidget {
       children: [
         Text(
           task.title,
-          style: (task.isCompleted
-              ? Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  decoration: TextDecoration.lineThrough,
-                  fontSize: 14.s
-                )
-              : TextStyle(
-                  fontSize: 14.s,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textDark,
-                  letterSpacing: 0.4.w
-                )),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: task.isCompleted ? AppColors.textMuted : AppColors.textDark,
+                decoration: task.isCompleted ? TextDecoration.lineThrough : null,
+              ),
         ),
         AppSpacing.gapXs,
         Row(
@@ -62,17 +56,9 @@ class TaskCardDetails extends StatelessWidget {
             Expanded(
               child: Text(
                 task.time,
-                style: (task.isCompleted
-              ? Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  decoration: TextDecoration.lineThrough,
-                  fontSize: 10.s
-                )
-              : TextStyle(
-                  fontSize: 10.s,
-                  fontWeight: FontWeight.bold,
-                  color: timeColor,
-                  letterSpacing: 0.4.w
-                )),
+                style: task.isCompleted
+                    ? timeStyle.copyWith(decoration: TextDecoration.lineThrough)
+                    : timeStyle,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

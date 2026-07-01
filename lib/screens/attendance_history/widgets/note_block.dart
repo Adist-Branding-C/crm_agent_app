@@ -24,9 +24,8 @@ class NoteBlock extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: TextStyle(
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: color,
-              fontSize: 10.s,
               fontWeight: FontWeight.w500,
             ),
           ),

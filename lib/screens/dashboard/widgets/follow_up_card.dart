@@ -24,7 +24,7 @@ class FollowUpCard extends StatelessWidget {
     final displayName = call.name.replaceAll('Call back ', '').trim();
 
     return Padding(
-      padding: EdgeInsets.all(AppSpacing.lg),
+      padding: AppSpacing.cardPaddingCompact,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -45,18 +45,17 @@ class FollowUpCard extends StatelessWidget {
                   ),
                   child: Text(
                     displayName,
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: AppColors.textDark,
-                          fontSize: 15.s,
                         ),
                   ),
                 ),
                 AppSpacing.gapSm,
-                Text(call.time, style: TextStyle(
-                      color: AppColors.textMuted,
-                      fontSize: 11.s,
-                    )),
+                Text(
+                  call.time,
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
               ],
             ),
           ),

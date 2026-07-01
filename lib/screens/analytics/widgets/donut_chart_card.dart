@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/responsive_helper.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/donut_chart.dart';
 import '../../../widgets/donut_segment.dart';
@@ -47,11 +46,10 @@ class DonutChartCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 16.s,
-          ),
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                color: AppColors.textDark,
+                fontWeight: FontWeight.bold,
+              ),
         ),
         AppSpacing.gapMd,
         CustomCard(

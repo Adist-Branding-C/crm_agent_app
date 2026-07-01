@@ -13,9 +13,7 @@ class MyActivityDateHeader extends StatelessWidget {
       padding: EdgeInsets.only(top: AppSpacing.xl, bottom: AppSpacing.sm),
       child: Text(
         dateLabel,
-        style:  TextStyle(
-          fontSize: 14.s,
-          fontWeight: FontWeight.w600,
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
           color: AppColors.textMuted,
         ),
       ),

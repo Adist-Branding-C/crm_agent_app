@@ -20,10 +20,10 @@ class BarChartCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                color: AppColors.textDark,
+                fontWeight: FontWeight.bold,
+              ),
         ),
         AppSpacing.gapMd,
         CustomCard(

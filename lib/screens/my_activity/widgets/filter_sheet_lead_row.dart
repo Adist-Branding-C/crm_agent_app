@@ -25,17 +25,15 @@ class FilterSheetLeadRow extends StatelessWidget {
         ),
         title: Text(
           name,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.textDark,
           ),
         ),
         trailing: isSelected
-            ? const Icon(
+            ? Icon(
                 Icons.check_rounded,
                 color: AppColors.primaryColor,
-                size: 18,
+                size: 18.s,
               )
             : null,
       ),

@@ -34,21 +34,18 @@ class TaskRow extends StatelessWidget {
                     task.type.label,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       fontWeight: FontWeight.w600,
-                      fontSize: 10.s,
                     ),
                   ),
                   AppSpacing.gapXs,
                   Text(
                     task.title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14.s,
                     ),
                   ),
                   AppSpacing.gapXxs,
-                  Text(task.time, style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  Text(task.time, style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     fontWeight: FontWeight.w500,
-                    fontSize: 11.s,
                   )),
                 ],
               ),

@@ -32,18 +32,12 @@ class TaskTypeBadge extends StatelessWidget {
           AppSpacing.gapWXs,
           Text(
             type.label,
-            style: 
-            (task.isCompleted
-              ? Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  decoration: TextDecoration.lineThrough,
-                  fontSize: 10.s
-                )
-              : TextStyle(
-                  fontSize: 10.s,
-                  fontWeight: FontWeight.bold,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: color,
-                  letterSpacing: 0.4.w
-                )),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.s,
+                  decoration: task.isCompleted ? TextDecoration.lineThrough : null,
+                ),
           ),
         ],
       ),

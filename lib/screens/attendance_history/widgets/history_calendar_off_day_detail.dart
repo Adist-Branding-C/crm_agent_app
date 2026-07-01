@@ -25,10 +25,10 @@ class HistoryCalendarOffDayDetail extends StatelessWidget {
           AppSpacing.gapSm,
           Row(
             children: [
-              const Icon(
+              Icon(
                 Icons.check_circle_outline,
                 color: AppColors.success,
-                size: 16,
+                size: 16.s,
               ),
               AppSpacing.gapWXs,
               Text(

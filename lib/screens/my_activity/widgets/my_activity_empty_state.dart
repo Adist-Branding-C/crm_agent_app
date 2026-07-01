@@ -12,12 +12,10 @@ class MyActivityEmptyState extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           vertical: AppSpacing.huge + AppSpacing.sm,
         ),
-        child: const Text(
+        child: Text(
           'No activity found for the selected filters.',
-          style: TextStyle(
-            fontSize: 14,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.textMuted,
-            fontWeight: FontWeight.w500,
           ),
         ),
       ),

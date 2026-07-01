@@ -5,6 +5,8 @@ import '../../../widgets/screen_header.dart';
 import 'analytics_filter_sheet.dart';
 import '../../../theme.dart';
 
+import 'filter_button.dart';
+
 class AnalyticsHeader extends StatelessWidget {
   const AnalyticsHeader({super.key});
 
@@ -25,49 +27,9 @@ class AnalyticsHeader extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(17.0.w, 40.0.h, 17.0.w, 13.0.h),
           subtitle: period,
           showBackButton: true,
-          actions: const _FilterButton(),
+          actions: const FilterButton(),
         );
       },
-    );
-  }
-}
-
-class _FilterButton extends StatelessWidget {
-  const _FilterButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        openAnalyticsFilter(context: context);
-      },
-      child: Container(
-        height: 50.h,
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-             Icon(
-              Icons.filter_alt_outlined,
-              size: 14.s,
-              color: AppColors.surfaceWhite,
-            ),
-            AppSpacing.gapWSm,
-            Text(
-              'Filter',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.surfaceWhite,
-                fontWeight: FontWeight.bold,
-                fontSize: 13.s
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

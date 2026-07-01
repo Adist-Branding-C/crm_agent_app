@@ -21,9 +21,9 @@ class MenuItemModel {
       leading: Icon(icon, size: 20.s, color: AppColors.textMuted),
       title: Text(
         title,
-        style: Theme.of(
-          context,
-        ).textTheme.bodyMedium?.copyWith(color: AppColors.textDark,fontSize: 15.s),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AppColors.textDark,
+            ),
       ),
       trailing: badge != null
           ? Container(

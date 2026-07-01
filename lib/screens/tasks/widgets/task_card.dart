@@ -16,7 +16,10 @@ class TaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final showOverdue = task.isOverdue && !task.isCompleted;
     final timeColor = showOverdue ? AppColors.errorColor : AppColors.textMuted;
-    final timeStyle = TextStyle(
+    final timeStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
+      color: timeColor,
+      fontWeight: showOverdue ? FontWeight.bold : FontWeight.normal,
+    ) ?? TextStyle(
       color: timeColor,
       fontSize: 12.s,
       fontWeight: showOverdue ? FontWeight.bold : FontWeight.normal,

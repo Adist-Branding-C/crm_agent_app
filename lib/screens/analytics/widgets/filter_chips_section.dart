@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/context_text_extension.dart';
 import '../../../theme.dart';
 
 class FilterChipsSection<T> extends StatelessWidget {
@@ -26,11 +25,9 @@ class FilterChipsSection<T> extends StatelessWidget {
         Text(
           title.toUpperCase(),
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: AppColors.textMuted,
-            fontWeight: FontWeight.bold,
-            fontSize: 12.s,
-            letterSpacing: 0.5,
-          ),
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5.w,
+              ),
         ),
         AppSpacing.gapSm,
         Wrap(
@@ -47,18 +44,17 @@ class FilterChipsSection<T> extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.primaryColor : Colors.white,
-                  borderRadius: BorderRadius.circular(6.r),
+                  borderRadius: BorderRadius.circular(8.r),
                   border: isSelected
                       ? null
                       : Border.all(color: AppColors.borderLight),
                 ),
                 child: Text(
                   labelBuilder(option),
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : AppColors.textMuted,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 11.s,
-                  ),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: isSelected ? Colors.white : AppColors.textMuted,
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                      ),
                 ),
               ),
             );

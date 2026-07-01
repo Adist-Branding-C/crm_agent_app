@@ -20,13 +20,8 @@ class EditProfileForm extends StatefulWidget {
 
 class _EditProfileFormState extends State<EditProfileForm> {
   final _formKey = GlobalKey<FormState>();
-  late final TextEditingController _nameController;
-  late final TextEditingController _phoneController;
-  late final TextEditingController _emailController;
-  late final TextEditingController _baseLocationController;
-  late final TextEditingController _targetController;
-  String _selectedRole = '';
-  String _selectedBranch = '';
+  late final TextEditingController _nameController, _phoneController, _emailController, _baseLocationController, _targetController;
+  String _selectedRole = '', _selectedBranch = '';
 
   @override
   void initState() {
@@ -43,31 +38,21 @@ class _EditProfileFormState extends State<EditProfileForm> {
 
   @override
   void dispose() {
-    _nameController.dispose();
-    _phoneController.dispose();
-    _emailController.dispose();
-    _baseLocationController.dispose();
-    _targetController.dispose();
+    _nameController.dispose(); _phoneController.dispose(); _emailController.dispose();
+    _baseLocationController.dispose(); _targetController.dispose();
     super.dispose();
   }
 
   void _onSave() {
     if (_formKey.currentState?.validate() ?? false) {
-      context.read<AccountBloc>().add(
-        UpdateProfile(
-          profile: widget.profile.copyWith(
-            name: _nameController.text,
-            phone: _phoneController.text,
-            email: _emailController.text,
-            baseLocation: _baseLocationController.text,
-            monthlyTarget:
-                int.tryParse(_targetController.text) ??
-                widget.profile.monthlyTarget,
-            role: _selectedRole,
-            branch: _selectedBranch,
-          ),
+      context.read<AccountBloc>().add(UpdateProfile(
+        profile: widget.profile.copyWith(
+          name: _nameController.text, phone: _phoneController.text, email: _emailController.text,
+          baseLocation: _baseLocationController.text,
+          monthlyTarget: int.tryParse(_targetController.text) ?? widget.profile.monthlyTarget,
+          role: _selectedRole, branch: _selectedBranch,
         ),
-      );
+      ));
     }
   }
 
@@ -77,13 +62,9 @@ class _EditProfileFormState extends State<EditProfileForm> {
       key: _formKey,
       child: EditProfileFormLayout(
         profile: widget.profile,
-        nameController: _nameController,
-        phoneController: _phoneController,
-        emailController: _emailController,
-        baseLocationController: _baseLocationController,
-        targetController: _targetController,
-        selectedRole: _selectedRole,
-        selectedBranch: _selectedBranch,
+        nameController: _nameController, phoneController: _phoneController, emailController: _emailController,
+        baseLocationController: _baseLocationController, targetController: _targetController,
+        selectedRole: _selectedRole, selectedBranch: _selectedBranch,
         isSaving: widget.isSaving,
         onRoleChanged: (val) => setState(() => _selectedRole = val),
         onBranchChanged: (val) => setState(() => _selectedBranch = val),

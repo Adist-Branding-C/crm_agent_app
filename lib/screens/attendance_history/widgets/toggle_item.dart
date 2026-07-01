@@ -29,10 +29,9 @@ class ToggleItem extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           value,
-          style: TextStyle(
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             color: isSelected ? AppColors.textDark : AppColors.textMuted,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            fontSize: 13.s,
           ),
         ),
       ),

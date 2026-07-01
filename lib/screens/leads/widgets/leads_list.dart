@@ -42,7 +42,7 @@ class LeadsList extends StatelessWidget {
             return  Center(
               child: Text(
                 'No leads found',
-                style: TextStyle(color: AppColors.textMuted, fontSize: 14.s),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             );
           }

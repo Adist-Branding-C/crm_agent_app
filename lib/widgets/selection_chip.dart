@@ -17,11 +17,9 @@ class SelectionChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSelected = option == selectedOption;
     final color = isSelected ? AppColors.primaryColor : AppColors.borderLight;
-    final textStyle = TextStyle(
-      color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
-      fontWeight: FontWeight.w600,
-      fontSize: 11.s,
-    );
+    final textStyle = Theme.of(context).textTheme.labelMedium?.copyWith(
+          color: isSelected ? AppColors.primaryColor : AppColors.textMuted,
+        );
 
     return Semantics(
       button: true,

@@ -32,7 +32,7 @@ class LeadStatusBreakdownCard extends StatelessWidget {
         children: [
           Text(
             'Lead Status Breakdown',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.bold,
               color: AppColors.textDark,
             ),

@@ -36,7 +36,9 @@ class HistoryLogItemDetails extends StatelessWidget {
             Expanded(
               child: Text(
                 log.location ?? '—',
-                style:  TextStyle(color: AppColors.textMuted, fontSize: 10.s),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.textMuted,
+                ),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

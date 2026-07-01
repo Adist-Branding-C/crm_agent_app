@@ -10,12 +10,12 @@ class CheckOutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60.h,
-      width: 70.w,
+      width: 80.w,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           foregroundColor: Colors.white,
-          side:  BorderSide(color: Colors.white, width: 1.2.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          side: BorderSide(color: Colors.white, width: 1.2.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           padding: EdgeInsets.symmetric(
             horizontal: 4.w,
             vertical: 4.h,
@@ -24,10 +24,9 @@ class CheckOutButton extends StatelessWidget {
         onPressed: () => context.read<AttendanceBloc>().add(const CheckOut()),
         child: Text(
           'Check out',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 9.s
           ),
         ),
       ),

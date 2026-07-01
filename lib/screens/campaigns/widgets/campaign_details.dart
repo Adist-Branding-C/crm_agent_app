@@ -17,20 +17,15 @@ class CampaignDetails extends StatelessWidget {
       children: [
         Text(
           campaign.title,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
             color: AppColors.textDark,
             fontWeight: FontWeight.bold,
-            fontSize: 15.s,
           ),
         ),
         AppSpacing.gapXxs,
         Text(
           '${campaign.type.label} · by ${campaign.creator}',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppColors.textMuted,
-            fontSize: 10.s,
-            
-          ),
+          style: Theme.of(context).textTheme.labelSmall,
         ),
       ],
     );

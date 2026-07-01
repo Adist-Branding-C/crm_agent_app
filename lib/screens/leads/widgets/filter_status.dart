@@ -46,11 +46,10 @@ class FilterStatus extends StatelessWidget {
             ),
             child: Text(
               status.label,
-              style: TextStyle(
-                color: cfg.textColor,
-                fontSize: 10.s,
-                fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
-              ),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: cfg.textColor,
+              fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
+            ),
             ),
           ),
         );

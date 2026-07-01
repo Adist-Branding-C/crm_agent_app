@@ -24,16 +24,17 @@ class ActivityMetadataRow extends StatelessWidget {
         AppSpacing.gapWXs,
         Text(
           assignee,
-          style:  TextStyle(
-            fontSize: 14.s,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.w400,
           ),
         ),
         AppSpacing.gapWSm,
-        const Text(
+        Text(
           '·',
-          style: TextStyle(color: AppColors.textMuted, fontSize: 12),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: AppColors.textMuted,
+          ),
         ),
         AppSpacing.gapWSm,
          Icon(
@@ -44,8 +45,7 @@ class ActivityMetadataRow extends StatelessWidget {
         AppSpacing.gapWXs,
         Text(
           time,
-          style:  TextStyle(
-            fontSize: 14.s,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.textMuted,
             fontWeight: FontWeight.w400,
           ),

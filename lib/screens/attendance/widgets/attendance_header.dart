@@ -7,16 +7,11 @@ class AttendanceHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ScreenHeader(
+    return ScreenHeader(
       title: 'Daily Activity',
       subtitle: 'Tuesday, 12 May',
       showBackButton: true,
-      padding:EdgeInsets.fromLTRB(
-      0,
-      35.0.h,
-      17.0.w,
-      0
-    )
+      padding: EdgeInsets.only(top: 35.0.h),
     );
   }
 }

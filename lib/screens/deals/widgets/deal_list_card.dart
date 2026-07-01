@@ -3,7 +3,6 @@ import '../../../../bloc/deals/deals_models.dart';
 import '../../../../theme.dart';
 import '../../../../widgets/custom_card.dart';
 import 'deal_list_card_helpers.dart';
-import 'deals_presentation_extensions.dart';
 
 /// Renders a Deal card tailored for the List view.
 class DealListCard extends StatelessWidget {
@@ -26,7 +25,7 @@ class DealListCard extends StatelessWidget {
           DealCardMeta(deal: deal),
           AppSpacing.gapMd,
           ClipRRect(
-            borderRadius: BorderRadius.circular(3),
+            borderRadius: BorderRadius.circular(3.r),
             child: LinearProgressIndicator(
               value: deal.stage.progress,
               color: AppColors.primaryLightColor,

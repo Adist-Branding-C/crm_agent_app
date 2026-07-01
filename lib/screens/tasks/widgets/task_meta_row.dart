@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
-import '../../../utils/context_text_extension.dart';
+
 
 /// Displays a labeled metadata row with an icon in task details.
 class TaskMetaRow extends StatelessWidget {
@@ -33,11 +33,10 @@ class TaskMetaRow extends StatelessWidget {
           ),
           Text(
             value,
-            style: TextStyle(
-              fontSize: context.scaleFont(14),
-              fontWeight: FontWeight.w600,
-              color: color ?? AppColors.textDark,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: color ?? AppColors.textDark,
+                ),
           ),
         ],
       ),

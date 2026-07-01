@@ -60,10 +60,9 @@ class HistoryCalendarDayCell extends StatelessWidget {
           children: [
             Text(
               '$day',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: fg,
                 fontWeight: FontWeight.bold,
-                fontSize:12.s,
               ),
             ),
             if (dotColor != Colors.transparent)

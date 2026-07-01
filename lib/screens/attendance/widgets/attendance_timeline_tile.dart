@@ -20,10 +20,9 @@ class AttendanceTimelineTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final config = AttendanceTimelineConfigs.getConfig(item.type);
     final textTheme = Theme.of(context).textTheme;
-    final captionStyle = textTheme.bodyMedium?.copyWith(
+    final captionStyle = textTheme.bodySmall?.copyWith(
       color: AppColors.textMuted,
       fontWeight: FontWeight.w500,
-      fontSize: 10.s
     );
 
     return TimelineLayout(
@@ -45,10 +44,9 @@ class AttendanceTimelineTile extends StatelessWidget {
                 children: [
                   Text(
                     item.title,
-                    style: textTheme.titleMedium?.copyWith(
+                    style: textTheme.titleSmall?.copyWith(
                       color: AppColors.textDark,
                       fontWeight: FontWeight.bold,
-                      fontSize: 13.s
                     ),
                   ),
                   AppSpacing.gapXs,

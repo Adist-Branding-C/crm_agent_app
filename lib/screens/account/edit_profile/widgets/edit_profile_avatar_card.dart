@@ -21,23 +21,20 @@ class EditProfileAvatarCard extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            UserAvatar(initials: initials, size: 40.r, fontSize: 18.s),
+            UserAvatar(initials: initials, size: 40, fontSize: 18),
             AppSpacing.gapMd,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Icons.assignment_outlined,
-                  size: 14,
+                  size: 14.s,
                   color: AppColors.textMuted,
                 ),
                 SizedBox(width: AppSpacing.xs2),
                 Text(
                   'Joined $joinedDate',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textMuted,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),

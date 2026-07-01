@@ -5,7 +5,6 @@ import '../../../../bloc/account/account_models.dart';
 import '../../../../widgets/responsive_width_container.dart';
 import '../../../../widgets/screen_header.dart';
 import 'edit_profile_actions.dart';
-import 'edit_profile_avatar_card.dart';
 import 'personal_details_section.dart';
 import 'work_details_section.dart';
 import 'target_details_section.dart';
@@ -23,16 +22,11 @@ class EditProfileFormLayout extends StatelessWidget {
   const EditProfileFormLayout({
     super.key,
     required this.profile,
-    required this.nameController,
-    required this.phoneController,
-    required this.emailController,
-    required this.baseLocationController,
-    required this.targetController,
-    required this.selectedRole,
-    required this.selectedBranch,
+    required this.nameController, required this.phoneController, required this.emailController,
+    required this.baseLocationController, required this.targetController,
+    required this.selectedRole, required this.selectedBranch,
     required this.isSaving,
-    required this.onRoleChanged,
-    required this.onBranchChanged,
+    required this.onRoleChanged, required this.onBranchChanged,
     required this.onSave,
   });
 
@@ -47,44 +41,28 @@ class EditProfileFormLayout extends StatelessWidget {
         ),
         Expanded(
           child: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(
-              AppSpacing.xxl,
-              0,
-              AppSpacing.xxl,
-              AppSpacing.xxl,
-            ),
+            padding: EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xxl),
             child: ResponsiveWidthContainer(
               maxWidth: 540.w,
               child: Column(
                 children: [
-                  // EditProfileAvatarCard(
-                  //   initials: profile.initials,
-                  //   joinedDate: profile.joinedDate,
-                  // ),
                   AppSpacing.gapLg,
                   PersonalDetailsSection(
-                    nameController: nameController,
-                    phoneController: phoneController,
-                    emailController: emailController,
+                    nameController: nameController, phoneController: phoneController, emailController: emailController,
                   ),
                   AppSpacing.gapLg,
                   WorkDetailsSection(
-                    selectedRole: selectedRole,
-                    selectedBranch: selectedBranch,
+                    selectedRole: selectedRole, selectedBranch: selectedBranch,
                     baseLocationController: baseLocationController,
-                    onRoleChanged: onRoleChanged,
-                    onBranchChanged: onBranchChanged,
+                    onRoleChanged: onRoleChanged, onBranchChanged: onBranchChanged,
                   ),
                   AppSpacing.gapLg,
                   TargetDetailsSection(
-                    targetController: targetController,
-                    achievedAmount: profile.achievedAmount,
+                    targetController: targetController, achievedAmount: profile.achievedAmount,
                   ),
                   AppSpacing.gapXxl,
                   EditProfileActions(
-                    onCancel: () => context.pop(),
-                    onSave: onSave,
-                    isLoading: isSaving,
+                    onCancel: () => context.pop(), onSave: onSave, isLoading: isSaving,
                   ),
                 ],
               ),

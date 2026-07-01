@@ -30,20 +30,18 @@ class LegendRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.w500,
-                fontSize: 13.5.s,
-              ),
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: AppColors.textDark,
+                    fontWeight: FontWeight.w500,
+                  ),
             ),
           ),
           Text(
             count.toString(),
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: AppColors.textDark,
-              fontWeight: FontWeight.bold,
-              fontSize: 13.s,
-            ),
+            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  color: AppColors.textDark,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
         ],
       ),

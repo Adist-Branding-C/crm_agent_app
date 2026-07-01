@@ -27,12 +27,7 @@ class LeadsHeader extends StatelessWidget {
         });
     return ScreenHeader(
       title: headerState.isSpotlight ? 'Spotlights' : 'My Leads',
-      subtitleWidget: Text(
-        '${headerState.total} total · ${headerState.hot} hot',
-        style: Theme.of(
-          context,
-        ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 10.s),
-      ),
+      subtitle: '${headerState.total} total · ${headerState.hot} hot',
       showBackButton: false,
       actions: const LeadsHeaderActions(),
       padding: AppSpacing.headerPadding,

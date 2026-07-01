@@ -30,13 +30,20 @@ class ChangePasswordBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const ScreenHeader(
+        ScreenHeader(
           title: 'Change Password',
           subtitle: 'Keep your account secure',
           showBackButton: true,
+          padding: EdgeInsets.fromLTRB(17.0.w, 25.0.h, 17.0.w, 13.0.h),
         ),
         Expanded(
           child: SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(
+              AppSpacing.xl,
+              0,
+              AppSpacing.xl,
+              AppSpacing.xl,
+            ),
             child: ResponsiveWidthContainer(
               maxWidth: 480,
               child: Column(

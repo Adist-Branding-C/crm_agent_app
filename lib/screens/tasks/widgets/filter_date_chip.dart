@@ -42,11 +42,11 @@ class FilterDateChip extends StatelessWidget {
             ],
             Text(
               range.label,
-              style: TextStyle(
-                color: isSelected ? AppColors.warningText : AppColors.textMuted,
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: isSelected ? AppColors.warningText : AppColors.textMuted,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13.s,
+                  ),
             ),
           ],
         ),

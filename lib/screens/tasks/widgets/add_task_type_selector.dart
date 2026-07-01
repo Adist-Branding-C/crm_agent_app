@@ -19,10 +19,10 @@ class AddTaskTypeSelector extends StatelessWidget {
           children: [
              Text(
               'Type',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textDark,
-                fontSize: 13.s,
                 fontWeight: FontWeight.bold,
+                fontSize: 12.s,
               ),
             ),
             AppSpacing.gapSm,

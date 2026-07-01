@@ -51,13 +51,12 @@ class PriorityChip extends StatelessWidget {
               AppSpacing.gapWSm,
               Text(
                 priority.label,
-                style: TextStyle(
-                  color: isSelected
-                      ? priority.displayColor
-                      : AppColors.textMuted,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 11.s,
-                ),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: isSelected
+                          ? priority.displayColor
+                          : AppColors.textMuted,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ],
           ),

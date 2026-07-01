@@ -39,10 +39,10 @@ class DealsStatsCard extends StatelessWidget {
           AppSpacing.gapSm,
           Text(
             value,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 16.s
+              fontSize: 16.s,
             ),
           ),
         ],

@@ -40,9 +40,9 @@ class MyActivityItemWidget extends StatelessWidget {
             AppSpacing.gapXs,
             Text(
               item.description,
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400,fontSize: 13.5.s),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w400,
+                  ),
             ),
             AppSpacing.gapXs,
             ActivityMetadataRow(assignee: item.assignee, time: item.time),

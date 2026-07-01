@@ -27,7 +27,6 @@ class AddTaskBottomSheet extends StatelessWidget {
               'New Task',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 15.s,
               ),
             ),
           ),

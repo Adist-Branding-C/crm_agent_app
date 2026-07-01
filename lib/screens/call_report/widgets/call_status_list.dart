@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_spacing.dart';
+import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import '../../../widgets/donut_chart.dart';
 import '../../../widgets/donut_segment.dart';
@@ -27,11 +27,22 @@ class CallStatusList extends StatelessWidget {
       padding: EdgeInsets.all(AppSpacing.xl),
       margin: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DonutChart(
-            segments: _segments,
-            centerLabel: '$totalCalls',
-            centerSubLabel: 'Total calls',
+          Text(
+            'Call Status Breakdown',
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: AppColors.textDark,
+            ),
+          ),
+          AppSpacing.gapXl,
+          Center(
+            child: DonutChart(
+              segments: _segments,
+              centerLabel: '$totalCalls',
+              centerSubLabel: 'Total calls',
+            ),
           ),
           AppSpacing.gapXl,
           ...items.map((item) => CallStatusRow(item: item)),
