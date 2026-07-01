@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../theme.dart';
 import '../utils/context_text_extension.dart';
 import 'card_icon_button.dart';
+import 'screen_header_title.dart';
 
 /// Standardized header widget for screens featuring optional back-navigation.
 class ScreenHeader extends StatelessWidget {
@@ -36,23 +37,22 @@ class ScreenHeader extends StatelessWidget {
       large ? 7.0.h : 13.0.h,
     );
 
-    final titleStyle = (Theme.of(context).textTheme.headlineSmall ??  TextStyle()).copyWith(
+    final titleStyle = (Theme.of(context).textTheme.headlineSmall ?? const TextStyle()).copyWith(
       fontSize: 16.s,
       fontWeight: FontWeight.bold,
       letterSpacing: 0.7.w,
       color: AppColors.textDark,
     );
 
-    final sub =
-        subtitleWidget ??
-        (subtitle != null
-            ? Text(
-                subtitle!,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 12.s),
-              )
-            : null);
+    final sub = subtitleWidget ?? (subtitle != null
+        ? Text(
+            subtitle!,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w600,
+              fontSize: 12.s,
+            ),
+          )
+        : null);
 
     return Padding(
       padding: resolvedPadding,
@@ -68,15 +68,10 @@ class ScreenHeader extends StatelessWidget {
             AppSpacing.gapWMd,
           ],
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                
-                Text(title, style: titleStyle),
-                if (sub != null) ...[AppSpacing.gapXxs, sub],
-              ],
+            child: ScreenHeaderTitle(
+              title: title,
+              sub: sub,
+              titleStyle: titleStyle,
             ),
           ),
           if (actions != null) ...[AppSpacing.gapWLg, actions!],

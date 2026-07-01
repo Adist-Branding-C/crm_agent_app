@@ -16,9 +16,9 @@ class CheckOutButton extends StatelessWidget {
           foregroundColor: Colors.white,
           side:  BorderSide(color: Colors.white, width: 1.2.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          padding:  EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: AppSpacing.sm,
+          padding: EdgeInsets.symmetric(
+            horizontal: 4.w,
+            vertical: 4.h,
           ),
         ),
         onPressed: () => context.read<AttendanceBloc>().add(const CheckOut()),

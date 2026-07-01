@@ -19,33 +19,34 @@ class AccountLoading extends AccountState {
   const AccountLoading();
 }
 
-/// State containing successfully loaded profile details.
+/// Status of the loaded account state.
+enum AccountStatus { loaded, updating, updateSuccess, updateFailure }
+
+/// State containing successfully loaded profile details and update status.
 class AccountLoaded extends AccountState {
   final AccountProfile profile;
+  final AccountStatus status;
+  final String? errorMessage;
 
-  const AccountLoaded({required this.profile});
+  const AccountLoaded({
+    required this.profile,
+    this.status = AccountStatus.loaded,
+    this.errorMessage,
+  });
 
-  @override
-  List<Object?> get props => [profile];
-}
-
-/// State indicating that the profile is being updated in-progress.
-class AccountUpdating extends AccountLoaded {
-  const AccountUpdating({required super.profile});
-}
-
-/// State representing a successfully saved profile update.
-class AccountUpdateSuccess extends AccountLoaded {
-  const AccountUpdateSuccess({required super.profile});
-}
-
-/// State representing a failed profile update attempt.
-class AccountUpdateFailure extends AccountLoaded {
-  final String error;
-  const AccountUpdateFailure({required super.profile, required this.error});
+  /// Copy constructor.
+  AccountLoaded copyWith({
+    AccountProfile? profile,
+    AccountStatus? status,
+    String? Function()? errorMessage,
+  }) => AccountLoaded(
+    profile: profile ?? this.profile,
+    status: status ?? this.status,
+    errorMessage: errorMessage != null ? errorMessage() : this.errorMessage,
+  );
 
   @override
-  List<Object?> get props => [profile, error];
+  List<Object?> get props => [profile, status, errorMessage];
 }
 
 enum AccountFailure { loadProfile, logout, unknown }

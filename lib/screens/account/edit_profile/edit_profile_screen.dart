@@ -15,24 +15,28 @@ class EditProfileScreen extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: BlocConsumer<AccountBloc, AccountState>(
         listenWhen: (p, c) =>
-            c is AccountUpdateSuccess || c is AccountUpdateFailure,
+            c is AccountLoaded &&
+            (c.status == AccountStatus.updateSuccess ||
+                c.status == AccountStatus.updateFailure),
         listener: (context, state) {
-          if (state is AccountUpdateSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Profile updated successfully!')),
-            );
-            context.pop();
-          } else if (state is AccountUpdateFailure) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.error)));
+          if (state is AccountLoaded) {
+            if (state.status == AccountStatus.updateSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Profile updated successfully!')),
+              );
+              context.pop();
+            } else if (state.status == AccountStatus.updateFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.errorMessage ?? 'Update failed.')),
+              );
+            }
           }
         },
         builder: (context, state) {
           if (state is AccountLoaded) {
             return EditProfileForm(
               profile: state.profile,
-              isSaving: state is AccountUpdating,
+              isSaving: state.status == AccountStatus.updating,
             );
           }
           return const Center(child: CircularProgressIndicator());

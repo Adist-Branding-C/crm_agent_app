@@ -20,7 +20,10 @@ class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
 }
 
 Widget createTestApp() {
-  SharedPreferences.setMockInitialValues({});
+  SharedPreferences.setMockInitialValues({
+    'settings_font_size': 'Medium',
+    'settings_font_style': 'Outfit',
+  });
   final dataSource = AuthDataSourceImpl();
   final remoteDataSource = FakeAuthRemoteDataSource();
   final repo = SessionRepositoryImpl(

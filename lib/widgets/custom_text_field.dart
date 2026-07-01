@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'custom_text_field_label.dart';
+import 'custom_text_field_borders.dart';
 
 /// A reusable custom text form input field.
 class CustomTextField extends StatelessWidget {
@@ -39,16 +40,17 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final radius = 9.r;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextFieldLabel(label: label, isRequired: isRequired,),
+        TextFieldLabel(label: label, isRequired: isRequired),
         AppSpacing.gapSm,
         Semantics(
           label: semanticsLabel ?? '$label Input Field',
           textField: true,
           child: SizedBox(
-            height: height??70.h,
+            height: height ?? 70.h,
             width: width,
             child: TextFormField(
               controller: controller,
@@ -57,32 +59,15 @@ class CustomTextField extends StatelessWidget {
               obscureText: obscureText,
               decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 13.s ),
+                hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 13.s),
                 errorText: errorText,
                 suffixIcon: suffixIcon,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9.r),
-                  borderSide: const BorderSide(color: AppColors.slate300),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9.r),
-                  borderSide:  BorderSide(color: AppColors.primaryColor),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9.r),
-                  borderSide: const BorderSide(color: AppColors.slate300),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9.r),
-                  borderSide: const BorderSide(color: AppColors.errorColor),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9.r),
-                  borderSide: const BorderSide(color: AppColors.errorColor),
-                ),disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9.r),
-                  borderSide: const BorderSide(color: AppColors.slate300),
-                ),
+                border: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
+                focusedBorder: CustomTextFieldBorders.buildBorder(color: AppColors.primaryColor, radius: radius),
+                enabledBorder: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
+                errorBorder: CustomTextFieldBorders.buildBorder(color: AppColors.errorColor, radius: radius),
+                focusedErrorBorder: CustomTextFieldBorders.buildBorder(color: AppColors.errorColor, radius: radius),
+                disabledBorder: CustomTextFieldBorders.buildBorder(color: AppColors.slate300, radius: radius),
               ),
               validator: validator,
               onChanged: onChanged,

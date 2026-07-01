@@ -31,23 +31,34 @@ class HistoryStatsText extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            HistoryStatColumn(
-              value: history.avgHoursPerDay,
-              label: 'Avg / day',
+            Expanded(
+              child: HistoryStatColumn(
+                value: history.avgHoursPerDay,
+                label: 'Avg / day',
+              ),
             ),
-            AppSpacing.gapWLg,
-           Container(width: 1.h,height: 60.h,color: Colors.grey,),
-           AppSpacing.gapWLg,
-            HistoryStatColumn(
-              value: '${history.onTimeRate.toInt()}%',
-              label: 'On time',
+            Container(width: 1, height: 16.h, color: AppColors.slate600),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.w),
+                child: HistoryStatColumn(
+                  value: '${history.onTimeRate.toInt()}%',
+                  label: 'On time',
+                ),
+              ),
             ),
-            AppSpacing.gapWLg,
-            Container(width: 1.h,height: 60.h,color: Colors.grey,),
-            AppSpacing.gapWLg,
-            HistoryStatColumn(value: history.totalLoggedHours, label: 'Logged'),
+            Container(width: 1, height: 16.h, color: AppColors.slate600),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.w),
+                child: HistoryStatColumn(
+                  value: history.totalLoggedHours,
+                  label: 'Logged',
+                ),
+              ),
+            ),
           ],
         ),
       ],

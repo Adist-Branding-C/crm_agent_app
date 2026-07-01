@@ -56,10 +56,7 @@ void main() {
     expect(find.byType(TasksScreen), findsNothing);
 
     // Scroll dashboard to bring TasksList's View all into view
-    await tester.drag(
-      find.byType(SingleChildScrollView),
-      const Offset(0, -400),
-    );
+    await tester.ensureVisible(find.text('View all').last);
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('View all').last);

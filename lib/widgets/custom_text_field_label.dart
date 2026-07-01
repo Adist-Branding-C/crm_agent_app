@@ -15,12 +15,16 @@ class TextFieldLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          label,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 11.s
+        Flexible(
+          child: Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: AppColors.textDark,
+              fontWeight: FontWeight.bold,
+              fontSize: 11.s
+            ),
           ),
         ),
         if (isRequired)

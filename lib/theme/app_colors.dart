@@ -22,20 +22,17 @@ class AppColors {
   static const Color successIconBg = Color(0xFF104A41);
   static const Color successDark = Color(0xFF0D9488);
   static const Color successLight = Color(0xFFE6FFFA);
-
   static const Color warning = Color(0xFFF59E0B);
   static const Color warningBackground = Color(0xFFFFFBEB);
   static const Color warningText = Color(0xFFF97316);
   static const Color warningTextBackground = Color(0xFFFFF7ED);
   static const Color warningDark = Color(0xFFD97706);
   static const Color warningLight = Color(0xFFFEF3C7);
-
   static const Color info = Color(0xFF3B82F6);
   static const Color infoBackground = Color(0xFFEFF6FF);
   static const Color infoDark = Color(0xFF2563EB);
   static const Color infoText = Color(0xFF0284C7);
   static const Color infoBackgroundLight = Color(0xFFE0F2FE);
-
   static const Color accent = Color(0xFF8B5CF6);
   static const Color accentBackground = Color(0xFFF5F3FF);
 
@@ -46,7 +43,6 @@ class AppColors {
   static const Color slate50 = Color(0xFFF3F4F6);
   static const Color slate500 = Color(0xFF4B5563);
   static const Color slate600 = Color(0xFF475569);
-
   static const Color indigo = Color(0xFF6366F1);
   static const Color checkedInCardBg = Color(0xFF242C3D);
   static const Color errorBorder = Color(0xFFFCA5A5);
@@ -61,22 +57,16 @@ class AppColors {
   static const Color whiteAlpha60 = Color(0x99FFFFFF);
   static const Color greyAlpha8 = Color(0x149E9E9E);
   static const Color borderLightAlpha50 = Color(0x80E2E8F0);
-
-  // Pre-computed 15% alpha for semantic colors
   static const Color successAlpha15 = Color(0x2610B981);
   static const Color accentAlpha15 = Color(0x268B5CF6);
   static const Color infoAlpha15 = Color(0x263B82F6);
   static const Color warningAlpha15 = Color(0x26F59E0B);
 
   // Common surface tokens & Dark theme surface colors
-  static const Color surfaceWhite = Color(0xFFFFFFFF);
-  static const Color surfaceGrey = Color(0xFF9E9E9E);
-  static const Color surfaceGrey200 = Color(0xFFEEEEEE);
-  static const Color transparent = Color(0x00000000);
-  static const Color darkBackground = Color(0xFF121212);
-  static const Color darkSurface = Color(0xFF1E1E1E);
-  static const Color darkCard = Color(0xFF2C2C2C);
-  static const Color darkText = Color(0xFFE0E0E0);
-  static const Color darkTextMuted = Color(0xFF9E9E9E);
-  static const Color darkBorder = Color(0xFF383838);
+  static const Color surfaceWhite = Color(0xFFFFFFFF), surfaceGrey = Color(0xFF9E9E9E), surfaceGrey200 = Color(0xFFEEEEEE), transparent = Color(0x00000000);
+  static const Color darkBackground = Color(0xFF121212), darkSurface = Color(0xFF1E1E1E), darkCard = Color(0xFF2C2C2C);
+  static const Color darkText = Color(0xFFE0E0E0), darkTextMuted = Color(0xFF9E9E9E), darkBorder = Color(0xFF383838);
+
+  // Settings Red Theme (SoC)
+  static const Color settingsRed = Color(0xFFE53935), settingsRedLight = Color(0xFFFFEBEE), settingsCardBg = Color(0xFFF5F7FA);
 }

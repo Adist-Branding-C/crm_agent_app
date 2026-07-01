@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../theme.dart';
 import '../../../../utils/context_text_extension.dart';
 import '../models/deals_view_notifier.dart';
+import 'deals_toggle_item.dart';
 
 /// Toggle widget to switch between Pipeline (Kanban) and List views.
 class DealsToggle extends StatelessWidget {
@@ -18,7 +19,7 @@ class DealsToggle extends StatelessWidget {
       ),
       child: Container(
         height: 55.h,
-        padding:  EdgeInsets.all(3.w),
+        padding: EdgeInsets.all(3.w),
         decoration: BoxDecoration(
           color: AppColors.borderLightAlpha50,
           borderRadius: BorderRadius.circular(4.r),
@@ -42,43 +43,6 @@ class DealsToggle extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class DealsToggleItem extends StatelessWidget {
-  final int index;
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-  const DealsToggleItem({
-    super.key,
-    required this.index,
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        alignment: Alignment.center,
-        padding:  EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 13.0.w),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.surfaceWhite : AppColors.transparent,
-          borderRadius: BorderRadius.circular(4.r),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: isSelected ? AppColors.textDark : AppColors.textMuted,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
-            fontSize:12.s,
-          ),
         ),
       ),
     );

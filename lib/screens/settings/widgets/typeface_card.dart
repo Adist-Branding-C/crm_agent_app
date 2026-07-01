@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
 import '../../../theme/app_text_theme.dart';
+import 'typeface_check_indicator.dart';
 
+/// Card widget rendering individual typeface customization options.
 class TypefaceCard extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -20,7 +22,10 @@ class TypefaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customTheme = getCustomTextTheme(Theme.of(context).textTheme, styleValue);
+    final customTheme = getCustomTextTheme(
+      Theme.of(context).textTheme,
+      styleValue,
+    );
     final titleStyle = customTheme.bodyLarge?.copyWith(
       fontWeight: FontWeight.bold,
       color: AppColors.textDark,
@@ -34,10 +39,12 @@ class TypefaceCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(bottom: 12.0.h),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFFFFEBEE).withValues(alpha: 0.2) : Colors.white,
+          color: isSelected
+              ? AppColors.settingsRedLight.withValues(alpha: 0.2)
+              : Colors.white,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
-            color: isSelected ? const Color(0xFFE53935) : AppColors.borderLight,
+            color: isSelected ? AppColors.settingsRed : AppColors.borderLight,
             width: isSelected ? 1.5.w : 1.w,
           ),
         ),
@@ -45,7 +52,10 @@ class TypefaceCard extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(12.r),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 16.0.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.0.w,
+              vertical: 16.0.h,
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -64,21 +74,7 @@ class TypefaceCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  width: 22.w,
-                  height: 22.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isSelected ? const Color(0xFFE53935) : Colors.transparent,
-                    border: Border.all(
-                      color: isSelected ? const Color(0xFFE53935) : AppColors.borderLight,
-                      width: 1.5.w,
-                    ),
-                  ),
-                  child: isSelected
-                      ? Icon(Icons.check, size: 14.s, color: Colors.white)
-                      : null,
-                ),
+                TypefaceCheckIndicator(isSelected: isSelected),
               ],
             ),
           ),

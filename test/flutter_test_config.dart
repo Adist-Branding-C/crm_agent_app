@@ -8,12 +8,12 @@ import 'package:flutter_test/flutter_test.dart';
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   final binding = TestWidgetsFlutterBinding.ensureInitialized();
   
-  // Set default virtual screen size to 800x1000
-  binding.platformDispatcher.views.first.physicalSize = const Size(800, 1000);
+  // Set default virtual screen size to 800x1200
+  binding.platformDispatcher.views.first.physicalSize = const Size(800, 1200);
   binding.platformDispatcher.views.first.devicePixelRatio = 1.0;
   
   // ignore: deprecated_member_use
-  binding.window.physicalSizeTestValue = const Size(800, 1000);
+  binding.window.physicalSizeTestValue = const Size(800, 1200);
   // ignore: deprecated_member_use
   binding.window.devicePixelRatioTestValue = 1.0;
 

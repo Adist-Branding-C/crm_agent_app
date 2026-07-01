@@ -11,7 +11,7 @@ class AddDealLeadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 97.h,
+      constraints: BoxConstraints(minHeight: 80.h),
       padding: EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.slate50,

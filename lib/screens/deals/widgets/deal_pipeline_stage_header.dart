@@ -30,14 +30,16 @@ class DealPipelineStageHeader extends StatelessWidget {
       children: [
         Icon(Icons.circle, size: 6.s, color: stage.color),
         SizedBox(width: AppSpacing.xs2),
-        Text(
-          stage.label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: AppColors.textDark,
-            fontSize: 13.s,
-            fontWeight: FontWeight.bold,
+        Flexible(
+          child: Text(
+            stage.label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: AppColors.textDark,
+              fontSize: 13.s,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         AppSpacing.gapWXs,

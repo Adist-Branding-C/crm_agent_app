@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import 'hot_tag_badge.dart';
 
+/// Small mockup lead card used for settings screen font previews.
 class LivePreviewLeadCard extends StatelessWidget {
+  /// Creates a constant [LivePreviewLeadCard].
   const LivePreviewLeadCard({super.key});
 
   @override
@@ -9,7 +12,7 @@ class LivePreviewLeadCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 12.0.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F7FA),
+        color: AppColors.settingsCardBg,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -18,14 +21,14 @@ class LivePreviewLeadCard extends StatelessWidget {
             width: 38.w,
             height: 38.w,
             decoration: const BoxDecoration(
-              color: Color(0xFFFFEBEE),
+              color: AppColors.settingsRedLight,
               shape: BoxShape.circle,
             ),
             alignment: Alignment.center,
             child: Text(
               'PM',
               style: TextStyle(
-                color: const Color(0xFFE53935),
+                color: AppColors.settingsRed,
                 fontWeight: FontWeight.bold,
                 fontSize: 13.s,
               ),
@@ -56,28 +59,7 @@ class LivePreviewLeadCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 4.0.h),
-            decoration: BoxDecoration(
-              color: const Color(0xFFFFEBEE),
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.bolt_rounded, size: 12.s, color: const Color(0xFFE53935)),
-                AppSpacing.gapXxs,
-                Text(
-                  'Hot',
-                  style: TextStyle(
-                    color: const Color(0xFFE53935),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 10.s,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const HotTagBadge(),
         ],
       ),
     );

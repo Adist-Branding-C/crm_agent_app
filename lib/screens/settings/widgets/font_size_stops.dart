@@ -20,11 +20,11 @@ class FontSizeStops extends StatelessWidget {
             width: 16.w,
             height: 16.w,
             decoration: BoxDecoration(
-              color: const Color(0xFFE53935),
+              color: AppColors.settingsRed,
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFE53935).withValues(alpha: 0.3),
+                  color: AppColors.settingsRed.withValues(alpha: 0.3),
                   blurRadius: 6.r,
                   spreadRadius: 2.w,
                 ),
@@ -37,10 +37,10 @@ class FontSizeStops extends StatelessWidget {
           width: 10.w,
           height: 10.w,
           decoration: BoxDecoration(
-            color: isPassed ? const Color(0xFFE53935) : Colors.white,
+            color: isPassed ? AppColors.settingsRed : Colors.white,
             shape: BoxShape.circle,
             border: Border.all(
-              color: isPassed ? const Color(0xFFE53935) : AppColors.borderLight,
+              color: isPassed ? AppColors.settingsRed : AppColors.borderLight,
               width: 1.5.w,
             ),
           ),

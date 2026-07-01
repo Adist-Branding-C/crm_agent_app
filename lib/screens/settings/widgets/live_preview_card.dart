@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../theme.dart';
 import '../../../widgets/custom_card.dart';
 import 'live_preview_lead_card.dart';
+import 'live_preview_call_button.dart';
 
 class LivePreviewCard extends StatelessWidget {
   const LivePreviewCard({super.key});
@@ -53,26 +54,7 @@ class LivePreviewCard extends StatelessWidget {
             ),
           ),
           AppSpacing.gapMd,
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFE53935),
-                foregroundColor: Colors.white,
-                elevation: 0,
-                padding: EdgeInsets.symmetric(vertical: 14.0.h),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-              ),
-              onPressed: () {},
-              icon: Icon(Icons.phone_outlined, size: 16.s),
-              label: Text(
-                'Call lead',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.s),
-              ),
-            ),
-          ),
+          const LivePreviewCallButton(),
         ],
       ),
     );

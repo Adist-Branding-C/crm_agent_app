@@ -33,11 +33,18 @@ class ButtonLabel extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (icon != null) ...[Icon(icon, size: 18.s), AppSpacing.gapWSm],
-        Text(text, style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 14.s
-        )),
+        Flexible(
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 14.s,
+            ),
+          ),
+        ),
       ],
     );
   }

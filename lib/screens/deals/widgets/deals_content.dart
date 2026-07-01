@@ -19,9 +19,13 @@ class DealsContent extends StatelessWidget {
       builder: (context, state) {
         final deals = state is DealsLoaded ? state.deals : const <Deal>[];
         final viewIndex = context.watch<DealsViewNotifier>().value;
-        return viewIndex == 0
-            ? DealsPipelineView(deals: deals)
-            : DealsListView(deals: deals);
+        return IndexedStack(
+          index: viewIndex,
+          children: [
+            DealsPipelineView(deals: deals),
+            DealsListView(deals: deals),
+          ],
+        );
       },
     );
   }

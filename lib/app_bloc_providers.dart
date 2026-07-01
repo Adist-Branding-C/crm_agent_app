@@ -3,6 +3,8 @@ import 'bloc/account/account_bloc.dart';
 import 'bloc/attendance/attendance_bloc.dart';
 import 'bloc/call_log/call_log_bloc.dart';
 import 'bloc/notifications/notifications_bloc.dart';
+import 'bloc/deals/deals_bloc.dart';
+import 'data/repositories/deals_repository.dart';
 import 'utils/phone_dialer_service.dart';
 
 List<BlocProvider> buildBlocProviders() {
@@ -25,6 +27,9 @@ List<BlocProvider> buildBlocProviders() {
         activityRepository: c.read(),
         dialerService: const PhoneDialerService(),
       ),
+    ),
+    BlocProvider<DealsBloc>(
+      create: (c) => DealsBloc(dealsRepository: c.read<DealsRepository>()),
     ),
   ];
 }

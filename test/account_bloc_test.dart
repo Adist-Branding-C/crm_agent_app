@@ -56,12 +56,22 @@ void main() {
         expectLater(
           bloc.stream,
           emitsInOrder([
-            isA<AccountUpdating>(),
-            isA<AccountUpdateSuccess>().having(
-              (s) => s.profile.name,
-              'name',
-              'Updated Name',
+            isA<AccountLoaded>().having(
+              (s) => s.status,
+              'status',
+              AccountStatus.updating,
             ),
+            isA<AccountLoaded>()
+                .having(
+                  (s) => s.status,
+                  'status',
+                  AccountStatus.updateSuccess,
+                )
+                .having(
+                  (s) => s.profile.name,
+                  'name',
+                  'Updated Name',
+                ),
           ]),
         );
 

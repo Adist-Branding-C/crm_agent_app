@@ -49,7 +49,7 @@ class FontSizeTrack extends StatelessWidget {
                   child: Container(
                     height: 3.h,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFE53935),
+                      color: AppColors.settingsRed,
                       borderRadius: BorderRadius.circular(1.5.r),
                     ),
                   ),

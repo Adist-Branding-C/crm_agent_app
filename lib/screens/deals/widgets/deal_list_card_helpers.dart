@@ -17,14 +17,19 @@ class DealCardHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          '${deal.title} — ${deal.clientName}',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 13.s,
+        Expanded(
+          child: Text(
+            '${deal.title} — ${deal.clientName}',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AppColors.textDark,
+              fontWeight: FontWeight.bold,
+              fontSize: 13.s,
+            ),
           ),
         ),
+        AppSpacing.gapWMd,
         Text(
           deal.amount.toRupeeFormat(),
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(

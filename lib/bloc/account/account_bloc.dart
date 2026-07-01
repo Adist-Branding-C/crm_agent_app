@@ -51,15 +51,18 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   ) async {
     final currentState = state;
     if (currentState is AccountLoaded) {
-      emit(AccountUpdating(profile: currentState.profile));
+      emit(currentState.copyWith(status: AccountStatus.updating));
       try {
         final updated = await accountRepository.updateProfile(event.profile);
-        emit(AccountUpdateSuccess(profile: updated));
+        emit(currentState.copyWith(
+          profile: updated,
+          status: AccountStatus.updateSuccess,
+        ));
       } catch (_) {
         emit(
-          AccountUpdateFailure(
-            profile: currentState.profile,
-            error: 'Failed to update profile details.',
+          currentState.copyWith(
+            status: AccountStatus.updateFailure,
+            errorMessage: () => 'Failed to update profile details.',
           ),
         );
       }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'count_badge.dart';
 import 'section_header_action.dart';
+import 'section_header_title.dart';
 
+/// Reusable section header displaying title, icons, badges, and actions.
 class SectionHeader extends StatelessWidget {
   final String title;
   final IconData? leadingIcon;
@@ -34,7 +36,7 @@ class SectionHeader extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: _SectionHeaderTitle(
+            child: SectionHeaderTitle(
               title: title,
               leadingIcon: leadingIcon,
               leadingIconColor: leadingIconColor,
@@ -57,46 +59,6 @@ class SectionHeader extends StatelessWidget {
           ],
         ],
       ),
-    );
-  }
-}
-
-class _SectionHeaderTitle extends StatelessWidget {
-  final String title;
-  final IconData? leadingIcon;
-  final Color? leadingIconColor;
-
-  const _SectionHeaderTitle({
-    required this.title,
-    this.leadingIcon,
-    this.leadingIconColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (leadingIcon != null) ...[
-          Icon(
-            leadingIcon,
-            color: leadingIconColor ?? AppColors.textDark,
-            size: 16.s,
-          ),
-          AppSpacing.gapWSm,
-        ],
-        Expanded(
-          child: Text(
-            title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 15.5.s,
-              color: AppColors.textDark,
-              fontWeight: FontWeight.w700,
-            )
-          ),
-        ),
-      ],
     );
   }
 }

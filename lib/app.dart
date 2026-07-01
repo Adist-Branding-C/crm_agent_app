@@ -9,9 +9,9 @@ import 'data/repositories/session_repository.dart';
 import 'data/repositories/settings_repository_impl.dart';
 import 'data/settings_notifier.dart';
 import 'router.dart';
-import 'theme.dart';
-import 'widgets/text_scale_builder.dart';
+import 'widgets/crm_app_builder.dart';
 
+/// The root application widget.
 class MyApp extends StatefulWidget {
   final SessionRepository sessionRepository;
   final bool scaleText;
@@ -59,27 +59,9 @@ class _MyAppState extends State<MyApp> {
         value: _authStateNotifier,
         child: MultiBlocProvider(
           providers: buildBlocProviders(),
-          child: SfsInitBuilder(
-            mobileSize: const Size(360, 690),
-            tabletSize: const Size(481, 890),
-            desktopSize: const Size(1420, 820),
-            respectSystemTextScale: true,
-            orientationAware: true,
-            builder: (context, child) {
-              final settings = context.watch<SettingsNotifier>();
-              return MaterialApp.router(
-                title: 'CRM Agent App ',
-                debugShowCheckedModeBanner: false,
-                theme: AppTheme.lightTheme(fontStyle: settings.fontStyle),
-                darkTheme: AppTheme.darkTheme(fontStyle: settings.fontStyle),
-                themeMode: ThemeMode.light,
-                routerConfig: _router,
-                builder: (context, child) => TextScaleBuilder(
-                  scaleText: widget.scaleText,
-                  child: child,
-                ),
-              );
-            },
+          child: CRMAppBuilder(
+            router: _router,
+            scaleText: widget.scaleText,
           ),
         ),
       ),

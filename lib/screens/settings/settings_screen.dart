@@ -12,20 +12,6 @@ import 'widgets/security_card.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  Widget _buildSectionHeader(BuildContext context, String title) {
-    return Padding(
-      padding: EdgeInsets.only(left: 4.w, bottom: 8.h),
-      child: Text(
-        title.toUpperCase(),
-        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-          color: AppColors.textMuted,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 1.0,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsNotifier>();
@@ -46,13 +32,13 @@ class SettingsScreen extends StatelessWidget {
                 vertical: 8.0.h,
               ),
               children: [
-                _buildSectionHeader(context, 'App Customization'),
+                const _SettingsSectionHeader(title: 'App Customization'),
                 AppCustomizationCard(settings: settings),
                 AppSpacing.gapLg,
-                _buildSectionHeader(context, 'Preferences'),
+                const _SettingsSectionHeader(title: 'Preferences'),
                 const PreferencesCard(),
                 AppSpacing.gapLg,
-                _buildSectionHeader(context, 'Security & Account'),
+                const _SettingsSectionHeader(title: 'Security & Account'),
                 const SecurityCard(),
                 AppSpacing.gapLg,
                 const Center(
@@ -65,6 +51,26 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SettingsSectionHeader extends StatelessWidget {
+  final String title;
+  const _SettingsSectionHeader({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 4.w, bottom: 8.h),
+      child: Text(
+        title.toUpperCase(),
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+          color: AppColors.textMuted,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.0,
+        ),
       ),
     );
   }
