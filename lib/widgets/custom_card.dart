@@ -30,7 +30,7 @@ class CustomCard extends StatelessWidget {
       padding: padding,
       
       decoration: BoxDecoration(
-        color: color ?? Colors.white,
+        color: color ?? Colors.white, // Default color if not provided
         borderRadius: BorderRadius.circular(effectiveBorderRadius),
         border: border,
       ),

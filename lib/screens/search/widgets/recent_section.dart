@@ -12,7 +12,7 @@ class RecentSection extends StatelessWidget {
   Widget build(BuildContext context) {
     if (queries.isEmpty) return const SizedBox.shrink();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

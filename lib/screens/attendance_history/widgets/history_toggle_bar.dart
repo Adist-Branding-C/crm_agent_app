@@ -19,7 +19,7 @@ class HistoryToggleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.sm,
       ),
       padding:  EdgeInsets.all(4.0.w),

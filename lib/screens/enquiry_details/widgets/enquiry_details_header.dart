@@ -39,7 +39,7 @@ class EnquiryDetailsHeader extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

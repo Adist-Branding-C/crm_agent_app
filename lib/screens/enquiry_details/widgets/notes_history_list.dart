@@ -16,7 +16,7 @@ class NotesHistoryList extends StatelessWidget {
       return Center(
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -57,7 +57,7 @@ class NotesHistoryList extends StatelessWidget {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       itemCount: notes.length,
       itemBuilder: (context, index) {
         final note = notes[index];

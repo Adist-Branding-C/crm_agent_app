@@ -39,7 +39,7 @@ class FilterSheetBody extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.md,
       ),
       child: Column(

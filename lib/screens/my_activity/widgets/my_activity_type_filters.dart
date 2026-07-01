@@ -18,7 +18,7 @@ class MyActivityTypeFilters extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Row(
         children: ActivityTypeFilter.values
             .map(

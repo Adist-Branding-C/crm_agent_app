@@ -26,7 +26,7 @@ class CampaignStatusBadge extends StatelessWidget {
       child: Text(
         campaign.isCompleted ? 'Done' : '${campaign.progressPercent}%',
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-          color: badgeColor,
+          color: campaign.isCompleted ? badgeColor : AppColors.primaryLightColor,
           fontWeight: FontWeight.bold,
           fontSize: 10.s,
         ),

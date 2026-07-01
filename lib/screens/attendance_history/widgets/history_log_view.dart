@@ -19,7 +19,7 @@ class HistoryLogView extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: AppSpacing.xxl,
+            horizontal: AppSpacing.lg,
             vertical: AppSpacing.md,
           ),
           child: Text(

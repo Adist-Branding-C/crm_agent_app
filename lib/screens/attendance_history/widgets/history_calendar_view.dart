@@ -23,7 +23,7 @@ class HistoryCalendarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       margin: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.sm,
       ),
       padding: EdgeInsets.all(AppSpacing.lg),

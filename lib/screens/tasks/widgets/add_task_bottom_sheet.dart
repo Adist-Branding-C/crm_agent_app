@@ -22,7 +22,7 @@ class AddTaskBottomSheet extends StatelessWidget {
           const BottomSheetHandle(),
           AppSpacing.gapLg,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             child: Text(
               'New Task',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(

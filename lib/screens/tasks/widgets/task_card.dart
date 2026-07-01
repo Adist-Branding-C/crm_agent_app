@@ -25,7 +25,10 @@ class TaskCard extends StatelessWidget {
       fontWeight: showOverdue ? FontWeight.bold : FontWeight.normal,
     );
     return CustomCard(
-      margin: AppSpacing.cardMarginList,
+      margin: EdgeInsets.symmetric(
+    horizontal: AppSpacing.lg,
+    vertical: AppSpacing.xs2,
+  ),
       borderRadius: 11.r,
       padding: AppSpacing.cardPadding,
       onTap: () => TaskDetailsBottomSheet.show(context, task),

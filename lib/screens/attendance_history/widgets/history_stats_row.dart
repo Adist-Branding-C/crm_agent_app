@@ -40,7 +40,7 @@ class HistoryStatsRow extends StatelessWidget {
     final isMobileSmall = ResponsiveHelper.isMobileSmall(context);
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.sm,
       ),
       child: isMobileSmall

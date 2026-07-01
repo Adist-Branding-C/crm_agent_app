@@ -22,7 +22,7 @@ class HistoryCalendarDayDetail extends StatelessWidget {
         log.status == 'Holiday';
     return CustomCard(
       margin: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.md,
       ),
       padding: EdgeInsets.all(AppSpacing.lg),

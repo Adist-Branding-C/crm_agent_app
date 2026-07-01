@@ -16,7 +16,7 @@ class HistoryLogItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.xs2,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.r)),

@@ -27,7 +27,7 @@ class AddFollowUpBottomSheet extends StatelessWidget {
           const BottomSheetHandle(),
           AppSpacing.gapLg,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             child: Text(
               'New Follow-up',
               style: Theme.of(

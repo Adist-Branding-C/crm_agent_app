@@ -41,7 +41,7 @@ class NewPasswordBody extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               child: ResponsiveWidthContainer(
                 maxWidth: 480,
                 child: Column(

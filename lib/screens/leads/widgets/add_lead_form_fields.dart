@@ -47,7 +47,7 @@ class AddLeadFormFields extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.lg,
       ),
       child: Column(

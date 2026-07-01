@@ -14,7 +14,7 @@ class DashboardShimmer extends StatelessWidget {
     return  SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.lg,
       ),
       child: Column(

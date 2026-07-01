@@ -48,7 +48,7 @@ class TasksListView extends StatelessWidget {
                     ),
                   )
                 : ListView.builder(
-                    padding: EdgeInsets.only(bottom: AppSpacing.xxl),
+                    padding: EdgeInsets.only(bottom: AppSpacing.lg),
                     itemCount: tasks.length,
                     itemBuilder: (context, index) {
                       return TaskCard(task: tasks[index]);

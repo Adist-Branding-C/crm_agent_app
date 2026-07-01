@@ -13,7 +13,7 @@ class DealsToggle extends StatelessWidget {
     final selectedIndex = context.watch<DealsViewNotifier>().value;
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.md,
       ),
       child: Container(

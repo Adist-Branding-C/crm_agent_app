@@ -20,6 +20,7 @@ class CampaignCard extends StatelessWidget {
     final captionStyle = Theme.of(context).textTheme.labelSmall;
 
     return CustomCard(
+      border: Border.all(color: AppColors.slate200,width: 0.6.w),
       padding: EdgeInsets.all(AppSpacing.lg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

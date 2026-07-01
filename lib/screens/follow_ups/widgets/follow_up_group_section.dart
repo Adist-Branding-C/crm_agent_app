@@ -40,7 +40,7 @@ class FollowUpGroupSection extends StatelessWidget {
           badgeBgColor: badgeBgColor,
           badgeTextColor: badgeTextColor,
           padding: EdgeInsets.symmetric(
-            horizontal: AppSpacing.xxl,
+            horizontal: AppSpacing.lg,
             vertical: AppSpacing.md,
           ),
         ),

@@ -9,7 +9,7 @@ class CallEndedBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.sm,
       ),
       padding: EdgeInsets.all(AppSpacing.md),

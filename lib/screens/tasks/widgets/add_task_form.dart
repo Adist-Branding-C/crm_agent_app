@@ -32,7 +32,7 @@ class AddTaskForm extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           padding: EdgeInsets.symmetric(
-            horizontal: AppSpacing.xxl,
+            horizontal: AppSpacing.lg,
             vertical: AppSpacing.sm,
           ),
           child: ResponsiveWidthContainer(

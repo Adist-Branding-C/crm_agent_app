@@ -43,7 +43,7 @@ class SearchSuggestions extends StatelessWidget {
         leads.map(
           (l) => Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: AppSpacing.xxl,
+              horizontal: AppSpacing.lg,
               vertical: AppSpacing.xs2,
             ),
             child: LeadCard(lead: l),

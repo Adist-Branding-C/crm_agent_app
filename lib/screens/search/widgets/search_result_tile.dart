@@ -23,7 +23,7 @@ class SearchResultTile extends StatelessWidget {
     return switch (item) {
       LeadSearchResult(lead: final l) => Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: AppSpacing.xxl,
+          horizontal: AppSpacing.lg,
           vertical: AppSpacing.xs2,
         ),
         child: LeadCard(lead: l),
@@ -34,7 +34,7 @@ class SearchResultTile extends StatelessWidget {
       ),
       SpotlightSearchResult(spotlight: final s) => Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: AppSpacing.xxl,
+          horizontal: AppSpacing.lg,
           vertical: AppSpacing.xs2,
         ),
         child: SpotlightCard(spotlight: s),

@@ -14,7 +14,7 @@ class MyActivityLeadSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Material(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6.w),

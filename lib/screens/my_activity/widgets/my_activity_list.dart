@@ -22,7 +22,7 @@ class MyActivityList extends StatelessWidget {
         }
         return Expanded(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             physics: const BouncingScrollPhysics(),
             children: [
               for (final group in state.groupedActivities) ...[

@@ -22,11 +22,9 @@ class LeadsList extends StatelessWidget {
       builder: (context, state) {
         if (state is LeadsLoading || state is LeadsInitial) {
           return ListView.builder(
-            padding:  EdgeInsets.only(
-              left: 24.w,
-              right: 24.w,
-              top: 4.h,
-              bottom: 24.h,
+            padding:  EdgeInsets.symmetric(
+              horizontal: 12.w,
+              vertical: 4.h,
             ),
             itemCount: 5,
             physics: const NeverScrollableScrollPhysics(),
@@ -48,10 +46,10 @@ class LeadsList extends StatelessWidget {
           }
           return ListView.builder(
             padding: EdgeInsets.only(
-              left: AppSpacing.xxl,
-              right: AppSpacing.xxl,
-              top: 2.h,
-              bottom: 4.h,
+              left: AppSpacing.lg,
+              right: AppSpacing.lg,
+              top: 1.h,
+              bottom: 1.h,
             ),
             itemCount: list.length,
             physics: const BouncingScrollPhysics(),

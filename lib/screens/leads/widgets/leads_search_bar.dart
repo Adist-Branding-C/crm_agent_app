@@ -12,7 +12,7 @@ class LeadsSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: CustomCard(
         borderRadius: 8.r,
         child: TextField(

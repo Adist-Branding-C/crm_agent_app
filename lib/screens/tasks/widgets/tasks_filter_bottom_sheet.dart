@@ -39,7 +39,7 @@ class _TasksFilterBottomSheetState extends State<TasksFilterBottomSheet> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(22.r)),
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.lg,
       ),
       child: SingleChildScrollView(

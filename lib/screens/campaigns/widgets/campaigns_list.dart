@@ -14,14 +14,14 @@ class CampaignsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: EdgeInsets.fromLTRB(
-        AppSpacing.xxl,
+        AppSpacing.lg,
         AppSpacing.sm,
-        AppSpacing.xxl,
-        AppSpacing.xxl,
+        AppSpacing.lg,
+        AppSpacing.xl,
       ),
       physics: const BouncingScrollPhysics(),
       itemCount: campaigns.length,
-      separatorBuilder: (context, index) => AppSpacing.gapLg,
+      separatorBuilder: (context, index) => AppSpacing.gapXl,
       itemBuilder: (context, index) {
         return CampaignCard(campaign: campaigns[index]);
       },

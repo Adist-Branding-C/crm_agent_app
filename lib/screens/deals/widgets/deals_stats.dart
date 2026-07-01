@@ -24,7 +24,7 @@ class DealsStats extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: AppSpacing.xxl,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.sm,
       ),
       child: Row(
