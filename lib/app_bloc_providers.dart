@@ -4,6 +4,7 @@ import 'bloc/attendance/attendance_bloc.dart';
 import 'bloc/call_log/call_log_bloc.dart';
 import 'bloc/notifications/notifications_bloc.dart';
 import 'bloc/deals/deals_bloc.dart';
+import 'bloc/tasks/tasks_bloc.dart';
 import 'data/repositories/deals_repository.dart';
 import 'utils/phone_dialer_service.dart';
 
@@ -31,5 +32,9 @@ List<BlocProvider> buildBlocProviders() {
     BlocProvider<DealsBloc>(
       create: (c) => DealsBloc(dealsRepository: c.read<DealsRepository>()),
     ),
+    BlocProvider<TasksBloc>(
+      create: (c) => TasksBloc(tasksRepository: c.read())..add(const LoadTasks()),
+    ),
   ];
 }
+

@@ -42,10 +42,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             );
             context.pop();
           } else if (state.status == FormzSubmissionStatus.failure &&
-              state.errorMessage != null) {
+              state.failure != null) {
+            String msg = 'An error occurred.';
+            if (state.failure == ChangePasswordFailure.incorrectPassword) {
+              msg = 'Failed to update password.';
+            }
             ScaffoldMessenger.of(
               context,
-            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+            ).showSnackBar(SnackBar(content: Text(msg)));
           }
         },
         child: PageScaffold(

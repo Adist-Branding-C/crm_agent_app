@@ -16,47 +16,57 @@ class DashboardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DashboardBloc, DashboardState>(
-      builder: (context, state) {
-        if (state is DashboardLoading || state is DashboardInitial) {
-          return const DashboardShimmer();
-        }
-        if (state is DashboardLoaded) {
-          final lists = ResponsiveHelper.isTablet(context)
-              ? Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(child: FollowUpsList(calls: state.followUps)),
-                    AppSpacing.gapWLg,
-                    const Expanded(child: PendingTasksSection()),
-                  ],
-                )
-              : Column(
-                  children: [
-                    FollowUpsList(calls: state.followUps),
-                    const PendingTasksSection(),
-                  ],
-                );
+    return Column(
+      children: [
+        const DashboardHeader(),
+        Expanded(
+          child: BlocBuilder<DashboardBloc, DashboardState>(
+            builder: (context, state) {
+              if (state is DashboardLoading || state is DashboardInitial) {
+                return const DashboardShimmer();
+              }
+              if (state is DashboardLoaded) {
+                final lists = ResponsiveHelper.isTablet(context)
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: FollowUpsList(calls: state.followUps),
+                          ),
+                          AppSpacing.gapWLg,
+                          const Expanded(child: PendingTasksSection()),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          FollowUpsList(calls: state.followUps),
+                          const PendingTasksSection(),
+                        ],
+                      );
 
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                const DashboardHeader(),
-                StatsGrid(stats: state.stats),
-                lists,
-                 SizedBox(height: AppSpacing.xxl),
-              ],
-            ),
-          );
-        }
-        final msg = state is DashboardError ? state.failure.message : 'Error';
-        return AppErrorWidget(
-          message: msg,
-          onRetry: () =>
-              context.read<DashboardBloc>().add(const FetchDashboardData()),
-        );
-      },
+                return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      StatsGrid(stats: state.stats),
+                      lists,
+                      SizedBox(height: AppSpacing.xxl),
+                    ],
+                  ),
+                );
+              }
+              final msg =
+                  state is DashboardError ? state.failure.message : 'Error';
+              return AppErrorWidget(
+                message: msg,
+                onRetry: () => context
+                    .read<DashboardBloc>()
+                    .add(const FetchDashboardData()),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

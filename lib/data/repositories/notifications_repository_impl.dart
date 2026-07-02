@@ -1,64 +1,10 @@
 import '../models/notification_models.dart';
+import '../mocks/mock_notifications.dart';
 import 'notifications_repository.dart';
 
 /// Concrete implementation of [NotificationsRepository] returning mock data.
 class NotificationsRepositoryImpl implements NotificationsRepository {
-  final List<NotificationItem> _mockNotifications = [
-    const NotificationItem(
-      id: '1',
-      title: 'New lead assigned',
-      subtitle: 'Divya Raveendran • Instagram enquiry',
-      time: '5 min ago',
-      type: NotificationType.lead,
-      isRead: false,
-      routePath: '/enquiry-details/4',
-    ),
-    const NotificationItem(
-      id: '2',
-      title: 'Follow-up call due',
-      subtitle: 'Call back Lakshmi Warrier — batch slot closing',
-      time: '20 min ago',
-      type: NotificationType.followUp,
-      isRead: false,
-      routePath: '/follow-up-calls',
-    ),
-    const NotificationItem(
-      id: '3',
-      title: 'Task overdue',
-      subtitle: 'Demo reminder — Divya Raveendran',
-      time: '1 hr ago',
-      type: NotificationType.task,
-      isRead: false,
-      routePath: '/dashboard?tab=tasks&filter=overdue',
-    ),
-    const NotificationItem(
-      id: '4',
-      title: 'Deal moved to Negotiation',
-      subtitle: 'Corporate Batch — Fathima Z. • ₹3.4L',
-      time: '3 hr ago',
-      type: NotificationType.deal,
-      isRead: true,
-      routePath: '/deals',
-    ),
-    const NotificationItem(
-      id: '5',
-      title: 'Lead status updated',
-      subtitle: 'Anjali Suresh → Interested',
-      time: '5 hr ago',
-      type: NotificationType.leadStatus,
-      isRead: true,
-      routePath: '/enquiry-details/6',
-    ),
-    const NotificationItem(
-      id: '6',
-      title: 'Mention in note',
-      subtitle: '@you Admin tagged you on Sneha Pillai',
-      time: 'Yesterday',
-      type: NotificationType.mention,
-      isRead: true,
-      routePath: '/enquiry-details/2',
-    ),
-  ];
+  final List<NotificationItem> _mockNotifications = List.from(mockNotificationsList);
 
   @override
   Future<List<NotificationItem>> getNotifications() async {

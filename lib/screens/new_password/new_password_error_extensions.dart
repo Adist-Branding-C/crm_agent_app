@@ -34,7 +34,14 @@ extension NewPasswordStatePresentation on NewPasswordState {
   /// Specific validation error text for the password field.
   String? get passwordError {
     if (newPassword.isPure) return null;
-    return newPassword.error?.message ?? errorMessage;
+    if (newPassword.error != null) return newPassword.error!.message;
+    if (failure != null) {
+      if (failure == NewPasswordFailure.failedToUpdate) {
+        return 'Failed to update password.';
+      }
+      return 'An error occurred.';
+    }
+    return null;
   }
 
   /// Specific validation error text for the confirm password field.

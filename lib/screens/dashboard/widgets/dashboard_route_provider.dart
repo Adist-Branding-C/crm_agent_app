@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import '../../../bloc/dashboard/dashboard_bloc.dart';
-import '../../../bloc/tasks/tasks_bloc.dart';
 import '../dashboard_screen.dart';
 import '../dashboard_tab_notifier.dart';
 
@@ -39,19 +38,10 @@ class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: _tabNotifier,
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<DashboardBloc>(
-            create: (_) =>
-                DashboardBloc(dashboardRepository: context.read())
-                  ..add(const FetchDashboardData()),
-          ),
-          BlocProvider<TasksBloc>(
-            create: (_) =>
-                TasksBloc(tasksRepository: context.read())
-                  ..add(const LoadTasks()),
-          ),
-        ],
+      child: BlocProvider<DashboardBloc>(
+        create: (_) =>
+            DashboardBloc(dashboardRepository: context.read())
+              ..add(const FetchDashboardData()),
         child: DashboardScreen(
           initialIndex: widget.initialIndex,
           initialFilter: widget.initialFilter,
@@ -59,4 +49,5 @@ class _DashboardRouteProviderState extends State<DashboardRouteProvider> {
       ),
     );
   }
+
 }

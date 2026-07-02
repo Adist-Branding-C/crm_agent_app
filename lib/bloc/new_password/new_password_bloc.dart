@@ -7,6 +7,7 @@ export 'new_password_inputs.dart';
 import 'new_password_event.dart';
 import 'new_password_state.dart';
 import 'new_password_handlers.dart';
+import 'new_password_submit_handler.dart';
 
 class NewPasswordBloc extends Bloc<NewPasswordEvent, NewPasswordState> {
   final PasswordRepository authRepository;

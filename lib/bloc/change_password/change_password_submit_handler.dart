@@ -35,14 +35,14 @@ Future<void> changePasswordSubmitted(
         status: success
             ? FormzSubmissionStatus.success
             : FormzSubmissionStatus.failure,
-        errorMessage: success ? null : 'Failed to update password.',
+        failure: success ? null : ChangePasswordFailure.incorrectPassword,
       ),
     );
   } catch (_) {
     emit(
       bloc.state.copyWith(
         status: FormzSubmissionStatus.failure,
-        errorMessage: 'An error occurred.',
+        failure: ChangePasswordFailure.unknown,
       ),
     );
   }

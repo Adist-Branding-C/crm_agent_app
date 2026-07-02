@@ -301,3 +301,34 @@ Template content	12.s (bodySmall+override)	12.s	bodySmall
 Button label	15.s (bodyLarge+override)	14.s w600	labelLarge
 Section gaps	21/13/17 varied	17 all	gapXl
 Key wins: no more bespoke fontSize overrides, proper label styles (w600) for labels, consistent spacing rhythm, icon matched to text size.
+
+
+
+Summary of Completed Work
+TasksBloc DI Crash Fixed:
+
+Relocated the TasksBloc provider from the local dashboard route context to the global provider list in 
+app_bloc_providers.dart
+. This guarantees that navigations or deep links directly to the TaskDetailsScreen sibling route will no longer crash due to missing dependency injection.
+DIP Exception Decoupling & SoC String decoupling:
+
+Introduced AuthDomainException inside the repository interface 
+session_repository.dart
+.
+mapped all network and credential exceptions in the concrete SessionRepositoryImpl data source wrapper.
+Cleared data source imports from 
+login_bloc.dart
+, satisfying the Dependency Inversion Principle.
+Decoupled hardcoded user-facing error strings in the Change Password and New Password BLoCs by transitioning to type-safe enums (ChangePasswordFailure, NewPasswordFailure), leaving mapping logic exclusively to the UI layer.
+Rebuild Scope Optimizations:
+
+Restructured the widget layouts in 
+task_details_screen.dart
+ and 
+dashboard_body.dart
+ to lift static headers outside the BlocBuilder scopes, preventing redundant repaints.
+Line-Limit Compliance (< 80 Lines):
+
+Decoupled mock list arrays out of model and repository implementations to a unified lib/data/mocks/ directory.
+Extracted sub-widgets and layout layers (such as AnalyticsFilterSheetBody, FontSettingsListBody, and EditEnquiryFormFieldsContainer) to clean up complex UI states.
+Compacted properties/parameter declarations.

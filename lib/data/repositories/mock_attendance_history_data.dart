@@ -1,5 +1,5 @@
 import '../models/attendance_history_model.dart';
-import 'mock_attendance_logs.dart';
+import '../mocks/mock_attendance_logs.dart';
 
 class MockAttendanceHistoryData {
   MockAttendanceHistoryData._();

@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/datasources/auth_remote_datasource.dart';
 import '../../data/repositories/session_repository.dart';
 import 'login_event.dart';
 import 'login_state.dart';
@@ -56,16 +55,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       final ok = await authRepository.login(phone.value, password.value);
       emit(state.copyWith(isSuccess: ok, isLoading: false));
-    } on NetworkException {
+    } on AuthDomainException catch (e) {
       emit(state.copyWith(
-        authFailure: AuthFailure.network,
-        isSuccess: false,
-        isLoading: false,
-      ));
-    } on InvalidCredentialsException catch (e) {
-      emit(state.copyWith(
-        authFailure: AuthFailure.invalidCredentials,
-        authErrorMessage: e.message,
+        authFailure: e.isNetworkError
+            ? AuthFailure.network
+            : AuthFailure.invalidCredentials,
+        authErrorMessage: e.isNetworkError ? null : e.message,
         isSuccess: false,
         isLoading: false,
       ));
@@ -78,3 +73,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 }
+

@@ -1,5 +1,5 @@
 import '../models/lead_models.dart';
-import '../models/mock_leads.dart';
+import '../mocks/mock_leads.dart';
 import '../models/mock_follow_ups.dart';
 import '../models/lead_enums.dart';
 

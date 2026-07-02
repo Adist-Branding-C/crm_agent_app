@@ -12,7 +12,7 @@ void changePasswordCurrentPasswordChanged(
     bloc.state.copyWith(
       currentPassword: current,
       status: FormzSubmissionStatus.initial,
-      errorMessage: null,
+      clearFailure: true,
     ),
   );
 }
@@ -32,7 +32,7 @@ void changePasswordNewPasswordChanged(
       newPassword: newPass,
       confirmPassword: confirm,
       status: FormzSubmissionStatus.initial,
-      errorMessage: null,
+      clearFailure: true,
     ),
   );
 }
@@ -50,7 +50,7 @@ void changePasswordConfirmPasswordChanged(
     bloc.state.copyWith(
       confirmPassword: confirm,
       status: FormzSubmissionStatus.initial,
-      errorMessage: null,
+      clearFailure: true,
     ),
   );
 }

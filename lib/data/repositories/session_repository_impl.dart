@@ -32,13 +32,21 @@ class SessionRepositoryImpl implements SessionRepository {
 
   @override
   Future<bool> login(String phone, String password) async {
-    final response = await authRemoteDataSource.login(phone, password);
-    if (response.token.isNotEmpty) {
-      await authDataSource.saveToken(response.token);
-      _isAuthenticated = true;
-      return true;
+    try {
+      final response = await authRemoteDataSource.login(phone, password);
+      if (response.token.isNotEmpty) {
+        await authDataSource.saveToken(response.token);
+        _isAuthenticated = true;
+        return true;
+      }
+      throw const AuthDomainException('Invalid credentials.');
+    } on NetworkException catch (e) {
+      throw AuthDomainException(e.message, isNetworkError: true);
+    } on InvalidCredentialsException catch (e) {
+      throw AuthDomainException(e.message);
+    } catch (e) {
+      throw AuthDomainException(e.toString());
     }
-    throw const InvalidCredentialsException();
   }
 
   @override

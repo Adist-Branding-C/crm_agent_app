@@ -22,27 +22,15 @@ class AddLeadBloc extends Bloc<AddLeadEvent, AddLeadState> {
   final LeadsRepository leadsRepository;
 
   AddLeadBloc({required this.leadsRepository}) : super(const AddLeadState()) {
-    on<NameChanged>(
-      (ev, emit) => emit(state.copyWith(nameInput: LeadName.dirty(ev.name))),
-    );
-    on<PhoneChanged>(
-      (ev, emit) => emit(state.copyWith(phoneInput: LeadPhone.dirty(ev.phone))),
-    );
-    on<EmailChanged>(
-      (ev, emit) => emit(state.copyWith(emailInput: LeadEmail.dirty(ev.email))),
-    );
+    on<NameChanged>((ev, emit) => emit(state.copyWith(nameInput: LeadName.dirty(ev.name))));
+    on<PhoneChanged>((ev, emit) => emit(state.copyWith(phoneInput: LeadPhone.dirty(ev.phone))));
+    on<EmailChanged>((ev, emit) => emit(state.copyWith(emailInput: LeadEmail.dirty(ev.email))));
     on<SourceChanged>((ev, emit) => emit(state.copyWith(source: ev.source)));
     on<PurposeChanged>((ev, emit) => emit(state.copyWith(purpose: ev.purpose)));
-    on<CategoryChanged>(
-      (ev, emit) => emit(state.copyWith(category: ev.category)),
-    );
+    on<CategoryChanged>((ev, emit) => emit(state.copyWith(category: ev.category)));
     on<StatusChanged>((ev, emit) => emit(state.copyWith(status: ev.status)));
-    on<LocationChanged>(
-      (ev, emit) => emit(state.copyWith(location: ev.location)),
-    );
-    on<FollowUpChanged>(
-      (ev, emit) => emit(state.copyWith(nextFollowUp: () => ev.followUp)),
-    );
+    on<LocationChanged>((ev, emit) => emit(state.copyWith(location: ev.location)));
+    on<FollowUpChanged>((ev, emit) => emit(state.copyWith(nextFollowUp: () => ev.followUp)));
     on<NoteChanged>((ev, emit) => emit(state.copyWith(note: () => ev.note)));
     on<SubmitForm>(_onSubmitForm);
   }

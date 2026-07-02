@@ -9,6 +9,7 @@ import 'filter_section.dart';
 import 'filter_sort_by.dart';
 import 'filter_source.dart';
 import 'filter_status.dart';
+import 'filter_sheet_header_row.dart';
 
 class FilterSheetBody extends StatelessWidget {
   final SortLeadsBy sortBy;
@@ -33,8 +34,7 @@ class FilterSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
@@ -48,57 +48,16 @@ class FilterSheetBody extends StatelessWidget {
         children: [
           const BottomSheetHandle(),
           AppSpacing.gapLg,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Filter & Sort',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              if (status != null || source != null)
-                TextButton(
-                  onPressed: onClear,
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: Size.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text(
-                    'Clear',
-                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-            ],
+          FilterSheetHeaderRow(
+            hasActiveFilters: status != null || source != null,
+            onClear: onClear,
           ),
           AppSpacing.gapLg,
-          FilterSection(
-            title: 'SORT BY',
-            child: FilterSortBy(
-              selectedSort: sortBy,
-              onSelected: onSortChanged,
-            ),
-          ),
+          FilterSection(title: 'SORT BY', child: FilterSortBy(selectedSort: sortBy, onSelected: onSortChanged)),
           AppSpacing.gapLg,
-          FilterSection(
-            title: 'STATUS',
-            child: FilterStatus(
-              selectedStatus: status,
-              onSelected: onStatusChanged,
-            ),
-          ),
+          FilterSection(title: 'STATUS', child: FilterStatus(selectedStatus: status, onSelected: onStatusChanged)),
           AppSpacing.gapLg,
-          FilterSection(
-            title: 'SOURCE',
-            child: FilterSource(
-              selectedSource: source,
-              onSelected: onSourceChanged,
-            ),
-          ),
+          FilterSection(title: 'SOURCE', child: FilterSource(selectedSource: source, onSelected: onSourceChanged)),
           AppSpacing.gapLg,
           CustomButton(
             text: 'Apply Filters',

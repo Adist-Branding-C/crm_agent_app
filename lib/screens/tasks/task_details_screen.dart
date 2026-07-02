@@ -31,43 +31,44 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
   Widget build(BuildContext context) {
     return PageScaffold(
       padding: EdgeInsets.zero,
-      child: BlocBuilder<TasksBloc, TasksState>(
-        builder: (context, state) {
-          if (state is TasksError) {
-            return AppErrorWidget(
-              message: 'Error loading task details',
-              onRetry: () => context.read<TasksBloc>().add(const LoadTasks()),
-            );
-          }
-          if (state is TasksInitial ||
-              state is TasksLoading ||
-              state is! TasksLoaded) {
-            return  AppLoadingWidget();
-          }
-          final task = state.allTasks.firstWhere(
-            (t) => t.id == widget.taskId,
-            orElse: () => Task(
-              id: widget.taskId,
-              title: 'Task Not Found',
-              type: TaskType.task,
-              time: 'Unknown',
-              isCompleted: false,
-              isOverdue: false,
-              priority: TaskPriority.low,
-            ),
-          );
-          return Column(
-            children: [
-              const ScreenHeader(title: 'Task Details', showBackButton: true),
-              Expanded(
-                child: SingleChildScrollView(
+      child: Column(
+        children: [
+          const ScreenHeader(title: 'Task Details', showBackButton: true),
+          Expanded(
+            child: BlocBuilder<TasksBloc, TasksState>(
+              builder: (context, state) {
+                if (state is TasksError) {
+                  return AppErrorWidget(
+                    message: 'Error loading task details',
+                    onRetry: () =>
+                        context.read<TasksBloc>().add(const LoadTasks()),
+                  );
+                }
+                if (state is TasksInitial ||
+                    state is TasksLoading ||
+                    state is! TasksLoaded) {
+                  return  AppLoadingWidget();
+                }
+                final task = state.allTasks.firstWhere(
+                  (t) => t.id == widget.taskId,
+                  orElse: () => Task(
+                    id: widget.taskId,
+                    title: 'Task Not Found',
+                    type: TaskType.task,
+                    time: 'Unknown',
+                    isCompleted: false,
+                    isOverdue: false,
+                    priority: TaskPriority.low,
+                  ),
+                );
+                return SingleChildScrollView(
                   padding: AppSpacing.screenPaddingV,
                   child: TaskDetailsBody(task: task),
-                ),
-              ),
-            ],
-          );
-        },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

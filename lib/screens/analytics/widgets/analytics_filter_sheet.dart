@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../bloc/analytics/analytics_bloc.dart';
 import '../../../bloc/leads/leads_enums.dart';
-import '../../../theme.dart';
-import '../../../widgets/bottom_sheet_handle.dart';
-import 'filter_action_buttons.dart';
-import 'analytics_filter_sections.dart';
+import 'analytics_filter_sheet_body.dart';
 
 class AnalyticsFilterSheet extends StatefulWidget {
   const AnalyticsFilterSheet({super.key});
@@ -57,56 +54,19 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
-      ),
-      padding: EdgeInsets.fromLTRB(AppSpacing.xl, 20.0.h, AppSpacing.xl, 20.0.h),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Center(child: BottomSheetHandle()),
-          AppSpacing.gapLg,
-          const _FilterTitle(),
-          AppSpacing.gapXl,
-          Flexible(
-            child: AnalyticsFilterSections(
-              period: _period,
-              start: _start,
-              end: _end,
-              onPeriodChanged: (p) => setState(() => _period = p),
-              onStartDateChanged: (d) => setState(() => _start = d),
-              onEndDateChanged: (d) => setState(() => _end = d),
-              statuses: _statuses,
-              sources: _sources,
-              onStatusToggle: (st) => setState(
-                () => _statuses.contains(st)
-                    ? _statuses.remove(st)
-                    : _statuses.add(st),
-              ),
-              onSourceToggle: (src) => setState(
-                () => _sources.contains(src)
-                    ? _sources.remove(src)
-                    : _sources.add(src),
-              ),
-            ),
-          ),
-          FilterActionButtons(onReset: _reset, onApply: _apply),
-        ],
-      ),
+    return AnalyticsFilterSheetBody(
+      period: _period,
+      start: _start,
+      end: _end,
+      statuses: _statuses,
+      sources: _sources,
+      onPeriodChanged: (p) => setState(() => _period = p),
+      onStartDateChanged: (d) => setState(() => _start = d),
+      onEndDateChanged: (d) => setState(() => _end = d),
+      onStatusToggle: (st) => setState(() => _statuses.contains(st) ? _statuses.remove(st) : _statuses.add(st)),
+      onSourceToggle: (src) => setState(() => _sources.contains(src) ? _sources.remove(src) : _sources.add(src)),
+      onReset: _reset,
+      onApply: _apply,
     );
   }
-}
-
-class _FilterTitle extends StatelessWidget {
-  const _FilterTitle();
-  @override
-  Widget build(BuildContext context) => Text(
-    'Filter analytics',
-    style: Theme.of(
-      context,
-    ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-  );
 }

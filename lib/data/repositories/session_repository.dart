@@ -6,3 +6,11 @@ abstract class SessionRepository {
   bool get isInitialized;
   Future<void> init();
 }
+
+/// Domain exception for authentication failures.
+class AuthDomainException implements Exception {
+  final String message;
+  final bool isNetworkError;
+  const AuthDomainException(this.message, {this.isNetworkError = false});
+}
+

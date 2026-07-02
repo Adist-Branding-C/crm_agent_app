@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'change_password_inputs.dart';
 
+enum ChangePasswordFailure { none, incorrectPassword, unknown }
+
 class ChangePasswordState extends Equatable {
   final ChangeCurrentPassword currentPassword;
   final ChangeNewPassword newPassword;
@@ -10,7 +12,7 @@ class ChangePasswordState extends Equatable {
   final bool obscureNewPassword;
   final bool obscureConfirmPassword;
   final FormzSubmissionStatus status;
-  final String? errorMessage;
+  final ChangePasswordFailure? failure;
 
   const ChangePasswordState({
     this.currentPassword = const ChangeCurrentPassword.pure(),
@@ -20,7 +22,7 @@ class ChangePasswordState extends Equatable {
     this.obscureNewPassword = true,
     this.obscureConfirmPassword = true,
     this.status = FormzSubmissionStatus.initial,
-    this.errorMessage,
+    this.failure,
   });
 
   ChangePasswordState copyWith({
@@ -31,7 +33,8 @@ class ChangePasswordState extends Equatable {
     bool? obscureNewPassword,
     bool? obscureConfirmPassword,
     FormzSubmissionStatus? status,
-    String? errorMessage,
+    ChangePasswordFailure? failure,
+    bool? clearFailure,
   }) {
     return ChangePasswordState(
       currentPassword: currentPassword ?? this.currentPassword,
@@ -43,7 +46,7 @@ class ChangePasswordState extends Equatable {
       obscureConfirmPassword:
           obscureConfirmPassword ?? this.obscureConfirmPassword,
       status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage,
+      failure: clearFailure == true ? null : (failure ?? this.failure),
     );
   }
 
@@ -56,6 +59,7 @@ class ChangePasswordState extends Equatable {
     obscureNewPassword,
     obscureConfirmPassword,
     status,
-    errorMessage,
+    failure,
   ];
 }
+
